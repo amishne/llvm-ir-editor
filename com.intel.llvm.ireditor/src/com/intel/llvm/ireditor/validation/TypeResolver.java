@@ -71,27 +71,44 @@ import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
 import com.intel.llvm.ireditor.lLVM_IR.X86mmxType;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedAnyType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedPointerType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
 
 import static com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator.*;
 
 /**
  * Converts an EObject to a String representing its type.
  */
-public class TypeStringSwitch extends LLVM_IRSwitch<String> {
+public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private LinkedList<TypeDef> enclosing = new LinkedList<TypeDef>();
 
-	@Override
-	public String defaultCase(EObject object) {
-		// TODO change to TYPE_UNKNOWN once everything is covered?
-		return TYPE_ANY;
+	public ResolvedType resolve(EObject object) {
+		return doSwitch(object);
 	}
 	
 	@Override
-	public String caseType(Type object) {
+	public ResolvedType defaultCase(EObject object) {
+		// TODO change to ResolvedUnknownType once everything is covered?
+		return new ResolvedAnyType();
+	}
+	
+	@Override
+	public ResolvedType caseType(Type object) {
+		ResolvedType result = resolve(object.getBaseType());
+		for (Star star : object.getStars()) {
+			String addrSpaceStr = star.getAddressSpace();
+			int addrSpace = addrSpaceStr == null ? -1 : Integer.valueOf(addrSpaceStr);
+			result = new ResolvedPointerType(result, addrSpace);
+		}
+		for (int i = 0; i < object.getStars().size(); i++) {
+			result = new ResolvedPointerType(result);
+		}
 		StringBuilder sb = new StringBuilder();
 		sb.append(doSwitch(object.getBaseType()));
 		addStars(object.getStars(), sb);
 		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
+		for (suffix.g)
 		if (suffix != null) sb.append(doSwitch(suffix));
 		return sb.toString();
 	}

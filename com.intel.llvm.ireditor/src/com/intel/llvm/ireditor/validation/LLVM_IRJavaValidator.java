@@ -154,7 +154,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	 * @return
 	 */
 	private String getTypeStr(EObject obj) {
-		return obj == null? null : new TypeStringSwitch().doSwitch(obj);
+		return obj == null? null : new TypeResolver().doSwitch(obj);
 	}
 
 }
