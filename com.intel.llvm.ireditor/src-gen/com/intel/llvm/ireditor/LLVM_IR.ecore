@@ -58,7 +58,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="GlobalVariable" eSuperTypes="#//GlobalValue #//GlobalValueDef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="addrspace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addrspace" eType="#//AddressSpace"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tlsModel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialValue" eType="#//Constant"
@@ -190,6 +191,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetadataString" eSuperTypes="#//Constant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AddressSpace">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Function" eSuperTypes="#//GlobalValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="header" eType="#//FunctionHeader"
@@ -597,7 +601,8 @@
         eType="#//Star" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Star">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="addressSpace" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addressSpace" eType="#//AddressSpace"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Type">
     <eStructuralFeatures xsi:type="ecore:EReference" name="baseType" eType="#//NonLeftRecursiveType"

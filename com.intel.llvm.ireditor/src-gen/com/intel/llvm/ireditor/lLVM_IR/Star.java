@@ -23,29 +23,29 @@ import org.eclipse.emf.ecore.EObject;
 public interface Star extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Address Space</b></em>' attribute.
+   * Returns the value of the '<em><b>Address Space</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Address Space</em>' attribute isn't clear,
+   * If the meaning of the '<em>Address Space</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Address Space</em>' attribute.
-   * @see #setAddressSpace(String)
+   * @return the value of the '<em>Address Space</em>' containment reference.
+   * @see #setAddressSpace(AddressSpace)
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getStar_AddressSpace()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getAddressSpace();
+  AddressSpace getAddressSpace();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Star#getAddressSpace <em>Address Space</em>}' attribute.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Star#getAddressSpace <em>Address Space</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Address Space</em>' attribute.
+   * @param value the new value of the '<em>Address Space</em>' containment reference.
    * @see #getAddressSpace()
    * @generated
    */
-  void setAddressSpace(String value);
+  void setAddressSpace(AddressSpace value);
 
 } // Star

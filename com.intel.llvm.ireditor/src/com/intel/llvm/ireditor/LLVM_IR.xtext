@@ -306,7 +306,7 @@ TLSoption:
 ;
 
 AddressSpace:
-	'addrspace' '(' INTEGER ')'
+	'addrspace' '(' value=INTEGER ')'
 ;
 
 Section:

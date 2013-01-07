@@ -105,6 +105,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.METADATA_NODE: return createMetadataNode();
       case LLVM_IRPackage.METADATA_NODE_ELEMENT: return createMetadataNodeElement();
       case LLVM_IRPackage.METADATA_STRING: return createMetadataString();
+      case LLVM_IRPackage.ADDRESS_SPACE: return createAddressSpace();
       case LLVM_IRPackage.FUNCTION: return createFunction();
       case LLVM_IRPackage.FUNCTION_DEF: return createFunctionDef();
       case LLVM_IRPackage.FUNCTION_DECL: return createFunctionDecl();
@@ -651,6 +652,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     MetadataStringImpl metadataString = new MetadataStringImpl();
     return metadataString;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AddressSpace createAddressSpace()
+  {
+    AddressSpaceImpl addressSpace = new AddressSpaceImpl();
+    return addressSpace;
   }
 
   /**

@@ -280,6 +280,11 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createMetadataStringAdapter();
       }
       @Override
+      public Adapter caseAddressSpace(AddressSpace object)
+      {
+        return createAddressSpaceAdapter();
+      }
+      @Override
       public Adapter caseFunction(Function object)
       {
         return createFunctionAdapter();
@@ -1372,6 +1377,21 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMetadataStringAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.AddressSpace <em>Address Space</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.AddressSpace
+   * @generated
+   */
+  public Adapter createAddressSpaceAdapter()
   {
     return null;
   }

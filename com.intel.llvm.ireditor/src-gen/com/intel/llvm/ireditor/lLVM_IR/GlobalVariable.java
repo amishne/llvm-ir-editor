@@ -81,30 +81,30 @@ public interface GlobalVariable extends GlobalValue, GlobalValueDef
   void setLinkage(String value);
 
   /**
-   * Returns the value of the '<em><b>Addrspace</b></em>' attribute.
+   * Returns the value of the '<em><b>Addrspace</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Addrspace</em>' attribute isn't clear,
+   * If the meaning of the '<em>Addrspace</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Addrspace</em>' attribute.
-   * @see #setAddrspace(String)
+   * @return the value of the '<em>Addrspace</em>' containment reference.
+   * @see #setAddrspace(AddressSpace)
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getGlobalVariable_Addrspace()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getAddrspace();
+  AddressSpace getAddrspace();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.GlobalVariable#getAddrspace <em>Addrspace</em>}' attribute.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.GlobalVariable#getAddrspace <em>Addrspace</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Addrspace</em>' attribute.
+   * @param value the new value of the '<em>Addrspace</em>' containment reference.
    * @see #getAddrspace()
    * @generated
    */
-  void setAddrspace(String value);
+  void setAddrspace(AddressSpace value);
 
   /**
    * Returns the value of the '<em><b>Tls Model</b></em>' attribute.

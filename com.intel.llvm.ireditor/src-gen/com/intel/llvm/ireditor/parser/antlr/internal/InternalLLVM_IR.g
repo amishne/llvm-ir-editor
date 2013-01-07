@@ -3360,46 +3360,51 @@ ruleTLSoption returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken
 
 
 // Entry rule entryRuleAddressSpace
-entryRuleAddressSpace returns [String current=null] 
+entryRuleAddressSpace returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getAddressSpaceRule()); } 
+	{ newCompositeNode(grammarAccess.getAddressSpaceRule()); }
 	 iv_ruleAddressSpace=ruleAddressSpace 
-	 { $current=$iv_ruleAddressSpace.current.getText(); }  
+	 { $current=$iv_ruleAddressSpace.current; } 
 	 EOF 
 ;
 
 // Rule AddressSpace
-ruleAddressSpace returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleAddressSpace returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+(	otherlv_0='addrspace' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getAddressSpaceAccess().getAddrspaceKeyword_0());
+    }
+	otherlv_1='(' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getAddressSpaceAccess().getLeftParenthesisKeyword_1());
+    }
 (
-	kw='addrspace' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getAddressSpaceAccess().getAddrspaceKeyword_0()); 
-    }
+(
+		lv_value_2_0=RULE_INTEGER
+		{
+			newLeafNode(lv_value_2_0, grammarAccess.getAddressSpaceAccess().getValueINTEGERTerminalRuleCall_2_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAddressSpaceRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_2_0, 
+        		"INTEGER");
+	    }
 
-	kw='(' 
+)
+)	otherlv_3=')' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getAddressSpaceAccess().getLeftParenthesisKeyword_1()); 
-    }
-    this_INTEGER_2=RULE_INTEGER    {
-		$current.merge(this_INTEGER_2);
-    }
-
-    { 
-    newLeafNode(this_INTEGER_2, grammarAccess.getAddressSpaceAccess().getINTEGERTerminalRuleCall_2()); 
-    }
-
-	kw=')' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getAddressSpaceAccess().getRightParenthesisKeyword_3()); 
+    	newLeafNode(otherlv_3, grammarAccess.getAddressSpaceAccess().getRightParenthesisKeyword_3());
     }
 )
-    ;
+;
 
 
 

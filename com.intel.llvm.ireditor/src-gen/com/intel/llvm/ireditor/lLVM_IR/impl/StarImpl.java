@@ -2,12 +2,15 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
+import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.Star;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
@@ -28,24 +31,14 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class StarImpl extends MinimalEObjectImpl.Container implements Star
 {
   /**
-   * The default value of the '{@link #getAddressSpace() <em>Address Space</em>}' attribute.
+   * The cached value of the '{@link #getAddressSpace() <em>Address Space</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getAddressSpace()
    * @generated
    * @ordered
    */
-  protected static final String ADDRESS_SPACE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getAddressSpace() <em>Address Space</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAddressSpace()
-   * @generated
-   * @ordered
-   */
-  protected String addressSpace = ADDRESS_SPACE_EDEFAULT;
+  protected AddressSpace addressSpace;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,7 +66,7 @@ public class StarImpl extends MinimalEObjectImpl.Container implements Star
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAddressSpace()
+  public AddressSpace getAddressSpace()
   {
     return addressSpace;
   }
@@ -83,12 +76,53 @@ public class StarImpl extends MinimalEObjectImpl.Container implements Star
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAddressSpace(String newAddressSpace)
+  public NotificationChain basicSetAddressSpace(AddressSpace newAddressSpace, NotificationChain msgs)
   {
-    String oldAddressSpace = addressSpace;
+    AddressSpace oldAddressSpace = addressSpace;
     addressSpace = newAddressSpace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.STAR__ADDRESS_SPACE, oldAddressSpace, addressSpace));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.STAR__ADDRESS_SPACE, oldAddressSpace, newAddressSpace);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAddressSpace(AddressSpace newAddressSpace)
+  {
+    if (newAddressSpace != addressSpace)
+    {
+      NotificationChain msgs = null;
+      if (addressSpace != null)
+        msgs = ((InternalEObject)addressSpace).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.STAR__ADDRESS_SPACE, null, msgs);
+      if (newAddressSpace != null)
+        msgs = ((InternalEObject)newAddressSpace).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.STAR__ADDRESS_SPACE, null, msgs);
+      msgs = basicSetAddressSpace(newAddressSpace, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.STAR__ADDRESS_SPACE, newAddressSpace, newAddressSpace));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case LLVM_IRPackage.STAR__ADDRESS_SPACE:
+        return basicSetAddressSpace(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -118,7 +152,7 @@ public class StarImpl extends MinimalEObjectImpl.Container implements Star
     switch (featureID)
     {
       case LLVM_IRPackage.STAR__ADDRESS_SPACE:
-        setAddressSpace((String)newValue);
+        setAddressSpace((AddressSpace)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -135,7 +169,7 @@ public class StarImpl extends MinimalEObjectImpl.Container implements Star
     switch (featureID)
     {
       case LLVM_IRPackage.STAR__ADDRESS_SPACE:
-        setAddressSpace(ADDRESS_SPACE_EDEFAULT);
+        setAddressSpace((AddressSpace)null);
         return;
     }
     super.eUnset(featureID);
@@ -152,26 +186,9 @@ public class StarImpl extends MinimalEObjectImpl.Container implements Star
     switch (featureID)
     {
       case LLVM_IRPackage.STAR__ADDRESS_SPACE:
-        return ADDRESS_SPACE_EDEFAULT == null ? addressSpace != null : !ADDRESS_SPACE_EDEFAULT.equals(addressSpace);
+        return addressSpace != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (addressSpace: ");
-    result.append(addressSpace);
-    result.append(')');
-    return result.toString();
   }
 
 } //StarImpl

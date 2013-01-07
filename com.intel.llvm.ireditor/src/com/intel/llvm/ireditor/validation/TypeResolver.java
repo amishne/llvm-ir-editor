@@ -165,7 +165,11 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	
 	public ResolvedType caseNonLeftRecursiveNonVoidType(NonLeftRecursiveNonVoidType object) {
-		return resolve((object).getType());
+		return resolve(object.getType());
+	}
+	
+	public ResolvedType caseParameterType(ParameterType object) {
+		return resolve(object.getType());
 	}
 	
 	
@@ -373,7 +377,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private ResolvedType buildPointersTo(ResolvedType base, Iterable<Star> stars) {
 		ResolvedType result = base;
 		for (Star star : stars) {
-			String addrSpaceStr = star.getAddressSpace();
+			String addrSpaceStr = star.getAddressSpace().getValue();
 			int addrSpace = addrSpaceStr == null ? -1 : atoi(addrSpaceStr);
 			result = new ResolvedPointerType(result, addrSpace);
 		}

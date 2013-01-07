@@ -1975,15 +1975,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAddrspaceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cINTEGERTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueINTEGERTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//AddressSpace:
 		//
-		//	"addrspace" "(" INTEGER ")";
+		//	"addrspace" "(" value=INTEGER ")";
 		public ParserRule getRule() { return rule; }
 
-		//"addrspace" "(" INTEGER ")"
+		//"addrspace" "(" value=INTEGER ")"
 		public Group getGroup() { return cGroup; }
 
 		//"addrspace"
@@ -1992,8 +1993,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
+		//value=INTEGER
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+
 		//INTEGER
-		public RuleCall getINTEGERTerminalRuleCall_2() { return cINTEGERTerminalRuleCall_2; }
+		public RuleCall getValueINTEGERTerminalRuleCall_2_0() { return cValueINTEGERTerminalRuleCall_2_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
@@ -8546,7 +8550,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//AddressSpace:
 	//
-	//	"addrspace" "(" INTEGER ")";
+	//	"addrspace" "(" value=INTEGER ")";
 	public AddressSpaceElements getAddressSpaceAccess() {
 		return (pAddressSpace != null) ? pAddressSpace : (pAddressSpace = new AddressSpaceElements());
 	}

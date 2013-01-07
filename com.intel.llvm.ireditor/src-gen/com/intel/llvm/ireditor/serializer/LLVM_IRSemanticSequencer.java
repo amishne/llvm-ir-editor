@@ -2,6 +2,7 @@ package com.intel.llvm.ireditor.serializer;
 
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
@@ -140,6 +141,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	public void createSequence(EObject context, EObject semanticObject) {
 		if(semanticObject.eClass().getEPackage() == LLVM_IRPackage.eINSTANCE) switch(semanticObject.eClass().getClassifierID()) {
+			case LLVM_IRPackage.ADDRESS_SPACE:
+				if(context == grammarAccess.getAddressSpaceRule()) {
+					sequence_AddressSpace(context, (AddressSpace) semanticObject); 
+					return; 
+				}
+				else break;
 			case LLVM_IRPackage.ALIAS:
 				if(context == grammarAccess.getAliasRule() ||
 				   context == grammarAccess.getGlobalValueRule() ||
@@ -935,6 +942,22 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Constraint:
+	 *     value=INTEGER
+	 */
+	protected void sequence_AddressSpace(EObject context, AddressSpace semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.ADDRESS_SPACE__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.ADDRESS_SPACE__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAddressSpaceAccess().getValueINTEGERTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
 	
 	/**
 	 * Constraint:

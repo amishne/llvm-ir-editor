@@ -28,9 +28,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.ui.quickfix;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
@@ -39,17 +39,23 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolution;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
+
+import com.intel.llvm.ireditor.lLVM_IR.ArgList;
+import com.intel.llvm.ireditor.lLVM_IR.Argument;
+import com.intel.llvm.ireditor.lLVM_IR.Callee;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
+import com.intel.llvm.ireditor.lLVM_IR.Type;
 
-import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
 import com.intel.llvm.ireditor.validation.TypeResolver;
 
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 
+	TypeResolver resolver = new TypeResolver();
+	
 //	@Fix(MyJavaValidator.INVALID_NAME)
 //	public void capitalizeName(final Issue issue, IssueResolutionAcceptor acceptor) {
 //		acceptor.accept(issue, "Capitalize name", "Capitalize the name.", "upcase.png", new IModification() {
@@ -68,31 +74,20 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		IModificationContext context = getModificationContextFactory().createModificationContext(issue);
 		IXtextDocument doc = context.getXtextDocument();
 		EObject object = findObject(doc, issue);
-		if (isCallToMissing(object)) {
-			result.add(createFunctionDeclaration((GlobalValueRef) object, issue));
+		if (isCallToMissing(object) == false) {
+			return result;
 		}
-		
-		String name = issue.getCode();
-		ResolvedType type = new TypeResolver().resolve(object);
-		final String sig = type.toString().replaceFirst("\\(", name + "(");
+		final String declaration = buildDeclarationFromCall(object.eContainer());
 		
 		result.add(new IssueResolution("Create function declaration", "mydescription", "upcase.png", context, new IModification() {
 
-			@Override
 			public void apply(IModificationContext context) throws Exception {
 				IXtextDocument doc = context.getXtextDocument();
-				doc.replace(doc.getLength(), 0, "\ndeclare " + sig + "\n");
+				doc.replace(doc.getLength(), 0, declaration);
 			}
 			
 		}));
 		return result;
-	}
-
-	private IssueResolution createFunctionDeclaration(GlobalValueRef object, Issue issue) {
-		String name = Pattern.compile(".*'([^'])'.*").matcher(issue.getMessage()).group(1);
-		EObject container = object.eContainer();
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	private boolean isCallToMissing(EObject object) {
@@ -102,14 +97,78 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 				|| object.eContainer() instanceof Instruction_invoke_nonVoid
 				|| object.eContainer() instanceof Instruction_invoke_void);
 	}
+	
+	private String buildDeclarationFromCall(Callee callee, Type functionPointerType, EObject rettype, ArgList args) {
+		String name = textOf(callee);
+		String sig = null;
+		if (functionPointerType != null) {
+			// We got the whole type! :)
+			sig = resolver.resolve(functionPointerType).toString().replaceFirst("\\(", name + "(");
+		} else {
+			// Otherwise, build it from the arguments and return type.
+			StringBuilder sb = new StringBuilder();
+			sb.append(resolver.resolve(rettype));
+			sb.append(" ");
+			sb.append(name);
+			sb.append("(");
+			boolean first = true;
+			for (Argument a : args.getArguments()) {
+				if (first == false) {
+					sb.append(", ");
+				}
+				first = false;
+				sb.append(resolver.resolve(a.getType()).toString());
+			}
+			sb.append(")");
+			sig = sb.toString();
+		}
+		return "\ndeclare " + sig + "\n";
+	}
+	
+	private String buildDeclarationFromCall(EObject inst) {
+		Callee callee = null;
+		Type functionPointerType = null;
+		EObject rettype = null;
+		ArgList args = null;
+		if (inst instanceof Instruction_call_nonVoid) {
+			Instruction_call_nonVoid actual = (Instruction_call_nonVoid) inst;
+			callee = actual.getCallee();
+			functionPointerType = actual.getFunctionPointerType();
+			rettype = actual.getReturnType();
+			args = actual.getArgs();
+		} else if (inst instanceof Instruction_call_void) {
+			Instruction_call_void actual = (Instruction_call_void) inst;
+			callee = actual.getCallee();
+			functionPointerType = actual.getFunctionPointerType();
+			rettype = actual.getReturnType();
+			args = actual.getArgs();
+		} else if (inst instanceof Instruction_invoke_nonVoid) {
+			Instruction_invoke_nonVoid actual = (Instruction_invoke_nonVoid) inst;
+			callee = actual.getCallee();
+			rettype = actual.getRettype();
+			args = actual.getArgs();
+		} else if (inst instanceof Instruction_invoke_void) {
+			Instruction_invoke_void actual = (Instruction_invoke_void) inst;
+			callee = actual.getCallee();
+			rettype = actual.getRettype();
+			args = actual.getArgs();
+		} else {
+			return null;
+		}
+		
+		return buildDeclarationFromCall(callee, functionPointerType, rettype, args);
+	}
 
 	private EObject findObject(final IXtextDocument doc, final Issue issue) {
 		return doc.readOnly(new IUnitOfWork<EObject, XtextResource>() {
-			@Override
 			public EObject exec(XtextResource state) throws Exception {
 				return state.getEObject(issue.getUriToProblem().fragment());
 			}
 		});
+	}
+	
+	private String textOf(EObject object) {
+		return NodeModelUtils.getTokenText(NodeModelUtils.getNode(object));
 	}
 	
 }

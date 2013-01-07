@@ -11815,9 +11815,9 @@ rule__AddressSpace__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getAddressSpaceAccess().getINTEGERTerminalRuleCall_2()); }
-	RULE_INTEGER
-{ after(grammarAccess.getAddressSpaceAccess().getINTEGERTerminalRuleCall_2()); }
+{ before(grammarAccess.getAddressSpaceAccess().getValueAssignment_2()); }
+(rule__AddressSpace__ValueAssignment_2)
+{ after(grammarAccess.getAddressSpaceAccess().getValueAssignment_2()); }
 )
 
 ;
@@ -29236,6 +29236,21 @@ rule__MetadataString__NameAssignment
 (
 { before(grammarAccess.getMetadataStringAccess().getNameMETADATA_STRINGTerminalRuleCall_0()); }
 	RULE_METADATA_STRING{ after(grammarAccess.getMetadataStringAccess().getNameMETADATA_STRINGTerminalRuleCall_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__AddressSpace__ValueAssignment_2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getAddressSpaceAccess().getValueINTEGERTerminalRuleCall_2_0()); }
+	RULE_INTEGER{ after(grammarAccess.getAddressSpaceAccess().getValueINTEGERTerminalRuleCall_2_0()); }
 )
 
 ;

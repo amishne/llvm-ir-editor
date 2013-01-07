@@ -392,6 +392,15 @@ public interface LLVM_IRFactory extends EFactory
   MetadataString createMetadataString();
 
   /**
+   * Returns a new object of class '<em>Address Space</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Address Space</em>'.
+   * @generated
+   */
+  AddressSpace createAddressSpace();
+
+  /**
    * Returns a new object of class '<em>Function</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

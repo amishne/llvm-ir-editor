@@ -58,7 +58,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//GlobalVariable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalVariable/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalVariable/linkage"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalVariable/addrspace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalVariable/addrspace"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalVariable/tlsModel"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalVariable/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalVariable/initialValue"/>
@@ -151,6 +151,9 @@
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//MetadataString">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//MetadataString/name"/>
+    </genClasses>
+    <genClasses ecoreClass="LLVM_IR.ecore#//AddressSpace">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AddressSpace/value"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Function">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Function/header"/>
@@ -449,7 +452,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NonVoidType/stars"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Star">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Star/addressSpace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Star/addressSpace"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Type">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Type/baseType"/>

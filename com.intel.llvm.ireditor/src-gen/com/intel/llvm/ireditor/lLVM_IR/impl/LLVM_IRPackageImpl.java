@@ -2,6 +2,7 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
+import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
@@ -439,6 +440,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass metadataStringEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass addressSpaceEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1552,9 +1560,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGlobalVariable_Addrspace()
+  public EReference getGlobalVariable_Addrspace()
   {
-    return (EAttribute)globalVariableEClass.getEStructuralFeatures().get(2);
+    return (EReference)globalVariableEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -2275,6 +2283,26 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EAttribute getMetadataString_Name()
   {
     return (EAttribute)metadataStringEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAddressSpace()
+  {
+    return addressSpaceEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAddressSpace_Value()
+  {
+    return (EAttribute)addressSpaceEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -4692,9 +4720,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStar_AddressSpace()
+  public EReference getStar_AddressSpace()
   {
-    return (EAttribute)starEClass.getEStructuralFeatures().get(0);
+    return (EReference)starEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5093,7 +5121,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     globalVariableEClass = createEClass(GLOBAL_VARIABLE);
     createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__NAME);
     createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__LINKAGE);
-    createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__ADDRSPACE);
+    createEReference(globalVariableEClass, GLOBAL_VARIABLE__ADDRSPACE);
     createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__TLS_MODEL);
     createEReference(globalVariableEClass, GLOBAL_VARIABLE__TYPE);
     createEReference(globalVariableEClass, GLOBAL_VARIABLE__INITIAL_VALUE);
@@ -5190,6 +5218,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     metadataStringEClass = createEClass(METADATA_STRING);
     createEAttribute(metadataStringEClass, METADATA_STRING__NAME);
+
+    addressSpaceEClass = createEClass(ADDRESS_SPACE);
+    createEAttribute(addressSpaceEClass, ADDRESS_SPACE__VALUE);
 
     functionEClass = createEClass(FUNCTION);
     createEReference(functionEClass, FUNCTION__HEADER);
@@ -5509,7 +5540,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEReference(nonVoidTypeEClass, NON_VOID_TYPE__STARS);
 
     starEClass = createEClass(STAR);
-    createEAttribute(starEClass, STAR__ADDRESS_SPACE);
+    createEReference(starEClass, STAR__ADDRESS_SPACE);
 
     typeEClass = createEClass(TYPE);
     createEReference(typeEClass, TYPE__BASE_TYPE);
@@ -5724,7 +5755,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(globalVariableEClass, GlobalVariable.class, "GlobalVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getGlobalVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGlobalVariable_Linkage(), ecorePackage.getEString(), "linkage", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGlobalVariable_Addrspace(), ecorePackage.getEString(), "addrspace", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGlobalVariable_Addrspace(), this.getAddressSpace(), null, "addrspace", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getGlobalVariable_TlsModel(), ecorePackage.getEString(), "tlsModel", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalVariable_Type(), this.getType(), null, "type", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalVariable_InitialValue(), this.getConstant(), null, "initialValue", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5821,6 +5852,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     initEClass(metadataStringEClass, MetadataString.class, "MetadataString", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMetadataString_Name(), ecorePackage.getEString(), "name", null, 0, 1, MetadataString.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(addressSpaceEClass, AddressSpace.class, "AddressSpace", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAddressSpace_Value(), ecorePackage.getEString(), "value", null, 0, 1, AddressSpace.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionEClass, Function.class, "Function", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunction_Header(), this.getFunctionHeader(), null, "header", null, 0, 1, Function.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6140,7 +6174,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEReference(getNonVoidType_Stars(), this.getStar(), null, "stars", null, 0, -1, NonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(starEClass, Star.class, "Star", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStar_AddressSpace(), ecorePackage.getEString(), "addressSpace", null, 0, 1, Star.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStar_AddressSpace(), this.getAddressSpace(), null, "addressSpace", null, 0, 1, Star.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getType_BaseType(), this.getNonLeftRecursiveType(), null, "baseType", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

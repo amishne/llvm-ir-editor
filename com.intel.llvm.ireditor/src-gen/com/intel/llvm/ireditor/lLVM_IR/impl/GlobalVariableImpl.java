@@ -2,6 +2,7 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
+import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
@@ -78,24 +79,14 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
   protected String linkage = LINKAGE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getAddrspace() <em>Addrspace</em>}' attribute.
+   * The cached value of the '{@link #getAddrspace() <em>Addrspace</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getAddrspace()
    * @generated
    * @ordered
    */
-  protected static final String ADDRSPACE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getAddrspace() <em>Addrspace</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getAddrspace()
-   * @generated
-   * @ordered
-   */
-  protected String addrspace = ADDRSPACE_EDEFAULT;
+  protected AddressSpace addrspace;
 
   /**
    * The default value of the '{@link #getTlsModel() <em>Tls Model</em>}' attribute.
@@ -249,7 +240,7 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getAddrspace()
+  public AddressSpace getAddrspace()
   {
     return addrspace;
   }
@@ -259,12 +250,37 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setAddrspace(String newAddrspace)
+  public NotificationChain basicSetAddrspace(AddressSpace newAddrspace, NotificationChain msgs)
   {
-    String oldAddrspace = addrspace;
+    AddressSpace oldAddrspace = addrspace;
     addrspace = newAddrspace;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE, oldAddrspace, addrspace));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE, oldAddrspace, newAddrspace);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAddrspace(AddressSpace newAddrspace)
+  {
+    if (newAddrspace != addrspace)
+    {
+      NotificationChain msgs = null;
+      if (addrspace != null)
+        msgs = ((InternalEObject)addrspace).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE, null, msgs);
+      if (newAddrspace != null)
+        msgs = ((InternalEObject)newAddrspace).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE, null, msgs);
+      msgs = basicSetAddrspace(newAddrspace, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE, newAddrspace, newAddrspace));
   }
 
   /**
@@ -442,6 +458,8 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
   {
     switch (featureID)
     {
+      case LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE:
+        return basicSetAddrspace(null, msgs);
       case LLVM_IRPackage.GLOBAL_VARIABLE__TYPE:
         return basicSetType(null, msgs);
       case LLVM_IRPackage.GLOBAL_VARIABLE__INITIAL_VALUE:
@@ -497,7 +515,7 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
         setLinkage((String)newValue);
         return;
       case LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE:
-        setAddrspace((String)newValue);
+        setAddrspace((AddressSpace)newValue);
         return;
       case LLVM_IRPackage.GLOBAL_VARIABLE__TLS_MODEL:
         setTlsModel((String)newValue);
@@ -535,7 +553,7 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
         setLinkage(LINKAGE_EDEFAULT);
         return;
       case LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE:
-        setAddrspace(ADDRSPACE_EDEFAULT);
+        setAddrspace((AddressSpace)null);
         return;
       case LLVM_IRPackage.GLOBAL_VARIABLE__TLS_MODEL:
         setTlsModel(TLS_MODEL_EDEFAULT);
@@ -571,7 +589,7 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
       case LLVM_IRPackage.GLOBAL_VARIABLE__LINKAGE:
         return LINKAGE_EDEFAULT == null ? linkage != null : !LINKAGE_EDEFAULT.equals(linkage);
       case LLVM_IRPackage.GLOBAL_VARIABLE__ADDRSPACE:
-        return ADDRSPACE_EDEFAULT == null ? addrspace != null : !ADDRSPACE_EDEFAULT.equals(addrspace);
+        return addrspace != null;
       case LLVM_IRPackage.GLOBAL_VARIABLE__TLS_MODEL:
         return TLS_MODEL_EDEFAULT == null ? tlsModel != null : !TLS_MODEL_EDEFAULT.equals(tlsModel);
       case LLVM_IRPackage.GLOBAL_VARIABLE__TYPE:
@@ -601,8 +619,6 @@ public class GlobalVariableImpl extends GlobalValueImpl implements GlobalVariabl
     result.append(name);
     result.append(", linkage: ");
     result.append(linkage);
-    result.append(", addrspace: ");
-    result.append(addrspace);
     result.append(", tlsModel: ");
     result.append(tlsModel);
     result.append(", section: ");

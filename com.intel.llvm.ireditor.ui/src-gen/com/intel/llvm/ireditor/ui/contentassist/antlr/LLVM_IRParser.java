@@ -339,6 +339,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetadataNodeElementAccess().getMetadataRefAssignment_1(), "rule__MetadataNodeElement__MetadataRefAssignment_1");
 					put(grammarAccess.getMetadataNodeElementAccess().getNullAssignment_2(), "rule__MetadataNodeElement__NullAssignment_2");
 					put(grammarAccess.getMetadataStringAccess().getNameAssignment(), "rule__MetadataString__NameAssignment");
+					put(grammarAccess.getAddressSpaceAccess().getValueAssignment_2(), "rule__AddressSpace__ValueAssignment_2");
 					put(grammarAccess.getFunctionDefAccess().getHeaderAssignment_1(), "rule__FunctionDef__HeaderAssignment_1");
 					put(grammarAccess.getFunctionDefAccess().getBodyAssignment_2(), "rule__FunctionDef__BodyAssignment_2");
 					put(grammarAccess.getFunctionDeclAccess().getHeaderAssignment_1(), "rule__FunctionDecl__HeaderAssignment_1");
