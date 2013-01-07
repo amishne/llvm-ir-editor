@@ -6,6 +6,12 @@ public class ResolvedStructType extends ResolvedType {
 	private List<ResolvedType> fieldTypes;
 	private boolean packed;
 	
+	public int getBits() {
+		int result = 0;
+		for (ResolvedType t : fieldTypes) result += t.getBits();
+		return result;
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		if (packed) sb.append("<");

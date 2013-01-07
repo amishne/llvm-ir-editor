@@ -2,6 +2,10 @@ package com.intel.llvm.ireditor.resolvedtypes;
 
 public class ResolvedAnyType extends ResolvedType {
 
+	public int getBits() {
+		return -1;
+	}
+	
 	public String toString() {
 		return "any";
 	}

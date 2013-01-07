@@ -7,6 +7,10 @@ public class ResolvedIntegerType extends ResolvedType {
 	public ResolvedIntegerType(int bits) {
 		this.bits = bits;
 	}
+	
+	public int getBits() {
+		return bits;
+	}
 
 	public String toString() {
 		return "i" + bits;

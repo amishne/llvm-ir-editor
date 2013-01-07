@@ -4,6 +4,10 @@ public class ResolvedPointerType extends ResolvedType {
 	private ResolvedType pointedType;
 	private int addrSpace;
 	
+	public int getBits() {
+		return -1;
+	}
+	
 	public ResolvedPointerType(ResolvedType pointedType, int addrSpace) {
 		this.pointedType = pointedType;
 		this.addrSpace = addrSpace;

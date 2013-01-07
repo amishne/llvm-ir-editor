@@ -27,7 +27,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.validation;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -72,8 +75,13 @@ import com.intel.llvm.ireditor.lLVM_IR.VoidType;
 import com.intel.llvm.ireditor.lLVM_IR.X86mmxType;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedAnyType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedFloatingType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedFunctionType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedIntegerType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedPointerType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedTypeReference;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedVoidType;
 
 import static com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator.*;
 
@@ -81,8 +89,19 @@ import static com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator.*;
  * Converts an EObject to a String representing its type.
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
-	private LinkedList<TypeDef> enclosing = new LinkedList<TypeDef>();
+	private final LinkedList<TypeDef> enclosing = new LinkedList<TypeDef>();
+	private final Map<String, ResolvedType> simpleTypes = new HashMap<String, ResolvedType>();
+	private static final Map<String, Integer> floatingTypes = new HashMap<String, Integer>();
 
+	static {
+		floatingTypes.put("half", 16);
+		floatingTypes.put("float", 32);
+		floatingTypes.put("double", 64);
+		floatingTypes.put("fp128", 128);
+		floatingTypes.put("x86_fp80", 80);
+		floatingTypes.put("ppc_fp128", 128);
+	}
+	
 	public ResolvedType resolve(EObject object) {
 		return doSwitch(object);
 	}
@@ -96,62 +115,48 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseType(Type object) {
 		ResolvedType result = resolve(object.getBaseType());
-		for (Star star : object.getStars()) {
-			String addrSpaceStr = star.getAddressSpace();
-			int addrSpace = addrSpaceStr == null ? -1 : Integer.valueOf(addrSpaceStr);
-			result = new ResolvedPointerType(result, addrSpace);
-		}
-		for (int i = 0; i < object.getStars().size(); i++) {
-			result = new ResolvedPointerType(result);
-		}
-		StringBuilder sb = new StringBuilder();
-		sb.append(doSwitch(object.getBaseType()));
-		addStars(object.getStars(), sb);
+		buildPointersTo(result, object.getStars());
 		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
-		for (suffix.g)
-		if (suffix != null) sb.append(doSwitch(suffix));
-		return sb.toString();
+		return suffix == null? result : buildTypeFromSuffix(result, suffix);
 	}
 	
 	@Override
-	public String caseNonVoidType(NonVoidType object) {
-		StringBuilder sb = new StringBuilder();
-		sb.append(doSwitch(object.getBaseType()));
-		addStars(object.getStars(), sb);
+	public ResolvedType caseNonVoidType(NonVoidType object) {
+		ResolvedType result = resolve(object.getBaseType());
+		buildPointersTo(result, object.getStars());
 		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
-		if (suffix != null) sb.append(doSwitch(suffix));
-		return sb.toString();
+		return suffix == null? result : buildTypeFromSuffix(result, suffix);
 	}
 	
 	@Override
-	public String caseNonLeftRecursiveType(NonLeftRecursiveType object) {
+	public ResolvedType caseNonLeftRecursiveType(NonLeftRecursiveType object) {
 		TypeDef typeDef = object.getTypedef();
 		if (typeDef != null) {
 			if (enclosing.contains(typeDef)) {
-				return typeDef.getName();
+				return new ResolvedTypeReference(typeDef.getName());
 			}
 			enclosing.push(typeDef);
-			String result = doSwitch(typeDef.getType());
+			ResolvedType result = resolve(typeDef.getType());
 			enclosing.pop();
 			return result;
 		}
-		return doSwitch(object.getType());
+		return resolve(object.getType());
 	}
 	
 	@Override
-	public String caseNonLeftRecursiveNonVoidType(
-			NonLeftRecursiveNonVoidType object) {
-		return doSwitch((object).getType());
+	public ResolvedType caseNonLeftRecursiveNonVoidType(NonLeftRecursiveNonVoidType object) {
+		return resolve((object).getType());
 	}
 	
 	@Override
-	public String caseIntType(IntType object) {
-		return textOf(object);
+	public ResolvedType caseIntType(IntType object) {
+		int bits = Integer.valueOf(textOf(object).substring(1));
+		return new ResolvedIntegerType(bits);
 	}
 	
 	@Override
-	public String caseFloatingType(FloatingType object) {
-		return textOf(object);
+	public ResolvedType caseFloatingType(FloatingType object) {
+		return getSimpleType(textOf(object));
 	}
 	
 	@Override
@@ -365,30 +370,42 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		return doSwitch(object.getPointer().getType());
 	}
 	
-	
-	
-//	private String extract(String t, EObject index) {
-//		if (t.endsWith("*")) {
-//			// Pointer
-//			return t.substring(0, t.length()-1);
-//		}
-//		if (t.matches("<\\d+")) {
-//			// Vector
-//			return Pattern.compile("<\\d+ x (.*)>").matcher(t).group(1);
-//		}
-//	}
-
 	private String textOf(EObject object) {
 		return NodeModelUtils.getTokenText(NodeModelUtils.getNode(object));
 	}
 	
-	private void addStars(Iterable<Star> coll, StringBuilder sb) {
-		for (Star star : coll) {
-			if (star.getAddressSpace() != null) sb.append(star.getAddressSpace());
-			sb.append("*");
+	private ResolvedType buildTypeFromSuffix(ResolvedType rettype,
+			FunctionTypeOrPointerToFunctionTypeSuffix suffix) {
+		List<ResolvedType> paramTypes = new LinkedList<ResolvedType>();
+		for (ParameterType t : suffix.getContainedTypes()) {
+			paramTypes.add(resolve(t));
 		}
+		ResolvedType result = new ResolvedFunctionType(rettype, paramTypes);
+		return buildPointersTo(result, suffix.getStars());
 	}
 	
+	private ResolvedType buildPointersTo(ResolvedType base, Iterable<Star> stars) {
+		ResolvedType result = base;
+		for (Star star : stars) {
+			String addrSpaceStr = star.getAddressSpace();
+			int addrSpace = addrSpaceStr == null ? -1 : Integer.valueOf(addrSpaceStr);
+			result = new ResolvedPointerType(result, addrSpace);
+		}
+		return result;
+	}
 	
+	private ResolvedType getSimpleType(String text) {
+		ResolvedType result = simpleTypes.get(text);
+		if (result != null) return result;
+		if (text.equals("void")) return addSimpleType(new ResolvedVoidType());
+		if (floatingTypes.containsKey(text)) {
+			return addSimpleType(text, new ResolvedFloatingType(text, floatingTypes.get(text)));
+		}
+	}
+
+	private ResolvedType addSimpleType(String key, ResolvedType t) {
+		simpleTypes.put(key, t);
+		return t;
+	}
 	
 }
