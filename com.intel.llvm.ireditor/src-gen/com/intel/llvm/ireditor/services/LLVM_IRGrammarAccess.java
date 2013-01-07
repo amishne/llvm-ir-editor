@@ -7397,7 +7397,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTypesTypeParserRuleCall_1_0_1_1_1_0 = (RuleCall)cTypesAssignment_1_0_1_1_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_1_0_2 = (Keyword)cGroup_1_0.eContents().get(2);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
-		private final Keyword cLessThanSignKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cPackedAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
+		private final Keyword cPackedLessThanSignKeyword_1_1_0_0 = (Keyword)cPackedAssignment_1_1_0.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
 		private final Group cGroup_1_1_2 = (Group)cGroup_1_1.eContents().get(2);
 		private final Assignment cTypesAssignment_1_1_2_0 = (Assignment)cGroup_1_1_2.eContents().get(0);
@@ -7411,16 +7412,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//StructType:
 		//
-		//	{StructType} ("{" (types+=Type ("," types+=Type)*)? "}" | "<" "{" (types+=Type ("," types+=Type)*)? "}" ">");
+		//	{StructType} ("{" (types+=Type ("," types+=Type)*)? "}" | packed="<" "{" (types+=Type ("," types+=Type)*)? "}" ">");
 		public ParserRule getRule() { return rule; }
 
-		//{StructType} ("{" (types+=Type ("," types+=Type)*)? "}" | "<" "{" (types+=Type ("," types+=Type)*)? "}" ">")
+		//{StructType} ("{" (types+=Type ("," types+=Type)*)? "}" | packed="<" "{" (types+=Type ("," types+=Type)*)? "}" ">")
 		public Group getGroup() { return cGroup; }
 
 		//{StructType}
 		public Action getStructTypeAction_0() { return cStructTypeAction_0; }
 
-		//"{" (types+=Type ("," types+=Type)*)? "}" | "<" "{" (types+=Type ("," types+=Type)*)? "}" ">"
+		//"{" (types+=Type ("," types+=Type)*)? "}" | packed="<" "{" (types+=Type ("," types+=Type)*)? "}" ">"
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//"{" (types+=Type ("," types+=Type)*)? "}"
@@ -7453,11 +7454,14 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_1_0_2() { return cRightCurlyBracketKeyword_1_0_2; }
 
-		//"<" "{" (types+=Type ("," types+=Type)*)? "}" ">"
+		//packed="<" "{" (types+=Type ("," types+=Type)*)? "}" ">"
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
+		//packed="<"
+		public Assignment getPackedAssignment_1_1_0() { return cPackedAssignment_1_1_0; }
+
 		//"<"
-		public Keyword getLessThanSignKeyword_1_1_0() { return cLessThanSignKeyword_1_1_0; }
+		public Keyword getPackedLessThanSignKeyword_1_1_0_0() { return cPackedLessThanSignKeyword_1_1_0_0; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_1_1_1() { return cLeftCurlyBracketKeyword_1_1_1; }
@@ -9875,7 +9879,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//StructType:
 	//
-	//	{StructType} ("{" (types+=Type ("," types+=Type)*)? "}" | "<" "{" (types+=Type ("," types+=Type)*)? "}" ">");
+	//	{StructType} ("{" (types+=Type ("," types+=Type)*)? "}" | packed="<" "{" (types+=Type ("," types+=Type)*)? "}" ">");
 	public StructTypeElements getStructTypeAccess() {
 		return (pStructType != null) ? pStructType : (pStructType = new StructTypeElements());
 	}

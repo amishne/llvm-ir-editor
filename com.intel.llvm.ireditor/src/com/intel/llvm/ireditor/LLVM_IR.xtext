@@ -1036,7 +1036,7 @@ StructType:
 	{StructType}
 	(
 		'{' (types+=Type (',' types+=Type)*)? '}' |
-		'<' '{' (types+=Type (',' types+=Type)*)? '}' '>'
+		packed='<' '{' (types+=Type (',' types+=Type)*)? '}' '>'
 	)
 ;
 

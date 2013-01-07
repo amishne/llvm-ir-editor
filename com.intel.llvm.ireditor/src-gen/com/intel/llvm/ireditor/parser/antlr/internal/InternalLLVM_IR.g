@@ -12796,11 +12796,22 @@ ruleStructType returns [EObject current=null]
     	newLeafNode(otherlv_5, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_1_0_2());
     }
 )
-    |(	otherlv_6='<' 
+    |((
+(
+		lv_packed_6_0=	'<' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getStructTypeAccess().getLessThanSignKeyword_1_1_0());
+        newLeafNode(lv_packed_6_0, grammarAccess.getStructTypeAccess().getPackedLessThanSignKeyword_1_1_0_0());
     }
-	otherlv_7='{' 
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStructTypeRule());
+	        }
+       		setWithLastConsumed($current, "packed", lv_packed_6_0, "<");
+	    }
+
+)
+)	otherlv_7='{' 
     {
     	newLeafNode(otherlv_7, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_1_1_1());
     }

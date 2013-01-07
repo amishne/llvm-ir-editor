@@ -5710,13 +5710,22 @@ public interface LLVM_IRPackage extends EPackage
   int STRUCT_TYPE__TYPES = 0;
 
   /**
+   * The feature id for the '<em><b>Packed</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCT_TYPE__PACKED = 1;
+
+  /**
    * The number of structural features of the '<em>Struct Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRUCT_TYPE_FEATURE_COUNT = 1;
+  int STRUCT_TYPE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.VectorTypeImpl <em>Vector Type</em>}' class.
@@ -9868,6 +9877,17 @@ public interface LLVM_IRPackage extends EPackage
   EReference getStructType_Types();
 
   /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.StructType#getPacked <em>Packed</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Packed</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.StructType#getPacked()
+   * @see #getStructType()
+   * @generated
+   */
+  EAttribute getStructType_Packed();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.VectorType <em>Vector Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -13247,6 +13267,14 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EReference STRUCT_TYPE__TYPES = eINSTANCE.getStructType_Types();
+
+    /**
+     * The meta object literal for the '<em><b>Packed</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRUCT_TYPE__PACKED = eINSTANCE.getStructType_Packed();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.VectorTypeImpl <em>Vector Type</em>}' class.

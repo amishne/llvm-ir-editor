@@ -8,6 +8,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
@@ -15,6 +16,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
@@ -28,6 +30,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.StructTypeImpl#getTypes <em>Types</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.StructTypeImpl#getPacked <em>Packed</em>}</li>
  * </ul>
  * </p>
  *
@@ -44,6 +47,26 @@ public class StructTypeImpl extends MinimalEObjectImpl.Container implements Stru
    * @ordered
    */
   protected EList<Type> types;
+
+  /**
+   * The default value of the '{@link #getPacked() <em>Packed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPacked()
+   * @generated
+   * @ordered
+   */
+  protected static final String PACKED_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPacked() <em>Packed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPacked()
+   * @generated
+   * @ordered
+   */
+  protected String packed = PACKED_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -85,6 +108,29 @@ public class StructTypeImpl extends MinimalEObjectImpl.Container implements Stru
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getPacked()
+  {
+    return packed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPacked(String newPacked)
+  {
+    String oldPacked = packed;
+    packed = newPacked;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.STRUCT_TYPE__PACKED, oldPacked, packed));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -108,6 +154,8 @@ public class StructTypeImpl extends MinimalEObjectImpl.Container implements Stru
     {
       case LLVM_IRPackage.STRUCT_TYPE__TYPES:
         return getTypes();
+      case LLVM_IRPackage.STRUCT_TYPE__PACKED:
+        return getPacked();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -127,6 +175,9 @@ public class StructTypeImpl extends MinimalEObjectImpl.Container implements Stru
         getTypes().clear();
         getTypes().addAll((Collection<? extends Type>)newValue);
         return;
+      case LLVM_IRPackage.STRUCT_TYPE__PACKED:
+        setPacked((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -144,6 +195,9 @@ public class StructTypeImpl extends MinimalEObjectImpl.Container implements Stru
       case LLVM_IRPackage.STRUCT_TYPE__TYPES:
         getTypes().clear();
         return;
+      case LLVM_IRPackage.STRUCT_TYPE__PACKED:
+        setPacked(PACKED_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -160,8 +214,27 @@ public class StructTypeImpl extends MinimalEObjectImpl.Container implements Stru
     {
       case LLVM_IRPackage.STRUCT_TYPE__TYPES:
         return types != null && !types.isEmpty();
+      case LLVM_IRPackage.STRUCT_TYPE__PACKED:
+        return PACKED_EDEFAULT == null ? packed != null : !PACKED_EDEFAULT.equals(packed);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (packed: ");
+    result.append(packed);
+    result.append(')');
+    return result.toString();
   }
 
 } //StructTypeImpl

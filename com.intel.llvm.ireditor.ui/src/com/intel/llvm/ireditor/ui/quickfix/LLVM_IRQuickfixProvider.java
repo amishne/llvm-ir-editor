@@ -45,6 +45,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
 
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
 import com.intel.llvm.ireditor.validation.TypeResolver;
 
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
@@ -72,8 +73,8 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		}
 		
 		String name = issue.getCode();
-		String typeStr = new TypeResolver().doSwitch(object);
-		final String sig = typeStr.replaceFirst("\\(", name + "(");
+		ResolvedType type = new TypeResolver().resolve(object);
+		final String sig = type.toString().replaceFirst("\\(", name + "(");
 		
 		result.add(new IssueResolution("Create function declaration", "mydescription", "upcase.png", context, new IModification() {
 

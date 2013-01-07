@@ -476,6 +476,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//OpaqueType"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//StructType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//StructType/types"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//StructType/packed"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//VectorType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//VectorType/size"/>

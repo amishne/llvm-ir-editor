@@ -40,18 +40,14 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedIntegerType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
  
 
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
-	public static final String TYPE_UNKNOWN = "unknown";
-	public static final String TYPE_INTEGER = "integer";
-	public static final String TYPE_FLOATING = "floating-point";
-	public static final String TYPE_VECTOR = "vector";
-	public static final String TYPE_CSTRING = "[n x i8]";
-	public static final String TYPE_ANY = "any";
-	public static final String ERROR_EXPECTED_TYPE = "expected type";
-	
+	private final TypeResolver resolver = new TypeResolver();
+
 	@Check
 	public void checkConstantList(ConstantList val) {
 		if (val.eContainer() instanceof VectorConstant) {
@@ -69,10 +65,9 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkTypedConstant(TypedConstant val) {
 		checkExpected(val.getType(), val.getValue());
-
-		String typeStr = getTypeStr(val.getType());
-		if (typeStr.matches("i\\d+")) {
-			checkConstantFitsInType(typeStr, val.getValue());
+		ResolvedType type = resolveType(val.getType());
+		if (type instanceof ResolvedIntegerType) {
+			checkConstantFitsInType(type, val.getValue());
 		}
 	}
 	
@@ -83,19 +78,19 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkAdd(Instruction_add inst) {
-		checkRequired(inst.getType(), TYPE_INTEGER, TYPE_VECTOR);
+		checkRequired(inst.getType(), TypeResolver.TYPE_INTEGER, TypeResolver.TYPE_VECTOR);
 		checkBinary(inst);
 	}
 	
 	
-	private void checkConstantFitsInType(String typeStr, Constant val) {
+	private void checkConstantFitsInType(ResolvedType type, Constant val) {
 		try {
-			int size = Integer.parseInt(typeStr.substring(1));
+			int size = type.getBits();
 			String constText = NodeModelUtils.getTokenText(NodeModelUtils.getNode(val));
 			long number = Long.parseLong(constText);
 			long actual = number >= 0 ? number : 1 - number;
 			if (size - 1 < 64 - Long.numberOfLeadingZeros(actual)) {
-				warning("The value " + number + " won't fit inside the type " + typeStr,
+				warning("The value " + number + " won't fit inside the type " + type.toString(),
 						val.eContainingFeature());
 			}
 		} catch (NumberFormatException e) {
@@ -109,12 +104,12 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkExpected(val.getType(), val.getOp2());
 	}
 	
-	private void checkRequired(EObject obj, String... typeStrs) {
-		String instType = getTypeStr(obj);
-		for (String typeStr : typeStrs) {
-			if (typesMatch(instType, typeStr)) return;
+	private void checkRequired(EObject obj, ResolvedType... types) {
+		ResolvedType instType = resolveType(obj);
+		for (ResolvedType t : types) {
+			if (instType.accepts(t)) return;
 		}
-		error("Encountered " + instType + ", only allowed types are " + Arrays.toString(typeStrs), obj.eContainingFeature());
+		error("Encountered " + instType + ", only allowed types are " + Arrays.toString(types), obj.eContainingFeature());
 	}
 	
 	private void checkExpected(EObject expected, EObject actual) {
@@ -122,39 +117,20 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	private void checkExpected(EObject expected, EObject actual, EStructuralFeature feature, int index) {
-		String expectedStr = getTypeStr(expected);
-		String actualStr = getTypeStr(actual);
-		if (typesMatch(expectedStr, actualStr) == false) {
-			error("Expected " + expectedStr + ", found " + actualStr, feature, index, ERROR_EXPECTED_TYPE, expectedStr, actual.eGet(feature).toString());
+		ResolvedType expectedType = resolveType(expected);
+		ResolvedType actualType = resolveType(actual);
+		if (expectedType.accepts(actualType) == false) {
+			error("Expected " + expectedType.toString() + ", found " + actualType.toString(), feature, index);
 		}
 	}
 
-	private boolean typesMatch(String expectedStr, String actualStr) {
-		if (expectedStr == null || actualStr == null) return false;
-		
-		// Basic check is same type string:
-		if (expectedStr.equals(actualStr)) return true;
-		
-		// Cases that we don't support are mapped to TYPE_ANY and always allowed to conform to anything:
-		if (actualStr.equals(TYPE_ANY) || expectedStr.equals(TYPE_ANY)) return true;
-		
-		// Some literals conform to more than one type, so they are converted to a special type and so
-		// we need to check that the expected type is something that matches that special type:
-		if (actualStr.equals(TYPE_INTEGER)) return expectedStr.matches("i\\d+");
-		if (actualStr.equals(TYPE_FLOATING)) return expectedStr.matches("half|float|double|fp128|x86_fp80|ppc_fp128");
-		if (actualStr.equals(TYPE_CSTRING)) return expectedStr.matches("\\[\\d+ x i8\\]");
-		if (actualStr.equals(TYPE_VECTOR)) return expectedStr.matches("<\\s*\\d+.*>");
-		
-		return false;
-	}
-
 	/**
-	 * Given an object, return the name of the type associated with that object.
+	 * Given an object, return the type associated with that object.
 	 * @param obj
 	 * @return
 	 */
-	private String getTypeStr(EObject obj) {
-		return obj == null? null : new TypeResolver().doSwitch(obj);
+	private ResolvedType resolveType(EObject obj) {
+		return obj == null? null : resolver.resolve(obj);
 	}
 
 }

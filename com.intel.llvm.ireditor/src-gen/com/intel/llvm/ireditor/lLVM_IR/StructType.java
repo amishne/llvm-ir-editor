@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.StructType#getTypes <em>Types</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.StructType#getPacked <em>Packed</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,5 +40,31 @@ public interface StructType extends EObject
    * @generated
    */
   EList<Type> getTypes();
+
+  /**
+   * Returns the value of the '<em><b>Packed</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Packed</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Packed</em>' attribute.
+   * @see #setPacked(String)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getStructType_Packed()
+   * @model
+   * @generated
+   */
+  String getPacked();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.StructType#getPacked <em>Packed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Packed</em>' attribute.
+   * @see #getPacked()
+   * @generated
+   */
+  void setPacked(String value);
 
 } // StructType

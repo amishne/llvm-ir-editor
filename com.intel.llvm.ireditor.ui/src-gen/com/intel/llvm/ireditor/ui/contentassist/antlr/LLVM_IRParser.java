@@ -621,6 +621,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTypeDefAccess().getTypeAssignment_2(), "rule__TypeDef__TypeAssignment_2");
 					put(grammarAccess.getStructTypeAccess().getTypesAssignment_1_0_1_0(), "rule__StructType__TypesAssignment_1_0_1_0");
 					put(grammarAccess.getStructTypeAccess().getTypesAssignment_1_0_1_1_1(), "rule__StructType__TypesAssignment_1_0_1_1_1");
+					put(grammarAccess.getStructTypeAccess().getPackedAssignment_1_1_0(), "rule__StructType__PackedAssignment_1_1_0");
 					put(grammarAccess.getStructTypeAccess().getTypesAssignment_1_1_2_0(), "rule__StructType__TypesAssignment_1_1_2_0");
 					put(grammarAccess.getStructTypeAccess().getTypesAssignment_1_1_2_1_1(), "rule__StructType__TypesAssignment_1_1_2_1_1");
 					put(grammarAccess.getVectorTypeAccess().getSizeAssignment_1(), "rule__VectorType__SizeAssignment_1");

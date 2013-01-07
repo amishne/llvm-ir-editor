@@ -2673,7 +2673,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     ((types+=Type types+=Type*)? | (types+=Type types+=Type*)?)
+	 *     ((types+=Type types+=Type*)? | (packed='<' (types+=Type types+=Type*)?))
 	 */
 	protected void sequence_StructType(EObject context, StructType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

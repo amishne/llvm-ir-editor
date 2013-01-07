@@ -51,7 +51,6 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_Instruction_sub___NswKeyword_1_1_or_NuwKeyword_1_0__a;
 	protected AbstractElementAlias match_Instruction_udiv_ExactKeyword_1_q;
 	protected AbstractElementAlias match_SimpleConstant_BOOLEANTerminalRuleCall_0_3_or_CSTRINGTerminalRuleCall_0_5_or_FLOATTerminalRuleCall_0_2_or_INTEGERTerminalRuleCall_0_0_or_NULLTerminalRuleCall_0_4_or_SIGNED_INTTerminalRuleCall_0_1;
-	protected AbstractElementAlias match_StructType___LeftCurlyBracketKeyword_1_0_0_RightCurlyBracketKeyword_1_0_2___or___LessThanSignKeyword_1_1_0_LeftCurlyBracketKeyword_1_1_1_RightCurlyBracketKeyword_1_1_3_GreaterThanSignKeyword_1_1_4__;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -88,7 +87,6 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_Instruction_sub___NswKeyword_1_1_or_NuwKeyword_1_0__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstruction_subAccess().getNswKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getInstruction_subAccess().getNuwKeyword_1_0()));
 		match_Instruction_udiv_ExactKeyword_1_q = new TokenAlias(false, true, grammarAccess.getInstruction_udivAccess().getExactKeyword_1());
 		match_SimpleConstant_BOOLEANTerminalRuleCall_0_3_or_CSTRINGTerminalRuleCall_0_5_or_FLOATTerminalRuleCall_0_2_or_INTEGERTerminalRuleCall_0_0_or_NULLTerminalRuleCall_0_4_or_SIGNED_INTTerminalRuleCall_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSimpleConstantAccess().getBOOLEANTerminalRuleCall_0_3()), new TokenAlias(false, false, grammarAccess.getSimpleConstantAccess().getCSTRINGTerminalRuleCall_0_5()), new TokenAlias(false, false, grammarAccess.getSimpleConstantAccess().getFLOATTerminalRuleCall_0_2()), new TokenAlias(false, false, grammarAccess.getSimpleConstantAccess().getINTEGERTerminalRuleCall_0_0()), new TokenAlias(false, false, grammarAccess.getSimpleConstantAccess().getNULLTerminalRuleCall_0_4()), new TokenAlias(false, false, grammarAccess.getSimpleConstantAccess().getSIGNED_INTTerminalRuleCall_0_1()));
-		match_StructType___LeftCurlyBracketKeyword_1_0_0_RightCurlyBracketKeyword_1_0_2___or___LessThanSignKeyword_1_1_0_LeftCurlyBracketKeyword_1_1_1_RightCurlyBracketKeyword_1_1_3_GreaterThanSignKeyword_1_1_4__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_1_0_0()), new TokenAlias(false, false, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_1_0_2())), new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getStructTypeAccess().getLessThanSignKeyword_1_1_0()), new TokenAlias(false, false, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_1_1_3()), new TokenAlias(false, false, grammarAccess.getStructTypeAccess().getGreaterThanSignKeyword_1_1_4())));
 	}
 	
 	@Override
@@ -258,8 +256,6 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Instruction_udiv_ExactKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_SimpleConstant_BOOLEANTerminalRuleCall_0_3_or_CSTRINGTerminalRuleCall_0_5_or_FLOATTerminalRuleCall_0_2_or_INTEGERTerminalRuleCall_0_0_or_NULLTerminalRuleCall_0_4_or_SIGNED_INTTerminalRuleCall_0_1.equals(syntax))
 				emit_SimpleConstant_BOOLEANTerminalRuleCall_0_3_or_CSTRINGTerminalRuleCall_0_5_or_FLOATTerminalRuleCall_0_2_or_INTEGERTerminalRuleCall_0_0_or_NULLTerminalRuleCall_0_4_or_SIGNED_INTTerminalRuleCall_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_StructType___LeftCurlyBracketKeyword_1_0_0_RightCurlyBracketKeyword_1_0_2___or___LessThanSignKeyword_1_1_0_LeftCurlyBracketKeyword_1_1_1_RightCurlyBracketKeyword_1_1_3_GreaterThanSignKeyword_1_1_4__.equals(syntax))
-				emit_StructType___LeftCurlyBracketKeyword_1_0_0_RightCurlyBracketKeyword_1_0_2___or___LessThanSignKeyword_1_1_0_LeftCurlyBracketKeyword_1_1_1_RightCurlyBracketKeyword_1_1_3_GreaterThanSignKeyword_1_1_4__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -275,12 +271,12 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * Syntax:
 	 *     (
-	     'double' | 
-	     'half' | 
 	     'fp128' | 
-	     'ppc_fp128' | 
+	     'double' | 
 	     'float' | 
-	     'x86_fp80'
+	     'x86_fp80' | 
+	     'ppc_fp128' | 
+	     'half'
 	 )
 	 */
 	protected void emit_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -313,7 +309,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'global' | 'constant'
+	 *     'constant' | 'global'
 	 */
 	protected void emit_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -345,7 +341,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -409,7 +405,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('zeroext' | 'inreg' | 'signext')*
+	 *     ('zeroext' | 'signext' | 'inreg')*
 	 */
 	protected void emit_Instruction_invoke_nonVoid___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -417,7 +413,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('inreg' | 'signext' | 'zeroext')*
+	 *     ('zeroext' | 'inreg' | 'signext')*
 	 */
 	protected void emit_Instruction_invoke_void___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -505,7 +501,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nsw' | 'nuw')*
+	 *     ('nuw' | 'nsw')*
 	 */
 	protected void emit_Instruction_sub___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -522,23 +518,15 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * Syntax:
 	 *     (
-	     CSTRING | 
 	     NULL | 
-	     FLOAT | 
+	     CSTRING | 
 	     BOOLEAN | 
+	     FLOAT | 
 	     SIGNED_INT | 
 	     INTEGER
 	 )
 	 */
 	protected void emit_SimpleConstant_BOOLEANTerminalRuleCall_0_3_or_CSTRINGTerminalRuleCall_0_5_or_FLOATTerminalRuleCall_0_2_or_INTEGERTerminalRuleCall_0_0_or_NULLTerminalRuleCall_0_4_or_SIGNED_INTTerminalRuleCall_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Syntax:
-	 *     ('{' '}') | ('<' '{' '}' '>')
-	 */
-	protected void emit_StructType___LeftCurlyBracketKeyword_1_0_0_RightCurlyBracketKeyword_1_0_2___or___LessThanSignKeyword_1_1_0_LeftCurlyBracketKeyword_1_1_1_RightCurlyBracketKeyword_1_1_3_GreaterThanSignKeyword_1_1_4__(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
