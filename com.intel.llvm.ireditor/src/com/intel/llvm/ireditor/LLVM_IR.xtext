@@ -47,11 +47,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // * (harmless) content-assist generates error in Eclipse log (https://bugs.eclipse.org/bugs/show_bug.cgi?id=390173)
 // 
 // Future feature ideas:
-// * Adding type verification.
 // * Validating anonymous variables (%num) number sequence.
 // * Expanding references on hover.
 // * Revising how metadata works.
-// * Inferring possible incoming basic blocks for each basic block and show them on hover,
+// * Inferring possible incoming basic blocks for each basic block and showing them on hover,
 //   or even as warning for incomplete phi nodes.
 // * Verifying whether a file is a valid SPIR file.
 // * Integrating with the compiler for immediate feedback.
