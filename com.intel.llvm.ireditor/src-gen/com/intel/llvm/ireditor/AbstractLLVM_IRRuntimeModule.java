@@ -95,8 +95,8 @@ public abstract class AbstractLLVM_IRRuntimeModule extends DefaultRuntimeModule 
 	}
 
 	// contributed by org.eclipse.xtext.generator.validation.JavaValidatorFragment
-	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator> bindLLVM_IRJavaValidator() {
-		return com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator.class;
+	@org.eclipse.xtext.service.SingletonBinding(eager=true)	public Class<? extends com.intel.llvm.ireditor.validation.LLVM_IRValidator> bindLLVM_IRJavaValidator() {
+		return com.intel.llvm.ireditor.validation.LLVM_IRValidator.class;
 	}
 
 	// contributed by org.eclipse.xtext.generator.scoping.AbstractScopingFragment

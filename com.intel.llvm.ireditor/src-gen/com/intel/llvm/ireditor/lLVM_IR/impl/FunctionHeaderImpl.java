@@ -5,23 +5,16 @@ package com.intel.llvm.ireditor.lLVM_IR.impl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
-import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterType;
-
-import java.util.Collection;
+import com.intel.llvm.ireditor.lLVM_IR.Parameters;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -135,14 +128,14 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
+   * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getParameters()
    * @generated
    * @ordered
    */
-  protected EList<Parameter> parameters;
+  protected Parameters parameters;
 
   /**
    * The cached value of the '{@link #getAttrs() <em>Attrs</em>}' containment reference.
@@ -320,13 +313,47 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Parameter> getParameters()
+  public Parameters getParameters()
   {
-    if (parameters == null)
-    {
-      parameters = new EObjectContainmentEList<Parameter>(Parameter.class, this, LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS);
-    }
     return parameters;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetParameters(Parameters newParameters, NotificationChain msgs)
+  {
+    Parameters oldParameters = parameters;
+    parameters = newParameters;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS, oldParameters, newParameters);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setParameters(Parameters newParameters)
+  {
+    if (newParameters != parameters)
+    {
+      NotificationChain msgs = null;
+      if (parameters != null)
+        msgs = ((InternalEObject)parameters).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS, null, msgs);
+      if (newParameters != null)
+        msgs = ((InternalEObject)newParameters).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS, null, msgs);
+      msgs = basicSetParameters(newParameters, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS, newParameters, newParameters));
   }
 
   /**
@@ -390,7 +417,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
         return basicSetRettype(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS:
-        return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
+        return basicSetParameters(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         return basicSetAttrs(null, msgs);
     }
@@ -430,7 +457,6 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -452,8 +478,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         setName((String)newValue);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS:
-        getParameters().clear();
-        getParameters().addAll((Collection<? extends Parameter>)newValue);
+        setParameters((Parameters)newValue);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         setAttrs((FunctionAttributes)newValue);
@@ -488,7 +513,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         setName(NAME_EDEFAULT);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS:
-        getParameters().clear();
+        setParameters((Parameters)null);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         setAttrs((FunctionAttributes)null);
@@ -518,7 +543,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS:
-        return parameters != null && !parameters.isEmpty();
+        return parameters != null;
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         return attrs != null;
     }

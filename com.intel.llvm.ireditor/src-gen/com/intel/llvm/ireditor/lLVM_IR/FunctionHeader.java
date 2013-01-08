@@ -2,7 +2,6 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -159,20 +158,30 @@ public interface FunctionHeader extends GlobalValueDef
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-   * The list contents are of type {@link com.intel.llvm.ireditor.lLVM_IR.Parameter}.
+   * Returns the value of the '<em><b>Parameters</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Parameters</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference list.
+   * @return the value of the '<em>Parameters</em>' containment reference.
+   * @see #setParameters(Parameters)
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_Parameters()
    * @model containment="true"
    * @generated
    */
-  EList<Parameter> getParameters();
+  Parameters getParameters();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getParameters <em>Parameters</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parameters</em>' containment reference.
+   * @see #getParameters()
+   * @generated
+   */
+  void setParameters(Parameters value);
 
   /**
    * Returns the value of the '<em><b>Attrs</b></em>' containment reference.

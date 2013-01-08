@@ -103,6 +103,7 @@ import com.intel.llvm.ireditor.lLVM_IR.OpaqueType;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterType;
+import com.intel.llvm.ireditor.lLVM_IR.Parameters;
 import com.intel.llvm.ireditor.lLVM_IR.SimpleConstant;
 import com.intel.llvm.ireditor.lLVM_IR.Star;
 import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
@@ -826,6 +827,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case LLVM_IRPackage.PARAMETERS:
+				if(context == grammarAccess.getParametersRule()) {
+					sequence_Parameters(context, (Parameters) semanticObject); 
+					return; 
+				}
+				else break;
 			case LLVM_IRPackage.SIMPLE_CONSTANT:
 				if(context == grammarAccess.getConstantRule() ||
 				   context == grammarAccess.getSimpleConstantRule()) {
@@ -1365,7 +1372,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         cconv=CConv? 
 	 *         rettype=ParameterType 
 	 *         (name=GLOBAL_ID | name=INSTRINSIC) 
-	 *         (parameters+=Parameter parameters+=Parameter*)? 
+	 *         parameters=Parameters 
 	 *         attrs=FunctionAttributes?
 	 *     )
 	 */
@@ -2663,6 +2670,15 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (type=ParameterType name=LOCAL_ID?)
 	 */
 	protected void sequence_Parameter(EObject context, Parameter semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     ((parameters+=Parameter parameters+=Parameter* vararg='...'?)? | vararg='...')
+	 */
+	protected void sequence_Parameters(EObject context, Parameters semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

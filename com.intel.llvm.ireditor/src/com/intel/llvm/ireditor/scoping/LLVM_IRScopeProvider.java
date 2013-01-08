@@ -110,7 +110,7 @@ public class LLVM_IRScopeProvider extends AbstractDeclarativeScopeProvider {
 	}
 	
 	private void addParameters(LinkedList<EObject> inScope, FunctionDef func) {
-		inScope.addAll(func.getHeader().getParameters());
+		inScope.addAll(func.getHeader().getParameters().getParameters());
 	}
 	
 	private void addGlobals(LinkedList<EObject> inScope, FunctionDef func) {

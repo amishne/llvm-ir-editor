@@ -53,25 +53,14 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 
-import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
-import com.intel.llvm.ireditor.validation.TypeResolver;
+import com.intel.llvm.ireditor.resolvedtypes.TypeResolver;
+import com.intel.llvm.ireditor.validation.LLVM_IRValidator;
 
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 
 	TypeResolver resolver = new TypeResolver();
 	
-//	@Fix(MyJavaValidator.INVALID_NAME)
-//	public void capitalizeName(final Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, "Capitalize name", "Capitalize the name.", "upcase.png", new IModification() {
-//			public void apply(IModificationContext context) throws BadLocationException {
-//				IXtextDocument xtextDocument = context.getXtextDocument();
-//				String firstLetter = xtextDocument.get(issue.getOffset(), 1);
-//				xtextDocument.replace(issue.getOffset(), 1, firstLetter.toUpperCase());
-//			}
-//		});
-//	}
-	
-	@Fix(LLVM_IRJavaValidator.ERROR_EXPECTED_TYPE)
+	@Fix(LLVM_IRValidator.ERROR_EXPECTED_TYPE)
 	public void suggestConversion(final Issue issue, IssueResolutionAcceptor acceptor) throws BadLocationException {
 		String[] data = issue.getData();
 		if (data.length <= 2) return;
@@ -80,8 +69,8 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		final IXtextDocument doc = context.getXtextDocument();
 		String name = doc.get(issue.getOffset(), issue.getLength());
 		if (name.matches("^[%@].*") == false) return; // not a convertible variable
-		
-		final String newInstName = name + ".converted";
+
+		final String newInstName = name.charAt(0) + "converted." + name.substring(1);
 
 		EObject inst = findObject(doc, issue).eContainer();
 		

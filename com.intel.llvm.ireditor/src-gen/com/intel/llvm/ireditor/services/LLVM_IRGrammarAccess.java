@@ -2141,18 +2141,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameGLOBAL_IDTerminalRuleCall_5_0_0 = (RuleCall)cNameAlternatives_5_0.eContents().get(0);
 		private final RuleCall cNameINSTRINSICTerminalRuleCall_5_0_1 = (RuleCall)cNameAlternatives_5_0.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Alternatives cAlternatives_7 = (Alternatives)cGroup.eContents().get(7);
-		private final Group cGroup_7_0 = (Group)cAlternatives_7.eContents().get(0);
-		private final Assignment cParametersAssignment_7_0_0 = (Assignment)cGroup_7_0.eContents().get(0);
-		private final RuleCall cParametersParameterParserRuleCall_7_0_0_0 = (RuleCall)cParametersAssignment_7_0_0.eContents().get(0);
-		private final Group cGroup_7_0_1 = (Group)cGroup_7_0.eContents().get(1);
-		private final Keyword cCommaKeyword_7_0_1_0 = (Keyword)cGroup_7_0_1.eContents().get(0);
-		private final Assignment cParametersAssignment_7_0_1_1 = (Assignment)cGroup_7_0_1.eContents().get(1);
-		private final RuleCall cParametersParameterParserRuleCall_7_0_1_1_0 = (RuleCall)cParametersAssignment_7_0_1_1.eContents().get(0);
-		private final Group cGroup_7_0_2 = (Group)cGroup_7_0.eContents().get(2);
-		private final Keyword cCommaKeyword_7_0_2_0 = (Keyword)cGroup_7_0_2.eContents().get(0);
-		private final Keyword cFullStopFullStopFullStopKeyword_7_0_2_1 = (Keyword)cGroup_7_0_2.eContents().get(1);
-		private final Keyword cFullStopFullStopFullStopKeyword_7_1 = (Keyword)cAlternatives_7.eContents().get(1);
+		private final Assignment cParametersAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cParametersParametersParserRuleCall_7_0 = (RuleCall)cParametersAssignment_7.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Assignment cAttrsAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cAttrsFunctionAttributesParserRuleCall_9_0 = (RuleCall)cAttrsAssignment_9.eContents().get(0);
@@ -2161,14 +2151,12 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=(GLOBAL_ID |
 		//
-		//	INSTRINSIC) "(" ((parameters+=Parameter ("," parameters+=Parameter)* ("," "...")?)? | "...") ")"
-		//
-		//	attrs=FunctionAttributes?;
+		//	INSTRINSIC) "(" parameters=Parameters ")" attrs=FunctionAttributes?;
 		public ParserRule getRule() { return rule; }
 
 		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=(GLOBAL_ID | INSTRINSIC)
 		//
-		//"(" ((parameters+=Parameter ("," parameters+=Parameter)* ("," "...")?)? | "...") ")" attrs=FunctionAttributes?
+		//"(" parameters=Parameters ")" attrs=FunctionAttributes?
 		public Group getGroup() { return cGroup; }
 
 		//linkage=Linkage?
@@ -2213,41 +2201,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"("
 		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
 
-		//(parameters+=Parameter ("," parameters+=Parameter)* ("," "...")?)? | "..."
-		public Alternatives getAlternatives_7() { return cAlternatives_7; }
+		//parameters=Parameters
+		public Assignment getParametersAssignment_7() { return cParametersAssignment_7; }
 
-		//(parameters+=Parameter ("," parameters+=Parameter)* ("," "...")?)?
-		public Group getGroup_7_0() { return cGroup_7_0; }
-
-		//parameters+=Parameter
-		public Assignment getParametersAssignment_7_0_0() { return cParametersAssignment_7_0_0; }
-
-		//Parameter
-		public RuleCall getParametersParameterParserRuleCall_7_0_0_0() { return cParametersParameterParserRuleCall_7_0_0_0; }
-
-		//("," parameters+=Parameter)*
-		public Group getGroup_7_0_1() { return cGroup_7_0_1; }
-
-		//","
-		public Keyword getCommaKeyword_7_0_1_0() { return cCommaKeyword_7_0_1_0; }
-
-		//parameters+=Parameter
-		public Assignment getParametersAssignment_7_0_1_1() { return cParametersAssignment_7_0_1_1; }
-
-		//Parameter
-		public RuleCall getParametersParameterParserRuleCall_7_0_1_1_0() { return cParametersParameterParserRuleCall_7_0_1_1_0; }
-
-		//("," "...")?
-		public Group getGroup_7_0_2() { return cGroup_7_0_2; }
-
-		//","
-		public Keyword getCommaKeyword_7_0_2_0() { return cCommaKeyword_7_0_2_0; }
-
-		//"..."
-		public Keyword getFullStopFullStopFullStopKeyword_7_0_2_1() { return cFullStopFullStopFullStopKeyword_7_0_2_1; }
-
-		//"..."
-		public Keyword getFullStopFullStopFullStopKeyword_7_1() { return cFullStopFullStopFullStopKeyword_7_1; }
+		//Parameters
+		public RuleCall getParametersParametersParserRuleCall_7_0() { return cParametersParametersParserRuleCall_7_0; }
 
 		//")"
 		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
@@ -2257,6 +2215,79 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//FunctionAttributes
 		public RuleCall getAttrsFunctionAttributesParserRuleCall_9_0() { return cAttrsFunctionAttributesParserRuleCall_9_0; }
+	}
+
+	public class ParametersElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Parameters");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cParametersAction_0 = (Action)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Assignment cParametersAssignment_1_0_0 = (Assignment)cGroup_1_0.eContents().get(0);
+		private final RuleCall cParametersParameterParserRuleCall_1_0_0_0 = (RuleCall)cParametersAssignment_1_0_0.eContents().get(0);
+		private final Group cGroup_1_0_1 = (Group)cGroup_1_0.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0_1_0 = (Keyword)cGroup_1_0_1.eContents().get(0);
+		private final Assignment cParametersAssignment_1_0_1_1 = (Assignment)cGroup_1_0_1.eContents().get(1);
+		private final RuleCall cParametersParameterParserRuleCall_1_0_1_1_0 = (RuleCall)cParametersAssignment_1_0_1_1.eContents().get(0);
+		private final Group cGroup_1_0_2 = (Group)cGroup_1_0.eContents().get(2);
+		private final Keyword cCommaKeyword_1_0_2_0 = (Keyword)cGroup_1_0_2.eContents().get(0);
+		private final Assignment cVarargAssignment_1_0_2_1 = (Assignment)cGroup_1_0_2.eContents().get(1);
+		private final Keyword cVarargFullStopFullStopFullStopKeyword_1_0_2_1_0 = (Keyword)cVarargAssignment_1_0_2_1.eContents().get(0);
+		private final Assignment cVarargAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final Keyword cVarargFullStopFullStopFullStopKeyword_1_1_0 = (Keyword)cVarargAssignment_1_1.eContents().get(0);
+		
+		//Parameters:
+		//
+		//	{Parameters} ((parameters+=Parameter ("," parameters+=Parameter)* ("," vararg="...")?)? | vararg="...");
+		public ParserRule getRule() { return rule; }
+
+		//{Parameters} ((parameters+=Parameter ("," parameters+=Parameter)* ("," vararg="...")?)? | vararg="...")
+		public Group getGroup() { return cGroup; }
+
+		//{Parameters}
+		public Action getParametersAction_0() { return cParametersAction_0; }
+
+		//(parameters+=Parameter ("," parameters+=Parameter)* ("," vararg="...")?)? | vararg="..."
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//(parameters+=Parameter ("," parameters+=Parameter)* ("," vararg="...")?)?
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
+		//parameters+=Parameter
+		public Assignment getParametersAssignment_1_0_0() { return cParametersAssignment_1_0_0; }
+
+		//Parameter
+		public RuleCall getParametersParameterParserRuleCall_1_0_0_0() { return cParametersParameterParserRuleCall_1_0_0_0; }
+
+		//("," parameters+=Parameter)*
+		public Group getGroup_1_0_1() { return cGroup_1_0_1; }
+
+		//","
+		public Keyword getCommaKeyword_1_0_1_0() { return cCommaKeyword_1_0_1_0; }
+
+		//parameters+=Parameter
+		public Assignment getParametersAssignment_1_0_1_1() { return cParametersAssignment_1_0_1_1; }
+
+		//Parameter
+		public RuleCall getParametersParameterParserRuleCall_1_0_1_1_0() { return cParametersParameterParserRuleCall_1_0_1_1_0; }
+
+		//("," vararg="...")?
+		public Group getGroup_1_0_2() { return cGroup_1_0_2; }
+
+		//","
+		public Keyword getCommaKeyword_1_0_2_0() { return cCommaKeyword_1_0_2_0; }
+
+		//vararg="..."
+		public Assignment getVarargAssignment_1_0_2_1() { return cVarargAssignment_1_0_2_1; }
+
+		//"..."
+		public Keyword getVarargFullStopFullStopFullStopKeyword_1_0_2_1_0() { return cVarargFullStopFullStopFullStopKeyword_1_0_2_1_0; }
+
+		//vararg="..."
+		public Assignment getVarargAssignment_1_1() { return cVarargAssignment_1_1; }
+
+		//"..."
+		public Keyword getVarargFullStopFullStopFullStopKeyword_1_1_0() { return cVarargFullStopFullStopFullStopKeyword_1_1_0; }
 	}
 
 	public class FunctionBodyElements extends AbstractParserRuleElementFinder {
@@ -2311,10 +2342,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAddress_safetyKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
 		private final Keyword cAlignstackKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cLessThanSignKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final RuleCall cINTEGERTerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
-		private final Keyword cGreaterThanSignKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
-		private final Keyword cRightParenthesisKeyword_1_4 = (Keyword)cGroup_1.eContents().get(4);
+		private final RuleCall cINTEGERTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
 		private final Keyword cAlwaysinlineKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		private final Keyword cNonlazybindKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		private final Keyword cInlinehintKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
@@ -2337,14 +2366,14 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//FunctionAttribute:
 		//
-		//	"address_safety" | "alignstack(" "<" INTEGER ">" ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
+		//	"address_safety" | "alignstack(" INTEGER ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
 		//
 		//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
 		//	"returns_twice" | "ssp" | "sspreq" | "uwtable" | "gc" STRING;
 		public ParserRule getRule() { return rule; }
 
-		//"address_safety" | "alignstack(" "<" INTEGER ">" ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
+		//"address_safety" | "alignstack(" INTEGER ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
 		//
 		//"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
@@ -2354,23 +2383,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"address_safety"
 		public Keyword getAddress_safetyKeyword_0() { return cAddress_safetyKeyword_0; }
 
-		//"alignstack(" "<" INTEGER ">" ")"
+		//"alignstack(" INTEGER ")"
 		public Group getGroup_1() { return cGroup_1; }
 
 		//"alignstack("
 		public Keyword getAlignstackKeyword_1_0() { return cAlignstackKeyword_1_0; }
 
-		//"<"
-		public Keyword getLessThanSignKeyword_1_1() { return cLessThanSignKeyword_1_1; }
-
 		//INTEGER
-		public RuleCall getINTEGERTerminalRuleCall_1_2() { return cINTEGERTerminalRuleCall_1_2; }
-
-		//">"
-		public Keyword getGreaterThanSignKeyword_1_3() { return cGreaterThanSignKeyword_1_3; }
+		public RuleCall getINTEGERTerminalRuleCall_1_1() { return cINTEGERTerminalRuleCall_1_1; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_1_4() { return cRightParenthesisKeyword_1_4; }
+		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
 
 		//"alwaysinline"
 		public Keyword getAlwaysinlineKeyword_2() { return cAlwaysinlineKeyword_2; }
@@ -7891,6 +7914,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private FunctionDefElements pFunctionDef;
 	private FunctionDeclElements pFunctionDecl;
 	private FunctionHeaderElements pFunctionHeader;
+	private ParametersElements pParameters;
 	private FunctionBodyElements pFunctionBody;
 	private FunctionAttributesElements pFunctionAttributes;
 	private FunctionAttributeElements pFunctionAttribute;
@@ -8618,15 +8642,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=(GLOBAL_ID |
 	//
-	//	INSTRINSIC) "(" ((parameters+=Parameter ("," parameters+=Parameter)* ("," "...")?)? | "...") ")"
-	//
-	//	attrs=FunctionAttributes?;
+	//	INSTRINSIC) "(" parameters=Parameters ")" attrs=FunctionAttributes?;
 	public FunctionHeaderElements getFunctionHeaderAccess() {
 		return (pFunctionHeader != null) ? pFunctionHeader : (pFunctionHeader = new FunctionHeaderElements());
 	}
 	
 	public ParserRule getFunctionHeaderRule() {
 		return getFunctionHeaderAccess().getRule();
+	}
+
+	//Parameters:
+	//
+	//	{Parameters} ((parameters+=Parameter ("," parameters+=Parameter)* ("," vararg="...")?)? | vararg="...");
+	public ParametersElements getParametersAccess() {
+		return (pParameters != null) ? pParameters : (pParameters = new ParametersElements());
+	}
+	
+	public ParserRule getParametersRule() {
+		return getParametersAccess().getRule();
 	}
 
 	//FunctionBody:
@@ -8653,7 +8686,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionAttribute:
 	//
-	//	"address_safety" | "alignstack(" "<" INTEGER ">" ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
+	//	"address_safety" | "alignstack(" INTEGER ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
 	//
 	//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 	//

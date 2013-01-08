@@ -336,11 +336,16 @@ FunctionHeader:
 	'unnamed_addr'?
 	rettype=ParameterType
 	name=(GLOBAL_ID | INSTRINSIC)
-	'(' (
-		(parameters+=Parameter (',' parameters+=Parameter)* (',' '...')?)? |
-		'...'
-	) ')'
+	'(' parameters=Parameters ')'
 	attrs=FunctionAttributes?
+;
+
+Parameters:
+	{Parameters}
+	(
+		(parameters+=Parameter (',' parameters+=Parameter)* (',' vararg='...')?)? |
+		vararg='...'
+	)
 ;
 
 FunctionBody:
@@ -355,7 +360,7 @@ FunctionAttributes:
 
 FunctionAttribute:
 	'address_safety' |
-	('alignstack(' '<' INTEGER '>' ')') |
+	('alignstack(' INTEGER ')') |
 	'alwaysinline' |
 	'nonlazybind' |
 	'inlinehint' |

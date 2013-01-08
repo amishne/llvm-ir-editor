@@ -171,6 +171,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionHeader/parameters"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionHeader/attrs"/>
     </genClasses>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Parameters">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Parameters/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Parameters/vararg"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionBody">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionBody/basicBlocks"/>
     </genClasses>

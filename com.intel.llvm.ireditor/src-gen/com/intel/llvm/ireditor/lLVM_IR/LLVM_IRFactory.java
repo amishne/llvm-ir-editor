@@ -437,6 +437,15 @@ public interface LLVM_IRFactory extends EFactory
   FunctionHeader createFunctionHeader();
 
   /**
+   * Returns a new object of class '<em>Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parameters</em>'.
+   * @generated
+   */
+  Parameters createParameters();
+
+  /**
    * Returns a new object of class '<em>Function Body</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -449,6 +449,13 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LLVM_IRPackage.PARAMETERS:
+      {
+        Parameters parameters = (Parameters)theEObject;
+        T result = caseParameters(parameters);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LLVM_IRPackage.FUNCTION_BODY:
       {
         FunctionBody functionBody = (FunctionBody)theEObject;
@@ -1848,6 +1855,22 @@ public class LLVM_IRSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionHeader(FunctionHeader object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Parameters</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Parameters</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseParameters(Parameters object)
   {
     return null;
   }

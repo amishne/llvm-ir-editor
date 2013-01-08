@@ -118,6 +118,7 @@ import com.intel.llvm.ireditor.lLVM_IR.OtherInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterType;
+import com.intel.llvm.ireditor.lLVM_IR.Parameters;
 import com.intel.llvm.ireditor.lLVM_IR.SimpleConstant;
 import com.intel.llvm.ireditor.lLVM_IR.Star;
 import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
@@ -475,6 +476,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass functionHeaderEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parametersEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2433,6 +2441,36 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EReference getFunctionHeader_Attrs()
   {
     return (EReference)functionHeaderEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getParameters()
+  {
+    return parametersEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getParameters_Parameters()
+  {
+    return (EReference)parametersEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getParameters_Vararg()
+  {
+    return (EAttribute)parametersEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -5239,6 +5277,10 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEReference(functionHeaderEClass, FUNCTION_HEADER__PARAMETERS);
     createEReference(functionHeaderEClass, FUNCTION_HEADER__ATTRS);
 
+    parametersEClass = createEClass(PARAMETERS);
+    createEReference(parametersEClass, PARAMETERS__PARAMETERS);
+    createEAttribute(parametersEClass, PARAMETERS__VARARG);
+
     functionBodyEClass = createEClass(FUNCTION_BODY);
     createEReference(functionBodyEClass, FUNCTION_BODY__BASIC_BLOCKS);
 
@@ -5870,8 +5912,12 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getFunctionHeader_Cconv(), ecorePackage.getEString(), "cconv", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionHeader_Rettype(), this.getParameterType(), null, "rettype", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionHeader_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionHeader_Parameters(), this.getParameters(), null, "parameters", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionHeader_Attrs(), this.getFunctionAttributes(), null, "attrs", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parametersEClass, Parameters.class, "Parameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Parameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getParameters_Vararg(), ecorePackage.getEString(), "vararg", null, 0, 1, Parameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionBodyEClass, FunctionBody.class, "FunctionBody", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunctionBody_BasicBlocks(), this.getBasicBlock(), null, "basicBlocks", null, 0, -1, FunctionBody.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
