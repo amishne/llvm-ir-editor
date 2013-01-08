@@ -28,6 +28,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.validation;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -40,12 +43,15 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedFloatingType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedIntegerType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedPointerType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
  
 
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
+	public static final String ERROR_EXPECTED_TYPE = "expected type not matched";
 	private final TypeResolver resolver = new TypeResolver();
 
 	@Check
@@ -119,9 +125,54 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	private void checkExpected(EObject expected, EObject actual, EStructuralFeature feature, int index) {
 		ResolvedType expectedType = resolveType(expected);
 		ResolvedType actualType = resolveType(actual);
-		if (expectedType.accepts(actualType) == false) {
-			error("Expected " + expectedType.toString() + ", found " + actualType.toString(), feature, index);
+		if (expectedType.accepts(actualType)) return;
+
+		List<String> ops = getConversionOps(actualType, expectedType);
+		String[] data = new String[ops.size()+2];
+		data[0] = expectedType.toString();
+		data[1] = actualType.toString();
+		for (int i = 0; i < ops.size(); i++) {
+			data[i+2] = ops.get(i);
 		}
+		error("Expected " + expectedType.toString() + ", found " + actualType.toString(), feature, index, ERROR_EXPECTED_TYPE, data);
+	}
+
+	private List<String> getConversionOps(ResolvedType from, ResolvedType to) {
+		List<String> result = new LinkedList<String>();
+		
+		if (from instanceof ResolvedIntegerType) {
+			if (to instanceof ResolvedIntegerType) {
+				if (from.getBits() > to.getBits()) {
+					result.add("trunc");
+				} else {
+					result.add("zext");
+					result.add("sext");
+				}
+			} else if (to instanceof ResolvedPointerType) {
+				result.add("inttoptr");
+			} else if (to instanceof ResolvedFloatingType) {
+				result.add("sitofp");
+				result.add("uitofp");
+			}
+		} else if (from instanceof ResolvedFloatingType) {
+			if (to instanceof ResolvedIntegerType) {
+				result.add("fptoui");
+				result.add("fptosi");
+			} else if (to instanceof ResolvedFloatingType) {
+				if (from.getBits() > to.getBits()) {
+					result.add("fptrunc");
+				} else {
+					result.add("fpext");
+				}
+			}
+		} else if (from instanceof ResolvedPointerType && to instanceof ResolvedIntegerType) {
+			result.add("ptrtoint");
+		}
+		
+		// If there's no other option and the types are of the same size, add the 'bitcast' option
+		if (result.isEmpty() && from.getBits() == to.getBits()) result.add("bitcast");
+		
+		return result;
 	}
 
 	/**

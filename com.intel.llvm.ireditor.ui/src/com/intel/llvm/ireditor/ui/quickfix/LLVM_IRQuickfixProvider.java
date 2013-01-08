@@ -30,13 +30,16 @@ package com.intel.llvm.ireditor.ui.quickfix;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
+import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolution;
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 
@@ -50,6 +53,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 
+import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
 import com.intel.llvm.ireditor.validation.TypeResolver;
 
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
@@ -66,6 +70,41 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 //			}
 //		});
 //	}
+	
+	@Fix(LLVM_IRJavaValidator.ERROR_EXPECTED_TYPE)
+	public void suggestConversion(final Issue issue, IssueResolutionAcceptor acceptor) throws BadLocationException {
+		String[] data = issue.getData();
+		if (data.length <= 2) return;
+		
+		IModificationContext context = getModificationContextFactory().createModificationContext(issue);
+		final IXtextDocument doc = context.getXtextDocument();
+		String name = doc.get(issue.getOffset(), issue.getLength());
+		if (name.matches("^[%@].*") == false) return; // not a convertible variable
+		
+		final String newInstName = name + ".converted";
+
+		EObject inst = findObject(doc, issue).eContainer();
+		
+		final int instOffset = offsetOf(inst);
+		
+		// Calculate preceding indentation, to preserve it for the new instruction:
+		int lineOffset = doc.getLineOffset(doc.getLineOfOffset(instOffset));
+		String indentation = doc.get(lineOffset, instOffset - lineOffset);
+		
+		for (int i = 2; i < data.length; i++) {
+			final String newInst = String.format("%s = %s %s %s to %s\n%s",
+					newInstName, data[i], data[1], name, data[0], indentation);
+			
+			acceptor.accept(issue, "Insert " + data[i] + " conversion for " + name, newInst, "upcase.png", new IModification() {
+				public void apply(IModificationContext context) throws BadLocationException {
+					// Changing the name in the current instruction to refer to the new instruction:
+					doc.replace(issue.getOffset(), issue.getLength(), newInstName);
+					// New instruction (must come after the previous fix, because of offset change):
+					doc.replace(instOffset, 0, newInst);
+				}
+			});
+		}
+	}
 	
 	@Override
 	public List<IssueResolution> getResolutionsForLinkingIssue(Issue issue) {
@@ -169,6 +208,10 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 	
 	private String textOf(EObject object) {
 		return NodeModelUtils.getTokenText(NodeModelUtils.getNode(object));
+	}
+	
+	private int offsetOf(EObject object) {
+		return NodeModelUtils.getNode(object).getOffset();
 	}
 	
 }
