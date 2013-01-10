@@ -109,8 +109,8 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	
 	public ResolvedType defaultCase(EObject object) {
-		// TODO change to ResolvedUnknownType once everything is covered?
-		return new ResolvedAnyType();
+		// TODO change to TYPE_UNKNOWN once everything is covered?
+		return TYPE_ANY;
 	}
 	
 	
@@ -217,7 +217,6 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	public ResolvedType caseGlobalValueRef(GlobalValueRef object) {
 		if (object.getConstant() != null) return resolve(object.getConstant());
-		if (object.getIntrinsic() != null) return TYPE_ANY;
 		if (object.getMetadata() != null) return resolve(object.getMetadata());
 		if (object.getRef() != null) return resolve(object.getRef());
 		return TYPE_UNKNOWN;
@@ -255,7 +254,6 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	
 	public ResolvedType caseFunctionRef(FunctionRef object) {
-		if (object.getIntrinsic() != null) return TYPE_ANY;
 		return new ResolvedPointerType(resolve(object.getRef()), 0);
 	}
 	

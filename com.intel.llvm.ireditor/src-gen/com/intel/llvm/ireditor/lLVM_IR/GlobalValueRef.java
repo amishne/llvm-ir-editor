@@ -12,7 +12,6 @@ package com.intel.llvm.ireditor.lLVM_IR;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getRef <em>Ref</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getIntrinsic <em>Intrinsic</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getConstant <em>Constant</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getMetadata <em>Metadata</em>}</li>
  * </ul>
@@ -49,32 +48,6 @@ public interface GlobalValueRef extends ValueRef
    * @generated
    */
   void setRef(GlobalValueDef value);
-
-  /**
-   * Returns the value of the '<em><b>Intrinsic</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Intrinsic</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Intrinsic</em>' attribute.
-   * @see #setIntrinsic(String)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getGlobalValueRef_Intrinsic()
-   * @model
-   * @generated
-   */
-  String getIntrinsic();
-
-  /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getIntrinsic <em>Intrinsic</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Intrinsic</em>' attribute.
-   * @see #getIntrinsic()
-   * @generated
-   */
-  void setIntrinsic(String value);
 
   /**
    * Returns the value of the '<em><b>Constant</b></em>' containment reference.

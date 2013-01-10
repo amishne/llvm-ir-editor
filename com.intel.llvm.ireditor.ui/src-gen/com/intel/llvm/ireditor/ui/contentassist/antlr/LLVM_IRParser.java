@@ -42,7 +42,6 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetadataIdentifierAccess().getAlternatives(), "rule__MetadataIdentifier__Alternatives");
 					put(grammarAccess.getValueRefAccess().getAlternatives(), "rule__ValueRef__Alternatives");
 					put(grammarAccess.getGlobalValueRefAccess().getAlternatives(), "rule__GlobalValueRef__Alternatives");
-					put(grammarAccess.getFunctionRefAccess().getAlternatives(), "rule__FunctionRef__Alternatives");
 					put(grammarAccess.getGlobalValueAccess().getAlternatives(), "rule__GlobalValue__Alternatives");
 					put(grammarAccess.getGlobalValueDefAccess().getAlternatives(), "rule__GlobalValueDef__Alternatives");
 					put(grammarAccess.getLocalValueAccess().getAlternatives(), "rule__LocalValue__Alternatives");
@@ -58,7 +57,6 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetadataNodeElementAccess().getAlternatives(), "rule__MetadataNodeElement__Alternatives");
 					put(grammarAccess.getTLSoptionAccess().getAlternatives(), "rule__TLSoption__Alternatives");
 					put(grammarAccess.getFunctionAccess().getAlternatives(), "rule__Function__Alternatives");
-					put(grammarAccess.getFunctionHeaderAccess().getNameAlternatives_5_0(), "rule__FunctionHeader__NameAlternatives_5_0");
 					put(grammarAccess.getParametersAccess().getAlternatives_1(), "rule__Parameters__Alternatives_1");
 					put(grammarAccess.getFunctionAttributeAccess().getAlternatives(), "rule__FunctionAttribute__Alternatives");
 					put(grammarAccess.getMiddleInstructionAccess().getInstructionAlternatives_0_0(), "rule__MiddleInstruction__InstructionAlternatives_0_0");
@@ -262,11 +260,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNamedMetadataAccess().getNodeAssignment_1_2(), "rule__NamedMetadata__NodeAssignment_1_2");
 					put(grammarAccess.getMetadataRefAccess().getRefAssignment(), "rule__MetadataRef__RefAssignment");
 					put(grammarAccess.getGlobalValueRefAccess().getRefAssignment_0(), "rule__GlobalValueRef__RefAssignment_0");
-					put(grammarAccess.getGlobalValueRefAccess().getIntrinsicAssignment_1(), "rule__GlobalValueRef__IntrinsicAssignment_1");
-					put(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_2(), "rule__GlobalValueRef__ConstantAssignment_2");
-					put(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_3(), "rule__GlobalValueRef__MetadataAssignment_3");
-					put(grammarAccess.getFunctionRefAccess().getIntrinsicAssignment_0(), "rule__FunctionRef__IntrinsicAssignment_0");
-					put(grammarAccess.getFunctionRefAccess().getRefAssignment_1(), "rule__FunctionRef__RefAssignment_1");
+					put(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_1(), "rule__GlobalValueRef__ConstantAssignment_1");
+					put(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_2(), "rule__GlobalValueRef__MetadataAssignment_2");
+					put(grammarAccess.getFunctionRefAccess().getRefAssignment(), "rule__FunctionRef__RefAssignment");
 					put(grammarAccess.getLocalValueRefAccess().getRefAssignment(), "rule__LocalValueRef__RefAssignment");
 					put(grammarAccess.getAliasAccess().getNameAssignment_0(), "rule__Alias__NameAssignment_0");
 					put(grammarAccess.getAliasAccess().getLinkageAssignment_2(), "rule__Alias__LinkageAssignment_2");

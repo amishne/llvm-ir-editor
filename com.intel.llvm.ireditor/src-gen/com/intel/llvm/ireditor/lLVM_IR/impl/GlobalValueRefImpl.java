@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getRef <em>Ref</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getIntrinsic <em>Intrinsic</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getConstant <em>Constant</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
@@ -43,26 +42,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
    * @ordered
    */
   protected GlobalValueDef ref;
-
-  /**
-   * The default value of the '{@link #getIntrinsic() <em>Intrinsic</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIntrinsic()
-   * @generated
-   * @ordered
-   */
-  protected static final String INTRINSIC_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getIntrinsic() <em>Intrinsic</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getIntrinsic()
-   * @generated
-   * @ordered
-   */
-  protected String intrinsic = INTRINSIC_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getConstant() <em>Constant</em>}' containment reference.
@@ -146,29 +125,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
     ref = newRef;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.GLOBAL_VALUE_REF__REF, oldRef, ref));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getIntrinsic()
-  {
-    return intrinsic;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIntrinsic(String newIntrinsic)
-  {
-    String oldIntrinsic = intrinsic;
-    intrinsic = newIntrinsic;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.GLOBAL_VALUE_REF__INTRINSIC, oldIntrinsic, intrinsic));
   }
 
   /**
@@ -298,8 +254,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
       case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
         if (resolve) return getRef();
         return basicGetRef();
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__INTRINSIC:
-        return getIntrinsic();
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         return getConstant();
       case LLVM_IRPackage.GLOBAL_VALUE_REF__METADATA:
@@ -320,9 +274,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
     {
       case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
         setRef((GlobalValueDef)newValue);
-        return;
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__INTRINSIC:
-        setIntrinsic((String)newValue);
         return;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         setConstant((Constant)newValue);
@@ -347,9 +298,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
       case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
         setRef((GlobalValueDef)null);
         return;
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__INTRINSIC:
-        setIntrinsic(INTRINSIC_EDEFAULT);
-        return;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         setConstant((Constant)null);
         return;
@@ -372,31 +320,12 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
     {
       case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
         return ref != null;
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__INTRINSIC:
-        return INTRINSIC_EDEFAULT == null ? intrinsic != null : !INTRINSIC_EDEFAULT.equals(intrinsic);
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         return constant != null;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__METADATA:
         return metadata != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (intrinsic: ");
-    result.append(intrinsic);
-    result.append(')');
-    return result.toString();
   }
 
 } //GlobalValueRefImpl

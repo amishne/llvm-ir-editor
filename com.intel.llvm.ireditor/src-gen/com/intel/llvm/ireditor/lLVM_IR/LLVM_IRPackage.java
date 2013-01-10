@@ -226,22 +226,13 @@ public interface LLVM_IRPackage extends EPackage
   int GLOBAL_VALUE_REF__REF = VALUE_REF_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Intrinsic</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int GLOBAL_VALUE_REF__INTRINSIC = VALUE_REF_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Constant</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GLOBAL_VALUE_REF__CONSTANT = VALUE_REF_FEATURE_COUNT + 2;
+  int GLOBAL_VALUE_REF__CONSTANT = VALUE_REF_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference.
@@ -250,7 +241,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GLOBAL_VALUE_REF__METADATA = VALUE_REF_FEATURE_COUNT + 3;
+  int GLOBAL_VALUE_REF__METADATA = VALUE_REF_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Global Value Ref</em>' class.
@@ -259,7 +250,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GLOBAL_VALUE_REF_FEATURE_COUNT = VALUE_REF_FEATURE_COUNT + 4;
+  int GLOBAL_VALUE_REF_FEATURE_COUNT = VALUE_REF_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionRefImpl <em>Function Ref</em>}' class.
@@ -272,22 +263,13 @@ public interface LLVM_IRPackage extends EPackage
   int FUNCTION_REF = 6;
 
   /**
-   * The feature id for the '<em><b>Intrinsic</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_REF__INTRINSIC = 0;
-
-  /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_REF__REF = 1;
+  int FUNCTION_REF__REF = 0;
 
   /**
    * The number of structural features of the '<em>Function Ref</em>' class.
@@ -296,7 +278,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_REF_FEATURE_COUNT = 2;
+  int FUNCTION_REF_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.LocalValueRefImpl <em>Local Value Ref</em>}' class.
@@ -6059,17 +6041,6 @@ public interface LLVM_IRPackage extends EPackage
   EReference getGlobalValueRef_Ref();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getIntrinsic <em>Intrinsic</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Intrinsic</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getIntrinsic()
-   * @see #getGlobalValueRef()
-   * @generated
-   */
-  EAttribute getGlobalValueRef_Intrinsic();
-
-  /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef#getConstant <em>Constant</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6100,17 +6071,6 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    */
   EClass getFunctionRef();
-
-  /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionRef#getIntrinsic <em>Intrinsic</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Intrinsic</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionRef#getIntrinsic()
-   * @see #getFunctionRef()
-   * @generated
-   */
-  EAttribute getFunctionRef_Intrinsic();
 
   /**
    * Returns the meta object for the reference '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionRef#getRef <em>Ref</em>}'.
@@ -10233,14 +10193,6 @@ public interface LLVM_IRPackage extends EPackage
     EReference GLOBAL_VALUE_REF__REF = eINSTANCE.getGlobalValueRef_Ref();
 
     /**
-     * The meta object literal for the '<em><b>Intrinsic</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GLOBAL_VALUE_REF__INTRINSIC = eINSTANCE.getGlobalValueRef_Intrinsic();
-
-    /**
      * The meta object literal for the '<em><b>Constant</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -10265,14 +10217,6 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EClass FUNCTION_REF = eINSTANCE.getFunctionRef();
-
-    /**
-     * The meta object literal for the '<em><b>Intrinsic</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute FUNCTION_REF__INTRINSIC = eINSTANCE.getFunctionRef_Intrinsic();
 
     /**
      * The meta object literal for the '<em><b>Ref</b></em>' reference feature.

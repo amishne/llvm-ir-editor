@@ -1278,19 +1278,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGlobalValueRef_Intrinsic()
-  {
-    return (EAttribute)globalValueRefEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getGlobalValueRef_Constant()
   {
-    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(2);
+    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1300,7 +1290,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    */
   public EReference getGlobalValueRef_Metadata()
   {
-    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(3);
+    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1318,19 +1308,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionRef_Intrinsic()
-  {
-    return (EAttribute)functionRefEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getFunctionRef_Ref()
   {
-    return (EReference)functionRefEClass.getEStructuralFeatures().get(1);
+    return (EReference)functionRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5119,12 +5099,10 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     globalValueRefEClass = createEClass(GLOBAL_VALUE_REF);
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__REF);
-    createEAttribute(globalValueRefEClass, GLOBAL_VALUE_REF__INTRINSIC);
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__CONSTANT);
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__METADATA);
 
     functionRefEClass = createEClass(FUNCTION_REF);
-    createEAttribute(functionRefEClass, FUNCTION_REF__INTRINSIC);
     createEReference(functionRefEClass, FUNCTION_REF__REF);
 
     localValueRefEClass = createEClass(LOCAL_VALUE_REF);
@@ -5757,12 +5735,10 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     initEClass(globalValueRefEClass, GlobalValueRef.class, "GlobalValueRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getGlobalValueRef_Ref(), this.getGlobalValueDef(), null, "ref", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGlobalValueRef_Intrinsic(), ecorePackage.getEString(), "intrinsic", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalValueRef_Constant(), this.getConstant(), null, "constant", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalValueRef_Metadata(), this.getMetadataRef(), null, "metadata", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionRefEClass, FunctionRef.class, "FunctionRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionRef_Intrinsic(), ecorePackage.getEString(), "intrinsic", null, 0, 1, FunctionRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionRef_Ref(), this.getFunctionHeader(), null, "ref", null, 0, 1, FunctionRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(localValueRefEClass, LocalValueRef.class, "LocalValueRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

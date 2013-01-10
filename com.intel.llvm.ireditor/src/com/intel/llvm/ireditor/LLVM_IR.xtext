@@ -89,13 +89,12 @@ ValueRef:
 
 GlobalValueRef:
 	ref=[GlobalValueDef|GLOBAL_ID] |
-	intrinsic=INSTRINSIC |
 	constant=Constant |
 	metadata=MetadataRef
 ;
 
 FunctionRef:
-	intrinsic=INSTRINSIC | ref=[FunctionHeader|GLOBAL_ID]
+	ref=[FunctionHeader|GLOBAL_ID]
 ;
 
 LocalValueRef:
@@ -334,7 +333,7 @@ FunctionHeader:
 	cconv=CConv?
 	'unnamed_addr'?
 	rettype=ParameterType
-	name=(GLOBAL_ID | INSTRINSIC)
+	name=GLOBAL_ID
 	'(' parameters=Parameters ')'
 	attrs=FunctionAttributes?
 ;
@@ -1111,10 +1110,6 @@ terminal NULL:
 
 terminal INT_TYPE:
 	'i' INTEGER
-;
-
-terminal INSTRINSIC:
-	'@llvm.' NAME
 ;
 
 terminal GLOBAL_ID:

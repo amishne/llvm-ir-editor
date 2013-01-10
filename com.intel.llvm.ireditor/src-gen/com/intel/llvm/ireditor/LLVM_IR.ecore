@@ -17,14 +17,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="ValueRef" eSuperTypes="#//Callee"/>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalValueRef" eSuperTypes="#//ValueRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//GlobalValueDef"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intrinsic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constant" eType="#//Constant"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" eType="#//MetadataRef"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionRef">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intrinsic" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//FunctionHeader"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LocalValueRef" eSuperTypes="#//ValueRef">

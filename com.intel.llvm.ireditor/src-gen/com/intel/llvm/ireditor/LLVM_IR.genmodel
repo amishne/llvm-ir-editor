@@ -21,12 +21,10 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//ValueRef"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//GlobalValueRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/ref"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalValueRef/intrinsic"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/constant"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/metadata"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionRef">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionRef/intrinsic"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionRef/ref"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//LocalValueRef">

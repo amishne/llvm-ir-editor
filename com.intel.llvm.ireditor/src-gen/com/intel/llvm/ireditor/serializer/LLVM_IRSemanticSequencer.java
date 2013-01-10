@@ -1371,7 +1371,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         visibility=Visibility? 
 	 *         cconv=CConv? 
 	 *         rettype=ParameterType 
-	 *         (name=GLOBAL_ID | name=INSTRINSIC) 
+	 *         name=GLOBAL_ID 
 	 *         parameters=Parameters 
 	 *         attrs=FunctionAttributes?
 	 *     )
@@ -1383,10 +1383,17 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (intrinsic=INSTRINSIC | ref=[FunctionHeader|GLOBAL_ID])
+	 *     ref=[FunctionHeader|GLOBAL_ID]
 	 */
 	protected void sequence_FunctionRef(EObject context, FunctionRef semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.FUNCTION_REF__REF) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.FUNCTION_REF__REF));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFunctionRefAccess().getRefFunctionHeaderGLOBAL_IDTerminalRuleCall_0_1(), semanticObject.getRef());
+		feeder.finish();
 	}
 	
 	
@@ -1401,7 +1408,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (ref=[GlobalValueDef|GLOBAL_ID] | intrinsic=INSTRINSIC | constant=Constant | metadata=MetadataRef)
+	 *     (ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef)
 	 */
 	protected void sequence_GlobalValueRef(EObject context, GlobalValueRef semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

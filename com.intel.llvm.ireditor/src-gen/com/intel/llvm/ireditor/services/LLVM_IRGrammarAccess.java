@@ -202,19 +202,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRefAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
 		private final CrossReference cRefGlobalValueDefCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
 		private final RuleCall cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1 = (RuleCall)cRefGlobalValueDefCrossReference_0_0.eContents().get(1);
-		private final Assignment cIntrinsicAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cIntrinsicINSTRINSICTerminalRuleCall_1_0 = (RuleCall)cIntrinsicAssignment_1.eContents().get(0);
-		private final Assignment cConstantAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cConstantConstantParserRuleCall_2_0 = (RuleCall)cConstantAssignment_2.eContents().get(0);
-		private final Assignment cMetadataAssignment_3 = (Assignment)cAlternatives.eContents().get(3);
-		private final RuleCall cMetadataMetadataRefParserRuleCall_3_0 = (RuleCall)cMetadataAssignment_3.eContents().get(0);
+		private final Assignment cConstantAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cConstantConstantParserRuleCall_1_0 = (RuleCall)cConstantAssignment_1.eContents().get(0);
+		private final Assignment cMetadataAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
+		private final RuleCall cMetadataMetadataRefParserRuleCall_2_0 = (RuleCall)cMetadataAssignment_2.eContents().get(0);
 		
 		//GlobalValueRef:
 		//
-		//	ref=[GlobalValueDef|GLOBAL_ID] | intrinsic=INSTRINSIC | constant=Constant | metadata=MetadataRef;
+		//	ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef;
 		public ParserRule getRule() { return rule; }
 
-		//ref=[GlobalValueDef|GLOBAL_ID] | intrinsic=INSTRINSIC | constant=Constant | metadata=MetadataRef
+		//ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//ref=[GlobalValueDef|GLOBAL_ID]
@@ -226,56 +224,38 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//GLOBAL_ID
 		public RuleCall getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1() { return cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1; }
 
-		//intrinsic=INSTRINSIC
-		public Assignment getIntrinsicAssignment_1() { return cIntrinsicAssignment_1; }
-
-		//INSTRINSIC
-		public RuleCall getIntrinsicINSTRINSICTerminalRuleCall_1_0() { return cIntrinsicINSTRINSICTerminalRuleCall_1_0; }
-
 		//constant=Constant
-		public Assignment getConstantAssignment_2() { return cConstantAssignment_2; }
+		public Assignment getConstantAssignment_1() { return cConstantAssignment_1; }
 
 		//Constant
-		public RuleCall getConstantConstantParserRuleCall_2_0() { return cConstantConstantParserRuleCall_2_0; }
+		public RuleCall getConstantConstantParserRuleCall_1_0() { return cConstantConstantParserRuleCall_1_0; }
 
 		//metadata=MetadataRef
-		public Assignment getMetadataAssignment_3() { return cMetadataAssignment_3; }
+		public Assignment getMetadataAssignment_2() { return cMetadataAssignment_2; }
 
 		//MetadataRef
-		public RuleCall getMetadataMetadataRefParserRuleCall_3_0() { return cMetadataMetadataRefParserRuleCall_3_0; }
+		public RuleCall getMetadataMetadataRefParserRuleCall_2_0() { return cMetadataMetadataRefParserRuleCall_2_0; }
 	}
 
 	public class FunctionRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionRef");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cIntrinsicAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cIntrinsicINSTRINSICTerminalRuleCall_0_0 = (RuleCall)cIntrinsicAssignment_0.eContents().get(0);
-		private final Assignment cRefAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final CrossReference cRefFunctionHeaderCrossReference_1_0 = (CrossReference)cRefAssignment_1.eContents().get(0);
-		private final RuleCall cRefFunctionHeaderGLOBAL_IDTerminalRuleCall_1_0_1 = (RuleCall)cRefFunctionHeaderCrossReference_1_0.eContents().get(1);
+		private final Assignment cRefAssignment = (Assignment)rule.eContents().get(1);
+		private final CrossReference cRefFunctionHeaderCrossReference_0 = (CrossReference)cRefAssignment.eContents().get(0);
+		private final RuleCall cRefFunctionHeaderGLOBAL_IDTerminalRuleCall_0_1 = (RuleCall)cRefFunctionHeaderCrossReference_0.eContents().get(1);
 		
 		//FunctionRef:
 		//
-		//	intrinsic=INSTRINSIC | ref=[FunctionHeader|GLOBAL_ID];
+		//	ref=[FunctionHeader|GLOBAL_ID];
 		public ParserRule getRule() { return rule; }
 
-		//intrinsic=INSTRINSIC | ref=[FunctionHeader|GLOBAL_ID]
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//intrinsic=INSTRINSIC
-		public Assignment getIntrinsicAssignment_0() { return cIntrinsicAssignment_0; }
-
-		//INSTRINSIC
-		public RuleCall getIntrinsicINSTRINSICTerminalRuleCall_0_0() { return cIntrinsicINSTRINSICTerminalRuleCall_0_0; }
-
 		//ref=[FunctionHeader|GLOBAL_ID]
-		public Assignment getRefAssignment_1() { return cRefAssignment_1; }
+		public Assignment getRefAssignment() { return cRefAssignment; }
 
 		//[FunctionHeader|GLOBAL_ID]
-		public CrossReference getRefFunctionHeaderCrossReference_1_0() { return cRefFunctionHeaderCrossReference_1_0; }
+		public CrossReference getRefFunctionHeaderCrossReference_0() { return cRefFunctionHeaderCrossReference_0; }
 
 		//GLOBAL_ID
-		public RuleCall getRefFunctionHeaderGLOBAL_IDTerminalRuleCall_1_0_1() { return cRefFunctionHeaderGLOBAL_IDTerminalRuleCall_1_0_1; }
+		public RuleCall getRefFunctionHeaderGLOBAL_IDTerminalRuleCall_0_1() { return cRefFunctionHeaderGLOBAL_IDTerminalRuleCall_0_1; }
 	}
 
 	public class LocalValueRefElements extends AbstractParserRuleElementFinder {
@@ -2137,9 +2117,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRettypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cRettypeParameterTypeParserRuleCall_4_0 = (RuleCall)cRettypeAssignment_4.eContents().get(0);
 		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final Alternatives cNameAlternatives_5_0 = (Alternatives)cNameAssignment_5.eContents().get(0);
-		private final RuleCall cNameGLOBAL_IDTerminalRuleCall_5_0_0 = (RuleCall)cNameAlternatives_5_0.eContents().get(0);
-		private final RuleCall cNameINSTRINSICTerminalRuleCall_5_0_1 = (RuleCall)cNameAlternatives_5_0.eContents().get(1);
+		private final RuleCall cNameGLOBAL_IDTerminalRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Assignment cParametersAssignment_7 = (Assignment)cGroup.eContents().get(7);
 		private final RuleCall cParametersParametersParserRuleCall_7_0 = (RuleCall)cParametersAssignment_7.eContents().get(0);
@@ -2149,14 +2127,14 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//FunctionHeader:
 		//
-		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=(GLOBAL_ID |
+		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
 		//
-		//	INSTRINSIC) "(" parameters=Parameters ")" attrs=FunctionAttributes?;
+		//	parameters=Parameters ")" attrs=FunctionAttributes?;
 		public ParserRule getRule() { return rule; }
 
-		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=(GLOBAL_ID | INSTRINSIC)
+		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
 		//
-		//"(" parameters=Parameters ")" attrs=FunctionAttributes?
+		//parameters=Parameters ")" attrs=FunctionAttributes?
 		public Group getGroup() { return cGroup; }
 
 		//linkage=Linkage?
@@ -2186,17 +2164,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterType
 		public RuleCall getRettypeParameterTypeParserRuleCall_4_0() { return cRettypeParameterTypeParserRuleCall_4_0; }
 
-		//name=(GLOBAL_ID | INSTRINSIC)
+		//name=GLOBAL_ID
 		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
 
-		//GLOBAL_ID | INSTRINSIC
-		public Alternatives getNameAlternatives_5_0() { return cNameAlternatives_5_0; }
-
 		//GLOBAL_ID
-		public RuleCall getNameGLOBAL_IDTerminalRuleCall_5_0_0() { return cNameGLOBAL_IDTerminalRuleCall_5_0_0; }
-
-		//INSTRINSIC
-		public RuleCall getNameINSTRINSICTerminalRuleCall_5_0_1() { return cNameINSTRINSICTerminalRuleCall_5_0_1; }
+		public RuleCall getNameGLOBAL_IDTerminalRuleCall_5_0() { return cNameGLOBAL_IDTerminalRuleCall_5_0; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
@@ -8020,7 +7992,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private TerminalRule tBOOLEAN;
 	private TerminalRule tNULL;
 	private TerminalRule tINT_TYPE;
-	private TerminalRule tINSTRINSIC;
 	private TerminalRule tGLOBAL_ID;
 	private TerminalRule tLOCAL_ID;
 	private TerminalRule tBASIC_BLOCK_ID;
@@ -8136,7 +8107,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GlobalValueRef:
 	//
-	//	ref=[GlobalValueDef|GLOBAL_ID] | intrinsic=INSTRINSIC | constant=Constant | metadata=MetadataRef;
+	//	ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef;
 	public GlobalValueRefElements getGlobalValueRefAccess() {
 		return (pGlobalValueRef != null) ? pGlobalValueRef : (pGlobalValueRef = new GlobalValueRefElements());
 	}
@@ -8147,7 +8118,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionRef:
 	//
-	//	intrinsic=INSTRINSIC | ref=[FunctionHeader|GLOBAL_ID];
+	//	ref=[FunctionHeader|GLOBAL_ID];
 	public FunctionRefElements getFunctionRefAccess() {
 		return (pFunctionRef != null) ? pFunctionRef : (pFunctionRef = new FunctionRefElements());
 	}
@@ -8640,9 +8611,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionHeader:
 	//
-	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=(GLOBAL_ID |
+	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
 	//
-	//	INSTRINSIC) "(" parameters=Parameters ")" attrs=FunctionAttributes?;
+	//	parameters=Parameters ")" attrs=FunctionAttributes?;
 	public FunctionHeaderElements getFunctionHeaderAccess() {
 		return (pFunctionHeader != null) ? pFunctionHeader : (pFunctionHeader = new FunctionHeaderElements());
 	}
@@ -10047,13 +10018,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//	"i" INTEGER;
 	public TerminalRule getINT_TYPERule() {
 		return (tINT_TYPE != null) ? tINT_TYPE : (tINT_TYPE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT_TYPE"));
-	} 
-
-	//terminal INSTRINSIC:
-	//
-	//	"@llvm." NAME;
-	public TerminalRule getINSTRINSICRule() {
-		return (tINSTRINSIC != null) ? tINSTRINSIC : (tINSTRINSIC = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INSTRINSIC"));
 	} 
 
 	//terminal GLOBAL_ID:

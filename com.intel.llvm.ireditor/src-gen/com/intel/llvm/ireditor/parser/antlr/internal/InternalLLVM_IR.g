@@ -420,36 +420,17 @@ ruleGlobalValueRef returns [EObject current=null]
 )
     |(
 (
-		lv_intrinsic_1_0=RULE_INSTRINSIC
-		{
-			newLeafNode(lv_intrinsic_1_0, grammarAccess.getGlobalValueRefAccess().getIntrinsicINSTRINSICTerminalRuleCall_1_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getGlobalValueRefRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"intrinsic",
-        		lv_intrinsic_1_0, 
-        		"INSTRINSIC");
-	    }
-
-)
-)
-    |(
-(
 		{ 
-	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_1_0()); 
 	    }
-		lv_constant_2_0=ruleConstant		{
+		lv_constant_1_0=ruleConstant		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGlobalValueRefRule());
 	        }
        		set(
        			$current, 
        			"constant",
-        		lv_constant_2_0, 
+        		lv_constant_1_0, 
         		"Constant");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -459,16 +440,16 @@ ruleGlobalValueRef returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_2_0()); 
 	    }
-		lv_metadata_3_0=ruleMetadataRef		{
+		lv_metadata_2_0=ruleMetadataRef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGlobalValueRefRule());
 	        }
        		set(
        			$current, 
        			"metadata",
-        		lv_metadata_3_0, 
+        		lv_metadata_2_0, 
         		"MetadataRef");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -495,39 +476,20 @@ ruleFunctionRef returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
 (
-		lv_intrinsic_0_0=RULE_INSTRINSIC
-		{
-			newLeafNode(lv_intrinsic_0_0, grammarAccess.getFunctionRefAccess().getIntrinsicINSTRINSICTerminalRuleCall_0_0()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFunctionRefRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"intrinsic",
-        		lv_intrinsic_0_0, 
-        		"INSTRINSIC");
-	    }
-
-)
-)
-    |(
 (
 		{
 			if ($current==null) {
 	            $current = createModelElement(grammarAccess.getFunctionRefRule());
 	        }
         }
-	otherlv_1=RULE_GLOBAL_ID
+	otherlv_0=RULE_GLOBAL_ID
 	{
-		newLeafNode(otherlv_1, grammarAccess.getFunctionRefAccess().getRefFunctionHeaderCrossReference_1_0()); 
+		newLeafNode(otherlv_0, grammarAccess.getFunctionRefAccess().getRefFunctionHeaderCrossReference_0()); 
 	}
 
 )
-))
+)
 ;
 
 
@@ -3714,10 +3676,9 @@ ruleFunctionHeader returns [EObject current=null]
 )
 )(
 (
-(
-		lv_name_5_1=RULE_GLOBAL_ID
+		lv_name_5_0=RULE_GLOBAL_ID
 		{
-			newLeafNode(lv_name_5_1, grammarAccess.getFunctionHeaderAccess().getNameGLOBAL_IDTerminalRuleCall_5_0_0()); 
+			newLeafNode(lv_name_5_0, grammarAccess.getFunctionHeaderAccess().getNameGLOBAL_IDTerminalRuleCall_5_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -3726,26 +3687,9 @@ ruleFunctionHeader returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_5_1, 
+        		lv_name_5_0, 
         		"GLOBAL_ID");
 	    }
-
-    |		lv_name_5_2=RULE_INSTRINSIC
-		{
-			newLeafNode(lv_name_5_2, grammarAccess.getFunctionHeaderAccess().getNameINSTRINSICTerminalRuleCall_5_0_1()); 
-		}
-		{
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFunctionHeaderRule());
-	        }
-       		setWithLastConsumed(
-       			$current, 
-       			"name",
-        		lv_name_5_2, 
-        		"INSTRINSIC");
-	    }
-
-)
 
 )
 )	otherlv_6='(' 
@@ -13457,8 +13401,6 @@ RULE_BOOLEAN : ('true'|'false');
 RULE_NULL : 'null';
 
 RULE_INT_TYPE : 'i' RULE_INTEGER;
-
-RULE_INSTRINSIC : '@llvm.' RULE_NAME;
 
 RULE_GLOBAL_ID : '@' (RULE_INTEGER|RULE_NAME|RULE_STRING);
 
