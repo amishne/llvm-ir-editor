@@ -27,8 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.regex.Pattern;
 
@@ -41,6 +39,10 @@ import org.eclipse.xtext.conversion.impl.AbstractDeclarativeValueConverterServic
 import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+
+import com.intel.llvm.ireditor.LLVM_IRRuntimeModule.ReverseLocalsIterator.Mode;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
+import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -107,6 +109,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	public static abstract class LlvmNameConverter implements IValueConverter<String> {
 		
 		private static long NAME_RESOLVE_TIMEOUT_MS = 5000;
+		private NameResolver namer = new NameResolver();
 		
 		public String toValue(String string, INode node) throws ValueConverterException {
 			if (string == null || string.isEmpty()) {
@@ -120,8 +123,8 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		}
 		
 		private int findIndex(INode node) {
-			// This works by searching for the last location in which an anonymously-named object was
-			// defined, taking its name, and incrementing it by one.
+			// This works by searching for the last location in which an unnamed object was
+			// defined in this scope, taking its name, and incrementing it by one.
 			long start = System.currentTimeMillis();
 			for (EObject element : previousElements(node)) {
 				if (System.currentTimeMillis() - start > NAME_RESOLVE_TIMEOUT_MS) return 0;
@@ -136,71 +139,10 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		
 		private String getObjectName(EObject obj) {
 			if (obj == null) return null;
-			try {
-				Method getName = obj.getClass().getMethod("getName");
-				return (String)getName.invoke(obj);
-			} catch (NoSuchMethodException e) {
-			} catch (IllegalAccessException e) {
-			} catch (IllegalArgumentException e) {
-			} catch (InvocationTargetException e) {
-			}
-			return null;
+			return namer.getName(obj).getText();
 		}
 		
-		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new Iterable<EObject>() {
-				public Iterator<EObject> iterator() {
-					return new Iterator<EObject>() {
-						
-						INode currNode = node;
-						EObject currObject = getRelevantObject();
-
-						INode getLastElement(INode node) {
-							BidiTreeIterator<INode> iter = node.getAsTreeIterable().reverse().iterator();
-							if (iter.hasNext() == false) return null;
-							iter.next(); // Get rid of the first, which is always the parent itself
-							if (iter.hasNext() == false) return null;
-							return iter.next();
-						}
-						
-						INode getPreviousNode() {
-							if (currNode.hasPreviousSibling()) {
-								INode result = currNode.getPreviousSibling();
-								INode lastResultChild = result;
-								while (lastResultChild != null) {
-									result = lastResultChild;
-									lastResultChild = getLastElement(lastResultChild);
-								}
-								return result;
-							}
-							return currNode.getParent();
-						}
-						
-						EObject getRelevantObject() {
-							return NodeModelUtils.findActualSemanticObjectFor(currNode);
-						}
-						
-						public EObject next() {
-							EObject result = currObject;
-							currNode = getPreviousNode();
-							if (currNode != null) {
-								currObject = getRelevantObject();
-							}
-							return result;
-						}
-						
-						public boolean hasNext() {
-							return currNode != null;
-						}
-						
-						public void remove() {
-							throw new UnsupportedOperationException();
-						}
-					};
-				}
-			};
-		}
-		
+		protected abstract Iterable<? extends EObject> previousElements(final INode node);
 		protected abstract String nameFromIndex(int index);
 		protected abstract String nameFromString(String string);
 		protected abstract Pattern getAnonymousPattern();
@@ -210,18 +152,142 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override protected String nameFromIndex(int index) { return "%" + index; }
 		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=$", ""); }
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
+		
+		protected Iterable<? extends EObject> previousElements(final INode node) {
+			return new ReverseLocalsIterator(getEnclosingInstruction(node), Mode.INST);
+		}
+		
+		private INode getEnclosingInstruction(INode instNode) {
+			EObject object = getObject(instNode);
+			if (object instanceof Instruction_phi) return instNode.getParent();
+			return instNode.getParent().getParent();
+		}
 	}
 	
 	public static class GlobalNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "@" + index; }
 		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=$", ""); }
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("@\\d+"); }
+		protected Iterable<? extends EObject> previousElements(final INode node) {
+			return new Iterable<EObject>() {
+				public Iterator<EObject> iterator() {
+					return new Iterator<EObject>() {
+						INode curr = node;
+						
+						public void remove() {
+							throw new UnsupportedOperationException();
+						}
+						
+						public EObject next() {
+							INode prev = curr.getPreviousSibling();
+							curr = prev;
+							return getObject(prev);
+						}
+						
+						public boolean hasNext() {
+							return curr.hasPreviousSibling();
+						}
+					};
+				}
+			};
+		}
 	}
 	
 	public static class BasicBlockNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "%" + index; }
 		@Override protected String nameFromString(String string) { return "%" + string.substring(0, string.length()-1); }
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
+		
+		protected Iterable<? extends EObject> previousElements(final INode node) {
+			return new ReverseLocalsIterator(node, Mode.BB);
+		}
+	}
+	
+	static class ReverseLocalsIterator implements Iterable<EObject> {
+		public enum Mode { INST, BB, PARAM }
+		
+		private final INode node;
+		private final Mode initialMode;
+		
+		public ReverseLocalsIterator(INode node, Mode initialMode) {
+			this.node = node;
+			this.initialMode = initialMode;
+		}
+
+		public Iterator<EObject> iterator() {
+			return new Iterator<EObject>() {
+				INode curr = node;
+				final INode lastParam = getLastParamOfEnclosingFunction(curr);
+				Mode mode = initialMode;
+				
+				public void remove() {
+					throw new UnsupportedOperationException();
+				}
+				
+				public EObject next() {
+					switch (mode) {
+					case INST: {
+						if (curr.hasPreviousSibling()) {
+							curr = curr.getPreviousSibling();
+						} else {
+							// After the first instruction in a bb comes the enclosing bb
+							curr = curr.getParent();
+							mode = Mode.BB;
+						}
+					} break;
+					case BB: {
+						if (curr.hasPreviousSibling()) {
+							// Is there a bb preceding this one? Go to the last inst there.
+							curr = getLastInst(curr.getPreviousSibling());
+							mode = Mode.INST;
+						} else {
+							// No preceding bb? Proceed to last parameter.
+							// If there aren't any parameters, we shouldn't be here
+							// because hasNext() will return false.
+							curr = lastParam;
+							mode = Mode.PARAM;
+						}
+					} break;
+					case PARAM: {
+						curr = curr.getPreviousSibling();
+					} break;
+					}
+					return getObject(curr);
+				}
+				
+
+				public boolean hasNext() {
+					switch (mode) {
+					case INST: return true; // There's always a preceding bb
+					case BB: return curr.hasPreviousSibling() || lastParam != null;
+					case PARAM: return curr.hasPreviousSibling();
+					}
+					return false;
+				}
+				
+				INode getLastInst(INode bbNode) {
+					BidiTreeIterator<INode> iterator = bbNode.getAsTreeIterable().iterator();
+					iterator.previous(); // Don't need bbNode itself
+					return iterator.previous();
+				}
+				
+				private INode getLastParamOfEnclosingFunction(INode instNode) {
+					for (INode n : instNode.getParent().getParent().getAsTreeIterable().reverse()) {
+						EObject object = getObject(n);
+						if (object instanceof Parameter) {
+							return n;
+						}
+					}
+					return null;
+				}
+			};
+			
+		}
+		
+	}
+	
+	private static EObject getObject(INode node) {
+		return NodeModelUtils.findActualSemanticObjectFor(node);
 	}
 	
 }

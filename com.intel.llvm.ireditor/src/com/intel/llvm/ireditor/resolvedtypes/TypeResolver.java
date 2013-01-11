@@ -81,6 +81,7 @@ import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private final LinkedList<TypeDef> enclosing = new LinkedList<TypeDef>();
+	
 	private static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
 	private static final ResolvedType TYPE_UNKNOWN = new ResolvedUnknownType();
 	private static final ResolvedType TYPE_VARARG = new ResolvedVarargType();
