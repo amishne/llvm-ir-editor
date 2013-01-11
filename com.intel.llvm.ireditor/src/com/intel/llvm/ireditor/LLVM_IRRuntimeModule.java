@@ -139,7 +139,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		
 		private String getObjectName(EObject obj) {
 			if (obj == null) return null;
-			return namer.getName(obj).getText();
+			return namer.resolveName(obj);
 		}
 		
 		protected abstract Iterable<? extends EObject> previousElements(final INode node);

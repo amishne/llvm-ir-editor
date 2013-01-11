@@ -18,9 +18,22 @@ import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 
 public class NameResolver extends LLVM_IRSwitch<String> {
-	public Name getName(EObject element) {
-		String nameStr = doSwitch(element);
-		return new Name(nameStr);
+	public String resolveName(EObject element) {
+		return doSwitch(element);
+	}
+	
+	public NumberedName resolveNumberedName(EObject element) {
+		String name = resolveName(element);
+		// No name:
+		if (name == null) return null;
+		
+		// Numbered name:
+		if (name.matches("[%@]\\d+")) {
+			return new NumberedName(name.substring(0, 1), Integer.parseInt(name.substring(1)));
+		}
+		
+		// Non-numbered name:
+		return null;
 	}
 	
 	public String caseAlias(Alias object) {

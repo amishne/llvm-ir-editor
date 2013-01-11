@@ -35,10 +35,13 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 
+import com.intel.llvm.ireditor.NumberedName;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
+import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
+import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
@@ -54,6 +57,7 @@ import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public static final String ERROR_EXPECTED_TYPE = "expected type not matched";
 	private final TypeResolver resolver = new TypeResolver();
+	private final NameMapper mapper = new NameMapper();
 
 	@Check
 	public void checkConstantList(ConstantList val) {
@@ -71,7 +75,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkTypedConstant(TypedConstant val) {
+		// Constant value must match its type.
 		checkExpected(val.getType(), val.getValue());
+		
+		// Integer constant should be small enough to fit in its type.
 		ResolvedType type = resolveType(val.getType());
 		if (type instanceof ResolvedIntegerType) {
 			checkConstantFitsInType(type, val.getValue());
@@ -80,15 +87,55 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkTypedValue(TypedValue val) {
+		// Value must match the type.
 		checkExpected(val.getType(), val.getRef());
 	}
 	
 	@Check
 	public void checkAdd(Instruction_add inst) {
+		// Add is only permitted on integers and vectors.
 		checkRequired(inst.getType(), TypeResolver.TYPE_INTEGER, TypeResolver.TYPE_VECTOR);
+		// General binary verification.
 		checkBinary(inst);
 	}
 	
+	@Check
+	private void checkBinary(BinaryInstruction val) {
+		checkExpected(val.getType(), val.getOp1());
+		checkExpected(val.getType(), val.getOp2());
+	}
+	
+	@Check
+	private void checkNumberSequence(NamedMiddleInstruction val) {
+		// A numbered instruction must appear in proper sequence.
+		String name = val.getName();
+		if (name.matches("[%@]\\d+") == false) return;
+		
+		int num = Integer.parseInt(name.substring(1));
+		
+		NumberedName prevNumbered = mapper.getPrecedingNumberedObjectName(val.eContainer());
+		int expected = prevNumbered != null ? prevNumbered.getNumber() + 1 : 0;
+		if (num != expected) {
+			error(String.format("Incorrect number in sequence: expected %s, got %s",
+					"%" + expected, name), LLVM_IRPackage.Literals.NAMED_MIDDLE_INSTRUCTION.getEStructuralFeature("name"));
+		}
+	}
+	
+//	@Check
+//	private void checkNumberSequence(NamedInstruction val) {
+//		// A numbered instruction must appear in proper sequence.
+//		String name = val.getName();
+//		if (name.matches("[%@]\\d+") == false) return;
+//		
+//		int num = Integer.parseInt(name.substring(1));
+//		
+//		NumberedName prevNumbered = mapper.getPrecedingNumberedObjectName(val);
+//		int expected = prevNumbered != null ? prevNumbered.getNumber() + 1 : 0;
+//		if (num != expected) {
+//			error(String.format("Incorrect number in sequence: expected %s, got %s",
+//					"%" + expected, name), val.eContainingFeature());
+//		}
+//	}
 	
 	private void checkConstantFitsInType(ResolvedType type, Constant val) {
 		try {
@@ -103,12 +150,6 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		} catch (NumberFormatException e) {
 			// Discard.
 		}
-	}
-
-	@Check
-	private void checkBinary(BinaryInstruction val) {
-		checkExpected(val.getType(), val.getOp1());
-		checkExpected(val.getType(), val.getOp2());
 	}
 	
 	private void checkRequired(EObject obj, ResolvedType... types) {
