@@ -54,13 +54,13 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 
 import com.intel.llvm.ireditor.resolvedtypes.TypeResolver;
-import com.intel.llvm.ireditor.validation.LLVM_IRValidator;
+import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
 
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 
 	TypeResolver resolver = new TypeResolver();
 	
-	@Fix(LLVM_IRValidator.ERROR_EXPECTED_TYPE)
+	@Fix(LLVM_IRJavaValidator.ERROR_EXPECTED_TYPE)
 	public void suggestConversion(final Issue issue, IssueResolutionAcceptor acceptor) throws BadLocationException {
 		String[] data = issue.getData();
 		if (data.length <= 2) return;

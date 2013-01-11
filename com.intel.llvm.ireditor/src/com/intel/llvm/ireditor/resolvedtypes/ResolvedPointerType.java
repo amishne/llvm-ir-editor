@@ -36,7 +36,7 @@ public class ResolvedPointerType extends ResolvedType {
 	}
 
 	public String toString() {
-		return pointedType.toString() + (addrSpace != -1 ? " addrspace(" + addrSpace + ")" : "") + "*";
+		return pointedType.toString() + (addrSpace > 0 ? " addrspace(" + addrSpace + ")" : "") + "*";
 	}
 	
 	public ResolvedType getContainedType(int index) {
