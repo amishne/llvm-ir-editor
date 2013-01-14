@@ -277,7 +277,7 @@ TypedConstant:
 ;
 
 SimpleConstant:
-	(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING) {SimpleConstant}
+	value=(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING)
 ;
 
 MetadataNode:

@@ -53,7 +53,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantExpressionAccess().getAlternatives(), "rule__ConstantExpression__Alternatives");
 					put(grammarAccess.getConstantExpression_compareAccess().getAlternatives_0(), "rule__ConstantExpression_compare__Alternatives_0");
 					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAlternatives_0_0(), "rule__ConstantExpression_binary__OpcodeAlternatives_0_0");
-					put(grammarAccess.getSimpleConstantAccess().getAlternatives_0(), "rule__SimpleConstant__Alternatives_0");
+					put(grammarAccess.getSimpleConstantAccess().getValueAlternatives_0(), "rule__SimpleConstant__ValueAlternatives_0");
 					put(grammarAccess.getMetadataNodeElementAccess().getAlternatives(), "rule__MetadataNodeElement__Alternatives");
 					put(grammarAccess.getTLSoptionAccess().getAlternatives(), "rule__TLSoption__Alternatives");
 					put(grammarAccess.getFunctionAccess().getAlternatives(), "rule__Function__Alternatives");
@@ -124,7 +124,6 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantListAccess().getGroup(), "rule__ConstantList__Group__0");
 					put(grammarAccess.getConstantListAccess().getGroup_1(), "rule__ConstantList__Group_1__0");
 					put(grammarAccess.getTypedConstantAccess().getGroup(), "rule__TypedConstant__Group__0");
-					put(grammarAccess.getSimpleConstantAccess().getGroup(), "rule__SimpleConstant__Group__0");
 					put(grammarAccess.getMetadataNodeAccess().getGroup(), "rule__MetadataNode__Group__0");
 					put(grammarAccess.getMetadataNodeAccess().getGroup_3(), "rule__MetadataNode__Group_3__0");
 					put(grammarAccess.getMetadataNodeAccess().getGroup_3_1(), "rule__MetadataNode__Group_3_1__0");
@@ -330,6 +329,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantListAccess().getTypedConstantsAssignment_1_1(), "rule__ConstantList__TypedConstantsAssignment_1_1");
 					put(grammarAccess.getTypedConstantAccess().getTypeAssignment_0(), "rule__TypedConstant__TypeAssignment_0");
 					put(grammarAccess.getTypedConstantAccess().getValueAssignment_1(), "rule__TypedConstant__ValueAssignment_1");
+					put(grammarAccess.getSimpleConstantAccess().getValueAssignment(), "rule__SimpleConstant__ValueAssignment");
 					put(grammarAccess.getMetadataNodeAccess().getElementsAssignment_3_0(), "rule__MetadataNode__ElementsAssignment_3_0");
 					put(grammarAccess.getMetadataNodeAccess().getElementsAssignment_3_1_1(), "rule__MetadataNode__ElementsAssignment_3_1_1");
 					put(grammarAccess.getMetadataNodeElementAccess().getValueAssignment_0(), "rule__MetadataNodeElement__ValueAssignment_0");

@@ -36,7 +36,7 @@ public class ResolvedVectorType extends ResolvedAnyVectorType {
 	}
 
 	public int getBits() {
-		return size = elementType.getBits();
+		return size * elementType.getBits();
 	}
 	
 	public String toString() {
@@ -46,6 +46,10 @@ public class ResolvedVectorType extends ResolvedAnyVectorType {
 	public ResolvedType getContainedType(int index) {
 		assert (index < size);
 		return elementType;
+	}
+	
+	public int getSize() {
+		return size;
 	}
 	
 	public boolean accepts(ResolvedType t) {
@@ -80,5 +84,5 @@ public class ResolvedVectorType extends ResolvedAnyVectorType {
 			return false;
 		return true;
 	}
-	
+
 }

@@ -138,7 +138,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//TypedConstant/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//TypedConstant/value"/>
     </genClasses>
-    <genClasses ecoreClass="LLVM_IR.ecore#//SimpleConstant"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//SimpleConstant">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//SimpleConstant/value"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//MetadataNode">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//MetadataNode/elements"/>
     </genClasses>

@@ -2993,42 +2993,103 @@ ruleSimpleConstant returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((this_INTEGER_0=RULE_INTEGER
-    { 
-    newLeafNode(this_INTEGER_0, grammarAccess.getSimpleConstantAccess().getINTEGERTerminalRuleCall_0_0()); 
-    }
+(
+(
+(
+		lv_value_0_1=RULE_INTEGER
+		{
+			newLeafNode(lv_value_0_1, grammarAccess.getSimpleConstantAccess().getValueINTEGERTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSimpleConstantRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_1, 
+        		"INTEGER");
+	    }
 
-    |this_SIGNED_INT_1=RULE_SIGNED_INT
-    { 
-    newLeafNode(this_SIGNED_INT_1, grammarAccess.getSimpleConstantAccess().getSIGNED_INTTerminalRuleCall_0_1()); 
-    }
+    |		lv_value_0_2=RULE_SIGNED_INT
+		{
+			newLeafNode(lv_value_0_2, grammarAccess.getSimpleConstantAccess().getValueSIGNED_INTTerminalRuleCall_0_1()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSimpleConstantRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_2, 
+        		"SIGNED_INT");
+	    }
 
-    |this_FLOAT_2=RULE_FLOAT
-    { 
-    newLeafNode(this_FLOAT_2, grammarAccess.getSimpleConstantAccess().getFLOATTerminalRuleCall_0_2()); 
-    }
+    |		lv_value_0_3=RULE_FLOAT
+		{
+			newLeafNode(lv_value_0_3, grammarAccess.getSimpleConstantAccess().getValueFLOATTerminalRuleCall_0_2()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSimpleConstantRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_3, 
+        		"FLOAT");
+	    }
 
-    |this_BOOLEAN_3=RULE_BOOLEAN
-    { 
-    newLeafNode(this_BOOLEAN_3, grammarAccess.getSimpleConstantAccess().getBOOLEANTerminalRuleCall_0_3()); 
-    }
+    |		lv_value_0_4=RULE_BOOLEAN
+		{
+			newLeafNode(lv_value_0_4, grammarAccess.getSimpleConstantAccess().getValueBOOLEANTerminalRuleCall_0_3()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSimpleConstantRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_4, 
+        		"BOOLEAN");
+	    }
 
-    |this_NULL_4=RULE_NULL
-    { 
-    newLeafNode(this_NULL_4, grammarAccess.getSimpleConstantAccess().getNULLTerminalRuleCall_0_4()); 
-    }
+    |		lv_value_0_5=RULE_NULL
+		{
+			newLeafNode(lv_value_0_5, grammarAccess.getSimpleConstantAccess().getValueNULLTerminalRuleCall_0_4()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSimpleConstantRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_5, 
+        		"NULL");
+	    }
 
-    |this_CSTRING_5=RULE_CSTRING
-    { 
-    newLeafNode(this_CSTRING_5, grammarAccess.getSimpleConstantAccess().getCSTRINGTerminalRuleCall_0_5()); 
-    }
-)(
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getSimpleConstantAccess().getSimpleConstantAction_1(),
-            $current);
-    }
-))
+    |		lv_value_0_6=RULE_CSTRING
+		{
+			newLeafNode(lv_value_0_6, grammarAccess.getSimpleConstantAccess().getValueCSTRINGTerminalRuleCall_0_5()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getSimpleConstantRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_0_6, 
+        		"CSTRING");
+	    }
+
+)
+
+)
+)
 ;
 
 

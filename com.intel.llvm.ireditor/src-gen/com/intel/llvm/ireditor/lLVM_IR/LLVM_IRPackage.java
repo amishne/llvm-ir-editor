@@ -1473,13 +1473,22 @@ public interface LLVM_IRPackage extends EPackage
   int SIMPLE_CONSTANT = 37;
 
   /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SIMPLE_CONSTANT__VALUE = CONSTANT_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Simple Constant</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_CONSTANT_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 0;
+  int SIMPLE_CONSTANT_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.MetadataNodeImpl <em>Metadata Node</em>}' class.
@@ -7021,6 +7030,17 @@ public interface LLVM_IRPackage extends EPackage
   EClass getSimpleConstant();
 
   /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.SimpleConstant#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.SimpleConstant#getValue()
+   * @see #getSimpleConstant()
+   * @generated
+   */
+  EAttribute getSimpleConstant_Value();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.MetadataNode <em>Metadata Node</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -10991,6 +11011,14 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EClass SIMPLE_CONSTANT = eINSTANCE.getSimpleConstant();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SIMPLE_CONSTANT__VALUE = eINSTANCE.getSimpleConstant_Value();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.MetadataNodeImpl <em>Metadata Node</em>}' class.

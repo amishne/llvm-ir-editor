@@ -37,9 +37,27 @@ import org.eclipse.xtext.validation.Check;
 
 import com.intel.llvm.ireditor.NumberedName;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
+import com.intel.llvm.ireditor.lLVM_IR.Function;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractelement;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fadd;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fdiv;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fmul;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_frem;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fsub;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_mul;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_ret;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_sdiv;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_shufflevector;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_srem;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_sub;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_switch;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
@@ -63,11 +81,11 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public void checkConstantList(ConstantList val) {
 		if (val.eContainer() instanceof VectorConstant) {
 			// All types must be the same
-			Type sameType = null;
+			ResolvedType sameType = null;
 			int i = 0;
 			for (TypedConstant tc : val.getTypedConstants()) {
-				if (sameType == null) sameType = tc.getType();
-				else checkExpected(sameType, tc.getType(), tc.eContainingFeature(), i);
+				if (sameType == null) sameType = resolveType(tc.getType());
+				else checkExpected(sameType, resolveType(tc.getType()), tc.eContainingFeature(), i);
 				i++;
 			}
 		}
@@ -75,11 +93,12 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkTypedConstant(TypedConstant val) {
+		ResolvedType type = resolveType(val.getType());
+		
 		// Constant value must match its type.
-		checkExpected(val.getType(), val.getValue());
+		checkExpected(type, val.getValue());
 		
 		// Integer constant should be small enough to fit in its type.
-		ResolvedType type = resolveType(val.getType());
 		if (type instanceof ResolvedIntegerType) {
 			checkConstantFitsInType(type, val.getValue());
 		}
@@ -92,17 +111,122 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	@Check
-	public void checkAdd(Instruction_add inst) {
-		// Add is only permitted on integers and vectors.
-		checkRequired(inst.getType(), TypeResolver.TYPE_INTEGER, TypeResolver.TYPE_VECTOR);
-		// General binary verification.
-		checkBinary(inst);
+	public void checkRet(Instruction_ret val) {
+		EObject f = val.eContainer().eContainer().eContainer().eContainer();
+		checkExpected(((Function)f).getHeader().getRettype(), val.getVal().getType());
 	}
 	
 	@Check
-	private void checkBinary(BinaryInstruction val) {
-		checkExpected(val.getType(), val.getOp1());
-		checkExpected(val.getType(), val.getOp2());
+	public void checkSwitch(Instruction_switch val) {
+		// Verify the condition is an integer type
+		ResolvedType t = resolveType(val.getComparisonValue().getType());
+		checkRequired(t, val.eContainingFeature(), TypeResolver.TYPE_ANY_INTEGER);
+		
+		// Verify all condition cases share the condition's type
+		for (TypedValue v : val.getCaseConditions()) {
+			checkExpected(t, v);
+		}
+	}
+	
+	@Check
+	public void checkAdd(Instruction_add inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkFadd(Instruction_fadd inst) {
+		checkFloatingBinary(inst);
+	}
+	
+	@Check
+	public void checkSub(Instruction_sub inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkFsub(Instruction_fsub inst) {
+		checkFloatingBinary(inst);
+	}
+	
+	@Check
+	public void checkMul(Instruction_mul inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkFmul(Instruction_fmul inst) {
+		checkFloatingBinary(inst);
+	}
+	
+	@Check
+	public void checkUdiv(Instruction_udiv inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkSdiv(Instruction_sdiv inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkFdiv(Instruction_fdiv inst) {
+		checkFloatingBinary(inst);
+	}
+	
+	@Check
+	public void checkUrem(Instruction_urem inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkSrem(Instruction_srem inst) {
+		checkIntegerBinary(inst);
+	}
+	
+	@Check
+	public void checkFrem(Instruction_frem inst) {
+		checkFloatingBinary(inst);
+	}
+	
+	@Check
+	private void checkBinary(BinaryInstruction inst) {
+		ResolvedType t = resolveType(inst.getType());
+		checkExpected(t, inst.getOp1());
+		checkExpected(t, inst.getOp2());
+	}
+	
+	@Check
+	private void checkBitwiseBinary(BitwiseBinaryInstruction inst) {
+		ResolvedType t = resolveType(inst.getType());
+		checkRequired(t, inst.eContainingFeature(), TypeResolver.TYPE_ANY_INTEGER, TypeResolver.TYPE_INTEGER_VECTOR);
+		checkExpected(t, inst.getOp1());
+		checkExpected(t, inst.getOp2());
+	}
+	
+	@Check
+	private void checkExtractelement(Instruction_extractelement inst) {
+		checkRequired(inst.getVector().getType(), TypeResolver.TYPE_ANY_VECTOR);
+		checkRequired(inst.getIndex().getType(), TypeResolver.TYPE_I32);
+	}
+	
+	@Check
+	private void checkInsertelement(Instruction_insertelement inst) {
+		ResolvedType vectorType = resolveType(inst.getVector().getType());
+		
+		checkRequired(vectorType, inst.getVector().eContainingFeature(), TypeResolver.TYPE_ANY_VECTOR);
+		checkRequired(inst.getIndex().getType(), TypeResolver.TYPE_I32);
+		
+		checkExpected(vectorType, inst.getElement().getType());
+	}
+	
+	@Check
+	private void checkShuffleelement(Instruction_shufflevector inst) {
+		ResolvedType vector1type = resolveType(inst.getVector1().getType());
+		ResolvedType vector2type = resolveType(inst.getVector2().getType());
+		checkRequired(vector1type, inst.getVector1().eContainingFeature(), TypeResolver.TYPE_ANY_VECTOR);
+		checkRequired(vector2type, inst.getVector2().eContainingFeature(), TypeResolver.TYPE_ANY_VECTOR);
+		
+		checkExpected(vector1type, vector2type, inst.getVector2().eContainingFeature());
 	}
 	
 	@Check
@@ -137,9 +261,23 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 //		}
 //	}
 	
+	private void checkIntegerBinary(BinaryInstruction inst) {
+		// Instruction is only permitted on integers and integer vectors.
+		checkRequired(inst.getType(), TypeResolver.TYPE_ANY_INTEGER, TypeResolver.TYPE_INTEGER_VECTOR);
+		// General binary verification.
+		checkBinary(inst);
+	}
+	
+	private void checkFloatingBinary(BinaryInstruction inst) {
+		// Add is only permitted on integers and integer vectors.
+		checkRequired(inst.getType(), TypeResolver.TYPE_FLOATING, TypeResolver.TYPE_FLOATING_VECTOR);
+		// General binary verification.
+		checkBinary(inst);
+	}
+	
 	private void checkConstantFitsInType(ResolvedType type, Constant val) {
+		int size = type.getBits();
 		try {
-			int size = type.getBits();
 			String constText = NodeModelUtils.getTokenText(NodeModelUtils.getNode(val));
 			long number = Long.parseLong(constText);
 			long actual = number >= 0 ? number : 1 - number;
@@ -153,20 +291,29 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	private void checkRequired(EObject obj, ResolvedType... types) {
-		ResolvedType instType = resolveType(obj);
+		checkRequired(resolveType(obj), obj.eContainingFeature(), types);
+	}
+	
+	private void checkRequired(ResolvedType instType, EStructuralFeature feature, ResolvedType... types) {
 		for (ResolvedType t : types) {
 			if (instType.accepts(t)) return;
 		}
-		error("Encountered " + instType + ", only allowed types are " + Arrays.toString(types), obj.eContainingFeature());
+		error("Encountered " + instType + ", only allowed types are " + Arrays.toString(types), feature);
 	}
 	
 	private void checkExpected(EObject expected, EObject actual) {
-		checkExpected(expected, actual, actual.eContainingFeature(), 0);
+		checkExpected(resolveType(expected), resolveType(actual), actual.eContainingFeature(), 0);
 	}
 	
-	private void checkExpected(EObject expected, EObject actual, EStructuralFeature feature, int index) {
-		ResolvedType expectedType = resolveType(expected);
-		ResolvedType actualType = resolveType(actual);
+	private void checkExpected(ResolvedType expectedType, EObject actual) {
+		checkExpected(expectedType, resolveType(actual), actual.eContainingFeature(), 0);
+	}
+	
+	private void checkExpected(ResolvedType expectedType, ResolvedType actualType, EStructuralFeature feature) {
+		checkExpected(expectedType, actualType, feature, 0);
+	}
+	
+	private void checkExpected(ResolvedType expectedType, ResolvedType actualType, EStructuralFeature feature, int index) {
 		if (expectedType.accepts(actualType)) return;
 
 		List<String> ops = getConversionOps(actualType, expectedType);

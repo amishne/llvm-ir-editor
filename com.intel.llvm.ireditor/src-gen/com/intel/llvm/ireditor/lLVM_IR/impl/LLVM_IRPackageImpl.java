@@ -2198,6 +2198,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getSimpleConstant_Value()
+  {
+    return (EAttribute)simpleConstantEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMetadataNode()
   {
     return metadataNodeEClass;
@@ -5223,6 +5233,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEReference(typedConstantEClass, TYPED_CONSTANT__VALUE);
 
     simpleConstantEClass = createEClass(SIMPLE_CONSTANT);
+    createEAttribute(simpleConstantEClass, SIMPLE_CONSTANT__VALUE);
 
     metadataNodeEClass = createEClass(METADATA_NODE);
     createEReference(metadataNodeEClass, METADATA_NODE__ELEMENTS);
@@ -5859,6 +5870,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEReference(getTypedConstant_Value(), this.getConstant(), null, "value", null, 0, 1, TypedConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(simpleConstantEClass, SimpleConstant.class, "SimpleConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSimpleConstant_Value(), ecorePackage.getEString(), "value", null, 0, 1, SimpleConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metadataNodeEClass, MetadataNode.class, "MetadataNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetadataNode_Elements(), this.getMetadataNodeElement(), null, "elements", null, 0, -1, MetadataNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

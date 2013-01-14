@@ -2692,7 +2692,14 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     {SimpleConstant}
+	 *     (
+	 *         value=INTEGER | 
+	 *         value=SIGNED_INT | 
+	 *         value=FLOAT | 
+	 *         value=BOOLEAN | 
+	 *         value=NULL | 
+	 *         value=CSTRING
+	 *     )
 	 */
 	protected void sequence_SimpleConstant(EObject context, SimpleConstant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

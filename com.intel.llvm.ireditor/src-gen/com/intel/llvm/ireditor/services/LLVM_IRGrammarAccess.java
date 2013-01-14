@@ -1742,47 +1742,43 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class SimpleConstantElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SimpleConstant");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final RuleCall cINTEGERTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
-		private final RuleCall cSIGNED_INTTerminalRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
-		private final RuleCall cFLOATTerminalRuleCall_0_2 = (RuleCall)cAlternatives_0.eContents().get(2);
-		private final RuleCall cBOOLEANTerminalRuleCall_0_3 = (RuleCall)cAlternatives_0.eContents().get(3);
-		private final RuleCall cNULLTerminalRuleCall_0_4 = (RuleCall)cAlternatives_0.eContents().get(4);
-		private final RuleCall cCSTRINGTerminalRuleCall_0_5 = (RuleCall)cAlternatives_0.eContents().get(5);
-		private final Action cSimpleConstantAction_1 = (Action)cGroup.eContents().get(1);
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final Alternatives cValueAlternatives_0 = (Alternatives)cValueAssignment.eContents().get(0);
+		private final RuleCall cValueINTEGERTerminalRuleCall_0_0 = (RuleCall)cValueAlternatives_0.eContents().get(0);
+		private final RuleCall cValueSIGNED_INTTerminalRuleCall_0_1 = (RuleCall)cValueAlternatives_0.eContents().get(1);
+		private final RuleCall cValueFLOATTerminalRuleCall_0_2 = (RuleCall)cValueAlternatives_0.eContents().get(2);
+		private final RuleCall cValueBOOLEANTerminalRuleCall_0_3 = (RuleCall)cValueAlternatives_0.eContents().get(3);
+		private final RuleCall cValueNULLTerminalRuleCall_0_4 = (RuleCall)cValueAlternatives_0.eContents().get(4);
+		private final RuleCall cValueCSTRINGTerminalRuleCall_0_5 = (RuleCall)cValueAlternatives_0.eContents().get(5);
 		
 		//SimpleConstant:
 		//
-		//	(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING) {SimpleConstant};
+		//	value=(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING);
 		public ParserRule getRule() { return rule; }
 
-		//(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING) {SimpleConstant}
-		public Group getGroup() { return cGroup; }
+		//value=(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING)
+		public Assignment getValueAssignment() { return cValueAssignment; }
 
 		//INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		public Alternatives getValueAlternatives_0() { return cValueAlternatives_0; }
 
 		//INTEGER
-		public RuleCall getINTEGERTerminalRuleCall_0_0() { return cINTEGERTerminalRuleCall_0_0; }
+		public RuleCall getValueINTEGERTerminalRuleCall_0_0() { return cValueINTEGERTerminalRuleCall_0_0; }
 
 		//SIGNED_INT
-		public RuleCall getSIGNED_INTTerminalRuleCall_0_1() { return cSIGNED_INTTerminalRuleCall_0_1; }
+		public RuleCall getValueSIGNED_INTTerminalRuleCall_0_1() { return cValueSIGNED_INTTerminalRuleCall_0_1; }
 
 		//FLOAT
-		public RuleCall getFLOATTerminalRuleCall_0_2() { return cFLOATTerminalRuleCall_0_2; }
+		public RuleCall getValueFLOATTerminalRuleCall_0_2() { return cValueFLOATTerminalRuleCall_0_2; }
 
 		//BOOLEAN
-		public RuleCall getBOOLEANTerminalRuleCall_0_3() { return cBOOLEANTerminalRuleCall_0_3; }
+		public RuleCall getValueBOOLEANTerminalRuleCall_0_3() { return cValueBOOLEANTerminalRuleCall_0_3; }
 
 		//NULL
-		public RuleCall getNULLTerminalRuleCall_0_4() { return cNULLTerminalRuleCall_0_4; }
+		public RuleCall getValueNULLTerminalRuleCall_0_4() { return cValueNULLTerminalRuleCall_0_4; }
 
 		//CSTRING
-		public RuleCall getCSTRINGTerminalRuleCall_0_5() { return cCSTRINGTerminalRuleCall_0_5; }
-
-		//{SimpleConstant}
-		public Action getSimpleConstantAction_1() { return cSimpleConstantAction_1; }
+		public RuleCall getValueCSTRINGTerminalRuleCall_0_5() { return cValueCSTRINGTerminalRuleCall_0_5; }
 	}
 
 	public class MetadataNodeElements extends AbstractParserRuleElementFinder {
@@ -8479,7 +8475,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//SimpleConstant:
 	//
-	//	(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING) {SimpleConstant};
+	//	value=(INTEGER | SIGNED_INT | FLOAT | BOOLEAN | NULL | CSTRING);
 	public SimpleConstantElements getSimpleConstantAccess() {
 		return (pSimpleConstant != null) ? pSimpleConstant : (pSimpleConstant = new SimpleConstantElements());
 	}
