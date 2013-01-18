@@ -28,7 +28,7 @@ package com.intel.llvm.ireditor.resolvedtypes;
 
 import java.util.List;
 
-public class ResolvedStructType extends ResolvedType {
+public class ResolvedStructType extends ResolvedAnyStructType {
 	private List<ResolvedType> fieldTypes;
 	private boolean packed;
 	

@@ -3548,9 +3548,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAggregateInstruction_Indices()
+  public EReference getAggregateInstruction_Indices()
   {
-    return (EAttribute)aggregateInstructionEClass.getEStructuralFeatures().get(2);
+    return (EReference)aggregateInstructionEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3898,7 +3898,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_getelementptr_Pointer()
+  public EReference getInstruction_getelementptr_Base()
   {
     return (EReference)instruction_getelementptrEClass.getEStructuralFeatures().get(0);
   }
@@ -5420,7 +5420,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     aggregateInstructionEClass = createEClass(AGGREGATE_INSTRUCTION);
     createEAttribute(aggregateInstructionEClass, AGGREGATE_INSTRUCTION__OPCODE);
     createEReference(aggregateInstructionEClass, AGGREGATE_INSTRUCTION__AGGREGATE);
-    createEAttribute(aggregateInstructionEClass, AGGREGATE_INSTRUCTION__INDICES);
+    createEReference(aggregateInstructionEClass, AGGREGATE_INSTRUCTION__INDICES);
 
     instruction_extractvalueEClass = createEClass(INSTRUCTION_EXTRACTVALUE);
 
@@ -5465,7 +5465,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(instruction_atomicrmwEClass, INSTRUCTION_ATOMICRMW__ORDERING);
 
     instruction_getelementptrEClass = createEClass(INSTRUCTION_GETELEMENTPTR);
-    createEReference(instruction_getelementptrEClass, INSTRUCTION_GETELEMENTPTR__POINTER);
+    createEReference(instruction_getelementptrEClass, INSTRUCTION_GETELEMENTPTR__BASE);
     createEReference(instruction_getelementptrEClass, INSTRUCTION_GETELEMENTPTR__INDICES);
 
     conversionInstructionEClass = createEClass(CONVERSION_INSTRUCTION);
@@ -6057,7 +6057,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(aggregateInstructionEClass, AggregateInstruction.class, "AggregateInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAggregateInstruction_Opcode(), ecorePackage.getEString(), "opcode", null, 0, 1, AggregateInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAggregateInstruction_Aggregate(), this.getTypedValue(), null, "aggregate", null, 0, 1, AggregateInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAggregateInstruction_Indices(), ecorePackage.getEString(), "indices", null, 0, -1, AggregateInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAggregateInstruction_Indices(), this.getConstant(), null, "indices", null, 0, -1, AggregateInstruction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruction_extractvalueEClass, Instruction_extractvalue.class, "Instruction_extractvalue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -6102,7 +6102,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getInstruction_atomicrmw_Ordering(), ecorePackage.getEString(), "ordering", null, 0, 1, Instruction_atomicrmw.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruction_getelementptrEClass, Instruction_getelementptr.class, "Instruction_getelementptr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInstruction_getelementptr_Pointer(), this.getTypedValue(), null, "pointer", null, 0, 1, Instruction_getelementptr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_getelementptr_Base(), this.getTypedValue(), null, "base", null, 0, 1, Instruction_getelementptr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_getelementptr_Indices(), this.getTypedValue(), null, "indices", null, 0, -1, Instruction_getelementptr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(conversionInstructionEClass, ConversionInstruction.class, "ConversionInstruction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

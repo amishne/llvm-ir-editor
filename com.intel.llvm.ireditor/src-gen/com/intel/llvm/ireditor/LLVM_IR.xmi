@@ -1839,7 +1839,7 @@
       <elements xsi:type="xtext:Group" cardinality="+">
         <elements xsi:type="xtext:Keyword" value=","/>
         <elements xsi:type="xtext:Assignment" feature="indices" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.162"/>
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.18"/>
         </elements>
       </elements>
     </alternatives>
@@ -1862,7 +1862,7 @@
       <elements xsi:type="xtext:Group" cardinality="+">
         <elements xsi:type="xtext:Keyword" value=","/>
         <elements xsi:type="xtext:Assignment" feature="indices" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.162"/>
+          <terminal xsi:type="xtext:RuleCall" rule="//@rules.18"/>
         </elements>
       </elements>
     </alternatives>
@@ -2102,7 +2102,7 @@
         <terminal xsi:type="xtext:Keyword" value="getelementptr"/>
       </elements>
       <elements xsi:type="xtext:Keyword" cardinality="?" value="inbounds"/>
-      <elements xsi:type="xtext:Assignment" feature="pointer" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="base" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.128"/>
       </elements>
       <elements xsi:type="xtext:Group" cardinality="*">

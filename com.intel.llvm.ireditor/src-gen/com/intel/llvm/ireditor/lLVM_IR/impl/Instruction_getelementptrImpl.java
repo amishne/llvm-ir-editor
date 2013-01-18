@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_getelementptrImpl#getPointer <em>Pointer</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_getelementptrImpl#getBase <em>Base</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_getelementptrImpl#getIndices <em>Indices</em>}</li>
  * </ul>
  * </p>
@@ -38,14 +38,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class Instruction_getelementptrImpl extends MemoryInstructionImpl implements Instruction_getelementptr
 {
   /**
-   * The cached value of the '{@link #getPointer() <em>Pointer</em>}' containment reference.
+   * The cached value of the '{@link #getBase() <em>Base</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPointer()
+   * @see #getBase()
    * @generated
    * @ordered
    */
-  protected TypedValue pointer;
+  protected TypedValue base;
 
   /**
    * The cached value of the '{@link #getIndices() <em>Indices</em>}' containment reference list.
@@ -83,9 +83,9 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypedValue getPointer()
+  public TypedValue getBase()
   {
-    return pointer;
+    return base;
   }
 
   /**
@@ -93,13 +93,13 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPointer(TypedValue newPointer, NotificationChain msgs)
+  public NotificationChain basicSetBase(TypedValue newBase, NotificationChain msgs)
   {
-    TypedValue oldPointer = pointer;
-    pointer = newPointer;
+    TypedValue oldBase = base;
+    base = newBase;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER, oldPointer, newPointer);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE, oldBase, newBase);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -110,20 +110,20 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPointer(TypedValue newPointer)
+  public void setBase(TypedValue newBase)
   {
-    if (newPointer != pointer)
+    if (newBase != base)
     {
       NotificationChain msgs = null;
-      if (pointer != null)
-        msgs = ((InternalEObject)pointer).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER, null, msgs);
-      if (newPointer != null)
-        msgs = ((InternalEObject)newPointer).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER, null, msgs);
-      msgs = basicSetPointer(newPointer, msgs);
+      if (base != null)
+        msgs = ((InternalEObject)base).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE, null, msgs);
+      if (newBase != null)
+        msgs = ((InternalEObject)newBase).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE, null, msgs);
+      msgs = basicSetBase(newBase, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER, newPointer, newPointer));
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE, newBase, newBase));
   }
 
   /**
@@ -150,8 +150,8 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER:
-        return basicSetPointer(null, msgs);
+      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE:
+        return basicSetBase(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__INDICES:
         return ((InternalEList<?>)getIndices()).basicRemove(otherEnd, msgs);
     }
@@ -168,8 +168,8 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER:
-        return getPointer();
+      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE:
+        return getBase();
       case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__INDICES:
         return getIndices();
     }
@@ -187,8 +187,8 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER:
-        setPointer((TypedValue)newValue);
+      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE:
+        setBase((TypedValue)newValue);
         return;
       case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__INDICES:
         getIndices().clear();
@@ -208,8 +208,8 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER:
-        setPointer((TypedValue)null);
+      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE:
+        setBase((TypedValue)null);
         return;
       case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__INDICES:
         getIndices().clear();
@@ -228,8 +228,8 @@ public class Instruction_getelementptrImpl extends MemoryInstructionImpl impleme
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__POINTER:
-        return pointer != null;
+      case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__BASE:
+        return base != null;
       case LLVM_IRPackage.INSTRUCTION_GETELEMENTPTR__INDICES:
         return indices != null && !indices.isEmpty();
     }

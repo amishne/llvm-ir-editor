@@ -530,7 +530,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstruction_atomicrmwAccess().getArgumentAssignment_5(), "rule__Instruction_atomicrmw__ArgumentAssignment_5");
 					put(grammarAccess.getInstruction_atomicrmwAccess().getOrderingAssignment_7(), "rule__Instruction_atomicrmw__OrderingAssignment_7");
 					put(grammarAccess.getInstruction_getelementptrAccess().getOpcodeAssignment_0(), "rule__Instruction_getelementptr__OpcodeAssignment_0");
-					put(grammarAccess.getInstruction_getelementptrAccess().getPointerAssignment_2(), "rule__Instruction_getelementptr__PointerAssignment_2");
+					put(grammarAccess.getInstruction_getelementptrAccess().getBaseAssignment_2(), "rule__Instruction_getelementptr__BaseAssignment_2");
 					put(grammarAccess.getInstruction_getelementptrAccess().getIndicesAssignment_3_1(), "rule__Instruction_getelementptr__IndicesAssignment_3_1");
 					put(grammarAccess.getConversionInstructionAccess().getOpcodeAssignment_0(), "rule__ConversionInstruction__OpcodeAssignment_0");
 					put(grammarAccess.getConversionInstructionAccess().getFromTypeAssignment_1(), "rule__ConversionInstruction__FromTypeAssignment_1");

@@ -50,12 +50,20 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_alloca;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_cmpxchg;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractelement;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractvalue;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fcmp;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_icmp;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertvalue;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_load;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_select;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_shufflevector;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_va_arg;
 import com.intel.llvm.ireditor.lLVM_IR.IntType;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.MetadataType;
@@ -75,33 +83,39 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
-import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
 import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
 import com.intel.llvm.ireditor.lLVM_IR.X86mmxType;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
+import com.intel.llvm.ireditor.resolvedconstants.ConstantResolver;
 
 /**
  * Converts an EObject to a String representing its type.
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private final LinkedList<TypeDef> enclosing = new LinkedList<TypeDef>();
+	private final ConstantResolver constResolver = new ConstantResolver();
 	
-	private static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
-	private static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();
-	private static final ResolvedVarargType TYPE_VARARG = new ResolvedVarargType();
-	private static final ResolvedAnyType TYPE_ANY = new ResolvedAnyType();
-	private static final ResolvedStringType TYPE_CSTRING = new ResolvedStringType();
+	public static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
+	public static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();
+	public static final ResolvedVarargType TYPE_VARARG = new ResolvedVarargType();
+	public static final ResolvedAnyType TYPE_ANY = new ResolvedAnyType();
+	public static final ResolvedType TYPE_ANY_POINTER = new ResolvedPointerType(TYPE_ANY, 0);
+	public static final ResolvedStringType TYPE_CSTRING = new ResolvedStringType();
 	public static final ResolvedAnyFloatingType TYPE_FLOATING = new ResolvedAnyFloatingType();
-	private static final ResolvedIntegerType TYPE_BOOLEAN = new ResolvedIntegerType(1);
-	private static final ResolvedMetadataType TYPE_METADATA = new ResolvedMetadataType();
-	private static final ResolvedOpaqueType TYPE_OPAQUE = new ResolvedOpaqueType();
+	public static final ResolvedIntegerType TYPE_BOOLEAN = new ResolvedIntegerType(1);
+	public static final ResolvedMetadataType TYPE_METADATA = new ResolvedMetadataType();
+	public static final ResolvedOpaqueType TYPE_OPAQUE = new ResolvedOpaqueType();
 	public static final ResolvedAnyIntegerType TYPE_ANY_INTEGER = new ResolvedAnyIntegerType();
 	public static final ResolvedAnyVectorType TYPE_ANY_VECTOR = new ResolvedAnyVectorType();
-	public static final ResolvedAnyTypedVectorType TYPE_INTEGER_VECTOR = new ResolvedAnyTypedVectorType(TYPE_ANY_INTEGER);
-	public static final ResolvedAnyTypedVectorType TYPE_FLOATING_VECTOR = new ResolvedAnyTypedVectorType(TYPE_FLOATING);
 	public static final ResolvedIntegerType TYPE_I32 = new ResolvedIntegerType(32);
+	public static final ResolvedType TYPE_ANY_ARRAY = new ResolvedAnyArrayType();
+	public static final ResolvedType TYPE_ANY_STRUCT = new ResolvedAnyStructType();
+	public static final ResolvedAnyTypedVectorType TYPE_INTEGER_VECTOR = new ResolvedAnyTypedVectorType(TYPE_ANY_INTEGER);
+	public static final ResolvedAnyTypedVectorType TYPE_POINTER_VECTOR = new ResolvedAnyTypedVectorType(TYPE_ANY_POINTER);
+	public static final ResolvedAnyTypedVectorType TYPE_FLOATING_VECTOR = new ResolvedAnyTypedVectorType(TYPE_FLOATING);
+	public static final ResolvedAnyTypedVectorType TYPE_BOOLEAN_VECTOR = new ResolvedAnyTypedVectorType(TYPE_BOOLEAN);
 
 	static {
 		SIMPLE_TYPES.put("void", new ResolvedVoidType());
@@ -343,6 +357,16 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	@Override
+	public ResolvedType caseInstruction_select(Instruction_select object) {
+		ResolvedType conditionType = resolve(object.getCondition());
+		if (conditionType instanceof ResolvedVectorType) {
+			return new ResolvedVectorType(((ResolvedVectorType) conditionType).getSize(),
+					resolve(object.getValue1()).getContainedType(0));
+		}
+		return resolve(object.getValue1().getType());
+	}
+	
+	@Override
 	public ResolvedType caseInstruction_load(Instruction_load object) {
 		return resolve(object.getPointer().getType());
 	}
@@ -366,29 +390,80 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedType caseInstruction_getelementptr(Instruction_getelementptr object) {
-		ResolvedType result = resolve(object.getPointer().getType());
-		for (TypedValue index : object.getIndices()) {
-			Integer indexValue = getNumericConstant(index.getRef());
-			result = result.getContainedType(indexValue == null ? 0 : indexValue);
+		ResolvedType result = resolve(object.getBase().getType());
+		if (result instanceof ResolvedVectorType) {
+			return result;
 		}
+		
+		for (TypedValue index : object.getIndices()) {
+			Integer indexValue = 0;
+			if (result instanceof StructType) {
+				indexValue = constResolver.getInteger(index.getRef());
+				if (indexValue == null) {
+					// We could not resolve the index constant, so we cannot tell what the type is.
+					return TYPE_ANY;
+				}
+			}
+			result = result.getContainedType(indexValue);
+		}
+		
+		return new ResolvedPointerType(result, 0);
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_extractvalue(Instruction_extractvalue object) {
+		ResolvedType result = resolve(object.getAggregate().getType());
+		
+		for (Constant index : object.getIndices()) {
+			Integer indexValue = constResolver.getInteger(index);
+			if (indexValue == null) {
+				// We could not resolve the index constant, so we cannot tell what the type is.
+				return TYPE_ANY;
+			}
+			result = result.getContainedType(indexValue);
+		}
+		
 		return result;
 	}
 	
-
-	private Integer getNumericConstant(ValueRef ref) {
-		if (ref instanceof GlobalValueRef == false) return null;
-		Constant c = ((GlobalValueRef)ref).getConstant();
-		if (c instanceof SimpleConstant == false) return null;
-		
-		String value = ((SimpleConstant) c).getValue();
-		try {
-			return Integer.parseInt(value);
-		} catch (NumberFormatException e) {
-			return null;
-		}
+	@Override
+	public ResolvedType caseInstruction_insertvalue(Instruction_insertvalue object) {
+		return resolve(object.getAggregate().getType());
 	}
-
-
+	
+	@Override
+	public ResolvedType caseInstruction_cmpxchg(Instruction_cmpxchg object) {
+		return resolve(object.getComparedWith().getType());
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_icmp(Instruction_icmp object) {
+		ResolvedType type = resolve(object.getType());
+		if (type instanceof ResolvedVectorType) {
+			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
+		}
+		return TYPE_BOOLEAN;
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_fcmp(Instruction_fcmp object) {
+		ResolvedType type = resolve(object.getType());
+		if (type instanceof ResolvedVectorType) {
+			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
+		}
+		return TYPE_BOOLEAN;
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_va_arg(Instruction_va_arg object) {
+		return resolve(object.getType());
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_landingpad(Instruction_landingpad object) {
+		return resolve(object.getResultType());
+	}
+	
 	private String textOf(EObject object) {
 		return NodeModelUtils.getTokenText(NodeModelUtils.getNode(object));
 	}

@@ -26,7 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.resolvedtypes;
 
-public class ResolvedArrayType extends ResolvedType {
+public class ResolvedArrayType extends ResolvedAnyArrayType {
 
 	private ResolvedType elementType;
 	private int size;

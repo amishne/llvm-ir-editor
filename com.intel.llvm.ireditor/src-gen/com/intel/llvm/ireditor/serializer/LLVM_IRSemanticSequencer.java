@@ -1679,7 +1679,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='extractvalue' aggregate=TypedValue indices+=INTEGER+)
+	 *     (opcode='extractvalue' aggregate=TypedValue indices+=Constant+)
 	 */
 	protected void sequence_Instruction_extractvalue(EObject context, Instruction_extractvalue semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1860,7 +1860,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='getelementptr' pointer=TypedValue indices+=TypedValue*)
+	 *     (opcode='getelementptr' base=TypedValue indices+=TypedValue*)
 	 */
 	protected void sequence_Instruction_getelementptr(EObject context, Instruction_getelementptr semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1931,7 +1931,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='insertvalue' aggregate=TypedValue element=TypedValue indices+=INTEGER+)
+	 *     (opcode='insertvalue' aggregate=TypedValue element=TypedValue indices+=Constant+)
 	 */
 	protected void sequence_Instruction_insertvalue(EObject context, Instruction_insertvalue semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

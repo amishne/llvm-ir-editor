@@ -12,7 +12,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getPointer <em>Pointer</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getBase <em>Base</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getIndices <em>Indices</em>}</li>
  * </ul>
  * </p>
@@ -24,30 +24,30 @@ import org.eclipse.emf.common.util.EList;
 public interface Instruction_getelementptr extends MemoryInstruction
 {
   /**
-   * Returns the value of the '<em><b>Pointer</b></em>' containment reference.
+   * Returns the value of the '<em><b>Base</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Pointer</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Base</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Pointer</em>' containment reference.
-   * @see #setPointer(TypedValue)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_getelementptr_Pointer()
+   * @return the value of the '<em>Base</em>' containment reference.
+   * @see #setBase(TypedValue)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_getelementptr_Base()
    * @model containment="true"
    * @generated
    */
-  TypedValue getPointer();
+  TypedValue getBase();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getPointer <em>Pointer</em>}' containment reference.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getBase <em>Base</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pointer</em>' containment reference.
-   * @see #getPointer()
+   * @param value the new value of the '<em>Base</em>' containment reference.
+   * @see #getBase()
    * @generated
    */
-  void setPointer(TypedValue value);
+  void setBase(TypedValue value);
 
   /**
    * Returns the value of the '<em><b>Indices</b></em>' containment reference list.

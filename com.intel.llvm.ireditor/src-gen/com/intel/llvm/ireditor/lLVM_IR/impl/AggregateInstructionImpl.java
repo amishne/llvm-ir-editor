@@ -3,6 +3,7 @@
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 
@@ -19,7 +20,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,14 +71,14 @@ public class AggregateInstructionImpl extends MinimalEObjectImpl.Container imple
   protected TypedValue aggregate;
 
   /**
-   * The cached value of the '{@link #getIndices() <em>Indices</em>}' attribute list.
+   * The cached value of the '{@link #getIndices() <em>Indices</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getIndices()
    * @generated
    * @ordered
    */
-  protected EList<String> indices;
+  protected EList<Constant> indices;
 
   /**
    * <!-- begin-user-doc -->
@@ -175,11 +177,11 @@ public class AggregateInstructionImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getIndices()
+  public EList<Constant> getIndices()
   {
     if (indices == null)
     {
-      indices = new EDataTypeEList<String>(String.class, this, LLVM_IRPackage.AGGREGATE_INSTRUCTION__INDICES);
+      indices = new EObjectContainmentEList<Constant>(Constant.class, this, LLVM_IRPackage.AGGREGATE_INSTRUCTION__INDICES);
     }
     return indices;
   }
@@ -196,6 +198,8 @@ public class AggregateInstructionImpl extends MinimalEObjectImpl.Container imple
     {
       case LLVM_IRPackage.AGGREGATE_INSTRUCTION__AGGREGATE:
         return basicSetAggregate(null, msgs);
+      case LLVM_IRPackage.AGGREGATE_INSTRUCTION__INDICES:
+        return ((InternalEList<?>)getIndices()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -239,7 +243,7 @@ public class AggregateInstructionImpl extends MinimalEObjectImpl.Container imple
         return;
       case LLVM_IRPackage.AGGREGATE_INSTRUCTION__INDICES:
         getIndices().clear();
-        getIndices().addAll((Collection<? extends String>)newValue);
+        getIndices().addAll((Collection<? extends Constant>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -301,8 +305,6 @@ public class AggregateInstructionImpl extends MinimalEObjectImpl.Container imple
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (opcode: ");
     result.append(opcode);
-    result.append(", indices: ");
-    result.append(indices);
     result.append(')');
     return result.toString();
   }

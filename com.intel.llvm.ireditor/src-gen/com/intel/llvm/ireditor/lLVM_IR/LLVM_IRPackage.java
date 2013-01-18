@@ -3955,7 +3955,7 @@ public interface LLVM_IRPackage extends EPackage
   int AGGREGATE_INSTRUCTION__AGGREGATE = 1;
 
   /**
-   * The feature id for the '<em><b>Indices</b></em>' attribute list.
+   * The feature id for the '<em><b>Indices</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4001,7 +4001,7 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_EXTRACTVALUE__AGGREGATE = AGGREGATE_INSTRUCTION__AGGREGATE;
 
   /**
-   * The feature id for the '<em><b>Indices</b></em>' attribute list.
+   * The feature id for the '<em><b>Indices</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4047,7 +4047,7 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_INSERTVALUE__AGGREGATE = AGGREGATE_INSTRUCTION__AGGREGATE;
 
   /**
-   * The feature id for the '<em><b>Indices</b></em>' attribute list.
+   * The feature id for the '<em><b>Indices</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4487,13 +4487,13 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_GETELEMENTPTR__OPCODE = MEMORY_INSTRUCTION__OPCODE;
 
   /**
-   * The feature id for the '<em><b>Pointer</b></em>' containment reference.
+   * The feature id for the '<em><b>Base</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_GETELEMENTPTR__POINTER = MEMORY_INSTRUCTION_FEATURE_COUNT + 0;
+  int INSTRUCTION_GETELEMENTPTR__BASE = MEMORY_INSTRUCTION_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Indices</b></em>' containment reference list.
@@ -8463,15 +8463,15 @@ public interface LLVM_IRPackage extends EPackage
   EReference getAggregateInstruction_Aggregate();
 
   /**
-   * Returns the meta object for the attribute list '{@link com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction#getIndices <em>Indices</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction#getIndices <em>Indices</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Indices</em>'.
+   * @return the meta object for the containment reference list '<em>Indices</em>'.
    * @see com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction#getIndices()
    * @see #getAggregateInstruction()
    * @generated
    */
-  EAttribute getAggregateInstruction_Indices();
+  EReference getAggregateInstruction_Indices();
 
   /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_extractvalue <em>Instruction extractvalue</em>}'.
@@ -8838,15 +8838,15 @@ public interface LLVM_IRPackage extends EPackage
   EClass getInstruction_getelementptr();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getPointer <em>Pointer</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getBase <em>Base</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Pointer</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getPointer()
+   * @return the meta object for the containment reference '<em>Base</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getBase()
    * @see #getInstruction_getelementptr()
    * @generated
    */
-  EReference getInstruction_getelementptr_Pointer();
+  EReference getInstruction_getelementptr_Base();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr#getIndices <em>Indices</em>}'.
@@ -12197,12 +12197,12 @@ public interface LLVM_IRPackage extends EPackage
     EReference AGGREGATE_INSTRUCTION__AGGREGATE = eINSTANCE.getAggregateInstruction_Aggregate();
 
     /**
-     * The meta object literal for the '<em><b>Indices</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Indices</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute AGGREGATE_INSTRUCTION__INDICES = eINSTANCE.getAggregateInstruction_Indices();
+    EReference AGGREGATE_INSTRUCTION__INDICES = eINSTANCE.getAggregateInstruction_Indices();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_extractvalueImpl <em>Instruction extractvalue</em>}' class.
@@ -12497,12 +12497,12 @@ public interface LLVM_IRPackage extends EPackage
     EClass INSTRUCTION_GETELEMENTPTR = eINSTANCE.getInstruction_getelementptr();
 
     /**
-     * The meta object literal for the '<em><b>Pointer</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Base</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSTRUCTION_GETELEMENTPTR__POINTER = eINSTANCE.getInstruction_getelementptr_Pointer();
+    EReference INSTRUCTION_GETELEMENTPTR__BASE = eINSTANCE.getInstruction_getelementptr_Base();
 
     /**
      * The meta object literal for the '<em><b>Indices</b></em>' containment reference list feature.

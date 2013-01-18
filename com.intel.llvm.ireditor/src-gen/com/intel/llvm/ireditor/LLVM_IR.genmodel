@@ -307,7 +307,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//AggregateInstruction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AggregateInstruction/opcode"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AggregateInstruction/aggregate"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AggregateInstruction/indices"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AggregateInstruction/indices"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_extractvalue"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_insertvalue">
@@ -351,7 +351,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_atomicrmw/ordering"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_getelementptr">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_getelementptr/pointer"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_getelementptr/base"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_getelementptr/indices"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//ConversionInstruction">

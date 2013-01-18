@@ -42,39 +42,54 @@ import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_cmpxchg;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractelement;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractvalue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_fadd;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fcmp;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_fdiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_fmul;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_frem;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_fsub;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_icmp;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertvalue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_mul;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_ret;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_sdiv;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_select;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_shufflevector;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_srem;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_store;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_sub;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_switch;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
+import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
+import com.intel.llvm.ireditor.resolvedconstants.ConstantResolver;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedFloatingType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedIntegerType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedPointerType;
 import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
+import com.intel.llvm.ireditor.resolvedtypes.ResolvedVectorType;
 import com.intel.llvm.ireditor.resolvedtypes.TypeResolver;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
+
+import static com.intel.llvm.ireditor.resolvedtypes.TypeResolver.*;
  
 
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public static final String ERROR_EXPECTED_TYPE = "expected type not matched";
-	private final TypeResolver resolver = new TypeResolver();
+	private final TypeResolver typeResolver = new TypeResolver();
+	private final ConstantResolver constResolver = new ConstantResolver();
 	private final NameMapper mapper = new NameMapper();
 
 	@Check
@@ -120,7 +135,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public void checkSwitch(Instruction_switch val) {
 		// Verify the condition is an integer type
 		ResolvedType t = resolveType(val.getComparisonValue().getType());
-		checkRequired(t, val.eContainingFeature(), TypeResolver.TYPE_ANY_INTEGER);
+		checkRequired(t, val.eContainingFeature(), TYPE_ANY_INTEGER);
 		
 		// Verify all condition cases share the condition's type
 		for (TypedValue v : val.getCaseConditions()) {
@@ -189,48 +204,209 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	@Check
-	private void checkBinary(BinaryInstruction inst) {
+	public void checkBinary(BinaryInstruction inst) {
 		ResolvedType t = resolveType(inst.getType());
 		checkExpected(t, inst.getOp1());
 		checkExpected(t, inst.getOp2());
 	}
 	
 	@Check
-	private void checkBitwiseBinary(BitwiseBinaryInstruction inst) {
+	public void checkBitwiseBinary(BitwiseBinaryInstruction inst) {
 		ResolvedType t = resolveType(inst.getType());
-		checkRequired(t, inst.eContainingFeature(), TypeResolver.TYPE_ANY_INTEGER, TypeResolver.TYPE_INTEGER_VECTOR);
+		checkRequired(t, inst.eContainingFeature(), TYPE_ANY_INTEGER, TYPE_INTEGER_VECTOR);
 		checkExpected(t, inst.getOp1());
 		checkExpected(t, inst.getOp2());
 	}
 	
 	@Check
-	private void checkExtractelement(Instruction_extractelement inst) {
-		checkRequired(inst.getVector().getType(), TypeResolver.TYPE_ANY_VECTOR);
-		checkRequired(inst.getIndex().getType(), TypeResolver.TYPE_I32);
+	public void checkExtractelement(Instruction_extractelement inst) {
+		checkRequired(inst.getVector().getType(), TYPE_ANY_VECTOR);
+		checkRequired(inst.getIndex().getType(), TYPE_I32);
 	}
 	
 	@Check
-	private void checkInsertelement(Instruction_insertelement inst) {
+	public void checkInsertelement(Instruction_insertelement inst) {
 		ResolvedType vectorType = resolveType(inst.getVector().getType());
 		
-		checkRequired(vectorType, inst.getVector().eContainingFeature(), TypeResolver.TYPE_ANY_VECTOR);
-		checkRequired(inst.getIndex().getType(), TypeResolver.TYPE_I32);
+		checkRequired(vectorType, inst.getVector().eContainingFeature(), TYPE_ANY_VECTOR);
+		checkRequired(inst.getIndex().getType(), TYPE_I32);
 		
 		checkExpected(vectorType, inst.getElement().getType());
 	}
 	
 	@Check
-	private void checkShuffleelement(Instruction_shufflevector inst) {
+	public void checkShuffleelement(Instruction_shufflevector inst) {
 		ResolvedType vector1type = resolveType(inst.getVector1().getType());
 		ResolvedType vector2type = resolveType(inst.getVector2().getType());
-		checkRequired(vector1type, inst.getVector1().eContainingFeature(), TypeResolver.TYPE_ANY_VECTOR);
-		checkRequired(vector2type, inst.getVector2().eContainingFeature(), TypeResolver.TYPE_ANY_VECTOR);
+		checkRequired(vector1type, inst.getVector1().eContainingFeature(), TYPE_ANY_VECTOR);
+		checkRequired(vector2type, inst.getVector2().eContainingFeature(), TYPE_ANY_VECTOR);
 		
 		checkExpected(vector1type, vector2type, inst.getVector2().eContainingFeature());
 	}
 	
 	@Check
-	private void checkNumberSequence(NamedMiddleInstruction val) {
+	public void checkGetelementpointer(Instruction_getelementptr inst) {
+		ResolvedType baseType = resolveType(inst.getBase().getType());
+		
+		if (baseType instanceof ResolvedPointerType) {
+			// Regular GEP
+			for (TypedValue index : inst.getIndices()) {
+				// Verify the index is numeric
+				checkRequired(resolveType(index.getType()), index.eContainingFeature(), TYPE_ANY_INTEGER);
+			}
+			
+			return;
+		}
+		
+		if (baseType instanceof ResolvedVectorType == false) {
+			error("A GEP instruction base must be either a pointer or a pointer of vectors",
+					inst.getBase().eContainingFeature());
+			
+			return;
+		}
+
+		// Pointer GEP
+
+		// Verify it's a pointer vector
+		checkRequired(baseType, LLVM_IRPackage.Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
+				TYPE_ANY_POINTER);
+
+		// Verify the index list is of size 1
+		if (inst.getIndices().size() != 1) {
+			error("A GEP instruction with pointer vector base can receive only one index",
+					LLVM_IRPackage.Literals.INSTRUCTION_GETELEMENTPTR__INDICES);
+		}
+
+		// Verify the (single) index is a vector
+		ResolvedType indexType = resolveType(inst.getIndices().get(0));
+		boolean isVector = checkRequired(indexType,
+				LLVM_IRPackage.Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
+				TYPE_ANY_VECTOR);
+		
+		if (isVector == false) return;
+
+		// Verify the contained type in the (single) index is numeric
+		ResolvedVectorType indexVectorType = (ResolvedVectorType) indexType;
+		checkRequired(indexVectorType.getContainedType(0),
+				LLVM_IRPackage.Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
+				TYPE_ANY_INTEGER);
+
+		// Verify the size of the (single) index is identical to the base size
+		if (((ResolvedVectorType)indexType).getSize() != ((ResolvedVectorType)baseType).getSize()) {
+			error("The index of a GEP instruction with pointer vector base must be the same size as the base",
+					LLVM_IRPackage.Literals.INSTRUCTION_GETELEMENTPTR__INDICES);
+		}
+
+	}
+	
+	@Check
+	public void checkExtractvalue(Instruction_extractvalue inst) {
+		checkRequired(inst.getAggregate(), TYPE_ANY_ARRAY, TYPE_ANY_STRUCT);
+		
+		for (Constant c : inst.getIndices()) {
+			checkRequired(c, TYPE_ANY_INTEGER);
+		}
+	}
+	
+	@Check
+	public void checkInsertvalue(Instruction_insertvalue inst) {
+		ResolvedType type = resolveType(inst.getAggregate().getType());
+		checkRequired(type, inst.getAggregate().eContainingFeature(),
+				TYPE_ANY_ARRAY, TYPE_ANY_STRUCT);
+		
+		for (Constant c : inst.getIndices()) {
+			// Verify the constant is an integer
+			checkRequired(c, TYPE_ANY_INTEGER);
+			
+			// Calculate the element type, if possible
+			Integer index = constResolver.getInteger(c);
+			type = index == null ? TYPE_ANY : type.getContainedType(index);
+		}
+		
+		checkExpected(type, inst.getElement());
+	}
+	
+	@Check
+	public void checkStore(Instruction_store inst) {
+		checkExpected(resolveType(inst.getPointer()).getContainedType(0), inst.getValue());
+	}
+	
+	@Check
+	public void checkCmpxchg(Instruction_cmpxchg inst) {
+		ResolvedType pointer = resolveType(inst.getPointer().getType());
+		checkRequired(pointer, inst.getPointer().eContainingFeature(), TYPE_ANY_POINTER);
+		checkRequired(pointer.getContainedType(0), inst.eContainingFeature(), TYPE_ANY_INTEGER);
+		checkExpected(pointer.getContainedType(0), inst.getComparedWith());
+		checkExpected(pointer.getContainedType(0), inst.getNewValue());
+		
+		// There are some special requirements on the type here
+		int width = pointer.getContainedType(0).getBits();
+		if (width < 8) error("cmpxchg type must have at least 8 bits", inst.eContainingFeature());
+		if ((width & (width-1)) != 0) error("cmpxchg type size must be a power of 2", inst.eContainingFeature());
+	}
+	
+	@Check
+	public void checkAtomicrmw(Instruction_atomicrmw inst) {
+		ResolvedType pointer = resolveType(inst.getPointer().getType());
+		checkRequired(pointer, inst.getPointer().eContainingFeature(), TYPE_ANY_POINTER);
+		checkRequired(pointer.getContainedType(0), inst.eContainingFeature(), TYPE_ANY_INTEGER);
+		checkExpected(pointer.getContainedType(0), inst.getArgument());
+		
+		// There are some special requirements on the type here
+		int width = pointer.getContainedType(0).getBits();
+		if (width < 8) error("cmpxchg type must have at least 8 bits", inst.eContainingFeature());
+		if ((width & (width-1)) != 0) error("cmpxchg type size must be a power of 2", inst.eContainingFeature());
+	}
+	
+	@Check
+	public void checkIcmp(Instruction_icmp inst) {
+		ResolvedType type = resolveType(inst.getType());
+		checkRequired(type, inst.getType().eContainingFeature(),
+				TYPE_ANY_INTEGER, TYPE_ANY_POINTER, TYPE_INTEGER_VECTOR, TYPE_POINTER_VECTOR);
+		
+		checkExpected(type, inst.getOp1());
+		checkExpected(type, inst.getOp2());
+	}
+	
+	@Check
+	public void checkFcmp(Instruction_fcmp inst) {
+		ResolvedType type = resolveType(inst.getType());
+		checkRequired(type, inst.getType().eContainingFeature(), TYPE_FLOATING, TYPE_FLOATING_VECTOR);
+		
+		checkExpected(type, inst.getOp1());
+		checkExpected(type, inst.getOp2());
+	}
+	
+	@Check
+	public void checkPhi(Instruction_phi inst) {
+		ResolvedType type = resolveType(inst.getType());
+		
+		for (ValueRef val : inst.getValues()) {
+			checkExpected(type, val);
+		}
+	}
+	
+	@Check
+	public void checkSelect(Instruction_select inst) {
+		// Verify types are identical
+		ResolvedType type = resolveType(inst.getValue1().getType());
+		checkExpected(type, inst.getValue2());
+		
+		// Verify condition type
+		ResolvedType condType = resolveType(inst.getCondition().getType());
+		if (condType instanceof ResolvedVectorType) {
+			checkRequired(type, inst.eContainingFeature(), TYPE_BOOLEAN_VECTOR);
+			// This is a vector select
+			if (((ResolvedVectorType) condType).getSize() != ((ResolvedVectorType) type).getSize()) {
+				error("select condition must be the same size as select values", inst.eContainingFeature());
+			}
+		} else {
+			checkRequired(condType, inst.getCondition().eContainingFeature(), TYPE_BOOLEAN);
+		}
+	}
+	
+	@Check
+	public void checkNumberSequence(NamedMiddleInstruction val) {
 		// A numbered instruction must appear in proper sequence.
 		String name = val.getName();
 		if (name.matches("[%@]\\d+") == false) return;
@@ -263,14 +439,14 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	private void checkIntegerBinary(BinaryInstruction inst) {
 		// Instruction is only permitted on integers and integer vectors.
-		checkRequired(inst.getType(), TypeResolver.TYPE_ANY_INTEGER, TypeResolver.TYPE_INTEGER_VECTOR);
+		checkRequired(inst.getType(), TYPE_ANY_INTEGER, TYPE_INTEGER_VECTOR);
 		// General binary verification.
 		checkBinary(inst);
 	}
 	
 	private void checkFloatingBinary(BinaryInstruction inst) {
 		// Add is only permitted on integers and integer vectors.
-		checkRequired(inst.getType(), TypeResolver.TYPE_FLOATING, TypeResolver.TYPE_FLOATING_VECTOR);
+		checkRequired(inst.getType(), TYPE_FLOATING, TYPE_FLOATING_VECTOR);
 		// General binary verification.
 		checkBinary(inst);
 	}
@@ -294,11 +470,12 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkRequired(resolveType(obj), obj.eContainingFeature(), types);
 	}
 	
-	private void checkRequired(ResolvedType instType, EStructuralFeature feature, ResolvedType... types) {
+	private boolean checkRequired(ResolvedType instType, EStructuralFeature feature, ResolvedType... types) {
 		for (ResolvedType t : types) {
-			if (instType.accepts(t)) return;
+			if (instType.accepts(t)) return true;
 		}
 		error("Encountered " + instType + ", only allowed types are " + Arrays.toString(types), feature);
+		return false;
 	}
 	
 	private void checkExpected(EObject expected, EObject actual) {
@@ -370,7 +547,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	 * @return
 	 */
 	private ResolvedType resolveType(EObject obj) {
-		return obj == null? null : resolver.resolve(obj);
+		return obj == null? null : typeResolver.resolve(obj);
 	}
 
 }

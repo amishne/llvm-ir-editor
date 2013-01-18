@@ -4801,16 +4801,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
 		private final Keyword cCommaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final Assignment cIndicesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cIndicesINTEGERTerminalRuleCall_2_1_0 = (RuleCall)cIndicesAssignment_2_1.eContents().get(0);
+		private final RuleCall cIndicesConstantParserRuleCall_2_1_0 = (RuleCall)cIndicesAssignment_2_1.eContents().get(0);
 		
 		//// <result> = extractvalue <aggregate type> <val>, <idx>{, <idx>}*
 		//
 		//Instruction_extractvalue:
 		//
-		//	opcode="extractvalue" aggregate=TypedValue ("," indices+=INTEGER)+;
+		//	opcode="extractvalue" aggregate=TypedValue ("," indices+=Constant)+;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="extractvalue" aggregate=TypedValue ("," indices+=INTEGER)+
+		//opcode="extractvalue" aggregate=TypedValue ("," indices+=Constant)+
 		public Group getGroup() { return cGroup; }
 
 		//opcode="extractvalue"
@@ -4825,17 +4825,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//TypedValue
 		public RuleCall getAggregateTypedValueParserRuleCall_1_0() { return cAggregateTypedValueParserRuleCall_1_0; }
 
-		//("," indices+=INTEGER)+
+		//("," indices+=Constant)+
 		public Group getGroup_2() { return cGroup_2; }
 
 		//","
 		public Keyword getCommaKeyword_2_0() { return cCommaKeyword_2_0; }
 
-		//indices+=INTEGER
+		//indices+=Constant
 		public Assignment getIndicesAssignment_2_1() { return cIndicesAssignment_2_1; }
 
-		//INTEGER
-		public RuleCall getIndicesINTEGERTerminalRuleCall_2_1_0() { return cIndicesINTEGERTerminalRuleCall_2_1_0; }
+		//Constant
+		public RuleCall getIndicesConstantParserRuleCall_2_1_0() { return cIndicesConstantParserRuleCall_2_1_0; }
 	}
 
 	public class Instruction_insertvalueElements extends AbstractParserRuleElementFinder {
@@ -4851,16 +4851,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
 		private final Keyword cCommaKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
 		private final Assignment cIndicesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cIndicesINTEGERTerminalRuleCall_4_1_0 = (RuleCall)cIndicesAssignment_4_1.eContents().get(0);
+		private final RuleCall cIndicesConstantParserRuleCall_4_1_0 = (RuleCall)cIndicesAssignment_4_1.eContents().get(0);
 		
 		//// <result> = insertvalue <aggregate type> <val>, <ty> <elt>, <idx>{, <idx>}*    ; yields <aggregate type>
 		//
 		//Instruction_insertvalue:
 		//
-		//	opcode="insertvalue" aggregate=TypedValue "," element=TypedValue ("," indices+=INTEGER)+;
+		//	opcode="insertvalue" aggregate=TypedValue "," element=TypedValue ("," indices+=Constant)+;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="insertvalue" aggregate=TypedValue "," element=TypedValue ("," indices+=INTEGER)+
+		//opcode="insertvalue" aggregate=TypedValue "," element=TypedValue ("," indices+=Constant)+
 		public Group getGroup() { return cGroup; }
 
 		//opcode="insertvalue"
@@ -4884,17 +4884,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//TypedValue
 		public RuleCall getElementTypedValueParserRuleCall_3_0() { return cElementTypedValueParserRuleCall_3_0; }
 
-		//("," indices+=INTEGER)+
+		//("," indices+=Constant)+
 		public Group getGroup_4() { return cGroup_4; }
 
 		//","
 		public Keyword getCommaKeyword_4_0() { return cCommaKeyword_4_0; }
 
-		//indices+=INTEGER
+		//indices+=Constant
 		public Assignment getIndicesAssignment_4_1() { return cIndicesAssignment_4_1; }
 
-		//INTEGER
-		public RuleCall getIndicesINTEGERTerminalRuleCall_4_1_0() { return cIndicesINTEGERTerminalRuleCall_4_1_0; }
+		//Constant
+		public RuleCall getIndicesConstantParserRuleCall_4_1_0() { return cIndicesConstantParserRuleCall_4_1_0; }
 	}
 
 	public class MemoryInstructionElements extends AbstractParserRuleElementFinder {
@@ -5563,8 +5563,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cOpcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cOpcodeGetelementptrKeyword_0_0 = (Keyword)cOpcodeAssignment_0.eContents().get(0);
 		private final Keyword cInboundsKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cPointerAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPointerTypedValueParserRuleCall_2_0 = (RuleCall)cPointerAssignment_2.eContents().get(0);
+		private final Assignment cBaseAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cBaseTypedValueParserRuleCall_2_0 = (RuleCall)cBaseAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cIndicesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
@@ -5578,10 +5578,10 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//Instruction_getelementptr:
 		//
-		//	opcode="getelementptr" "inbounds"? pointer=TypedValue ("," indices+=TypedValue)*;
+		//	opcode="getelementptr" "inbounds"? base=TypedValue ("," indices+=TypedValue)*;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="getelementptr" "inbounds"? pointer=TypedValue ("," indices+=TypedValue)*
+		//opcode="getelementptr" "inbounds"? base=TypedValue ("," indices+=TypedValue)*
 		public Group getGroup() { return cGroup; }
 
 		//opcode="getelementptr"
@@ -5593,11 +5593,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"inbounds"?
 		public Keyword getInboundsKeyword_1() { return cInboundsKeyword_1; }
 
-		//pointer=TypedValue
-		public Assignment getPointerAssignment_2() { return cPointerAssignment_2; }
+		//base=TypedValue
+		public Assignment getBaseAssignment_2() { return cBaseAssignment_2; }
 
 		//TypedValue
-		public RuleCall getPointerTypedValueParserRuleCall_2_0() { return cPointerTypedValueParserRuleCall_2_0; }
+		public RuleCall getBaseTypedValueParserRuleCall_2_0() { return cBaseTypedValueParserRuleCall_2_0; }
 
 		//("," indices+=TypedValue)*
 		public Group getGroup_3() { return cGroup_3; }
@@ -9290,7 +9290,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//Instruction_extractvalue:
 	//
-	//	opcode="extractvalue" aggregate=TypedValue ("," indices+=INTEGER)+;
+	//	opcode="extractvalue" aggregate=TypedValue ("," indices+=Constant)+;
 	public Instruction_extractvalueElements getInstruction_extractvalueAccess() {
 		return (pInstruction_extractvalue != null) ? pInstruction_extractvalue : (pInstruction_extractvalue = new Instruction_extractvalueElements());
 	}
@@ -9303,7 +9303,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//Instruction_insertvalue:
 	//
-	//	opcode="insertvalue" aggregate=TypedValue "," element=TypedValue ("," indices+=INTEGER)+;
+	//	opcode="insertvalue" aggregate=TypedValue "," element=TypedValue ("," indices+=Constant)+;
 	public Instruction_insertvalueElements getInstruction_insertvalueAccess() {
 		return (pInstruction_insertvalue != null) ? pInstruction_insertvalue : (pInstruction_insertvalue = new Instruction_insertvalueElements());
 	}
@@ -9442,7 +9442,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//Instruction_getelementptr:
 	//
-	//	opcode="getelementptr" "inbounds"? pointer=TypedValue ("," indices+=TypedValue)*;
+	//	opcode="getelementptr" "inbounds"? base=TypedValue ("," indices+=TypedValue)*;
 	public Instruction_getelementptrElements getInstruction_getelementptrAccess() {
 		return (pInstruction_getelementptr != null) ? pInstruction_getelementptr : (pInstruction_getelementptr = new Instruction_getelementptrElements());
 	}

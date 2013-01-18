@@ -21921,9 +21921,9 @@ rule__Instruction_getelementptr__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getInstruction_getelementptrAccess().getPointerAssignment_2()); }
-(rule__Instruction_getelementptr__PointerAssignment_2)
-{ after(grammarAccess.getInstruction_getelementptrAccess().getPointerAssignment_2()); }
+{ before(grammarAccess.getInstruction_getelementptrAccess().getBaseAssignment_2()); }
+(rule__Instruction_getelementptr__BaseAssignment_2)
+{ after(grammarAccess.getInstruction_getelementptrAccess().getBaseAssignment_2()); }
 )
 
 ;
@@ -31731,8 +31731,8 @@ rule__Instruction_extractvalue__IndicesAssignment_2_1
     }
 :
 (
-{ before(grammarAccess.getInstruction_extractvalueAccess().getIndicesINTEGERTerminalRuleCall_2_1_0()); }
-	RULE_INTEGER{ after(grammarAccess.getInstruction_extractvalueAccess().getIndicesINTEGERTerminalRuleCall_2_1_0()); }
+{ before(grammarAccess.getInstruction_extractvalueAccess().getIndicesConstantParserRuleCall_2_1_0()); }
+	ruleConstant{ after(grammarAccess.getInstruction_extractvalueAccess().getIndicesConstantParserRuleCall_2_1_0()); }
 )
 
 ;
@@ -31799,8 +31799,8 @@ rule__Instruction_insertvalue__IndicesAssignment_4_1
     }
 :
 (
-{ before(grammarAccess.getInstruction_insertvalueAccess().getIndicesINTEGERTerminalRuleCall_4_1_0()); }
-	RULE_INTEGER{ after(grammarAccess.getInstruction_insertvalueAccess().getIndicesINTEGERTerminalRuleCall_4_1_0()); }
+{ before(grammarAccess.getInstruction_insertvalueAccess().getIndicesConstantParserRuleCall_4_1_0()); }
+	ruleConstant{ after(grammarAccess.getInstruction_insertvalueAccess().getIndicesConstantParserRuleCall_4_1_0()); }
 )
 
 ;
@@ -32374,14 +32374,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Instruction_getelementptr__PointerAssignment_2
+rule__Instruction_getelementptr__BaseAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getInstruction_getelementptrAccess().getPointerTypedValueParserRuleCall_2_0()); }
-	ruleTypedValue{ after(grammarAccess.getInstruction_getelementptrAccess().getPointerTypedValueParserRuleCall_2_0()); }
+{ before(grammarAccess.getInstruction_getelementptrAccess().getBaseTypedValueParserRuleCall_2_0()); }
+	ruleTypedValue{ after(grammarAccess.getInstruction_getelementptrAccess().getBaseTypedValueParserRuleCall_2_0()); }
 )
 
 ;

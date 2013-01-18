@@ -22992,24 +22992,25 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstruction_extractvalue"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8593:1: ruleInstruction_extractvalue returns [EObject current=null] : ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) ) )+ ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8593:1: ruleInstruction_extractvalue returns [EObject current=null] : ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) ) )+ ) ;
     public final EObject ruleInstruction_extractvalue() throws RecognitionException {
         EObject current = null;
 
         Token lv_opcode_0_0=null;
         Token otherlv_2=null;
-        Token lv_indices_3_0=null;
         EObject lv_aggregate_1_0 = null;
+
+        EObject lv_indices_3_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8596:28: ( ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) ) )+ ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:1: ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) ) )+ )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8596:28: ( ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) ) )+ ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:1: ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) ) )+ )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:1: ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) ) )+ )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:2: ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) ) )+
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:1: ( ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) ) )+ )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:2: ( (lv_opcode_0_0= 'extractvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) (otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) ) )+
             {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8597:2: ( (lv_opcode_0_0= 'extractvalue' ) )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8598:1: (lv_opcode_0_0= 'extractvalue' )
@@ -23072,7 +23073,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8630:2: (otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) ) )+
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8630:2: (otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) ) )+
             int cnt86=0;
             loop86:
             do {
@@ -23082,7 +23083,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 if ( (LA86_0==34) ) {
                     int LA86_2 = input.LA(2);
 
-                    if ( (LA86_2==RULE_INTEGER) ) {
+                    if ( ((LA86_2>=RULE_INTEGER && LA86_2<=RULE_METADATA_STRING)||LA86_2==38||(LA86_2>=40 && LA86_2<=69)||LA86_2==71||LA86_2==73||LA86_2==75||(LA86_2>=138 && LA86_2<=149)) ) {
                         alt86=1;
                     }
 
@@ -23092,7 +23093,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                 switch (alt86) {
             	case 1 :
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8630:4: otherlv_2= ',' ( (lv_indices_3_0= RULE_INTEGER ) )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8630:4: otherlv_2= ',' ( (lv_indices_3_0= ruleConstant ) )
             	    {
             	    otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_extractvalue18710); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
@@ -23100,28 +23101,33 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	          	newLeafNode(otherlv_2, grammarAccess.getInstruction_extractvalueAccess().getCommaKeyword_2_0());
             	          
             	    }
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8634:1: ( (lv_indices_3_0= RULE_INTEGER ) )
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8635:1: (lv_indices_3_0= RULE_INTEGER )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8634:1: ( (lv_indices_3_0= ruleConstant ) )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8635:1: (lv_indices_3_0= ruleConstant )
             	    {
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8635:1: (lv_indices_3_0= RULE_INTEGER )
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8636:3: lv_indices_3_0= RULE_INTEGER
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8635:1: (lv_indices_3_0= ruleConstant )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8636:3: lv_indices_3_0= ruleConstant
             	    {
-            	    lv_indices_3_0=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleInstruction_extractvalue18727); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
-
-            	      			newLeafNode(lv_indices_3_0, grammarAccess.getInstruction_extractvalueAccess().getIndicesINTEGERTerminalRuleCall_2_1_0()); 
-            	      		
+            	       
+            	      	        newCompositeNode(grammarAccess.getInstruction_extractvalueAccess().getIndicesConstantParserRuleCall_2_1_0()); 
+            	      	    
             	    }
+            	    pushFollow(FOLLOW_ruleConstant_in_ruleInstruction_extractvalue18731);
+            	    lv_indices_3_0=ruleConstant();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      	        if (current==null) {
-            	      	            current = createModelElement(grammarAccess.getInstruction_extractvalueRule());
+            	      	            current = createModelElementForParent(grammarAccess.getInstruction_extractvalueRule());
             	      	        }
-            	             		addWithLastConsumed(
+            	             		add(
             	             			current, 
             	             			"indices",
             	              		lv_indices_3_0, 
-            	              		"INTEGER");
+            	              		"Constant");
+            	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
 
@@ -23181,7 +23187,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_insertvalueRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_insertvalue_in_entryRuleInstruction_insertvalue18770);
+            pushFollow(FOLLOW_ruleInstruction_insertvalue_in_entryRuleInstruction_insertvalue18769);
             iv_ruleInstruction_insertvalue=ruleInstruction_insertvalue();
 
             state._fsp--;
@@ -23189,7 +23195,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_insertvalue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_insertvalue18780); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_insertvalue18779); if (state.failed) return current;
 
             }
 
@@ -23207,27 +23213,28 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstruction_insertvalue"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8669:1: ruleInstruction_insertvalue returns [EObject current=null] : ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) ) )+ ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8669:1: ruleInstruction_insertvalue returns [EObject current=null] : ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) ) )+ ) ;
     public final EObject ruleInstruction_insertvalue() throws RecognitionException {
         EObject current = null;
 
         Token lv_opcode_0_0=null;
         Token otherlv_2=null;
         Token otherlv_4=null;
-        Token lv_indices_5_0=null;
         EObject lv_aggregate_1_0 = null;
 
         EObject lv_element_3_0 = null;
+
+        EObject lv_indices_5_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8672:28: ( ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) ) )+ ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:1: ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) ) )+ )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8672:28: ( ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) ) )+ ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:1: ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) ) )+ )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:1: ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) ) )+ )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:2: ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) ) )+
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:1: ( ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) ) )+ )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:2: ( (lv_opcode_0_0= 'insertvalue' ) ) ( (lv_aggregate_1_0= ruleTypedValue ) ) otherlv_2= ',' ( (lv_element_3_0= ruleTypedValue ) ) (otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) ) )+
             {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8673:2: ( (lv_opcode_0_0= 'insertvalue' ) )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8674:1: (lv_opcode_0_0= 'insertvalue' )
@@ -23235,7 +23242,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8674:1: (lv_opcode_0_0= 'insertvalue' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8675:3: lv_opcode_0_0= 'insertvalue'
             {
-            lv_opcode_0_0=(Token)match(input,47,FOLLOW_47_in_ruleInstruction_insertvalue18823); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,47,FOLLOW_47_in_ruleInstruction_insertvalue18822); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_insertvalueAccess().getOpcodeInsertvalueKeyword_0_0());
@@ -23266,7 +23273,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_insertvalueAccess().getAggregateTypedValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18857);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18856);
             lv_aggregate_1_0=ruleTypedValue();
 
             state._fsp--;
@@ -23290,7 +23297,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_insertvalue18869); if (state.failed) return current;
+            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_insertvalue18868); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getInstruction_insertvalueAccess().getCommaKeyword_2());
@@ -23307,7 +23314,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_insertvalueAccess().getElementTypedValueParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18890);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18889);
             lv_element_3_0=ruleTypedValue();
 
             state._fsp--;
@@ -23331,7 +23338,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8728:2: (otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) ) )+
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8728:2: (otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) ) )+
             int cnt87=0;
             loop87:
             do {
@@ -23341,7 +23348,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 if ( (LA87_0==34) ) {
                     int LA87_2 = input.LA(2);
 
-                    if ( (LA87_2==RULE_INTEGER) ) {
+                    if ( ((LA87_2>=RULE_INTEGER && LA87_2<=RULE_METADATA_STRING)||LA87_2==38||(LA87_2>=40 && LA87_2<=69)||LA87_2==71||LA87_2==73||LA87_2==75||(LA87_2>=138 && LA87_2<=149)) ) {
                         alt87=1;
                     }
 
@@ -23351,36 +23358,41 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                 switch (alt87) {
             	case 1 :
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8728:4: otherlv_4= ',' ( (lv_indices_5_0= RULE_INTEGER ) )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8728:4: otherlv_4= ',' ( (lv_indices_5_0= ruleConstant ) )
             	    {
-            	    otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_insertvalue18903); if (state.failed) return current;
+            	    otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_insertvalue18902); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_4, grammarAccess.getInstruction_insertvalueAccess().getCommaKeyword_4_0());
             	          
             	    }
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8732:1: ( (lv_indices_5_0= RULE_INTEGER ) )
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8733:1: (lv_indices_5_0= RULE_INTEGER )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8732:1: ( (lv_indices_5_0= ruleConstant ) )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8733:1: (lv_indices_5_0= ruleConstant )
             	    {
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8733:1: (lv_indices_5_0= RULE_INTEGER )
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8734:3: lv_indices_5_0= RULE_INTEGER
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8733:1: (lv_indices_5_0= ruleConstant )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8734:3: lv_indices_5_0= ruleConstant
             	    {
-            	    lv_indices_5_0=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleInstruction_insertvalue18920); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
-
-            	      			newLeafNode(lv_indices_5_0, grammarAccess.getInstruction_insertvalueAccess().getIndicesINTEGERTerminalRuleCall_4_1_0()); 
-            	      		
+            	       
+            	      	        newCompositeNode(grammarAccess.getInstruction_insertvalueAccess().getIndicesConstantParserRuleCall_4_1_0()); 
+            	      	    
             	    }
+            	    pushFollow(FOLLOW_ruleConstant_in_ruleInstruction_insertvalue18923);
+            	    lv_indices_5_0=ruleConstant();
+
+            	    state._fsp--;
+            	    if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	      	        if (current==null) {
-            	      	            current = createModelElement(grammarAccess.getInstruction_insertvalueRule());
+            	      	            current = createModelElementForParent(grammarAccess.getInstruction_insertvalueRule());
             	      	        }
-            	             		addWithLastConsumed(
+            	             		add(
             	             			current, 
             	             			"indices",
             	              		lv_indices_5_0, 
-            	              		"INTEGER");
+            	              		"Constant");
+            	      	        afterParserOrEnumRuleCall();
             	      	    
             	    }
 
@@ -23440,7 +23452,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_allocaRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_alloca_in_entryRuleInstruction_alloca18965);
+            pushFollow(FOLLOW_ruleInstruction_alloca_in_entryRuleInstruction_alloca18963);
             iv_ruleInstruction_alloca=ruleInstruction_alloca();
 
             state._fsp--;
@@ -23448,7 +23460,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_alloca; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_alloca18975); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_alloca18973); if (state.failed) return current;
 
             }
 
@@ -23495,7 +23507,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8774:1: (lv_opcode_0_0= 'alloca' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8775:3: lv_opcode_0_0= 'alloca'
             {
-            lv_opcode_0_0=(Token)match(input,121,FOLLOW_121_in_ruleInstruction_alloca19018); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,121,FOLLOW_121_in_ruleInstruction_alloca19016); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_allocaAccess().getOpcodeAllocaKeyword_0_0());
@@ -23526,7 +23538,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_allocaAccess().getTypeTypeParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_alloca19052);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_alloca19050);
             lv_type_1_0=ruleType();
 
             state._fsp--;
@@ -23565,7 +23577,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8806:4: otherlv_2= ',' ( (lv_numElements_3_0= ruleTypedValue ) )
                     {
-                    otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_alloca19065); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_alloca19063); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getInstruction_allocaAccess().getCommaKeyword_2_0());
@@ -23582,7 +23594,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_allocaAccess().getNumElementsTypedValueParserRuleCall_2_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_alloca19086);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_alloca19084);
                     lv_numElements_3_0=ruleTypedValue();
 
                     state._fsp--;
@@ -23627,7 +23639,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8828:6: otherlv_4= ',' ( (lv_alignment_5_0= ruleAlign ) )
                     {
-                    otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_alloca19101); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_alloca19099); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getInstruction_allocaAccess().getCommaKeyword_3_0());
@@ -23644,7 +23656,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_allocaAccess().getAlignmentAlignParserRuleCall_3_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_alloca19122);
+                    pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_alloca19120);
                     lv_alignment_5_0=ruleAlign();
 
                     state._fsp--;
@@ -23711,7 +23723,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_loadRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_load_in_entryRuleInstruction_load19160);
+            pushFollow(FOLLOW_ruleInstruction_load_in_entryRuleInstruction_load19158);
             iv_ruleInstruction_load=ruleInstruction_load();
 
             state._fsp--;
@@ -23719,7 +23731,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_load; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_load19170); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_load19168); if (state.failed) return current;
 
             }
 
@@ -23781,7 +23793,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8872:1: (lv_opcode_0_0= 'load' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8873:3: lv_opcode_0_0= 'load'
             {
-            lv_opcode_0_0=(Token)match(input,122,FOLLOW_122_in_ruleInstruction_load19213); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,122,FOLLOW_122_in_ruleInstruction_load19211); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_loadAccess().getOpcodeLoadKeyword_0_0());
@@ -23836,7 +23848,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8886:6: otherlv_1= 'volatile'
                             {
-                            otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_load19241); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_load19239); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_1, grammarAccess.getInstruction_loadAccess().getVolatileKeyword_1_0_0());
@@ -23859,7 +23871,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getPointerTypedValueParserRuleCall_1_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_load19264);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_load19262);
                     lv_pointer_2_0=ruleTypedValue();
 
                     state._fsp--;
@@ -23898,7 +23910,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8908:4: otherlv_3= ',' ( (lv_alignment_4_0= ruleAlign ) )
                             {
-                            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_load19277); if (state.failed) return current;
+                            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_load19275); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_3, grammarAccess.getInstruction_loadAccess().getCommaKeyword_1_0_2_0());
@@ -23915,7 +23927,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getAlignmentAlignParserRuleCall_1_0_2_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_load19298);
+                            pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_load19296);
                             lv_alignment_4_0=ruleAlign();
 
                             state._fsp--;
@@ -23960,13 +23972,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8930:6: otherlv_5= ',' otherlv_6= '!nontemporal' ( (lv_nontemporalIndex_7_0= ruleMetadataRef ) )
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_load19313); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_load19311); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_5, grammarAccess.getInstruction_loadAccess().getCommaKeyword_1_0_3_0());
                                   
                             }
-                            otherlv_6=(Token)match(input,124,FOLLOW_124_in_ruleInstruction_load19325); if (state.failed) return current;
+                            otherlv_6=(Token)match(input,124,FOLLOW_124_in_ruleInstruction_load19323); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_6, grammarAccess.getInstruction_loadAccess().getNontemporalKeyword_1_0_3_1());
@@ -23983,7 +23995,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getNontemporalIndexMetadataRefParserRuleCall_1_0_3_2_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleMetadataRef_in_ruleInstruction_load19346);
+                            pushFollow(FOLLOW_ruleMetadataRef_in_ruleInstruction_load19344);
                             lv_nontemporalIndex_7_0=ruleMetadataRef();
 
                             state._fsp--;
@@ -24028,13 +24040,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8956:6: otherlv_8= ',' otherlv_9= '!invariant.load' ( (lv_invariantLoadIndex_10_0= ruleMetadataRef ) )
                             {
-                            otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_load19361); if (state.failed) return current;
+                            otherlv_8=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_load19359); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_8, grammarAccess.getInstruction_loadAccess().getCommaKeyword_1_0_4_0());
                                   
                             }
-                            otherlv_9=(Token)match(input,125,FOLLOW_125_in_ruleInstruction_load19373); if (state.failed) return current;
+                            otherlv_9=(Token)match(input,125,FOLLOW_125_in_ruleInstruction_load19371); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_9, grammarAccess.getInstruction_loadAccess().getInvariantLoadKeyword_1_0_4_1());
@@ -24051,7 +24063,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getInvariantLoadIndexMetadataRefParserRuleCall_1_0_4_2_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleMetadataRef_in_ruleInstruction_load19394);
+                            pushFollow(FOLLOW_ruleMetadataRef_in_ruleInstruction_load19392);
                             lv_invariantLoadIndex_10_0=ruleMetadataRef();
 
                             state._fsp--;
@@ -24093,7 +24105,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8983:6: (otherlv_11= 'atomic' (otherlv_12= 'volatile' )? ( (lv_pointer_13_0= ruleTypedValue ) ) (otherlv_14= 'singlethread' )? ( (lv_ordering_15_0= ruleOrdering ) ) ( (lv_alignment_16_0= ruleAlign ) ) )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8983:8: otherlv_11= 'atomic' (otherlv_12= 'volatile' )? ( (lv_pointer_13_0= ruleTypedValue ) ) (otherlv_14= 'singlethread' )? ( (lv_ordering_15_0= ruleOrdering ) ) ( (lv_alignment_16_0= ruleAlign ) )
                     {
-                    otherlv_11=(Token)match(input,126,FOLLOW_126_in_ruleInstruction_load19416); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,126,FOLLOW_126_in_ruleInstruction_load19414); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_11, grammarAccess.getInstruction_loadAccess().getAtomicKeyword_1_1_0());
@@ -24110,7 +24122,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:8987:3: otherlv_12= 'volatile'
                             {
-                            otherlv_12=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_load19429); if (state.failed) return current;
+                            otherlv_12=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_load19427); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_12, grammarAccess.getInstruction_loadAccess().getVolatileKeyword_1_1_1());
@@ -24133,7 +24145,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getPointerTypedValueParserRuleCall_1_1_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_load19452);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_load19450);
                     lv_pointer_13_0=ruleTypedValue();
 
                     state._fsp--;
@@ -24168,7 +24180,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9009:4: otherlv_14= 'singlethread'
                             {
-                            otherlv_14=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_load19465); if (state.failed) return current;
+                            otherlv_14=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_load19463); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_14, grammarAccess.getInstruction_loadAccess().getSinglethreadKeyword_1_1_3());
@@ -24191,7 +24203,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getOrderingOrderingParserRuleCall_1_1_4_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_load19488);
+                    pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_load19486);
                     lv_ordering_15_0=ruleOrdering();
 
                     state._fsp--;
@@ -24226,7 +24238,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_loadAccess().getAlignmentAlignParserRuleCall_1_1_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_load19509);
+                    pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_load19507);
                     lv_alignment_16_0=ruleAlign();
 
                     state._fsp--;
@@ -24296,7 +24308,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_storeRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_store_in_entryRuleInstruction_store19547);
+            pushFollow(FOLLOW_ruleInstruction_store_in_entryRuleInstruction_store19545);
             iv_ruleInstruction_store=ruleInstruction_store();
 
             state._fsp--;
@@ -24304,7 +24316,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_store; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_store19557); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_store19555); if (state.failed) return current;
 
             }
 
@@ -24367,7 +24379,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9071:1: (lv_opcode_0_0= 'store' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9072:3: lv_opcode_0_0= 'store'
             {
-            lv_opcode_0_0=(Token)match(input,128,FOLLOW_128_in_ruleInstruction_store19600); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,128,FOLLOW_128_in_ruleInstruction_store19598); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_storeAccess().getOpcodeStoreKeyword_0_0());
@@ -24422,7 +24434,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9085:6: otherlv_1= 'volatile'
                             {
-                            otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_store19628); if (state.failed) return current;
+                            otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_store19626); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_1, grammarAccess.getInstruction_storeAccess().getVolatileKeyword_1_0_0());
@@ -24445,7 +24457,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getValueTypedValueParserRuleCall_1_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19651);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19649);
                     lv_value_2_0=ruleTypedValue();
 
                     state._fsp--;
@@ -24469,7 +24481,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_store19663); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_store19661); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getInstruction_storeAccess().getCommaKeyword_1_0_2());
@@ -24486,7 +24498,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getPointerTypedValueParserRuleCall_1_0_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19684);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19682);
                     lv_pointer_4_0=ruleTypedValue();
 
                     state._fsp--;
@@ -24525,7 +24537,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9129:4: otherlv_5= ',' ( (lv_alignment_6_0= ruleAlign ) )
                             {
-                            otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_store19697); if (state.failed) return current;
+                            otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_store19695); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_5, grammarAccess.getInstruction_storeAccess().getCommaKeyword_1_0_4_0());
@@ -24542,7 +24554,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getAlignmentAlignParserRuleCall_1_0_4_1_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_store19718);
+                            pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_store19716);
                             lv_alignment_6_0=ruleAlign();
 
                             state._fsp--;
@@ -24587,13 +24599,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9151:6: otherlv_7= ',' otherlv_8= '!nontemporal' ( (lv_nontemporalIndex_9_0= ruleMetadataRef ) )
                             {
-                            otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_store19733); if (state.failed) return current;
+                            otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_store19731); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_7, grammarAccess.getInstruction_storeAccess().getCommaKeyword_1_0_5_0());
                                   
                             }
-                            otherlv_8=(Token)match(input,124,FOLLOW_124_in_ruleInstruction_store19745); if (state.failed) return current;
+                            otherlv_8=(Token)match(input,124,FOLLOW_124_in_ruleInstruction_store19743); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_8, grammarAccess.getInstruction_storeAccess().getNontemporalKeyword_1_0_5_1());
@@ -24610,7 +24622,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getNontemporalIndexMetadataRefParserRuleCall_1_0_5_2_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleMetadataRef_in_ruleInstruction_store19766);
+                            pushFollow(FOLLOW_ruleMetadataRef_in_ruleInstruction_store19764);
                             lv_nontemporalIndex_9_0=ruleMetadataRef();
 
                             state._fsp--;
@@ -24652,7 +24664,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9178:6: (otherlv_10= 'atomic' (otherlv_11= 'volatile' )? ( (lv_value_12_0= ruleTypedValue ) ) ( (lv_pointer_13_0= ruleTypedValue ) ) (otherlv_14= 'singlethread' )? ( (lv_ordering_15_0= ruleOrdering ) ) ( (lv_alignment_16_0= ruleAlign ) ) )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9178:8: otherlv_10= 'atomic' (otherlv_11= 'volatile' )? ( (lv_value_12_0= ruleTypedValue ) ) ( (lv_pointer_13_0= ruleTypedValue ) ) (otherlv_14= 'singlethread' )? ( (lv_ordering_15_0= ruleOrdering ) ) ( (lv_alignment_16_0= ruleAlign ) )
                     {
-                    otherlv_10=(Token)match(input,126,FOLLOW_126_in_ruleInstruction_store19788); if (state.failed) return current;
+                    otherlv_10=(Token)match(input,126,FOLLOW_126_in_ruleInstruction_store19786); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_10, grammarAccess.getInstruction_storeAccess().getAtomicKeyword_1_1_0());
@@ -24669,7 +24681,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9182:3: otherlv_11= 'volatile'
                             {
-                            otherlv_11=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_store19801); if (state.failed) return current;
+                            otherlv_11=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_store19799); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_11, grammarAccess.getInstruction_storeAccess().getVolatileKeyword_1_1_1());
@@ -24692,7 +24704,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getValueTypedValueParserRuleCall_1_1_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19824);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19822);
                     lv_value_12_0=ruleTypedValue();
 
                     state._fsp--;
@@ -24727,7 +24739,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getPointerTypedValueParserRuleCall_1_1_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19845);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_store19843);
                     lv_pointer_13_0=ruleTypedValue();
 
                     state._fsp--;
@@ -24762,7 +24774,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         case 1 :
                             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9222:4: otherlv_14= 'singlethread'
                             {
-                            otherlv_14=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_store19858); if (state.failed) return current;
+                            otherlv_14=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_store19856); if (state.failed) return current;
                             if ( state.backtracking==0 ) {
 
                                   	newLeafNode(otherlv_14, grammarAccess.getInstruction_storeAccess().getSinglethreadKeyword_1_1_4());
@@ -24785,7 +24797,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getOrderingOrderingParserRuleCall_1_1_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_store19881);
+                    pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_store19879);
                     lv_ordering_15_0=ruleOrdering();
 
                     state._fsp--;
@@ -24820,7 +24832,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_storeAccess().getAlignmentAlignParserRuleCall_1_1_6_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_store19902);
+                    pushFollow(FOLLOW_ruleAlign_in_ruleInstruction_store19900);
                     lv_alignment_16_0=ruleAlign();
 
                     state._fsp--;
@@ -24890,7 +24902,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_fenceRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_fence_in_entryRuleInstruction_fence19940);
+            pushFollow(FOLLOW_ruleInstruction_fence_in_entryRuleInstruction_fence19938);
             iv_ruleInstruction_fence=ruleInstruction_fence();
 
             state._fsp--;
@@ -24898,7 +24910,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_fence; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_fence19950); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_fence19948); if (state.failed) return current;
 
             }
 
@@ -24940,7 +24952,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9284:1: (lv_opcode_0_0= 'fence' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9285:3: lv_opcode_0_0= 'fence'
             {
-            lv_opcode_0_0=(Token)match(input,129,FOLLOW_129_in_ruleInstruction_fence19993); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,129,FOLLOW_129_in_ruleInstruction_fence19991); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_fenceAccess().getOpcodeFenceKeyword_0_0());
@@ -24971,7 +24983,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9298:4: otherlv_1= 'singlethread'
                     {
-                    otherlv_1=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_fence20019); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_fence20017); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getInstruction_fenceAccess().getSinglethreadKeyword_1());
@@ -24994,7 +25006,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_fenceAccess().getOrderingOrderingParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_fence20042);
+            pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_fence20040);
             lv_ordering_2_0=ruleOrdering();
 
             state._fsp--;
@@ -25055,7 +25067,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_cmpxchgRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_cmpxchg_in_entryRuleInstruction_cmpxchg20078);
+            pushFollow(FOLLOW_ruleInstruction_cmpxchg_in_entryRuleInstruction_cmpxchg20076);
             iv_ruleInstruction_cmpxchg=ruleInstruction_cmpxchg();
 
             state._fsp--;
@@ -25063,7 +25075,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_cmpxchg; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_cmpxchg20088); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_cmpxchg20086); if (state.failed) return current;
 
             }
 
@@ -25114,7 +25126,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9342:1: (lv_opcode_0_0= 'cmpxchg' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9343:3: lv_opcode_0_0= 'cmpxchg'
             {
-            lv_opcode_0_0=(Token)match(input,130,FOLLOW_130_in_ruleInstruction_cmpxchg20131); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,130,FOLLOW_130_in_ruleInstruction_cmpxchg20129); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_cmpxchgAccess().getOpcodeCmpxchgKeyword_0_0());
@@ -25145,7 +25157,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9356:4: otherlv_1= 'volatile'
                     {
-                    otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_cmpxchg20157); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_cmpxchg20155); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getInstruction_cmpxchgAccess().getVolatileKeyword_1());
@@ -25168,7 +25180,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_cmpxchgAccess().getPointerTypedValueParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20180);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20178);
             lv_pointer_2_0=ruleTypedValue();
 
             state._fsp--;
@@ -25192,7 +25204,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_cmpxchg20192); if (state.failed) return current;
+            otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_cmpxchg20190); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getInstruction_cmpxchgAccess().getCommaKeyword_3());
@@ -25209,7 +25221,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_cmpxchgAccess().getComparedWithTypedValueParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20213);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20211);
             lv_comparedWith_4_0=ruleTypedValue();
 
             state._fsp--;
@@ -25233,7 +25245,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_cmpxchg20225); if (state.failed) return current;
+            otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_cmpxchg20223); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_5, grammarAccess.getInstruction_cmpxchgAccess().getCommaKeyword_5());
@@ -25250,7 +25262,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_cmpxchgAccess().getNewValueTypedValueParserRuleCall_6_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20246);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20244);
             lv_newValue_6_0=ruleTypedValue();
 
             state._fsp--;
@@ -25285,7 +25297,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9422:4: otherlv_7= 'singlethread'
                     {
-                    otherlv_7=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_cmpxchg20259); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_cmpxchg20257); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getInstruction_cmpxchgAccess().getSinglethreadKeyword_7());
@@ -25308,7 +25320,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_cmpxchgAccess().getOrderingOrderingParserRuleCall_8_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_cmpxchg20282);
+            pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_cmpxchg20280);
             lv_ordering_8_0=ruleOrdering();
 
             state._fsp--;
@@ -25369,7 +25381,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_atomicrmwRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_atomicrmw_in_entryRuleInstruction_atomicrmw20318);
+            pushFollow(FOLLOW_ruleInstruction_atomicrmw_in_entryRuleInstruction_atomicrmw20316);
             iv_ruleInstruction_atomicrmw=ruleInstruction_atomicrmw();
 
             state._fsp--;
@@ -25377,7 +25389,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_atomicrmw; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_atomicrmw20328); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_atomicrmw20326); if (state.failed) return current;
 
             }
 
@@ -25427,7 +25439,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9466:1: (lv_opcode_0_0= 'atomicrmw' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9467:3: lv_opcode_0_0= 'atomicrmw'
             {
-            lv_opcode_0_0=(Token)match(input,131,FOLLOW_131_in_ruleInstruction_atomicrmw20371); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,131,FOLLOW_131_in_ruleInstruction_atomicrmw20369); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_atomicrmwAccess().getOpcodeAtomicrmwKeyword_0_0());
@@ -25458,7 +25470,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9480:4: otherlv_1= 'volatile'
                     {
-                    otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_atomicrmw20397); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,123,FOLLOW_123_in_ruleInstruction_atomicrmw20395); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getInstruction_atomicrmwAccess().getVolatileKeyword_1());
@@ -25481,7 +25493,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_atomicrmwAccess().getOperationAtomicrmw_operationParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleAtomicrmw_operation_in_ruleInstruction_atomicrmw20420);
+            pushFollow(FOLLOW_ruleAtomicrmw_operation_in_ruleInstruction_atomicrmw20418);
             lv_operation_2_0=ruleAtomicrmw_operation();
 
             state._fsp--;
@@ -25516,7 +25528,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_atomicrmwAccess().getPointerTypedValueParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20441);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20439);
             lv_pointer_3_0=ruleTypedValue();
 
             state._fsp--;
@@ -25540,7 +25552,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_atomicrmw20453); if (state.failed) return current;
+            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_atomicrmw20451); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getInstruction_atomicrmwAccess().getCommaKeyword_4());
@@ -25557,7 +25569,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_atomicrmwAccess().getArgumentTypedValueParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20474);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20472);
             lv_argument_5_0=ruleTypedValue();
 
             state._fsp--;
@@ -25592,7 +25604,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9542:4: otherlv_6= 'singlethread'
                     {
-                    otherlv_6=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_atomicrmw20487); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,127,FOLLOW_127_in_ruleInstruction_atomicrmw20485); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getInstruction_atomicrmwAccess().getSinglethreadKeyword_6());
@@ -25615,7 +25627,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_atomicrmwAccess().getOrderingOrderingParserRuleCall_7_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_atomicrmw20510);
+            pushFollow(FOLLOW_ruleOrdering_in_ruleInstruction_atomicrmw20508);
             lv_ordering_7_0=ruleOrdering();
 
             state._fsp--;
@@ -25676,7 +25688,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAtomicrmw_operationRule()); 
             }
-            pushFollow(FOLLOW_ruleAtomicrmw_operation_in_entryRuleAtomicrmw_operation20547);
+            pushFollow(FOLLOW_ruleAtomicrmw_operation_in_entryRuleAtomicrmw_operation20545);
             iv_ruleAtomicrmw_operation=ruleAtomicrmw_operation();
 
             state._fsp--;
@@ -25684,7 +25696,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAtomicrmw_operation.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomicrmw_operation20558); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomicrmw_operation20556); if (state.failed) return current;
 
             }
 
@@ -25784,7 +25796,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9586:2: kw= 'xchg'
                     {
-                    kw=(Token)match(input,132,FOLLOW_132_in_ruleAtomicrmw_operation20596); if (state.failed) return current;
+                    kw=(Token)match(input,132,FOLLOW_132_in_ruleAtomicrmw_operation20594); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25797,7 +25809,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9593:2: kw= 'add'
                     {
-                    kw=(Token)match(input,48,FOLLOW_48_in_ruleAtomicrmw_operation20615); if (state.failed) return current;
+                    kw=(Token)match(input,48,FOLLOW_48_in_ruleAtomicrmw_operation20613); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25810,7 +25822,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9600:2: kw= 'sub'
                     {
-                    kw=(Token)match(input,50,FOLLOW_50_in_ruleAtomicrmw_operation20634); if (state.failed) return current;
+                    kw=(Token)match(input,50,FOLLOW_50_in_ruleAtomicrmw_operation20632); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25823,7 +25835,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9607:2: kw= 'and'
                     {
-                    kw=(Token)match(input,63,FOLLOW_63_in_ruleAtomicrmw_operation20653); if (state.failed) return current;
+                    kw=(Token)match(input,63,FOLLOW_63_in_ruleAtomicrmw_operation20651); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25836,7 +25848,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9614:2: kw= 'nand'
                     {
-                    kw=(Token)match(input,133,FOLLOW_133_in_ruleAtomicrmw_operation20672); if (state.failed) return current;
+                    kw=(Token)match(input,133,FOLLOW_133_in_ruleAtomicrmw_operation20670); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25849,7 +25861,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9621:2: kw= 'or'
                     {
-                    kw=(Token)match(input,64,FOLLOW_64_in_ruleAtomicrmw_operation20691); if (state.failed) return current;
+                    kw=(Token)match(input,64,FOLLOW_64_in_ruleAtomicrmw_operation20689); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25862,7 +25874,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9628:2: kw= 'xor'
                     {
-                    kw=(Token)match(input,65,FOLLOW_65_in_ruleAtomicrmw_operation20710); if (state.failed) return current;
+                    kw=(Token)match(input,65,FOLLOW_65_in_ruleAtomicrmw_operation20708); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25875,7 +25887,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9635:2: kw= 'max'
                     {
-                    kw=(Token)match(input,134,FOLLOW_134_in_ruleAtomicrmw_operation20729); if (state.failed) return current;
+                    kw=(Token)match(input,134,FOLLOW_134_in_ruleAtomicrmw_operation20727); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25888,7 +25900,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9642:2: kw= 'min'
                     {
-                    kw=(Token)match(input,135,FOLLOW_135_in_ruleAtomicrmw_operation20748); if (state.failed) return current;
+                    kw=(Token)match(input,135,FOLLOW_135_in_ruleAtomicrmw_operation20746); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25901,7 +25913,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 10 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9649:2: kw= 'umax'
                     {
-                    kw=(Token)match(input,136,FOLLOW_136_in_ruleAtomicrmw_operation20767); if (state.failed) return current;
+                    kw=(Token)match(input,136,FOLLOW_136_in_ruleAtomicrmw_operation20765); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25914,7 +25926,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 11 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9656:2: kw= 'umin'
                     {
-                    kw=(Token)match(input,137,FOLLOW_137_in_ruleAtomicrmw_operation20786); if (state.failed) return current;
+                    kw=(Token)match(input,137,FOLLOW_137_in_ruleAtomicrmw_operation20784); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -25961,7 +25973,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_getelementptrRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_getelementptr_in_entryRuleInstruction_getelementptr20826);
+            pushFollow(FOLLOW_ruleInstruction_getelementptr_in_entryRuleInstruction_getelementptr20824);
             iv_ruleInstruction_getelementptr=ruleInstruction_getelementptr();
 
             state._fsp--;
@@ -25969,7 +25981,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_getelementptr; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_getelementptr20836); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_getelementptr20834); if (state.failed) return current;
 
             }
 
@@ -25987,14 +25999,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstruction_getelementptr"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9678:1: ruleInstruction_getelementptr returns [EObject current=null] : ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_pointer_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9678:1: ruleInstruction_getelementptr returns [EObject current=null] : ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_base_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* ) ;
     public final EObject ruleInstruction_getelementptr() throws RecognitionException {
         EObject current = null;
 
         Token lv_opcode_0_0=null;
         Token otherlv_1=null;
         Token otherlv_3=null;
-        EObject lv_pointer_2_0 = null;
+        EObject lv_base_2_0 = null;
 
         EObject lv_indices_4_0 = null;
 
@@ -26002,11 +26014,11 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9681:28: ( ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_pointer_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:1: ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_pointer_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9681:28: ( ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_base_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:1: ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_base_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:1: ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_pointer_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:2: ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_pointer_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )*
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:1: ( ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_base_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )* )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:2: ( (lv_opcode_0_0= 'getelementptr' ) ) (otherlv_1= 'inbounds' )? ( (lv_base_2_0= ruleTypedValue ) ) (otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) ) )*
             {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9682:2: ( (lv_opcode_0_0= 'getelementptr' ) )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9683:1: (lv_opcode_0_0= 'getelementptr' )
@@ -26014,7 +26026,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9683:1: (lv_opcode_0_0= 'getelementptr' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9684:3: lv_opcode_0_0= 'getelementptr'
             {
-            lv_opcode_0_0=(Token)match(input,38,FOLLOW_38_in_ruleInstruction_getelementptr20879); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,38,FOLLOW_38_in_ruleInstruction_getelementptr20877); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_getelementptrAccess().getOpcodeGetelementptrKeyword_0_0());
@@ -26045,7 +26057,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9697:4: otherlv_1= 'inbounds'
                     {
-                    otherlv_1=(Token)match(input,39,FOLLOW_39_in_ruleInstruction_getelementptr20905); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,39,FOLLOW_39_in_ruleInstruction_getelementptr20903); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getInstruction_getelementptrAccess().getInboundsKeyword_1());
@@ -26057,19 +26069,19 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9701:3: ( (lv_pointer_2_0= ruleTypedValue ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9702:1: (lv_pointer_2_0= ruleTypedValue )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9701:3: ( (lv_base_2_0= ruleTypedValue ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9702:1: (lv_base_2_0= ruleTypedValue )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9702:1: (lv_pointer_2_0= ruleTypedValue )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9703:3: lv_pointer_2_0= ruleTypedValue
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9702:1: (lv_base_2_0= ruleTypedValue )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9703:3: lv_base_2_0= ruleTypedValue
             {
             if ( state.backtracking==0 ) {
                
-              	        newCompositeNode(grammarAccess.getInstruction_getelementptrAccess().getPointerTypedValueParserRuleCall_2_0()); 
+              	        newCompositeNode(grammarAccess.getInstruction_getelementptrAccess().getBaseTypedValueParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20928);
-            lv_pointer_2_0=ruleTypedValue();
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20926);
+            lv_base_2_0=ruleTypedValue();
 
             state._fsp--;
             if (state.failed) return current;
@@ -26080,8 +26092,8 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        }
                      		set(
                      			current, 
-                     			"pointer",
-                      		lv_pointer_2_0, 
+                     			"base",
+                      		lv_base_2_0, 
                       		"TypedValue");
               	        afterParserOrEnumRuleCall();
               	    
@@ -26113,7 +26125,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9719:4: otherlv_3= ',' ( (lv_indices_4_0= ruleTypedValue ) )
             	    {
-            	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_getelementptr20941); if (state.failed) return current;
+            	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_getelementptr20939); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_3, grammarAccess.getInstruction_getelementptrAccess().getCommaKeyword_3_0());
@@ -26130,7 +26142,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getInstruction_getelementptrAccess().getIndicesTypedValueParserRuleCall_3_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20962);
+            	    pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20960);
             	    lv_indices_4_0=ruleTypedValue();
 
             	    state._fsp--;
@@ -26200,7 +26212,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConversionInstructionRule()); 
             }
-            pushFollow(FOLLOW_ruleConversionInstruction_in_entryRuleConversionInstruction21000);
+            pushFollow(FOLLOW_ruleConversionInstruction_in_entryRuleConversionInstruction20998);
             iv_ruleConversionInstruction=ruleConversionInstruction();
 
             state._fsp--;
@@ -26208,7 +26220,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleConversionInstruction; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConversionInstruction21010); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConversionInstruction21008); if (state.failed) return current;
 
             }
 
@@ -26260,7 +26272,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getConversionInstructionAccess().getOpcodeConvertionOpcodeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleConvertionOpcode_in_ruleConversionInstruction21056);
+            pushFollow(FOLLOW_ruleConvertionOpcode_in_ruleConversionInstruction21054);
             lv_opcode_0_0=ruleConvertionOpcode();
 
             state._fsp--;
@@ -26295,7 +26307,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getConversionInstructionAccess().getFromTypeTypeParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleConversionInstruction21077);
+            pushFollow(FOLLOW_ruleType_in_ruleConversionInstruction21075);
             lv_fromType_1_0=ruleType();
 
             state._fsp--;
@@ -26330,7 +26342,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getConversionInstructionAccess().getValueValueRefParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleConversionInstruction21098);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleConversionInstruction21096);
             lv_value_2_0=ruleValueRef();
 
             state._fsp--;
@@ -26354,7 +26366,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,36,FOLLOW_36_in_ruleConversionInstruction21110); if (state.failed) return current;
+            otherlv_3=(Token)match(input,36,FOLLOW_36_in_ruleConversionInstruction21108); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_3, grammarAccess.getConversionInstructionAccess().getToKeyword_3());
@@ -26371,7 +26383,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getConversionInstructionAccess().getTargetTypeTypeParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleConversionInstruction21131);
+            pushFollow(FOLLOW_ruleType_in_ruleConversionInstruction21129);
             lv_targetType_4_0=ruleType();
 
             state._fsp--;
@@ -26432,7 +26444,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConvertionOpcodeRule()); 
             }
-            pushFollow(FOLLOW_ruleConvertionOpcode_in_entryRuleConvertionOpcode21168);
+            pushFollow(FOLLOW_ruleConvertionOpcode_in_entryRuleConvertionOpcode21166);
             iv_ruleConvertionOpcode=ruleConvertionOpcode();
 
             state._fsp--;
@@ -26440,7 +26452,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleConvertionOpcode.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConvertionOpcode21179); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConvertionOpcode21177); if (state.failed) return current;
 
             }
 
@@ -26545,7 +26557,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9860:2: kw= 'trunc'
                     {
-                    kw=(Token)match(input,138,FOLLOW_138_in_ruleConvertionOpcode21217); if (state.failed) return current;
+                    kw=(Token)match(input,138,FOLLOW_138_in_ruleConvertionOpcode21215); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26558,7 +26570,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9867:2: kw= 'zext'
                     {
-                    kw=(Token)match(input,139,FOLLOW_139_in_ruleConvertionOpcode21236); if (state.failed) return current;
+                    kw=(Token)match(input,139,FOLLOW_139_in_ruleConvertionOpcode21234); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26571,7 +26583,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9874:2: kw= 'sext'
                     {
-                    kw=(Token)match(input,140,FOLLOW_140_in_ruleConvertionOpcode21255); if (state.failed) return current;
+                    kw=(Token)match(input,140,FOLLOW_140_in_ruleConvertionOpcode21253); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26584,7 +26596,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9881:2: kw= 'fptrunc'
                     {
-                    kw=(Token)match(input,141,FOLLOW_141_in_ruleConvertionOpcode21274); if (state.failed) return current;
+                    kw=(Token)match(input,141,FOLLOW_141_in_ruleConvertionOpcode21272); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26597,7 +26609,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9888:2: kw= 'fpext'
                     {
-                    kw=(Token)match(input,142,FOLLOW_142_in_ruleConvertionOpcode21293); if (state.failed) return current;
+                    kw=(Token)match(input,142,FOLLOW_142_in_ruleConvertionOpcode21291); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26610,7 +26622,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9895:2: kw= 'fptoui'
                     {
-                    kw=(Token)match(input,143,FOLLOW_143_in_ruleConvertionOpcode21312); if (state.failed) return current;
+                    kw=(Token)match(input,143,FOLLOW_143_in_ruleConvertionOpcode21310); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26623,7 +26635,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9902:2: kw= 'fptosi'
                     {
-                    kw=(Token)match(input,144,FOLLOW_144_in_ruleConvertionOpcode21331); if (state.failed) return current;
+                    kw=(Token)match(input,144,FOLLOW_144_in_ruleConvertionOpcode21329); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26636,7 +26648,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9909:2: kw= 'uitofp'
                     {
-                    kw=(Token)match(input,145,FOLLOW_145_in_ruleConvertionOpcode21350); if (state.failed) return current;
+                    kw=(Token)match(input,145,FOLLOW_145_in_ruleConvertionOpcode21348); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26649,7 +26661,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9916:2: kw= 'sitofp'
                     {
-                    kw=(Token)match(input,146,FOLLOW_146_in_ruleConvertionOpcode21369); if (state.failed) return current;
+                    kw=(Token)match(input,146,FOLLOW_146_in_ruleConvertionOpcode21367); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26662,7 +26674,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 10 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9923:2: kw= 'ptrtoint'
                     {
-                    kw=(Token)match(input,147,FOLLOW_147_in_ruleConvertionOpcode21388); if (state.failed) return current;
+                    kw=(Token)match(input,147,FOLLOW_147_in_ruleConvertionOpcode21386); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26675,7 +26687,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 11 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9930:2: kw= 'inttoptr'
                     {
-                    kw=(Token)match(input,148,FOLLOW_148_in_ruleConvertionOpcode21407); if (state.failed) return current;
+                    kw=(Token)match(input,148,FOLLOW_148_in_ruleConvertionOpcode21405); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26688,7 +26700,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 12 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:9937:2: kw= 'bitcast'
                     {
-                    kw=(Token)match(input,149,FOLLOW_149_in_ruleConvertionOpcode21426); if (state.failed) return current;
+                    kw=(Token)match(input,149,FOLLOW_149_in_ruleConvertionOpcode21424); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -26735,7 +26747,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOtherInstructionRule()); 
             }
-            pushFollow(FOLLOW_ruleOtherInstruction_in_entryRuleOtherInstruction21466);
+            pushFollow(FOLLOW_ruleOtherInstruction_in_entryRuleOtherInstruction21464);
             iv_ruleOtherInstruction=ruleOtherInstruction();
 
             state._fsp--;
@@ -26743,7 +26755,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOtherInstruction; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOtherInstruction21476); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOtherInstruction21474); if (state.failed) return current;
 
             }
 
@@ -26827,7 +26839,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getOtherInstructionAccess().getInstruction_icmpParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleInstruction_icmp_in_ruleOtherInstruction21523);
+                    pushFollow(FOLLOW_ruleInstruction_icmp_in_ruleOtherInstruction21521);
                     this_Instruction_icmp_0=ruleInstruction_icmp();
 
                     state._fsp--;
@@ -26849,7 +26861,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getOtherInstructionAccess().getInstruction_fcmpParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleInstruction_fcmp_in_ruleOtherInstruction21550);
+                    pushFollow(FOLLOW_ruleInstruction_fcmp_in_ruleOtherInstruction21548);
                     this_Instruction_fcmp_1=ruleInstruction_fcmp();
 
                     state._fsp--;
@@ -26871,7 +26883,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getOtherInstructionAccess().getInstruction_selectParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleInstruction_select_in_ruleOtherInstruction21577);
+                    pushFollow(FOLLOW_ruleInstruction_select_in_ruleOtherInstruction21575);
                     this_Instruction_select_2=ruleInstruction_select();
 
                     state._fsp--;
@@ -26893,7 +26905,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getOtherInstructionAccess().getInstruction_va_argParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleInstruction_va_arg_in_ruleOtherInstruction21604);
+                    pushFollow(FOLLOW_ruleInstruction_va_arg_in_ruleOtherInstruction21602);
                     this_Instruction_va_arg_3=ruleInstruction_va_arg();
 
                     state._fsp--;
@@ -26915,7 +26927,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getOtherInstructionAccess().getInstruction_landingpadParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleInstruction_landingpad_in_ruleOtherInstruction21631);
+                    pushFollow(FOLLOW_ruleInstruction_landingpad_in_ruleOtherInstruction21629);
                     this_Instruction_landingpad_4=ruleInstruction_landingpad();
 
                     state._fsp--;
@@ -26966,7 +26978,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_icmpRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_icmp_in_entryRuleInstruction_icmp21666);
+            pushFollow(FOLLOW_ruleInstruction_icmp_in_entryRuleInstruction_icmp21664);
             iv_ruleInstruction_icmp=ruleInstruction_icmp();
 
             state._fsp--;
@@ -26974,7 +26986,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_icmp; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_icmp21676); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_icmp21674); if (state.failed) return current;
 
             }
 
@@ -27022,7 +27034,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10034:1: (lv_opcode_0_0= 'icmp' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10035:3: lv_opcode_0_0= 'icmp'
             {
-            lv_opcode_0_0=(Token)match(input,41,FOLLOW_41_in_ruleInstruction_icmp21719); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,41,FOLLOW_41_in_ruleInstruction_icmp21717); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_icmpAccess().getOpcodeIcmpKeyword_0_0());
@@ -27053,7 +27065,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_icmpAccess().getConditionIcmpConditionParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleIcmpCondition_in_ruleInstruction_icmp21753);
+            pushFollow(FOLLOW_ruleIcmpCondition_in_ruleInstruction_icmp21751);
             lv_condition_1_0=ruleIcmpCondition();
 
             state._fsp--;
@@ -27088,7 +27100,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_icmpAccess().getTypeTypeParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_icmp21774);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_icmp21772);
             lv_type_2_0=ruleType();
 
             state._fsp--;
@@ -27123,7 +27135,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_icmpAccess().getOp1ValueRefParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_icmp21795);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_icmp21793);
             lv_op1_3_0=ruleValueRef();
 
             state._fsp--;
@@ -27147,7 +27159,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_icmp21807); if (state.failed) return current;
+            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_icmp21805); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getInstruction_icmpAccess().getCommaKeyword_4());
@@ -27164,7 +27176,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_icmpAccess().getOp2ValueRefParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_icmp21828);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_icmp21826);
             lv_op2_5_0=ruleValueRef();
 
             state._fsp--;
@@ -27225,7 +27237,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIcmpConditionRule()); 
             }
-            pushFollow(FOLLOW_ruleIcmpCondition_in_entryRuleIcmpCondition21865);
+            pushFollow(FOLLOW_ruleIcmpCondition_in_entryRuleIcmpCondition21863);
             iv_ruleIcmpCondition=ruleIcmpCondition();
 
             state._fsp--;
@@ -27233,7 +27245,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIcmpCondition.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIcmpCondition21876); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIcmpCondition21874); if (state.failed) return current;
 
             }
 
@@ -27328,7 +27340,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10146:2: kw= 'eq'
                     {
-                    kw=(Token)match(input,150,FOLLOW_150_in_ruleIcmpCondition21914); if (state.failed) return current;
+                    kw=(Token)match(input,150,FOLLOW_150_in_ruleIcmpCondition21912); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27341,7 +27353,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10153:2: kw= 'ne'
                     {
-                    kw=(Token)match(input,151,FOLLOW_151_in_ruleIcmpCondition21933); if (state.failed) return current;
+                    kw=(Token)match(input,151,FOLLOW_151_in_ruleIcmpCondition21931); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27354,7 +27366,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10160:2: kw= 'ugt'
                     {
-                    kw=(Token)match(input,152,FOLLOW_152_in_ruleIcmpCondition21952); if (state.failed) return current;
+                    kw=(Token)match(input,152,FOLLOW_152_in_ruleIcmpCondition21950); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27367,7 +27379,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10167:2: kw= 'uge'
                     {
-                    kw=(Token)match(input,153,FOLLOW_153_in_ruleIcmpCondition21971); if (state.failed) return current;
+                    kw=(Token)match(input,153,FOLLOW_153_in_ruleIcmpCondition21969); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27380,7 +27392,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10174:2: kw= 'ult'
                     {
-                    kw=(Token)match(input,154,FOLLOW_154_in_ruleIcmpCondition21990); if (state.failed) return current;
+                    kw=(Token)match(input,154,FOLLOW_154_in_ruleIcmpCondition21988); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27393,7 +27405,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10181:2: kw= 'ule'
                     {
-                    kw=(Token)match(input,155,FOLLOW_155_in_ruleIcmpCondition22009); if (state.failed) return current;
+                    kw=(Token)match(input,155,FOLLOW_155_in_ruleIcmpCondition22007); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27406,7 +27418,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10188:2: kw= 'sgt'
                     {
-                    kw=(Token)match(input,156,FOLLOW_156_in_ruleIcmpCondition22028); if (state.failed) return current;
+                    kw=(Token)match(input,156,FOLLOW_156_in_ruleIcmpCondition22026); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27419,7 +27431,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10195:2: kw= 'sge'
                     {
-                    kw=(Token)match(input,157,FOLLOW_157_in_ruleIcmpCondition22047); if (state.failed) return current;
+                    kw=(Token)match(input,157,FOLLOW_157_in_ruleIcmpCondition22045); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27432,7 +27444,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10202:2: kw= 'slt'
                     {
-                    kw=(Token)match(input,158,FOLLOW_158_in_ruleIcmpCondition22066); if (state.failed) return current;
+                    kw=(Token)match(input,158,FOLLOW_158_in_ruleIcmpCondition22064); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27445,7 +27457,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 10 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10209:2: kw= 'sle'
                     {
-                    kw=(Token)match(input,159,FOLLOW_159_in_ruleIcmpCondition22085); if (state.failed) return current;
+                    kw=(Token)match(input,159,FOLLOW_159_in_ruleIcmpCondition22083); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27492,7 +27504,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_fcmpRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_fcmp_in_entryRuleInstruction_fcmp22125);
+            pushFollow(FOLLOW_ruleInstruction_fcmp_in_entryRuleInstruction_fcmp22123);
             iv_ruleInstruction_fcmp=ruleInstruction_fcmp();
 
             state._fsp--;
@@ -27500,7 +27512,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_fcmp; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_fcmp22135); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_fcmp22133); if (state.failed) return current;
 
             }
 
@@ -27548,7 +27560,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10236:1: (lv_opcode_0_0= 'fcmp' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10237:3: lv_opcode_0_0= 'fcmp'
             {
-            lv_opcode_0_0=(Token)match(input,42,FOLLOW_42_in_ruleInstruction_fcmp22178); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,42,FOLLOW_42_in_ruleInstruction_fcmp22176); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_fcmpAccess().getOpcodeFcmpKeyword_0_0());
@@ -27579,7 +27591,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_fcmpAccess().getConditionFcmpConditionParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleFcmpCondition_in_ruleInstruction_fcmp22212);
+            pushFollow(FOLLOW_ruleFcmpCondition_in_ruleInstruction_fcmp22210);
             lv_condition_1_0=ruleFcmpCondition();
 
             state._fsp--;
@@ -27614,7 +27626,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_fcmpAccess().getTypeTypeParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_fcmp22233);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_fcmp22231);
             lv_type_2_0=ruleType();
 
             state._fsp--;
@@ -27649,7 +27661,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_fcmpAccess().getOp1ValueRefParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22254);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22252);
             lv_op1_3_0=ruleValueRef();
 
             state._fsp--;
@@ -27673,7 +27685,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_fcmp22266); if (state.failed) return current;
+            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_fcmp22264); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getInstruction_fcmpAccess().getCommaKeyword_4());
@@ -27690,7 +27702,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_fcmpAccess().getOp2ValueRefParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22287);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22285);
             lv_op2_5_0=ruleValueRef();
 
             state._fsp--;
@@ -27751,7 +27763,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFcmpConditionRule()); 
             }
-            pushFollow(FOLLOW_ruleFcmpCondition_in_entryRuleFcmpCondition22324);
+            pushFollow(FOLLOW_ruleFcmpCondition_in_entryRuleFcmpCondition22322);
             iv_ruleFcmpCondition=ruleFcmpCondition();
 
             state._fsp--;
@@ -27759,7 +27771,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFcmpCondition.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFcmpCondition22335); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFcmpCondition22333); if (state.failed) return current;
 
             }
 
@@ -27880,7 +27892,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10347:6: this_BOOLEAN_0= RULE_BOOLEAN
                     {
-                    this_BOOLEAN_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_ruleFcmpCondition22375); if (state.failed) return current;
+                    this_BOOLEAN_0=(Token)match(input,RULE_BOOLEAN,FOLLOW_RULE_BOOLEAN_in_ruleFcmpCondition22373); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_BOOLEAN_0);
@@ -27897,7 +27909,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10356:2: kw= 'oeq'
                     {
-                    kw=(Token)match(input,160,FOLLOW_160_in_ruleFcmpCondition22399); if (state.failed) return current;
+                    kw=(Token)match(input,160,FOLLOW_160_in_ruleFcmpCondition22397); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27910,7 +27922,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10363:2: kw= 'ogt'
                     {
-                    kw=(Token)match(input,161,FOLLOW_161_in_ruleFcmpCondition22418); if (state.failed) return current;
+                    kw=(Token)match(input,161,FOLLOW_161_in_ruleFcmpCondition22416); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27923,7 +27935,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10370:2: kw= 'oge'
                     {
-                    kw=(Token)match(input,162,FOLLOW_162_in_ruleFcmpCondition22437); if (state.failed) return current;
+                    kw=(Token)match(input,162,FOLLOW_162_in_ruleFcmpCondition22435); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27936,7 +27948,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10377:2: kw= 'olt'
                     {
-                    kw=(Token)match(input,163,FOLLOW_163_in_ruleFcmpCondition22456); if (state.failed) return current;
+                    kw=(Token)match(input,163,FOLLOW_163_in_ruleFcmpCondition22454); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27949,7 +27961,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10384:2: kw= 'ole'
                     {
-                    kw=(Token)match(input,164,FOLLOW_164_in_ruleFcmpCondition22475); if (state.failed) return current;
+                    kw=(Token)match(input,164,FOLLOW_164_in_ruleFcmpCondition22473); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27962,7 +27974,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10391:2: kw= 'one'
                     {
-                    kw=(Token)match(input,165,FOLLOW_165_in_ruleFcmpCondition22494); if (state.failed) return current;
+                    kw=(Token)match(input,165,FOLLOW_165_in_ruleFcmpCondition22492); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27975,7 +27987,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10398:2: kw= 'ord'
                     {
-                    kw=(Token)match(input,166,FOLLOW_166_in_ruleFcmpCondition22513); if (state.failed) return current;
+                    kw=(Token)match(input,166,FOLLOW_166_in_ruleFcmpCondition22511); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -27988,7 +28000,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10405:2: kw= 'ueq'
                     {
-                    kw=(Token)match(input,167,FOLLOW_167_in_ruleFcmpCondition22532); if (state.failed) return current;
+                    kw=(Token)match(input,167,FOLLOW_167_in_ruleFcmpCondition22530); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28001,7 +28013,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 10 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10412:2: kw= 'ugt'
                     {
-                    kw=(Token)match(input,152,FOLLOW_152_in_ruleFcmpCondition22551); if (state.failed) return current;
+                    kw=(Token)match(input,152,FOLLOW_152_in_ruleFcmpCondition22549); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28014,7 +28026,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 11 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10419:2: kw= 'uge'
                     {
-                    kw=(Token)match(input,153,FOLLOW_153_in_ruleFcmpCondition22570); if (state.failed) return current;
+                    kw=(Token)match(input,153,FOLLOW_153_in_ruleFcmpCondition22568); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28027,7 +28039,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 12 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10426:2: kw= 'ult'
                     {
-                    kw=(Token)match(input,154,FOLLOW_154_in_ruleFcmpCondition22589); if (state.failed) return current;
+                    kw=(Token)match(input,154,FOLLOW_154_in_ruleFcmpCondition22587); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28040,7 +28052,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 13 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10433:2: kw= 'ule'
                     {
-                    kw=(Token)match(input,155,FOLLOW_155_in_ruleFcmpCondition22608); if (state.failed) return current;
+                    kw=(Token)match(input,155,FOLLOW_155_in_ruleFcmpCondition22606); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28053,7 +28065,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 14 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10440:2: kw= 'une'
                     {
-                    kw=(Token)match(input,168,FOLLOW_168_in_ruleFcmpCondition22627); if (state.failed) return current;
+                    kw=(Token)match(input,168,FOLLOW_168_in_ruleFcmpCondition22625); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28066,7 +28078,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 15 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10447:2: kw= 'uno'
                     {
-                    kw=(Token)match(input,169,FOLLOW_169_in_ruleFcmpCondition22646); if (state.failed) return current;
+                    kw=(Token)match(input,169,FOLLOW_169_in_ruleFcmpCondition22644); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -28113,7 +28125,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_phiRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_phi_in_entryRuleInstruction_phi22686);
+            pushFollow(FOLLOW_ruleInstruction_phi_in_entryRuleInstruction_phi22684);
             iv_ruleInstruction_phi=ruleInstruction_phi();
 
             state._fsp--;
@@ -28121,7 +28133,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_phi; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_phi22696); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_phi22694); if (state.failed) return current;
 
             }
 
@@ -28177,7 +28189,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10474:1: (lv_opcode_0_0= 'phi' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10475:3: lv_opcode_0_0= 'phi'
             {
-            lv_opcode_0_0=(Token)match(input,170,FOLLOW_170_in_ruleInstruction_phi22739); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,170,FOLLOW_170_in_ruleInstruction_phi22737); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_phiAccess().getOpcodePhiKeyword_0_0());
@@ -28208,7 +28220,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_phiAccess().getTypeTypeParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_phi22773);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_phi22771);
             lv_type_1_0=ruleType();
 
             state._fsp--;
@@ -28235,7 +28247,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10506:2: (otherlv_2= '[' ( (lv_values_3_0= ruleValueRef ) ) otherlv_4= ',' ( (lv_labels_5_0= ruleBasicBlockRef ) ) otherlv_6= ']' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10506:4: otherlv_2= '[' ( (lv_values_3_0= ruleValueRef ) ) otherlv_4= ',' ( (lv_labels_5_0= ruleBasicBlockRef ) ) otherlv_6= ']'
             {
-            otherlv_2=(Token)match(input,71,FOLLOW_71_in_ruleInstruction_phi22786); if (state.failed) return current;
+            otherlv_2=(Token)match(input,71,FOLLOW_71_in_ruleInstruction_phi22784); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getInstruction_phiAccess().getLeftSquareBracketKeyword_2_0());
@@ -28252,7 +28264,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_phiAccess().getValuesValueRefParserRuleCall_2_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_phi22807);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_phi22805);
             lv_values_3_0=ruleValueRef();
 
             state._fsp--;
@@ -28276,7 +28288,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_phi22819); if (state.failed) return current;
+            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_phi22817); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getInstruction_phiAccess().getCommaKeyword_2_2());
@@ -28293,7 +28305,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_phiAccess().getLabelsBasicBlockRefParserRuleCall_2_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22840);
+            pushFollow(FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22838);
             lv_labels_5_0=ruleBasicBlockRef();
 
             state._fsp--;
@@ -28317,7 +28329,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,72,FOLLOW_72_in_ruleInstruction_phi22852); if (state.failed) return current;
+            otherlv_6=(Token)match(input,72,FOLLOW_72_in_ruleInstruction_phi22850); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_6, grammarAccess.getInstruction_phiAccess().getRightSquareBracketKeyword_2_4());
@@ -28347,13 +28359,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	case 1 :
             	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10554:4: otherlv_7= ',' otherlv_8= '[' ( (lv_values_9_0= ruleValueRef ) ) otherlv_10= ',' ( (lv_labels_11_0= ruleBasicBlockRef ) ) otherlv_12= ']'
             	    {
-            	    otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_phi22866); if (state.failed) return current;
+            	    otherlv_7=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_phi22864); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_7, grammarAccess.getInstruction_phiAccess().getCommaKeyword_3_0());
             	          
             	    }
-            	    otherlv_8=(Token)match(input,71,FOLLOW_71_in_ruleInstruction_phi22878); if (state.failed) return current;
+            	    otherlv_8=(Token)match(input,71,FOLLOW_71_in_ruleInstruction_phi22876); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_8, grammarAccess.getInstruction_phiAccess().getLeftSquareBracketKeyword_3_1());
@@ -28370,7 +28382,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getInstruction_phiAccess().getValuesValueRefParserRuleCall_3_2_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_phi22899);
+            	    pushFollow(FOLLOW_ruleValueRef_in_ruleInstruction_phi22897);
             	    lv_values_9_0=ruleValueRef();
 
             	    state._fsp--;
@@ -28394,7 +28406,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_10=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_phi22911); if (state.failed) return current;
+            	    otherlv_10=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_phi22909); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_10, grammarAccess.getInstruction_phiAccess().getCommaKeyword_3_3());
@@ -28411,7 +28423,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getInstruction_phiAccess().getLabelsBasicBlockRefParserRuleCall_3_4_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22932);
+            	    pushFollow(FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22930);
             	    lv_labels_11_0=ruleBasicBlockRef();
 
             	    state._fsp--;
@@ -28435,7 +28447,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    otherlv_12=(Token)match(input,72,FOLLOW_72_in_ruleInstruction_phi22944); if (state.failed) return current;
+            	    otherlv_12=(Token)match(input,72,FOLLOW_72_in_ruleInstruction_phi22942); if (state.failed) return current;
             	    if ( state.backtracking==0 ) {
 
             	          	newLeafNode(otherlv_12, grammarAccess.getInstruction_phiAccess().getRightSquareBracketKeyword_3_5());
@@ -28487,7 +28499,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_selectRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_select_in_entryRuleInstruction_select22982);
+            pushFollow(FOLLOW_ruleInstruction_select_in_entryRuleInstruction_select22980);
             iv_ruleInstruction_select=ruleInstruction_select();
 
             state._fsp--;
@@ -28495,7 +28507,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_select; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_select22992); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_select22990); if (state.failed) return current;
 
             }
 
@@ -28542,7 +28554,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10628:1: (lv_opcode_0_0= 'select' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10629:3: lv_opcode_0_0= 'select'
             {
-            lv_opcode_0_0=(Token)match(input,40,FOLLOW_40_in_ruleInstruction_select23035); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,40,FOLLOW_40_in_ruleInstruction_select23033); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_selectAccess().getOpcodeSelectKeyword_0_0());
@@ -28573,7 +28585,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_selectAccess().getConditionTypedValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_select23069);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_select23067);
             lv_condition_1_0=ruleTypedValue();
 
             state._fsp--;
@@ -28597,7 +28609,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_select23081); if (state.failed) return current;
+            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_select23079); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getInstruction_selectAccess().getCommaKeyword_2());
@@ -28614,7 +28626,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_selectAccess().getValue1TypedValueParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_select23102);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_select23100);
             lv_value1_3_0=ruleTypedValue();
 
             state._fsp--;
@@ -28638,7 +28650,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_select23114); if (state.failed) return current;
+            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_select23112); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getInstruction_selectAccess().getCommaKeyword_4());
@@ -28655,7 +28667,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_selectAccess().getValue2TypedValueParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_select23135);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_select23133);
             lv_value2_5_0=ruleTypedValue();
 
             state._fsp--;
@@ -28716,7 +28728,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_call_nonVoidRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_call_nonVoid_in_entryRuleInstruction_call_nonVoid23171);
+            pushFollow(FOLLOW_ruleInstruction_call_nonVoid_in_entryRuleInstruction_call_nonVoid23169);
             iv_ruleInstruction_call_nonVoid=ruleInstruction_call_nonVoid();
 
             state._fsp--;
@@ -28724,7 +28736,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_call_nonVoid; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_call_nonVoid23181); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_call_nonVoid23179); if (state.failed) return current;
 
             }
 
@@ -28786,7 +28798,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10726:1: (lv_isTail_0_0= 'tail' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10727:3: lv_isTail_0_0= 'tail'
                     {
-                    lv_isTail_0_0=(Token)match(input,171,FOLLOW_171_in_ruleInstruction_call_nonVoid23224); if (state.failed) return current;
+                    lv_isTail_0_0=(Token)match(input,171,FOLLOW_171_in_ruleInstruction_call_nonVoid23222); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isTail_0_0, grammarAccess.getInstruction_call_nonVoidAccess().getIsTailTailKeyword_0_0());
@@ -28815,7 +28827,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10741:1: (lv_opcode_1_0= 'call' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10742:3: lv_opcode_1_0= 'call'
             {
-            lv_opcode_1_0=(Token)match(input,172,FOLLOW_172_in_ruleInstruction_call_nonVoid23256); if (state.failed) return current;
+            lv_opcode_1_0=(Token)match(input,172,FOLLOW_172_in_ruleInstruction_call_nonVoid23254); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_1_0, grammarAccess.getInstruction_call_nonVoidAccess().getOpcodeCallKeyword_1_0());
@@ -28854,7 +28866,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getCconvCConvParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid23290);
+                    pushFollow(FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid23288);
                     lv_cconv_2_0=ruleCConv();
 
                     state._fsp--;
@@ -28900,7 +28912,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getReturnAttributesParameterAttributesParserRuleCall_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid23312);
+                    pushFollow(FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid23310);
                     lv_returnAttributes_3_0=ruleParameterAttributes();
 
                     state._fsp--;
@@ -28938,7 +28950,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getReturnTypeNonVoidTypeParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNonVoidType_in_ruleInstruction_call_nonVoid23334);
+            pushFollow(FOLLOW_ruleNonVoidType_in_ruleInstruction_call_nonVoid23332);
             lv_returnType_4_0=ruleNonVoidType();
 
             state._fsp--;
@@ -28977,7 +28989,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getFunctionPointerTypeTypeParserRuleCall_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleType_in_ruleInstruction_call_nonVoid23365);
+                    pushFollow(FOLLOW_ruleType_in_ruleInstruction_call_nonVoid23363);
                     lv_functionPointerType_5_0=ruleType();
 
                     state._fsp--;
@@ -29015,7 +29027,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getCalleeCalleeParserRuleCall_6_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleCallee_in_ruleInstruction_call_nonVoid23387);
+            pushFollow(FOLLOW_ruleCallee_in_ruleInstruction_call_nonVoid23385);
             lv_callee_6_0=ruleCallee();
 
             state._fsp--;
@@ -29050,7 +29062,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getArgsArgListParserRuleCall_7_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleArgList_in_ruleInstruction_call_nonVoid23408);
+            pushFollow(FOLLOW_ruleArgList_in_ruleInstruction_call_nonVoid23406);
             lv_args_7_0=ruleArgList();
 
             state._fsp--;
@@ -29093,7 +29105,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_nonVoidAccess().getFunctionAttributesFunctionAttributesParserRuleCall_8_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_nonVoid23429);
+                    pushFollow(FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_nonVoid23427);
                     lv_functionAttributes_8_0=ruleFunctionAttributes();
 
                     state._fsp--;
@@ -29157,7 +29169,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_call_voidRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_call_void_in_entryRuleInstruction_call_void23466);
+            pushFollow(FOLLOW_ruleInstruction_call_void_in_entryRuleInstruction_call_void23464);
             iv_ruleInstruction_call_void=ruleInstruction_call_void();
 
             state._fsp--;
@@ -29165,7 +29177,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_call_void; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_call_void23476); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_call_void23474); if (state.failed) return current;
 
             }
 
@@ -29227,7 +29239,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10907:1: (lv_isTail_0_0= 'tail' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10908:3: lv_isTail_0_0= 'tail'
                     {
-                    lv_isTail_0_0=(Token)match(input,171,FOLLOW_171_in_ruleInstruction_call_void23519); if (state.failed) return current;
+                    lv_isTail_0_0=(Token)match(input,171,FOLLOW_171_in_ruleInstruction_call_void23517); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_isTail_0_0, grammarAccess.getInstruction_call_voidAccess().getIsTailTailKeyword_0_0());
@@ -29256,7 +29268,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10922:1: (lv_opcode_1_0= 'call' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10923:3: lv_opcode_1_0= 'call'
             {
-            lv_opcode_1_0=(Token)match(input,172,FOLLOW_172_in_ruleInstruction_call_void23551); if (state.failed) return current;
+            lv_opcode_1_0=(Token)match(input,172,FOLLOW_172_in_ruleInstruction_call_void23549); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_1_0, grammarAccess.getInstruction_call_voidAccess().getOpcodeCallKeyword_1_0());
@@ -29295,7 +29307,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getCconvCConvParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleCConv_in_ruleInstruction_call_void23585);
+                    pushFollow(FOLLOW_ruleCConv_in_ruleInstruction_call_void23583);
                     lv_cconv_2_0=ruleCConv();
 
                     state._fsp--;
@@ -29341,7 +29353,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getReturnAttributesParameterAttributesParserRuleCall_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_void23607);
+                    pushFollow(FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_void23605);
                     lv_returnAttributes_3_0=ruleParameterAttributes();
 
                     state._fsp--;
@@ -29379,7 +29391,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getReturnTypeVoidTypeParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleVoidType_in_ruleInstruction_call_void23629);
+            pushFollow(FOLLOW_ruleVoidType_in_ruleInstruction_call_void23627);
             lv_returnType_4_0=ruleVoidType();
 
             state._fsp--;
@@ -29418,7 +29430,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getFunctionPointerTypeTypeParserRuleCall_5_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleType_in_ruleInstruction_call_void23660);
+                    pushFollow(FOLLOW_ruleType_in_ruleInstruction_call_void23658);
                     lv_functionPointerType_5_0=ruleType();
 
                     state._fsp--;
@@ -29456,7 +29468,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getCalleeCalleeParserRuleCall_6_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleCallee_in_ruleInstruction_call_void23682);
+            pushFollow(FOLLOW_ruleCallee_in_ruleInstruction_call_void23680);
             lv_callee_6_0=ruleCallee();
 
             state._fsp--;
@@ -29491,7 +29503,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getArgsArgListParserRuleCall_7_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleArgList_in_ruleInstruction_call_void23703);
+            pushFollow(FOLLOW_ruleArgList_in_ruleInstruction_call_void23701);
             lv_args_7_0=ruleArgList();
 
             state._fsp--;
@@ -29534,7 +29546,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_call_voidAccess().getFunctionAttributesFunctionAttributesParserRuleCall_8_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_void23724);
+                    pushFollow(FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_void23722);
                     lv_functionAttributes_8_0=ruleFunctionAttributes();
 
                     state._fsp--;
@@ -29598,7 +29610,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArgListRule()); 
             }
-            pushFollow(FOLLOW_ruleArgList_in_entryRuleArgList23761);
+            pushFollow(FOLLOW_ruleArgList_in_entryRuleArgList23759);
             iv_ruleArgList=ruleArgList();
 
             state._fsp--;
@@ -29606,7 +29618,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArgList; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArgList23771); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArgList23769); if (state.failed) return current;
 
             }
 
@@ -29658,7 +29670,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleArgList23817); if (state.failed) return current;
+            otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleArgList23815); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getArgListAccess().getLeftParenthesisKeyword_1());
@@ -29686,7 +29698,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getArgListAccess().getArgumentsArgumentParserRuleCall_2_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArgument_in_ruleArgList23839);
+                    pushFollow(FOLLOW_ruleArgument_in_ruleArgList23837);
                     lv_arguments_2_0=ruleArgument();
 
                     state._fsp--;
@@ -29725,7 +29737,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     	case 1 :
                     	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11115:4: otherlv_3= ',' ( (lv_arguments_4_0= ruleArgument ) )
                     	    {
-                    	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleArgList23852); if (state.failed) return current;
+                    	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleArgList23850); if (state.failed) return current;
                     	    if ( state.backtracking==0 ) {
 
                     	          	newLeafNode(otherlv_3, grammarAccess.getArgListAccess().getCommaKeyword_2_1_0());
@@ -29742,7 +29754,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getArgListAccess().getArgumentsArgumentParserRuleCall_2_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleArgument_in_ruleArgList23873);
+                    	    pushFollow(FOLLOW_ruleArgument_in_ruleArgList23871);
                     	    lv_arguments_4_0=ruleArgument();
 
                     	    state._fsp--;
@@ -29781,7 +29793,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_5=(Token)match(input,37,FOLLOW_37_in_ruleArgList23889); if (state.failed) return current;
+            otherlv_5=(Token)match(input,37,FOLLOW_37_in_ruleArgList23887); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_5, grammarAccess.getArgListAccess().getRightParenthesisKeyword_3());
@@ -29824,7 +29836,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCalleeRule()); 
             }
-            pushFollow(FOLLOW_ruleCallee_in_entryRuleCallee23925);
+            pushFollow(FOLLOW_ruleCallee_in_entryRuleCallee23923);
             iv_ruleCallee=ruleCallee();
 
             state._fsp--;
@@ -29832,7 +29844,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCallee; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCallee23935); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCallee23933); if (state.failed) return current;
 
             }
 
@@ -29891,7 +29903,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getCalleeAccess().getValueRefParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleValueRef_in_ruleCallee23982);
+                    pushFollow(FOLLOW_ruleValueRef_in_ruleCallee23980);
                     this_ValueRef_0=ruleValueRef();
 
                     state._fsp--;
@@ -29913,7 +29925,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               newCompositeNode(grammarAccess.getCalleeAccess().getInlineAssemblerParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleInlineAssembler_in_ruleCallee24009);
+                    pushFollow(FOLLOW_ruleInlineAssembler_in_ruleCallee24007);
                     this_InlineAssembler_1=ruleInlineAssembler();
 
                     state._fsp--;
@@ -29964,7 +29976,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInlineAssemblerRule()); 
             }
-            pushFollow(FOLLOW_ruleInlineAssembler_in_entryRuleInlineAssembler24044);
+            pushFollow(FOLLOW_ruleInlineAssembler_in_entryRuleInlineAssembler24042);
             iv_ruleInlineAssembler=ruleInlineAssembler();
 
             state._fsp--;
@@ -29972,7 +29984,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInlineAssembler; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInlineAssembler24054); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInlineAssembler24052); if (state.failed) return current;
 
             }
 
@@ -30010,7 +30022,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11202:1: (otherlv_0= 'asm' (otherlv_1= 'sideeffect' )? (otherlv_2= 'alignstack' )? ( (lv_assembler_3_0= RULE_STRING ) ) otherlv_4= ',' ( (lv_flags_5_0= RULE_STRING ) ) )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11202:3: otherlv_0= 'asm' (otherlv_1= 'sideeffect' )? (otherlv_2= 'alignstack' )? ( (lv_assembler_3_0= RULE_STRING ) ) otherlv_4= ',' ( (lv_flags_5_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleInlineAssembler24091); if (state.failed) return current;
+            otherlv_0=(Token)match(input,30,FOLLOW_30_in_ruleInlineAssembler24089); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getInlineAssemblerAccess().getAsmKeyword_0());
@@ -30027,7 +30039,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11206:3: otherlv_1= 'sideeffect'
                     {
-                    otherlv_1=(Token)match(input,173,FOLLOW_173_in_ruleInlineAssembler24104); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,173,FOLLOW_173_in_ruleInlineAssembler24102); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getInlineAssemblerAccess().getSideeffectKeyword_1());
@@ -30050,7 +30062,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11210:5: otherlv_2= 'alignstack'
                     {
-                    otherlv_2=(Token)match(input,174,FOLLOW_174_in_ruleInlineAssembler24119); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,174,FOLLOW_174_in_ruleInlineAssembler24117); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getInlineAssemblerAccess().getAlignstackKeyword_2());
@@ -30068,7 +30080,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11215:1: (lv_assembler_3_0= RULE_STRING )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11216:3: lv_assembler_3_0= RULE_STRING
             {
-            lv_assembler_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleInlineAssembler24138); if (state.failed) return current;
+            lv_assembler_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleInlineAssembler24136); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_assembler_3_0, grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_3_0()); 
@@ -30092,7 +30104,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInlineAssembler24155); if (state.failed) return current;
+            otherlv_4=(Token)match(input,34,FOLLOW_34_in_ruleInlineAssembler24153); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getInlineAssemblerAccess().getCommaKeyword_4());
@@ -30104,7 +30116,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11237:1: (lv_flags_5_0= RULE_STRING )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11238:3: lv_flags_5_0= RULE_STRING
             {
-            lv_flags_5_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleInlineAssembler24172); if (state.failed) return current;
+            lv_flags_5_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleInlineAssembler24170); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_flags_5_0, grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_5_0()); 
@@ -30165,7 +30177,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_va_argRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_va_arg_in_entryRuleInstruction_va_arg24213);
+            pushFollow(FOLLOW_ruleInstruction_va_arg_in_entryRuleInstruction_va_arg24211);
             iv_ruleInstruction_va_arg=ruleInstruction_va_arg();
 
             state._fsp--;
@@ -30173,7 +30185,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_va_arg; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_va_arg24223); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_va_arg24221); if (state.failed) return current;
 
             }
 
@@ -30217,7 +30229,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11276:1: (lv_opcode_0_0= 'va_arg' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11277:3: lv_opcode_0_0= 'va_arg'
             {
-            lv_opcode_0_0=(Token)match(input,175,FOLLOW_175_in_ruleInstruction_va_arg24266); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,175,FOLLOW_175_in_ruleInstruction_va_arg24264); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_va_argAccess().getOpcodeVa_argKeyword_0_0());
@@ -30248,7 +30260,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_va_argAccess().getArglistTypedValueParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_va_arg24300);
+            pushFollow(FOLLOW_ruleTypedValue_in_ruleInstruction_va_arg24298);
             lv_arglist_1_0=ruleTypedValue();
 
             state._fsp--;
@@ -30272,7 +30284,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_va_arg24312); if (state.failed) return current;
+            otherlv_2=(Token)match(input,34,FOLLOW_34_in_ruleInstruction_va_arg24310); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getInstruction_va_argAccess().getCommaKeyword_2());
@@ -30289,7 +30301,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_va_argAccess().getTypeTypeParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_va_arg24333);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_va_arg24331);
             lv_type_3_0=ruleType();
 
             state._fsp--;
@@ -30350,7 +30362,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInstruction_landingpadRule()); 
             }
-            pushFollow(FOLLOW_ruleInstruction_landingpad_in_entryRuleInstruction_landingpad24369);
+            pushFollow(FOLLOW_ruleInstruction_landingpad_in_entryRuleInstruction_landingpad24367);
             iv_ruleInstruction_landingpad=ruleInstruction_landingpad();
 
             state._fsp--;
@@ -30358,7 +30370,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInstruction_landingpad; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_landingpad24379); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInstruction_landingpad24377); if (state.failed) return current;
 
             }
 
@@ -30409,7 +30421,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11352:1: (lv_opcode_0_0= 'landingpad' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11353:3: lv_opcode_0_0= 'landingpad'
             {
-            lv_opcode_0_0=(Token)match(input,176,FOLLOW_176_in_ruleInstruction_landingpad24422); if (state.failed) return current;
+            lv_opcode_0_0=(Token)match(input,176,FOLLOW_176_in_ruleInstruction_landingpad24420); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                       newLeafNode(lv_opcode_0_0, grammarAccess.getInstruction_landingpadAccess().getOpcodeLandingpadKeyword_0_0());
@@ -30440,7 +30452,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getResultTypeTypeParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_landingpad24456);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_landingpad24454);
             lv_resultType_1_0=ruleType();
 
             state._fsp--;
@@ -30464,7 +30476,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,177,FOLLOW_177_in_ruleInstruction_landingpad24468); if (state.failed) return current;
+            otherlv_2=(Token)match(input,177,FOLLOW_177_in_ruleInstruction_landingpad24466); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getInstruction_landingpadAccess().getPersonalityKeyword_2());
@@ -30481,7 +30493,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getPersonalityTypeTypeParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleInstruction_landingpad24489);
+            pushFollow(FOLLOW_ruleType_in_ruleInstruction_landingpad24487);
             lv_personalityType_3_0=ruleType();
 
             state._fsp--;
@@ -30516,7 +30528,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getPersonalityFunctionFunctionRefParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleFunctionRef_in_ruleInstruction_landingpad24510);
+            pushFollow(FOLLOW_ruleFunctionRef_in_ruleInstruction_landingpad24508);
             lv_personalityFunction_4_0=ruleFunctionRef();
 
             state._fsp--;
@@ -30572,7 +30584,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getClausesLandingpadClauseParserRuleCall_5_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24532);
+                    pushFollow(FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24530);
                     lv_clauses_5_0=ruleLandingpadClause();
 
                     state._fsp--;
@@ -30602,7 +30614,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11443:7: otherlv_6= 'cleanup'
                     {
-                    otherlv_6=(Token)match(input,178,FOLLOW_178_in_ruleInstruction_landingpad24550); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,178,FOLLOW_178_in_ruleInstruction_landingpad24548); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getInstruction_landingpadAccess().getCleanupKeyword_5_1());
@@ -30637,7 +30649,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getClausesLandingpadClauseParserRuleCall_6_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24572);
+            	    pushFollow(FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24570);
             	    lv_clauses_7_0=ruleLandingpadClause();
 
             	    state._fsp--;
@@ -30704,7 +30716,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLandingpadClauseRule()); 
             }
-            pushFollow(FOLLOW_ruleLandingpadClause_in_entryRuleLandingpadClause24609);
+            pushFollow(FOLLOW_ruleLandingpadClause_in_entryRuleLandingpadClause24607);
             iv_ruleLandingpadClause=ruleLandingpadClause();
 
             state._fsp--;
@@ -30712,7 +30724,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLandingpadClause; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLandingpadClause24619); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLandingpadClause24617); if (state.failed) return current;
 
             }
 
@@ -30779,7 +30791,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11487:1: (lv_landingPadType_0_0= 'catch' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11488:3: lv_landingPadType_0_0= 'catch'
                     {
-                    lv_landingPadType_0_0=(Token)match(input,179,FOLLOW_179_in_ruleLandingpadClause24663); if (state.failed) return current;
+                    lv_landingPadType_0_0=(Token)match(input,179,FOLLOW_179_in_ruleLandingpadClause24661); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_landingPadType_0_0, grammarAccess.getLandingpadClauseAccess().getLandingPadTypeCatchKeyword_0_0_0());
@@ -30810,7 +30822,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getLandingpadClauseAccess().getCatchTypeTypedValueParserRuleCall_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTypedValue_in_ruleLandingpadClause24697);
+                    pushFollow(FOLLOW_ruleTypedValue_in_ruleLandingpadClause24695);
                     lv_catchType_1_0=ruleTypedValue();
 
                     state._fsp--;
@@ -30852,7 +30864,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11521:1: (lv_landingPadType_2_0= 'filter' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11522:3: lv_landingPadType_2_0= 'filter'
                     {
-                    lv_landingPadType_2_0=(Token)match(input,180,FOLLOW_180_in_ruleLandingpadClause24723); if (state.failed) return current;
+                    lv_landingPadType_2_0=(Token)match(input,180,FOLLOW_180_in_ruleLandingpadClause24721); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_landingPadType_2_0, grammarAccess.getLandingpadClauseAccess().getLandingPadTypeFilterKeyword_1_0_0());
@@ -30883,7 +30895,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getLandingpadClauseAccess().getArrayTypeArrayTypeParserRuleCall_1_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArrayType_in_ruleLandingpadClause24757);
+                    pushFollow(FOLLOW_ruleArrayType_in_ruleLandingpadClause24755);
                     lv_arrayType_3_0=ruleArrayType();
 
                     state._fsp--;
@@ -30918,7 +30930,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getLandingpadClauseAccess().getArrayConstantArrayConstantParserRuleCall_1_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArrayConstant_in_ruleLandingpadClause24778);
+                    pushFollow(FOLLOW_ruleArrayConstant_in_ruleLandingpadClause24776);
                     lv_arrayConstant_4_0=ruleArrayConstant();
 
                     state._fsp--;
@@ -30985,7 +30997,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOrderingRule()); 
             }
-            pushFollow(FOLLOW_ruleOrdering_in_entryRuleOrdering24816);
+            pushFollow(FOLLOW_ruleOrdering_in_entryRuleOrdering24814);
             iv_ruleOrdering=ruleOrdering();
 
             state._fsp--;
@@ -30993,7 +31005,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOrdering.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOrdering24827); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOrdering24825); if (state.failed) return current;
 
             }
 
@@ -31068,7 +31080,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11593:2: kw= 'unordered'
                     {
-                    kw=(Token)match(input,181,FOLLOW_181_in_ruleOrdering24865); if (state.failed) return current;
+                    kw=(Token)match(input,181,FOLLOW_181_in_ruleOrdering24863); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31081,7 +31093,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11600:2: kw= 'monotonic'
                     {
-                    kw=(Token)match(input,182,FOLLOW_182_in_ruleOrdering24884); if (state.failed) return current;
+                    kw=(Token)match(input,182,FOLLOW_182_in_ruleOrdering24882); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31094,7 +31106,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11607:2: kw= 'acquire'
                     {
-                    kw=(Token)match(input,183,FOLLOW_183_in_ruleOrdering24903); if (state.failed) return current;
+                    kw=(Token)match(input,183,FOLLOW_183_in_ruleOrdering24901); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31107,7 +31119,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11614:2: kw= 'release'
                     {
-                    kw=(Token)match(input,184,FOLLOW_184_in_ruleOrdering24922); if (state.failed) return current;
+                    kw=(Token)match(input,184,FOLLOW_184_in_ruleOrdering24920); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31120,7 +31132,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11621:2: kw= 'acq_rel'
                     {
-                    kw=(Token)match(input,185,FOLLOW_185_in_ruleOrdering24941); if (state.failed) return current;
+                    kw=(Token)match(input,185,FOLLOW_185_in_ruleOrdering24939); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31133,7 +31145,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11628:2: kw= 'seq_cst'
                     {
-                    kw=(Token)match(input,186,FOLLOW_186_in_ruleOrdering24960); if (state.failed) return current;
+                    kw=(Token)match(input,186,FOLLOW_186_in_ruleOrdering24958); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31180,7 +31192,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypedValueRule()); 
             }
-            pushFollow(FOLLOW_ruleTypedValue_in_entryRuleTypedValue25000);
+            pushFollow(FOLLOW_ruleTypedValue_in_entryRuleTypedValue24998);
             iv_ruleTypedValue=ruleTypedValue();
 
             state._fsp--;
@@ -31188,7 +31200,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTypedValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTypedValue25010); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTypedValue25008); if (state.failed) return current;
 
             }
 
@@ -31235,7 +31247,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTypedValueAccess().getTypeTypeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleTypedValue25056);
+            pushFollow(FOLLOW_ruleType_in_ruleTypedValue25054);
             lv_type_0_0=ruleType();
 
             state._fsp--;
@@ -31270,7 +31282,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTypedValueAccess().getRefValueRefParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleTypedValue25077);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleTypedValue25075);
             lv_ref_1_0=ruleValueRef();
 
             state._fsp--;
@@ -31331,7 +31343,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleParameterType_in_entryRuleParameterType25113);
+            pushFollow(FOLLOW_ruleParameterType_in_entryRuleParameterType25111);
             iv_ruleParameterType=ruleParameterType();
 
             state._fsp--;
@@ -31339,7 +31351,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameterType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterType25123); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterType25121); if (state.failed) return current;
 
             }
 
@@ -31386,7 +31398,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getParameterTypeAccess().getTypeTypeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleParameterType25169);
+            pushFollow(FOLLOW_ruleType_in_ruleParameterType25167);
             lv_type_0_0=ruleType();
 
             state._fsp--;
@@ -31429,7 +31441,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getParameterTypeAccess().getAttrsParameterAttributesParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleParameterAttributes_in_ruleParameterType25190);
+                    pushFollow(FOLLOW_ruleParameterAttributes_in_ruleParameterType25188);
                     lv_attrs_1_0=ruleParameterAttributes();
 
                     state._fsp--;
@@ -31493,7 +31505,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterAttributesRule()); 
             }
-            pushFollow(FOLLOW_ruleParameterAttributes_in_entryRuleParameterAttributes25227);
+            pushFollow(FOLLOW_ruleParameterAttributes_in_entryRuleParameterAttributes25225);
             iv_ruleParameterAttributes=ruleParameterAttributes();
 
             state._fsp--;
@@ -31501,7 +31513,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameterAttributes; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterAttributes25237); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterAttributes25235); if (state.failed) return current;
 
             }
 
@@ -31556,7 +31568,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getParameterAttributesAccess().getAttributesParameterAttributeParserRuleCall_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleParameterAttribute_in_ruleParameterAttributes25282);
+            	    pushFollow(FOLLOW_ruleParameterAttribute_in_ruleParameterAttributes25280);
             	    lv_attributes_0_0=ruleParameterAttribute();
 
             	    state._fsp--;
@@ -31625,7 +31637,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterAttributeRule()); 
             }
-            pushFollow(FOLLOW_ruleParameterAttribute_in_entryRuleParameterAttribute25319);
+            pushFollow(FOLLOW_ruleParameterAttribute_in_entryRuleParameterAttribute25317);
             iv_ruleParameterAttribute=ruleParameterAttribute();
 
             state._fsp--;
@@ -31633,7 +31645,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameterAttribute.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterAttribute25330); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameterAttribute25328); if (state.failed) return current;
 
             }
 
@@ -31718,7 +31730,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11808:2: kw= 'zeroext'
                     {
-                    kw=(Token)match(input,112,FOLLOW_112_in_ruleParameterAttribute25368); if (state.failed) return current;
+                    kw=(Token)match(input,112,FOLLOW_112_in_ruleParameterAttribute25366); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31731,7 +31743,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11815:2: kw= 'signext'
                     {
-                    kw=(Token)match(input,113,FOLLOW_113_in_ruleParameterAttribute25387); if (state.failed) return current;
+                    kw=(Token)match(input,113,FOLLOW_113_in_ruleParameterAttribute25385); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31744,7 +31756,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11822:2: kw= 'inreg'
                     {
-                    kw=(Token)match(input,114,FOLLOW_114_in_ruleParameterAttribute25406); if (state.failed) return current;
+                    kw=(Token)match(input,114,FOLLOW_114_in_ruleParameterAttribute25404); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31757,7 +31769,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11829:2: kw= 'byval'
                     {
-                    kw=(Token)match(input,187,FOLLOW_187_in_ruleParameterAttribute25425); if (state.failed) return current;
+                    kw=(Token)match(input,187,FOLLOW_187_in_ruleParameterAttribute25423); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31770,7 +31782,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11836:2: kw= 'sret'
                     {
-                    kw=(Token)match(input,188,FOLLOW_188_in_ruleParameterAttribute25444); if (state.failed) return current;
+                    kw=(Token)match(input,188,FOLLOW_188_in_ruleParameterAttribute25442); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31783,7 +31795,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11843:2: kw= 'noalias'
                     {
-                    kw=(Token)match(input,189,FOLLOW_189_in_ruleParameterAttribute25463); if (state.failed) return current;
+                    kw=(Token)match(input,189,FOLLOW_189_in_ruleParameterAttribute25461); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31796,7 +31808,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11850:2: kw= 'nocapture'
                     {
-                    kw=(Token)match(input,190,FOLLOW_190_in_ruleParameterAttribute25482); if (state.failed) return current;
+                    kw=(Token)match(input,190,FOLLOW_190_in_ruleParameterAttribute25480); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31809,7 +31821,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11857:2: kw= 'nest'
                     {
-                    kw=(Token)match(input,191,FOLLOW_191_in_ruleParameterAttribute25501); if (state.failed) return current;
+                    kw=(Token)match(input,191,FOLLOW_191_in_ruleParameterAttribute25499); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -31856,7 +31868,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArgumentRule()); 
             }
-            pushFollow(FOLLOW_ruleArgument_in_entryRuleArgument25541);
+            pushFollow(FOLLOW_ruleArgument_in_entryRuleArgument25539);
             iv_ruleArgument=ruleArgument();
 
             state._fsp--;
@@ -31864,7 +31876,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArgument; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArgument25551); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArgument25549); if (state.failed) return current;
 
             }
 
@@ -31911,7 +31923,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getArgumentAccess().getTypeParameterTypeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleParameterType_in_ruleArgument25597);
+            pushFollow(FOLLOW_ruleParameterType_in_ruleArgument25595);
             lv_type_0_0=ruleParameterType();
 
             state._fsp--;
@@ -31946,7 +31958,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getArgumentAccess().getRefValueRefParserRuleCall_1_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleValueRef_in_ruleArgument25618);
+            pushFollow(FOLLOW_ruleValueRef_in_ruleArgument25616);
             lv_ref_1_0=ruleValueRef();
 
             state._fsp--;
@@ -32007,7 +32019,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getParameterRule()); 
             }
-            pushFollow(FOLLOW_ruleParameter_in_entryRuleParameter25654);
+            pushFollow(FOLLOW_ruleParameter_in_entryRuleParameter25652);
             iv_ruleParameter=ruleParameter();
 
             state._fsp--;
@@ -32015,7 +32027,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleParameter; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleParameter25664); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleParameter25662); if (state.failed) return current;
 
             }
 
@@ -32061,7 +32073,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getParameterAccess().getTypeParameterTypeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleParameterType_in_ruleParameter25710);
+            pushFollow(FOLLOW_ruleParameterType_in_ruleParameter25708);
             lv_type_0_0=ruleParameterType();
 
             state._fsp--;
@@ -32099,7 +32111,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11959:1: (lv_name_1_0= RULE_LOCAL_ID )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11960:3: lv_name_1_0= RULE_LOCAL_ID
                     {
-                    lv_name_1_0=(Token)match(input,RULE_LOCAL_ID,FOLLOW_RULE_LOCAL_ID_in_ruleParameter25727); if (state.failed) return current;
+                    lv_name_1_0=(Token)match(input,RULE_LOCAL_ID,FOLLOW_RULE_LOCAL_ID_in_ruleParameter25725); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       			newLeafNode(lv_name_1_0, grammarAccess.getParameterAccess().getNameLOCAL_IDTerminalRuleCall_1_0()); 
@@ -32163,7 +32175,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNonVoidTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleNonVoidType_in_entryRuleNonVoidType25769);
+            pushFollow(FOLLOW_ruleNonVoidType_in_entryRuleNonVoidType25767);
             iv_ruleNonVoidType=ruleNonVoidType();
 
             state._fsp--;
@@ -32171,7 +32183,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNonVoidType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNonVoidType25779); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNonVoidType25777); if (state.failed) return current;
 
             }
 
@@ -32245,7 +32257,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getBaseTypeVoidTypeParserRuleCall_0_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleVoidType_in_ruleNonVoidType25826);
+                    pushFollow(FOLLOW_ruleVoidType_in_ruleNonVoidType25824);
                     lv_baseType_0_0=ruleVoidType();
 
                     state._fsp--;
@@ -32280,7 +32292,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_0_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25847);
+                    pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25845);
                     lv_functionSuffix_1_0=ruleFunctionTypeOrPointerToFunctionTypeSuffix();
 
                     state._fsp--;
@@ -32327,7 +32339,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getBaseTypeNonLeftRecursiveNonVoidTypeParserRuleCall_1_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleNonLeftRecursiveNonVoidType_in_ruleNonVoidType25876);
+                    pushFollow(FOLLOW_ruleNonLeftRecursiveNonVoidType_in_ruleNonVoidType25874);
                     lv_baseType_2_0=ruleNonLeftRecursiveNonVoidType();
 
                     state._fsp--;
@@ -32401,7 +32413,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     	      	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getStarsStarParserRuleCall_1_1_0()); 
                     	      	    
                     	    }
-                    	    pushFollow(FOLLOW_ruleStar_in_ruleNonVoidType25897);
+                    	    pushFollow(FOLLOW_ruleStar_in_ruleNonVoidType25895);
                     	    lv_stars_3_0=ruleStar();
 
                     	    state._fsp--;
@@ -32450,7 +32462,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_1_2_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25919);
+                            pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25917);
                             lv_functionSuffix_4_0=ruleFunctionTypeOrPointerToFunctionTypeSuffix();
 
                             state._fsp--;
@@ -32520,7 +32532,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStarRule()); 
             }
-            pushFollow(FOLLOW_ruleStar_in_entryRuleStar25957);
+            pushFollow(FOLLOW_ruleStar_in_entryRuleStar25955);
             iv_ruleStar=ruleStar();
 
             state._fsp--;
@@ -32528,7 +32540,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStar; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStar25967); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStar25965); if (state.failed) return current;
 
             }
 
@@ -32595,7 +32607,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getStarAccess().getAddressSpaceAddressSpaceParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAddressSpace_in_ruleStar26022);
+                    pushFollow(FOLLOW_ruleAddressSpace_in_ruleStar26020);
                     lv_addressSpace_1_0=ruleAddressSpace();
 
                     state._fsp--;
@@ -32622,7 +32634,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,192,FOLLOW_192_in_ruleStar26035); if (state.failed) return current;
+            otherlv_2=(Token)match(input,192,FOLLOW_192_in_ruleStar26033); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getStarAccess().getAsteriskKeyword_2());
@@ -32665,7 +32677,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleType_in_entryRuleType26071);
+            pushFollow(FOLLOW_ruleType_in_entryRuleType26069);
             iv_ruleType=ruleType();
 
             state._fsp--;
@@ -32673,7 +32685,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleType26081); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleType26079); if (state.failed) return current;
 
             }
 
@@ -32722,7 +32734,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTypeAccess().getBaseTypeNonLeftRecursiveTypeParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNonLeftRecursiveType_in_ruleType26127);
+            pushFollow(FOLLOW_ruleNonLeftRecursiveType_in_ruleType26125);
             lv_baseType_0_0=ruleNonLeftRecursiveType();
 
             state._fsp--;
@@ -32796,7 +32808,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getTypeAccess().getStarsStarParserRuleCall_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleStar_in_ruleType26148);
+            	    pushFollow(FOLLOW_ruleStar_in_ruleType26146);
             	    lv_stars_1_0=ruleStar();
 
             	    state._fsp--;
@@ -32845,7 +32857,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleType26170);
+                    pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleType26168);
                     lv_functionSuffix_2_0=ruleFunctionTypeOrPointerToFunctionTypeSuffix();
 
                     state._fsp--;
@@ -32909,7 +32921,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule()); 
             }
-            pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26207);
+            pushFollow(FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26205);
             iv_ruleFunctionTypeOrPointerToFunctionTypeSuffix=ruleFunctionTypeOrPointerToFunctionTypeSuffix();
 
             state._fsp--;
@@ -32917,7 +32929,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFunctionTypeOrPointerToFunctionTypeSuffix; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26217); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26215); if (state.failed) return current;
 
             }
 
@@ -32974,7 +32986,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26263); if (state.failed) return current;
+            otherlv_1=(Token)match(input,35,FOLLOW_35_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26261); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getLeftParenthesisKeyword_1());
@@ -33023,7 +33035,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26286);
+                            pushFollow(FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26284);
                             lv_containedTypes_2_0=ruleParameterType();
 
                             state._fsp--;
@@ -33068,7 +33080,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                             	case 1 :
                             	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12261:4: otherlv_3= ',' ( (lv_containedTypes_4_0= ruleParameterType ) )
                             	    {
-                            	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26299); if (state.failed) return current;
+                            	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26297); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_3, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_1_0());
@@ -33085,7 +33097,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26320);
+                            	    pushFollow(FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26318);
                             	    lv_containedTypes_4_0=ruleParameterType();
 
                             	    state._fsp--;
@@ -33129,7 +33141,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                                 case 1 :
                                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12283:6: otherlv_5= ',' ( (lv_vararg_6_0= '...' ) )
                                     {
-                                    otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26335); if (state.failed) return current;
+                                    otherlv_5=(Token)match(input,34,FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26333); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                           	newLeafNode(otherlv_5, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_2_0());
@@ -33141,7 +33153,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12288:1: (lv_vararg_6_0= '...' )
                                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12289:3: lv_vararg_6_0= '...'
                                     {
-                                    lv_vararg_6_0=(Token)match(input,85,FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26353); if (state.failed) return current;
+                                    lv_vararg_6_0=(Token)match(input,85,FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26351); if (state.failed) return current;
                                     if ( state.backtracking==0 ) {
 
                                               newLeafNode(lv_vararg_6_0, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0());
@@ -33185,7 +33197,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12304:1: (lv_vararg_7_0= '...' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12305:3: lv_vararg_7_0= '...'
                     {
-                    lv_vararg_7_0=(Token)match(input,85,FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26394); if (state.failed) return current;
+                    lv_vararg_7_0=(Token)match(input,85,FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26392); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_vararg_7_0, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0());
@@ -33211,7 +33223,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,37,FOLLOW_37_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26420); if (state.failed) return current;
+            otherlv_8=(Token)match(input,37,FOLLOW_37_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26418); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_8, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getRightParenthesisKeyword_3());
@@ -33267,7 +33279,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             	      	        newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); 
             	      	    
             	    }
-            	    pushFollow(FOLLOW_ruleStar_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26441);
+            	    pushFollow(FOLLOW_ruleStar_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26439);
             	    lv_stars_9_0=ruleStar();
 
             	    state._fsp--;
@@ -33334,7 +33346,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNonLeftRecursiveTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleNonLeftRecursiveType_in_entryRuleNonLeftRecursiveType26478);
+            pushFollow(FOLLOW_ruleNonLeftRecursiveType_in_entryRuleNonLeftRecursiveType26476);
             iv_ruleNonLeftRecursiveType=ruleNonLeftRecursiveType();
 
             state._fsp--;
@@ -33342,7 +33354,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNonLeftRecursiveType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNonLeftRecursiveType26488); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNonLeftRecursiveType26486); if (state.failed) return current;
 
             }
 
@@ -33429,7 +33441,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeIntTypeParserRuleCall_0_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleIntType_in_ruleNonLeftRecursiveType26536);
+                            pushFollow(FOLLOW_ruleIntType_in_ruleNonLeftRecursiveType26534);
                             lv_type_0_1=ruleIntType();
 
                             state._fsp--;
@@ -33458,7 +33470,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeFloatingTypeParserRuleCall_0_0_1()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveType26555);
+                            pushFollow(FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveType26553);
                             lv_type_0_2=ruleFloatingType();
 
                             state._fsp--;
@@ -33487,7 +33499,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeVectorTypeParserRuleCall_0_0_2()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveType26574);
+                            pushFollow(FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveType26572);
                             lv_type_0_3=ruleVectorType();
 
                             state._fsp--;
@@ -33516,7 +33528,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeArrayTypeParserRuleCall_0_0_3()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveType26593);
+                            pushFollow(FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveType26591);
                             lv_type_0_4=ruleArrayType();
 
                             state._fsp--;
@@ -33545,7 +33557,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeX86mmxTypeParserRuleCall_0_0_4()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveType26612);
+                            pushFollow(FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveType26610);
                             lv_type_0_5=ruleX86mmxType();
 
                             state._fsp--;
@@ -33574,7 +33586,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeVoidTypeParserRuleCall_0_0_5()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleVoidType_in_ruleNonLeftRecursiveType26631);
+                            pushFollow(FOLLOW_ruleVoidType_in_ruleNonLeftRecursiveType26629);
                             lv_type_0_6=ruleVoidType();
 
                             state._fsp--;
@@ -33603,7 +33615,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeMetadataTypeParserRuleCall_0_0_6()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveType26650);
+                            pushFollow(FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveType26648);
                             lv_type_0_7=ruleMetadataType();
 
                             state._fsp--;
@@ -33632,7 +33644,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeStructTypeParserRuleCall_0_0_7()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleStructType_in_ruleNonLeftRecursiveType26669);
+                            pushFollow(FOLLOW_ruleStructType_in_ruleNonLeftRecursiveType26667);
                             lv_type_0_8=ruleStructType();
 
                             state._fsp--;
@@ -33661,7 +33673,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeOpaqueTypeParserRuleCall_0_0_8()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveType26688);
+                            pushFollow(FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveType26686);
                             lv_type_0_9=ruleOpaqueType();
 
                             state._fsp--;
@@ -33710,7 +33722,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_1=(Token)match(input,RULE_LOCAL_ID,FOLLOW_RULE_LOCAL_ID_in_ruleNonLeftRecursiveType26717); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,RULE_LOCAL_ID,FOLLOW_RULE_LOCAL_ID_in_ruleNonLeftRecursiveType26715); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_1, grammarAccess.getNonLeftRecursiveTypeAccess().getTypedefTypeDefCrossReference_1_0()); 
@@ -33762,7 +33774,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleNonLeftRecursiveNonVoidType_in_entryRuleNonLeftRecursiveNonVoidType26753);
+            pushFollow(FOLLOW_ruleNonLeftRecursiveNonVoidType_in_entryRuleNonLeftRecursiveNonVoidType26751);
             iv_ruleNonLeftRecursiveNonVoidType=ruleNonLeftRecursiveNonVoidType();
 
             state._fsp--;
@@ -33770,7 +33782,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNonLeftRecursiveNonVoidType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNonLeftRecursiveNonVoidType26763); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNonLeftRecursiveNonVoidType26761); if (state.failed) return current;
 
             }
 
@@ -33833,7 +33845,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeIntTypeParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleIntType_in_ruleNonLeftRecursiveNonVoidType26810);
+                    pushFollow(FOLLOW_ruleIntType_in_ruleNonLeftRecursiveNonVoidType26808);
                     lv_type_0_1=ruleIntType();
 
                     state._fsp--;
@@ -33862,7 +33874,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeFloatingTypeParserRuleCall_0_1()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveNonVoidType26829);
+                    pushFollow(FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveNonVoidType26827);
                     lv_type_0_2=ruleFloatingType();
 
                     state._fsp--;
@@ -33891,7 +33903,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeVectorTypeParserRuleCall_0_2()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveNonVoidType26848);
+                    pushFollow(FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveNonVoidType26846);
                     lv_type_0_3=ruleVectorType();
 
                     state._fsp--;
@@ -33920,7 +33932,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeArrayTypeParserRuleCall_0_3()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveNonVoidType26867);
+                    pushFollow(FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveNonVoidType26865);
                     lv_type_0_4=ruleArrayType();
 
                     state._fsp--;
@@ -33949,7 +33961,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeX86mmxTypeParserRuleCall_0_4()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveNonVoidType26886);
+                    pushFollow(FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveNonVoidType26884);
                     lv_type_0_5=ruleX86mmxType();
 
                     state._fsp--;
@@ -33978,7 +33990,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeMetadataTypeParserRuleCall_0_5()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveNonVoidType26905);
+                    pushFollow(FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveNonVoidType26903);
                     lv_type_0_6=ruleMetadataType();
 
                     state._fsp--;
@@ -34007,7 +34019,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeStructTypeParserRuleCall_0_6()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleStructType_in_ruleNonLeftRecursiveNonVoidType26924);
+                    pushFollow(FOLLOW_ruleStructType_in_ruleNonLeftRecursiveNonVoidType26922);
                     lv_type_0_7=ruleStructType();
 
                     state._fsp--;
@@ -34036,7 +34048,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeOpaqueTypeParserRuleCall_0_7()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveNonVoidType26943);
+                    pushFollow(FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveNonVoidType26941);
                     lv_type_0_8=ruleOpaqueType();
 
                     state._fsp--;
@@ -34100,7 +34112,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTypeDefRule()); 
             }
-            pushFollow(FOLLOW_ruleTypeDef_in_entryRuleTypeDef26981);
+            pushFollow(FOLLOW_ruleTypeDef_in_entryRuleTypeDef26979);
             iv_ruleTypeDef=ruleTypeDef();
 
             state._fsp--;
@@ -34108,7 +34120,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTypeDef; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTypeDef26991); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTypeDef26989); if (state.failed) return current;
 
             }
 
@@ -34156,7 +34168,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTypeDefAccess().getNameLocalNameParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleLocalName_in_ruleTypeDef27037);
+            pushFollow(FOLLOW_ruleLocalName_in_ruleTypeDef27035);
             lv_name_0_0=ruleLocalName();
 
             state._fsp--;
@@ -34180,7 +34192,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,193,FOLLOW_193_in_ruleTypeDef27049); if (state.failed) return current;
+            otherlv_1=(Token)match(input,193,FOLLOW_193_in_ruleTypeDef27047); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getTypeDefAccess().getTypeKeyword_1());
@@ -34197,7 +34209,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getTypeDefAccess().getTypeNonVoidTypeParserRuleCall_2_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleNonVoidType_in_ruleTypeDef27070);
+            pushFollow(FOLLOW_ruleNonVoidType_in_ruleTypeDef27068);
             lv_type_2_0=ruleNonVoidType();
 
             state._fsp--;
@@ -34258,7 +34270,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getIntTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleIntType_in_entryRuleIntType27108);
+            pushFollow(FOLLOW_ruleIntType_in_entryRuleIntType27106);
             iv_ruleIntType=ruleIntType();
 
             state._fsp--;
@@ -34266,7 +34278,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleIntType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleIntType27118); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleIntType27116); if (state.failed) return current;
 
             }
 
@@ -34299,7 +34311,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12747:1: (this_INT_TYPE_0= RULE_INT_TYPE () )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12747:2: this_INT_TYPE_0= RULE_INT_TYPE ()
             {
-            this_INT_TYPE_0=(Token)match(input,RULE_INT_TYPE,FOLLOW_RULE_INT_TYPE_in_ruleIntType27154); if (state.failed) return current;
+            this_INT_TYPE_0=(Token)match(input,RULE_INT_TYPE,FOLLOW_RULE_INT_TYPE_in_ruleIntType27152); if (state.failed) return current;
             if ( state.backtracking==0 ) {
                
                   newLeafNode(this_INT_TYPE_0, grammarAccess.getIntTypeAccess().getINT_TYPETerminalRuleCall_0()); 
@@ -34355,7 +34367,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getOpaqueTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleOpaqueType_in_entryRuleOpaqueType27198);
+            pushFollow(FOLLOW_ruleOpaqueType_in_entryRuleOpaqueType27196);
             iv_ruleOpaqueType=ruleOpaqueType();
 
             state._fsp--;
@@ -34363,7 +34375,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleOpaqueType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleOpaqueType27208); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleOpaqueType27206); if (state.failed) return current;
 
             }
 
@@ -34396,7 +34408,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12778:1: (otherlv_0= 'opaque' () )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12778:3: otherlv_0= 'opaque' ()
             {
-            otherlv_0=(Token)match(input,194,FOLLOW_194_in_ruleOpaqueType27245); if (state.failed) return current;
+            otherlv_0=(Token)match(input,194,FOLLOW_194_in_ruleOpaqueType27243); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getOpaqueTypeAccess().getOpaqueKeyword_0());
@@ -34452,7 +34464,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getStructTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleStructType_in_entryRuleStructType27290);
+            pushFollow(FOLLOW_ruleStructType_in_entryRuleStructType27288);
             iv_ruleStructType=ruleStructType();
 
             state._fsp--;
@@ -34460,7 +34472,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleStructType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleStructType27300); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleStructType27298); if (state.failed) return current;
 
             }
 
@@ -34545,7 +34557,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12815:3: (otherlv_1= '{' ( ( (lv_types_2_0= ruleType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleType ) ) )* )? otherlv_5= '}' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12815:5: otherlv_1= '{' ( ( (lv_types_2_0= ruleType ) ) (otherlv_3= ',' ( (lv_types_4_0= ruleType ) ) )* )? otherlv_5= '}'
                     {
-                    otherlv_1=(Token)match(input,69,FOLLOW_69_in_ruleStructType27348); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,69,FOLLOW_69_in_ruleStructType27346); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_1_0_0());
@@ -34573,7 +34585,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getStructTypeAccess().getTypesTypeParserRuleCall_1_0_1_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleType_in_ruleStructType27370);
+                            pushFollow(FOLLOW_ruleType_in_ruleStructType27368);
                             lv_types_2_0=ruleType();
 
                             state._fsp--;
@@ -34612,7 +34624,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                             	case 1 :
                             	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12837:4: otherlv_3= ',' ( (lv_types_4_0= ruleType ) )
                             	    {
-                            	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleStructType27383); if (state.failed) return current;
+                            	    otherlv_3=(Token)match(input,34,FOLLOW_34_in_ruleStructType27381); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_3, grammarAccess.getStructTypeAccess().getCommaKeyword_1_0_1_1_0());
@@ -34629,7 +34641,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getStructTypeAccess().getTypesTypeParserRuleCall_1_0_1_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleType_in_ruleStructType27404);
+                            	    pushFollow(FOLLOW_ruleType_in_ruleStructType27402);
                             	    lv_types_4_0=ruleType();
 
                             	    state._fsp--;
@@ -34668,7 +34680,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_5=(Token)match(input,70,FOLLOW_70_in_ruleStructType27420); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,70,FOLLOW_70_in_ruleStructType27418); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_1_0_2());
@@ -34692,7 +34704,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12865:1: (lv_packed_6_0= '<' )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12866:3: lv_packed_6_0= '<'
                     {
-                    lv_packed_6_0=(Token)match(input,73,FOLLOW_73_in_ruleStructType27446); if (state.failed) return current;
+                    lv_packed_6_0=(Token)match(input,73,FOLLOW_73_in_ruleStructType27444); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_packed_6_0, grammarAccess.getStructTypeAccess().getPackedLessThanSignKeyword_1_1_0_0());
@@ -34712,7 +34724,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_7=(Token)match(input,69,FOLLOW_69_in_ruleStructType27471); if (state.failed) return current;
+                    otherlv_7=(Token)match(input,69,FOLLOW_69_in_ruleStructType27469); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_7, grammarAccess.getStructTypeAccess().getLeftCurlyBracketKeyword_1_1_1());
@@ -34740,7 +34752,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               	        newCompositeNode(grammarAccess.getStructTypeAccess().getTypesTypeParserRuleCall_1_1_2_0_0()); 
                               	    
                             }
-                            pushFollow(FOLLOW_ruleType_in_ruleStructType27493);
+                            pushFollow(FOLLOW_ruleType_in_ruleStructType27491);
                             lv_types_8_0=ruleType();
 
                             state._fsp--;
@@ -34779,7 +34791,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                             	case 1 :
                             	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12901:4: otherlv_9= ',' ( (lv_types_10_0= ruleType ) )
                             	    {
-                            	    otherlv_9=(Token)match(input,34,FOLLOW_34_in_ruleStructType27506); if (state.failed) return current;
+                            	    otherlv_9=(Token)match(input,34,FOLLOW_34_in_ruleStructType27504); if (state.failed) return current;
                             	    if ( state.backtracking==0 ) {
 
                             	          	newLeafNode(otherlv_9, grammarAccess.getStructTypeAccess().getCommaKeyword_1_1_2_1_0());
@@ -34796,7 +34808,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                             	      	        newCompositeNode(grammarAccess.getStructTypeAccess().getTypesTypeParserRuleCall_1_1_2_1_1_0()); 
                             	      	    
                             	    }
-                            	    pushFollow(FOLLOW_ruleType_in_ruleStructType27527);
+                            	    pushFollow(FOLLOW_ruleType_in_ruleStructType27525);
                             	    lv_types_10_0=ruleType();
 
                             	    state._fsp--;
@@ -34835,13 +34847,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    otherlv_11=(Token)match(input,70,FOLLOW_70_in_ruleStructType27543); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,70,FOLLOW_70_in_ruleStructType27541); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_11, grammarAccess.getStructTypeAccess().getRightCurlyBracketKeyword_1_1_3());
                           
                     }
-                    otherlv_12=(Token)match(input,74,FOLLOW_74_in_ruleStructType27555); if (state.failed) return current;
+                    otherlv_12=(Token)match(input,74,FOLLOW_74_in_ruleStructType27553); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_12, grammarAccess.getStructTypeAccess().getGreaterThanSignKeyword_1_1_4());
@@ -34893,7 +34905,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVectorTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleVectorType_in_entryRuleVectorType27593);
+            pushFollow(FOLLOW_ruleVectorType_in_entryRuleVectorType27591);
             iv_ruleVectorType=ruleVectorType();
 
             state._fsp--;
@@ -34901,7 +34913,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleVectorType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVectorType27603); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVectorType27601); if (state.failed) return current;
 
             }
 
@@ -34939,7 +34951,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12952:1: (otherlv_0= '<' ( (lv_size_1_0= RULE_INTEGER ) ) otherlv_2= 'x' ( (lv_elemType_3_0= ruleType ) ) otherlv_4= '>' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12952:3: otherlv_0= '<' ( (lv_size_1_0= RULE_INTEGER ) ) otherlv_2= 'x' ( (lv_elemType_3_0= ruleType ) ) otherlv_4= '>'
             {
-            otherlv_0=(Token)match(input,73,FOLLOW_73_in_ruleVectorType27640); if (state.failed) return current;
+            otherlv_0=(Token)match(input,73,FOLLOW_73_in_ruleVectorType27638); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getVectorTypeAccess().getLessThanSignKeyword_0());
@@ -34951,7 +34963,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12957:1: (lv_size_1_0= RULE_INTEGER )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:12958:3: lv_size_1_0= RULE_INTEGER
             {
-            lv_size_1_0=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleVectorType27657); if (state.failed) return current;
+            lv_size_1_0=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleVectorType27655); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_size_1_0, grammarAccess.getVectorTypeAccess().getSizeINTEGERTerminalRuleCall_1_0()); 
@@ -34975,7 +34987,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,195,FOLLOW_195_in_ruleVectorType27674); if (state.failed) return current;
+            otherlv_2=(Token)match(input,195,FOLLOW_195_in_ruleVectorType27672); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getVectorTypeAccess().getXKeyword_2());
@@ -34992,7 +35004,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getVectorTypeAccess().getElemTypeTypeParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleVectorType27695);
+            pushFollow(FOLLOW_ruleType_in_ruleVectorType27693);
             lv_elemType_3_0=ruleType();
 
             state._fsp--;
@@ -35016,7 +35028,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,74,FOLLOW_74_in_ruleVectorType27707); if (state.failed) return current;
+            otherlv_4=(Token)match(input,74,FOLLOW_74_in_ruleVectorType27705); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getVectorTypeAccess().getGreaterThanSignKeyword_4());
@@ -35059,7 +35071,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getArrayTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleArrayType_in_entryRuleArrayType27743);
+            pushFollow(FOLLOW_ruleArrayType_in_entryRuleArrayType27741);
             iv_ruleArrayType=ruleArrayType();
 
             state._fsp--;
@@ -35067,7 +35079,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleArrayType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayType27753); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleArrayType27751); if (state.failed) return current;
 
             }
 
@@ -35105,7 +35117,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13021:1: (otherlv_0= '[' ( (lv_size_1_0= RULE_INTEGER ) ) otherlv_2= 'x' ( (lv_elemType_3_0= ruleType ) ) otherlv_4= ']' )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13021:3: otherlv_0= '[' ( (lv_size_1_0= RULE_INTEGER ) ) otherlv_2= 'x' ( (lv_elemType_3_0= ruleType ) ) otherlv_4= ']'
             {
-            otherlv_0=(Token)match(input,71,FOLLOW_71_in_ruleArrayType27790); if (state.failed) return current;
+            otherlv_0=(Token)match(input,71,FOLLOW_71_in_ruleArrayType27788); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getArrayTypeAccess().getLeftSquareBracketKeyword_0());
@@ -35117,7 +35129,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13026:1: (lv_size_1_0= RULE_INTEGER )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13027:3: lv_size_1_0= RULE_INTEGER
             {
-            lv_size_1_0=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleArrayType27807); if (state.failed) return current;
+            lv_size_1_0=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleArrayType27805); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_size_1_0, grammarAccess.getArrayTypeAccess().getSizeINTEGERTerminalRuleCall_1_0()); 
@@ -35141,7 +35153,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,195,FOLLOW_195_in_ruleArrayType27824); if (state.failed) return current;
+            otherlv_2=(Token)match(input,195,FOLLOW_195_in_ruleArrayType27822); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getArrayTypeAccess().getXKeyword_2());
@@ -35158,7 +35170,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        newCompositeNode(grammarAccess.getArrayTypeAccess().getElemTypeTypeParserRuleCall_3_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleArrayType27845);
+            pushFollow(FOLLOW_ruleType_in_ruleArrayType27843);
             lv_elemType_3_0=ruleType();
 
             state._fsp--;
@@ -35182,7 +35194,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,72,FOLLOW_72_in_ruleArrayType27857); if (state.failed) return current;
+            otherlv_4=(Token)match(input,72,FOLLOW_72_in_ruleArrayType27855); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_4, grammarAccess.getArrayTypeAccess().getRightSquareBracketKeyword_4());
@@ -35225,7 +35237,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getX86mmxTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleX86mmxType_in_entryRuleX86mmxType27893);
+            pushFollow(FOLLOW_ruleX86mmxType_in_entryRuleX86mmxType27891);
             iv_ruleX86mmxType=ruleX86mmxType();
 
             state._fsp--;
@@ -35233,7 +35245,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleX86mmxType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleX86mmxType27903); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleX86mmxType27901); if (state.failed) return current;
 
             }
 
@@ -35266,7 +35278,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13090:1: (otherlv_0= 'x86_mmx' () )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13090:3: otherlv_0= 'x86_mmx' ()
             {
-            otherlv_0=(Token)match(input,196,FOLLOW_196_in_ruleX86mmxType27940); if (state.failed) return current;
+            otherlv_0=(Token)match(input,196,FOLLOW_196_in_ruleX86mmxType27938); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getX86mmxTypeAccess().getX86_mmxKeyword_0());
@@ -35322,7 +35334,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVoidTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleVoidType_in_entryRuleVoidType27985);
+            pushFollow(FOLLOW_ruleVoidType_in_entryRuleVoidType27983);
             iv_ruleVoidType=ruleVoidType();
 
             state._fsp--;
@@ -35330,7 +35342,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleVoidType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVoidType27995); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVoidType27993); if (state.failed) return current;
 
             }
 
@@ -35363,7 +35375,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13121:1: (otherlv_0= 'void' () )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13121:3: otherlv_0= 'void' ()
             {
-            otherlv_0=(Token)match(input,106,FOLLOW_106_in_ruleVoidType28032); if (state.failed) return current;
+            otherlv_0=(Token)match(input,106,FOLLOW_106_in_ruleVoidType28030); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getVoidTypeAccess().getVoidKeyword_0());
@@ -35419,7 +35431,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getMetadataTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleMetadataType_in_entryRuleMetadataType28077);
+            pushFollow(FOLLOW_ruleMetadataType_in_entryRuleMetadataType28075);
             iv_ruleMetadataType=ruleMetadataType();
 
             state._fsp--;
@@ -35427,7 +35439,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleMetadataType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleMetadataType28087); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMetadataType28085); if (state.failed) return current;
 
             }
 
@@ -35460,7 +35472,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13152:1: (otherlv_0= 'metadata' () )
             // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13152:3: otherlv_0= 'metadata' ()
             {
-            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleMetadataType28124); if (state.failed) return current;
+            otherlv_0=(Token)match(input,24,FOLLOW_24_in_ruleMetadataType28122); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getMetadataTypeAccess().getMetadataKeyword_0());
@@ -35516,7 +35528,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFloatingTypeRule()); 
             }
-            pushFollow(FOLLOW_ruleFloatingType_in_entryRuleFloatingType28169);
+            pushFollow(FOLLOW_ruleFloatingType_in_entryRuleFloatingType28167);
             iv_ruleFloatingType=ruleFloatingType();
 
             state._fsp--;
@@ -35524,7 +35536,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFloatingType; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatingType28179); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFloatingType28177); if (state.failed) return current;
 
             }
 
@@ -35607,7 +35619,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13183:4: otherlv_0= 'half'
                     {
-                    otherlv_0=(Token)match(input,197,FOLLOW_197_in_ruleFloatingType28217); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,197,FOLLOW_197_in_ruleFloatingType28215); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_0, grammarAccess.getFloatingTypeAccess().getHalfKeyword_0_0());
@@ -35619,7 +35631,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13188:7: otherlv_1= 'float'
                     {
-                    otherlv_1=(Token)match(input,198,FOLLOW_198_in_ruleFloatingType28235); if (state.failed) return current;
+                    otherlv_1=(Token)match(input,198,FOLLOW_198_in_ruleFloatingType28233); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_1, grammarAccess.getFloatingTypeAccess().getFloatKeyword_0_1());
@@ -35631,7 +35643,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13193:7: otherlv_2= 'double'
                     {
-                    otherlv_2=(Token)match(input,199,FOLLOW_199_in_ruleFloatingType28253); if (state.failed) return current;
+                    otherlv_2=(Token)match(input,199,FOLLOW_199_in_ruleFloatingType28251); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_2, grammarAccess.getFloatingTypeAccess().getDoubleKeyword_0_2());
@@ -35643,7 +35655,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13198:7: otherlv_3= 'fp128'
                     {
-                    otherlv_3=(Token)match(input,200,FOLLOW_200_in_ruleFloatingType28271); if (state.failed) return current;
+                    otherlv_3=(Token)match(input,200,FOLLOW_200_in_ruleFloatingType28269); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_3, grammarAccess.getFloatingTypeAccess().getFp128Keyword_0_3());
@@ -35655,7 +35667,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13203:7: otherlv_4= 'x86_fp80'
                     {
-                    otherlv_4=(Token)match(input,201,FOLLOW_201_in_ruleFloatingType28289); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,201,FOLLOW_201_in_ruleFloatingType28287); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getFloatingTypeAccess().getX86_fp80Keyword_0_4());
@@ -35667,7 +35679,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13208:7: otherlv_5= 'ppc_fp128'
                     {
-                    otherlv_5=(Token)match(input,202,FOLLOW_202_in_ruleFloatingType28307); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,202,FOLLOW_202_in_ruleFloatingType28305); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getFloatingTypeAccess().getPpc_fp128Keyword_0_5());
@@ -35729,7 +35741,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLinkageRule()); 
             }
-            pushFollow(FOLLOW_ruleLinkage_in_entryRuleLinkage28354);
+            pushFollow(FOLLOW_ruleLinkage_in_entryRuleLinkage28352);
             iv_ruleLinkage=ruleLinkage();
 
             state._fsp--;
@@ -35737,7 +35749,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLinkage.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLinkage28365); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLinkage28363); if (state.failed) return current;
 
             }
 
@@ -35862,7 +35874,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13240:2: kw= 'private'
                     {
-                    kw=(Token)match(input,203,FOLLOW_203_in_ruleLinkage28403); if (state.failed) return current;
+                    kw=(Token)match(input,203,FOLLOW_203_in_ruleLinkage28401); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35875,7 +35887,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13247:2: kw= 'linker_private'
                     {
-                    kw=(Token)match(input,204,FOLLOW_204_in_ruleLinkage28422); if (state.failed) return current;
+                    kw=(Token)match(input,204,FOLLOW_204_in_ruleLinkage28420); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35888,7 +35900,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13254:2: kw= 'linker_private_weak'
                     {
-                    kw=(Token)match(input,205,FOLLOW_205_in_ruleLinkage28441); if (state.failed) return current;
+                    kw=(Token)match(input,205,FOLLOW_205_in_ruleLinkage28439); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35901,7 +35913,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13261:2: kw= 'linker_private_weak_def_auto'
                     {
-                    kw=(Token)match(input,206,FOLLOW_206_in_ruleLinkage28460); if (state.failed) return current;
+                    kw=(Token)match(input,206,FOLLOW_206_in_ruleLinkage28458); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35914,7 +35926,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 5 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13268:2: kw= 'internal'
                     {
-                    kw=(Token)match(input,207,FOLLOW_207_in_ruleLinkage28479); if (state.failed) return current;
+                    kw=(Token)match(input,207,FOLLOW_207_in_ruleLinkage28477); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35927,7 +35939,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 6 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13275:2: kw= 'available_externally'
                     {
-                    kw=(Token)match(input,208,FOLLOW_208_in_ruleLinkage28498); if (state.failed) return current;
+                    kw=(Token)match(input,208,FOLLOW_208_in_ruleLinkage28496); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35940,7 +35952,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 7 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13282:2: kw= 'linkonce'
                     {
-                    kw=(Token)match(input,209,FOLLOW_209_in_ruleLinkage28517); if (state.failed) return current;
+                    kw=(Token)match(input,209,FOLLOW_209_in_ruleLinkage28515); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35953,7 +35965,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 8 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13289:2: kw= 'weak'
                     {
-                    kw=(Token)match(input,210,FOLLOW_210_in_ruleLinkage28536); if (state.failed) return current;
+                    kw=(Token)match(input,210,FOLLOW_210_in_ruleLinkage28534); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35966,7 +35978,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 9 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13296:2: kw= 'common'
                     {
-                    kw=(Token)match(input,211,FOLLOW_211_in_ruleLinkage28555); if (state.failed) return current;
+                    kw=(Token)match(input,211,FOLLOW_211_in_ruleLinkage28553); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35979,7 +35991,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 10 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13303:2: kw= 'appending'
                     {
-                    kw=(Token)match(input,212,FOLLOW_212_in_ruleLinkage28574); if (state.failed) return current;
+                    kw=(Token)match(input,212,FOLLOW_212_in_ruleLinkage28572); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -35992,7 +36004,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 11 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13310:2: kw= 'extern_weak'
                     {
-                    kw=(Token)match(input,213,FOLLOW_213_in_ruleLinkage28593); if (state.failed) return current;
+                    kw=(Token)match(input,213,FOLLOW_213_in_ruleLinkage28591); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36005,7 +36017,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 12 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13317:2: kw= 'linkonce_odr'
                     {
-                    kw=(Token)match(input,214,FOLLOW_214_in_ruleLinkage28612); if (state.failed) return current;
+                    kw=(Token)match(input,214,FOLLOW_214_in_ruleLinkage28610); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36018,7 +36030,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 13 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13324:2: kw= 'weak_odr'
                     {
-                    kw=(Token)match(input,215,FOLLOW_215_in_ruleLinkage28631); if (state.failed) return current;
+                    kw=(Token)match(input,215,FOLLOW_215_in_ruleLinkage28629); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36031,7 +36043,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 14 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13331:2: kw= 'external'
                     {
-                    kw=(Token)match(input,216,FOLLOW_216_in_ruleLinkage28650); if (state.failed) return current;
+                    kw=(Token)match(input,216,FOLLOW_216_in_ruleLinkage28648); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36044,7 +36056,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 15 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13338:2: kw= 'dllimport'
                     {
-                    kw=(Token)match(input,217,FOLLOW_217_in_ruleLinkage28669); if (state.failed) return current;
+                    kw=(Token)match(input,217,FOLLOW_217_in_ruleLinkage28667); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36057,7 +36069,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 16 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13345:2: kw= 'dllexport'
                     {
-                    kw=(Token)match(input,218,FOLLOW_218_in_ruleLinkage28688); if (state.failed) return current;
+                    kw=(Token)match(input,218,FOLLOW_218_in_ruleLinkage28686); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36104,7 +36116,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getCConvRule()); 
             }
-            pushFollow(FOLLOW_ruleCConv_in_entryRuleCConv28729);
+            pushFollow(FOLLOW_ruleCConv_in_entryRuleCConv28727);
             iv_ruleCConv=ruleCConv();
 
             state._fsp--;
@@ -36112,7 +36124,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleCConv.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleCConv28740); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleCConv28738); if (state.failed) return current;
 
             }
 
@@ -36183,7 +36195,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13372:2: kw= 'ccc'
                     {
-                    kw=(Token)match(input,219,FOLLOW_219_in_ruleCConv28778); if (state.failed) return current;
+                    kw=(Token)match(input,219,FOLLOW_219_in_ruleCConv28776); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36196,7 +36208,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13379:2: kw= 'fastcc'
                     {
-                    kw=(Token)match(input,220,FOLLOW_220_in_ruleCConv28797); if (state.failed) return current;
+                    kw=(Token)match(input,220,FOLLOW_220_in_ruleCConv28795); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36209,7 +36221,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13386:2: kw= 'coldcc'
                     {
-                    kw=(Token)match(input,221,FOLLOW_221_in_ruleCConv28816); if (state.failed) return current;
+                    kw=(Token)match(input,221,FOLLOW_221_in_ruleCConv28814); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36222,7 +36234,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 4 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13393:2: kw= 'cc 10'
                     {
-                    kw=(Token)match(input,222,FOLLOW_222_in_ruleCConv28835); if (state.failed) return current;
+                    kw=(Token)match(input,222,FOLLOW_222_in_ruleCConv28833); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36238,14 +36250,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13399:6: (kw= 'cc' this_INTEGER_5= RULE_INTEGER )
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13400:2: kw= 'cc' this_INTEGER_5= RULE_INTEGER
                     {
-                    kw=(Token)match(input,223,FOLLOW_223_in_ruleCConv28855); if (state.failed) return current;
+                    kw=(Token)match(input,223,FOLLOW_223_in_ruleCConv28853); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
                               newLeafNode(kw, grammarAccess.getCConvAccess().getCcKeyword_4_0()); 
                           
                     }
-                    this_INTEGER_5=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleCConv28870); if (state.failed) return current;
+                    this_INTEGER_5=(Token)match(input,RULE_INTEGER,FOLLOW_RULE_INTEGER_in_ruleCConv28868); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		current.merge(this_INTEGER_5);
@@ -36299,7 +36311,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVisibilityRule()); 
             }
-            pushFollow(FOLLOW_ruleVisibility_in_entryRuleVisibility28917);
+            pushFollow(FOLLOW_ruleVisibility_in_entryRuleVisibility28915);
             iv_ruleVisibility=ruleVisibility();
 
             state._fsp--;
@@ -36307,7 +36319,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleVisibility.getText(); 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleVisibility28928); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleVisibility28926); if (state.failed) return current;
 
             }
 
@@ -36367,7 +36379,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 1 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13434:2: kw= 'default'
                     {
-                    kw=(Token)match(input,224,FOLLOW_224_in_ruleVisibility28966); if (state.failed) return current;
+                    kw=(Token)match(input,224,FOLLOW_224_in_ruleVisibility28964); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36380,7 +36392,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 2 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13441:2: kw= 'hidden'
                     {
-                    kw=(Token)match(input,225,FOLLOW_225_in_ruleVisibility28985); if (state.failed) return current;
+                    kw=(Token)match(input,225,FOLLOW_225_in_ruleVisibility28983); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36393,7 +36405,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 case 3 :
                     // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13448:2: kw= 'protected'
                     {
-                    kw=(Token)match(input,226,FOLLOW_226_in_ruleVisibility29004); if (state.failed) return current;
+                    kw=(Token)match(input,226,FOLLOW_226_in_ruleVisibility29002); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -36432,7 +36444,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10810:1: ( ruleType )
         // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10811:1: ruleType
         {
-        pushFollow(FOLLOW_ruleType_in_synpred1_InternalLLVM_IR23348);
+        pushFollow(FOLLOW_ruleType_in_synpred1_InternalLLVM_IR23346);
         ruleType();
 
         state._fsp--;
@@ -36453,7 +36465,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10991:1: ( ruleType )
         // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:10992:1: ruleType
         {
-        pushFollow(FOLLOW_ruleType_in_synpred2_InternalLLVM_IR23643);
+        pushFollow(FOLLOW_ruleType_in_synpred2_InternalLLVM_IR23641);
         ruleType();
 
         state._fsp--;
@@ -36926,225 +36938,224 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     static final String DFA63_eotS =
         "\106\uffff";
     static final String DFA63_eofS =
-        "\2\uffff\1\53\47\uffff\1\1\33\uffff";
+        "\2\uffff\1\3\1\uffff\1\1\101\uffff";
     static final String DFA63_minS =
-        "\1\7\1\uffff\1\4\16\7\1\u0096\1\14\30\7\1\uffff\32\7";
+        "\1\7\1\uffff\1\4\1\uffff\45\7\1\u0096\1\14\33\7";
     static final String DFA63_maxS =
-        "\1\u00ca\1\uffff\1\u00c0\16\u00ca\1\u009f\1\u00a9\27\u00ca\1\u00b0"+
-        "\1\uffff\32\u00ca";
+        "\1\u00ca\1\uffff\1\u00c0\1\uffff\1\u00b0\44\u00ca\1\u009f\1\u00a9"+
+        "\33\u00ca";
     static final String DFA63_acceptS =
-        "\1\uffff\1\1\51\uffff\1\2\32\uffff";
+        "\1\uffff\1\1\1\uffff\1\2\102\uffff";
     static final String DFA63_specialS =
         "\106\uffff}>";
     static final String[] DFA63_transitionS = {
             "\1\1\12\uffff\1\1\5\uffff\1\1\54\uffff\1\1\1\uffff\1\1\1\uffff"+
             "\1\1\40\uffff\1\2\127\uffff\1\1\1\uffff\7\1",
             "",
-            "\3\1\1\52\1\uffff\7\1\1\53\21\uffff\1\53\1\1\2\uffff\1\17"+
-            "\1\uffff\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1"+
-            "\32\1\33\1\34\1\35\1\36\1\37\1\40\1\41\1\42\1\43\1\44\1\45\1"+
-            "\46\1\47\1\50\1\51\4\1\1\53\1\1\1\uffff\1\1\1\uffff\1\1\4\uffff"+
-            "\1\1\30\uffff\1\53\1\uffff\1\53\1\uffff\3\53\4\uffff\2\53\3"+
-            "\uffff\2\53\5\uffff\4\53\6\uffff\1\3\1\4\1\5\1\6\1\7\1\10\1"+
-            "\11\1\12\1\13\1\14\1\15\1\16\24\uffff\3\53\2\uffff\2\53\17\uffff"+
-            "\1\1",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\3\uffff\1\54"+
-            "\35\uffff\1\53\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
+            "\3\1\1\4\1\uffff\7\1\1\3\21\uffff\1\3\1\1\2\uffff\1\34\1\uffff"+
+            "\1\53\1\51\1\52\1\27\1\30\1\31\1\32\1\33\1\5\1\6\1\7\1\10\1"+
+            "\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1"+
+            "\25\1\26\4\1\1\3\1\1\1\uffff\1\1\1\uffff\1\1\4\uffff\1\1\30"+
+            "\uffff\1\3\1\uffff\1\3\1\uffff\3\3\4\uffff\2\3\3\uffff\2\3\5"+
+            "\uffff\4\3\6\uffff\1\35\1\36\1\37\1\40\1\41\1\42\1\43\1\44\1"+
+            "\45\1\46\1\47\1\50\24\uffff\3\3\2\uffff\2\3\17\uffff\1\1",
+            "",
+            "\1\1\10\uffff\1\1\1\3\5\uffff\1\3\12\uffff\1\1\3\uffff\1\1"+
+            "\1\uffff\32\1\4\uffff\1\1\42\uffff\1\1\1\uffff\1\1\1\uffff\3"+
+            "\1\4\uffff\2\1\3\uffff\2\1\5\uffff\4\1\6\uffff\14\1\24\uffff"+
+            "\3\1\2\uffff\2\1",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\13\uffff\2\3\112\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\13\uffff\2\3\112\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\13\uffff\2\3\112\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\15\uffff\1\3\111\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\15\uffff\1\3\111\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\13\uffff\2\3\112\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\15\uffff\1\3\111\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\15\uffff\1\3\111\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\3\uffff\1\54\35"+
+            "\uffff\1\3\1\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1"+
+            "\3\1\uffff\7\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
             "\1\55\1\56\1\57\1\60\1\61\1\62\1\63\1\64\1\65\1\66",
             "\1\67\u008b\uffff\1\100\1\101\1\102\1\103\4\uffff\1\70\1\71"+
             "\1\72\1\73\1\74\1\75\1\76\1\77\1\104\1\105",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\13\uffff\2\53\112\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\13\uffff\2\53\112\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\13\uffff\2\53\112\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\15\uffff\1\53\111\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\15\uffff\1\53\111\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\13\uffff\2\53\112\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\15\uffff\1\53\111\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\15\uffff\1\53\111\uffff"+
-            "\1\53\1\uffff\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\1\10\uffff\1\1\1\53\5\uffff\1\53\12\uffff\1\1\3\uffff\1"+
-            "\1\1\uffff\32\1\4\uffff\1\1\42\uffff\1\1\1\uffff\1\1\1\uffff"+
-            "\3\1\4\uffff\2\1\3\uffff\2\1\5\uffff\4\1\6\uffff\14\1\24\uffff"+
-            "\3\1\2\uffff\2\1",
-            "",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53",
-            "\1\53\12\uffff\1\53\5\uffff\1\53\12\uffff\1\1\41\uffff\1\53"+
-            "\1\uffff\1\53\1\uffff\1\53\40\uffff\1\53\127\uffff\1\53\1\uffff"+
-            "\7\53"
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3",
+            "\1\3\12\uffff\1\3\5\uffff\1\3\12\uffff\1\1\41\uffff\1\3\1"+
+            "\uffff\1\3\1\uffff\1\3\40\uffff\1\3\127\uffff\1\3\1\uffff\7"+
+            "\3"
     };
 
     static final short[] DFA63_eot = DFA.unpackEncodedString(DFA63_eotS);
@@ -38493,442 +38504,442 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_extractvalue18620 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_46_in_ruleInstruction_extractvalue18663 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
     public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_extractvalue18697 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_extractvalue18710 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleInstruction_extractvalue18727 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_ruleInstruction_insertvalue_in_entryRuleInstruction_insertvalue18770 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_insertvalue18780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_47_in_ruleInstruction_insertvalue18823 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18857 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_insertvalue18869 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18890 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_insertvalue18903 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleInstruction_insertvalue18920 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_ruleInstruction_alloca_in_entryRuleInstruction_alloca18965 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_alloca18975 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_121_in_ruleInstruction_alloca19018 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_alloca19052 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_alloca19065 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_alloca19086 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_alloca19101 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_alloca19122 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_load_in_entryRuleInstruction_load19160 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_load19170 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_122_in_ruleInstruction_load19213 = new BitSet(new long[]{0x0000000001040080L,0x48000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_123_in_ruleInstruction_load19241 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_load19264 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_load19277 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_load19298 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_load19313 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
-    public static final BitSet FOLLOW_124_in_ruleInstruction_load19325 = new BitSet(new long[]{0xFFFFFF400000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_load19346 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_load19361 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
-    public static final BitSet FOLLOW_125_in_ruleInstruction_load19373 = new BitSet(new long[]{0xFFFFFF400000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_load19394 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_126_in_ruleInstruction_load19416 = new BitSet(new long[]{0x0000000001040080L,0x08000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_123_in_ruleInstruction_load19429 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_load19452 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_127_in_ruleInstruction_load19465 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_load19488 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_load19509 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_store_in_entryRuleInstruction_store19547 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_store19557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_128_in_ruleInstruction_store19600 = new BitSet(new long[]{0x0000000001040080L,0x48000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_123_in_ruleInstruction_store19628 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19651 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_store19663 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19684 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_store19697 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_store19718 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_store19733 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
-    public static final BitSet FOLLOW_124_in_ruleInstruction_store19745 = new BitSet(new long[]{0xFFFFFF400000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_store19766 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_126_in_ruleInstruction_store19788 = new BitSet(new long[]{0x0000000001040080L,0x08000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_123_in_ruleInstruction_store19801 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19824 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19845 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_127_in_ruleInstruction_store19858 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_store19881 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_store19902 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_fence_in_entryRuleInstruction_fence19940 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fence19950 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_129_in_ruleInstruction_fence19993 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_127_in_ruleInstruction_fence20019 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_fence20042 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_cmpxchg_in_entryRuleInstruction_cmpxchg20078 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_cmpxchg20088 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_130_in_ruleInstruction_cmpxchg20131 = new BitSet(new long[]{0x0000000001040080L,0x08000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_123_in_ruleInstruction_cmpxchg20157 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20180 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_cmpxchg20192 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20213 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_cmpxchg20225 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20246 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_127_in_ruleInstruction_cmpxchg20259 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_cmpxchg20282 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_atomicrmw_in_entryRuleInstruction_atomicrmw20318 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_atomicrmw20328 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_131_in_ruleInstruction_atomicrmw20371 = new BitSet(new long[]{0x8005000000000000L,0x0800000000000003L,0x00000000000003F0L});
-    public static final BitSet FOLLOW_123_in_ruleInstruction_atomicrmw20397 = new BitSet(new long[]{0x8005000000000000L,0x0800000000000003L,0x00000000000003F0L});
-    public static final BitSet FOLLOW_ruleAtomicrmw_operation_in_ruleInstruction_atomicrmw20420 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20441 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_atomicrmw20453 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20474 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_127_in_ruleInstruction_atomicrmw20487 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
-    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_atomicrmw20510 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAtomicrmw_operation_in_entryRuleAtomicrmw_operation20547 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAtomicrmw_operation20558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_132_in_ruleAtomicrmw_operation20596 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_48_in_ruleAtomicrmw_operation20615 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_50_in_ruleAtomicrmw_operation20634 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_63_in_ruleAtomicrmw_operation20653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_133_in_ruleAtomicrmw_operation20672 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_64_in_ruleAtomicrmw_operation20691 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_65_in_ruleAtomicrmw_operation20710 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_134_in_ruleAtomicrmw_operation20729 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_135_in_ruleAtomicrmw_operation20748 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_136_in_ruleAtomicrmw_operation20767 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_137_in_ruleAtomicrmw_operation20786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_getelementptr_in_entryRuleInstruction_getelementptr20826 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_getelementptr20836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_ruleInstruction_getelementptr20879 = new BitSet(new long[]{0x0000008001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_39_in_ruleInstruction_getelementptr20905 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20928 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_getelementptr20941 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20962 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_ruleConversionInstruction_in_entryRuleConversionInstruction21000 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConversionInstruction21010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConvertionOpcode_in_ruleConversionInstruction21056 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleConversionInstruction21077 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleConversionInstruction21098 = new BitSet(new long[]{0x0000001000000000L});
-    public static final BitSet FOLLOW_36_in_ruleConversionInstruction21110 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleConversionInstruction21131 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConvertionOpcode_in_entryRuleConvertionOpcode21168 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConvertionOpcode21179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_138_in_ruleConvertionOpcode21217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_139_in_ruleConvertionOpcode21236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_140_in_ruleConvertionOpcode21255 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_141_in_ruleConvertionOpcode21274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_142_in_ruleConvertionOpcode21293 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_143_in_ruleConvertionOpcode21312 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_144_in_ruleConvertionOpcode21331 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_145_in_ruleConvertionOpcode21350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_146_in_ruleConvertionOpcode21369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_147_in_ruleConvertionOpcode21388 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_148_in_ruleConvertionOpcode21407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_149_in_ruleConvertionOpcode21426 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOtherInstruction_in_entryRuleOtherInstruction21466 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOtherInstruction21476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_icmp_in_ruleOtherInstruction21523 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_fcmp_in_ruleOtherInstruction21550 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_select_in_ruleOtherInstruction21577 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_va_arg_in_ruleOtherInstruction21604 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_landingpad_in_ruleOtherInstruction21631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_icmp_in_entryRuleInstruction_icmp21666 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_icmp21676 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_41_in_ruleInstruction_icmp21719 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000000FFC00000L});
-    public static final BitSet FOLLOW_ruleIcmpCondition_in_ruleInstruction_icmp21753 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_icmp21774 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_icmp21795 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_icmp21807 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_icmp21828 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIcmpCondition_in_entryRuleIcmpCondition21865 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIcmpCondition21876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_150_in_ruleIcmpCondition21914 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_151_in_ruleIcmpCondition21933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_152_in_ruleIcmpCondition21952 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_153_in_ruleIcmpCondition21971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_154_in_ruleIcmpCondition21990 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_155_in_ruleIcmpCondition22009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_156_in_ruleIcmpCondition22028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_157_in_ruleIcmpCondition22047 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_158_in_ruleIcmpCondition22066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_159_in_ruleIcmpCondition22085 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_fcmp_in_entryRuleInstruction_fcmp22125 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fcmp22135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_ruleInstruction_fcmp22178 = new BitSet(new long[]{0x0000000000001000L,0x0000000000000000L,0x000003FF0F000000L});
-    public static final BitSet FOLLOW_ruleFcmpCondition_in_ruleInstruction_fcmp22212 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fcmp22233 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22254 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_fcmp22266 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22287 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFcmpCondition_in_entryRuleFcmpCondition22324 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFcmpCondition22335 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_BOOLEAN_in_ruleFcmpCondition22375 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_160_in_ruleFcmpCondition22399 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_161_in_ruleFcmpCondition22418 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_162_in_ruleFcmpCondition22437 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_163_in_ruleFcmpCondition22456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_164_in_ruleFcmpCondition22475 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_165_in_ruleFcmpCondition22494 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_166_in_ruleFcmpCondition22513 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_167_in_ruleFcmpCondition22532 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_152_in_ruleFcmpCondition22551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_153_in_ruleFcmpCondition22570 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_154_in_ruleFcmpCondition22589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_155_in_ruleFcmpCondition22608 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_168_in_ruleFcmpCondition22627 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_169_in_ruleFcmpCondition22646 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_phi_in_entryRuleInstruction_phi22686 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_phi22696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_170_in_ruleInstruction_phi22739 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_phi22773 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_71_in_ruleInstruction_phi22786 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_phi22807 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_phi22819 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22840 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_ruleInstruction_phi22852 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_phi22866 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_71_in_ruleInstruction_phi22878 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_phi22899 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_phi22911 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22932 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_ruleInstruction_phi22944 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_ruleInstruction_select_in_entryRuleInstruction_select22982 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_select22992 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_ruleInstruction_select23035 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23069 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_select23081 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23102 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_select23114 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23135 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_call_nonVoid_in_entryRuleInstruction_call_nonVoid23171 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_call_nonVoid23181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_171_in_ruleInstruction_call_nonVoid23224 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_172_in_ruleInstruction_call_nonVoid23256 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0xF800000000000000L,0x00000000F80007F4L});
-    public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid23290 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0xF800000000000000L,0x00000000F80007F4L});
-    public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid23312 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
-    public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_call_nonVoid23334 = new BitSet(new long[]{0xFFFFFF404104FEF0L,0x0000040000000ABFL,0x00000000003FFC00L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_nonVoid23365 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_nonVoid23387 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_nonVoid23408 = new BitSet(new long[]{0x0000000000000002L,0x000001FFFFC00000L});
-    public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_nonVoid23429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_call_void_in_entryRuleInstruction_call_void23466 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_call_void23476 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_171_in_ruleInstruction_call_void23519 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_172_in_ruleInstruction_call_void23551 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L,0xF800000000000000L,0x00000000F8000000L});
-    public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_void23585 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L,0xF800000000000000L});
-    public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_void23607 = new BitSet(new long[]{0x0000000000000000L,0x0000040000000000L});
-    public static final BitSet FOLLOW_ruleVoidType_in_ruleInstruction_call_void23629 = new BitSet(new long[]{0xFFFFFF404104FEF0L,0x0000040000000ABFL,0x00000000003FFC00L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_void23660 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_void23682 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_void23703 = new BitSet(new long[]{0x0000000000000002L,0x000001FFFFC00000L});
-    public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_void23724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArgList_in_entryRuleArgList23761 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArgList23771 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleArgList23817 = new BitSet(new long[]{0x0000002081040080L,0x00000400000002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
-    public static final BitSet FOLLOW_ruleArgument_in_ruleArgList23839 = new BitSet(new long[]{0x0000002400000000L});
-    public static final BitSet FOLLOW_34_in_ruleArgList23852 = new BitSet(new long[]{0x0000000081040080L,0x00000400000002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
-    public static final BitSet FOLLOW_ruleArgument_in_ruleArgList23873 = new BitSet(new long[]{0x0000002400000000L});
-    public static final BitSet FOLLOW_37_in_ruleArgList23889 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCallee_in_entryRuleCallee23925 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCallee23935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleCallee23982 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInlineAssembler_in_ruleCallee24009 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInlineAssembler_in_entryRuleInlineAssembler24044 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInlineAssembler24054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_ruleInlineAssembler24091 = new BitSet(new long[]{0x0000000000000100L,0x0000000000000000L,0x0000600000000000L});
-    public static final BitSet FOLLOW_173_in_ruleInlineAssembler24104 = new BitSet(new long[]{0x0000000000000100L,0x0000000000000000L,0x0000400000000000L});
-    public static final BitSet FOLLOW_174_in_ruleInlineAssembler24119 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAssembler24138 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInlineAssembler24155 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAssembler24172 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_va_arg_in_entryRuleInstruction_va_arg24213 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_va_arg24223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_175_in_ruleInstruction_va_arg24266 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_va_arg24300 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_ruleInstruction_va_arg24312 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_va_arg24333 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInstruction_landingpad_in_entryRuleInstruction_landingpad24369 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_landingpad24379 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_176_in_ruleInstruction_landingpad24422 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_landingpad24456 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0002000000000000L});
-    public static final BitSet FOLLOW_177_in_ruleInstruction_landingpad24468 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_landingpad24489 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_ruleFunctionRef_in_ruleInstruction_landingpad24510 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x001C000000000000L});
-    public static final BitSet FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24532 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0018000000000000L});
-    public static final BitSet FOLLOW_178_in_ruleInstruction_landingpad24550 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0018000000000000L});
-    public static final BitSet FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24572 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0018000000000000L});
-    public static final BitSet FOLLOW_ruleLandingpadClause_in_entryRuleLandingpadClause24609 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLandingpadClause24619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_179_in_ruleLandingpadClause24663 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_ruleLandingpadClause24697 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_180_in_ruleLandingpadClause24723 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleArrayType_in_ruleLandingpadClause24757 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_ruleArrayConstant_in_ruleLandingpadClause24778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOrdering_in_entryRuleOrdering24816 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOrdering24827 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_181_in_ruleOrdering24865 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_182_in_ruleOrdering24884 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_183_in_ruleOrdering24903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_184_in_ruleOrdering24922 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_185_in_ruleOrdering24941 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_186_in_ruleOrdering24960 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypedValue_in_entryRuleTypedValue25000 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTypedValue25010 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleTypedValue25056 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleTypedValue25077 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterType_in_entryRuleParameterType25113 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameterType25123 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_ruleParameterType25169 = new BitSet(new long[]{0x0000000000000002L,0x0007000000000000L,0xF800000000000000L});
-    public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleParameterType25190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterAttributes_in_entryRuleParameterAttributes25227 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameterAttributes25237 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterAttribute_in_ruleParameterAttributes25282 = new BitSet(new long[]{0x0000000000000002L,0x0007000000000000L,0xF800000000000000L});
-    public static final BitSet FOLLOW_ruleParameterAttribute_in_entryRuleParameterAttribute25319 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameterAttribute25330 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_112_in_ruleParameterAttribute25368 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_113_in_ruleParameterAttribute25387 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_114_in_ruleParameterAttribute25406 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_187_in_ruleParameterAttribute25425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_188_in_ruleParameterAttribute25444 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_189_in_ruleParameterAttribute25463 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_190_in_ruleParameterAttribute25482 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_191_in_ruleParameterAttribute25501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArgument_in_entryRuleArgument25541 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArgument25551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterType_in_ruleArgument25597 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleArgument25618 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameter_in_entryRuleParameter25654 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleParameter25664 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleParameterType_in_ruleParameter25710 = new BitSet(new long[]{0x0000000000000082L});
-    public static final BitSet FOLLOW_RULE_LOCAL_ID_in_ruleParameter25727 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNonVoidType_in_entryRuleNonVoidType25769 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNonVoidType25779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVoidType_in_ruleNonVoidType25826 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25847 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNonLeftRecursiveNonVoidType_in_ruleNonVoidType25876 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleStar_in_ruleNonVoidType25897 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25919 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStar_in_entryRuleStar25957 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStar25967 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAddressSpace_in_ruleStar26022 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_192_in_ruleStar26035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_entryRuleType26071 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleType26081 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNonLeftRecursiveType_in_ruleType26127 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleStar_in_ruleType26148 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleType26170 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26207 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_35_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26263 = new BitSet(new long[]{0x0000002081040080L,0x00000400002002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
-    public static final BitSet FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26286 = new BitSet(new long[]{0x0000002400000000L});
-    public static final BitSet FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26299 = new BitSet(new long[]{0x0000000081040080L,0x00000400000002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
-    public static final BitSet FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26320 = new BitSet(new long[]{0x0000002400000000L});
-    public static final BitSet FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26335 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-    public static final BitSet FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26353 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26394 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_37_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26420 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleStar_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26441 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_ruleNonLeftRecursiveType_in_entryRuleNonLeftRecursiveType26478 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNonLeftRecursiveType26488 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntType_in_ruleNonLeftRecursiveType26536 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveType26555 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveType26574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveType26593 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveType26612 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVoidType_in_ruleNonLeftRecursiveType26631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveType26650 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStructType_in_ruleNonLeftRecursiveType26669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveType26688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LOCAL_ID_in_ruleNonLeftRecursiveType26717 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNonLeftRecursiveNonVoidType_in_entryRuleNonLeftRecursiveNonVoidType26753 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNonLeftRecursiveNonVoidType26763 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntType_in_ruleNonLeftRecursiveNonVoidType26810 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveNonVoidType26829 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveNonVoidType26848 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveNonVoidType26867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveNonVoidType26886 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveNonVoidType26905 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStructType_in_ruleNonLeftRecursiveNonVoidType26924 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveNonVoidType26943 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTypeDef_in_entryRuleTypeDef26981 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTypeDef26991 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLocalName_in_ruleTypeDef27037 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_193_in_ruleTypeDef27049 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
-    public static final BitSet FOLLOW_ruleNonVoidType_in_ruleTypeDef27070 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleIntType_in_entryRuleIntType27108 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleIntType27118 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_TYPE_in_ruleIntType27154 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleOpaqueType_in_entryRuleOpaqueType27198 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleOpaqueType27208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_194_in_ruleOpaqueType27245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStructType_in_entryRuleStructType27290 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleStructType27300 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_69_in_ruleStructType27348 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002E0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleStructType27370 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_34_in_ruleStructType27383 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleStructType27404 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_ruleStructType27420 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_ruleStructType27446 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
-    public static final BitSet FOLLOW_69_in_ruleStructType27471 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002E0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleStructType27493 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_34_in_ruleStructType27506 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleStructType27527 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
-    public static final BitSet FOLLOW_70_in_ruleStructType27543 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_74_in_ruleStructType27555 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVectorType_in_entryRuleVectorType27593 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVectorType27603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_73_in_ruleVectorType27640 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleVectorType27657 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_195_in_ruleVectorType27674 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleVectorType27695 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
-    public static final BitSet FOLLOW_74_in_ruleVectorType27707 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayType_in_entryRuleArrayType27743 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleArrayType27753 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_71_in_ruleArrayType27790 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleArrayType27807 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_195_in_ruleArrayType27824 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleArrayType27845 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
-    public static final BitSet FOLLOW_72_in_ruleArrayType27857 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleX86mmxType_in_entryRuleX86mmxType27893 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleX86mmxType27903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_196_in_ruleX86mmxType27940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVoidType_in_entryRuleVoidType27985 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVoidType27995 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_106_in_ruleVoidType28032 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetadataType_in_entryRuleMetadataType28077 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleMetadataType28087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ruleMetadataType28124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFloatingType_in_entryRuleFloatingType28169 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFloatingType28179 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_197_in_ruleFloatingType28217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_198_in_ruleFloatingType28235 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_199_in_ruleFloatingType28253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_200_in_ruleFloatingType28271 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_201_in_ruleFloatingType28289 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_202_in_ruleFloatingType28307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLinkage_in_entryRuleLinkage28354 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLinkage28365 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_203_in_ruleLinkage28403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_204_in_ruleLinkage28422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_205_in_ruleLinkage28441 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_206_in_ruleLinkage28460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_207_in_ruleLinkage28479 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_208_in_ruleLinkage28498 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_209_in_ruleLinkage28517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_210_in_ruleLinkage28536 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_211_in_ruleLinkage28555 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_212_in_ruleLinkage28574 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_213_in_ruleLinkage28593 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_214_in_ruleLinkage28612 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_215_in_ruleLinkage28631 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_216_in_ruleLinkage28650 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_217_in_ruleLinkage28669 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_218_in_ruleLinkage28688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleCConv_in_entryRuleCConv28729 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleCConv28740 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_219_in_ruleCConv28778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_220_in_ruleCConv28797 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_221_in_ruleCConv28816 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_222_in_ruleCConv28835 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_223_in_ruleCConv28855 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleCConv28870 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVisibility_in_entryRuleVisibility28917 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleVisibility28928 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_224_in_ruleVisibility28966 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_225_in_ruleVisibility28985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_226_in_ruleVisibility29004 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_synpred1_InternalLLVM_IR23348 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleType_in_synpred2_InternalLLVM_IR23643 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_extractvalue18710 = new BitSet(new long[]{0xFFFFFF400000FE00L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleConstant_in_ruleInstruction_extractvalue18731 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_ruleInstruction_insertvalue_in_entryRuleInstruction_insertvalue18769 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_insertvalue18779 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_47_in_ruleInstruction_insertvalue18822 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18856 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_insertvalue18868 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue18889 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_insertvalue18902 = new BitSet(new long[]{0xFFFFFF400000FE00L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleConstant_in_ruleInstruction_insertvalue18923 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_ruleInstruction_alloca_in_entryRuleInstruction_alloca18963 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_alloca18973 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_121_in_ruleInstruction_alloca19016 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_alloca19050 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_alloca19063 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_alloca19084 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_alloca19099 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_alloca19120 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_load_in_entryRuleInstruction_load19158 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_load19168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_122_in_ruleInstruction_load19211 = new BitSet(new long[]{0x0000000001040080L,0x48000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_123_in_ruleInstruction_load19239 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_load19262 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_load19275 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_load19296 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_load19311 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
+    public static final BitSet FOLLOW_124_in_ruleInstruction_load19323 = new BitSet(new long[]{0xFFFFFF400000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_load19344 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_load19359 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
+    public static final BitSet FOLLOW_125_in_ruleInstruction_load19371 = new BitSet(new long[]{0xFFFFFF400000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_load19392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_126_in_ruleInstruction_load19414 = new BitSet(new long[]{0x0000000001040080L,0x08000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_123_in_ruleInstruction_load19427 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_load19450 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_127_in_ruleInstruction_load19463 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_load19486 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_load19507 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_store_in_entryRuleInstruction_store19545 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_store19555 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_128_in_ruleInstruction_store19598 = new BitSet(new long[]{0x0000000001040080L,0x48000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_123_in_ruleInstruction_store19626 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19649 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_store19661 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19682 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_store19695 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_store19716 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_store19731 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
+    public static final BitSet FOLLOW_124_in_ruleInstruction_store19743 = new BitSet(new long[]{0xFFFFFF400000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_store19764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_126_in_ruleInstruction_store19786 = new BitSet(new long[]{0x0000000001040080L,0x08000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_123_in_ruleInstruction_store19799 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19822 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store19843 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_127_in_ruleInstruction_store19856 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_store19879 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_store19900 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_fence_in_entryRuleInstruction_fence19938 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fence19948 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_129_in_ruleInstruction_fence19991 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_127_in_ruleInstruction_fence20017 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_fence20040 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_cmpxchg_in_entryRuleInstruction_cmpxchg20076 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_cmpxchg20086 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_130_in_ruleInstruction_cmpxchg20129 = new BitSet(new long[]{0x0000000001040080L,0x08000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_123_in_ruleInstruction_cmpxchg20155 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20178 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_cmpxchg20190 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20211 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_cmpxchg20223 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg20244 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_127_in_ruleInstruction_cmpxchg20257 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_cmpxchg20280 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_atomicrmw_in_entryRuleInstruction_atomicrmw20316 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_atomicrmw20326 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_131_in_ruleInstruction_atomicrmw20369 = new BitSet(new long[]{0x8005000000000000L,0x0800000000000003L,0x00000000000003F0L});
+    public static final BitSet FOLLOW_123_in_ruleInstruction_atomicrmw20395 = new BitSet(new long[]{0x8005000000000000L,0x0800000000000003L,0x00000000000003F0L});
+    public static final BitSet FOLLOW_ruleAtomicrmw_operation_in_ruleInstruction_atomicrmw20418 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20439 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_atomicrmw20451 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw20472 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_127_in_ruleInstruction_atomicrmw20485 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L,0x07E0000000000000L});
+    public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_atomicrmw20508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomicrmw_operation_in_entryRuleAtomicrmw_operation20545 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAtomicrmw_operation20556 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_132_in_ruleAtomicrmw_operation20594 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_48_in_ruleAtomicrmw_operation20613 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_50_in_ruleAtomicrmw_operation20632 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_63_in_ruleAtomicrmw_operation20651 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_133_in_ruleAtomicrmw_operation20670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_64_in_ruleAtomicrmw_operation20689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_65_in_ruleAtomicrmw_operation20708 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_134_in_ruleAtomicrmw_operation20727 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_135_in_ruleAtomicrmw_operation20746 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_136_in_ruleAtomicrmw_operation20765 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_137_in_ruleAtomicrmw_operation20784 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_getelementptr_in_entryRuleInstruction_getelementptr20824 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_getelementptr20834 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_ruleInstruction_getelementptr20877 = new BitSet(new long[]{0x0000008001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_39_in_ruleInstruction_getelementptr20903 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20926 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_getelementptr20939 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr20960 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_ruleConversionInstruction_in_entryRuleConversionInstruction20998 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConversionInstruction21008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConvertionOpcode_in_ruleConversionInstruction21054 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleConversionInstruction21075 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleConversionInstruction21096 = new BitSet(new long[]{0x0000001000000000L});
+    public static final BitSet FOLLOW_36_in_ruleConversionInstruction21108 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleConversionInstruction21129 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConvertionOpcode_in_entryRuleConvertionOpcode21166 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConvertionOpcode21177 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_138_in_ruleConvertionOpcode21215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_139_in_ruleConvertionOpcode21234 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_140_in_ruleConvertionOpcode21253 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_141_in_ruleConvertionOpcode21272 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_142_in_ruleConvertionOpcode21291 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_143_in_ruleConvertionOpcode21310 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_144_in_ruleConvertionOpcode21329 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_145_in_ruleConvertionOpcode21348 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_146_in_ruleConvertionOpcode21367 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_147_in_ruleConvertionOpcode21386 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_148_in_ruleConvertionOpcode21405 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_149_in_ruleConvertionOpcode21424 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOtherInstruction_in_entryRuleOtherInstruction21464 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOtherInstruction21474 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_icmp_in_ruleOtherInstruction21521 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_fcmp_in_ruleOtherInstruction21548 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_select_in_ruleOtherInstruction21575 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_va_arg_in_ruleOtherInstruction21602 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_landingpad_in_ruleOtherInstruction21629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_icmp_in_entryRuleInstruction_icmp21664 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_icmp21674 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_ruleInstruction_icmp21717 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000000FFC00000L});
+    public static final BitSet FOLLOW_ruleIcmpCondition_in_ruleInstruction_icmp21751 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_icmp21772 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_icmp21793 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_icmp21805 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_icmp21826 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIcmpCondition_in_entryRuleIcmpCondition21863 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIcmpCondition21874 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_150_in_ruleIcmpCondition21912 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_151_in_ruleIcmpCondition21931 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_152_in_ruleIcmpCondition21950 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_153_in_ruleIcmpCondition21969 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_154_in_ruleIcmpCondition21988 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_155_in_ruleIcmpCondition22007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_156_in_ruleIcmpCondition22026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_157_in_ruleIcmpCondition22045 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_158_in_ruleIcmpCondition22064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_159_in_ruleIcmpCondition22083 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_fcmp_in_entryRuleInstruction_fcmp22123 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fcmp22133 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_ruleInstruction_fcmp22176 = new BitSet(new long[]{0x0000000000001000L,0x0000000000000000L,0x000003FF0F000000L});
+    public static final BitSet FOLLOW_ruleFcmpCondition_in_ruleInstruction_fcmp22210 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fcmp22231 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22252 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_fcmp22264 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fcmp22285 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFcmpCondition_in_entryRuleFcmpCondition22322 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFcmpCondition22333 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_BOOLEAN_in_ruleFcmpCondition22373 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_160_in_ruleFcmpCondition22397 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_161_in_ruleFcmpCondition22416 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_162_in_ruleFcmpCondition22435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_163_in_ruleFcmpCondition22454 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_164_in_ruleFcmpCondition22473 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_165_in_ruleFcmpCondition22492 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_166_in_ruleFcmpCondition22511 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_167_in_ruleFcmpCondition22530 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_152_in_ruleFcmpCondition22549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_153_in_ruleFcmpCondition22568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_154_in_ruleFcmpCondition22587 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_155_in_ruleFcmpCondition22606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_168_in_ruleFcmpCondition22625 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_169_in_ruleFcmpCondition22644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_phi_in_entryRuleInstruction_phi22684 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_phi22694 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_170_in_ruleInstruction_phi22737 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_phi22771 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_71_in_ruleInstruction_phi22784 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_phi22805 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_phi22817 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22838 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_ruleInstruction_phi22850 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_phi22864 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_71_in_ruleInstruction_phi22876 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_phi22897 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_phi22909 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_phi22930 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_ruleInstruction_phi22942 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_ruleInstruction_select_in_entryRuleInstruction_select22980 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_select22990 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_ruleInstruction_select23033 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23067 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_select23079 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23100 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_select23112 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23133 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_call_nonVoid_in_entryRuleInstruction_call_nonVoid23169 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_call_nonVoid23179 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_171_in_ruleInstruction_call_nonVoid23222 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_172_in_ruleInstruction_call_nonVoid23254 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0xF800000000000000L,0x00000000F80007F4L});
+    public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid23288 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0xF800000000000000L,0x00000000F80007F4L});
+    public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid23310 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
+    public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_call_nonVoid23332 = new BitSet(new long[]{0xFFFFFF404104FEF0L,0x0000040000000ABFL,0x00000000003FFC00L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_nonVoid23363 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_nonVoid23385 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_nonVoid23406 = new BitSet(new long[]{0x0000000000000002L,0x000001FFFFC00000L});
+    public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_nonVoid23427 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_call_void_in_entryRuleInstruction_call_void23464 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_call_void23474 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_171_in_ruleInstruction_call_void23517 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_172_in_ruleInstruction_call_void23549 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L,0xF800000000000000L,0x00000000F8000000L});
+    public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_void23583 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L,0xF800000000000000L});
+    public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_void23605 = new BitSet(new long[]{0x0000000000000000L,0x0000040000000000L});
+    public static final BitSet FOLLOW_ruleVoidType_in_ruleInstruction_call_void23627 = new BitSet(new long[]{0xFFFFFF404104FEF0L,0x0000040000000ABFL,0x00000000003FFC00L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_void23658 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_void23680 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_void23701 = new BitSet(new long[]{0x0000000000000002L,0x000001FFFFC00000L});
+    public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_void23722 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArgList_in_entryRuleArgList23759 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArgList23769 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleArgList23815 = new BitSet(new long[]{0x0000002081040080L,0x00000400000002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
+    public static final BitSet FOLLOW_ruleArgument_in_ruleArgList23837 = new BitSet(new long[]{0x0000002400000000L});
+    public static final BitSet FOLLOW_34_in_ruleArgList23850 = new BitSet(new long[]{0x0000000081040080L,0x00000400000002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
+    public static final BitSet FOLLOW_ruleArgument_in_ruleArgList23871 = new BitSet(new long[]{0x0000002400000000L});
+    public static final BitSet FOLLOW_37_in_ruleArgList23887 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCallee_in_entryRuleCallee23923 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCallee23933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleCallee23980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInlineAssembler_in_ruleCallee24007 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInlineAssembler_in_entryRuleInlineAssembler24042 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInlineAssembler24052 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_ruleInlineAssembler24089 = new BitSet(new long[]{0x0000000000000100L,0x0000000000000000L,0x0000600000000000L});
+    public static final BitSet FOLLOW_173_in_ruleInlineAssembler24102 = new BitSet(new long[]{0x0000000000000100L,0x0000000000000000L,0x0000400000000000L});
+    public static final BitSet FOLLOW_174_in_ruleInlineAssembler24117 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAssembler24136 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInlineAssembler24153 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAssembler24170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_va_arg_in_entryRuleInstruction_va_arg24211 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_va_arg24221 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_175_in_ruleInstruction_va_arg24264 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_va_arg24298 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_ruleInstruction_va_arg24310 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_va_arg24331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInstruction_landingpad_in_entryRuleInstruction_landingpad24367 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_landingpad24377 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_176_in_ruleInstruction_landingpad24420 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_landingpad24454 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0002000000000000L});
+    public static final BitSet FOLLOW_177_in_ruleInstruction_landingpad24466 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_landingpad24487 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_ruleFunctionRef_in_ruleInstruction_landingpad24508 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x001C000000000000L});
+    public static final BitSet FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24530 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0018000000000000L});
+    public static final BitSet FOLLOW_178_in_ruleInstruction_landingpad24548 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0018000000000000L});
+    public static final BitSet FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad24570 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0018000000000000L});
+    public static final BitSet FOLLOW_ruleLandingpadClause_in_entryRuleLandingpadClause24607 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLandingpadClause24617 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_179_in_ruleLandingpadClause24661 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_ruleLandingpadClause24695 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_180_in_ruleLandingpadClause24721 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_ruleArrayType_in_ruleLandingpadClause24755 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_ruleArrayConstant_in_ruleLandingpadClause24776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOrdering_in_entryRuleOrdering24814 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOrdering24825 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_181_in_ruleOrdering24863 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_182_in_ruleOrdering24882 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_183_in_ruleOrdering24901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_184_in_ruleOrdering24920 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_185_in_ruleOrdering24939 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_186_in_ruleOrdering24958 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypedValue_in_entryRuleTypedValue24998 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTypedValue25008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_ruleTypedValue25054 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleTypedValue25075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterType_in_entryRuleParameterType25111 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameterType25121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_ruleParameterType25167 = new BitSet(new long[]{0x0000000000000002L,0x0007000000000000L,0xF800000000000000L});
+    public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleParameterType25188 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterAttributes_in_entryRuleParameterAttributes25225 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameterAttributes25235 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterAttribute_in_ruleParameterAttributes25280 = new BitSet(new long[]{0x0000000000000002L,0x0007000000000000L,0xF800000000000000L});
+    public static final BitSet FOLLOW_ruleParameterAttribute_in_entryRuleParameterAttribute25317 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameterAttribute25328 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_112_in_ruleParameterAttribute25366 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_113_in_ruleParameterAttribute25385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_114_in_ruleParameterAttribute25404 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_187_in_ruleParameterAttribute25423 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_188_in_ruleParameterAttribute25442 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_189_in_ruleParameterAttribute25461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_190_in_ruleParameterAttribute25480 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_191_in_ruleParameterAttribute25499 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArgument_in_entryRuleArgument25539 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArgument25549 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterType_in_ruleArgument25595 = new BitSet(new long[]{0xFFFFFF400000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleValueRef_in_ruleArgument25616 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameter_in_entryRuleParameter25652 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleParameter25662 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleParameterType_in_ruleParameter25708 = new BitSet(new long[]{0x0000000000000082L});
+    public static final BitSet FOLLOW_RULE_LOCAL_ID_in_ruleParameter25725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNonVoidType_in_entryRuleNonVoidType25767 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNonVoidType25777 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVoidType_in_ruleNonVoidType25824 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25845 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNonLeftRecursiveNonVoidType_in_ruleNonVoidType25874 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleStar_in_ruleNonVoidType25895 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleNonVoidType25917 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStar_in_entryRuleStar25955 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStar25965 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAddressSpace_in_ruleStar26020 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_192_in_ruleStar26033 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_entryRuleType26069 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleType26079 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNonLeftRecursiveType_in_ruleType26125 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleStar_in_ruleType26146 = new BitSet(new long[]{0x0000000800000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_ruleType26168 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunctionTypeOrPointerToFunctionTypeSuffix_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26205 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFunctionTypeOrPointerToFunctionTypeSuffix26215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26261 = new BitSet(new long[]{0x0000002081040080L,0x00000400002002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
+    public static final BitSet FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26284 = new BitSet(new long[]{0x0000002400000000L});
+    public static final BitSet FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26297 = new BitSet(new long[]{0x0000000081040080L,0x00000400000002A0L,0x0000000000000000L,0x00000007FFFFFFF4L});
+    public static final BitSet FOLLOW_ruleParameterType_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26318 = new BitSet(new long[]{0x0000002400000000L});
+    public static final BitSet FOLLOW_34_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26333 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
+    public static final BitSet FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26351 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_85_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26392 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_37_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26418 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleStar_in_ruleFunctionTypeOrPointerToFunctionTypeSuffix26439 = new BitSet(new long[]{0x0000000000000002L,0x0000000000010000L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_ruleNonLeftRecursiveType_in_entryRuleNonLeftRecursiveType26476 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNonLeftRecursiveType26486 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntType_in_ruleNonLeftRecursiveType26534 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveType26553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveType26572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveType26591 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveType26610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVoidType_in_ruleNonLeftRecursiveType26629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveType26648 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStructType_in_ruleNonLeftRecursiveType26667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveType26686 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LOCAL_ID_in_ruleNonLeftRecursiveType26715 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNonLeftRecursiveNonVoidType_in_entryRuleNonLeftRecursiveNonVoidType26751 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNonLeftRecursiveNonVoidType26761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntType_in_ruleNonLeftRecursiveNonVoidType26808 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingType_in_ruleNonLeftRecursiveNonVoidType26827 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVectorType_in_ruleNonLeftRecursiveNonVoidType26846 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayType_in_ruleNonLeftRecursiveNonVoidType26865 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleX86mmxType_in_ruleNonLeftRecursiveNonVoidType26884 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetadataType_in_ruleNonLeftRecursiveNonVoidType26903 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStructType_in_ruleNonLeftRecursiveNonVoidType26922 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpaqueType_in_ruleNonLeftRecursiveNonVoidType26941 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTypeDef_in_entryRuleTypeDef26979 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTypeDef26989 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocalName_in_ruleTypeDef27035 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_193_in_ruleTypeDef27047 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
+    public static final BitSet FOLLOW_ruleNonVoidType_in_ruleTypeDef27068 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleIntType_in_entryRuleIntType27106 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleIntType27116 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_TYPE_in_ruleIntType27152 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleOpaqueType_in_entryRuleOpaqueType27196 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleOpaqueType27206 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_194_in_ruleOpaqueType27243 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStructType_in_entryRuleStructType27288 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleStructType27298 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_69_in_ruleStructType27346 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002E0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleStructType27368 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_34_in_ruleStructType27381 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleStructType27402 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_ruleStructType27418 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_ruleStructType27444 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000020L});
+    public static final BitSet FOLLOW_69_in_ruleStructType27469 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002E0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleStructType27491 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_34_in_ruleStructType27504 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleStructType27525 = new BitSet(new long[]{0x0000000400000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_70_in_ruleStructType27541 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_74_in_ruleStructType27553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVectorType_in_entryRuleVectorType27591 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVectorType27601 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_73_in_ruleVectorType27638 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleVectorType27655 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_195_in_ruleVectorType27672 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleVectorType27693 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
+    public static final BitSet FOLLOW_74_in_ruleVectorType27705 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayType_in_entryRuleArrayType27741 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleArrayType27751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_71_in_ruleArrayType27788 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleArrayType27805 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
+    public static final BitSet FOLLOW_195_in_ruleArrayType27822 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleArrayType27843 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_72_in_ruleArrayType27855 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleX86mmxType_in_entryRuleX86mmxType27891 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleX86mmxType27901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_196_in_ruleX86mmxType27938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVoidType_in_entryRuleVoidType27983 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVoidType27993 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_106_in_ruleVoidType28030 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetadataType_in_entryRuleMetadataType28075 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMetadataType28085 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ruleMetadataType28122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFloatingType_in_entryRuleFloatingType28167 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFloatingType28177 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_197_in_ruleFloatingType28215 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_198_in_ruleFloatingType28233 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_199_in_ruleFloatingType28251 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_200_in_ruleFloatingType28269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_201_in_ruleFloatingType28287 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_202_in_ruleFloatingType28305 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLinkage_in_entryRuleLinkage28352 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLinkage28363 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_203_in_ruleLinkage28401 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_204_in_ruleLinkage28420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_205_in_ruleLinkage28439 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_206_in_ruleLinkage28458 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_207_in_ruleLinkage28477 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_208_in_ruleLinkage28496 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_209_in_ruleLinkage28515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_210_in_ruleLinkage28534 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_211_in_ruleLinkage28553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_212_in_ruleLinkage28572 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_213_in_ruleLinkage28591 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_214_in_ruleLinkage28610 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_215_in_ruleLinkage28629 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_216_in_ruleLinkage28648 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_217_in_ruleLinkage28667 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_218_in_ruleLinkage28686 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleCConv_in_entryRuleCConv28727 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleCConv28738 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_219_in_ruleCConv28776 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_220_in_ruleCConv28795 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_221_in_ruleCConv28814 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_222_in_ruleCConv28833 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_223_in_ruleCConv28853 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_RULE_INTEGER_in_ruleCConv28868 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVisibility_in_entryRuleVisibility28915 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleVisibility28926 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_224_in_ruleVisibility28964 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_225_in_ruleVisibility28983 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_226_in_ruleVisibility29002 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_synpred1_InternalLLVM_IR23346 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleType_in_synpred2_InternalLLVM_IR23641 = new BitSet(new long[]{0x0000000000000002L});
 
 }

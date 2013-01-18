@@ -8633,19 +8633,19 @@ ruleInstruction_extractvalue returns [EObject current=null]
     }
 (
 (
-		lv_indices_3_0=RULE_INTEGER
-		{
-			newLeafNode(lv_indices_3_0, grammarAccess.getInstruction_extractvalueAccess().getIndicesINTEGERTerminalRuleCall_2_1_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getInstruction_extractvalueAccess().getIndicesConstantParserRuleCall_2_1_0()); 
+	    }
+		lv_indices_3_0=ruleConstant		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getInstruction_extractvalueRule());
+	            $current = createModelElementForParent(grammarAccess.getInstruction_extractvalueRule());
 	        }
-       		addWithLastConsumed(
+       		add(
        			$current, 
        			"indices",
         		lv_indices_3_0, 
-        		"INTEGER");
+        		"Constant");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -8731,19 +8731,19 @@ ruleInstruction_insertvalue returns [EObject current=null]
     }
 (
 (
-		lv_indices_5_0=RULE_INTEGER
-		{
-			newLeafNode(lv_indices_5_0, grammarAccess.getInstruction_insertvalueAccess().getIndicesINTEGERTerminalRuleCall_4_1_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getInstruction_insertvalueAccess().getIndicesConstantParserRuleCall_4_1_0()); 
+	    }
+		lv_indices_5_0=ruleConstant		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getInstruction_insertvalueRule());
+	            $current = createModelElementForParent(grammarAccess.getInstruction_insertvalueRule());
 	        }
-       		addWithLastConsumed(
+       		add(
        			$current, 
        			"indices",
         		lv_indices_5_0, 
-        		"INTEGER");
+        		"Constant");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -9701,16 +9701,16 @@ ruleInstruction_getelementptr returns [EObject current=null]
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getInstruction_getelementptrAccess().getPointerTypedValueParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getInstruction_getelementptrAccess().getBaseTypedValueParserRuleCall_2_0()); 
 	    }
-		lv_pointer_2_0=ruleTypedValue		{
+		lv_base_2_0=ruleTypedValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getInstruction_getelementptrRule());
 	        }
        		set(
        			$current, 
-       			"pointer",
-        		lv_pointer_2_0, 
+       			"base",
+        		lv_base_2_0, 
         		"TypedValue");
 	        afterParserOrEnumRuleCall();
 	    }

@@ -697,14 +697,14 @@ AggregateInstruction:
 
 // <result> = extractvalue <aggregate type> <val>, <idx>{, <idx>}*
 Instruction_extractvalue:
-	opcode='extractvalue' aggregate=TypedValue (',' indices+=INTEGER)+
+	opcode='extractvalue' aggregate=TypedValue (',' indices+=Constant)+
 ;
 
 // <result> = insertvalue <aggregate type> <val>, <ty> <elt>, <idx>{, <idx>}*    ; yields <aggregate type>
 Instruction_insertvalue:
 	opcode='insertvalue' aggregate=TypedValue
 	',' element=TypedValue
-	(',' indices+=INTEGER)+
+	(',' indices+=Constant)+
 ;
 
 MemoryInstruction:
@@ -799,7 +799,7 @@ Atomicrmw_operation:
 // <result> = getelementptr <ptr vector> ptrval, <vector index type> idx 
 Instruction_getelementptr:
 	opcode='getelementptr' 'inbounds'?
-	pointer=TypedValue
+	base=TypedValue
 	(',' indices+=TypedValue)*
 ;
 
