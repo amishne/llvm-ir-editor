@@ -203,7 +203,6 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkFloatingBinary(inst);
 	}
 	
-	@Check
 	public void checkBinary(BinaryInstruction inst) {
 		ResolvedType t = resolveType(inst.getType());
 		checkExpected(t, inst.getOp1());
