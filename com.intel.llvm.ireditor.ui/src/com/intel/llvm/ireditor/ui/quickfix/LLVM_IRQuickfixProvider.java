@@ -95,6 +95,32 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		}
 	}
 	
+	@Fix(LLVM_IRJavaValidator.ERROR_WRONG_NUMBER)
+	public void suggestFixingNumbers(final Issue issue, IssueResolutionAcceptor acceptor) throws BadLocationException {
+		String[] data = issue.getData();
+		final String name = data[0];
+		final String newName = data[1];
+		
+		acceptor.accept(issue, "Delete the name, leaving it to be inferred", "", "upcase.png", new IModification() {
+			public void apply(IModificationContext context) throws BadLocationException {
+				final IXtextDocument doc = context.getXtextDocument();
+				int afterRemovalIndex = issue.getOffset() + issue.getLength();
+				int trailingWhitespace = 0;
+				while (Character.isWhitespace(doc.getChar(afterRemovalIndex + trailingWhitespace))) {
+					trailingWhitespace++;
+				}
+				doc.replace(issue.getOffset(), issue.getLength() + trailingWhitespace, "");
+			}
+		});
+		
+		acceptor.accept(issue, "Rename " + name + " to " + newName, "", "upcase.png", new IModification() {
+			public void apply(IModificationContext context) throws BadLocationException {
+				final IXtextDocument doc = context.getXtextDocument();
+				doc.replace(issue.getOffset(), name.length(), newName);
+			}
+		});
+	}
+	
 	@Override
 	public List<IssueResolution> getResolutionsForLinkingIssue(Issue issue) {
 		List<IssueResolution> result = super.getResolutionsForLinkingIssue(issue);

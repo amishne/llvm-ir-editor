@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 
+import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
@@ -74,6 +75,7 @@ import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
+import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 import com.intel.llvm.ireditor.types.ResolvedFloatingType;
 import com.intel.llvm.ireditor.types.ResolvedIntegerType;
@@ -88,9 +90,10 @@ import static com.intel.llvm.ireditor.types.TypeResolver.*;
 
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public static final String ERROR_EXPECTED_TYPE = "expected type not matched";
+	public static final String ERROR_WRONG_NUMBER = "wrong number in sequence";
 	private final TypeResolver typeResolver = new TypeResolver();
 	private final ConstantResolver constResolver = new ConstantResolver();
-	private final NameMapper mapper = new NameMapper();
+	private final NameResolver namer = new NameResolver();
 
 	@Check
 	public void checkConstantList(ConstantList val) {
@@ -412,11 +415,19 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		
 		int num = Integer.parseInt(name.substring(1));
 		
-		NumberedName prevNumbered = mapper.getPrecedingNumberedObjectName(val.eContainer());
-		int expected = prevNumbered != null ? prevNumbered.getNumber() + 1 : 0;
+		int expected = 0;
+		ReverseNamedElementIterator prevs = new ReverseNamedElementIterator(val.eContainer());
+		for (EObject prev : prevs) {
+			NumberedName prevName = namer.resolveNumberedName(prev);
+			if (prevName == null) continue; // not an unnamed element
+			expected = prevName.getNumber() + 1;
+			break;
+		}
+
 		if (num != expected) {
-			error(String.format("Incorrect number in sequence: expected %s, got %s",
-					"%" + expected, name), LLVM_IRPackage.Literals.NAMED_MIDDLE_INSTRUCTION.getEStructuralFeature("name"));
+			error(String.format("Incorrect number in sequence: expected %s, got %s", "%" + expected, name),
+					LLVM_IRPackage.Literals.NAMED_MIDDLE_INSTRUCTION.getEStructuralFeature("name"),
+					ERROR_WRONG_NUMBER, name, name.substring(0, 1) + expected);
 		}
 	}
 	

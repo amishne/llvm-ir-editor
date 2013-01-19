@@ -27,7 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor;
 
-import java.util.Iterator;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
@@ -36,13 +35,11 @@ import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.conversion.impl.AbstractDeclarativeValueConverterService;
-import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
-import com.intel.llvm.ireditor.LLVM_IRRuntimeModule.ReverseLocalsIterator.Mode;
+import com.intel.llvm.ireditor.ReverseNamedElementIterator.Mode;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
-import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.names.NameResolver;
 
@@ -156,7 +153,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
 		
 		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseLocalsIterator(getEnclosingInstruction(node), Mode.INST);
+			return new ReverseNamedElementIterator(getEnclosingInstruction(node), Mode.INST);
 		}
 		
 		private INode getEnclosingInstruction(INode instNode) {
@@ -170,28 +167,9 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override protected String nameFromIndex(int index) { return "@" + index; }
 		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=$", ""); }
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("@\\d+"); }
+		
 		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new Iterable<EObject>() {
-				public Iterator<EObject> iterator() {
-					return new Iterator<EObject>() {
-						INode curr = node;
-						
-						public void remove() {
-							throw new UnsupportedOperationException();
-						}
-						
-						public EObject next() {
-							INode prev = curr.getPreviousSibling();
-							curr = prev;
-							return getObject(prev);
-						}
-						
-						public boolean hasNext() {
-							return curr.hasPreviousSibling();
-						}
-					};
-				}
-			};
+			return new ReverseNamedElementIterator(node, Mode.GLOBAL);
 		}
 	}
 	
@@ -201,94 +179,11 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
 		
 		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseLocalsIterator(node, Mode.BB);
+			return new ReverseNamedElementIterator(node, Mode.BB);
 		}
 	}
 	
-	static class ReverseLocalsIterator implements Iterable<EObject> {
-		public enum Mode { INST, BB, PARAM }
-		
-		private final INode node;
-		private final Mode initialMode;
-		
-		public ReverseLocalsIterator(INode node, Mode initialMode) {
-			this.node = node;
-			this.initialMode = initialMode;
-		}
-
-		public Iterator<EObject> iterator() {
-			return new Iterator<EObject>() {
-				INode curr = node;
-				final INode lastParam = getLastParamOfEnclosingFunction(curr);
-				Mode mode = initialMode;
-				
-				public void remove() {
-					throw new UnsupportedOperationException();
-				}
-				
-				public EObject next() {
-					switch (mode) {
-					case INST: {
-						if (curr.hasPreviousSibling()) {
-							curr = curr.getPreviousSibling();
-						} else {
-							// After the first instruction in a bb comes the enclosing bb
-							curr = curr.getParent();
-							mode = Mode.BB;
-						}
-					} break;
-					case BB: {
-						if (curr.hasPreviousSibling()) {
-							// Is there a bb preceding this one? Go to the last inst there.
-							curr = getLastInst(curr.getPreviousSibling());
-							mode = Mode.INST;
-						} else {
-							// No preceding bb? Proceed to last parameter.
-							// If there aren't any parameters, we shouldn't be here
-							// because hasNext() will return false.
-							curr = lastParam;
-							mode = Mode.PARAM;
-						}
-					} break;
-					case PARAM: {
-						curr = curr.getPreviousSibling();
-					} break;
-					}
-					return getObject(curr);
-				}
-				
-
-				public boolean hasNext() {
-					switch (mode) {
-					case INST: return true; // There's always a preceding bb
-					case BB: return curr.hasPreviousSibling() || lastParam != null;
-					case PARAM: return curr.hasPreviousSibling();
-					}
-					return false;
-				}
-				
-				INode getLastInst(INode bbNode) {
-					BidiTreeIterator<INode> iterator = bbNode.getAsTreeIterable().iterator();
-					iterator.previous(); // Don't need bbNode itself
-					return iterator.previous();
-				}
-				
-				private INode getLastParamOfEnclosingFunction(INode instNode) {
-					for (INode n : instNode.getParent().getParent().getAsTreeIterable().reverse()) {
-						EObject object = getObject(n);
-						if (object instanceof Parameter) {
-							return n;
-						}
-					}
-					return null;
-				}
-			};
-			
-		}
-		
-	}
-	
-	private static EObject getObject(INode node) {
+	static EObject getObject(INode node) {
 		return NodeModelUtils.findActualSemanticObjectFor(node);
 	}
 	
