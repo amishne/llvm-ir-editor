@@ -24,61 +24,12 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+package com.intel.llvm.ireditor.types;
 
-package com.intel.llvm.ireditor.resolvedtypes;
-
-import java.util.List;
-
-public class ResolvedFunctionType extends ResolvedType {
-	
-	private ResolvedType rettype;
-	private List<ResolvedType> paramTypes;
-
-	public ResolvedFunctionType(ResolvedType rettype, List<ResolvedType> paramTypes) {
-		this.rettype = rettype;
-		this.paramTypes = paramTypes;
-	}
+public class ResolvedUnknownType extends ResolvedType {
 
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append(rettype.toString());
-		sb.append("(");
-		for (ResolvedType t : paramTypes) {
-			if (t != paramTypes.get(0)) sb.append(", ");
-			sb.append(t.toString());
-		}
-		sb.append(")");
-		return sb.toString();
-	}
-	
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((paramTypes == null) ? 0 : paramTypes.hashCode());
-		result = prime * result + ((rettype == null) ? 0 : rettype.hashCode());
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedFunctionType other = (ResolvedFunctionType) obj;
-		if (paramTypes == null) {
-			if (other.paramTypes != null)
-				return false;
-		} else if (!paramTypes.equals(other.paramTypes))
-			return false;
-		if (rettype == null) {
-			if (other.rettype != null)
-				return false;
-		} else if (!rettype.equals(other.rettype))
-			return false;
-		return true;
+		return "unknown";
 	}
 	
 }

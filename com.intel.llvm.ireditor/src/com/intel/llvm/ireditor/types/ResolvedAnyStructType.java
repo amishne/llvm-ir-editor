@@ -24,65 +24,20 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedVectorType extends ResolvedAnyVectorType {
-	private ResolvedType elementType;
-	private int size;
-	
-	public ResolvedVectorType(int size, ResolvedType elementType) {
-		this.size = size;
-		this.elementType = elementType;
-	}
+public class ResolvedAnyStructType extends ResolvedType {
 
-	public int getBits() {
-		return size * elementType.getBits();
-	}
-	
 	public String toString() {
-		return "<" + size + " x " + elementType.toString() + ">";
+		return "struct";
 	}
 	
 	public ResolvedType getContainedType(int index) {
-		assert (index < size);
-		return elementType;
-	}
-	
-	public int getSize() {
-		return size;
+		return new ResolvedAnyType();
 	}
 	
 	public boolean accepts(ResolvedType t) {
-		return this.equals(t)
-				|| t.getClass() == ResolvedAnyType.class
-				|| t.getClass() == ResolvedAnyVectorType.class;
-	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((elementType == null) ? 0 : elementType.hashCode());
-		result = prime * result + size;
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedVectorType other = (ResolvedVectorType) obj;
-		if (elementType == null) {
-			if (other.elementType != null)
-				return false;
-		} else if (!elementType.equals(other.elementType))
-			return false;
-		if (size != other.size)
-			return false;
-		return true;
+		return super.accepts(t) || t instanceof ResolvedAnyStructType;
 	}
 
 }

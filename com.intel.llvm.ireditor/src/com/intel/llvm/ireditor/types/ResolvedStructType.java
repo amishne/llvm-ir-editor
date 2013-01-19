@@ -24,32 +24,48 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedPointerType extends ResolvedType {
-	private ResolvedType pointedType;
-	private int addrSpace;
+import java.util.List;
+
+public class ResolvedStructType extends ResolvedAnyStructType {
+	private List<ResolvedType> fieldTypes;
+	private boolean packed;
 	
-	public ResolvedPointerType(ResolvedType pointedType, int addrSpace) {
-		this.pointedType = pointedType;
-		this.addrSpace = addrSpace;
+	public ResolvedStructType(List<ResolvedType> fieldTypes, boolean packed) {
+		this.fieldTypes = fieldTypes;
+		this.packed = packed;
 	}
-
+	
+	public int getBits() {
+		int result = 0;
+		for (ResolvedType t : fieldTypes) result += t.getBits();
+		return result;
+	}
+	
 	public String toString() {
-		return pointedType.toString() + (addrSpace > 0 ? " addrspace(" + addrSpace + ")" : "") + "*";
+		StringBuilder sb = new StringBuilder();
+		if (packed) sb.append("<");
+		sb.append("{");
+		for (ResolvedType t : fieldTypes) {
+			if (t != fieldTypes.get(0)) sb.append(", ");
+			sb.append(t.toString());
+		}
+		sb.append("}");
+		if (packed) sb.append(">");
+		return sb.toString();
 	}
-	
+
 	public ResolvedType getContainedType(int index) {
-		assert(index == 0);
-		return pointedType;
+		return fieldTypes.get(index);
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + addrSpace;
 		result = prime * result
-				+ ((pointedType == null) ? 0 : pointedType.hashCode());
+				+ ((fieldTypes == null) ? 0 : fieldTypes.hashCode());
+		result = prime * result + (packed ? 1231 : 1237);
 		return result;
 	}
 
@@ -60,14 +76,17 @@ public class ResolvedPointerType extends ResolvedType {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ResolvedPointerType other = (ResolvedPointerType) obj;
-		if (addrSpace != other.addrSpace)
-			return false;
-		if (pointedType == null) {
-			if (other.pointedType != null)
+		ResolvedStructType other = (ResolvedStructType) obj;
+		if (fieldTypes == null) {
+			if (other.fieldTypes != null)
 				return false;
-		} else if (!pointedType.equals(other.pointedType))
+		} else if (!fieldTypes.equals(other.fieldTypes))
+			return false;
+		if (packed != other.packed)
 			return false;
 		return true;
 	}
+	
+	
+
 }

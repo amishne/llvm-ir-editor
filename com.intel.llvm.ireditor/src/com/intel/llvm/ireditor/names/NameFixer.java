@@ -24,42 +24,32 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
 
-public abstract class ResolvedType {
-	/**
-	 * Textual representation of the type, as it would appear in a well-formatted source file.
-	 */
-	public abstract String toString();
+package com.intel.llvm.ireditor.names;
+
+/**
+ * FIXME there's a bug which prevents cross-reference to locals with period. I
+ * suspect the root of the bug is in Xtext itself.
+ * This workaround fixes it, though the modified form will still appear in auto-completion
+ * suggestions (but will not actually be inserted).
+ */
+public class NameFixer {
+	// Chose interpunct (·) character for no special reason, except that it's
+	// similar to period but it is not legal in LLVM IR, forcing the user to replace it.
+	private final static char PERIOD_REPLACEMENT = '·';
 	
-	/**
-	 * The contained type, if any, or null if there is none.
-	 * @param index
-	 * @return
-	 */
-	public ResolvedType getContainedType(int index) { return null; }
-	
-	/**
-	 * The number of bits used by this type.
-	 * @return
-	 */
-	public int getBits() { return 0; }
-	
-	/**
-	 * @param t
-	 * @return True if it's okay to encounter 't' when 'this' is expected.
-	 */
-	public boolean accepts(ResolvedType t) {
-		// All types should accept themselves and 'any'.
-		return t.getClass() == ResolvedAnyType.class ||
-				this.equals(t);
+	public static String fixName(String s) {
+		return s == null ? null : s.replace('.', PERIOD_REPLACEMENT);
 	}
 	
-	public boolean equals(Object obj) {
-		return obj != null && obj.getClass() == getClass();
+	public static String restoreName(String s) {
+		return s == null ? null : s.replace(PERIOD_REPLACEMENT, '.');
 	}
 	
-	public int hashCode() {
-		return getClass().hashCode();
+	public static String encodeForHtml(String s) {
+		return s
+				.replace("<", "&lt;")
+				.replace(">", "&gt;")
+				.replace("\n", "<br />");
 	}
 }

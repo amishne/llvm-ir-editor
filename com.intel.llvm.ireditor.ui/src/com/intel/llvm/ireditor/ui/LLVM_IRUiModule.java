@@ -41,6 +41,7 @@ import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
+import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser;
 
@@ -68,7 +69,6 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcce
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
 
-import com.intel.llvm.ireditor.NameFixer;
 
 /**
  * Use this class to register components to be used within the IDE.

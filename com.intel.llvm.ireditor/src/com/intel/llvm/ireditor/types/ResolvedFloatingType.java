@@ -24,16 +24,56 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedAnyFloatingType extends ResolvedType {
+public class ResolvedFloatingType extends ResolvedAnyFloatingType {
+
+	private String typeStr;
+	private int bits;
+
+	public ResolvedFloatingType(String typeStr, int bits) {
+		this.typeStr = typeStr;
+		this.bits = bits;
+	}
 
 	public String toString() {
-		return "floating-point";
+		return typeStr;
+	}
+
+	public int getBits() {
+		return bits;
 	}
 	
 	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyFloatingType;
+		return this.equals(t)
+				|| t.getClass() == ResolvedAnyFloatingType.class
+				|| t.getClass() == ResolvedAnyType.class;
+	}
+
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + bits;
+		result = prime * result + ((typeStr == null) ? 0 : typeStr.hashCode());
+		return result;
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResolvedFloatingType other = (ResolvedFloatingType) obj;
+		if (bits != other.bits)
+			return false;
+		if (typeStr == null) {
+			if (other.typeStr != null)
+				return false;
+		} else if (!typeStr.equals(other.typeStr))
+			return false;
+		return true;
 	}
 	
 }

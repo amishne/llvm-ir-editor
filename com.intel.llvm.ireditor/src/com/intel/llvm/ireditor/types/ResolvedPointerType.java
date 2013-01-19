@@ -24,20 +24,50 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedAnyVectorType extends ResolvedType {
+public class ResolvedPointerType extends ResolvedType {
+	private ResolvedType pointedType;
+	private int addrSpace;
+	
+	public ResolvedPointerType(ResolvedType pointedType, int addrSpace) {
+		this.pointedType = pointedType;
+		this.addrSpace = addrSpace;
+	}
 
 	public String toString() {
-		return "vector";
+		return pointedType.toString() + (addrSpace > 0 ? " addrspace(" + addrSpace + ")" : "") + "*";
 	}
 	
 	public ResolvedType getContainedType(int index) {
-		return new ResolvedAnyType();
-	}
-	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyVectorType;
+		assert(index == 0);
+		return pointedType;
 	}
 
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + addrSpace;
+		result = prime * result
+				+ ((pointedType == null) ? 0 : pointedType.hashCode());
+		return result;
+	}
+
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ResolvedPointerType other = (ResolvedPointerType) obj;
+		if (addrSpace != other.addrSpace)
+			return false;
+		if (pointedType == null) {
+			if (other.pointedType != null)
+				return false;
+		} else if (!pointedType.equals(other.pointedType))
+			return false;
+		return true;
+	}
 }

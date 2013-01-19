@@ -24,37 +24,34 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedArrayType extends ResolvedAnyArrayType {
+public class ResolvedIntegerType extends ResolvedType {
 
-	private ResolvedType elementType;
-	private int size;
-
-	public ResolvedArrayType(int size, ResolvedType elementType) {
-		this.size = size;
-		this.elementType = elementType;
+	private int bits;
+	
+	public ResolvedIntegerType(int bits) {
+		this.bits = bits;
 	}
 	
 	public int getBits() {
-		return size * elementType.getBits();
+		return bits;
 	}
-	
+
 	public String toString() {
-		return "[" + size + " x " + elementType.toString() + "]";
+		return "i" + bits;
 	}
 	
-	public ResolvedType getContainedType(int index) {
-		assert (index < size);
-		return elementType;
+	public boolean accepts(ResolvedType t) {
+		return this.equals(t)
+				|| t.getClass() == ResolvedAnyIntegerType.class
+				|| t.getClass() == ResolvedAnyType.class;
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((elementType == null) ? 0 : elementType.hashCode());
-		result = prime * result + size;
+		result = prime * result + bits;
 		return result;
 	}
 
@@ -65,13 +62,8 @@ public class ResolvedArrayType extends ResolvedAnyArrayType {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ResolvedArrayType other = (ResolvedArrayType) obj;
-		if (elementType == null) {
-			if (other.elementType != null)
-				return false;
-		} else if (!elementType.equals(other.elementType))
-			return false;
-		if (size != other.size)
+		ResolvedIntegerType other = (ResolvedIntegerType) obj;
+		if (bits != other.bits)
 			return false;
 		return true;
 	}

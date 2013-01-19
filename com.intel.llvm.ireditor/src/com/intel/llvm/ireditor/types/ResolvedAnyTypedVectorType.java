@@ -1,4 +1,4 @@
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
 public class ResolvedAnyTypedVectorType extends ResolvedAnyVectorType {
 

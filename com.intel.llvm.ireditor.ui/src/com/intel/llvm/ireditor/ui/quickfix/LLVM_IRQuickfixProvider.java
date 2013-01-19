@@ -53,7 +53,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 
-import com.intel.llvm.ireditor.resolvedtypes.TypeResolver;
+import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
 
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {

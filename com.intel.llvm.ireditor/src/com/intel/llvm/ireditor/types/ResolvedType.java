@@ -24,43 +24,42 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedTypeReference extends ResolvedType {
-
-	private String name;
+public abstract class ResolvedType {
+	/**
+	 * Textual representation of the type, as it would appear in a well-formatted source file.
+	 */
+	public abstract String toString();
 	
-	public ResolvedTypeReference(String name) {
-		this.name = name;
+	/**
+	 * The contained type, if any, or null if there is none.
+	 * @param index
+	 * @return
+	 */
+	public ResolvedType getContainedType(int index) { return null; }
+	
+	/**
+	 * The number of bits used by this type.
+	 * @return
+	 */
+	public int getBits() { return 0; }
+	
+	/**
+	 * @param t
+	 * @return True if it's okay to encounter 't' when 'this' is expected.
+	 */
+	public boolean accepts(ResolvedType t) {
+		// All types should accept themselves and 'any'.
+		return t.getClass() == ResolvedAnyType.class ||
+				this.equals(t);
 	}
-
-	public String toString() {
-		return name;
-	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-
+	
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedTypeReference other = (ResolvedTypeReference) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
+		return obj != null && obj.getClass() == getClass();
 	}
 	
-	
-
+	public int hashCode() {
+		return getClass().hashCode();
+	}
 }

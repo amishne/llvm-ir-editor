@@ -33,12 +33,12 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
+import com.intel.llvm.ireditor.names.NameFixer;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
  
 import com.google.inject.Inject;
-import com.intel.llvm.ireditor.NameFixer;
 
 /**
  * Provides labels for a EObjects.

@@ -24,9 +24,16 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+package com.intel.llvm.ireditor.types;
 
-package com.intel.llvm.ireditor.resolvedconstants;
+public class ResolvedAnyIntegerType extends ResolvedType {
 
-public class ResolvedConstant {
+	public String toString() {
+		return "integer";
+	}
+	
+	public boolean accepts(ResolvedType t) {
+		return super.accepts(t) || t instanceof ResolvedAnyIntegerType;
+	}
 
 }

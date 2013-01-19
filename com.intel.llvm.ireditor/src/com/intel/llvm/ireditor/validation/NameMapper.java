@@ -10,12 +10,12 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
 
-import com.intel.llvm.ireditor.NameResolver;
-import com.intel.llvm.ireditor.NumberedName;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
+import com.intel.llvm.ireditor.names.NameResolver;
+import com.intel.llvm.ireditor.names.NumberedName;
 
 public class NameMapper {
 	private NameResolver namer = new NameResolver();

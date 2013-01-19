@@ -24,20 +24,12 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-public class ResolvedAnyStructType extends ResolvedType {
+public class ResolvedVoidType extends ResolvedType {
 
 	public String toString() {
-		return "struct";
-	}
-	
-	public ResolvedType getContainedType(int index) {
-		return new ResolvedAnyType();
-	}
-	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyStructType;
+		return "void";
 	}
 
 }

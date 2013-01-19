@@ -25,7 +25,7 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,6 +36,8 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+
+import com.intel.llvm.ireditor.constants.ConstantResolver;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayConstant;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayType;
@@ -88,7 +90,6 @@ import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
 import com.intel.llvm.ireditor.lLVM_IR.X86mmxType;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
-import com.intel.llvm.ireditor.resolvedconstants.ConstantResolver;
 
 /**
  * Converts an EObject to a String representing its type.

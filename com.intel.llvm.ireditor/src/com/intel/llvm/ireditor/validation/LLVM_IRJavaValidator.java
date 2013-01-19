@@ -35,7 +35,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 
-import com.intel.llvm.ireditor.NumberedName;
+import com.intel.llvm.ireditor.constants.ConstantResolver;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
@@ -74,16 +74,16 @@ import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
-import com.intel.llvm.ireditor.resolvedconstants.ConstantResolver;
-import com.intel.llvm.ireditor.resolvedtypes.ResolvedFloatingType;
-import com.intel.llvm.ireditor.resolvedtypes.ResolvedIntegerType;
-import com.intel.llvm.ireditor.resolvedtypes.ResolvedPointerType;
-import com.intel.llvm.ireditor.resolvedtypes.ResolvedType;
-import com.intel.llvm.ireditor.resolvedtypes.ResolvedVectorType;
-import com.intel.llvm.ireditor.resolvedtypes.TypeResolver;
+import com.intel.llvm.ireditor.names.NumberedName;
+import com.intel.llvm.ireditor.types.ResolvedFloatingType;
+import com.intel.llvm.ireditor.types.ResolvedIntegerType;
+import com.intel.llvm.ireditor.types.ResolvedPointerType;
+import com.intel.llvm.ireditor.types.ResolvedType;
+import com.intel.llvm.ireditor.types.ResolvedVectorType;
+import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
 
-import static com.intel.llvm.ireditor.resolvedtypes.TypeResolver.*;
+import static com.intel.llvm.ireditor.types.TypeResolver.*;
  
 
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {

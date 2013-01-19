@@ -25,31 +25,8 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-package com.intel.llvm.ireditor;
+package com.intel.llvm.ireditor.constants;
 
-/**
- * FIXME there's a bug which prevents cross-reference to locals with period. I
- * suspect the root of the bug is in Xtext itself.
- * This workaround fixes it, though the modified form will still appear in auto-completion
- * suggestions (but will not actually be inserted).
- */
-public class NameFixer {
-	// Chose interpunct (·) character for no special reason, except that it's
-	// similar to period but it is not legal in LLVM IR, forcing the user to replace it.
-	private final static char PERIOD_REPLACEMENT = '·';
-	
-	public static String fixName(String s) {
-		return s == null ? null : s.replace('.', PERIOD_REPLACEMENT);
-	}
-	
-	public static String restoreName(String s) {
-		return s == null ? null : s.replace(PERIOD_REPLACEMENT, '.');
-	}
-	
-	public static String encodeForHtml(String s) {
-		return s
-				.replace("<", "&lt;")
-				.replace(">", "&gt;")
-				.replace("\n", "<br />");
-	}
+public class ResolvedConstant {
+
 }

@@ -1,4 +1,4 @@
-package com.intel.llvm.ireditor;
+package com.intel.llvm.ireditor.names;
 
 public class NumberedName {
 	private final String prefix;

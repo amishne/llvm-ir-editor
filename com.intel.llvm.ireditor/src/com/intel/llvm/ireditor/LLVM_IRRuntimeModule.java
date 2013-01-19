@@ -43,6 +43,8 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import com.intel.llvm.ireditor.LLVM_IRRuntimeModule.ReverseLocalsIterator.Mode;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
+import com.intel.llvm.ireditor.names.NameFixer;
+import com.intel.llvm.ireditor.names.NameResolver;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.

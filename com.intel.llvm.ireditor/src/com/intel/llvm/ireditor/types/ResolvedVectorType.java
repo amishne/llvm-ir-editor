@@ -24,48 +24,46 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.intel.llvm.ireditor.resolvedtypes;
+package com.intel.llvm.ireditor.types;
 
-import java.util.List;
-
-public class ResolvedStructType extends ResolvedAnyStructType {
-	private List<ResolvedType> fieldTypes;
-	private boolean packed;
+public class ResolvedVectorType extends ResolvedAnyVectorType {
+	private ResolvedType elementType;
+	private int size;
 	
-	public ResolvedStructType(List<ResolvedType> fieldTypes, boolean packed) {
-		this.fieldTypes = fieldTypes;
-		this.packed = packed;
+	public ResolvedVectorType(int size, ResolvedType elementType) {
+		this.size = size;
+		this.elementType = elementType;
 	}
-	
+
 	public int getBits() {
-		int result = 0;
-		for (ResolvedType t : fieldTypes) result += t.getBits();
-		return result;
+		return size * elementType.getBits();
 	}
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		if (packed) sb.append("<");
-		sb.append("{");
-		for (ResolvedType t : fieldTypes) {
-			if (t != fieldTypes.get(0)) sb.append(", ");
-			sb.append(t.toString());
-		}
-		sb.append("}");
-		if (packed) sb.append(">");
-		return sb.toString();
+		return "<" + size + " x " + elementType.toString() + ">";
 	}
-
+	
 	public ResolvedType getContainedType(int index) {
-		return fieldTypes.get(index);
+		assert (index < size);
+		return elementType;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+	
+	public boolean accepts(ResolvedType t) {
+		return this.equals(t)
+				|| t.getClass() == ResolvedAnyType.class
+				|| t.getClass() == ResolvedAnyVectorType.class;
 	}
 
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((fieldTypes == null) ? 0 : fieldTypes.hashCode());
-		result = prime * result + (packed ? 1231 : 1237);
+				+ ((elementType == null) ? 0 : elementType.hashCode());
+		result = prime * result + size;
 		return result;
 	}
 
@@ -76,17 +74,15 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		ResolvedStructType other = (ResolvedStructType) obj;
-		if (fieldTypes == null) {
-			if (other.fieldTypes != null)
+		ResolvedVectorType other = (ResolvedVectorType) obj;
+		if (elementType == null) {
+			if (other.elementType != null)
 				return false;
-		} else if (!fieldTypes.equals(other.fieldTypes))
+		} else if (!elementType.equals(other.elementType))
 			return false;
-		if (packed != other.packed)
+		if (size != other.size)
 			return false;
 		return true;
 	}
-	
-	
 
 }
