@@ -157,7 +157,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		}
 		
 		private INode getEnclosingInstruction(INode instNode) {
-			EObject object = getObject(instNode);
+			EObject object = NodeModelUtils.findActualSemanticObjectFor(instNode);
 			if (object instanceof Instruction_phi) return instNode.getParent();
 			return instNode.getParent().getParent();
 		}
@@ -181,10 +181,6 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		protected Iterable<? extends EObject> previousElements(final INode node) {
 			return new ReverseNamedElementIterator(node, Mode.BB);
 		}
-	}
-	
-	static EObject getObject(INode node) {
-		return NodeModelUtils.findActualSemanticObjectFor(node);
 	}
 	
 }

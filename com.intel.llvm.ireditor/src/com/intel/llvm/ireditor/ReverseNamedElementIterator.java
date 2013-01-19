@@ -41,7 +41,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 	}
 
 	public Iterator<EObject> iterator() {
-		return initialMode == Mode.GLOBAL ? new ReverseLocalIterator() : new ReverseGlobalIterator();
+		return initialMode == Mode.GLOBAL ? new ReverseGlobalIterator() : new ReverseLocalIterator();
 	}
 	
 	class ReverseGlobalIterator implements Iterator<EObject> {
@@ -101,7 +101,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			case GLOBAL:
 				throw new IllegalStateException("A local iterator should not be iterating over globals");
 			}
-			return LLVM_IRRuntimeModule.getObject(curr);
+			return NodeModelUtils.findActualSemanticObjectFor(curr);
 		}
 		
 
