@@ -7,6 +7,8 @@ import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Value Ref</b></em>'.
@@ -16,7 +18,7 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ValueRefImpl extends CalleeImpl implements ValueRef
+public class ValueRefImpl extends MinimalEObjectImpl.Container implements ValueRef
 {
   /**
    * <!-- begin-user-doc -->

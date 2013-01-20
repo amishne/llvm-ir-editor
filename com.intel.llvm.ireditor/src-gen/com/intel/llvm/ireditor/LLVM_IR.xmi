@@ -2404,7 +2404,7 @@
       <classifier xsi:type="ecore:EClass" href="http://www.intel.com/llvm/ireditor#//Callee"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives">
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.5"/>
+      <elements xsi:type="xtext:RuleCall" rule="//@rules.6"/>
       <elements xsi:type="xtext:RuleCall" rule="//@rules.123"/>
     </alternatives>
   </rules>

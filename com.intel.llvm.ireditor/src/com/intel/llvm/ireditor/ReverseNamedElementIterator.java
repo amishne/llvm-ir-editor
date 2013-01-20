@@ -122,6 +122,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		}
 		
 		private INode getLastParamOfEnclosingFunction(INode instNode) {
+			// FIXME can throw NPE
 			for (INode n : instNode.getParent().getParent().getAsTreeIterable().reverse()) {
 				EObject object = NodeModelUtils.findActualSemanticObjectFor(n);
 				if (object instanceof Parameter) {

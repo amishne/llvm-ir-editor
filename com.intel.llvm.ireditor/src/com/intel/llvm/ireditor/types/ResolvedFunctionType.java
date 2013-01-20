@@ -27,24 +27,26 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.types;
 
-import java.util.List;
+import java.util.Iterator;
 
 public class ResolvedFunctionType extends ResolvedType {
 	
-	private ResolvedType rettype;
-	private List<ResolvedType> paramTypes;
+	private ResolvedType retType;
+	private Iterable<? extends ResolvedType> paramTypes;
 
-	public ResolvedFunctionType(ResolvedType rettype, List<ResolvedType> paramTypes) {
-		this.rettype = rettype;
+	public ResolvedFunctionType(ResolvedType rettype, Iterable<? extends ResolvedType> paramTypes) {
+		this.retType = rettype;
 		this.paramTypes = paramTypes;
 	}
-
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append(rettype.toString());
+		sb.append(retType.toString());
 		sb.append("(");
+		boolean first = true;
 		for (ResolvedType t : paramTypes) {
-			if (t != paramTypes.get(0)) sb.append(", ");
+			if (first == false) sb.append(", ");
+			first = false;
 			sb.append(t.toString());
 		}
 		sb.append(")");
@@ -56,7 +58,7 @@ public class ResolvedFunctionType extends ResolvedType {
 		int result = 1;
 		result = prime * result
 				+ ((paramTypes == null) ? 0 : paramTypes.hashCode());
-		result = prime * result + ((rettype == null) ? 0 : rettype.hashCode());
+		result = prime * result + ((retType == null) ? 0 : retType.hashCode());
 		return result;
 	}
 
@@ -73,12 +75,42 @@ public class ResolvedFunctionType extends ResolvedType {
 				return false;
 		} else if (!paramTypes.equals(other.paramTypes))
 			return false;
-		if (rettype == null) {
-			if (other.rettype != null)
+		if (retType == null) {
+			if (other.retType != null)
 				return false;
-		} else if (!rettype.equals(other.rettype))
+		} else if (!retType.equals(other.retType))
 			return false;
 		return true;
+	}
+	
+	public boolean accepts(ResolvedType t) {
+		if (t instanceof ResolvedAnyType) return true;
+		if (t instanceof ResolvedFunctionType == false) return false;
+		ResolvedFunctionType f = (ResolvedFunctionType) t;
+		
+		if (retType.accepts(f.retType) == false) return false;
+		Iterator<? extends ResolvedType> thisParams = paramTypes.iterator();
+		Iterator<? extends ResolvedType> thatParams = f.paramTypes.iterator();
+		
+		while (thisParams.hasNext()) {
+			ResolvedType thisParam = thisParams.next();
+			if (thisParam instanceof ResolvedVarargType) return true;
+			
+			if (thatParams.hasNext() == false) return false;
+			ResolvedType thatParam = thatParams.next();
+			
+			if (thisParam.accepts(thatParam) == false) return false;
+		}
+		
+		return true;
+	}
+
+	public ResolvedType getReturnType() {
+		return retType;
+	}
+
+	public Iterable<? extends ResolvedType> getParameters() {
+		return paramTypes;
 	}
 	
 }

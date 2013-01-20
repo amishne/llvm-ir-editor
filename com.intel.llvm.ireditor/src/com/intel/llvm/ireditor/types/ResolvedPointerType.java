@@ -70,4 +70,11 @@ public class ResolvedPointerType extends ResolvedType {
 			return false;
 		return true;
 	}
+	
+	public boolean accepts(ResolvedType t) {
+		return super.accepts(t) ||
+				(t instanceof ResolvedPointerType &&
+						addrSpace == ((ResolvedPointerType)t).addrSpace &&
+						pointedType.accepts(((ResolvedPointerType)t).pointedType));
+	}
 }

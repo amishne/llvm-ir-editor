@@ -83,8 +83,10 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		for (int i = 2; i < data.length; i++) {
 			final String newInst = String.format("%s = %s %s %s to %s\n%s",
 					newInstName, data[i], data[1], name, data[0], indentation);
+			String description = "This will insert\n" + newInst + "\nimmediately before this instruction, " +
+					"and rename " + name + " to " + newInstName + " in this instruction";
 			
-			acceptor.accept(issue, "Insert " + data[i] + " conversion for " + name, newInst, "upcase.png", new IModification() {
+			acceptor.accept(issue, "Insert " + data[i] + " conversion for " + name, description, "upcase.png", new IModification() {
 				public void apply(IModificationContext context) throws BadLocationException {
 					// Changing the name in the current instruction to refer to the new instruction:
 					doc.replace(issue.getOffset(), issue.getLength(), newInstName);
@@ -95,13 +97,38 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		}
 	}
 	
+	@Fix(LLVM_IRJavaValidator.ERROR_MISSING_FUNCTION_PTR_TYPE)
+	public void addMissingFunctionPtr(final Issue issue, IssueResolutionAcceptor acceptor) throws BadLocationException {
+		String[] data = issue.getData();
+		final String fType = data[0];
+		String description = "This will add the function pointer type\n" + fType + "\nto this call.";
+		acceptor.accept(issue, "Add function type", description, "upcase.png", new IModification() {
+			public void apply(IModificationContext context) throws BadLocationException {
+				final IXtextDocument doc = context.getXtextDocument();
+				EObject object = findObject(doc, issue).eContainer();
+				int offset = issue.getOffset();
+				if (object instanceof Instruction_call_nonVoid) {
+					offset = NodeModelUtils.findActualNodeFor(((Instruction_call_nonVoid) object).getCallee()).getOffset();
+				} else if (object instanceof Instruction_call_void) {
+					offset = NodeModelUtils.findActualNodeFor(((Instruction_call_void) object).getCallee()).getOffset();
+				} else if (object instanceof Instruction_invoke_nonVoid) {
+					offset = NodeModelUtils.findActualNodeFor(((Instruction_invoke_nonVoid) object).getCallee()).getOffset();
+				} else if (object instanceof Instruction_invoke_void) {
+					offset = NodeModelUtils.findActualNodeFor(((Instruction_invoke_void) object).getCallee()).getOffset();
+				}
+				doc.replace(offset, 0, fType + " ");
+			}
+		});
+	}
+	
 	@Fix(LLVM_IRJavaValidator.ERROR_WRONG_NUMBER)
 	public void suggestFixingNumbers(final Issue issue, IssueResolutionAcceptor acceptor) throws BadLocationException {
 		String[] data = issue.getData();
 		final String name = data[0];
 		final String newName = data[1];
 		
-		acceptor.accept(issue, "Delete the name, leaving it to be inferred", "", "upcase.png", new IModification() {
+		// TODO change the below into also updating references?
+		acceptor.accept(issue, "Delete the name, leaving it to be inferred", name + " will be deleted.", "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException {
 				final IXtextDocument doc = context.getXtextDocument();
 				int afterRemovalIndex = issue.getOffset() + issue.getLength();
@@ -113,7 +140,9 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 			}
 		});
 		
-		acceptor.accept(issue, "Rename " + name + " to " + newName, "", "upcase.png", new IModification() {
+		// TODO change the below into a global rename?
+		String description = name + " will be renamed to " + newName + " only in this instance.";
+		acceptor.accept(issue, "Rename " + name + " to " + newName, description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException {
 				final IXtextDocument doc = context.getXtextDocument();
 				doc.replace(issue.getOffset(), name.length(), newName);
@@ -133,7 +162,9 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		}
 		final String declaration = buildDeclarationFromCall(object.eContainer());
 		
-		result.add(new IssueResolution("Create function declaration", "mydescription", "upcase.png", context, new IModification() {
+		result.add(new IssueResolution("Create function declaration",
+				"The signature\n" + declaration + "\nwill be appended to the end of the file.",
+				"upcase.png", context, new IModification() {
 
 			public void apply(IModificationContext context) throws Exception {
 				IXtextDocument doc = context.getXtextDocument();

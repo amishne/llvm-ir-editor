@@ -29862,11 +29862,11 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCallee"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11158:1: ruleCallee returns [EObject current=null] : (this_ValueRef_0= ruleValueRef | this_InlineAssembler_1= ruleInlineAssembler ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11158:1: ruleCallee returns [EObject current=null] : (this_GlobalValueRef_0= ruleGlobalValueRef | this_InlineAssembler_1= ruleInlineAssembler ) ;
     public final EObject ruleCallee() throws RecognitionException {
         EObject current = null;
 
-        EObject this_ValueRef_0 = null;
+        EObject this_GlobalValueRef_0 = null;
 
         EObject this_InlineAssembler_1 = null;
 
@@ -29874,14 +29874,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11161:28: ( (this_ValueRef_0= ruleValueRef | this_InlineAssembler_1= ruleInlineAssembler ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11162:1: (this_ValueRef_0= ruleValueRef | this_InlineAssembler_1= ruleInlineAssembler )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11161:28: ( (this_GlobalValueRef_0= ruleGlobalValueRef | this_InlineAssembler_1= ruleInlineAssembler ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11162:1: (this_GlobalValueRef_0= ruleGlobalValueRef | this_InlineAssembler_1= ruleInlineAssembler )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11162:1: (this_ValueRef_0= ruleValueRef | this_InlineAssembler_1= ruleInlineAssembler )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11162:1: (this_GlobalValueRef_0= ruleGlobalValueRef | this_InlineAssembler_1= ruleInlineAssembler )
             int alt128=2;
             int LA128_0 = input.LA(1);
 
-            if ( ((LA128_0>=RULE_META_INT && LA128_0<=RULE_LOCAL_ID)||(LA128_0>=RULE_INTEGER && LA128_0<=RULE_METADATA_STRING)||LA128_0==38||(LA128_0>=40 && LA128_0<=69)||LA128_0==71||LA128_0==73||LA128_0==75||(LA128_0>=138 && LA128_0<=149)) ) {
+            if ( ((LA128_0>=RULE_META_INT && LA128_0<=RULE_GLOBAL_ID)||(LA128_0>=RULE_INTEGER && LA128_0<=RULE_METADATA_STRING)||LA128_0==38||(LA128_0>=40 && LA128_0<=69)||LA128_0==71||LA128_0==73||LA128_0==75||(LA128_0>=138 && LA128_0<=149)) ) {
                 alt128=1;
             }
             else if ( (LA128_0==30) ) {
@@ -29896,21 +29896,21 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt128) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11163:5: this_ValueRef_0= ruleValueRef
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:11163:5: this_GlobalValueRef_0= ruleGlobalValueRef
                     {
                     if ( state.backtracking==0 ) {
                        
-                              newCompositeNode(grammarAccess.getCalleeAccess().getValueRefParserRuleCall_0()); 
+                              newCompositeNode(grammarAccess.getCalleeAccess().getGlobalValueRefParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleValueRef_in_ruleCallee23980);
-                    this_ValueRef_0=ruleValueRef();
+                    pushFollow(FOLLOW_ruleGlobalValueRef_in_ruleCallee23980);
+                    this_GlobalValueRef_0=ruleGlobalValueRef();
 
                     state._fsp--;
                     if (state.failed) return current;
                     if ( state.backtracking==0 ) {
                        
-                              current = this_ValueRef_0; 
+                              current = this_GlobalValueRef_0; 
                               afterParserOrEnumRuleCall();
                           
                     }
@@ -36894,7 +36894,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             "\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff\7\1",
             "\1\1\5\uffff\1\1\54\uffff\1\1\1\uffff\1\1\1\uffff\1\1\40\uffff"+
             "\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff\7\1",
-            "\4\23\1\uffff\7\23\16\uffff\1\23\4\uffff\1\1\2\uffff\1\23"+
+            "\3\23\2\uffff\7\23\16\uffff\1\23\4\uffff\1\1\2\uffff\1\23"+
             "\1\uffff\36\23\1\uffff\1\23\1\uffff\1\23\1\uffff\1\23\76\uffff"+
             "\14\23",
             "\1\1\5\uffff\1\1\54\uffff\1\1\1\uffff\1\1\1\uffff\1\1\40\uffff"+
@@ -37196,13 +37196,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     static final String DFA119_eofS =
         "\106\uffff";
     static final String DFA119_minS =
-        "\1\4\7\uffff\2\0\3\uffff\1\0\1\uffff\1\0\66\uffff";
+        "\1\4\7\uffff\2\0\3\uffff\1\0\70\uffff";
     static final String DFA119_maxS =
-        "\1\u00ca\7\uffff\2\0\3\uffff\1\0\1\uffff\1\0\66\uffff";
+        "\1\u00ca\7\uffff\2\0\3\uffff\1\0\70\uffff";
     static final String DFA119_acceptS =
-        "\1\uffff\7\1\2\uffff\3\1\1\uffff\1\1\1\uffff\1\2\65\uffff";
+        "\1\uffff\7\1\2\uffff\3\1\1\uffff\2\1\1\2\65\uffff";
     static final String DFA119_specialS =
-        "\1\0\7\uffff\1\1\1\2\3\uffff\1\3\1\uffff\1\4\66\uffff}>";
+        "\1\0\7\uffff\1\1\1\2\3\uffff\1\3\70\uffff}>";
     static final String[] DFA119_transitionS = {
             "\3\20\1\17\1\uffff\7\20\2\uffff\1\1\5\uffff\1\14\5\uffff\1"+
             "\20\7\uffff\1\20\1\uffff\35\20\1\15\1\uffff\1\11\1\uffff\1\10"+
@@ -37222,7 +37222,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             "",
             "\1\uffff",
             "",
-            "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -37350,7 +37350,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA119_0==194) && (synpred1_InternalLLVM_IR())) {s = 14;}
 
-                        else if ( (LA119_0==RULE_LOCAL_ID) ) {s = 15;}
+                        else if ( (LA119_0==RULE_LOCAL_ID) && (synpred1_InternalLLVM_IR())) {s = 15;}
 
                         else if ( ((LA119_0>=RULE_META_INT && LA119_0<=RULE_GLOBAL_ID)||(LA119_0>=RULE_INTEGER && LA119_0<=RULE_METADATA_STRING)||LA119_0==30||LA119_0==38||(LA119_0>=40 && LA119_0<=68)||LA119_0==75||(LA119_0>=138 && LA119_0<=149)) ) {s = 16;}
 
@@ -37365,7 +37365,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         int index119_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred1_InternalLLVM_IR()) ) {s = 14;}
+                        if ( (synpred1_InternalLLVM_IR()) ) {s = 15;}
 
                         else if ( (true) ) {s = 16;}
 
@@ -37380,7 +37380,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         int index119_9 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred1_InternalLLVM_IR()) ) {s = 14;}
+                        if ( (synpred1_InternalLLVM_IR()) ) {s = 15;}
 
                         else if ( (true) ) {s = 16;}
 
@@ -37395,27 +37395,12 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         int index119_13 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred1_InternalLLVM_IR()) ) {s = 14;}
+                        if ( (synpred1_InternalLLVM_IR()) ) {s = 15;}
 
                         else if ( (true) ) {s = 16;}
 
                          
                         input.seek(index119_13);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA119_15 = input.LA(1);
-
-                         
-                        int index119_15 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred1_InternalLLVM_IR()) ) {s = 14;}
-
-                        else if ( (true) ) {s = 16;}
-
-                         
-                        input.seek(index119_15);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -37431,13 +37416,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     static final String DFA124_eofS =
         "\106\uffff";
     static final String DFA124_minS =
-        "\1\4\7\uffff\2\0\3\uffff\1\0\1\uffff\1\0\66\uffff";
+        "\1\4\7\uffff\2\0\3\uffff\1\0\70\uffff";
     static final String DFA124_maxS =
-        "\1\u00ca\7\uffff\2\0\3\uffff\1\0\1\uffff\1\0\66\uffff";
+        "\1\u00ca\7\uffff\2\0\3\uffff\1\0\70\uffff";
     static final String DFA124_acceptS =
-        "\1\uffff\7\1\2\uffff\3\1\1\uffff\1\1\1\uffff\1\2\65\uffff";
+        "\1\uffff\7\1\2\uffff\3\1\1\uffff\2\1\1\2\65\uffff";
     static final String DFA124_specialS =
-        "\1\0\7\uffff\1\1\1\2\3\uffff\1\3\1\uffff\1\4\66\uffff}>";
+        "\1\0\7\uffff\1\1\1\2\3\uffff\1\3\70\uffff}>";
     static final String[] DFA124_transitionS = {
             "\3\20\1\17\1\uffff\7\20\2\uffff\1\1\5\uffff\1\14\5\uffff\1"+
             "\20\7\uffff\1\20\1\uffff\35\20\1\15\1\uffff\1\11\1\uffff\1\10"+
@@ -37457,7 +37442,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             "",
             "\1\uffff",
             "",
-            "\1\uffff",
+            "",
             "",
             "",
             "",
@@ -37585,7 +37570,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                         else if ( (LA124_0==194) && (synpred2_InternalLLVM_IR())) {s = 14;}
 
-                        else if ( (LA124_0==RULE_LOCAL_ID) ) {s = 15;}
+                        else if ( (LA124_0==RULE_LOCAL_ID) && (synpred2_InternalLLVM_IR())) {s = 15;}
 
                         else if ( ((LA124_0>=RULE_META_INT && LA124_0<=RULE_GLOBAL_ID)||(LA124_0>=RULE_INTEGER && LA124_0<=RULE_METADATA_STRING)||LA124_0==30||LA124_0==38||(LA124_0>=40 && LA124_0<=68)||LA124_0==75||(LA124_0>=138 && LA124_0<=149)) ) {s = 16;}
 
@@ -37600,7 +37585,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         int index124_8 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred2_InternalLLVM_IR()) ) {s = 14;}
+                        if ( (synpred2_InternalLLVM_IR()) ) {s = 15;}
 
                         else if ( (true) ) {s = 16;}
 
@@ -37615,7 +37600,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         int index124_9 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred2_InternalLLVM_IR()) ) {s = 14;}
+                        if ( (synpred2_InternalLLVM_IR()) ) {s = 15;}
 
                         else if ( (true) ) {s = 16;}
 
@@ -37630,27 +37615,12 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                         int index124_13 = input.index();
                         input.rewind();
                         s = -1;
-                        if ( (synpred2_InternalLLVM_IR()) ) {s = 14;}
+                        if ( (synpred2_InternalLLVM_IR()) ) {s = 15;}
 
                         else if ( (true) ) {s = 16;}
 
                          
                         input.seek(index124_13);
-                        if ( s>=0 ) return s;
-                        break;
-                    case 4 : 
-                        int LA124_15 = input.LA(1);
-
-                         
-                        int index124_15 = input.index();
-                        input.rewind();
-                        s = -1;
-                        if ( (synpred2_InternalLLVM_IR()) ) {s = 14;}
-
-                        else if ( (true) ) {s = 16;}
-
-                         
-                        input.seek(index124_15);
                         if ( s>=0 ) return s;
                         break;
             }
@@ -38272,7 +38242,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_112_in_ruleInstruction_invoke_void12047 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L});
     public static final BitSet FOLLOW_113_in_ruleInstruction_invoke_void12115 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L});
     public static final BitSet FOLLOW_114_in_ruleInstruction_invoke_void12183 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L});
-    public static final BitSet FOLLOW_ruleVoidType_in_ruleInstruction_invoke_void12245 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleVoidType_in_ruleInstruction_invoke_void12245 = new BitSet(new long[]{0xFFFFFF404000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
     public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_invoke_void12266 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_invoke_void12287 = new BitSet(new long[]{0x0000001000000000L,0x000001FFFFC00000L});
     public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_invoke_void12308 = new BitSet(new long[]{0x0000001000000000L});
@@ -38289,7 +38259,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_112_in_ruleInstruction_invoke_nonVoid12581 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
     public static final BitSet FOLLOW_113_in_ruleInstruction_invoke_nonVoid12649 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
     public static final BitSet FOLLOW_114_in_ruleInstruction_invoke_nonVoid12717 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
-    public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_invoke_nonVoid12779 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_invoke_nonVoid12779 = new BitSet(new long[]{0xFFFFFF404000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
     public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_invoke_nonVoid12800 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_invoke_nonVoid12821 = new BitSet(new long[]{0x0000001000000000L,0x000001FFFFC00000L});
     public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_invoke_nonVoid12842 = new BitSet(new long[]{0x0000001000000000L});
@@ -38709,7 +38679,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid23288 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0xF800000000000000L,0x00000000F80007F4L});
     public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid23310 = new BitSet(new long[]{0x0000000001040000L,0x00070400000002A0L,0x0000000000000000L,0x00000000F80007F4L});
     public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_call_nonVoid23332 = new BitSet(new long[]{0xFFFFFF404104FEF0L,0x0000040000000ABFL,0x00000000003FFC00L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_nonVoid23363 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_nonVoid23363 = new BitSet(new long[]{0xFFFFFF404000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
     public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_nonVoid23385 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_nonVoid23406 = new BitSet(new long[]{0x0000000000000002L,0x000001FFFFC00000L});
     public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_nonVoid23427 = new BitSet(new long[]{0x0000000000000002L});
@@ -38720,7 +38690,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_void23583 = new BitSet(new long[]{0x0000000000000000L,0x0007040000000000L,0xF800000000000000L});
     public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_void23605 = new BitSet(new long[]{0x0000000000000000L,0x0000040000000000L});
     public static final BitSet FOLLOW_ruleVoidType_in_ruleInstruction_call_void23627 = new BitSet(new long[]{0xFFFFFF404104FEF0L,0x0000040000000ABFL,0x00000000003FFC00L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_void23658 = new BitSet(new long[]{0xFFFFFF404000FEF0L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleType_in_ruleInstruction_call_void23658 = new BitSet(new long[]{0xFFFFFF404000FE70L,0x0000000000000ABFL,0x00000000003FFC00L});
     public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_void23680 = new BitSet(new long[]{0x0000000800000000L});
     public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_void23701 = new BitSet(new long[]{0x0000000000000002L,0x000001FFFFC00000L});
     public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_void23722 = new BitSet(new long[]{0x0000000000000002L});
@@ -38733,7 +38703,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_37_in_ruleArgList23887 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleCallee_in_entryRuleCallee23923 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleCallee23933 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleValueRef_in_ruleCallee23980 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGlobalValueRef_in_ruleCallee23980 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInlineAssembler_in_ruleCallee24007 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleInlineAssembler_in_entryRuleInlineAssembler24042 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleInlineAssembler24052 = new BitSet(new long[]{0x0000000000000002L});

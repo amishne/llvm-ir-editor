@@ -14,8 +14,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="MetadataRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//NamedMetadata"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ValueRef" eSuperTypes="#//Callee"/>
-  <eClassifiers xsi:type="ecore:EClass" name="GlobalValueRef" eSuperTypes="#//ValueRef">
+  <eClassifiers xsi:type="ecore:EClass" name="ValueRef"/>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalValueRef" eSuperTypes="#//ValueRef #//Callee">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//GlobalValueDef"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constant" eType="#//Constant"
         containment="true"/>

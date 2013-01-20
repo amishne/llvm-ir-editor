@@ -105,7 +105,6 @@ public class LLVM_IRSwitch<T> extends Switch<T>
       {
         ValueRef valueRef = (ValueRef)theEObject;
         T result = caseValueRef(valueRef);
-        if (result == null) result = caseCallee(valueRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -130,7 +129,6 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         LocalValueRef localValueRef = (LocalValueRef)theEObject;
         T result = caseLocalValueRef(localValueRef);
         if (result == null) result = caseValueRef(localValueRef);
-        if (result == null) result = caseCallee(localValueRef);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }

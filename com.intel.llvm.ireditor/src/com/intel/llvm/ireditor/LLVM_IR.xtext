@@ -510,6 +510,8 @@ Instruction_invoke_void:
 
 // <result> = invoke [cconv] [ret attrs] <ptr to function ty> <function ptr val>(<function args>) [fn attrs]
 //                 to label <normal label> unwind label <exception label>
+// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+// the function return type, just like with the call instruction.
 Instruction_invoke_nonVoid:
 	opcode='invoke' cconv=CConv?
 	('zeroext'? & 'signext'? & 'inreg'?)
@@ -896,7 +898,7 @@ ArgList:
 ;
 
 Callee:
-	ValueRef | InlineAssembler
+	GlobalValueRef | InlineAssembler
 ;
 
 InlineAssembler:

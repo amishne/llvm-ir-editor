@@ -28,6 +28,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.validation;
 
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
@@ -37,13 +38,19 @@ import org.eclipse.xtext.validation.Check;
 
 import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
+import com.intel.llvm.ireditor.lLVM_IR.ArgList;
+import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.Callee;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_cmpxchg;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractelement;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractvalue;
@@ -57,6 +64,8 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_icmp;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertvalue;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_mul;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_ret;
@@ -71,6 +80,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
@@ -78,9 +88,11 @@ import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 import com.intel.llvm.ireditor.types.ResolvedFloatingType;
+import com.intel.llvm.ireditor.types.ResolvedFunctionType;
 import com.intel.llvm.ireditor.types.ResolvedIntegerType;
 import com.intel.llvm.ireditor.types.ResolvedPointerType;
 import com.intel.llvm.ireditor.types.ResolvedType;
+import com.intel.llvm.ireditor.types.ResolvedVarargType;
 import com.intel.llvm.ireditor.types.ResolvedVectorType;
 import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
@@ -91,6 +103,7 @@ import static com.intel.llvm.ireditor.types.TypeResolver.*;
 public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public static final String ERROR_EXPECTED_TYPE = "expected type not matched";
 	public static final String ERROR_WRONG_NUMBER = "wrong number in sequence";
+	public static final String ERROR_MISSING_FUNCTION_PTR_TYPE = "missing function pointer type";
 	private final TypeResolver typeResolver = new TypeResolver();
 	private final ConstantResolver constResolver = new ConstantResolver();
 	private final NameResolver namer = new NameResolver();
@@ -404,6 +417,76 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			}
 		} else {
 			checkRequired(condType, inst.getCondition().eContainingFeature(), TYPE_BOOLEAN);
+		}
+	}
+	
+	@Check
+	public void checkCall(Instruction_call_nonVoid inst) {
+		checkAnyCall(inst.getCallee(),
+				inst.getReturnType(),
+				inst.getFunctionPointerType(),
+				inst.getArgs());
+	}
+	
+	@Check
+	public void checkCall(Instruction_call_void inst) {
+		checkAnyCall(inst.getCallee(),
+				inst.getReturnType(),
+				inst.getFunctionPointerType(),
+				inst.getArgs());
+	}
+	
+	@Check
+	public void checkInvoke(Instruction_invoke_nonVoid inst) {
+		checkAnyCall(inst.getCallee(),
+				inst.getRettype(),
+				null,
+				inst.getArgs());
+	}
+	
+	@Check
+	public void checkInvoke(Instruction_invoke_void inst) {
+		checkAnyCall(inst.getCallee(),
+				inst.getRettype(),
+				null,
+				inst.getArgs());
+	}
+	
+	public void checkAnyCall(Callee callee, EObject retType, Type functionPointerType, ArgList args) {
+		if (callee instanceof GlobalValueRef == false) return;
+		ResolvedFunctionType fType = (ResolvedFunctionType) resolveType(callee);
+		checkExpected(fType.getReturnType(), retType);
+		
+		boolean typeOmitted = functionPointerType == null;
+		if (typeOmitted == false) {
+			// If a full function type is provided, verify that it matches the signature.
+			checkExpected(new ResolvedPointerType(fType, 0), functionPointerType);
+		} else {
+			// Ensure the return type is not a function pointer
+			if (fType.getReturnType() instanceof ResolvedPointerType &&
+					fType.getReturnType().getContainedType(0) instanceof ResolvedFunctionType) {
+				error("Must provide a function pointer type if the function returns a function pointer",
+						functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
+						new ResolvedPointerType(fType, 0).toString());
+			}
+		}
+		
+		
+		Iterator<Argument> iter = args.getArguments().iterator();
+		for (ResolvedType p : fType.getParameters()) {
+			if (p instanceof ResolvedVarargType) {
+				if (typeOmitted) {
+					error("Must provide a function pointer type if the function is varargs",
+							functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
+							new ResolvedPointerType(fType, 0).toString());
+				}
+				return;
+			}
+			if (iter.hasNext() == false) {
+				error("Expected " + p.toString() + " as next argument", args.eContainingFeature());
+				return;
+			}
+			checkExpected(p, resolveType(iter.next().getType()), args.eContainingFeature());
 		}
 	}
 	

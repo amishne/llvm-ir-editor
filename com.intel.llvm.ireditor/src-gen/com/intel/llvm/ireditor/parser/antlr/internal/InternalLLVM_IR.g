@@ -11161,11 +11161,11 @@ ruleCallee returns [EObject current=null]
     @after { leaveRule(); }:
 (
     { 
-        newCompositeNode(grammarAccess.getCalleeAccess().getValueRefParserRuleCall_0()); 
+        newCompositeNode(grammarAccess.getCalleeAccess().getGlobalValueRefParserRuleCall_0()); 
     }
-    this_ValueRef_0=ruleValueRef
+    this_GlobalValueRef_0=ruleGlobalValueRef
     { 
-        $current = $this_ValueRef_0.current; 
+        $current = $this_GlobalValueRef_0.current; 
         afterParserOrEnumRuleCall();
     }
 
