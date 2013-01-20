@@ -40,6 +40,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		this.initialMode = initialMode;
 	}
 
+	@Override
 	public Iterator<EObject> iterator() {
 		return initialMode == Mode.GLOBAL ? new ReverseGlobalIterator() : new ReverseLocalIterator();
 	}
@@ -47,16 +48,19 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 	class ReverseGlobalIterator implements Iterator<EObject> {
 		INode curr = node;
 		
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
 		
+		@Override
 		public EObject next() {
 			INode prev = curr.getPreviousSibling();
 			curr = prev;
 			return NodeModelUtils.findActualSemanticObjectFor(prev);
 		}
 		
+		@Override
 		public boolean hasNext() {
 			return curr.hasPreviousSibling();
 		}
@@ -67,10 +71,12 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		final INode lastParam = getLastParamOfEnclosingFunction(curr);
 		ReverseNamedElementIterator.Mode mode = initialMode;
 		
+		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
 		
+		@Override
 		public EObject next() {
 			switch (mode) {
 			case INST: {
@@ -104,7 +110,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			return NodeModelUtils.findActualSemanticObjectFor(curr);
 		}
 		
-
+		@Override
 		public boolean hasNext() {
 			switch (mode) {
 			case INST: return true; // There's always a preceding bb
@@ -121,9 +127,16 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			return iterator.previous();
 		}
 		
-		private INode getLastParamOfEnclosingFunction(INode instNode) {
-			// FIXME can throw NPE
-			for (INode n : instNode.getParent().getParent().getAsTreeIterable().reverse()) {
+		private INode getLastParamOfEnclosingFunction(INode node) {
+			INode header;
+			switch (initialMode) {
+			case INST: header = node.getParent().getParent(); break;
+			case BB: header = node.getParent(); break;
+			default: header = null;
+			}
+			if (header == null) return null;
+			
+			for (INode n : header.getAsTreeIterable().reverse()) {
 				EObject object = NodeModelUtils.findActualSemanticObjectFor(n);
 				if (object instanceof Parameter) {
 					return n;
