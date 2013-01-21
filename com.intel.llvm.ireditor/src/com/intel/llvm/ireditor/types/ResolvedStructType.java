@@ -57,6 +57,7 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 	}
 
 	public ResolvedType getContainedType(int index) {
+		if (index >= fieldTypes.size()) return null;
 		return fieldTypes.get(index);
 	}
 

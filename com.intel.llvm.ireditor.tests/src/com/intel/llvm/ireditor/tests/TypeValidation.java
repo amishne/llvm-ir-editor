@@ -99,6 +99,7 @@ public class TypeValidation extends AbstractXtextTests {
 		sb.append("\n  ret ");
 		sb.append(expectedType == null ? "void" : expectedType + " %result");
 		sb.append("\n}");
+		System.out.println(sb.toString());
 		return sb.toString();
 	}
 }

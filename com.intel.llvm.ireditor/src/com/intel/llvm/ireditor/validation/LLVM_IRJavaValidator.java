@@ -564,6 +564,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	private boolean checkRequired(ResolvedType instType, EStructuralFeature feature, ResolvedType... types) {
+		if (instType == null) {
+			error("Unknown type expected", feature);
+			return false;
+		}
 		for (ResolvedType t : types) {
 			if (instType.accepts(t)) return true;
 		}
@@ -584,6 +588,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	private void checkExpected(ResolvedType expectedType, ResolvedType actualType, EStructuralFeature feature, int index) {
+		if (expectedType == null) {
+			error("Unknown type expected", feature);
+			return;
+		}
 		if (expectedType.accepts(actualType)) return;
 
 		List<String> ops = getConversionOps(actualType, expectedType);

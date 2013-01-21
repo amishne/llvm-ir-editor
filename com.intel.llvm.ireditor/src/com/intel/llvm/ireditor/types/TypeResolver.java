@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
 import com.intel.llvm.ireditor.constants.ConstantResolver;
+import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayConstant;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayType;
@@ -129,6 +130,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	public ResolvedType resolve(EObject object) {
+		if (object == null) return TYPE_UNKNOWN;
 		return doSwitch(object);
 	}
 	
@@ -141,7 +143,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseType(Type object) {
 		ResolvedType result = resolve(object.getBaseType());
-		buildPointersTo(result, object.getStars());
+		result = buildPointersTo(result, object.getStars());
 		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
 		return suffix == null? result : buildTypeFromSuffix(result, suffix);
 	}
@@ -149,7 +151,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseNonVoidType(NonVoidType object) {
 		ResolvedType result = resolve(object.getBaseType());
-		buildPointersTo(result, object.getStars());
+		result = buildPointersTo(result, object.getStars());
 		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
 		return suffix == null? result : buildTypeFromSuffix(result, suffix);
 	}
@@ -386,6 +388,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseInstruction_shufflevector(Instruction_shufflevector object) {
 		ResolvedVectorType mask = (ResolvedVectorType) resolve(object.getMask().getType());
 		ResolvedType element = resolve(object.getVector1().getType()).getContainedType(0);
+		if (element == null) return TYPE_UNKNOWN;
 		return new ResolvedVectorType(mask.getSize(), element);
 	}
 	
@@ -398,7 +401,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		
 		for (TypedValue index : object.getIndices()) {
 			Integer indexValue = 0;
-			if (result instanceof StructType) {
+			if (result instanceof ResolvedStructType) {
 				indexValue = constResolver.getInteger(index.getRef());
 				if (indexValue == null) {
 					// We could not resolve the index constant, so we cannot tell what the type is.
@@ -406,6 +409,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 				}
 			}
 			result = result.getContainedType(indexValue);
+			if (result == null) return TYPE_UNKNOWN;
 		}
 		
 		return new ResolvedPointerType(result, 0);
@@ -422,6 +426,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 				return TYPE_ANY;
 			}
 			result = result.getContainedType(indexValue);
+			if (result == null) return TYPE_UNKNOWN;
 		}
 		
 		return result;
@@ -487,9 +492,9 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private ResolvedType buildPointersTo(ResolvedType base, Iterable<Star> stars) {
 		ResolvedType result = base;
 		for (Star star : stars) {
-			String addrSpaceStr = star.getAddressSpace().getValue();
-			int addrSpace = addrSpaceStr == null ? -1 : atoi(addrSpaceStr);
-			result = new ResolvedPointerType(result, addrSpace);
+			AddressSpace addrSpace = star.getAddressSpace();
+			int addrSpaceValue = addrSpace == null ? 0 : atoi(addrSpace.getValue());
+			result = new ResolvedPointerType(result, addrSpaceValue);
 		}
 		return result;
 	}
