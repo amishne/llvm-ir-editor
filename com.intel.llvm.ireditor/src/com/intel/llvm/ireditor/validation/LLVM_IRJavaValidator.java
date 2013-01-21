@@ -144,7 +144,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkRet(Instruction_ret val) {
 		EObject f = val.eContainer().eContainer().eContainer().eContainer();
-		checkExpected(((Function)f).getHeader().getRettype(), val.getVal().getType());
+		checkExpected(((Function)f).getHeader().getRettype(), val.getVal());
 	}
 	
 	@Check
