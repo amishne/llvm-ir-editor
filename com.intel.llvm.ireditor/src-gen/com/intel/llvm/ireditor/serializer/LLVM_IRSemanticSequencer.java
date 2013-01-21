@@ -1358,7 +1358,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getFunctionDefAccess().getHeaderFunctionHeaderParserRuleCall_1_0(), semanticObject.getHeader());
-		feeder.accept(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_2_0(), semanticObject.getBody());
+		feeder.accept(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_3_0(), semanticObject.getBody());
 		feeder.finish();
 	}
 	

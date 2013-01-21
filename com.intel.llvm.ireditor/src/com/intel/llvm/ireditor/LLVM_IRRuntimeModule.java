@@ -179,7 +179,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
 		
 		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseNamedElementIterator(node, Mode.BB);
+			return new ReverseNamedElementIterator(node.getParent(), Mode.BB);
 		}
 	}
 	

@@ -2048,15 +2048,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDefineKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cHeaderAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cHeaderFunctionHeaderParserRuleCall_1_0 = (RuleCall)cHeaderAssignment_1.eContents().get(0);
-		private final Assignment cBodyAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cBodyFunctionBodyParserRuleCall_2_0 = (RuleCall)cBodyAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cBodyAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBodyFunctionBodyParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//FunctionDef:
 		//
-		//	"define" header=FunctionHeader body=FunctionBody;
+		//	"define" header=FunctionHeader "{" body=FunctionBody "}";
 		public ParserRule getRule() { return rule; }
 
-		//"define" header=FunctionHeader body=FunctionBody
+		//"define" header=FunctionHeader "{" body=FunctionBody "}"
 		public Group getGroup() { return cGroup; }
 
 		//"define"
@@ -2068,11 +2070,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//FunctionHeader
 		public RuleCall getHeaderFunctionHeaderParserRuleCall_1_0() { return cHeaderFunctionHeaderParserRuleCall_1_0; }
 
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+
 		//body=FunctionBody
-		public Assignment getBodyAssignment_2() { return cBodyAssignment_2; }
+		public Assignment getBodyAssignment_3() { return cBodyAssignment_3; }
 
 		//FunctionBody
-		public RuleCall getBodyFunctionBodyParserRuleCall_2_0() { return cBodyFunctionBodyParserRuleCall_2_0; }
+		public RuleCall getBodyFunctionBodyParserRuleCall_3_0() { return cBodyFunctionBodyParserRuleCall_3_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
 
 	public class FunctionDeclElements extends AbstractParserRuleElementFinder {
@@ -2260,31 +2268,19 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class FunctionBodyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionBody");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cBasicBlocksAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cBasicBlocksBasicBlockParserRuleCall_1_0 = (RuleCall)cBasicBlocksAssignment_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cBasicBlocksAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cBasicBlocksBasicBlockParserRuleCall_0 = (RuleCall)cBasicBlocksAssignment.eContents().get(0);
 		
 		//FunctionBody:
 		//
-		//	"{" basicBlocks+=BasicBlock+ "}";
+		//	basicBlocks+=BasicBlock+;
 		public ParserRule getRule() { return rule; }
 
-		//"{" basicBlocks+=BasicBlock+ "}"
-		public Group getGroup() { return cGroup; }
-
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
-
 		//basicBlocks+=BasicBlock+
-		public Assignment getBasicBlocksAssignment_1() { return cBasicBlocksAssignment_1; }
+		public Assignment getBasicBlocksAssignment() { return cBasicBlocksAssignment; }
 
 		//BasicBlock
-		public RuleCall getBasicBlocksBasicBlockParserRuleCall_1_0() { return cBasicBlocksBasicBlockParserRuleCall_1_0; }
-
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		public RuleCall getBasicBlocksBasicBlockParserRuleCall_0() { return cBasicBlocksBasicBlockParserRuleCall_0; }
 	}
 
 	public class FunctionAttributesElements extends AbstractParserRuleElementFinder {
@@ -3319,6 +3315,10 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//// <result> = invoke [cconv] [ret attrs] <ptr to function ty> <function ptr val>(<function args>) [fn attrs]
 		//
 		////                 to label <normal label> unwind label <exception label>
+		//
+		//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+		//
+		//// the function return type, just like with the call instruction.
 		//
 		//Instruction_invoke_nonVoid:
 		//
@@ -8585,7 +8585,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionDef:
 	//
-	//	"define" header=FunctionHeader body=FunctionBody;
+	//	"define" header=FunctionHeader "{" body=FunctionBody "}";
 	public FunctionDefElements getFunctionDefAccess() {
 		return (pFunctionDef != null) ? pFunctionDef : (pFunctionDef = new FunctionDefElements());
 	}
@@ -8631,7 +8631,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionBody:
 	//
-	//	"{" basicBlocks+=BasicBlock+ "}";
+	//	basicBlocks+=BasicBlock+;
 	public FunctionBodyElements getFunctionBodyAccess() {
 		return (pFunctionBody != null) ? pFunctionBody : (pFunctionBody = new FunctionBodyElements());
 	}
@@ -8884,6 +8884,10 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//// <result> = invoke [cconv] [ret attrs] <ptr to function ty> <function ptr val>(<function args>) [fn attrs]
 	//
 	////                 to label <normal label> unwind label <exception label>
+	//
+	//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+	//
+	//// the function return type, just like with the call instruction.
 	//
 	//Instruction_invoke_nonVoid:
 	//

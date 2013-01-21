@@ -3577,25 +3577,33 @@ ruleFunctionDef returns [EObject current=null]
 	    }
 
 )
-)(
+)	otherlv_2='{' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getFunctionDefAccess().getLeftCurlyBracketKeyword_2());
+    }
+(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_3_0()); 
 	    }
-		lv_body_2_0=ruleFunctionBody		{
+		lv_body_3_0=ruleFunctionBody		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionDefRule());
 	        }
        		set(
        			$current, 
        			"body",
-        		lv_body_2_0, 
+        		lv_body_3_0, 
         		"FunctionBody");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)	otherlv_4='}' 
+    {
+    	newLeafNode(otherlv_4, grammarAccess.getFunctionDefAccess().getRightCurlyBracketKeyword_4());
+    }
+)
 ;
 
 
@@ -3920,33 +3928,25 @@ ruleFunctionBody returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(	otherlv_0='{' 
-    {
-    	newLeafNode(otherlv_0, grammarAccess.getFunctionBodyAccess().getLeftCurlyBracketKeyword_0());
-    }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionBodyAccess().getBasicBlocksBasicBlockParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getFunctionBodyAccess().getBasicBlocksBasicBlockParserRuleCall_0()); 
 	    }
-		lv_basicBlocks_1_0=ruleBasicBlock		{
+		lv_basicBlocks_0_0=ruleBasicBlock		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionBodyRule());
 	        }
        		add(
        			$current, 
        			"basicBlocks",
-        		lv_basicBlocks_1_0, 
+        		lv_basicBlocks_0_0, 
         		"BasicBlock");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)+	otherlv_2='}' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getFunctionBodyAccess().getRightCurlyBracketKeyword_2());
-    }
-)
+)+
 ;
 
 
