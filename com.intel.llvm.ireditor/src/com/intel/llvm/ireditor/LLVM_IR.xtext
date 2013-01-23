@@ -26,34 +26,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 // LLVM IR xtext module
-// 
-// Main features:
-// * Syntactical and semantical code highlighting.
-// * Cross-reference awareness.
-// * Nameless element name inferring.
-// 
-// LLVM IR limitations:
-// * Cannot refer to unnamed future elements.
-// 
-// Bugs:
-// * Locals (%) that contain a dot in their name appear with interpunct in some windows, a result
-//   of a workaround since a bug prevents these locals from being normally referred to.
-// * Inserting or removing unnamed elements does not properly rename unnamed elements in the
-//   rest of the file immediately.
-// * Hangs on content-assist in a function definition header.
-// * Hangs on unclosed functions.
-// * Hangs on content-assist in last ref of a function
-// * (unverified) "Go to definition" and occurrences highlighting only work if the file actually belongs to a project.
-// * (harmless) content-assist generates error in Eclipse log (https://bugs.eclipse.org/bugs/show_bug.cgi?id=390173)
-// 
-// Future feature ideas:
-// * Validating anonymous variables (%num) number sequence.
-// * Expanding references on hover.
-// * Revising how metadata works.
-// * Inferring possible incoming basic blocks for each basic block and showing them on hover,
-//   or even as warning for incomplete phi nodes.
-// * Verifying whether a file is a valid SPIR file.
-// * Integrating with the compiler for immediate feedback.
 
 grammar com.intel.llvm.ireditor.LLVM_IR hidden(WS, FILECHECK_COMMENT, SL_COMMENT)
 
