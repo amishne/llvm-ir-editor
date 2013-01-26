@@ -30,9 +30,11 @@ package com.intel.llvm.ireditor.ui.quickfix;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
@@ -40,9 +42,13 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolution;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
+import org.eclipse.xtext.ui.refactoring.ui.IRenameElementContext;
+import org.eclipse.xtext.ui.refactoring.ui.IRenameSupport;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 
+import com.google.inject.Inject;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
@@ -56,7 +62,11 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
 
+@SuppressWarnings("restriction")
 public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
+	
+	@Inject
+	private IRenameSupport.Factory renameSupportFactory;
 
 	TypeResolver resolver = new TypeResolver();
 	
@@ -127,27 +137,23 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		final String name = data[0];
 		final String newName = data[1];
 		
-		// TODO change the below into also updating references?
-		acceptor.accept(issue, "Delete the name, leaving it to be inferred", name + " will be deleted.", "upcase.png", new IModification() {
-			public void apply(IModificationContext context) throws BadLocationException {
-				final IXtextDocument doc = context.getXtextDocument();
-				int afterRemovalIndex = issue.getOffset() + issue.getLength();
-				int trailingWhitespace = 0;
-				while (Character.isWhitespace(doc.getChar(afterRemovalIndex + trailingWhitespace))) {
-					trailingWhitespace++;
-				}
-				doc.replace(issue.getOffset(), issue.getLength() + trailingWhitespace, "");
-			}
-		});
-		
-		// TODO change the below into a global rename?
-		String description = name + " will be renamed to " + newName + " only in this instance.";
+		String description = name + " will be renamed to " + newName + " here and in all of its references.";
 		acceptor.accept(issue, "Rename " + name + " to " + newName, description, "upcase.png", new IModification() {
-			public void apply(IModificationContext context) throws BadLocationException {
+			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
 				final IXtextDocument doc = context.getXtextDocument();
-				doc.replace(issue.getOffset(), name.length(), newName);
+				EObject namedInst = findObject(doc, issue);
+				performDirectRenameRefactoring(namedInst, newName);
 			}
 		});
+	}
+	
+	private void performDirectRenameRefactoring(EObject object, String newName) throws InterruptedException {
+		final XtextEditor editor = EditorUtils.getActiveXtextEditor();
+		IRenameElementContext renameContext =
+				new IRenameElementContext.Impl(EcoreUtil.getURI(object), object.eClass(),
+						editor, editor.getSelectionProvider().getSelection(), null);
+		IRenameSupport rename = renameSupportFactory.create(renameContext, newName);
+		rename.startDirectRefactoring();
 	}
 	
 	@Override

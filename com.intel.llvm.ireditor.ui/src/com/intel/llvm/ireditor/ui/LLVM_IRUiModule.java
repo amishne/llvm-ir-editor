@@ -45,6 +45,7 @@ import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.RGB;
@@ -68,11 +69,16 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
+import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
+import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
+import org.eclipse.xtext.util.ITextRegion;
+import org.eclipse.xtext.util.TextRegion;
 
 
 /**
  * Use this class to register components to be used within the IDE.
  */
+@SuppressWarnings("restriction")
 public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRUiModule {
 	
 	public LLVM_IRUiModule(AbstractUIPlugin plugin) {
@@ -95,6 +101,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		return LlvmAntlrTokenToAttributeIdMapper.class ;
 	}
 	
+	@Override
 	public Class<? extends IIndentationInformation> bindIIndentationInformation() {
 		return LlvmIndentationInformation.class;
 	}
@@ -104,9 +111,25 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	}
 	
 	@Override
+	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
+		return LlvmRenameStrategy.class;
+	}
+	
+	@Override
 	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
 		// TODO workaround to add timeouts to content assist
 		return CustomLlvmContentAssistParser.class;
+	}
+	
+	public static class LlvmRenameStrategy extends DefaultRenameStrategy {
+		@Override
+		protected ITextRegion getOriginalNameRegion(
+				EObject targetElement, EAttribute nameAttribute) {
+			// Use the actual name string for length calculation, not the entire name element.
+			int offset = NodeModelUtils.findActualNodeFor(targetElement).getOffset();
+			String text = getOriginalName();
+			return new TextRegion(offset, text.length());
+		}
 	}
 	
 	public static class LlvmHoverProvider extends DefaultEObjectHoverProvider {
