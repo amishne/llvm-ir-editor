@@ -2,12 +2,14 @@ package com.intel.llvm.ireditor;
 
 import java.util.Iterator;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
@@ -82,6 +84,12 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			case INST: {
 				if (curr.hasPreviousSibling()) {
 					curr = curr.getPreviousSibling();
+					// FIXME hack!
+					if (curr.hasPreviousSibling() == false) {
+						// This was actually the first inst in the bb!
+						curr = curr.getParent();
+						mode = Mode.BB;
+					}
 				} else {
 					// After the first instruction in a bb comes the enclosing bb
 					curr = curr.getParent();
@@ -128,21 +136,19 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		}
 		
 		private INode getLastParamOfEnclosingFunction(INode node) {
-			INode header;
-			switch (initialMode) {
-			case INST: header = node.getParent().getParent(); break;
-			case BB: header = node.getParent(); break;
-			default: header = null;
-			}
-			if (header == null) return null;
+			INode functionDefNode;
 			
-			for (INode n : header.getAsTreeIterable().reverse()) {
-				EObject object = NodeModelUtils.findActualSemanticObjectFor(n);
-				if (object instanceof Parameter) {
-					return n;
-				}
+			switch (initialMode) {
+			case INST: functionDefNode = node.getParent().getParent().getParent(); break;
+			case BB: functionDefNode = node.getParent().getParent(); break;
+			default: functionDefNode = null;
 			}
-			return null;
+			if (functionDefNode == null) return null;
+			
+			FunctionDef functionDef = (FunctionDef) NodeModelUtils.findActualSemanticObjectFor(functionDefNode);
+			EList<Parameter> params = functionDef.getHeader().getParameters().getParameters();
+			if (params.isEmpty()) return null;
+			return NodeModelUtils.findActualNodeFor(params.get(params.size()-1));
 		}
 	}
 	

@@ -27,8 +27,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.ui.quickfix;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.text.BadLocationException;
@@ -49,15 +53,25 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Inject;
+import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
+import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionBody;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
+import com.intel.llvm.ireditor.lLVM_IR.MiddleInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.Model;
+import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
+import com.intel.llvm.ireditor.names.NameResolver;
+import com.intel.llvm.ireditor.names.NumberedName;
 
 import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
@@ -137,22 +151,110 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		final String name = data[0];
 		final String newName = data[1];
 		
-		String description = name + " will be renamed to " + newName + " here and in all of its references.";
-		acceptor.accept(issue, "Rename " + name + " to " + newName, description, "upcase.png", new IModification() {
+		// Suggestion 1: local rename
+		String label = "Locally replace " + name + " with " + newName;
+		String description = name + " will be replaced by " + newName + " in this location only.";
+		acceptor.accept(issue, label, description, "upcase.png", new IModification() {
+			public void apply(IModificationContext context) throws BadLocationException {
+				IXtextDocument doc = context.getXtextDocument();
+				doc.replace(issue.getOffset(), name.length(), newName);
+			}
+		});
+		
+		// Suggestion 2: rename-refactor
+		label = "Globally rename " + name + " to " + newName;
+		description = name + " will be replaced by " + newName + " here and everywhere it is used in this context.";
+		acceptor.accept(issue, label, description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
-				final IXtextDocument doc = context.getXtextDocument();
+				IXtextDocument doc = context.getXtextDocument();
 				EObject namedInst = findObject(doc, issue);
 				performDirectRenameRefactoring(namedInst, newName);
 			}
 		});
+		
+		// Suggestion 3: rename-refactor the entire sequence
+		label = "Fix the numbers used for all values in this sequence";
+		description = label;
+		acceptor.accept(issue, label, description, "upcase.png", new IModification() {
+			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
+				IXtextDocument doc = context.getXtextDocument();
+				EObject namedInst = findObject(doc, issue);
+				fixSequence(namedInst);
+			}
+		});
 	}
 	
+	private void fixSequence(EObject object) throws InterruptedException {
+		EObject lastInContext = getLastObjectInContext(object);
+		if (lastInContext == null) return;
+		Deque<EObject> toRename = new LinkedList<EObject>();
+		toRename.push(lastInContext);
+		ReverseNamedElementIterator iter = new ReverseNamedElementIterator(lastInContext);
+		for (EObject namedElement : iter) {
+			toRename.push(namedElement);
+		}
+		
+		URI resourceUri = EcoreUtil.getURI(object).trimFragment();
+		NameResolver namer = new NameResolver();
+		int num = -1;
+		while (toRename.isEmpty() == false) {
+			EObject element = toRename.pop();
+			NumberedName name = namer.resolveNumberedName(element);
+			if (name == null) continue;
+			
+			// This is an unnamed element
+			num++;
+			if (name.getNumber() == num) continue;
+			
+			// Hack to get the directly-named element, for the rename refactoring target. 
+			if (element instanceof MiddleInstruction) {
+				element = ((MiddleInstruction) element).getInstruction();
+			} else if (element instanceof TerminatorInstruction) {
+				element = ((TerminatorInstruction) element).getInstruction();
+			}
+			
+			URI targetUri = EcoreUtil.getURI(element);
+			if (targetUri.fileExtension() == null) {
+//				targetUri = targetUri.appendSegments(resourceUri.segments());
+				targetUri = resourceUri.appendFragment(targetUri.fragment());
+				targetUri = URI.createHierarchicalURI(resourceUri.scheme(), resourceUri.authority(), resourceUri.device(),
+						resourceUri.segments(), resourceUri.query(), targetUri.fragment());
+			}
+			performDirectRenameRefactoring(element, name.getPrefix() + num, resourceUri, targetUri);
+		}
+	}
+
+	private EObject getLastObjectInContext(EObject object) {
+		do {
+			if (object instanceof Model) {
+				EList<TopLevelElement> elements = ((Model) object).getElements();
+				return elements.get(elements.size()-1);
+			}
+			if (object instanceof FunctionBody) {
+				// Topmost element for a local
+				EList<BasicBlock> basicBlocks = ((FunctionBody) object).getBasicBlocks();
+				EList<Instruction> instructions = basicBlocks.get(basicBlocks.size()-1).getInstructions();
+				return instructions.get(instructions.size()-1);
+			}
+			object = object.eContainer();
+		} while (object != null);
+		return null;
+	}
+
 	private void performDirectRenameRefactoring(EObject object, String newName) throws InterruptedException {
+		performDirectRenameRefactoring(object, newName, EcoreUtil.getURI(object), null);
+	}
+	
+	private void performDirectRenameRefactoring(EObject object, String newName, URI resourceUri, URI targetUri) throws InterruptedException {
 		final XtextEditor editor = EditorUtils.getActiveXtextEditor();
-		IRenameElementContext renameContext =
-				new IRenameElementContext.Impl(EcoreUtil.getURI(object), object.eClass(),
-						editor, editor.getSelectionProvider().getSelection(), null);
+		IRenameElementContext renameContext = new IRenameElementContext.Impl(
+				targetUri,
+				object.eClass(),
+				editor,
+				editor.getSelectionProvider().getSelection(),
+				resourceUri);
 		IRenameSupport rename = renameSupportFactory.create(renameContext, newName);
+		if (rename == null) return;
 		rename.startDirectRefactoring();
 	}
 	
@@ -250,7 +352,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		return buildDeclarationFromCall(callee, functionPointerType, rettype, args);
 	}
 
-	private EObject findObject(final IXtextDocument doc, final Issue issue) {
+	private EObject findObject(IXtextDocument doc, final Issue issue) {
 		return doc.readOnly(new IUnitOfWork<EObject, XtextResource>() {
 			public EObject exec(XtextResource state) throws Exception {
 				return state.getEObject(issue.getUriToProblem().fragment());
