@@ -16,8 +16,8 @@ public class ResolvedAnyTypedVectorType extends ResolvedAnyVectorType {
 		return this.equals(t)
 				|| t.getClass() == ResolvedAnyType.class
 				|| t.getClass() == ResolvedAnyVectorType.class
-				|| (t.getClass() == ResolvedVectorType.class
-					&& elementType.equals(t.getContainedType(0)));
+				|| ((t.getClass() == ResolvedVectorType.class || t.getClass() == ResolvedAnyTypedVectorType.class)
+					&& elementType.accepts(t.getContainedType(0)));
 	}
 
 	public int hashCode() {

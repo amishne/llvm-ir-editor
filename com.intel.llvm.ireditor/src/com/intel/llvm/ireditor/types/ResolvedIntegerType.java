@@ -26,7 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
-public class ResolvedIntegerType extends ResolvedType {
+public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 
 	private int bits;
 	
