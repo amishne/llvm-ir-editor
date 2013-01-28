@@ -28,12 +28,11 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedArrayType extends ResolvedAnyArrayType {
 
-	private ResolvedType elementType;
-	private int size;
+	private final int size;
 
 	public ResolvedArrayType(int size, ResolvedType elementType) {
+		super(elementType);
 		this.size = size;
-		this.elementType = elementType;
 	}
 	
 	public int getBits() {
@@ -49,31 +48,10 @@ public class ResolvedArrayType extends ResolvedAnyArrayType {
 		return elementType;
 	}
 
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((elementType == null) ? 0 : elementType.hashCode());
-		result = prime * result + size;
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedArrayType other = (ResolvedArrayType) obj;
-		if (elementType == null) {
-			if (other.elementType != null)
-				return false;
-		} else if (!elementType.equals(other.elementType))
-			return false;
-		if (size != other.size)
-			return false;
-		return true;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedArrayType
+				&& size == ((ResolvedArrayType)t).size
+				&& elementType.accepts(t.getContainedType(0));
 	}
 	
 }

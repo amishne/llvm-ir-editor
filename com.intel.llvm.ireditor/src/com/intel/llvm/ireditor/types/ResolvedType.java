@@ -49,17 +49,10 @@ public abstract class ResolvedType {
 	 * @param t
 	 * @return True if it's okay to encounter 't' when 'this' is expected.
 	 */
-	public boolean accepts(ResolvedType t) {
-		// All types should accept themselves and 'any'.
-		return t.getClass() == ResolvedAnyType.class ||
-				this.equals(t);
+	public final boolean accepts(ResolvedType t) {
+		return uniAccepts(t) || t.uniAccepts(this);
 	}
 	
-	public boolean equals(Object obj) {
-		return obj != null && obj.getClass() == getClass();
-	}
+	protected abstract boolean uniAccepts(ResolvedType t);
 	
-	public int hashCode() {
-		return getClass().hashCode();
-	}
 }

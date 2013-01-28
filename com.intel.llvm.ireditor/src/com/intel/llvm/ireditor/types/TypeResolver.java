@@ -104,20 +104,20 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedVarargType TYPE_VARARG = new ResolvedVarargType();
 	public static final ResolvedAnyType TYPE_ANY = new ResolvedAnyType();
 	public static final ResolvedType TYPE_ANY_POINTER = new ResolvedPointerType(TYPE_ANY, 0);
-	public static final ResolvedStringType TYPE_CSTRING = new ResolvedStringType();
+	public static final ResolvedAnyArrayType TYPE_CSTRING = new ResolvedAnyArrayType(new ResolvedIntegerType(8));
 	public static final ResolvedAnyFloatingType TYPE_FLOATING = new ResolvedAnyFloatingType();
 	public static final ResolvedIntegerType TYPE_BOOLEAN = new ResolvedIntegerType(1);
 	public static final ResolvedMetadataType TYPE_METADATA = new ResolvedMetadataType();
 	public static final ResolvedOpaqueType TYPE_OPAQUE = new ResolvedOpaqueType();
 	public static final ResolvedAnyIntegerType TYPE_ANY_INTEGER = new ResolvedAnyIntegerType();
-	public static final ResolvedAnyVectorType TYPE_ANY_VECTOR = new ResolvedAnyVectorType();
+	public static final ResolvedAnyVectorType TYPE_ANY_VECTOR = new ResolvedAnyVectorType(TYPE_ANY);
 	public static final ResolvedIntegerType TYPE_I32 = new ResolvedIntegerType(32);
-	public static final ResolvedType TYPE_ANY_ARRAY = new ResolvedAnyArrayType();
+	public static final ResolvedType TYPE_ANY_ARRAY = new ResolvedAnyArrayType(TYPE_ANY);
 	public static final ResolvedType TYPE_ANY_STRUCT = new ResolvedAnyStructType();
-	public static final ResolvedAnyTypedVectorType TYPE_INTEGER_VECTOR = new ResolvedAnyTypedVectorType(TYPE_ANY_INTEGER);
-	public static final ResolvedAnyTypedVectorType TYPE_POINTER_VECTOR = new ResolvedAnyTypedVectorType(TYPE_ANY_POINTER);
-	public static final ResolvedAnyTypedVectorType TYPE_FLOATING_VECTOR = new ResolvedAnyTypedVectorType(TYPE_FLOATING);
-	public static final ResolvedAnyTypedVectorType TYPE_BOOLEAN_VECTOR = new ResolvedAnyTypedVectorType(TYPE_BOOLEAN);
+	public static final ResolvedAnyVectorType TYPE_INTEGER_VECTOR = new ResolvedAnyVectorType(TYPE_ANY_INTEGER);
+	public static final ResolvedAnyVectorType TYPE_POINTER_VECTOR = new ResolvedAnyVectorType(TYPE_ANY_POINTER);
+	public static final ResolvedAnyVectorType TYPE_FLOATING_VECTOR = new ResolvedAnyVectorType(TYPE_FLOATING);
+	public static final ResolvedAnyVectorType TYPE_BOOLEAN_VECTOR = new ResolvedAnyVectorType(TYPE_BOOLEAN);
 
 	static {
 		SIMPLE_TYPES.put("void", new ResolvedVoidType());

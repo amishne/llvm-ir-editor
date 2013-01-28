@@ -45,6 +45,7 @@ import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
+import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
@@ -234,6 +235,11 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkRequired(t, Literals.BITWISE_BINARY_INSTRUCTION__TYPE, 0, TYPE_ANY_INTEGER, TYPE_INTEGER_VECTOR);
 		checkExpected(t, inst.getOp1());
 		checkExpected(t, inst.getOp2());
+	}
+	
+	@Check
+	public void checkConversion(ConversionInstruction inst) {
+		checkExpected(inst.getFromType(), inst.getValue());
 	}
 	
 	@Check

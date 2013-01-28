@@ -27,8 +27,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.types;
 
 public class ResolvedPointerType extends ResolvedType {
-	private ResolvedType pointedType;
-	private int addrSpace;
+	private final ResolvedType pointedType;
+	private final int addrSpace;
 	
 	public ResolvedPointerType(ResolvedType pointedType, int addrSpace) {
 		this.pointedType = pointedType;
@@ -43,38 +43,11 @@ public class ResolvedPointerType extends ResolvedType {
 		assert(index == 0);
 		return pointedType;
 	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + addrSpace;
-		result = prime * result
-				+ ((pointedType == null) ? 0 : pointedType.hashCode());
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedPointerType other = (ResolvedPointerType) obj;
-		if (addrSpace != other.addrSpace)
-			return false;
-		if (pointedType == null) {
-			if (other.pointedType != null)
-				return false;
-		} else if (!pointedType.equals(other.pointedType))
-			return false;
-		return true;
-	}
 	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) ||
-				(t instanceof ResolvedPointerType &&
-						addrSpace == ((ResolvedPointerType)t).addrSpace &&
-						pointedType.accepts(((ResolvedPointerType)t).pointedType));
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedPointerType
+				&& addrSpace == ((ResolvedPointerType)t).addrSpace
+				&& pointedType.accepts(((ResolvedPointerType)t).pointedType);
 	}
+
 }

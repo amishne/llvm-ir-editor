@@ -31,8 +31,8 @@ import java.util.Iterator;
 
 public class ResolvedFunctionType extends ResolvedType {
 	
-	private ResolvedType retType;
-	private Iterable<? extends ResolvedType> paramTypes;
+	private final ResolvedType retType;
+	private final Iterable<? extends ResolvedType> paramTypes;
 
 	public ResolvedFunctionType(ResolvedType rettype, Iterable<? extends ResolvedType> paramTypes) {
 		this.retType = rettype;
@@ -53,38 +53,8 @@ public class ResolvedFunctionType extends ResolvedType {
 		return sb.toString();
 	}
 	
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((paramTypes == null) ? 0 : paramTypes.hashCode());
-		result = prime * result + ((retType == null) ? 0 : retType.hashCode());
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedFunctionType other = (ResolvedFunctionType) obj;
-		if (paramTypes == null) {
-			if (other.paramTypes != null)
-				return false;
-		} else if (!paramTypes.equals(other.paramTypes))
-			return false;
-		if (retType == null) {
-			if (other.retType != null)
-				return false;
-		} else if (!retType.equals(other.retType))
-			return false;
-		return true;
-	}
-	
-	public boolean accepts(ResolvedType t) {
-		if (t instanceof ResolvedAnyType) return true;
+	@Override
+	protected boolean uniAccepts(ResolvedType t) {
 		if (t instanceof ResolvedFunctionType == false) return false;
 		ResolvedFunctionType f = (ResolvedFunctionType) t;
 		

@@ -28,7 +28,7 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 
-	private int bits;
+	private final int bits;
 	
 	public ResolvedIntegerType(int bits) {
 		this.bits = bits;
@@ -41,31 +41,9 @@ public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 	public String toString() {
 		return "i" + bits;
 	}
-	
-	public boolean accepts(ResolvedType t) {
-		return this.equals(t)
-				|| t.getClass() == ResolvedAnyIntegerType.class
-				|| t.getClass() == ResolvedAnyType.class;
-	}
 
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + bits;
-		return result;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedIntegerType
+				&& bits == t.getBits();
 	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedIntegerType other = (ResolvedIntegerType) obj;
-		if (bits != other.bits)
-			return false;
-		return true;
-	}
-	
 }

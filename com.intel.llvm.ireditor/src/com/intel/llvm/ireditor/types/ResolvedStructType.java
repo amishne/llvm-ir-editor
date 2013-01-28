@@ -26,6 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ResolvedStructType extends ResolvedAnyStructType {
@@ -60,34 +61,26 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 		if (index >= fieldTypes.size()) return null;
 		return fieldTypes.get(index);
 	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((fieldTypes == null) ? 0 : fieldTypes.hashCode());
-		result = prime * result + (packed ? 1231 : 1237);
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedStructType other = (ResolvedStructType) obj;
-		if (fieldTypes == null) {
-			if (other.fieldTypes != null)
-				return false;
-		} else if (!fieldTypes.equals(other.fieldTypes))
-			return false;
-		if (packed != other.packed)
-			return false;
+	
+	protected boolean uniAccepts(ResolvedType t) {
+		if (t instanceof ResolvedStructType == false) return false;
+		ResolvedStructType s = (ResolvedStructType) t;
+		
+		if (packed != s.packed) return false;
+		
+		Iterator<? extends ResolvedType> thisFields = fieldTypes.iterator();
+		Iterator<? extends ResolvedType> thatFields = s.fieldTypes.iterator();
+		
+		while (thisFields.hasNext()) {
+			ResolvedType thisField = thisFields.next();
+			
+			if (thatFields.hasNext() == false) return false;
+			ResolvedType thatField = thatFields.next();
+			
+			if (thisField.accepts(thatField) == false) return false;
+		}
+		
 		return true;
 	}
-	
-	
 
 }

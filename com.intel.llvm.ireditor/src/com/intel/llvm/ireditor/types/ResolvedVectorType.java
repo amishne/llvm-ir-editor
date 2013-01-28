@@ -27,12 +27,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.types;
 
 public class ResolvedVectorType extends ResolvedAnyVectorType {
-	private ResolvedType elementType;
-	private int size;
+	private final int size;
 	
 	public ResolvedVectorType(int size, ResolvedType elementType) {
+		super(elementType);
 		this.size = size;
-		this.elementType = elementType;
 	}
 
 	public int getBits() {
@@ -51,38 +50,11 @@ public class ResolvedVectorType extends ResolvedAnyVectorType {
 	public int getSize() {
 		return size;
 	}
+
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedVectorType
+				&& size == ((ResolvedVectorType)t).size
+				&& elementType.accepts(t.getContainedType(0)); 
+	}
 	
-	public boolean accepts(ResolvedType t) {
-		return this.equals(t)
-				|| t.getClass() == ResolvedAnyType.class
-				|| t.getClass() == ResolvedAnyVectorType.class;
-	}
-
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((elementType == null) ? 0 : elementType.hashCode());
-		result = prime * result + size;
-		return result;
-	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedVectorType other = (ResolvedVectorType) obj;
-		if (elementType == null) {
-			if (other.elementType != null)
-				return false;
-		} else if (!elementType.equals(other.elementType))
-			return false;
-		if (size != other.size)
-			return false;
-		return true;
-	}
-
 }

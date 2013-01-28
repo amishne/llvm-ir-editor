@@ -26,14 +26,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+/**
+ * A floating-point type of any width.
+ */
 public class ResolvedAnyFloatingType extends ResolvedType {
 
 	public String toString() {
 		return "floating-point";
 	}
 	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyFloatingType;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedAnyFloatingType;
 	}
 	
 }

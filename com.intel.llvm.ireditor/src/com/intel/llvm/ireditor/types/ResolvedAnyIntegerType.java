@@ -26,14 +26,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+/**
+ * An integer type of any width.
+ */
 public class ResolvedAnyIntegerType extends ResolvedType {
 
 	public String toString() {
 		return "integer";
 	}
 	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyIntegerType;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedAnyIntegerType;
 	}
-
+	
 }

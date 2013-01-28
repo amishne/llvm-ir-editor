@@ -28,8 +28,8 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedFloatingType extends ResolvedAnyFloatingType {
 
-	private String typeStr;
-	private int bits;
+	private final String typeStr;
+	private final int bits;
 
 	public ResolvedFloatingType(String typeStr, int bits) {
 		this.typeStr = typeStr;
@@ -43,37 +43,9 @@ public class ResolvedFloatingType extends ResolvedAnyFloatingType {
 	public int getBits() {
 		return bits;
 	}
-	
-	public boolean accepts(ResolvedType t) {
-		return this.equals(t)
-				|| t.getClass() == ResolvedAnyFloatingType.class
-				|| t.getClass() == ResolvedAnyType.class;
-	}
 
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + bits;
-		result = prime * result + ((typeStr == null) ? 0 : typeStr.hashCode());
-		return result;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedFloatingType
+				&& typeStr.equals(((ResolvedFloatingType)t).typeStr);
 	}
-
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ResolvedFloatingType other = (ResolvedFloatingType) obj;
-		if (bits != other.bits)
-			return false;
-		if (typeStr == null) {
-			if (other.typeStr != null)
-				return false;
-		} else if (!typeStr.equals(other.typeStr))
-			return false;
-		return true;
-	}
-	
 }

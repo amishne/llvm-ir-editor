@@ -31,5 +31,9 @@ public class ResolvedVarargType extends ResolvedType {
 	public String toString() {
 		return "...";
 	}
+	
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedVarargType;
+	}
 
 }

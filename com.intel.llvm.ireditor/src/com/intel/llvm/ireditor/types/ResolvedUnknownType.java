@@ -31,5 +31,9 @@ public class ResolvedUnknownType extends ResolvedType {
 	public String toString() {
 		return "unknown";
 	}
+
+	protected boolean uniAccepts(ResolvedType t) {
+		return false;
+	}
 	
 }

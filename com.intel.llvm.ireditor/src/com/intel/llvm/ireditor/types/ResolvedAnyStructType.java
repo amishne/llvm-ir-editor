@@ -26,6 +26,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+/**
+ * A struct of any number of any contained types.
+ */
 public class ResolvedAnyStructType extends ResolvedType {
 
 	public String toString() {
@@ -36,8 +39,8 @@ public class ResolvedAnyStructType extends ResolvedType {
 		return new ResolvedAnyType();
 	}
 	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyStructType;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedAnyStructType;
 	}
-
+	
 }

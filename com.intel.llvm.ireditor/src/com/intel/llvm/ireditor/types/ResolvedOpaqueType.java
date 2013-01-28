@@ -33,4 +33,8 @@ public class ResolvedOpaqueType extends ResolvedType {
 		return "opaque";
 	}
 
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedOpaqueType;
+	}
+
 }

@@ -32,4 +32,8 @@ public class ResolvedVoidType extends ResolvedType {
 		return "void";
 	}
 
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedVoidType;
+	}
+
 }

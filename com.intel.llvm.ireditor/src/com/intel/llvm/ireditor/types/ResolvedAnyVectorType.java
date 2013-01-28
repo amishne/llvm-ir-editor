@@ -26,18 +26,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+/**
+ * A vector of any possible size.
+ */
 public class ResolvedAnyVectorType extends ResolvedType {
 
+	protected final ResolvedType elementType;
+
+	public ResolvedAnyVectorType(ResolvedType elementType) {
+		this.elementType = elementType;
+	}
+	
 	public String toString() {
-		return "vector";
+		return "<n x " + elementType.toString() + ">";
 	}
 	
 	public ResolvedType getContainedType(int index) {
-		return new ResolvedAnyType();
+		return elementType;
 	}
 	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyVectorType;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedAnyVectorType
+				&& elementType.accepts(t.getContainedType(0));
 	}
-
+	
 }

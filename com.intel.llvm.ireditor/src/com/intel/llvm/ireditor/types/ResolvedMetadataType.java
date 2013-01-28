@@ -32,5 +32,9 @@ public class ResolvedMetadataType extends ResolvedType {
 	public String toString() {
 		return "metadata";
 	}
+
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedMetadataType;
+	}
 	
 }

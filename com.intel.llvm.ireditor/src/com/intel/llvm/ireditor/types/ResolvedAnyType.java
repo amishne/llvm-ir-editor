@@ -35,9 +35,8 @@ public class ResolvedAnyType extends ResolvedType {
 	public ResolvedType getContainedType(int index) {
 		return this;
 	}
-	
-	public boolean accepts(ResolvedType t) {
+
+	protected boolean uniAccepts(ResolvedType t) {
 		return true;
 	}
-
 }

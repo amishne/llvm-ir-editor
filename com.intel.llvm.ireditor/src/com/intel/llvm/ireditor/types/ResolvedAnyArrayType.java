@@ -26,18 +26,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+/**
+ * An array of any possible size.
+ */
 public class ResolvedAnyArrayType extends ResolvedType {
 
+	protected final ResolvedType elementType;
+
+	public ResolvedAnyArrayType(ResolvedType elementType) {
+		this.elementType = elementType;
+	}
+	
 	public String toString() {
-		return "array";
+		return "[n x " + elementType.toString() + "]";
 	}
 	
 	public ResolvedType getContainedType(int index) {
-		return new ResolvedAnyType();
+		return elementType;
 	}
 	
-	public boolean accepts(ResolvedType t) {
-		return super.accepts(t) || t instanceof ResolvedAnyArrayType;
+	protected boolean uniAccepts(ResolvedType t) {
+		return t instanceof ResolvedAnyArrayType
+				&& elementType.accepts(t.getContainedType(0));
 	}
-
+	
 }
