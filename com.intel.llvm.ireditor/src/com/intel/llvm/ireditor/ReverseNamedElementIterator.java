@@ -147,7 +147,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			
 			FunctionDef functionDef = (FunctionDef) NodeModelUtils.findActualSemanticObjectFor(functionDefNode);
 			EList<Parameter> params = functionDef.getHeader().getParameters().getParameters();
-			if (params.isEmpty()) return null;
+			if (params == null || params.isEmpty()) return null;
 			return NodeModelUtils.findActualNodeFor(params.get(params.size()-1));
 		}
 	}

@@ -26,7 +26,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
-import java.util.Iterator;
 import java.util.List;
 
 public class ResolvedStructType extends ResolvedAnyStructType {
@@ -63,24 +62,9 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 	}
 	
 	protected boolean uniAccepts(ResolvedType t) {
-		if (t instanceof ResolvedStructType == false) return false;
-		ResolvedStructType s = (ResolvedStructType) t;
-		
-		if (packed != s.packed) return false;
-		
-		Iterator<? extends ResolvedType> thisFields = fieldTypes.iterator();
-		Iterator<? extends ResolvedType> thatFields = s.fieldTypes.iterator();
-		
-		while (thisFields.hasNext()) {
-			ResolvedType thisField = thisFields.next();
-			
-			if (thatFields.hasNext() == false) return false;
-			ResolvedType thatField = thatFields.next();
-			
-			if (thisField.accepts(thatField) == false) return false;
-		}
-		
-		return true;
+		return t instanceof ResolvedStructType
+				&& packed == ((ResolvedStructType)t).packed
+				&& listAccepts(fieldTypes, ((ResolvedStructType)t).fieldTypes);
 	}
-
+	
 }

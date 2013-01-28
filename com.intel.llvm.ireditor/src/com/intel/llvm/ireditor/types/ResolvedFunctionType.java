@@ -27,8 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.types;
 
-import java.util.Iterator;
-
 public class ResolvedFunctionType extends ResolvedType {
 	
 	private final ResolvedType retType;
@@ -55,24 +53,9 @@ public class ResolvedFunctionType extends ResolvedType {
 	
 	@Override
 	protected boolean uniAccepts(ResolvedType t) {
-		if (t instanceof ResolvedFunctionType == false) return false;
-		ResolvedFunctionType f = (ResolvedFunctionType) t;
-		
-		if (retType.accepts(f.retType) == false) return false;
-		Iterator<? extends ResolvedType> thisParams = paramTypes.iterator();
-		Iterator<? extends ResolvedType> thatParams = f.paramTypes.iterator();
-		
-		while (thisParams.hasNext()) {
-			ResolvedType thisParam = thisParams.next();
-			if (thisParam instanceof ResolvedVarargType) return true;
-			
-			if (thatParams.hasNext() == false) return false;
-			ResolvedType thatParam = thatParams.next();
-			
-			if (thisParam.accepts(thatParam) == false) return false;
-		}
-		
-		return true;
+		return t instanceof ResolvedFunctionType
+				&& retType.accepts(((ResolvedFunctionType)t).retType)
+				&& listAccepts(paramTypes, ((ResolvedFunctionType)t).paramTypes);
 	}
 
 	public ResolvedType getReturnType() {

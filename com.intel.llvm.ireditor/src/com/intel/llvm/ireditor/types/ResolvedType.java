@@ -26,6 +26,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.util.Iterator;
+
 public abstract class ResolvedType {
 	/**
 	 * Textual representation of the type, as it would appear in a well-formatted source file.
@@ -54,5 +56,23 @@ public abstract class ResolvedType {
 	}
 	
 	protected abstract boolean uniAccepts(ResolvedType t);
+	
+	protected boolean listAccepts(Iterable<? extends ResolvedType> list1, Iterable<? extends ResolvedType> list2) {
+		Iterator<? extends ResolvedType> list1Iter = list1.iterator();
+		Iterator<? extends ResolvedType> list2Iter = list2.iterator();
+		
+		while (list1Iter.hasNext()) {
+			ResolvedType list1Elem = list1Iter.next();
+			
+			if (list2Iter.hasNext() == false) return false;
+			ResolvedType list2Elem = list2Iter.next();
+			
+			if (list1Elem.accepts(list2Elem) == false) return false;
+		}
+		if (list2Iter.hasNext()) return false;
+		
+		return true;
+	}
+
 	
 }

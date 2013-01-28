@@ -500,6 +500,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 							functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
 							new ResolvedPointerType(fType, 0).toString());
 				}
+				// Once we've reached a vararg, perform no further validation
 				return;
 			}
 			if (iter.hasNext() == false) {
