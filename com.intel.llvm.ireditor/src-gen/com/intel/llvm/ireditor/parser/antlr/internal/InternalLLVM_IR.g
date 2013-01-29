@@ -4752,6 +4752,34 @@ ruleNamedMiddleInstruction returns [EObject current=null]
 
 
 
+// Entry rule entryRuleParamName
+entryRuleParamName returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getParamNameRule()); } 
+	 iv_ruleParamName=ruleParamName 
+	 { $current=$iv_ruleParamName.current.getText(); }  
+	 EOF 
+;
+
+// Rule ParamName
+ruleParamName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(    this_LOCAL_ID_0=RULE_LOCAL_ID    {
+		$current.merge(this_LOCAL_ID_0);
+    }
+
+    { 
+    newLeafNode(this_LOCAL_ID_0, grammarAccess.getParamNameAccess().getLOCAL_IDTerminalRuleCall()); 
+    }
+)?
+    ;
+
+
+
+
+
 // Entry rule entryRuleLocalName
 entryRuleLocalName returns [String current=null] 
 	:
@@ -11957,23 +11985,23 @@ ruleParameter returns [EObject current=null]
 )
 )(
 (
-		lv_name_1_0=RULE_LOCAL_ID
-		{
-			newLeafNode(lv_name_1_0, grammarAccess.getParameterAccess().getNameLOCAL_IDTerminalRuleCall_1_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getParameterAccess().getNameParamNameParserRuleCall_1_0()); 
+	    }
+		lv_name_1_0=ruleParamName		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getParameterRule());
+	            $current = createModelElementForParent(grammarAccess.getParameterRule());
 	        }
-       		setWithLastConsumed(
+       		set(
        			$current, 
        			"name",
         		lv_name_1_0, 
-        		"LOCAL_ID");
+        		"ParamName");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?)
+))
 ;
 
 

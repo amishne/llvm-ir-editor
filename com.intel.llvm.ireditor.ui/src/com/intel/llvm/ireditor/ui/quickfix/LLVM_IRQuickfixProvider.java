@@ -68,6 +68,7 @@ import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.MiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Model;
+import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
@@ -178,7 +179,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		});
 		
 		// Suggestion 3: rename-refactor the entire sequence
-		label = "Update all names in the current sequence";
+		label = "Update all names in current sequence";
 		description = label;
 		acceptor.accept(issue, label, description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
@@ -219,8 +220,10 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 				element = ((TerminatorInstruction) element).getInstruction();
 			}
 			
-			String oldName = name.getPrefix() + name.getNumber();
-			String newName = name.getPrefix() + num;
+			String prefix = element instanceof BasicBlock == false ? name.getPrefix() : "";
+			String oldName = prefix + name.getNumber();
+			String newName = prefix + num;
+			
 			toFix.addFirst(new SequenceFix(element, oldName, newName));
 		}
 		
@@ -287,7 +290,12 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 			String oldName, String newName) throws BadLocationException {
 		// Rename object, if it has an explicit name already:
 		INode objNode = NodeModelUtils.findActualNodeFor(object);
-		if (NodeModelUtils.getTokenText(objNode).startsWith(oldName)) {
+		String text = NodeModelUtils.getTokenText(objNode);
+		
+		if (object instanceof Parameter && text.endsWith(oldName)) {
+			doc.replace(objNode.getOffset() + text.length() - oldName.length(),
+					oldName.length(), newName);
+		} else if (text.startsWith(oldName)) {
 			doc.replace(objNode.getOffset(), oldName.length(), newName);
 		}
 		// Rename references:

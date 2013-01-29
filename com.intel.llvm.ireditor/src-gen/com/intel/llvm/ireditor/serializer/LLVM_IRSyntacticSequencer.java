@@ -179,11 +179,11 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * Syntax:
 	 *     (
+	     'double' | 
+	     'fp128' | 
+	     'float' | 
 	     'half' | 
 	     'ppc_fp128' | 
-	     'fp128' | 
-	     'double' | 
-	     'float' | 
 	     'x86_fp80'
 	 )
 	 */
@@ -201,7 +201,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'global' | 'constant'
+	 *     'constant' | 'global'
 	 */
 	protected void emit_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -233,7 +233,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nsw' | 'nuw')*
+	 *     ('nuw' | 'nsw')*
 	 */
 	protected void emit_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -297,7 +297,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('inreg' | 'zeroext' | 'signext')*
+	 *     ('signext' | 'zeroext' | 'inreg')*
 	 */
 	protected void emit_Instruction_invoke_nonVoid___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -305,7 +305,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('inreg' | 'signext' | 'zeroext')*
+	 *     ('zeroext' | 'inreg' | 'signext')*
 	 */
 	protected void emit_Instruction_invoke_void___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -345,7 +345,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_mul___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

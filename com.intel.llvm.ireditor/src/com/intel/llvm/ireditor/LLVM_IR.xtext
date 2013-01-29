@@ -399,6 +399,12 @@ NamedMiddleInstruction:
 	)
 ;
 
+ParamName returns ecore::EString:
+	// A value converter translates this into either %num (if this isn't provided)
+	// or into %NAME if it is.
+	LOCAL_ID?
+;
+
 LocalName returns ecore::EString:
 	// A value converter translates this into either %num (if this isn't provided)
 	// or into %NAME if it is.
@@ -922,7 +928,7 @@ Argument:
 ;
 
 Parameter:
-	type=ParameterType name=LOCAL_ID?
+	type=ParameterType name=ParamName
 ;
 
 NonVoidType:

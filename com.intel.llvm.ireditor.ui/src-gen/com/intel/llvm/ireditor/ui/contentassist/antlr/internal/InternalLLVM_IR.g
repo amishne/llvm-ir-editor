@@ -1701,6 +1701,34 @@ finally {
 
 
 
+// Entry rule entryRuleParamName
+entryRuleParamName 
+:
+{ before(grammarAccess.getParamNameRule()); }
+	 ruleParamName
+{ after(grammarAccess.getParamNameRule()); } 
+	 EOF 
+;
+
+// Rule ParamName
+ruleParamName
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getParamNameAccess().getLOCAL_IDTerminalRuleCall()); }
+(	RULE_LOCAL_ID)?
+{ after(grammarAccess.getParamNameAccess().getLOCAL_IDTerminalRuleCall()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleLocalName
 entryRuleLocalName 
 :
@@ -24924,7 +24952,7 @@ rule__Parameter__Group__1__Impl
 :
 (
 { before(grammarAccess.getParameterAccess().getNameAssignment_1()); }
-(rule__Parameter__NameAssignment_1)?
+(rule__Parameter__NameAssignment_1)
 { after(grammarAccess.getParameterAccess().getNameAssignment_1()); }
 )
 
@@ -33496,8 +33524,8 @@ rule__Parameter__NameAssignment_1
     }
 :
 (
-{ before(grammarAccess.getParameterAccess().getNameLOCAL_IDTerminalRuleCall_1_0()); }
-	RULE_LOCAL_ID{ after(grammarAccess.getParameterAccess().getNameLOCAL_IDTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getParameterAccess().getNameParamNameParserRuleCall_1_0()); }
+	ruleParamName{ after(grammarAccess.getParameterAccess().getNameParamNameParserRuleCall_1_0()); }
 )
 
 ;

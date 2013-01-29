@@ -83,6 +83,11 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 			return new LocalNameConverter();
 		}
 		
+		@ValueConverter(rule="ParamName")
+		public IValueConverter<String> convertParamName() {
+			return new ParamNameConverter();
+		}
+		
 		@ValueConverter(rule="GlobalName")
 		public IValueConverter<String> convertGlobalName() {
 			return new GlobalNameConverter();
@@ -160,6 +165,16 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 			EObject object = NodeModelUtils.findActualSemanticObjectFor(instNode);
 			if (object instanceof Instruction_phi) return instNode.getParent();
 			return instNode.getParent().getParent();
+		}
+	}
+	
+	public static class ParamNameConverter extends LlvmNameConverter {
+		@Override protected String nameFromIndex(int index) { return "%" + index; }
+		@Override protected String nameFromString(String string) { return string; }
+		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
+		
+		protected Iterable<? extends EObject> previousElements(final INode node) {
+			return new ReverseNamedElementIterator(node.getParent(), Mode.PARAM);
 		}
 	}
 	

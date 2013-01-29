@@ -2673,10 +2673,20 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (type=ParameterType name=LOCAL_ID?)
+	 *     (type=ParameterType name=ParamName)
 	 */
 	protected void sequence_Parameter(EObject context, Parameter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.LOCAL_VALUE__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.LOCAL_VALUE__NAME));
+			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.PARAMETER__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.PARAMETER__TYPE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getParameterAccess().getTypeParameterTypeParserRuleCall_0_0(), semanticObject.getType());
+		feeder.accept(grammarAccess.getParameterAccess().getNameParamNameParserRuleCall_1_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

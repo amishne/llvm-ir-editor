@@ -38,8 +38,10 @@ import org.eclipse.xtext.validation.Check;
 
 import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
+import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
+import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
@@ -47,7 +49,9 @@ import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
@@ -81,6 +85,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
@@ -515,14 +520,46 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkNumberSequence(NamedInstruction val) {
-		// A numbered instruction must appear in proper sequence.
-		String name = val.getName();
-		if (name.matches("[%@]\\d+") == false) return;
-		
-		int num = Integer.parseInt(name.substring(1));
+		checkNumberSequence(val, val.eContainer(),
+				Literals.NAMED_INSTRUCTION.getEStructuralFeature("name"));
+	}
+	
+	@Check
+	public void checkNumberSequence(Parameter val) {
+		checkNumberSequence(val, val,
+				Literals.PARAMETER.getEStructuralFeature("name"));
+	}
+	
+	@Check
+	public void checkNumberSequence(BasicBlock val) {
+		checkNumberSequence(val, val,
+				Literals.BASIC_BLOCK__NAME);
+	}
+	
+	@Check
+	public void checkNumberSequence(GlobalVariable val) {
+		checkNumberSequence(val, val.eContainer(),
+				Literals.GLOBAL_VARIABLE__NAME);
+	}
+	
+	@Check
+	public void checkNumberSequence(FunctionHeader val) {
+		checkNumberSequence(val, val.eContainer().eContainer(),
+				Literals.FUNCTION_HEADER__NAME);
+	}
+	
+	@Check
+	public void checkNumberSequence(Alias val) {
+		checkNumberSequence(val, val.eContainer().eContainer(),
+				Literals.ALIAS__NAME);
+	}
+	
+	public void checkNumberSequence(EObject val, EObject forIter, EStructuralFeature feature) {
+		NumberedName name = namer.resolveNumberedName(val);
+		if (name == null) return; // Unnamed elements are always in proper sequence
 		
 		int expected = 0;
-		ReverseNamedElementIterator prevs = new ReverseNamedElementIterator(val.eContainer());
+		ReverseNamedElementIterator prevs = new ReverseNamedElementIterator(forIter);
 		for (EObject prev : prevs) {
 			NumberedName prevName = namer.resolveNumberedName(prev);
 			if (prevName == null) continue; // not an unnamed element
@@ -530,10 +567,13 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			break;
 		}
 		
-		if (num != expected) {
-			error(String.format("Incorrect number in sequence: expected %s, got %s", "%" + expected, name),
-					Literals.NAMED_INSTRUCTION.getEStructuralFeature("name"),
-					ERROR_WRONG_NUMBER, name, name.substring(0, 1) + expected);
+		if (name.getNumber() != expected) {
+			String prefix = val instanceof BasicBlock == false ? name.getPrefix() : "";
+			String actualStr = prefix + name.getNumber();
+			String expectedStr = prefix + expected;
+			error(String.format("Incorrect number in sequence: expected %s, got %s",
+					expectedStr, actualStr),
+					feature, ERROR_WRONG_NUMBER, actualStr, expectedStr);
 		}
 	}
 	

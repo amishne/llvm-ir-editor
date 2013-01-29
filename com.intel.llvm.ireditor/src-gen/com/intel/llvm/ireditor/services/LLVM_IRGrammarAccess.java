@@ -2699,6 +2699,25 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getInstructionInstruction_call_nonVoidParserRuleCall_1_0_9() { return cInstructionInstruction_call_nonVoidParserRuleCall_1_0_9; }
 	}
 
+	public class ParamNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ParamName");
+		private final RuleCall cLOCAL_IDTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//ParamName returns ecore::EString: // A value converter translates this into either %num (if this isn't provided)
+		//
+		//// or into %NAME if it is.
+		//
+		//	LOCAL_ID?;
+		public ParserRule getRule() { return rule; }
+
+		//// A value converter translates this into either %num (if this isn't provided)
+		//
+		//// or into %NAME if it is.
+		//
+		//LOCAL_ID?
+		public RuleCall getLOCAL_IDTerminalRuleCall() { return cLOCAL_IDTerminalRuleCall; }
+	}
+
 	public class LocalNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LocalName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -6859,14 +6878,14 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cTypeParameterTypeParserRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameLOCAL_IDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameParamNameParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//Parameter:
 		//
-		//	type=ParameterType name=LOCAL_ID?;
+		//	type=ParameterType name=ParamName;
 		public ParserRule getRule() { return rule; }
 
-		//type=ParameterType name=LOCAL_ID?
+		//type=ParameterType name=ParamName
 		public Group getGroup() { return cGroup; }
 
 		//type=ParameterType
@@ -6875,11 +6894,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterType
 		public RuleCall getTypeParameterTypeParserRuleCall_0_0() { return cTypeParameterTypeParserRuleCall_0_0; }
 
-		//name=LOCAL_ID?
+		//name=ParamName
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
-		//LOCAL_ID
-		public RuleCall getNameLOCAL_IDTerminalRuleCall_1_0() { return cNameLOCAL_IDTerminalRuleCall_1_0; }
+		//ParamName
+		public RuleCall getNameParamNameParserRuleCall_1_0() { return cNameParamNameParserRuleCall_1_0; }
 	}
 
 	public class NonVoidTypeElements extends AbstractParserRuleElementFinder {
@@ -7892,6 +7911,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private StartingInstructionElements pStartingInstruction;
 	private MiddleInstructionElements pMiddleInstruction;
 	private NamedMiddleInstructionElements pNamedMiddleInstruction;
+	private ParamNameElements pParamName;
 	private LocalNameElements pLocalName;
 	private GlobalNameElements pGlobalName;
 	private TerminatorInstructionElements pTerminatorInstruction;
@@ -8740,6 +8760,19 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getNamedMiddleInstructionRule() {
 		return getNamedMiddleInstructionAccess().getRule();
+	}
+
+	//ParamName returns ecore::EString: // A value converter translates this into either %num (if this isn't provided)
+	//
+	//// or into %NAME if it is.
+	//
+	//	LOCAL_ID?;
+	public ParamNameElements getParamNameAccess() {
+		return (pParamName != null) ? pParamName : (pParamName = new ParamNameElements());
+	}
+	
+	public ParserRule getParamNameRule() {
+		return getParamNameAccess().getRule();
 	}
 
 	//// A value converter translates this into either %num (if this isn't provided)
@@ -9750,7 +9783,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Parameter:
 	//
-	//	type=ParameterType name=LOCAL_ID?;
+	//	type=ParameterType name=ParamName;
 	public ParameterElements getParameterAccess() {
 		return (pParameter != null) ? pParameter : (pParameter = new ParameterElements());
 	}
