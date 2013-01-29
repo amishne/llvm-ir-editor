@@ -30,6 +30,8 @@ package com.intel.llvm.ireditor.ui.quickfix;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -174,7 +176,9 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
 				IXtextDocument doc = context.getXtextDocument();
 				EObject namedInst = findObject(doc, issue);
-				performSmartRenameRefactoring(doc, namedInst, name, newName);
+				Replacements replacements = new Replacements();
+				performSmartRenameRefactoring(replacements, namedInst, name, newName);
+				replacements.execute(doc);
 			}
 		});
 		
@@ -185,14 +189,16 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
 				IXtextDocument doc = context.getXtextDocument();
 				EObject namedInst = findObject(doc, issue);
-				fixSequence(doc, namedInst);
+				Replacements replacements = fixSequence(namedInst);
+				replacements.execute(doc);
 			}
 		});
 	}
 	
-	private void fixSequence(IXtextDocument doc, EObject object) throws InterruptedException, BadLocationException {
+	private Replacements fixSequence(EObject object) throws InterruptedException, BadLocationException {
+		Replacements result = new Replacements();
 		EObject lastInContext = getLastObjectInContext(object);
-		if (lastInContext == null) return;
+		if (lastInContext == null) return result;
 		Deque<EObject> toRename = new LinkedList<EObject>();
 		toRename.push(lastInContext);
 		ReverseNamedElementIterator iter = new ReverseNamedElementIterator(lastInContext);
@@ -203,7 +209,6 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		NameResolver namer = new NameResolver();
 		int num = -1;
 		
-		Deque<SequenceFix> toFix = new LinkedList<SequenceFix>();
 		while (toRename.isEmpty() == false) {
 			EObject element = toRename.pop();
 			NumberedName name = namer.resolveNumberedName(element);
@@ -224,27 +229,12 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 			String oldName = prefix + name.getNumber();
 			String newName = prefix + num;
 			
-			toFix.addFirst(new SequenceFix(element, oldName, newName));
+			performSmartRenameRefactoring(result, element, oldName, newName);
 		}
 		
-		// Done in opposite insertion order, because we want to insert things from the end first,
-		// to avoid messing up other offsets.
-		for (SequenceFix fix : toFix) {
-			performSmartRenameRefactoring(doc, fix.element, fix.oldName, fix.newName);
-		}
+		return result;
 	}
 	
-	private static class SequenceFix {
-		public final EObject element;
-		public final String oldName;
-		public final String newName;
-		public SequenceFix(EObject element, String oldName, String newName) {
-			this.element = element;
-			this.oldName = oldName;
-			this.newName = newName;
-		}
-	}
-
 	private EObject getLastObjectInContext(EObject object) {
 		do {
 			if (object instanceof Model) {
@@ -286,22 +276,22 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		return result;
 	}
 	
-	private void performSmartRenameRefactoring(IXtextDocument doc, EObject object,
+	private void performSmartRenameRefactoring(Replacements replacements, EObject object,
 			String oldName, String newName) throws BadLocationException {
 		// Rename object, if it has an explicit name already:
 		INode objNode = NodeModelUtils.findActualNodeFor(object);
 		String text = NodeModelUtils.getTokenText(objNode);
-		
 		if (object instanceof Parameter && text.endsWith(oldName)) {
-			doc.replace(objNode.getOffset() + text.length() - oldName.length(),
-					oldName.length(), newName);
+			replacements.add(new Replacement(objNode.getOffset() + text.length() - oldName.length(),
+					oldName.length(), newName));
 		} else if (text.startsWith(oldName)) {
-			doc.replace(objNode.getOffset(), oldName.length(), newName);
+			replacements.add(new Replacement(objNode.getOffset(), oldName.length(), newName));
 		}
+		
 		// Rename references:
 		for (ValueRef ref : xrefs(object)) {
 			INode refNode = NodeModelUtils.findActualNodeFor(ref);
-			doc.replace(refNode.getOffset(), refNode.getLength(), newName);
+			replacements.add(new Replacement(refNode.getOffset(), refNode.getLength(), newName));
 		}
 	}
 	
@@ -413,6 +403,75 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 	
 	private int offsetOf(EObject object) {
 		return NodeModelUtils.getNode(object).getOffset();
+	}
+	
+	private static class Replacements {
+		private SortedSet<Replacement> replacements = new TreeSet<>();
+		
+		public void add(Replacement r) {
+			replacements.add(r);
+		}
+		
+		public void execute(IXtextDocument doc) throws BadLocationException {
+			for (Replacement r : replacements) {
+				r.execute(doc);
+			}
+		}
+	}
+	
+	private static class Replacement implements Comparable<Replacement> {
+		private int offset;
+		private int length;
+		private String newStr;
+
+		public Replacement(int offset, int length, String newStr) {
+			this.offset = offset;
+			this.length = length;
+			this.newStr = newStr;
+		}
+		
+		public void execute(IXtextDocument doc) throws BadLocationException {
+			doc.replace(offset, length, newStr);
+		}
+
+		public int compareTo(Replacement r) {
+			int ret = r.offset - offset; // Higher offsets go first
+			if (ret != 0) return ret;
+			ret = length - r.length;
+			if (ret != 0) return ret;
+			return newStr.compareTo(r.newStr);
+		}
+
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + length;
+			result = prime * result
+					+ ((newStr == null) ? 0 : newStr.hashCode());
+			result = prime * result + offset;
+			return result;
+		}
+
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Replacement other = (Replacement) obj;
+			if (length != other.length)
+				return false;
+			if (newStr == null) {
+				if (other.newStr != null)
+					return false;
+			} else if (!newStr.equals(other.newStr))
+				return false;
+			if (offset != other.offset)
+				return false;
+			return true;
+		}
+		
 	}
 	
 }
