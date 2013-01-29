@@ -474,7 +474,9 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	public void checkAnyCall(Callee callee, EObject retType, Type functionPointerType, ArgList args) {
 		if (callee instanceof GlobalValueRef == false) return;
-		ResolvedFunctionType fType = (ResolvedFunctionType) resolveType(callee);
+		ResolvedType calleeType = resolveType(callee);
+		if (calleeType instanceof ResolvedFunctionType == false) return;
+		ResolvedFunctionType fType = (ResolvedFunctionType) calleeType;
 		checkExpected(fType.getReturnType(), retType);
 		
 		boolean typeOmitted = functionPointerType == null;
