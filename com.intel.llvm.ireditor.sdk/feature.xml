@@ -2,7 +2,8 @@
 <feature
       id="com.intel.llvm.ireditor.sdk"
       label="LLVM IR SDK Feature"
-      version="1.1.0.qualifier">
+      version="0.8.0.qualifier"
+      provider-name="Intel">
 
    <requires>
       <import plugin="org.eclipse.xtext"/>
@@ -28,14 +29,14 @@
          id="com.intel.llvm.ireditor"
          download-size="0"
          install-size="0"
-         version="1.1.0.qualifier"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
    <plugin
          id="com.intel.llvm.ireditor.ui"
          download-size="0"
          install-size="0"
-         version="1.1.0.qualifier"
+         version="0.8.0.qualifier"
          unpack="false"/>
 
 </feature>
