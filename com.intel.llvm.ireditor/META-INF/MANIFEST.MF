@@ -34,3 +34,4 @@ Export-Package: com.intel.llvm.ireditor,
  com.intel.llvm.ireditor.services,
  com.intel.llvm.ireditor.types,
  com.intel.llvm.ireditor.validation
+Bundle-Vendor: Intel

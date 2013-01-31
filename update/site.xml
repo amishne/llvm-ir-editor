@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="LLVM IR Editor Update Site">
+      An editor for LLVM IR language.
+   </description>
+   <feature url="features/com.intel.llvm.ireditor.sdk_0.8.0.201301310959.jar" id="com.intel.llvm.ireditor.sdk" version="0.8.0.201301310959"/>
+</site>

@@ -21,3 +21,4 @@ Export-Package: com.intel.llvm.ireditor.ui.contentassist,
  com.intel.llvm.ireditor.ui.contentassist.antlr,
  com.intel.llvm.ireditor.ui.internal
 Bundle-Activator: com.intel.llvm.ireditor.ui.internal.LLVM_IRActivator
+Bundle-Vendor: Intel
