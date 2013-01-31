@@ -9,10 +9,6 @@ Main Features
 * Syntax highlighting
 * Context-aware content completion
 * Show-definition-on-hover for values, basic blocks and user-defined types
-
-Experimental Features
-=====================
-
 * Type checking
 
 Installation
