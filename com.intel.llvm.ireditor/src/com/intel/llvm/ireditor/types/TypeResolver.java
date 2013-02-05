@@ -371,7 +371,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedType caseInstruction_load(Instruction_load object) {
-		return resolve(object.getPointer().getType());
+		return resolve(object.getPointer().getType()).getContainedType(0);
 	}
 	
 	@Override
