@@ -2054,6 +2054,27 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getINTEGERTerminalRuleCall_1() { return cINTEGERTerminalRuleCall_1; }
 	}
 
+	public class GcElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Gc");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cGcKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//Gc:
+		//
+		//	"gc" STRING;
+		public ParserRule getRule() { return rule; }
+
+		//"gc" STRING
+		public Group getGroup() { return cGroup; }
+
+		//"gc"
+		public Keyword getGcKeyword_0() { return cGcKeyword_0; }
+
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
+	}
+
 	public class FunctionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Function");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -2161,17 +2182,23 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		private final Assignment cAttrsAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cAttrsFunctionAttributesParserRuleCall_9_0 = (RuleCall)cAttrsAssignment_9.eContents().get(0);
+		private final Assignment cSectionAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cSectionSectionParserRuleCall_10_0 = (RuleCall)cSectionAssignment_10.eContents().get(0);
+		private final Assignment cAlignAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cAlignAlignParserRuleCall_11_0 = (RuleCall)cAlignAssignment_11.eContents().get(0);
+		private final Assignment cGcAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cGcGcParserRuleCall_12_0 = (RuleCall)cGcAssignment_12.eContents().get(0);
 		
 		//FunctionHeader:
 		//
 		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
 		//
-		//	parameters=Parameters ")" attrs=FunctionAttributes?;
+		//	parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
 		public ParserRule getRule() { return rule; }
 
 		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
 		//
-		//parameters=Parameters ")" attrs=FunctionAttributes?
+		//parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?
 		public Group getGroup() { return cGroup; }
 
 		//linkage=Linkage?
@@ -2224,6 +2251,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//FunctionAttributes
 		public RuleCall getAttrsFunctionAttributesParserRuleCall_9_0() { return cAttrsFunctionAttributesParserRuleCall_9_0; }
+
+		//section=Section?
+		public Assignment getSectionAssignment_10() { return cSectionAssignment_10; }
+
+		//Section
+		public RuleCall getSectionSectionParserRuleCall_10_0() { return cSectionSectionParserRuleCall_10_0; }
+
+		//align=Align?
+		public Assignment getAlignAssignment_11() { return cAlignAssignment_11; }
+
+		//Align
+		public RuleCall getAlignAlignParserRuleCall_11_0() { return cAlignAlignParserRuleCall_11_0; }
+
+		//gc=Gc?
+		public Assignment getGcAssignment_12() { return cGcAssignment_12; }
+
+		//Gc
+		public RuleCall getGcGcParserRuleCall_12_0() { return cGcGcParserRuleCall_12_0; }
 	}
 
 	public class ParametersElements extends AbstractParserRuleElementFinder {
@@ -2340,9 +2385,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSspKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
 		private final Keyword cSspreqKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
 		private final Keyword cUwtableKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
-		private final Group cGroup_18 = (Group)cAlternatives.eContents().get(18);
-		private final Keyword cGcKeyword_18_0 = (Keyword)cGroup_18.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_18_1 = (RuleCall)cGroup_18.eContents().get(1);
 		
 		//FunctionAttribute:
 		//
@@ -2350,14 +2392,14 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
-		//	"returns_twice" | "ssp" | "sspreq" | "uwtable" | "gc" STRING;
+		//	"returns_twice" | "ssp" | "sspreq" | "uwtable";
 		public ParserRule getRule() { return rule; }
 
 		//"address_safety" | "alignstack(" INTEGER ")" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" |
 		//
 		//"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
-		//"returns_twice" | "ssp" | "sspreq" | "uwtable" | "gc" STRING
+		//"returns_twice" | "ssp" | "sspreq" | "uwtable"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"address_safety"
@@ -2422,15 +2464,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"uwtable"
 		public Keyword getUwtableKeyword_17() { return cUwtableKeyword_17; }
-
-		//"gc" STRING
-		public Group getGroup_18() { return cGroup_18; }
-
-		//"gc"
-		public Keyword getGcKeyword_18_0() { return cGcKeyword_18_0; }
-
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_18_1() { return cSTRINGTerminalRuleCall_18_1; }
 	}
 
 	public class BasicBlockElements extends AbstractParserRuleElementFinder {
@@ -7914,6 +7947,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private AddressSpaceElements pAddressSpace;
 	private SectionElements pSection;
 	private AlignElements pAlign;
+	private GcElements pGc;
 	private FunctionElements pFunction;
 	private FunctionDefElements pFunctionDef;
 	private FunctionDeclElements pFunctionDecl;
@@ -8619,6 +8653,17 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		return getAlignAccess().getRule();
 	}
 
+	//Gc:
+	//
+	//	"gc" STRING;
+	public GcElements getGcAccess() {
+		return (pGc != null) ? pGc : (pGc = new GcElements());
+	}
+	
+	public ParserRule getGcRule() {
+		return getGcAccess().getRule();
+	}
+
 	//Function:
 	//
 	//	FunctionDef | FunctionDecl;
@@ -8656,7 +8701,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
 	//
-	//	parameters=Parameters ")" attrs=FunctionAttributes?;
+	//	parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
 	public FunctionHeaderElements getFunctionHeaderAccess() {
 		return (pFunctionHeader != null) ? pFunctionHeader : (pFunctionHeader = new FunctionHeaderElements());
 	}
@@ -8693,7 +8738,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 	//
-	//	"returns_twice" | "ssp" | "sspreq" | "uwtable" | "gc" STRING;
+	//	"returns_twice" | "ssp" | "sspreq" | "uwtable";
 	public FunctionAttributeElements getFunctionAttributeAccess() {
 		return (pFunctionAttribute != null) ? pFunctionAttribute : (pFunctionAttribute = new FunctionAttributeElements());
 	}
@@ -10132,11 +10177,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		return (tCSTRING != null) ? tCSTRING : (tCSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "CSTRING"));
 	} 
 
-	////'"' -> '"'
-	//
 	//terminal STRING:
 	//
-	//	"\"" ("\\" (("a".."f" | "A".."F" | "0".."9") ("a".."f" | "A".."F" | "0".."9")) | !("\\" | "\""))* "\"";
+	//	"\"" ("\\" ("\\" | ("a".."f" | "A".."F" | "0".."9") ("a".."f" | "A".."F" | "0".."9")) | !("\\" | "\""))* "\"";
 	public TerminalRule getSTRINGRule() {
 		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
 	} 

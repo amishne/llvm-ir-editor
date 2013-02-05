@@ -2468,6 +2468,36 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getFunctionHeader_Section()
+  {
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionHeader_Align()
+  {
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(8);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionHeader_Gc()
+  {
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(9);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getParameters()
   {
     return parametersEClass;
@@ -5279,6 +5309,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__NAME);
     createEReference(functionHeaderEClass, FUNCTION_HEADER__PARAMETERS);
     createEReference(functionHeaderEClass, FUNCTION_HEADER__ATTRS);
+    createEAttribute(functionHeaderEClass, FUNCTION_HEADER__SECTION);
+    createEAttribute(functionHeaderEClass, FUNCTION_HEADER__ALIGN);
+    createEAttribute(functionHeaderEClass, FUNCTION_HEADER__GC);
 
     parametersEClass = createEClass(PARAMETERS);
     createEReference(parametersEClass, PARAMETERS__PARAMETERS);
@@ -5917,6 +5950,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getFunctionHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionHeader_Parameters(), this.getParameters(), null, "parameters", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionHeader_Attrs(), this.getFunctionAttributes(), null, "attrs", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionHeader_Section(), ecorePackage.getEString(), "section", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionHeader_Align(), ecorePackage.getEString(), "align", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionHeader_Gc(), ecorePackage.getEString(), "gc", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parametersEClass, Parameters.class, "Parameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Parameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

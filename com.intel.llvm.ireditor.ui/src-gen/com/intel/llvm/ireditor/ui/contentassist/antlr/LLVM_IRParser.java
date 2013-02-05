@@ -132,6 +132,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAddressSpaceAccess().getGroup(), "rule__AddressSpace__Group__0");
 					put(grammarAccess.getSectionAccess().getGroup(), "rule__Section__Group__0");
 					put(grammarAccess.getAlignAccess().getGroup(), "rule__Align__Group__0");
+					put(grammarAccess.getGcAccess().getGroup(), "rule__Gc__Group__0");
 					put(grammarAccess.getFunctionDefAccess().getGroup(), "rule__FunctionDef__Group__0");
 					put(grammarAccess.getFunctionDeclAccess().getGroup(), "rule__FunctionDecl__Group__0");
 					put(grammarAccess.getFunctionHeaderAccess().getGroup(), "rule__FunctionHeader__Group__0");
@@ -140,7 +141,6 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParametersAccess().getGroup_1_0_1(), "rule__Parameters__Group_1_0_1__0");
 					put(grammarAccess.getParametersAccess().getGroup_1_0_2(), "rule__Parameters__Group_1_0_2__0");
 					put(grammarAccess.getFunctionAttributeAccess().getGroup_1(), "rule__FunctionAttribute__Group_1__0");
-					put(grammarAccess.getFunctionAttributeAccess().getGroup_18(), "rule__FunctionAttribute__Group_18__0");
 					put(grammarAccess.getBasicBlockAccess().getGroup(), "rule__BasicBlock__Group__0");
 					put(grammarAccess.getMetadataSuffixAccess().getGroup(), "rule__MetadataSuffix__Group__0");
 					put(grammarAccess.getStartingInstructionAccess().getGroup(), "rule__StartingInstruction__Group__0");
@@ -349,6 +349,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionHeaderAccess().getNameAssignment_5(), "rule__FunctionHeader__NameAssignment_5");
 					put(grammarAccess.getFunctionHeaderAccess().getParametersAssignment_7(), "rule__FunctionHeader__ParametersAssignment_7");
 					put(grammarAccess.getFunctionHeaderAccess().getAttrsAssignment_9(), "rule__FunctionHeader__AttrsAssignment_9");
+					put(grammarAccess.getFunctionHeaderAccess().getSectionAssignment_10(), "rule__FunctionHeader__SectionAssignment_10");
+					put(grammarAccess.getFunctionHeaderAccess().getAlignAssignment_11(), "rule__FunctionHeader__AlignAssignment_11");
+					put(grammarAccess.getFunctionHeaderAccess().getGcAssignment_12(), "rule__FunctionHeader__GcAssignment_12");
 					put(grammarAccess.getParametersAccess().getParametersAssignment_1_0_0(), "rule__Parameters__ParametersAssignment_1_0_0");
 					put(grammarAccess.getParametersAccess().getParametersAssignment_1_0_1_1(), "rule__Parameters__ParametersAssignment_1_0_1_1");
 					put(grammarAccess.getParametersAccess().getVarargAssignment_1_0_2_1(), "rule__Parameters__VarargAssignment_1_0_2_1");

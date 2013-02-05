@@ -30,6 +30,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getAttrs <em>Attrs</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getSection <em>Section</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getAlign <em>Align</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getGc <em>Gc</em>}</li>
  * </ul>
  * </p>
  *
@@ -146,6 +149,66 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * @ordered
    */
   protected FunctionAttributes attrs;
+
+  /**
+   * The default value of the '{@link #getSection() <em>Section</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSection()
+   * @generated
+   * @ordered
+   */
+  protected static final String SECTION_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSection() <em>Section</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSection()
+   * @generated
+   * @ordered
+   */
+  protected String section = SECTION_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getAlign() <em>Align</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlign()
+   * @generated
+   * @ordered
+   */
+  protected static final String ALIGN_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getAlign() <em>Align</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAlign()
+   * @generated
+   * @ordered
+   */
+  protected String align = ALIGN_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getGc() <em>Gc</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGc()
+   * @generated
+   * @ordered
+   */
+  protected static final String GC_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getGc() <em>Gc</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getGc()
+   * @generated
+   * @ordered
+   */
+  protected String gc = GC_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -409,6 +472,75 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getSection()
+  {
+    return section;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSection(String newSection)
+  {
+    String oldSection = section;
+    section = newSection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__SECTION, oldSection, section));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getAlign()
+  {
+    return align;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setAlign(String newAlign)
+  {
+    String oldAlign = align;
+    align = newAlign;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__ALIGN, oldAlign, align));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getGc()
+  {
+    return gc;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setGc(String newGc)
+  {
+    String oldGc = gc;
+    gc = newGc;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__GC, oldGc, gc));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -448,6 +580,12 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return getParameters();
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         return getAttrs();
+      case LLVM_IRPackage.FUNCTION_HEADER__SECTION:
+        return getSection();
+      case LLVM_IRPackage.FUNCTION_HEADER__ALIGN:
+        return getAlign();
+      case LLVM_IRPackage.FUNCTION_HEADER__GC:
+        return getGc();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -482,6 +620,15 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         setAttrs((FunctionAttributes)newValue);
+        return;
+      case LLVM_IRPackage.FUNCTION_HEADER__SECTION:
+        setSection((String)newValue);
+        return;
+      case LLVM_IRPackage.FUNCTION_HEADER__ALIGN:
+        setAlign((String)newValue);
+        return;
+      case LLVM_IRPackage.FUNCTION_HEADER__GC:
+        setGc((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -518,6 +665,15 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         setAttrs((FunctionAttributes)null);
         return;
+      case LLVM_IRPackage.FUNCTION_HEADER__SECTION:
+        setSection(SECTION_EDEFAULT);
+        return;
+      case LLVM_IRPackage.FUNCTION_HEADER__ALIGN:
+        setAlign(ALIGN_EDEFAULT);
+        return;
+      case LLVM_IRPackage.FUNCTION_HEADER__GC:
+        setGc(GC_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -546,6 +702,12 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return parameters != null;
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         return attrs != null;
+      case LLVM_IRPackage.FUNCTION_HEADER__SECTION:
+        return SECTION_EDEFAULT == null ? section != null : !SECTION_EDEFAULT.equals(section);
+      case LLVM_IRPackage.FUNCTION_HEADER__ALIGN:
+        return ALIGN_EDEFAULT == null ? align != null : !ALIGN_EDEFAULT.equals(align);
+      case LLVM_IRPackage.FUNCTION_HEADER__GC:
+        return GC_EDEFAULT == null ? gc != null : !GC_EDEFAULT.equals(gc);
     }
     return super.eIsSet(featureID);
   }
@@ -569,6 +731,12 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
     result.append(cconv);
     result.append(", name: ");
     result.append(name);
+    result.append(", section: ");
+    result.append(section);
+    result.append(", align: ");
+    result.append(align);
+    result.append(", gc: ");
+    result.append(gc);
     result.append(')');
     return result.toString();
   }

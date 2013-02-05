@@ -291,6 +291,10 @@ Align:
 	'align' INTEGER
 ;
 
+Gc:
+	'gc' STRING
+;
+
 Function:
 	FunctionDef | FunctionDecl
 ;
@@ -312,6 +316,9 @@ FunctionHeader:
 	name=GLOBAL_ID
 	'(' parameters=Parameters ')'
 	attrs=FunctionAttributes?
+	section=Section?
+	align=Align?
+	gc=Gc?
 ;
 
 Parameters:
@@ -344,8 +351,7 @@ FunctionAttribute:
 	'returns_twice' |
 	'ssp' |
 	'sspreq' |
-	'uwtable' |
-	('gc' STRING)
+	'uwtable'
 ;
 
 BasicBlock:
@@ -1127,8 +1133,7 @@ terminal CSTRING:
 ;
 
 terminal STRING: 
-	'"' ( '\\' (('a'..'f' | 'A'..'F' | '0'..'9') ('a'..'f' | 'A'..'F' | '0'..'9')) | !('\\'|'"') )* '"'
-	//'"' -> '"'
+	'"' ( '\\' ( '\\' | (('a'..'f' | 'A'..'F' | '0'..'9') ('a'..'f' | 'A'..'F' | '0'..'9'))) | !('\\'|'"') )* '"'
 ;
 
 terminal METADATA_STRING:

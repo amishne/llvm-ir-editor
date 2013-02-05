@@ -45,6 +45,12 @@ import com.intel.llvm.ireditor.lLVM_IR.ArrayType;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
+import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression;
+import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_binary;
+import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_compare;
+import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_convert;
+import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_getelementptr;
+import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_select;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
@@ -496,6 +502,61 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedPointerType caseGlobalVariable(GlobalVariable object) {
 		return new ResolvedPointerType(resolve(object.getType()),
 				atoi(object.getAddrspace().getValue()));
+	}
+	
+	@Override
+	public ResolvedType caseConstantExpression_binary(ConstantExpression_binary object) {
+		return resolve(object.getOp1().getType());
+	}
+	
+	@Override
+	public ResolvedType caseConstantExpression_compare(ConstantExpression_compare object) {
+		ResolvedType type = resolve(object.getOp1().getType());
+		if (type instanceof ResolvedVectorType) {
+			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
+		}
+		return TYPE_BOOLEAN;
+	}
+	
+	@Override
+	public ResolvedType caseConstantExpression_convert(ConstantExpression_convert object) {
+		return resolve(object.getTargetType());
+	}
+	
+	@Override
+	public ResolvedType caseConstantExpression_select(ConstantExpression_select object) {
+		ResolvedType conditionType = resolve(object.getCondition());
+		if (conditionType instanceof ResolvedVectorType) {
+			return new ResolvedVectorType(((ResolvedVectorType) conditionType).getSize(),
+					resolve(object.getOp1()).getContainedType(0));
+		}
+		return resolve(object.getOp1().getType());
+	}
+	
+	@Override
+	public ResolvedType caseConstantExpression_getelementptr(ConstantExpression_getelementptr object) {
+		ResolvedType result = resolve(object.getConstant());
+		if (result instanceof ResolvedVectorType) {
+			return result;
+		}
+		
+		for (Constant index : object.getIndices()) {
+			Integer indexValue = constResolver.getInteger(index);
+			if (indexValue == null) {
+				// This should not happen in a constant expression
+				return TYPE_ANY;
+			}
+			result = result.getContainedType(indexValue);
+			if (result == null) return TYPE_UNKNOWN;
+		}
+		
+		return new ResolvedPointerType(result, 0);
+	}
+	
+	@Override
+	public ResolvedType caseConstantExpression(ConstantExpression object) {
+		// TODO remove this once all constant expression types are handled
+		return TYPE_ANY;
 	}
 	
 	private String textOf(EObject object) {

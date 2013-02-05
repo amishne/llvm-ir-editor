@@ -1363,7 +1363,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         rettype=ParameterType 
 	 *         name=GLOBAL_ID 
 	 *         parameters=Parameters 
-	 *         attrs=FunctionAttributes?
+	 *         attrs=FunctionAttributes? 
+	 *         section=Section? 
+	 *         align=Align? 
+	 *         gc=Gc?
 	 *     )
 	 */
 	protected void sequence_FunctionHeader(EObject context, FunctionHeader semanticObject) {

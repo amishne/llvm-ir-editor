@@ -1824,13 +1824,40 @@ public interface LLVM_IRPackage extends EPackage
   int FUNCTION_HEADER__ATTRS = GLOBAL_VALUE_DEF_FEATURE_COUNT + 6;
 
   /**
+   * The feature id for the '<em><b>Section</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_HEADER__SECTION = GLOBAL_VALUE_DEF_FEATURE_COUNT + 7;
+
+  /**
+   * The feature id for the '<em><b>Align</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_HEADER__ALIGN = GLOBAL_VALUE_DEF_FEATURE_COUNT + 8;
+
+  /**
+   * The feature id for the '<em><b>Gc</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_HEADER__GC = GLOBAL_VALUE_DEF_FEATURE_COUNT + 9;
+
+  /**
    * The number of structural features of the '<em>Function Header</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER_FEATURE_COUNT = GLOBAL_VALUE_DEF_FEATURE_COUNT + 7;
+  int FUNCTION_HEADER_FEATURE_COUNT = GLOBAL_VALUE_DEF_FEATURE_COUNT + 10;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ParametersImpl <em>Parameters</em>}' class.
@@ -7327,6 +7354,39 @@ public interface LLVM_IRPackage extends EPackage
   EReference getFunctionHeader_Attrs();
 
   /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getSection <em>Section</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Section</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getSection()
+   * @see #getFunctionHeader()
+   * @generated
+   */
+  EAttribute getFunctionHeader_Section();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getAlign <em>Align</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Align</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getAlign()
+   * @see #getFunctionHeader()
+   * @generated
+   */
+  EAttribute getFunctionHeader_Align();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getGc <em>Gc</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Gc</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getGc()
+   * @see #getFunctionHeader()
+   * @generated
+   */
+  EAttribute getFunctionHeader_Gc();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.Parameters <em>Parameters</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -11265,6 +11325,30 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EReference FUNCTION_HEADER__ATTRS = eINSTANCE.getFunctionHeader_Attrs();
+
+    /**
+     * The meta object literal for the '<em><b>Section</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_HEADER__SECTION = eINSTANCE.getFunctionHeader_Section();
+
+    /**
+     * The meta object literal for the '<em><b>Align</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_HEADER__ALIGN = eINSTANCE.getFunctionHeader_Align();
+
+    /**
+     * The meta object literal for the '<em><b>Gc</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FUNCTION_HEADER__GC = eINSTANCE.getFunctionHeader_Gc();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ParametersImpl <em>Parameters</em>}' class.

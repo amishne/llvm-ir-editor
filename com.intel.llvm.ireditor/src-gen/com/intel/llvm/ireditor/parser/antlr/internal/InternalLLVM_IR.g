@@ -3554,6 +3554,40 @@ ruleAlign returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
 
 
 
+// Entry rule entryRuleGc
+entryRuleGc returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getGcRule()); } 
+	 iv_ruleGc=ruleGc 
+	 { $current=$iv_ruleGc.current.getText(); }  
+	 EOF 
+;
+
+// Rule Gc
+ruleGc returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(
+	kw='gc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getGcAccess().getGcKeyword_0()); 
+    }
+    this_STRING_1=RULE_STRING    {
+		$current.merge(this_STRING_1);
+    }
+
+    { 
+    newLeafNode(this_STRING_1, grammarAccess.getGcAccess().getSTRINGTerminalRuleCall_1()); 
+    }
+)
+    ;
+
+
+
+
+
 // Entry rule entryRuleFunction
 entryRuleFunction returns [EObject current=null] 
 	:
@@ -3858,6 +3892,60 @@ ruleFunctionHeader returns [EObject current=null]
 	    }
 
 )
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionHeaderAccess().getSectionSectionParserRuleCall_10_0()); 
+	    }
+		lv_section_10_0=ruleSection		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionHeaderRule());
+	        }
+       		set(
+       			$current, 
+       			"section",
+        		lv_section_10_0, 
+        		"Section");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionHeaderAccess().getAlignAlignParserRuleCall_11_0()); 
+	    }
+		lv_align_11_0=ruleAlign		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionHeaderRule());
+	        }
+       		set(
+       			$current, 
+       			"align",
+        		lv_align_11_0, 
+        		"Align");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionHeaderAccess().getGcGcParserRuleCall_12_0()); 
+	    }
+		lv_gc_12_0=ruleGc		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionHeaderRule());
+	        }
+       		set(
+       			$current, 
+       			"gc",
+        		lv_gc_12_0, 
+        		"Gc");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 )?)
 ;
 
@@ -4158,21 +4246,7 @@ ruleFunctionAttribute returns [AntlrDatatypeRuleToken current=new AntlrDatatypeR
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getFunctionAttributeAccess().getUwtableKeyword_17()); 
     }
-
-    |(
-	kw='gc' 
-    {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFunctionAttributeAccess().getGcKeyword_18_0()); 
-    }
-    this_STRING_21=RULE_STRING    {
-		$current.merge(this_STRING_21);
-    }
-
-    { 
-    newLeafNode(this_STRING_21, grammarAccess.getFunctionAttributeAccess().getSTRINGTerminalRuleCall_18_1()); 
-    }
-))
+)
     ;
 
 
@@ -13523,7 +13597,7 @@ fragment RULE_NAME : ('a'..'z'|'A'..'Z'|'$'|'.'|'_'|'-') ('a'..'z'|'A'..'Z'|'$'|
 
 RULE_CSTRING : 'c' RULE_STRING;
 
-RULE_STRING : '"' ('\\' ('a'..'f'|'A'..'F'|'0'..'9') ('a'..'f'|'A'..'F'|'0'..'9')|~(('\\'|'"')))* '"';
+RULE_STRING : '"' ('\\' ('\\'|('a'..'f'|'A'..'F'|'0'..'9') ('a'..'f'|'A'..'F'|'0'..'9'))|~(('\\'|'"')))* '"';
 
 RULE_METADATA_STRING : '!' RULE_STRING;
 

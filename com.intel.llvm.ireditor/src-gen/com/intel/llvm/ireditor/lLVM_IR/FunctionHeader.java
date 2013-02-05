@@ -18,6 +18,9 @@ package com.intel.llvm.ireditor.lLVM_IR;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getName <em>Name</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getParameters <em>Parameters</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getAttrs <em>Attrs</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getSection <em>Section</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getAlign <em>Align</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getGc <em>Gc</em>}</li>
  * </ul>
  * </p>
  *
@@ -208,5 +211,83 @@ public interface FunctionHeader extends GlobalValueDef
    * @generated
    */
   void setAttrs(FunctionAttributes value);
+
+  /**
+   * Returns the value of the '<em><b>Section</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Section</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Section</em>' attribute.
+   * @see #setSection(String)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_Section()
+   * @model
+   * @generated
+   */
+  String getSection();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getSection <em>Section</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Section</em>' attribute.
+   * @see #getSection()
+   * @generated
+   */
+  void setSection(String value);
+
+  /**
+   * Returns the value of the '<em><b>Align</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Align</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Align</em>' attribute.
+   * @see #setAlign(String)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_Align()
+   * @model
+   * @generated
+   */
+  String getAlign();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getAlign <em>Align</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Align</em>' attribute.
+   * @see #getAlign()
+   * @generated
+   */
+  void setAlign(String value);
+
+  /**
+   * Returns the value of the '<em><b>Gc</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Gc</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Gc</em>' attribute.
+   * @see #setGc(String)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_Gc()
+   * @model
+   * @generated
+   */
+  String getGc();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getGc <em>Gc</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Gc</em>' attribute.
+   * @see #getGc()
+   * @generated
+   */
+  void setGc(String value);
 
 } // FunctionHeader
