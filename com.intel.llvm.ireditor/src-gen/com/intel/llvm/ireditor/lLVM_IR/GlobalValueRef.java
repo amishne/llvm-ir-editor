@@ -21,7 +21,7 @@ package com.intel.llvm.ireditor.lLVM_IR;
  * @model
  * @generated
  */
-public interface GlobalValueRef extends ValueRef, Callee
+public interface GlobalValueRef extends ValueRef
 {
   /**
    * Returns the value of the '<em><b>Ref</b></em>' reference.

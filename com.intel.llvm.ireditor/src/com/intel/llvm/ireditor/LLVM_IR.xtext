@@ -870,7 +870,7 @@ ArgList:
 ;
 
 Callee:
-	GlobalValueRef | InlineAssembler
+	ValueRef | InlineAssembler
 ;
 
 InlineAssembler:

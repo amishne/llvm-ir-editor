@@ -2,7 +2,6 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +13,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface ValueRef extends EObject
+public interface ValueRef extends Callee
 {
 } // ValueRef

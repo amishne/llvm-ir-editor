@@ -169,6 +169,25 @@ public interface LLVM_IRPackage extends EPackage
   int METADATA_REF_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.CalleeImpl <em>Callee</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.intel.llvm.ireditor.lLVM_IR.impl.CalleeImpl
+   * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getCallee()
+   * @generated
+   */
+  int CALLEE = 108;
+
+  /**
+   * The number of structural features of the '<em>Callee</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CALLEE_FEATURE_COUNT = 0;
+
+  /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ValueRefImpl <em>Value Ref</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -185,7 +204,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VALUE_REF_FEATURE_COUNT = 0;
+  int VALUE_REF_FEATURE_COUNT = CALLEE_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl <em>Global Value Ref</em>}' class.
@@ -5014,25 +5033,6 @@ public interface LLVM_IRPackage extends EPackage
    * @ordered
    */
   int ARG_LIST_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.CalleeImpl <em>Callee</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.intel.llvm.ireditor.lLVM_IR.impl.CalleeImpl
-   * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getCallee()
-   * @generated
-   */
-  int CALLEE = 108;
-
-  /**
-   * The number of structural features of the '<em>Callee</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CALLEE_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.InlineAssemblerImpl <em>Inline Assembler</em>}' class.

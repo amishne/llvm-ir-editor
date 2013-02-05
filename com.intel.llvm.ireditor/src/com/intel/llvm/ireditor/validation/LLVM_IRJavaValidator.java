@@ -50,7 +50,6 @@ import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
-import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
@@ -478,10 +477,12 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	public void checkAnyCall(Callee callee, EObject retType, Type functionPointerType, ArgList args) {
-		if (callee instanceof GlobalValueRef == false) return;
+		if (callee instanceof ValueRef == false) return;
 		ResolvedType calleeType = resolveType(callee);
-		if (calleeType instanceof ResolvedFunctionType == false) return;
-		ResolvedFunctionType fType = (ResolvedFunctionType) calleeType;
+		if (checkRequired(calleeType, callee.eContainingFeature(), 0, TYPE_ANY_FUNCTION_POINTER) == false) {
+			return;
+		}
+		ResolvedFunctionType fType = (ResolvedFunctionType) calleeType.getContainedType(0);
 		checkExpected(fType.getReturnType(), retType);
 		
 		boolean typeOmitted = functionPointerType == null;

@@ -6415,19 +6415,19 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	public class CalleeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Callee");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cGlobalValueRefParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cValueRefParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cInlineAssemblerParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//Callee:
 		//
-		//	GlobalValueRef | InlineAssembler;
+		//	ValueRef | InlineAssembler;
 		public ParserRule getRule() { return rule; }
 
-		//GlobalValueRef | InlineAssembler
+		//ValueRef | InlineAssembler
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//GlobalValueRef
-		public RuleCall getGlobalValueRefParserRuleCall_0() { return cGlobalValueRefParserRuleCall_0; }
+		//ValueRef
+		public RuleCall getValueRefParserRuleCall_0() { return cValueRefParserRuleCall_0; }
 
 		//InlineAssembler
 		public RuleCall getInlineAssemblerParserRuleCall_1() { return cInlineAssemblerParserRuleCall_1; }
@@ -9619,7 +9619,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Callee:
 	//
-	//	GlobalValueRef | InlineAssembler;
+	//	ValueRef | InlineAssembler;
 	public CalleeElements getCalleeAccess() {
 		return (pCallee != null) ? pCallee : (pCallee = new CalleeElements());
 	}

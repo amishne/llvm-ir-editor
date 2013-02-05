@@ -696,7 +696,8 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 				}
 				else break;
 			case LLVM_IRPackage.LOCAL_VALUE_REF:
-				if(context == grammarAccess.getLocalValueRefRule() ||
+				if(context == grammarAccess.getCalleeRule() ||
+				   context == grammarAccess.getLocalValueRefRule() ||
 				   context == grammarAccess.getValueRefRule()) {
 					sequence_LocalValueRef(context, (LocalValueRef) semanticObject); 
 					return; 

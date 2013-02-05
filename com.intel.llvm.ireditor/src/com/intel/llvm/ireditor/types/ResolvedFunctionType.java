@@ -27,7 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.types;
 
-public class ResolvedFunctionType extends ResolvedType {
+public class ResolvedFunctionType extends ResolvedAnyFunctionType {
 	
 	private final ResolvedType retType;
 	private final Iterable<? extends ResolvedType> paramTypes;

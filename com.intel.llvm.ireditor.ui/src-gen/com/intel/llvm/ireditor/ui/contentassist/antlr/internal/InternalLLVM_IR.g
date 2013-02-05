@@ -6036,9 +6036,9 @@ rule__Callee__Alternatives
     }
 :
 (
-{ before(grammarAccess.getCalleeAccess().getGlobalValueRefParserRuleCall_0()); }
-	ruleGlobalValueRef
-{ after(grammarAccess.getCalleeAccess().getGlobalValueRefParserRuleCall_0()); }
+{ before(grammarAccess.getCalleeAccess().getValueRefParserRuleCall_0()); }
+	ruleValueRef
+{ after(grammarAccess.getCalleeAccess().getValueRefParserRuleCall_0()); }
 )
 
     |(

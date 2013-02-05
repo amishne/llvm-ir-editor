@@ -84,7 +84,6 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			case INST: {
 				if (curr.hasPreviousSibling()) {
 					curr = curr.getPreviousSibling();
-					// FIXME hack!
 					if (curr.hasPreviousSibling() == false) {
 						// This was actually the first inst in the bb!
 						curr = curr.getParent();
@@ -97,8 +96,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 				}
 			} break;
 			case BB: {
-				if (curr.hasPreviousSibling()
-						&& curr.getPreviousSibling().getText().equals("{") == false) {
+				if (currHasPreviousBb()) {
 					// Is there a bb preceding this one? Go to the last inst there.
 					curr = getLastInst(curr.getPreviousSibling());
 					mode = Mode.INST;
@@ -123,14 +121,19 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		public boolean hasNext() {
 			switch (mode) {
 			case INST: return true; // There's always a preceding bb
-			case BB: return curr.hasPreviousSibling() || lastParam != null;
+			case BB: return currHasPreviousBb() || lastParam != null;
 			case PARAM: return curr.hasPreviousSibling();
 			case GLOBAL: throw new IllegalStateException("A local iterator should not be iterating over globals");
 			}
 			return false;
 		}
 		
-		INode getLastInst(INode bbNode) {
+		private boolean currHasPreviousBb() {
+			return curr.hasPreviousSibling()
+					&& curr.getPreviousSibling().getText().equals("{") == false;
+		}
+
+		private INode getLastInst(INode bbNode) {
 			BidiTreeIterator<INode> iterator = bbNode.getAsTreeIterable().iterator();
 			iterator.previous(); // Don't need bbNode itself
 			return iterator.previous();
@@ -147,7 +150,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			if (functionDefNode == null) return null;
 			
 			FunctionDef functionDef = (FunctionDef) NodeModelUtils.findActualSemanticObjectFor(functionDefNode);
-			
+			if (functionDef == null) return null; // FIXME this should not happen!
 			EList<Parameter> params = functionDef.getHeader().getParameters().getParameters();
 			if (params == null || params.isEmpty()) return null;
 			return NodeModelUtils.findActualNodeFor(params.get(params.size()-1));

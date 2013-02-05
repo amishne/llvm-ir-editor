@@ -5618,8 +5618,8 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     // Add supertypes to classes
     namedMetadataEClass.getESuperTypes().add(this.getTopLevelElement());
+    valueRefEClass.getESuperTypes().add(this.getCallee());
     globalValueRefEClass.getESuperTypes().add(this.getValueRef());
-    globalValueRefEClass.getESuperTypes().add(this.getCallee());
     localValueRefEClass.getESuperTypes().add(this.getValueRef());
     globalValueEClass.getESuperTypes().add(this.getTopLevelElement());
     namedInstructionEClass.getESuperTypes().add(this.getLocalValue());

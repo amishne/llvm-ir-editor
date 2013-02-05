@@ -111,6 +111,8 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedOpaqueType TYPE_OPAQUE = new ResolvedOpaqueType();
 	public static final ResolvedAnyIntegerType TYPE_ANY_INTEGER = new ResolvedAnyIntegerType();
 	public static final ResolvedAnyVectorType TYPE_ANY_VECTOR = new ResolvedAnyVectorType(TYPE_ANY);
+	public static final ResolvedAnyFunctionType TYPE_ANY_FUNCTION = new ResolvedAnyFunctionType();
+	public static final ResolvedPointerType TYPE_ANY_FUNCTION_POINTER = new ResolvedPointerType(TYPE_ANY_FUNCTION, 0);
 	public static final ResolvedIntegerType TYPE_I32 = new ResolvedIntegerType(32);
 	public static final ResolvedType TYPE_ANY_ARRAY = new ResolvedAnyArrayType(TYPE_ANY);
 	public static final ResolvedType TYPE_ANY_STRUCT = new ResolvedAnyStructType();
@@ -271,14 +273,14 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	@Override
-	public ResolvedFunctionType caseFunctionHeader(FunctionHeader object) {
+	public ResolvedPointerType caseFunctionHeader(FunctionHeader object) {
 		ResolvedType rettype = resolve(object.getRettype());
 		List<ResolvedType> paramTypes = new LinkedList<ResolvedType>();
 		for (Parameter p : object.getParameters().getParameters()) {
 			paramTypes.add(resolve(p.getType()));
 		}
 		if (object.getParameters().getVararg() != null) paramTypes.add(TYPE_VARARG);
-		return new ResolvedFunctionType(rettype, paramTypes);
+		return new ResolvedPointerType(new ResolvedFunctionType(rettype, paramTypes), 0);
 	}
 	
 	@Override
@@ -303,6 +305,8 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 			return TYPE_ANY_INTEGER;
 		} else if (content.equals("true") || content.equals("false")) {
 			return TYPE_BOOLEAN;
+		} else if (content.equals("null")) {
+			return TYPE_ANY_POINTER;
 		}
 		return TYPE_UNKNOWN;
 	}

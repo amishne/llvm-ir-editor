@@ -181,8 +181,8 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (
 	     'double' | 
 	     'x86_fp80' | 
-	     'fp128' | 
 	     'ppc_fp128' | 
+	     'fp128' | 
 	     'float' | 
 	     'half'
 	 )
@@ -201,7 +201,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'constant' | 'global'
+	 *     'global' | 'constant'
 	 */
 	protected void emit_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -305,7 +305,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('inreg' | 'signext' | 'zeroext')*
+	 *     ('signext' | 'zeroext' | 'inreg')*
 	 */
 	protected void emit_Instruction_invoke_void___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
