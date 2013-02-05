@@ -47,6 +47,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLocalValueAccess().getAlternatives(), "rule__LocalValue__Alternatives");
 					put(grammarAccess.getNamedInstructionAccess().getAlternatives(), "rule__NamedInstruction__Alternatives");
 					put(grammarAccess.getInstructionAccess().getAlternatives(), "rule__Instruction__Alternatives");
+					put(grammarAccess.getAliaseeAccess().getAlternatives(), "rule__Aliasee__Alternatives");
 					put(grammarAccess.getTargetInfoAccess().getInfoTypeAlternatives_1_0(), "rule__TargetInfo__InfoTypeAlternatives_1_0");
 					put(grammarAccess.getGlobalVariableAccess().getAlternatives_5(), "rule__GlobalVariable__Alternatives_5");
 					put(grammarAccess.getConstantAccess().getAlternatives(), "rule__Constant__Alternatives");
@@ -266,7 +267,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAliasAccess().getLinkageAssignment_2(), "rule__Alias__LinkageAssignment_2");
 					put(grammarAccess.getAliasAccess().getVisibilityAssignment_3(), "rule__Alias__VisibilityAssignment_3");
 					put(grammarAccess.getAliasAccess().getTypeAssignment_4(), "rule__Alias__TypeAssignment_4");
-					put(grammarAccess.getAliasAccess().getRefAssignment_5(), "rule__Alias__RefAssignment_5");
+					put(grammarAccess.getAliasAccess().getAliaseeAssignment_5(), "rule__Alias__AliaseeAssignment_5");
+					put(grammarAccess.getAliaseeAccess().getRefAssignment_0(), "rule__Aliasee__RefAssignment_0");
+					put(grammarAccess.getAliaseeAccess().getBitcastAssignment_1(), "rule__Aliasee__BitcastAssignment_1");
 					put(grammarAccess.getTargetInfoAccess().getInfoTypeAssignment_1(), "rule__TargetInfo__InfoTypeAssignment_1");
 					put(grammarAccess.getTargetInfoAccess().getLayoutAssignment_3(), "rule__TargetInfo__LayoutAssignment_3");
 					put(grammarAccess.getInlineAsmAccess().getAsmLineAssignment_2(), "rule__InlineAsm__AsmLineAssignment_2");

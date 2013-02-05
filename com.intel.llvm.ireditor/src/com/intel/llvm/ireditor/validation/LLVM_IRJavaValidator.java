@@ -555,6 +555,19 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				Literals.ALIAS__NAME);
 	}
 	
+	@Check
+	public void checkAlias(Alias val) {
+		ResolvedType type = resolveType(val.getType());
+		if (val.getAliasee().getBitcast() != null) {
+			checkExpected(type, resolveType(val.getAliasee().getBitcast()), Literals.ALIAS__ALIASEE);
+			if (val.getAliasee().getBitcast().getOpcode().equals("bitcast") == false) {
+				error("Only legal conversion for aliasee is bitcast", Literals.ALIAS__ALIASEE);
+			}
+		} else {
+			checkExpected(type, resolveType(val.getAliasee().getRef()), Literals.ALIAS__ALIASEE);
+		}
+	}
+	
 	public void checkNumberSequence(EObject val, EObject forIter, EStructuralFeature feature) {
 		NumberedName name = namer.resolveNumberedName(val);
 		if (name == null) return; // Unnamed elements are always in proper sequence

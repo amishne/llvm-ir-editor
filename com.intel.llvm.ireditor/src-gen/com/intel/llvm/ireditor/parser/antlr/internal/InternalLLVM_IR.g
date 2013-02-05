@@ -729,17 +729,70 @@ ruleAlias returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getAliasAccess().getRefGlobalValueRefParserRuleCall_5_0()); 
+	        newCompositeNode(grammarAccess.getAliasAccess().getAliaseeAliaseeParserRuleCall_5_0()); 
 	    }
-		lv_ref_5_0=ruleGlobalValueRef		{
+		lv_aliasee_5_0=ruleAliasee		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getAliasRule());
 	        }
        		set(
        			$current, 
-       			"ref",
-        		lv_ref_5_0, 
-        		"GlobalValueRef");
+       			"aliasee",
+        		lv_aliasee_5_0, 
+        		"Aliasee");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
+;
+
+
+
+
+
+// Entry rule entryRuleAliasee
+entryRuleAliasee returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getAliaseeRule()); }
+	 iv_ruleAliasee=ruleAliasee 
+	 { $current=$iv_ruleAliasee.current; } 
+	 EOF 
+;
+
+// Rule Aliasee
+ruleAliasee returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getAliaseeRule());
+	        }
+        }
+	otherlv_0=RULE_GLOBAL_ID
+	{
+		newLeafNode(otherlv_0, grammarAccess.getAliaseeAccess().getRefGlobalValueDefCrossReference_0_0()); 
+	}
+
+)
+)
+    |(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getAliaseeAccess().getBitcastConstantExpression_convertParserRuleCall_1_0()); 
+	    }
+		lv_bitcast_1_0=ruleConstantExpression_convert		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getAliaseeRule());
+	        }
+       		set(
+       			$current, 
+       			"bitcast",
+        		lv_bitcast_1_0, 
+        		"ConstantExpression_convert");
 	        afterParserOrEnumRuleCall();
 	    }
 

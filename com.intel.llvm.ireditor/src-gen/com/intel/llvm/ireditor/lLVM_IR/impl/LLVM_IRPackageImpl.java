@@ -5,6 +5,7 @@ package com.intel.llvm.ireditor.lLVM_IR.impl;
 import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
+import com.intel.llvm.ireditor.lLVM_IR.Aliasee;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayConstant;
@@ -251,6 +252,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass aliasEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass aliaseeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1450,9 +1458,39 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAlias_Ref()
+  public EReference getAlias_Aliasee()
   {
     return (EReference)aliasEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAliasee()
+  {
+    return aliaseeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAliasee_Ref()
+  {
+    return (EReference)aliaseeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAliasee_Bitcast()
+  {
+    return (EReference)aliaseeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -5107,7 +5145,11 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(aliasEClass, ALIAS__LINKAGE);
     createEAttribute(aliasEClass, ALIAS__VISIBILITY);
     createEReference(aliasEClass, ALIAS__TYPE);
-    createEReference(aliasEClass, ALIAS__REF);
+    createEReference(aliasEClass, ALIAS__ALIASEE);
+
+    aliaseeEClass = createEClass(ALIASEE);
+    createEReference(aliaseeEClass, ALIASEE__REF);
+    createEReference(aliaseeEClass, ALIASEE__BITCAST);
 
     targetInfoEClass = createEClass(TARGET_INFO);
     createEAttribute(targetInfoEClass, TARGET_INFO__INFO_TYPE);
@@ -5741,7 +5783,11 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getAlias_Linkage(), ecorePackage.getEString(), "linkage", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAlias_Visibility(), ecorePackage.getEString(), "visibility", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAlias_Type(), this.getType(), null, "type", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAlias_Ref(), this.getGlobalValueRef(), null, "ref", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAlias_Aliasee(), this.getAliasee(), null, "aliasee", null, 0, 1, Alias.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(aliaseeEClass, Aliasee.class, "Aliasee", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAliasee_Ref(), this.getGlobalValueDef(), null, "ref", null, 0, 1, Aliasee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAliasee_Bitcast(), this.getConstantExpression_convert(), null, "bitcast", null, 0, 1, Aliasee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(targetInfoEClass, TargetInfo.class, "TargetInfo", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTargetInfo_InfoType(), ecorePackage.getEString(), "infoType", null, 0, 1, TargetInfo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

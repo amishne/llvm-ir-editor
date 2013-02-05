@@ -145,6 +145,11 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createAliasAdapter();
       }
       @Override
+      public Adapter caseAliasee(Aliasee object)
+      {
+        return createAliaseeAdapter();
+      }
+      @Override
       public Adapter caseTargetInfo(TargetInfo object)
       {
         return createTargetInfoAdapter();
@@ -972,6 +977,21 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAliasAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.Aliasee <em>Aliasee</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Aliasee
+   * @generated
+   */
+  public Adapter createAliaseeAdapter()
   {
     return null;
   }

@@ -103,7 +103,11 @@ Alias:
 	linkage=Linkage?
 	visibility=Visibility?
 	type=Type
-	ref=GlobalValueRef
+	aliasee=Aliasee
+;
+
+Aliasee:
+	ref=[GlobalValueDef|GLOBAL_ID] | bitcast=ConstantExpression_convert
 ;
 
 TargetInfo:

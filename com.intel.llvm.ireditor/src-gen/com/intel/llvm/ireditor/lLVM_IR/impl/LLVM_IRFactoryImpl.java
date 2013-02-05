@@ -78,6 +78,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.NAMED_INSTRUCTION: return createNamedInstruction();
       case LLVM_IRPackage.INSTRUCTION: return createInstruction();
       case LLVM_IRPackage.ALIAS: return createAlias();
+      case LLVM_IRPackage.ALIASEE: return createAliasee();
       case LLVM_IRPackage.TARGET_INFO: return createTargetInfo();
       case LLVM_IRPackage.INLINE_ASM: return createInlineAsm();
       case LLVM_IRPackage.GLOBAL_VARIABLE: return createGlobalVariable();
@@ -355,6 +356,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     AliasImpl alias = new AliasImpl();
     return alias;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Aliasee createAliasee()
+  {
+    AliaseeImpl aliasee = new AliaseeImpl();
+    return aliasee;
   }
 
   /**

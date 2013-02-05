@@ -149,6 +149,15 @@ public interface LLVM_IRFactory extends EFactory
   Alias createAlias();
 
   /**
+   * Returns a new object of class '<em>Aliasee</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Aliasee</em>'.
+   * @generated
+   */
+  Aliasee createAliasee();
+
+  /**
    * Returns a new object of class '<em>Target Info</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

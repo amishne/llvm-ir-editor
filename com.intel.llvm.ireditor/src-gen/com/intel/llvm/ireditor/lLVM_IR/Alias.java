@@ -15,7 +15,7 @@ package com.intel.llvm.ireditor.lLVM_IR;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getLinkage <em>Linkage</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getType <em>Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getRef <em>Ref</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getAliasee <em>Aliasee</em>}</li>
  * </ul>
  * </p>
  *
@@ -130,29 +130,29 @@ public interface Alias extends GlobalValue, GlobalValueDef
   void setType(Type value);
 
   /**
-   * Returns the value of the '<em><b>Ref</b></em>' containment reference.
+   * Returns the value of the '<em><b>Aliasee</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ref</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Aliasee</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ref</em>' containment reference.
-   * @see #setRef(GlobalValueRef)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getAlias_Ref()
+   * @return the value of the '<em>Aliasee</em>' containment reference.
+   * @see #setAliasee(Aliasee)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getAlias_Aliasee()
    * @model containment="true"
    * @generated
    */
-  GlobalValueRef getRef();
+  Aliasee getAliasee();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getRef <em>Ref</em>}' containment reference.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Alias#getAliasee <em>Aliasee</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Ref</em>' containment reference.
-   * @see #getRef()
+   * @param value the new value of the '<em>Aliasee</em>' containment reference.
+   * @see #getAliasee()
    * @generated
    */
-  void setRef(GlobalValueRef value);
+  void setAliasee(Aliasee value);
 
 } // Alias

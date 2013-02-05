@@ -51,8 +51,10 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_alloca;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_cmpxchg;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractelement;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_extractvalue;
@@ -61,6 +63,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_icmp;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertvalue;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_load;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
@@ -80,6 +83,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterType;
 import com.intel.llvm.ireditor.lLVM_IR.SimpleConstant;
 import com.intel.llvm.ireditor.lLVM_IR.Star;
+import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.StructType;
 import com.intel.llvm.ireditor.lLVM_IR.StructureConstant;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
@@ -138,8 +142,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	
 	public ResolvedType defaultCase(EObject object) {
-		// TODO change to TYPE_UNKNOWN once everything is covered?
-		return TYPE_ANY;
+		return TYPE_UNKNOWN;
 	}
 	
 	@Override
@@ -255,6 +258,11 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseParameter(Parameter object) {
 		return resolve(object.getType().getType());
+	}
+	
+	@Override
+	public ResolvedType caseStartingInstruction(StartingInstruction object) {
+		return resolve(object.getInstruction());
 	}
 	
 	@Override
@@ -472,6 +480,22 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseInstruction_landingpad(Instruction_landingpad object) {
 		return resolve(object.getResultType());
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_call_nonVoid(Instruction_call_nonVoid object) {
+		return resolve(object.getReturnType());
+	}
+	
+	@Override
+	public ResolvedType caseInstruction_invoke_nonVoid(Instruction_invoke_nonVoid object) {
+		return resolve(object.getRettype());
+	};
+	
+	@Override
+	public ResolvedPointerType caseGlobalVariable(GlobalVariable object) {
+		return new ResolvedPointerType(resolve(object.getType()),
+				atoi(object.getAddrspace().getValue()));
 	}
 	
 	private String textOf(EObject object) {

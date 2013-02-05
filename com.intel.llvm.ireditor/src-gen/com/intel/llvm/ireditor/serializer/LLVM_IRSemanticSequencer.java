@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
+import com.intel.llvm.ireditor.lLVM_IR.Aliasee;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayConstant;
@@ -153,6 +154,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 				   context == grammarAccess.getGlobalValueDefRule() ||
 				   context == grammarAccess.getTopLevelElementRule()) {
 					sequence_Alias(context, (Alias) semanticObject); 
+					return; 
+				}
+				else break;
+			case LLVM_IRPackage.ALIASEE:
+				if(context == grammarAccess.getAliaseeRule()) {
+					sequence_Aliasee(context, (Aliasee) semanticObject); 
 					return; 
 				}
 				else break;
@@ -961,9 +968,18 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (name=GlobalName linkage=Linkage? visibility=Visibility? type=Type ref=GlobalValueRef)
+	 *     (name=GlobalName linkage=Linkage? visibility=Visibility? type=Type aliasee=Aliasee)
 	 */
 	protected void sequence_Alias(EObject context, Alias semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (ref=[GlobalValueDef|GLOBAL_ID] | bitcast=ConstantExpression_convert)
+	 */
+	protected void sequence_Aliasee(EObject context, Aliasee semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

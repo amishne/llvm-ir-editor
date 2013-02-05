@@ -3,7 +3,7 @@
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
-import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
+import com.intel.llvm.ireditor.lLVM_IR.Aliasee;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.AliasImpl#getLinkage <em>Linkage</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.AliasImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.AliasImpl#getType <em>Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.AliasImpl#getRef <em>Ref</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.AliasImpl#getAliasee <em>Aliasee</em>}</li>
  * </ul>
  * </p>
  *
@@ -105,14 +105,14 @@ public class AliasImpl extends GlobalValueImpl implements Alias
   protected Type type;
 
   /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' containment reference.
+   * The cached value of the '{@link #getAliasee() <em>Aliasee</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRef()
+   * @see #getAliasee()
    * @generated
    * @ordered
    */
-  protected GlobalValueRef ref;
+  protected Aliasee aliasee;
 
   /**
    * <!-- begin-user-doc -->
@@ -257,9 +257,9 @@ public class AliasImpl extends GlobalValueImpl implements Alias
    * <!-- end-user-doc -->
    * @generated
    */
-  public GlobalValueRef getRef()
+  public Aliasee getAliasee()
   {
-    return ref;
+    return aliasee;
   }
 
   /**
@@ -267,13 +267,13 @@ public class AliasImpl extends GlobalValueImpl implements Alias
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRef(GlobalValueRef newRef, NotificationChain msgs)
+  public NotificationChain basicSetAliasee(Aliasee newAliasee, NotificationChain msgs)
   {
-    GlobalValueRef oldRef = ref;
-    ref = newRef;
+    Aliasee oldAliasee = aliasee;
+    aliasee = newAliasee;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.ALIAS__REF, oldRef, newRef);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.ALIAS__ALIASEE, oldAliasee, newAliasee);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -284,20 +284,20 @@ public class AliasImpl extends GlobalValueImpl implements Alias
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRef(GlobalValueRef newRef)
+  public void setAliasee(Aliasee newAliasee)
   {
-    if (newRef != ref)
+    if (newAliasee != aliasee)
     {
       NotificationChain msgs = null;
-      if (ref != null)
-        msgs = ((InternalEObject)ref).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.ALIAS__REF, null, msgs);
-      if (newRef != null)
-        msgs = ((InternalEObject)newRef).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.ALIAS__REF, null, msgs);
-      msgs = basicSetRef(newRef, msgs);
+      if (aliasee != null)
+        msgs = ((InternalEObject)aliasee).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.ALIAS__ALIASEE, null, msgs);
+      if (newAliasee != null)
+        msgs = ((InternalEObject)newAliasee).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.ALIAS__ALIASEE, null, msgs);
+      msgs = basicSetAliasee(newAliasee, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.ALIAS__REF, newRef, newRef));
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.ALIAS__ALIASEE, newAliasee, newAliasee));
   }
 
   /**
@@ -312,8 +312,8 @@ public class AliasImpl extends GlobalValueImpl implements Alias
     {
       case LLVM_IRPackage.ALIAS__TYPE:
         return basicSetType(null, msgs);
-      case LLVM_IRPackage.ALIAS__REF:
-        return basicSetRef(null, msgs);
+      case LLVM_IRPackage.ALIAS__ALIASEE:
+        return basicSetAliasee(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -336,8 +336,8 @@ public class AliasImpl extends GlobalValueImpl implements Alias
         return getVisibility();
       case LLVM_IRPackage.ALIAS__TYPE:
         return getType();
-      case LLVM_IRPackage.ALIAS__REF:
-        return getRef();
+      case LLVM_IRPackage.ALIAS__ALIASEE:
+        return getAliasee();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -364,8 +364,8 @@ public class AliasImpl extends GlobalValueImpl implements Alias
       case LLVM_IRPackage.ALIAS__TYPE:
         setType((Type)newValue);
         return;
-      case LLVM_IRPackage.ALIAS__REF:
-        setRef((GlobalValueRef)newValue);
+      case LLVM_IRPackage.ALIAS__ALIASEE:
+        setAliasee((Aliasee)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -393,8 +393,8 @@ public class AliasImpl extends GlobalValueImpl implements Alias
       case LLVM_IRPackage.ALIAS__TYPE:
         setType((Type)null);
         return;
-      case LLVM_IRPackage.ALIAS__REF:
-        setRef((GlobalValueRef)null);
+      case LLVM_IRPackage.ALIAS__ALIASEE:
+        setAliasee((Aliasee)null);
         return;
     }
     super.eUnset(featureID);
@@ -418,8 +418,8 @@ public class AliasImpl extends GlobalValueImpl implements Alias
         return VISIBILITY_EDEFAULT == null ? visibility != null : !VISIBILITY_EDEFAULT.equals(visibility);
       case LLVM_IRPackage.ALIAS__TYPE:
         return type != null;
-      case LLVM_IRPackage.ALIAS__REF:
-        return ref != null;
+      case LLVM_IRPackage.ALIAS__ALIASEE:
+        return aliasee != null;
     }
     return super.eIsSet(featureID);
   }

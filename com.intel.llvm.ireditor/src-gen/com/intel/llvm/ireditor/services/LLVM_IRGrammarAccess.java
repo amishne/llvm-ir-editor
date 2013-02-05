@@ -412,15 +412,15 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVisibilityVisibilityParserRuleCall_3_0 = (RuleCall)cVisibilityAssignment_3.eContents().get(0);
 		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cTypeTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
-		private final Assignment cRefAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cRefGlobalValueRefParserRuleCall_5_0 = (RuleCall)cRefAssignment_5.eContents().get(0);
+		private final Assignment cAliaseeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cAliaseeAliaseeParserRuleCall_5_0 = (RuleCall)cAliaseeAssignment_5.eContents().get(0);
 		
 		//Alias:
 		//
-		//	name=GlobalName "alias" linkage=Linkage? visibility=Visibility? type=Type ref=GlobalValueRef;
+		//	name=GlobalName "alias" linkage=Linkage? visibility=Visibility? type=Type aliasee=Aliasee;
 		public ParserRule getRule() { return rule; }
 
-		//name=GlobalName "alias" linkage=Linkage? visibility=Visibility? type=Type ref=GlobalValueRef
+		//name=GlobalName "alias" linkage=Linkage? visibility=Visibility? type=Type aliasee=Aliasee
 		public Group getGroup() { return cGroup; }
 
 		//name=GlobalName
@@ -450,11 +450,44 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//Type
 		public RuleCall getTypeTypeParserRuleCall_4_0() { return cTypeTypeParserRuleCall_4_0; }
 
-		//ref=GlobalValueRef
-		public Assignment getRefAssignment_5() { return cRefAssignment_5; }
+		//aliasee=Aliasee
+		public Assignment getAliaseeAssignment_5() { return cAliaseeAssignment_5; }
 
-		//GlobalValueRef
-		public RuleCall getRefGlobalValueRefParserRuleCall_5_0() { return cRefGlobalValueRefParserRuleCall_5_0; }
+		//Aliasee
+		public RuleCall getAliaseeAliaseeParserRuleCall_5_0() { return cAliaseeAliaseeParserRuleCall_5_0; }
+	}
+
+	public class AliaseeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Aliasee");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cRefAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final CrossReference cRefGlobalValueDefCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
+		private final RuleCall cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1 = (RuleCall)cRefGlobalValueDefCrossReference_0_0.eContents().get(1);
+		private final Assignment cBitcastAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cBitcastConstantExpression_convertParserRuleCall_1_0 = (RuleCall)cBitcastAssignment_1.eContents().get(0);
+		
+		//Aliasee:
+		//
+		//	ref=[GlobalValueDef|GLOBAL_ID] | bitcast=ConstantExpression_convert;
+		public ParserRule getRule() { return rule; }
+
+		//ref=[GlobalValueDef|GLOBAL_ID] | bitcast=ConstantExpression_convert
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ref=[GlobalValueDef|GLOBAL_ID]
+		public Assignment getRefAssignment_0() { return cRefAssignment_0; }
+
+		//[GlobalValueDef|GLOBAL_ID]
+		public CrossReference getRefGlobalValueDefCrossReference_0_0() { return cRefGlobalValueDefCrossReference_0_0; }
+
+		//GLOBAL_ID
+		public RuleCall getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1() { return cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1; }
+
+		//bitcast=ConstantExpression_convert
+		public Assignment getBitcastAssignment_1() { return cBitcastAssignment_1; }
+
+		//ConstantExpression_convert
+		public RuleCall getBitcastConstantExpression_convertParserRuleCall_1_0() { return cBitcastConstantExpression_convertParserRuleCall_1_0; }
 	}
 
 	public class TargetInfoElements extends AbstractParserRuleElementFinder {
@@ -7848,6 +7881,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private NamedInstructionElements pNamedInstruction;
 	private InstructionElements pInstruction;
 	private AliasElements pAlias;
+	private AliaseeElements pAliasee;
 	private TargetInfoElements pTargetInfo;
 	private InlineAsmElements pInlineAsm;
 	private GlobalVariableElements pGlobalVariable;
@@ -8193,13 +8227,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Alias:
 	//
-	//	name=GlobalName "alias" linkage=Linkage? visibility=Visibility? type=Type ref=GlobalValueRef;
+	//	name=GlobalName "alias" linkage=Linkage? visibility=Visibility? type=Type aliasee=Aliasee;
 	public AliasElements getAliasAccess() {
 		return (pAlias != null) ? pAlias : (pAlias = new AliasElements());
 	}
 	
 	public ParserRule getAliasRule() {
 		return getAliasAccess().getRule();
+	}
+
+	//Aliasee:
+	//
+	//	ref=[GlobalValueDef|GLOBAL_ID] | bitcast=ConstantExpression_convert;
+	public AliaseeElements getAliaseeAccess() {
+		return (pAliasee != null) ? pAliasee : (pAliasee = new AliaseeElements());
+	}
+	
+	public ParserRule getAliaseeRule() {
+		return getAliaseeAccess().getRule();
 	}
 
 	//TargetInfo:

@@ -181,6 +181,13 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LLVM_IRPackage.ALIASEE:
+      {
+        Aliasee aliasee = (Aliasee)theEObject;
+        T result = caseAliasee(aliasee);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LLVM_IRPackage.TARGET_INFO:
       {
         TargetInfo targetInfo = (TargetInfo)theEObject;
@@ -1336,6 +1343,22 @@ public class LLVM_IRSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseAlias(Alias object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Aliasee</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Aliasee</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAliasee(Aliasee object)
   {
     return null;
   }

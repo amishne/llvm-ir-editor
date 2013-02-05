@@ -44,7 +44,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Alias/linkage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Alias/visibility"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Alias/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Alias/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Alias/aliasee"/>
+    </genClasses>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Aliasee">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Aliasee/ref"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Aliasee/bitcast"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//TargetInfo">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//TargetInfo/infoType"/>
