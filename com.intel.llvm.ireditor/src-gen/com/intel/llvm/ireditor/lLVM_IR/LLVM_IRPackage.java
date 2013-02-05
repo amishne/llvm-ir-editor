@@ -1649,13 +1649,13 @@ public interface LLVM_IRPackage extends EPackage
   int FUNCTION_DEF__HEADER = FUNCTION__HEADER;
 
   /**
-   * The feature id for the '<em><b>Body</b></em>' containment reference.
+   * The feature id for the '<em><b>Basic Blocks</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_DEF__BODY = FUNCTION_FEATURE_COUNT + 0;
+  int FUNCTION_DEF__BASIC_BLOCKS = FUNCTION_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Function Def</em>' class.
@@ -1814,34 +1814,6 @@ public interface LLVM_IRPackage extends EPackage
   int PARAMETERS_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionBodyImpl <em>Function Body</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see com.intel.llvm.ireditor.lLVM_IR.impl.FunctionBodyImpl
-   * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFunctionBody()
-   * @generated
-   */
-  int FUNCTION_BODY = 47;
-
-  /**
-   * The feature id for the '<em><b>Basic Blocks</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_BODY__BASIC_BLOCKS = 0;
-
-  /**
-   * The number of structural features of the '<em>Function Body</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_BODY_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionAttributesImpl <em>Function Attributes</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1849,7 +1821,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFunctionAttributes()
    * @generated
    */
-  int FUNCTION_ATTRIBUTES = 48;
+  int FUNCTION_ATTRIBUTES = 47;
 
   /**
    * The feature id for the '<em><b>Attributes</b></em>' attribute list.
@@ -1877,7 +1849,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getBasicBlock()
    * @generated
    */
-  int BASIC_BLOCK = 49;
+  int BASIC_BLOCK = 48;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1914,7 +1886,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getMetadataSuffix()
    * @generated
    */
-  int METADATA_SUFFIX = 50;
+  int METADATA_SUFFIX = 49;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1951,7 +1923,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getStartingInstruction()
    * @generated
    */
-  int STARTING_INSTRUCTION = 51;
+  int STARTING_INSTRUCTION = 50;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1997,7 +1969,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getMiddleInstruction()
    * @generated
    */
-  int MIDDLE_INSTRUCTION = 52;
+  int MIDDLE_INSTRUCTION = 51;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2034,7 +2006,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getNamedMiddleInstruction()
    * @generated
    */
-  int NAMED_MIDDLE_INSTRUCTION = 53;
+  int NAMED_MIDDLE_INSTRUCTION = 52;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2071,7 +2043,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getTerminatorInstruction()
    * @generated
    */
-  int TERMINATOR_INSTRUCTION = 54;
+  int TERMINATOR_INSTRUCTION = 53;
 
   /**
    * The feature id for the '<em><b>Metadata</b></em>' containment reference list.
@@ -2108,7 +2080,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getNamedTerminatorInstruction()
    * @generated
    */
-  int NAMED_TERMINATOR_INSTRUCTION = 55;
+  int NAMED_TERMINATOR_INSTRUCTION = 54;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2145,7 +2117,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_ret()
    * @generated
    */
-  int INSTRUCTION_RET = 56;
+  int INSTRUCTION_RET = 55;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2182,7 +2154,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_br()
    * @generated
    */
-  int INSTRUCTION_BR = 57;
+  int INSTRUCTION_BR = 56;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2246,7 +2218,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_switch()
    * @generated
    */
-  int INSTRUCTION_SWITCH = 58;
+  int INSTRUCTION_SWITCH = 57;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2310,7 +2282,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_indirectbr()
    * @generated
    */
-  int INSTRUCTION_INDIRECTBR = 59;
+  int INSTRUCTION_INDIRECTBR = 58;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2356,7 +2328,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_invoke_void()
    * @generated
    */
-  int INSTRUCTION_INVOKE_VOID = 60;
+  int INSTRUCTION_INVOKE_VOID = 59;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2447,7 +2419,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_invoke_nonVoid()
    * @generated
    */
-  int INSTRUCTION_INVOKE_NON_VOID = 61;
+  int INSTRUCTION_INVOKE_NON_VOID = 60;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2538,7 +2510,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_resume()
    * @generated
    */
-  int INSTRUCTION_RESUME = 62;
+  int INSTRUCTION_RESUME = 61;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2575,7 +2547,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_unreachable()
    * @generated
    */
-  int INSTRUCTION_UNREACHABLE = 63;
+  int INSTRUCTION_UNREACHABLE = 62;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2603,7 +2575,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getBasicBlockRef()
    * @generated
    */
-  int BASIC_BLOCK_REF = 64;
+  int BASIC_BLOCK_REF = 63;
 
   /**
    * The feature id for the '<em><b>Ref</b></em>' reference.
@@ -2631,7 +2603,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getBinaryInstruction()
    * @generated
    */
-  int BINARY_INSTRUCTION = 65;
+  int BINARY_INSTRUCTION = 64;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2686,7 +2658,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_add()
    * @generated
    */
-  int INSTRUCTION_ADD = 66;
+  int INSTRUCTION_ADD = 65;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2741,7 +2713,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_fadd()
    * @generated
    */
-  int INSTRUCTION_FADD = 67;
+  int INSTRUCTION_FADD = 66;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2796,7 +2768,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_sub()
    * @generated
    */
-  int INSTRUCTION_SUB = 68;
+  int INSTRUCTION_SUB = 67;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2851,7 +2823,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_fsub()
    * @generated
    */
-  int INSTRUCTION_FSUB = 69;
+  int INSTRUCTION_FSUB = 68;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2906,7 +2878,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_mul()
    * @generated
    */
-  int INSTRUCTION_MUL = 70;
+  int INSTRUCTION_MUL = 69;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -2961,7 +2933,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_fmul()
    * @generated
    */
-  int INSTRUCTION_FMUL = 71;
+  int INSTRUCTION_FMUL = 70;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3016,7 +2988,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_udiv()
    * @generated
    */
-  int INSTRUCTION_UDIV = 72;
+  int INSTRUCTION_UDIV = 71;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3071,7 +3043,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_sdiv()
    * @generated
    */
-  int INSTRUCTION_SDIV = 73;
+  int INSTRUCTION_SDIV = 72;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3126,7 +3098,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_fdiv()
    * @generated
    */
-  int INSTRUCTION_FDIV = 74;
+  int INSTRUCTION_FDIV = 73;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3181,7 +3153,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_urem()
    * @generated
    */
-  int INSTRUCTION_UREM = 75;
+  int INSTRUCTION_UREM = 74;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3236,7 +3208,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_srem()
    * @generated
    */
-  int INSTRUCTION_SREM = 76;
+  int INSTRUCTION_SREM = 75;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3291,7 +3263,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_frem()
    * @generated
    */
-  int INSTRUCTION_FREM = 77;
+  int INSTRUCTION_FREM = 76;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3346,7 +3318,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getBitwiseBinaryInstruction()
    * @generated
    */
-  int BITWISE_BINARY_INSTRUCTION = 78;
+  int BITWISE_BINARY_INSTRUCTION = 77;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3401,7 +3373,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_shl()
    * @generated
    */
-  int INSTRUCTION_SHL = 79;
+  int INSTRUCTION_SHL = 78;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3456,7 +3428,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_lshr()
    * @generated
    */
-  int INSTRUCTION_LSHR = 80;
+  int INSTRUCTION_LSHR = 79;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3511,7 +3483,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_ashr()
    * @generated
    */
-  int INSTRUCTION_ASHR = 81;
+  int INSTRUCTION_ASHR = 80;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3566,7 +3538,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_and()
    * @generated
    */
-  int INSTRUCTION_AND = 82;
+  int INSTRUCTION_AND = 81;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3621,7 +3593,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_or()
    * @generated
    */
-  int INSTRUCTION_OR = 83;
+  int INSTRUCTION_OR = 82;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3676,7 +3648,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_xor()
    * @generated
    */
-  int INSTRUCTION_XOR = 84;
+  int INSTRUCTION_XOR = 83;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3731,7 +3703,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getVectorInstructions()
    * @generated
    */
-  int VECTOR_INSTRUCTIONS = 85;
+  int VECTOR_INSTRUCTIONS = 84;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3759,7 +3731,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_extractelement()
    * @generated
    */
-  int INSTRUCTION_EXTRACTELEMENT = 86;
+  int INSTRUCTION_EXTRACTELEMENT = 85;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3805,7 +3777,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_insertelement()
    * @generated
    */
-  int INSTRUCTION_INSERTELEMENT = 87;
+  int INSTRUCTION_INSERTELEMENT = 86;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3860,7 +3832,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_shufflevector()
    * @generated
    */
-  int INSTRUCTION_SHUFFLEVECTOR = 88;
+  int INSTRUCTION_SHUFFLEVECTOR = 87;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3915,7 +3887,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getAggregateInstruction()
    * @generated
    */
-  int AGGREGATE_INSTRUCTION = 89;
+  int AGGREGATE_INSTRUCTION = 88;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -3961,7 +3933,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_extractvalue()
    * @generated
    */
-  int INSTRUCTION_EXTRACTVALUE = 90;
+  int INSTRUCTION_EXTRACTVALUE = 89;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4007,7 +3979,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_insertvalue()
    * @generated
    */
-  int INSTRUCTION_INSERTVALUE = 91;
+  int INSTRUCTION_INSERTVALUE = 90;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4062,7 +4034,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getMemoryInstruction()
    * @generated
    */
-  int MEMORY_INSTRUCTION = 92;
+  int MEMORY_INSTRUCTION = 91;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4090,7 +4062,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_alloca()
    * @generated
    */
-  int INSTRUCTION_ALLOCA = 93;
+  int INSTRUCTION_ALLOCA = 92;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4145,7 +4117,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_load()
    * @generated
    */
-  int INSTRUCTION_LOAD = 94;
+  int INSTRUCTION_LOAD = 93;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4218,7 +4190,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_store()
    * @generated
    */
-  int INSTRUCTION_STORE = 95;
+  int INSTRUCTION_STORE = 94;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4291,7 +4263,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_fence()
    * @generated
    */
-  int INSTRUCTION_FENCE = 96;
+  int INSTRUCTION_FENCE = 95;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4328,7 +4300,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_cmpxchg()
    * @generated
    */
-  int INSTRUCTION_CMPXCHG = 97;
+  int INSTRUCTION_CMPXCHG = 96;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4392,7 +4364,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_atomicrmw()
    * @generated
    */
-  int INSTRUCTION_ATOMICRMW = 98;
+  int INSTRUCTION_ATOMICRMW = 97;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4456,7 +4428,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_getelementptr()
    * @generated
    */
-  int INSTRUCTION_GETELEMENTPTR = 99;
+  int INSTRUCTION_GETELEMENTPTR = 98;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4502,7 +4474,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getConversionInstruction()
    * @generated
    */
-  int CONVERSION_INSTRUCTION = 100;
+  int CONVERSION_INSTRUCTION = 99;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4557,7 +4529,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getOtherInstruction()
    * @generated
    */
-  int OTHER_INSTRUCTION = 101;
+  int OTHER_INSTRUCTION = 100;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4585,7 +4557,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_icmp()
    * @generated
    */
-  int INSTRUCTION_ICMP = 102;
+  int INSTRUCTION_ICMP = 101;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4649,7 +4621,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_fcmp()
    * @generated
    */
-  int INSTRUCTION_FCMP = 103;
+  int INSTRUCTION_FCMP = 102;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4713,7 +4685,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_phi()
    * @generated
    */
-  int INSTRUCTION_PHI = 104;
+  int INSTRUCTION_PHI = 103;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4768,7 +4740,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_select()
    * @generated
    */
-  int INSTRUCTION_SELECT = 105;
+  int INSTRUCTION_SELECT = 104;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -4823,7 +4795,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_call_nonVoid()
    * @generated
    */
-  int INSTRUCTION_CALL_NON_VOID = 106;
+  int INSTRUCTION_CALL_NON_VOID = 105;
 
   /**
    * The feature id for the '<em><b>Is Tail</b></em>' attribute.
@@ -4923,7 +4895,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_call_void()
    * @generated
    */
-  int INSTRUCTION_CALL_VOID = 107;
+  int INSTRUCTION_CALL_VOID = 106;
 
   /**
    * The feature id for the '<em><b>Is Tail</b></em>' attribute.
@@ -5023,7 +4995,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getArgList()
    * @generated
    */
-  int ARG_LIST = 108;
+  int ARG_LIST = 107;
 
   /**
    * The feature id for the '<em><b>Arguments</b></em>' containment reference list.
@@ -5051,7 +5023,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getCallee()
    * @generated
    */
-  int CALLEE = 109;
+  int CALLEE = 108;
 
   /**
    * The number of structural features of the '<em>Callee</em>' class.
@@ -5070,7 +5042,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInlineAssembler()
    * @generated
    */
-  int INLINE_ASSEMBLER = 110;
+  int INLINE_ASSEMBLER = 109;
 
   /**
    * The feature id for the '<em><b>Assembler</b></em>' attribute.
@@ -5107,7 +5079,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_va_arg()
    * @generated
    */
-  int INSTRUCTION_VA_ARG = 111;
+  int INSTRUCTION_VA_ARG = 110;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -5153,7 +5125,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getInstruction_landingpad()
    * @generated
    */
-  int INSTRUCTION_LANDINGPAD = 112;
+  int INSTRUCTION_LANDINGPAD = 111;
 
   /**
    * The feature id for the '<em><b>Opcode</b></em>' attribute.
@@ -5217,7 +5189,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getLandingpadClause()
    * @generated
    */
-  int LANDINGPAD_CLAUSE = 113;
+  int LANDINGPAD_CLAUSE = 112;
 
   /**
    * The feature id for the '<em><b>Landing Pad Type</b></em>' attribute.
@@ -5272,7 +5244,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getTypedValue()
    * @generated
    */
-  int TYPED_VALUE = 114;
+  int TYPED_VALUE = 113;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -5309,7 +5281,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getParameterType()
    * @generated
    */
-  int PARAMETER_TYPE = 115;
+  int PARAMETER_TYPE = 114;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -5346,7 +5318,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getParameterAttributes()
    * @generated
    */
-  int PARAMETER_ATTRIBUTES = 116;
+  int PARAMETER_ATTRIBUTES = 115;
 
   /**
    * The feature id for the '<em><b>Attributes</b></em>' attribute list.
@@ -5374,7 +5346,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getArgument()
    * @generated
    */
-  int ARGUMENT = 117;
+  int ARGUMENT = 116;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -5411,7 +5383,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 118;
+  int PARAMETER = 117;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5448,7 +5420,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getNonVoidType()
    * @generated
    */
-  int NON_VOID_TYPE = 119;
+  int NON_VOID_TYPE = 118;
 
   /**
    * The feature id for the '<em><b>Base Type</b></em>' containment reference.
@@ -5494,7 +5466,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getStar()
    * @generated
    */
-  int STAR = 120;
+  int STAR = 119;
 
   /**
    * The feature id for the '<em><b>Address Space</b></em>' containment reference.
@@ -5522,7 +5494,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getType()
    * @generated
    */
-  int TYPE = 121;
+  int TYPE = 120;
 
   /**
    * The feature id for the '<em><b>Base Type</b></em>' containment reference.
@@ -5568,7 +5540,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFunctionTypeOrPointerToFunctionTypeSuffix()
    * @generated
    */
-  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX = 122;
+  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX = 121;
 
   /**
    * The feature id for the '<em><b>Contained Types</b></em>' containment reference list.
@@ -5614,7 +5586,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getNonLeftRecursiveType()
    * @generated
    */
-  int NON_LEFT_RECURSIVE_TYPE = 123;
+  int NON_LEFT_RECURSIVE_TYPE = 122;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -5651,7 +5623,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getNonLeftRecursiveNonVoidType()
    * @generated
    */
-  int NON_LEFT_RECURSIVE_NON_VOID_TYPE = 124;
+  int NON_LEFT_RECURSIVE_NON_VOID_TYPE = 123;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -5679,7 +5651,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getTypeDef()
    * @generated
    */
-  int TYPE_DEF = 125;
+  int TYPE_DEF = 124;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5716,7 +5688,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getIntType()
    * @generated
    */
-  int INT_TYPE = 126;
+  int INT_TYPE = 125;
 
   /**
    * The number of structural features of the '<em>Int Type</em>' class.
@@ -5735,7 +5707,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getOpaqueType()
    * @generated
    */
-  int OPAQUE_TYPE = 127;
+  int OPAQUE_TYPE = 126;
 
   /**
    * The number of structural features of the '<em>Opaque Type</em>' class.
@@ -5754,7 +5726,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getStructType()
    * @generated
    */
-  int STRUCT_TYPE = 128;
+  int STRUCT_TYPE = 127;
 
   /**
    * The feature id for the '<em><b>Types</b></em>' containment reference list.
@@ -5791,7 +5763,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getVectorType()
    * @generated
    */
-  int VECTOR_TYPE = 129;
+  int VECTOR_TYPE = 128;
 
   /**
    * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -5828,7 +5800,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getArrayType()
    * @generated
    */
-  int ARRAY_TYPE = 130;
+  int ARRAY_TYPE = 129;
 
   /**
    * The feature id for the '<em><b>Size</b></em>' attribute.
@@ -5865,7 +5837,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getX86mmxType()
    * @generated
    */
-  int X8_6MMX_TYPE = 131;
+  int X8_6MMX_TYPE = 130;
 
   /**
    * The number of structural features of the '<em>X8 6mmx Type</em>' class.
@@ -5884,7 +5856,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getVoidType()
    * @generated
    */
-  int VOID_TYPE = 132;
+  int VOID_TYPE = 131;
 
   /**
    * The number of structural features of the '<em>Void Type</em>' class.
@@ -5903,7 +5875,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getMetadataType()
    * @generated
    */
-  int METADATA_TYPE = 133;
+  int METADATA_TYPE = 132;
 
   /**
    * The number of structural features of the '<em>Metadata Type</em>' class.
@@ -5922,7 +5894,7 @@ public interface LLVM_IRPackage extends EPackage
    * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFloatingType()
    * @generated
    */
-  int FLOATING_TYPE = 134;
+  int FLOATING_TYPE = 133;
 
   /**
    * The number of structural features of the '<em>Floating Type</em>' class.
@@ -7178,15 +7150,15 @@ public interface LLVM_IRPackage extends EPackage
   EClass getFunctionDef();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBody <em>Body</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBasicBlocks <em>Basic Blocks</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Body</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBody()
+   * @return the meta object for the containment reference list '<em>Basic Blocks</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBasicBlocks()
    * @see #getFunctionDef()
    * @generated
    */
-  EReference getFunctionDef_Body();
+  EReference getFunctionDef_BasicBlocks();
 
   /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionDecl <em>Function Decl</em>}'.
@@ -7316,27 +7288,6 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    */
   EAttribute getParameters_Vararg();
-
-  /**
-   * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionBody <em>Function Body</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Function Body</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionBody
-   * @generated
-   */
-  EClass getFunctionBody();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionBody#getBasicBlocks <em>Basic Blocks</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Basic Blocks</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionBody#getBasicBlocks()
-   * @see #getFunctionBody()
-   * @generated
-   */
-  EReference getFunctionBody_BasicBlocks();
 
   /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes <em>Function Attributes</em>}'.
@@ -11137,12 +11088,12 @@ public interface LLVM_IRPackage extends EPackage
     EClass FUNCTION_DEF = eINSTANCE.getFunctionDef();
 
     /**
-     * The meta object literal for the '<em><b>Body</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Basic Blocks</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_DEF__BODY = eINSTANCE.getFunctionDef_Body();
+    EReference FUNCTION_DEF__BASIC_BLOCKS = eINSTANCE.getFunctionDef_BasicBlocks();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionDeclImpl <em>Function Decl</em>}' class.
@@ -11245,24 +11196,6 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EAttribute PARAMETERS__VARARG = eINSTANCE.getParameters_Vararg();
-
-    /**
-     * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionBodyImpl <em>Function Body</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see com.intel.llvm.ireditor.lLVM_IR.impl.FunctionBodyImpl
-     * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFunctionBody()
-     * @generated
-     */
-    EClass FUNCTION_BODY = eINSTANCE.getFunctionBody();
-
-    /**
-     * The meta object literal for the '<em><b>Basic Blocks</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FUNCTION_BODY__BASIC_BLOCKS = eINSTANCE.getFunctionBody_BasicBlocks();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionAttributesImpl <em>Function Attributes</em>}' class.

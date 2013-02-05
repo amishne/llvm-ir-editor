@@ -31,7 +31,6 @@ import java.util.LinkedList;
 
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionBody;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
@@ -77,9 +76,9 @@ public class LLVM_IRScopeProvider extends AbstractDeclarativeScopeProvider {
 		} else if (reference.getContainerClass() == BasicBlockRef.class) {
 			// A basic block reference can only refer to blocks within the
 			// enclosing method.
-			FunctionBody body = getAncestor(context, FunctionBody.class);
-			if (body == null) return super.getScope(context, reference);
-			return Scopes.scopeFor(new LinkedList<EObject>(body.getBasicBlocks()));
+			FunctionDef def = getAncestor(context, FunctionDef.class);
+			if (def == null) return super.getScope(context, reference);
+			return Scopes.scopeFor(new LinkedList<EObject>(def.getBasicBlocks()));
 		}
 		return super.getScope(context, reference);
 	}
@@ -100,7 +99,7 @@ public class LLVM_IRScopeProvider extends AbstractDeclarativeScopeProvider {
 	}
 
 	private void addLocalInstructions(LinkedList<EObject> inScope, FunctionDef func) {
-		for (BasicBlock block : func.getBody().getBasicBlocks()) {
+		for (BasicBlock block : func.getBasicBlocks()) {
 			for (Instruction inst : block.getInstructions()) {
 				EObject contained = getContainedInstruction(inst);
 				if (contained != null) inScope.add(contained);

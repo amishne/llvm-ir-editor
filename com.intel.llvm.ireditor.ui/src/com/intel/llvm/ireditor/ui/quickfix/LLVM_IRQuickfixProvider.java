@@ -59,7 +59,7 @@ import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionBody;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
@@ -241,9 +241,9 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 				EList<TopLevelElement> elements = ((Model) object).getElements();
 				return elements.get(elements.size()-1);
 			}
-			if (object instanceof FunctionBody) {
+			if (object instanceof FunctionDef) {
 				// Topmost element for a local
-				EList<BasicBlock> basicBlocks = ((FunctionBody) object).getBasicBlocks();
+				EList<BasicBlock> basicBlocks = ((FunctionDef) object).getBasicBlocks();
 				EList<Instruction> instructions = basicBlocks.get(basicBlocks.size()-1).getInstructions();
 				return instructions.get(instructions.size()-1);
 			}

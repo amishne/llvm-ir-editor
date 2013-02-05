@@ -2,6 +2,7 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -11,7 +12,7 @@ package com.intel.llvm.ireditor.lLVM_IR;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBody <em>Body</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBasicBlocks <em>Basic Blocks</em>}</li>
  * </ul>
  * </p>
  *
@@ -22,29 +23,19 @@ package com.intel.llvm.ireditor.lLVM_IR;
 public interface FunctionDef extends Function
 {
   /**
-   * Returns the value of the '<em><b>Body</b></em>' containment reference.
+   * Returns the value of the '<em><b>Basic Blocks</b></em>' containment reference list.
+   * The list contents are of type {@link com.intel.llvm.ireditor.lLVM_IR.BasicBlock}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Body</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Basic Blocks</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Body</em>' containment reference.
-   * @see #setBody(FunctionBody)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionDef_Body()
+   * @return the value of the '<em>Basic Blocks</em>' containment reference list.
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionDef_BasicBlocks()
    * @model containment="true"
    * @generated
    */
-  FunctionBody getBody();
-
-  /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionDef#getBody <em>Body</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Body</em>' containment reference.
-   * @see #getBody()
-   * @generated
-   */
-  void setBody(FunctionBody value);
+  EList<BasicBlock> getBasicBlocks();
 
 } // FunctionDef

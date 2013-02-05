@@ -159,7 +159,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Function/header"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionDef">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionDef/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionDef/basicBlocks"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionDecl"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionHeader">
@@ -174,9 +174,6 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//Parameters">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Parameters/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Parameters/vararg"/>
-    </genClasses>
-    <genClasses ecoreClass="LLVM_IR.ecore#//FunctionBody">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionBody/basicBlocks"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionAttributes">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionAttributes/attributes"/>

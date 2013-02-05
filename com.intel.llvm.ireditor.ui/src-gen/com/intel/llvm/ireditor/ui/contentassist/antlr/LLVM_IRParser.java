@@ -337,7 +337,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetadataStringAccess().getNameAssignment(), "rule__MetadataString__NameAssignment");
 					put(grammarAccess.getAddressSpaceAccess().getValueAssignment_2(), "rule__AddressSpace__ValueAssignment_2");
 					put(grammarAccess.getFunctionDefAccess().getHeaderAssignment_1(), "rule__FunctionDef__HeaderAssignment_1");
-					put(grammarAccess.getFunctionDefAccess().getBodyAssignment_3(), "rule__FunctionDef__BodyAssignment_3");
+					put(grammarAccess.getFunctionDefAccess().getBasicBlocksAssignment_3(), "rule__FunctionDef__BasicBlocksAssignment_3");
 					put(grammarAccess.getFunctionDeclAccess().getHeaderAssignment_1(), "rule__FunctionDecl__HeaderAssignment_1");
 					put(grammarAccess.getFunctionHeaderAccess().getLinkageAssignment_0(), "rule__FunctionHeader__LinkageAssignment_0");
 					put(grammarAccess.getFunctionHeaderAccess().getVisibilityAssignment_1(), "rule__FunctionHeader__VisibilityAssignment_1");
@@ -350,7 +350,6 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParametersAccess().getParametersAssignment_1_0_1_1(), "rule__Parameters__ParametersAssignment_1_0_1_1");
 					put(grammarAccess.getParametersAccess().getVarargAssignment_1_0_2_1(), "rule__Parameters__VarargAssignment_1_0_2_1");
 					put(grammarAccess.getParametersAccess().getVarargAssignment_1_1(), "rule__Parameters__VarargAssignment_1_1");
-					put(grammarAccess.getFunctionBodyAccess().getBasicBlocksAssignment(), "rule__FunctionBody__BasicBlocksAssignment");
 					put(grammarAccess.getFunctionAttributesAccess().getAttributesAssignment(), "rule__FunctionAttributes__AttributesAssignment");
 					put(grammarAccess.getBasicBlockAccess().getNameAssignment_0(), "rule__BasicBlock__NameAssignment_0");
 					put(grammarAccess.getBasicBlockAccess().getInstructionsAssignment_1(), "rule__BasicBlock__InstructionsAssignment_1");

@@ -69,8 +69,8 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 	}
 	
 	class ReverseLocalIterator implements Iterator<EObject> {
+		final INode lastParam = getLastParamOfEnclosingFunction();
 		INode curr = node;
-		final INode lastParam = getLastParamOfEnclosingFunction(curr);
 		ReverseNamedElementIterator.Mode mode = initialMode;
 		
 		@Override
@@ -97,7 +97,8 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 				}
 			} break;
 			case BB: {
-				if (curr.hasPreviousSibling()) {
+				if (curr.hasPreviousSibling()
+						&& curr.getPreviousSibling().getText().equals("{") == false) {
 					// Is there a bb preceding this one? Go to the last inst there.
 					curr = getLastInst(curr.getPreviousSibling());
 					mode = Mode.INST;
@@ -135,24 +136,19 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			return iterator.previous();
 		}
 		
-		private INode getLastParamOfEnclosingFunction(INode node) {
+		private INode getLastParamOfEnclosingFunction() {
 			INode functionDefNode;
 			
 			switch (initialMode) {
-			case INST: functionDefNode = node.getParent().getParent().getParent(); break;
-			case BB: functionDefNode = node.getParent().getParent(); break;
+			case INST: functionDefNode = node.getParent().getParent(); break;
+			case BB: functionDefNode = node.getParent(); break;
 			default: functionDefNode = null;
 			}
 			if (functionDefNode == null) return null;
 			
 			FunctionDef functionDef = (FunctionDef) NodeModelUtils.findActualSemanticObjectFor(functionDefNode);
-			EList<Parameter> params = null;
-			try {
-				params = functionDef.getHeader().getParameters().getParameters();
-			} catch (NullPointerException e) {
-				e.printStackTrace();
-				return null;
-			}
+			
+			EList<Parameter> params = functionDef.getHeader().getParameters().getParameters();
 			if (params == null || params.isEmpty()) return null;
 			return NodeModelUtils.findActualNodeFor(params.get(params.size()-1));
 		}

@@ -200,8 +200,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionDef" eSuperTypes="#//Function">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="body" eType="#//FunctionBody"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="basicBlocks" upperBound="-1"
+        eType="#//BasicBlock" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionDecl" eSuperTypes="#//Function"/>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionHeader" eSuperTypes="#//GlobalValueDef">
@@ -220,10 +220,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
         eType="#//Parameter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vararg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FunctionBody">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="basicBlocks" upperBound="-1"
-        eType="#//BasicBlock" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionAttributes">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributes" unique="false"

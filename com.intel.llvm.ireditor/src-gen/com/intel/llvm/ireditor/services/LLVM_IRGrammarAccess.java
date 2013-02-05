@@ -2049,16 +2049,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cHeaderAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cHeaderFunctionHeaderParserRuleCall_1_0 = (RuleCall)cHeaderAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cBodyAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cBodyFunctionBodyParserRuleCall_3_0 = (RuleCall)cBodyAssignment_3.eContents().get(0);
+		private final Assignment cBasicBlocksAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cBasicBlocksBasicBlockParserRuleCall_3_0 = (RuleCall)cBasicBlocksAssignment_3.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//FunctionDef:
 		//
-		//	"define" header=FunctionHeader "{" body=FunctionBody "}";
+		//	"define" header=FunctionHeader "{" basicBlocks+=BasicBlock+ "}";
 		public ParserRule getRule() { return rule; }
 
-		//"define" header=FunctionHeader "{" body=FunctionBody "}"
+		//"define" header=FunctionHeader "{" basicBlocks+=BasicBlock+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//"define"
@@ -2073,11 +2073,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//body=FunctionBody
-		public Assignment getBodyAssignment_3() { return cBodyAssignment_3; }
+		//basicBlocks+=BasicBlock+
+		public Assignment getBasicBlocksAssignment_3() { return cBasicBlocksAssignment_3; }
 
-		//FunctionBody
-		public RuleCall getBodyFunctionBodyParserRuleCall_3_0() { return cBodyFunctionBodyParserRuleCall_3_0; }
+		//BasicBlock
+		public RuleCall getBasicBlocksBasicBlockParserRuleCall_3_0() { return cBasicBlocksBasicBlockParserRuleCall_3_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -2264,23 +2264,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"..."
 		public Keyword getVarargFullStopFullStopFullStopKeyword_1_1_0() { return cVarargFullStopFullStopFullStopKeyword_1_1_0; }
-	}
-
-	public class FunctionBodyElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionBody");
-		private final Assignment cBasicBlocksAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cBasicBlocksBasicBlockParserRuleCall_0 = (RuleCall)cBasicBlocksAssignment.eContents().get(0);
-		
-		//FunctionBody:
-		//
-		//	basicBlocks+=BasicBlock+;
-		public ParserRule getRule() { return rule; }
-
-		//basicBlocks+=BasicBlock+
-		public Assignment getBasicBlocksAssignment() { return cBasicBlocksAssignment; }
-
-		//BasicBlock
-		public RuleCall getBasicBlocksBasicBlockParserRuleCall_0() { return cBasicBlocksBasicBlockParserRuleCall_0; }
 	}
 
 	public class FunctionAttributesElements extends AbstractParserRuleElementFinder {
@@ -7902,7 +7885,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private FunctionDeclElements pFunctionDecl;
 	private FunctionHeaderElements pFunctionHeader;
 	private ParametersElements pParameters;
-	private FunctionBodyElements pFunctionBody;
 	private FunctionAttributesElements pFunctionAttributes;
 	private FunctionAttributeElements pFunctionAttribute;
 	private BasicBlockElements pBasicBlock;
@@ -8605,7 +8587,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionDef:
 	//
-	//	"define" header=FunctionHeader "{" body=FunctionBody "}";
+	//	"define" header=FunctionHeader "{" basicBlocks+=BasicBlock+ "}";
 	public FunctionDefElements getFunctionDefAccess() {
 		return (pFunctionDef != null) ? pFunctionDef : (pFunctionDef = new FunctionDefElements());
 	}
@@ -8647,17 +8629,6 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getParametersRule() {
 		return getParametersAccess().getRule();
-	}
-
-	//FunctionBody:
-	//
-	//	basicBlocks+=BasicBlock+;
-	public FunctionBodyElements getFunctionBodyAccess() {
-		return (pFunctionBody != null) ? pFunctionBody : (pFunctionBody = new FunctionBodyElements());
-	}
-	
-	public ParserRule getFunctionBodyRule() {
-		return getFunctionBodyAccess().getRule();
 	}
 
 	//FunctionAttributes:

@@ -2,17 +2,21 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
-import com.intel.llvm.ireditor.lLVM_IR.FunctionBody;
+import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -21,7 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionDefImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionDefImpl#getBasicBlocks <em>Basic Blocks</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,14 +34,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class FunctionDefImpl extends FunctionImpl implements FunctionDef
 {
   /**
-   * The cached value of the '{@link #getBody() <em>Body</em>}' containment reference.
+   * The cached value of the '{@link #getBasicBlocks() <em>Basic Blocks</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getBody()
+   * @see #getBasicBlocks()
    * @generated
    * @ordered
    */
-  protected FunctionBody body;
+  protected EList<BasicBlock> basicBlocks;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,47 +69,13 @@ public class FunctionDefImpl extends FunctionImpl implements FunctionDef
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionBody getBody()
+  public EList<BasicBlock> getBasicBlocks()
   {
-    return body;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetBody(FunctionBody newBody, NotificationChain msgs)
-  {
-    FunctionBody oldBody = body;
-    body = newBody;
-    if (eNotificationRequired())
+    if (basicBlocks == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_DEF__BODY, oldBody, newBody);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      basicBlocks = new EObjectContainmentEList<BasicBlock>(BasicBlock.class, this, LLVM_IRPackage.FUNCTION_DEF__BASIC_BLOCKS);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setBody(FunctionBody newBody)
-  {
-    if (newBody != body)
-    {
-      NotificationChain msgs = null;
-      if (body != null)
-        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_DEF__BODY, null, msgs);
-      if (newBody != null)
-        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_DEF__BODY, null, msgs);
-      msgs = basicSetBody(newBody, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_DEF__BODY, newBody, newBody));
+    return basicBlocks;
   }
 
   /**
@@ -118,8 +88,8 @@ public class FunctionDefImpl extends FunctionImpl implements FunctionDef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_DEF__BODY:
-        return basicSetBody(null, msgs);
+      case LLVM_IRPackage.FUNCTION_DEF__BASIC_BLOCKS:
+        return ((InternalEList<?>)getBasicBlocks()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -134,8 +104,8 @@ public class FunctionDefImpl extends FunctionImpl implements FunctionDef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_DEF__BODY:
-        return getBody();
+      case LLVM_IRPackage.FUNCTION_DEF__BASIC_BLOCKS:
+        return getBasicBlocks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -145,13 +115,15 @@ public class FunctionDefImpl extends FunctionImpl implements FunctionDef
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_DEF__BODY:
-        setBody((FunctionBody)newValue);
+      case LLVM_IRPackage.FUNCTION_DEF__BASIC_BLOCKS:
+        getBasicBlocks().clear();
+        getBasicBlocks().addAll((Collection<? extends BasicBlock>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -167,8 +139,8 @@ public class FunctionDefImpl extends FunctionImpl implements FunctionDef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_DEF__BODY:
-        setBody((FunctionBody)null);
+      case LLVM_IRPackage.FUNCTION_DEF__BASIC_BLOCKS:
+        getBasicBlocks().clear();
         return;
     }
     super.eUnset(featureID);
@@ -184,8 +156,8 @@ public class FunctionDefImpl extends FunctionImpl implements FunctionDef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_DEF__BODY:
-        return body != null;
+      case LLVM_IRPackage.FUNCTION_DEF__BASIC_BLOCKS:
+        return basicBlocks != null && !basicBlocks.isEmpty();
     }
     return super.eIsSet(featureID);
   }

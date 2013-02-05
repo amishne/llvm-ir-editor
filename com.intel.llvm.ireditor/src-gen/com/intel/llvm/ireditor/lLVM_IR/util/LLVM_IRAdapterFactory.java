@@ -310,11 +310,6 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createParametersAdapter();
       }
       @Override
-      public Adapter caseFunctionBody(FunctionBody object)
-      {
-        return createFunctionBodyAdapter();
-      }
-      @Override
       public Adapter caseFunctionAttributes(FunctionAttributes object)
       {
         return createFunctionAttributesAdapter();
@@ -1472,21 +1467,6 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createParametersAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionBody <em>Function Body</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionBody
-   * @generated
-   */
-  public Adapter createFunctionBodyAdapter()
   {
     return null;
   }

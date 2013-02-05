@@ -3584,22 +3584,22 @@ ruleFunctionDef returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getFunctionDefAccess().getBasicBlocksBasicBlockParserRuleCall_3_0()); 
 	    }
-		lv_body_3_0=ruleFunctionBody		{
+		lv_basicBlocks_3_0=ruleBasicBlock		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getFunctionDefRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"body",
-        		lv_body_3_0, 
-        		"FunctionBody");
+       			"basicBlocks",
+        		lv_basicBlocks_3_0, 
+        		"BasicBlock");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_4='}' 
+)+	otherlv_4='}' 
     {
     	newLeafNode(otherlv_4, grammarAccess.getFunctionDefAccess().getRightCurlyBracketKeyword_4());
     }
@@ -3908,45 +3908,6 @@ ruleParameters returns [EObject current=null]
 
 )
 )))
-;
-
-
-
-
-
-// Entry rule entryRuleFunctionBody
-entryRuleFunctionBody returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getFunctionBodyRule()); }
-	 iv_ruleFunctionBody=ruleFunctionBody 
-	 { $current=$iv_ruleFunctionBody.current; } 
-	 EOF 
-;
-
-// Rule FunctionBody
-ruleFunctionBody returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getFunctionBodyAccess().getBasicBlocksBasicBlockParserRuleCall_0()); 
-	    }
-		lv_basicBlocks_0_0=ruleBasicBlock		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionBodyRule());
-	        }
-       		add(
-       			$current, 
-       			"basicBlocks",
-        		lv_basicBlocks_0_0, 
-        		"BasicBlock");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)+
 ;
 
 

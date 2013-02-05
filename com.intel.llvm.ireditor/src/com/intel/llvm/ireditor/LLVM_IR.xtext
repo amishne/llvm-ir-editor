@@ -292,7 +292,7 @@ Function:
 ;
 
 FunctionDef:
-	'define' header=FunctionHeader '{' body=FunctionBody '}'
+	'define' header=FunctionHeader '{' basicBlocks+=BasicBlock+ '}'
 ;
 
 FunctionDecl:
@@ -316,10 +316,6 @@ Parameters:
 		(parameters+=Parameter (',' parameters+=Parameter)* (',' vararg='...')?)? |
 		vararg='...'
 	)
-;
-
-FunctionBody:
-	basicBlocks+=BasicBlock+
 ;
 
 FunctionAttributes:

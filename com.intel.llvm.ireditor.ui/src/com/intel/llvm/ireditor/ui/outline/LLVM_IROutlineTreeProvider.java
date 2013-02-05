@@ -29,7 +29,6 @@ package com.intel.llvm.ireditor.ui.outline;
 
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionBody;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
@@ -58,7 +57,7 @@ public class LLVM_IROutlineTreeProvider extends DefaultOutlineTreeProvider {
 	protected void createNode(IOutlineNode parent, EObject modelElement) {
 		if (isOneOf(modelElement, new Class<?>[] {
 				Model.class,
-				FunctionBody.class,
+				FunctionDef.class,
 				})) {
 			super.createNode(parent, modelElement);
 		} else if (isOneOf(modelElement, new Class<?>[] {
@@ -73,15 +72,14 @@ public class LLVM_IROutlineTreeProvider extends DefaultOutlineTreeProvider {
 					textDispatcher.invoke(modelElement), true);
 		} else if (modelElement instanceof FunctionDef) {
 			FunctionDef func = (FunctionDef) modelElement;
-			if (func.getBody() == null) return;
-			createEObjectNode(parent, func.getBody(), imageDispatcher.invoke(func), textDispatcher.invoke(func), false);
+			createEObjectNode(parent, func, imageDispatcher.invoke(func), textDispatcher.invoke(func), false);
 		}
 	}
 	
 	@Override
 	public void createChildren(IOutlineNode parent, EObject modelElement) {
 		if (isOneOf(modelElement, new Class<?>[]
-				{Model.class, FunctionDef.class, FunctionBody.class})) {
+				{Model.class, FunctionDef.class, FunctionDef.class})) {
 			super.createChildren(parent, modelElement);
 		}
 	}

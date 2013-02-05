@@ -111,7 +111,6 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.FUNCTION_DECL: return createFunctionDecl();
       case LLVM_IRPackage.FUNCTION_HEADER: return createFunctionHeader();
       case LLVM_IRPackage.PARAMETERS: return createParameters();
-      case LLVM_IRPackage.FUNCTION_BODY: return createFunctionBody();
       case LLVM_IRPackage.FUNCTION_ATTRIBUTES: return createFunctionAttributes();
       case LLVM_IRPackage.BASIC_BLOCK: return createBasicBlock();
       case LLVM_IRPackage.METADATA_SUFFIX: return createMetadataSuffix();
@@ -719,17 +718,6 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     ParametersImpl parameters = new ParametersImpl();
     return parameters;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FunctionBody createFunctionBody()
-  {
-    FunctionBodyImpl functionBody = new FunctionBodyImpl();
-    return functionBody;
   }
 
   /**

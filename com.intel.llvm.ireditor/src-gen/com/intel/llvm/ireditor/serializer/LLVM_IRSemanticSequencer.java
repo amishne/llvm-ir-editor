@@ -25,7 +25,6 @@ import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionBody;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
@@ -302,12 +301,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case LLVM_IRPackage.FUNCTION_ATTRIBUTES:
 				if(context == grammarAccess.getFunctionAttributesRule()) {
 					sequence_FunctionAttributes(context, (FunctionAttributes) semanticObject); 
-					return; 
-				}
-				else break;
-			case LLVM_IRPackage.FUNCTION_BODY:
-				if(context == grammarAccess.getFunctionBodyRule()) {
-					sequence_FunctionBody(context, (FunctionBody) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1321,15 +1314,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     basicBlocks+=BasicBlock+
-	 */
-	protected void sequence_FunctionBody(EObject context, FunctionBody semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
 	 *     header=FunctionHeader
 	 */
 	protected void sequence_FunctionDecl(EObject context, FunctionDecl semanticObject) {
@@ -1346,20 +1330,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (header=FunctionHeader body=FunctionBody)
+	 *     (header=FunctionHeader basicBlocks+=BasicBlock+)
 	 */
 	protected void sequence_FunctionDef(EObject context, FunctionDef semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.FUNCTION__HEADER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.FUNCTION__HEADER));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.FUNCTION_DEF__BODY) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.FUNCTION_DEF__BODY));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunctionDefAccess().getHeaderFunctionHeaderParserRuleCall_1_0(), semanticObject.getHeader());
-		feeder.accept(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_3_0(), semanticObject.getBody());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

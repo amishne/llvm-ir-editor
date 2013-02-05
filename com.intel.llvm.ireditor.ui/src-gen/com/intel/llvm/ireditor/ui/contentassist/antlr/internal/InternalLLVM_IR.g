@@ -1435,41 +1435,6 @@ finally {
 
 
 
-// Entry rule entryRuleFunctionBody
-entryRuleFunctionBody 
-:
-{ before(grammarAccess.getFunctionBodyRule()); }
-	 ruleFunctionBody
-{ after(grammarAccess.getFunctionBodyRule()); } 
-	 EOF 
-;
-
-// Rule FunctionBody
-ruleFunctionBody
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-(
-{ before(grammarAccess.getFunctionBodyAccess().getBasicBlocksAssignment()); }
-(rule__FunctionBody__BasicBlocksAssignment)
-{ after(grammarAccess.getFunctionBodyAccess().getBasicBlocksAssignment()); }
-)
-(
-{ before(grammarAccess.getFunctionBodyAccess().getBasicBlocksAssignment()); }
-(rule__FunctionBody__BasicBlocksAssignment)*
-{ after(grammarAccess.getFunctionBodyAccess().getBasicBlocksAssignment()); }
-)
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
 // Entry rule entryRuleFunctionAttributes
 entryRuleFunctionAttributes 
 :
@@ -12047,9 +12012,16 @@ rule__FunctionDef__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getFunctionDefAccess().getBodyAssignment_3()); }
-(rule__FunctionDef__BodyAssignment_3)
-{ after(grammarAccess.getFunctionDefAccess().getBodyAssignment_3()); }
+(
+{ before(grammarAccess.getFunctionDefAccess().getBasicBlocksAssignment_3()); }
+(rule__FunctionDef__BasicBlocksAssignment_3)
+{ after(grammarAccess.getFunctionDefAccess().getBasicBlocksAssignment_3()); }
+)
+(
+{ before(grammarAccess.getFunctionDefAccess().getBasicBlocksAssignment_3()); }
+(rule__FunctionDef__BasicBlocksAssignment_3)*
+{ after(grammarAccess.getFunctionDefAccess().getBasicBlocksAssignment_3()); }
+)
 )
 
 ;
@@ -29165,14 +29137,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionDef__BodyAssignment_3
+rule__FunctionDef__BasicBlocksAssignment_3
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_3_0()); }
-	ruleFunctionBody{ after(grammarAccess.getFunctionDefAccess().getBodyFunctionBodyParserRuleCall_3_0()); }
+{ before(grammarAccess.getFunctionDefAccess().getBasicBlocksBasicBlockParserRuleCall_3_0()); }
+	ruleBasicBlock{ after(grammarAccess.getFunctionDefAccess().getBasicBlocksBasicBlockParserRuleCall_3_0()); }
 )
 
 ;
@@ -29369,21 +29341,6 @@ rule__Parameters__VarargAssignment_1_1
 )
 
 { after(grammarAccess.getParametersAccess().getVarargFullStopFullStopFullStopKeyword_1_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionBody__BasicBlocksAssignment
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionBodyAccess().getBasicBlocksBasicBlockParserRuleCall_0()); }
-	ruleBasicBlock{ after(grammarAccess.getFunctionBodyAccess().getBasicBlocksBasicBlockParserRuleCall_0()); }
 )
 
 ;
