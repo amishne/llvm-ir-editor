@@ -539,19 +539,19 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkNumberSequence(GlobalVariable val) {
-		checkNumberSequence(val, val.eContainer(),
+		checkNumberSequence(val, val,
 				Literals.GLOBAL_VARIABLE__NAME);
 	}
 	
 	@Check
 	public void checkNumberSequence(FunctionHeader val) {
-		checkNumberSequence(val, val.eContainer().eContainer(),
+		checkNumberSequence(val, val.eContainer(),
 				Literals.FUNCTION_HEADER__NAME);
 	}
 	
 	@Check
 	public void checkNumberSequence(Alias val) {
-		checkNumberSequence(val, val.eContainer().eContainer(),
+		checkNumberSequence(val, val,
 				Literals.ALIAS__NAME);
 	}
 	
