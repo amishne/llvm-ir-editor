@@ -20,7 +20,6 @@
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//ValueRef"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//GlobalValueRef">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/ref"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/constant"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/metadata"/>
     </genClasses>
@@ -67,7 +66,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalVariable/section"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//GlobalVariable/align"/>
     </genClasses>
-    <genClasses ecoreClass="LLVM_IR.ecore#//Constant"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Constant">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Constant/ref"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//ConstantExpression">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//ConstantExpression/opcode"/>
     </genClasses>

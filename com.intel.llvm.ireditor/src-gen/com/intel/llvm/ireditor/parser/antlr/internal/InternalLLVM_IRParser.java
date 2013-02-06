@@ -1356,149 +1356,55 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGlobalValueRef"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:403:1: ruleGlobalValueRef returns [EObject current=null] : ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_constant_1_0= ruleConstant ) ) | ( (lv_metadata_2_0= ruleMetadataRef ) ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:403:1: ruleGlobalValueRef returns [EObject current=null] : ( ( (lv_constant_0_0= ruleConstant ) ) | ( (lv_metadata_1_0= ruleMetadataRef ) ) ) ;
     public final EObject ruleGlobalValueRef() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
-        EObject lv_constant_1_0 = null;
+        EObject lv_constant_0_0 = null;
 
-        EObject lv_metadata_2_0 = null;
+        EObject lv_metadata_1_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:406:28: ( ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_constant_1_0= ruleConstant ) ) | ( (lv_metadata_2_0= ruleMetadataRef ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:1: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_constant_1_0= ruleConstant ) ) | ( (lv_metadata_2_0= ruleMetadataRef ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:406:28: ( ( ( (lv_constant_0_0= ruleConstant ) ) | ( (lv_metadata_1_0= ruleMetadataRef ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:1: ( ( (lv_constant_0_0= ruleConstant ) ) | ( (lv_metadata_1_0= ruleMetadataRef ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:1: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_constant_1_0= ruleConstant ) ) | ( (lv_metadata_2_0= ruleMetadataRef ) ) )
-            int alt6=3;
-            switch ( input.LA(1) ) {
-            case RULE_GLOBAL_ID:
-                {
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:1: ( ( (lv_constant_0_0= ruleConstant ) ) | ( (lv_metadata_1_0= ruleMetadataRef ) ) )
+            int alt6=2;
+            int LA6_0 = input.LA(1);
+
+            if ( (LA6_0==RULE_GLOBAL_ID||(LA6_0>=RULE_INTEGER && LA6_0<=RULE_METADATA_STRING)||LA6_0==38||(LA6_0>=40 && LA6_0<=69)||LA6_0==71||LA6_0==73||LA6_0==75||(LA6_0>=138 && LA6_0<=149)) ) {
                 alt6=1;
-                }
-                break;
-            case RULE_INTEGER:
-            case RULE_SIGNED_INT:
-            case RULE_FLOAT:
-            case RULE_BOOLEAN:
-            case RULE_NULL:
-            case RULE_CSTRING:
-            case RULE_METADATA_STRING:
-            case 38:
-            case 40:
-            case 41:
-            case 42:
-            case 43:
-            case 44:
-            case 45:
-            case 46:
-            case 47:
-            case 48:
-            case 49:
-            case 50:
-            case 51:
-            case 52:
-            case 53:
-            case 54:
-            case 55:
-            case 56:
-            case 57:
-            case 58:
-            case 59:
-            case 60:
-            case 61:
-            case 62:
-            case 63:
-            case 64:
-            case 65:
-            case 66:
-            case 67:
-            case 68:
-            case 69:
-            case 71:
-            case 73:
-            case 75:
-            case 138:
-            case 139:
-            case 140:
-            case 141:
-            case 142:
-            case 143:
-            case 144:
-            case 145:
-            case 146:
-            case 147:
-            case 148:
-            case 149:
-                {
+            }
+            else if ( ((LA6_0>=RULE_META_INT && LA6_0<=RULE_META_NAME)) ) {
                 alt6=2;
-                }
-                break;
-            case RULE_META_INT:
-            case RULE_META_NAME:
-                {
-                alt6=3;
-                }
-                break;
-            default:
+            }
+            else {
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
                     new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
             }
-
             switch (alt6) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:2: ( (otherlv_0= RULE_GLOBAL_ID ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:2: ( (lv_constant_0_0= ruleConstant ) )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:2: ( (otherlv_0= RULE_GLOBAL_ID ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:408:1: (otherlv_0= RULE_GLOBAL_ID )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:407:2: ( (lv_constant_0_0= ruleConstant ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:408:1: (lv_constant_0_0= ruleConstant )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:408:1: (otherlv_0= RULE_GLOBAL_ID )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:409:3: otherlv_0= RULE_GLOBAL_ID
-                    {
-                    if ( state.backtracking==0 ) {
-
-                      			if (current==null) {
-                      	            current = createModelElement(grammarAccess.getGlobalValueRefRule());
-                      	        }
-                              
-                    }
-                    otherlv_0=(Token)match(input,RULE_GLOBAL_ID,FOLLOW_RULE_GLOBAL_ID_in_ruleGlobalValueRef958); if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      		newLeafNode(otherlv_0, grammarAccess.getGlobalValueRefAccess().getRefGlobalValueDefCrossReference_0_0()); 
-                      	
-                    }
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:421:6: ( (lv_constant_1_0= ruleConstant ) )
-                    {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:421:6: ( (lv_constant_1_0= ruleConstant ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:422:1: (lv_constant_1_0= ruleConstant )
-                    {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:422:1: (lv_constant_1_0= ruleConstant )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:423:3: lv_constant_1_0= ruleConstant
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:408:1: (lv_constant_0_0= ruleConstant )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:409:3: lv_constant_0_0= ruleConstant
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_1_0()); 
+                      	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_0_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConstant_in_ruleGlobalValueRef985);
-                    lv_constant_1_0=ruleConstant();
+                    pushFollow(FOLLOW_ruleConstant_in_ruleGlobalValueRef959);
+                    lv_constant_0_0=ruleConstant();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -1510,7 +1416,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"constant",
-                              		lv_constant_1_0, 
+                              		lv_constant_0_0, 
                               		"Constant");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -1524,22 +1430,22 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
-                case 3 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:440:6: ( (lv_metadata_2_0= ruleMetadataRef ) )
+                case 2 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:426:6: ( (lv_metadata_1_0= ruleMetadataRef ) )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:440:6: ( (lv_metadata_2_0= ruleMetadataRef ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:441:1: (lv_metadata_2_0= ruleMetadataRef )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:426:6: ( (lv_metadata_1_0= ruleMetadataRef ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:427:1: (lv_metadata_1_0= ruleMetadataRef )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:441:1: (lv_metadata_2_0= ruleMetadataRef )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:442:3: lv_metadata_2_0= ruleMetadataRef
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:427:1: (lv_metadata_1_0= ruleMetadataRef )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:428:3: lv_metadata_1_0= ruleMetadataRef
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_2_0()); 
+                      	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleMetadataRef_in_ruleGlobalValueRef1012);
-                    lv_metadata_2_0=ruleMetadataRef();
+                    pushFollow(FOLLOW_ruleMetadataRef_in_ruleGlobalValueRef986);
+                    lv_metadata_1_0=ruleMetadataRef();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -1551,7 +1457,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                              		set(
                              			current, 
                              			"metadata",
-                              		lv_metadata_2_0, 
+                              		lv_metadata_1_0, 
                               		"MetadataRef");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -1588,7 +1494,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFunctionRef"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:466:1: entryRuleFunctionRef returns [EObject current=null] : iv_ruleFunctionRef= ruleFunctionRef EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:452:1: entryRuleFunctionRef returns [EObject current=null] : iv_ruleFunctionRef= ruleFunctionRef EOF ;
     public final EObject entryRuleFunctionRef() throws RecognitionException {
         EObject current = null;
 
@@ -1596,13 +1502,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:467:2: (iv_ruleFunctionRef= ruleFunctionRef EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:468:2: iv_ruleFunctionRef= ruleFunctionRef EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:453:2: (iv_ruleFunctionRef= ruleFunctionRef EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:454:2: iv_ruleFunctionRef= ruleFunctionRef EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getFunctionRefRule()); 
             }
-            pushFollow(FOLLOW_ruleFunctionRef_in_entryRuleFunctionRef1048);
+            pushFollow(FOLLOW_ruleFunctionRef_in_entryRuleFunctionRef1022);
             iv_ruleFunctionRef=ruleFunctionRef();
 
             state._fsp--;
@@ -1610,7 +1516,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleFunctionRef; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFunctionRef1058); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleFunctionRef1032); if (state.failed) return current;
 
             }
 
@@ -1628,7 +1534,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionRef"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:475:1: ruleFunctionRef returns [EObject current=null] : ( (otherlv_0= RULE_GLOBAL_ID ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:461:1: ruleFunctionRef returns [EObject current=null] : ( (otherlv_0= RULE_GLOBAL_ID ) ) ;
     public final EObject ruleFunctionRef() throws RecognitionException {
         EObject current = null;
 
@@ -1637,14 +1543,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:478:28: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:479:1: ( (otherlv_0= RULE_GLOBAL_ID ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:464:28: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:465:1: ( (otherlv_0= RULE_GLOBAL_ID ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:479:1: ( (otherlv_0= RULE_GLOBAL_ID ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:480:1: (otherlv_0= RULE_GLOBAL_ID )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:465:1: ( (otherlv_0= RULE_GLOBAL_ID ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:466:1: (otherlv_0= RULE_GLOBAL_ID )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:480:1: (otherlv_0= RULE_GLOBAL_ID )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:481:3: otherlv_0= RULE_GLOBAL_ID
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:466:1: (otherlv_0= RULE_GLOBAL_ID )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:467:3: otherlv_0= RULE_GLOBAL_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -1653,7 +1559,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_0=(Token)match(input,RULE_GLOBAL_ID,FOLLOW_RULE_GLOBAL_ID_in_ruleFunctionRef1102); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_GLOBAL_ID,FOLLOW_RULE_GLOBAL_ID_in_ruleFunctionRef1076); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_0, grammarAccess.getFunctionRefAccess().getRefFunctionHeaderCrossReference_0()); 
@@ -1685,7 +1591,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleLocalValueRef"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:500:1: entryRuleLocalValueRef returns [EObject current=null] : iv_ruleLocalValueRef= ruleLocalValueRef EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:486:1: entryRuleLocalValueRef returns [EObject current=null] : iv_ruleLocalValueRef= ruleLocalValueRef EOF ;
     public final EObject entryRuleLocalValueRef() throws RecognitionException {
         EObject current = null;
 
@@ -1693,13 +1599,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:501:2: (iv_ruleLocalValueRef= ruleLocalValueRef EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:502:2: iv_ruleLocalValueRef= ruleLocalValueRef EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:487:2: (iv_ruleLocalValueRef= ruleLocalValueRef EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:488:2: iv_ruleLocalValueRef= ruleLocalValueRef EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getLocalValueRefRule()); 
             }
-            pushFollow(FOLLOW_ruleLocalValueRef_in_entryRuleLocalValueRef1137);
+            pushFollow(FOLLOW_ruleLocalValueRef_in_entryRuleLocalValueRef1111);
             iv_ruleLocalValueRef=ruleLocalValueRef();
 
             state._fsp--;
@@ -1707,7 +1613,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleLocalValueRef; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleLocalValueRef1147); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleLocalValueRef1121); if (state.failed) return current;
 
             }
 
@@ -1725,7 +1631,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleLocalValueRef"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:509:1: ruleLocalValueRef returns [EObject current=null] : ( (otherlv_0= RULE_LOCAL_ID ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:495:1: ruleLocalValueRef returns [EObject current=null] : ( (otherlv_0= RULE_LOCAL_ID ) ) ;
     public final EObject ruleLocalValueRef() throws RecognitionException {
         EObject current = null;
 
@@ -1734,14 +1640,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:512:28: ( ( (otherlv_0= RULE_LOCAL_ID ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:513:1: ( (otherlv_0= RULE_LOCAL_ID ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:498:28: ( ( (otherlv_0= RULE_LOCAL_ID ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:499:1: ( (otherlv_0= RULE_LOCAL_ID ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:513:1: ( (otherlv_0= RULE_LOCAL_ID ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:514:1: (otherlv_0= RULE_LOCAL_ID )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:499:1: ( (otherlv_0= RULE_LOCAL_ID ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:500:1: (otherlv_0= RULE_LOCAL_ID )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:514:1: (otherlv_0= RULE_LOCAL_ID )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:515:3: otherlv_0= RULE_LOCAL_ID
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:500:1: (otherlv_0= RULE_LOCAL_ID )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:501:3: otherlv_0= RULE_LOCAL_ID
             {
             if ( state.backtracking==0 ) {
 
@@ -1750,7 +1656,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
               	        }
                       
             }
-            otherlv_0=(Token)match(input,RULE_LOCAL_ID,FOLLOW_RULE_LOCAL_ID_in_ruleLocalValueRef1191); if (state.failed) return current;
+            otherlv_0=(Token)match(input,RULE_LOCAL_ID,FOLLOW_RULE_LOCAL_ID_in_ruleLocalValueRef1165); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               		newLeafNode(otherlv_0, grammarAccess.getLocalValueRefAccess().getRefLocalValueCrossReference_0()); 
@@ -1782,7 +1688,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGlobalValue"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:534:1: entryRuleGlobalValue returns [EObject current=null] : iv_ruleGlobalValue= ruleGlobalValue EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:520:1: entryRuleGlobalValue returns [EObject current=null] : iv_ruleGlobalValue= ruleGlobalValue EOF ;
     public final EObject entryRuleGlobalValue() throws RecognitionException {
         EObject current = null;
 
@@ -1790,13 +1696,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:535:2: (iv_ruleGlobalValue= ruleGlobalValue EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:536:2: iv_ruleGlobalValue= ruleGlobalValue EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:521:2: (iv_ruleGlobalValue= ruleGlobalValue EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:522:2: iv_ruleGlobalValue= ruleGlobalValue EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getGlobalValueRule()); 
             }
-            pushFollow(FOLLOW_ruleGlobalValue_in_entryRuleGlobalValue1226);
+            pushFollow(FOLLOW_ruleGlobalValue_in_entryRuleGlobalValue1200);
             iv_ruleGlobalValue=ruleGlobalValue();
 
             state._fsp--;
@@ -1804,7 +1710,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleGlobalValue; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGlobalValue1236); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleGlobalValue1210); if (state.failed) return current;
 
             }
 
@@ -1822,7 +1728,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGlobalValue"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:543:1: ruleGlobalValue returns [EObject current=null] : (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:529:1: ruleGlobalValue returns [EObject current=null] : (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias ) ;
     public final EObject ruleGlobalValue() throws RecognitionException {
         EObject current = null;
 
@@ -1836,22 +1742,22 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:546:28: ( (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:547:1: (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:532:28: ( (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:533:1: (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:547:1: (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:533:1: (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias )
             int alt7=3;
             alt7 = dfa7.predict(input);
             switch (alt7) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:548:5: this_GlobalVariable_0= ruleGlobalVariable
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:534:5: this_GlobalVariable_0= ruleGlobalVariable
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getGlobalValueAccess().getGlobalVariableParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleGlobalVariable_in_ruleGlobalValue1283);
+                    pushFollow(FOLLOW_ruleGlobalVariable_in_ruleGlobalValue1257);
                     this_GlobalVariable_0=ruleGlobalVariable();
 
                     state._fsp--;
@@ -1866,14 +1772,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:558:5: this_Function_1= ruleFunction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:544:5: this_Function_1= ruleFunction
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getGlobalValueAccess().getFunctionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleFunction_in_ruleGlobalValue1310);
+                    pushFollow(FOLLOW_ruleFunction_in_ruleGlobalValue1284);
                     this_Function_1=ruleFunction();
 
                     state._fsp--;
@@ -1888,14 +1794,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:568:5: this_Alias_2= ruleAlias
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:554:5: this_Alias_2= ruleAlias
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getGlobalValueAccess().getAliasParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleAlias_in_ruleGlobalValue1337);
+                    pushFollow(FOLLOW_ruleAlias_in_ruleGlobalValue1311);
                     this_Alias_2=ruleAlias();
 
                     state._fsp--;
@@ -1932,7 +1838,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNamedInstruction"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:588:1: entryRuleNamedInstruction returns [EObject current=null] : iv_ruleNamedInstruction= ruleNamedInstruction EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:574:1: entryRuleNamedInstruction returns [EObject current=null] : iv_ruleNamedInstruction= ruleNamedInstruction EOF ;
     public final EObject entryRuleNamedInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -1940,13 +1846,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:589:2: (iv_ruleNamedInstruction= ruleNamedInstruction EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:590:2: iv_ruleNamedInstruction= ruleNamedInstruction EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:575:2: (iv_ruleNamedInstruction= ruleNamedInstruction EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:576:2: iv_ruleNamedInstruction= ruleNamedInstruction EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNamedInstructionRule()); 
             }
-            pushFollow(FOLLOW_ruleNamedInstruction_in_entryRuleNamedInstruction1376);
+            pushFollow(FOLLOW_ruleNamedInstruction_in_entryRuleNamedInstruction1350);
             iv_ruleNamedInstruction=ruleNamedInstruction();
 
             state._fsp--;
@@ -1954,7 +1860,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNamedInstruction; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleNamedInstruction1386); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleNamedInstruction1360); if (state.failed) return current;
 
             }
 
@@ -1972,7 +1878,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNamedInstruction"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:597:1: ruleNamedInstruction returns [EObject current=null] : (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:583:1: ruleNamedInstruction returns [EObject current=null] : (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction ) ;
     public final EObject ruleNamedInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -1986,22 +1892,22 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:600:28: ( (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:601:1: (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:586:28: ( (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:587:1: (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:601:1: (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:587:1: (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction )
             int alt8=3;
             alt8 = dfa8.predict(input);
             switch (alt8) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:602:5: this_StartingInstruction_0= ruleStartingInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:588:5: this_StartingInstruction_0= ruleStartingInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNamedInstructionAccess().getStartingInstructionParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStartingInstruction_in_ruleNamedInstruction1433);
+                    pushFollow(FOLLOW_ruleStartingInstruction_in_ruleNamedInstruction1407);
                     this_StartingInstruction_0=ruleStartingInstruction();
 
                     state._fsp--;
@@ -2016,14 +1922,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:612:5: this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:598:5: this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNamedInstructionAccess().getNamedMiddleInstructionParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleNamedMiddleInstruction_in_ruleNamedInstruction1460);
+                    pushFollow(FOLLOW_ruleNamedMiddleInstruction_in_ruleNamedInstruction1434);
                     this_NamedMiddleInstruction_1=ruleNamedMiddleInstruction();
 
                     state._fsp--;
@@ -2038,14 +1944,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:622:5: this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:608:5: this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getNamedInstructionAccess().getNamedTerminatorInstructionParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleNamedTerminatorInstruction_in_ruleNamedInstruction1487);
+                    pushFollow(FOLLOW_ruleNamedTerminatorInstruction_in_ruleNamedInstruction1461);
                     this_NamedTerminatorInstruction_2=ruleNamedTerminatorInstruction();
 
                     state._fsp--;
@@ -2082,7 +1988,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAlias"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:640:1: entryRuleAlias returns [EObject current=null] : iv_ruleAlias= ruleAlias EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:626:1: entryRuleAlias returns [EObject current=null] : iv_ruleAlias= ruleAlias EOF ;
     public final EObject entryRuleAlias() throws RecognitionException {
         EObject current = null;
 
@@ -2090,13 +1996,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:641:2: (iv_ruleAlias= ruleAlias EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:642:2: iv_ruleAlias= ruleAlias EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:627:2: (iv_ruleAlias= ruleAlias EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:628:2: iv_ruleAlias= ruleAlias EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAliasRule()); 
             }
-            pushFollow(FOLLOW_ruleAlias_in_entryRuleAlias1524);
+            pushFollow(FOLLOW_ruleAlias_in_entryRuleAlias1498);
             iv_ruleAlias=ruleAlias();
 
             state._fsp--;
@@ -2104,7 +2010,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAlias; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAlias1534); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAlias1508); if (state.failed) return current;
 
             }
 
@@ -2122,7 +2028,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAlias"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:649:1: ruleAlias returns [EObject current=null] : ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:635:1: ruleAlias returns [EObject current=null] : ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) ) ;
     public final EObject ruleAlias() throws RecognitionException {
         EObject current = null;
 
@@ -2141,24 +2047,24 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:652:28: ( ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:653:1: ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:638:28: ( ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:639:1: ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:653:1: ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:653:2: ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:639:1: ( ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:639:2: ( (lv_name_0_0= ruleGlobalName ) ) otherlv_1= 'alias' ( (lv_linkage_2_0= ruleLinkage ) )? ( (lv_visibility_3_0= ruleVisibility ) )? ( (lv_type_4_0= ruleType ) ) ( (lv_aliasee_5_0= ruleAliasee ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:653:2: ( (lv_name_0_0= ruleGlobalName ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:654:1: (lv_name_0_0= ruleGlobalName )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:639:2: ( (lv_name_0_0= ruleGlobalName ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:640:1: (lv_name_0_0= ruleGlobalName )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:654:1: (lv_name_0_0= ruleGlobalName )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:655:3: lv_name_0_0= ruleGlobalName
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:640:1: (lv_name_0_0= ruleGlobalName )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:641:3: lv_name_0_0= ruleGlobalName
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getAliasAccess().getNameGlobalNameParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleGlobalName_in_ruleAlias1580);
+            pushFollow(FOLLOW_ruleGlobalName_in_ruleAlias1554);
             lv_name_0_0=ruleGlobalName();
 
             state._fsp--;
@@ -2182,13 +2088,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,25,FOLLOW_25_in_ruleAlias1592); if (state.failed) return current;
+            otherlv_1=(Token)match(input,25,FOLLOW_25_in_ruleAlias1566); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getAliasAccess().getAliasKeyword_1());
                   
             }
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:675:1: ( (lv_linkage_2_0= ruleLinkage ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:661:1: ( (lv_linkage_2_0= ruleLinkage ) )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2197,17 +2103,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:676:1: (lv_linkage_2_0= ruleLinkage )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:662:1: (lv_linkage_2_0= ruleLinkage )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:676:1: (lv_linkage_2_0= ruleLinkage )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:677:3: lv_linkage_2_0= ruleLinkage
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:662:1: (lv_linkage_2_0= ruleLinkage )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:663:3: lv_linkage_2_0= ruleLinkage
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getAliasAccess().getLinkageLinkageParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleLinkage_in_ruleAlias1613);
+                    pushFollow(FOLLOW_ruleLinkage_in_ruleAlias1587);
                     lv_linkage_2_0=ruleLinkage();
 
                     state._fsp--;
@@ -2234,7 +2140,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:693:3: ( (lv_visibility_3_0= ruleVisibility ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:679:3: ( (lv_visibility_3_0= ruleVisibility ) )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -2243,17 +2149,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt10) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:694:1: (lv_visibility_3_0= ruleVisibility )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:680:1: (lv_visibility_3_0= ruleVisibility )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:694:1: (lv_visibility_3_0= ruleVisibility )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:695:3: lv_visibility_3_0= ruleVisibility
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:680:1: (lv_visibility_3_0= ruleVisibility )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:681:3: lv_visibility_3_0= ruleVisibility
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getAliasAccess().getVisibilityVisibilityParserRuleCall_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleVisibility_in_ruleAlias1635);
+                    pushFollow(FOLLOW_ruleVisibility_in_ruleAlias1609);
                     lv_visibility_3_0=ruleVisibility();
 
                     state._fsp--;
@@ -2280,18 +2186,18 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:711:3: ( (lv_type_4_0= ruleType ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:712:1: (lv_type_4_0= ruleType )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:697:3: ( (lv_type_4_0= ruleType ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:698:1: (lv_type_4_0= ruleType )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:712:1: (lv_type_4_0= ruleType )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:713:3: lv_type_4_0= ruleType
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:698:1: (lv_type_4_0= ruleType )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:699:3: lv_type_4_0= ruleType
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getAliasAccess().getTypeTypeParserRuleCall_4_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleAlias1657);
+            pushFollow(FOLLOW_ruleType_in_ruleAlias1631);
             lv_type_4_0=ruleType();
 
             state._fsp--;
@@ -2315,18 +2221,18 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:729:2: ( (lv_aliasee_5_0= ruleAliasee ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:730:1: (lv_aliasee_5_0= ruleAliasee )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:715:2: ( (lv_aliasee_5_0= ruleAliasee ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:716:1: (lv_aliasee_5_0= ruleAliasee )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:730:1: (lv_aliasee_5_0= ruleAliasee )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:731:3: lv_aliasee_5_0= ruleAliasee
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:716:1: (lv_aliasee_5_0= ruleAliasee )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:717:3: lv_aliasee_5_0= ruleAliasee
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getAliasAccess().getAliaseeAliaseeParserRuleCall_5_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleAliasee_in_ruleAlias1678);
+            pushFollow(FOLLOW_ruleAliasee_in_ruleAlias1652);
             lv_aliasee_5_0=ruleAliasee();
 
             state._fsp--;
@@ -2373,7 +2279,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAliasee"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:755:1: entryRuleAliasee returns [EObject current=null] : iv_ruleAliasee= ruleAliasee EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:741:1: entryRuleAliasee returns [EObject current=null] : iv_ruleAliasee= ruleAliasee EOF ;
     public final EObject entryRuleAliasee() throws RecognitionException {
         EObject current = null;
 
@@ -2381,13 +2287,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:756:2: (iv_ruleAliasee= ruleAliasee EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:757:2: iv_ruleAliasee= ruleAliasee EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:742:2: (iv_ruleAliasee= ruleAliasee EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:743:2: iv_ruleAliasee= ruleAliasee EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getAliaseeRule()); 
             }
-            pushFollow(FOLLOW_ruleAliasee_in_entryRuleAliasee1714);
+            pushFollow(FOLLOW_ruleAliasee_in_entryRuleAliasee1688);
             iv_ruleAliasee=ruleAliasee();
 
             state._fsp--;
@@ -2395,7 +2301,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleAliasee; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAliasee1724); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAliasee1698); if (state.failed) return current;
 
             }
 
@@ -2413,7 +2319,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAliasee"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:764:1: ruleAliasee returns [EObject current=null] : ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:750:1: ruleAliasee returns [EObject current=null] : ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) ) ;
     public final EObject ruleAliasee() throws RecognitionException {
         EObject current = null;
 
@@ -2424,10 +2330,10 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:767:28: ( ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:768:1: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:753:28: ( ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:754:1: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:768:1: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:754:1: ( ( (otherlv_0= RULE_GLOBAL_ID ) ) | ( (lv_bitcast_1_0= ruleConstantExpression_convert ) ) )
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -2446,13 +2352,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt11) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:768:2: ( (otherlv_0= RULE_GLOBAL_ID ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:754:2: ( (otherlv_0= RULE_GLOBAL_ID ) )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:768:2: ( (otherlv_0= RULE_GLOBAL_ID ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:769:1: (otherlv_0= RULE_GLOBAL_ID )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:754:2: ( (otherlv_0= RULE_GLOBAL_ID ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:755:1: (otherlv_0= RULE_GLOBAL_ID )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:769:1: (otherlv_0= RULE_GLOBAL_ID )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:770:3: otherlv_0= RULE_GLOBAL_ID
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:755:1: (otherlv_0= RULE_GLOBAL_ID )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:756:3: otherlv_0= RULE_GLOBAL_ID
                     {
                     if ( state.backtracking==0 ) {
 
@@ -2461,7 +2367,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                       	        }
                               
                     }
-                    otherlv_0=(Token)match(input,RULE_GLOBAL_ID,FOLLOW_RULE_GLOBAL_ID_in_ruleAliasee1769); if (state.failed) return current;
+                    otherlv_0=(Token)match(input,RULE_GLOBAL_ID,FOLLOW_RULE_GLOBAL_ID_in_ruleAliasee1743); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                       		newLeafNode(otherlv_0, grammarAccess.getAliaseeAccess().getRefGlobalValueDefCrossReference_0_0()); 
@@ -2477,20 +2383,20 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:782:6: ( (lv_bitcast_1_0= ruleConstantExpression_convert ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:768:6: ( (lv_bitcast_1_0= ruleConstantExpression_convert ) )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:782:6: ( (lv_bitcast_1_0= ruleConstantExpression_convert ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:783:1: (lv_bitcast_1_0= ruleConstantExpression_convert )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:768:6: ( (lv_bitcast_1_0= ruleConstantExpression_convert ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:769:1: (lv_bitcast_1_0= ruleConstantExpression_convert )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:783:1: (lv_bitcast_1_0= ruleConstantExpression_convert )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:784:3: lv_bitcast_1_0= ruleConstantExpression_convert
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:769:1: (lv_bitcast_1_0= ruleConstantExpression_convert )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:770:3: lv_bitcast_1_0= ruleConstantExpression_convert
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getAliaseeAccess().getBitcastConstantExpression_convertParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConstantExpression_convert_in_ruleAliasee1796);
+                    pushFollow(FOLLOW_ruleConstantExpression_convert_in_ruleAliasee1770);
                     lv_bitcast_1_0=ruleConstantExpression_convert();
 
                     state._fsp--;
@@ -2540,7 +2446,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleTargetInfo"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:808:1: entryRuleTargetInfo returns [EObject current=null] : iv_ruleTargetInfo= ruleTargetInfo EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:794:1: entryRuleTargetInfo returns [EObject current=null] : iv_ruleTargetInfo= ruleTargetInfo EOF ;
     public final EObject entryRuleTargetInfo() throws RecognitionException {
         EObject current = null;
 
@@ -2548,13 +2454,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:809:2: (iv_ruleTargetInfo= ruleTargetInfo EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:810:2: iv_ruleTargetInfo= ruleTargetInfo EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:795:2: (iv_ruleTargetInfo= ruleTargetInfo EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:796:2: iv_ruleTargetInfo= ruleTargetInfo EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getTargetInfoRule()); 
             }
-            pushFollow(FOLLOW_ruleTargetInfo_in_entryRuleTargetInfo1832);
+            pushFollow(FOLLOW_ruleTargetInfo_in_entryRuleTargetInfo1806);
             iv_ruleTargetInfo=ruleTargetInfo();
 
             state._fsp--;
@@ -2562,7 +2468,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleTargetInfo; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleTargetInfo1842); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleTargetInfo1816); if (state.failed) return current;
 
             }
 
@@ -2580,7 +2486,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleTargetInfo"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:817:1: ruleTargetInfo returns [EObject current=null] : (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:803:1: ruleTargetInfo returns [EObject current=null] : (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) ) ;
     public final EObject ruleTargetInfo() throws RecognitionException {
         EObject current = null;
 
@@ -2593,25 +2499,25 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:820:28: ( (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:821:1: (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:806:28: ( (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:807:1: (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:821:1: (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:821:3: otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:807:1: (otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:807:3: otherlv_0= 'target' ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) ) otherlv_2= '=' ( (lv_layout_3_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,26,FOLLOW_26_in_ruleTargetInfo1879); if (state.failed) return current;
+            otherlv_0=(Token)match(input,26,FOLLOW_26_in_ruleTargetInfo1853); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getTargetInfoAccess().getTargetKeyword_0());
                   
             }
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:825:1: ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:826:1: ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:811:1: ( ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:812:1: ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:826:1: ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:827:1: (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:812:1: ( (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:813:1: (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:827:1: (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:813:1: (lv_infoType_1_1= 'datalayout' | lv_infoType_1_2= 'triple' )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2630,9 +2536,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt12) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:828:3: lv_infoType_1_1= 'datalayout'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:814:3: lv_infoType_1_1= 'datalayout'
                     {
-                    lv_infoType_1_1=(Token)match(input,27,FOLLOW_27_in_ruleTargetInfo1899); if (state.failed) return current;
+                    lv_infoType_1_1=(Token)match(input,27,FOLLOW_27_in_ruleTargetInfo1873); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_infoType_1_1, grammarAccess.getTargetInfoAccess().getInfoTypeDatalayoutKeyword_1_0_0());
@@ -2650,9 +2556,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:840:8: lv_infoType_1_2= 'triple'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:826:8: lv_infoType_1_2= 'triple'
                     {
-                    lv_infoType_1_2=(Token)match(input,28,FOLLOW_28_in_ruleTargetInfo1928); if (state.failed) return current;
+                    lv_infoType_1_2=(Token)match(input,28,FOLLOW_28_in_ruleTargetInfo1902); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               newLeafNode(lv_infoType_1_2, grammarAccess.getTargetInfoAccess().getInfoTypeTripleKeyword_1_0_1());
@@ -2678,19 +2584,19 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleTargetInfo1956); if (state.failed) return current;
+            otherlv_2=(Token)match(input,23,FOLLOW_23_in_ruleTargetInfo1930); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_2, grammarAccess.getTargetInfoAccess().getEqualsSignKeyword_2());
                   
             }
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:859:1: ( (lv_layout_3_0= RULE_STRING ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:860:1: (lv_layout_3_0= RULE_STRING )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:845:1: ( (lv_layout_3_0= RULE_STRING ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:846:1: (lv_layout_3_0= RULE_STRING )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:860:1: (lv_layout_3_0= RULE_STRING )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:861:3: lv_layout_3_0= RULE_STRING
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:846:1: (lv_layout_3_0= RULE_STRING )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:847:3: lv_layout_3_0= RULE_STRING
             {
-            lv_layout_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTargetInfo1973); if (state.failed) return current;
+            lv_layout_3_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleTargetInfo1947); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_layout_3_0, grammarAccess.getTargetInfoAccess().getLayoutSTRINGTerminalRuleCall_3_0()); 
@@ -2737,7 +2643,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInlineAsm"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:885:1: entryRuleInlineAsm returns [EObject current=null] : iv_ruleInlineAsm= ruleInlineAsm EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:871:1: entryRuleInlineAsm returns [EObject current=null] : iv_ruleInlineAsm= ruleInlineAsm EOF ;
     public final EObject entryRuleInlineAsm() throws RecognitionException {
         EObject current = null;
 
@@ -2745,13 +2651,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:886:2: (iv_ruleInlineAsm= ruleInlineAsm EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:887:2: iv_ruleInlineAsm= ruleInlineAsm EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:872:2: (iv_ruleInlineAsm= ruleInlineAsm EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:873:2: iv_ruleInlineAsm= ruleInlineAsm EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getInlineAsmRule()); 
             }
-            pushFollow(FOLLOW_ruleInlineAsm_in_entryRuleInlineAsm2014);
+            pushFollow(FOLLOW_ruleInlineAsm_in_entryRuleInlineAsm1988);
             iv_ruleInlineAsm=ruleInlineAsm();
 
             state._fsp--;
@@ -2759,7 +2665,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleInlineAsm; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleInlineAsm2024); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleInlineAsm1998); if (state.failed) return current;
 
             }
 
@@ -2777,7 +2683,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInlineAsm"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:894:1: ruleInlineAsm returns [EObject current=null] : (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:880:1: ruleInlineAsm returns [EObject current=null] : (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) ) ;
     public final EObject ruleInlineAsm() throws RecognitionException {
         EObject current = null;
 
@@ -2788,31 +2694,31 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:897:28: ( (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:898:1: (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:883:28: ( (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:884:1: (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:898:1: (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:898:3: otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:884:1: (otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:884:3: otherlv_0= 'module' otherlv_1= 'asm' ( (lv_asmLine_2_0= RULE_STRING ) )
             {
-            otherlv_0=(Token)match(input,29,FOLLOW_29_in_ruleInlineAsm2061); if (state.failed) return current;
+            otherlv_0=(Token)match(input,29,FOLLOW_29_in_ruleInlineAsm2035); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_0, grammarAccess.getInlineAsmAccess().getModuleKeyword_0());
                   
             }
-            otherlv_1=(Token)match(input,30,FOLLOW_30_in_ruleInlineAsm2073); if (state.failed) return current;
+            otherlv_1=(Token)match(input,30,FOLLOW_30_in_ruleInlineAsm2047); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
                   	newLeafNode(otherlv_1, grammarAccess.getInlineAsmAccess().getAsmKeyword_1());
                   
             }
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:906:1: ( (lv_asmLine_2_0= RULE_STRING ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:907:1: (lv_asmLine_2_0= RULE_STRING )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:892:1: ( (lv_asmLine_2_0= RULE_STRING ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:893:1: (lv_asmLine_2_0= RULE_STRING )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:907:1: (lv_asmLine_2_0= RULE_STRING )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:908:3: lv_asmLine_2_0= RULE_STRING
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:893:1: (lv_asmLine_2_0= RULE_STRING )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:894:3: lv_asmLine_2_0= RULE_STRING
             {
-            lv_asmLine_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleInlineAsm2090); if (state.failed) return current;
+            lv_asmLine_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleInlineAsm2064); if (state.failed) return current;
             if ( state.backtracking==0 ) {
 
               			newLeafNode(lv_asmLine_2_0, grammarAccess.getInlineAsmAccess().getAsmLineSTRINGTerminalRuleCall_2_0()); 
@@ -2859,7 +2765,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleGlobalVariable"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:932:1: entryRuleGlobalVariable returns [EObject current=null] : iv_ruleGlobalVariable= ruleGlobalVariable EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:918:1: entryRuleGlobalVariable returns [EObject current=null] : iv_ruleGlobalVariable= ruleGlobalVariable EOF ;
     public final EObject entryRuleGlobalVariable() throws RecognitionException {
         EObject current = null;
 
@@ -2867,13 +2773,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:933:2: (iv_ruleGlobalVariable= ruleGlobalVariable EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:934:2: iv_ruleGlobalVariable= ruleGlobalVariable EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:919:2: (iv_ruleGlobalVariable= ruleGlobalVariable EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:920:2: iv_ruleGlobalVariable= ruleGlobalVariable EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getGlobalVariableRule()); 
             }
-            pushFollow(FOLLOW_ruleGlobalVariable_in_entryRuleGlobalVariable2131);
+            pushFollow(FOLLOW_ruleGlobalVariable_in_entryRuleGlobalVariable2105);
             iv_ruleGlobalVariable=ruleGlobalVariable();
 
             state._fsp--;
@@ -2881,7 +2787,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleGlobalVariable; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleGlobalVariable2141); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleGlobalVariable2115); if (state.failed) return current;
 
             }
 
@@ -2899,7 +2805,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleGlobalVariable"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:941:1: ruleGlobalVariable returns [EObject current=null] : ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:927:1: ruleGlobalVariable returns [EObject current=null] : ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? ) ;
     public final EObject ruleGlobalVariable() throws RecognitionException {
         EObject current = null;
 
@@ -2928,24 +2834,24 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:944:28: ( ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:945:1: ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:930:28: ( ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:931:1: ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:945:1: ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:945:2: ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:931:1: ( ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )? )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:931:2: ( (lv_name_0_0= ruleGlobalName ) ) ( (lv_linkage_1_0= ruleLinkage ) )? ( (lv_addrspace_2_0= ruleAddressSpace ) )? ( (lv_tlsModel_3_0= ruleTLSmodel ) )? (otherlv_4= 'unnamed_addr' )? (otherlv_5= 'constant' | otherlv_6= 'global' ) ( (lv_type_7_0= ruleType ) ) ( (lv_initialValue_8_0= ruleConstant ) )? (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )? (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )?
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:945:2: ( (lv_name_0_0= ruleGlobalName ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:946:1: (lv_name_0_0= ruleGlobalName )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:931:2: ( (lv_name_0_0= ruleGlobalName ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:932:1: (lv_name_0_0= ruleGlobalName )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:946:1: (lv_name_0_0= ruleGlobalName )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:947:3: lv_name_0_0= ruleGlobalName
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:932:1: (lv_name_0_0= ruleGlobalName )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:933:3: lv_name_0_0= ruleGlobalName
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getNameGlobalNameParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleGlobalName_in_ruleGlobalVariable2187);
+            pushFollow(FOLLOW_ruleGlobalName_in_ruleGlobalVariable2161);
             lv_name_0_0=ruleGlobalName();
 
             state._fsp--;
@@ -2969,7 +2875,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:963:2: ( (lv_linkage_1_0= ruleLinkage ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:949:2: ( (lv_linkage_1_0= ruleLinkage ) )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2978,17 +2884,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt13) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:964:1: (lv_linkage_1_0= ruleLinkage )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:950:1: (lv_linkage_1_0= ruleLinkage )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:964:1: (lv_linkage_1_0= ruleLinkage )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:965:3: lv_linkage_1_0= ruleLinkage
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:950:1: (lv_linkage_1_0= ruleLinkage )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:951:3: lv_linkage_1_0= ruleLinkage
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getLinkageLinkageParserRuleCall_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleLinkage_in_ruleGlobalVariable2208);
+                    pushFollow(FOLLOW_ruleLinkage_in_ruleGlobalVariable2182);
                     lv_linkage_1_0=ruleLinkage();
 
                     state._fsp--;
@@ -3015,7 +2921,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:981:3: ( (lv_addrspace_2_0= ruleAddressSpace ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:967:3: ( (lv_addrspace_2_0= ruleAddressSpace ) )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -3024,17 +2930,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt14) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:982:1: (lv_addrspace_2_0= ruleAddressSpace )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:968:1: (lv_addrspace_2_0= ruleAddressSpace )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:982:1: (lv_addrspace_2_0= ruleAddressSpace )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:983:3: lv_addrspace_2_0= ruleAddressSpace
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:968:1: (lv_addrspace_2_0= ruleAddressSpace )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:969:3: lv_addrspace_2_0= ruleAddressSpace
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getAddrspaceAddressSpaceParserRuleCall_2_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAddressSpace_in_ruleGlobalVariable2230);
+                    pushFollow(FOLLOW_ruleAddressSpace_in_ruleGlobalVariable2204);
                     lv_addrspace_2_0=ruleAddressSpace();
 
                     state._fsp--;
@@ -3061,7 +2967,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:999:3: ( (lv_tlsModel_3_0= ruleTLSmodel ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:985:3: ( (lv_tlsModel_3_0= ruleTLSmodel ) )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -3070,17 +2976,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1000:1: (lv_tlsModel_3_0= ruleTLSmodel )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:986:1: (lv_tlsModel_3_0= ruleTLSmodel )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1000:1: (lv_tlsModel_3_0= ruleTLSmodel )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1001:3: lv_tlsModel_3_0= ruleTLSmodel
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:986:1: (lv_tlsModel_3_0= ruleTLSmodel )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:987:3: lv_tlsModel_3_0= ruleTLSmodel
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getTlsModelTLSmodelParserRuleCall_3_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleTLSmodel_in_ruleGlobalVariable2252);
+                    pushFollow(FOLLOW_ruleTLSmodel_in_ruleGlobalVariable2226);
                     lv_tlsModel_3_0=ruleTLSmodel();
 
                     state._fsp--;
@@ -3107,7 +3013,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1017:3: (otherlv_4= 'unnamed_addr' )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1003:3: (otherlv_4= 'unnamed_addr' )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -3116,9 +3022,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1017:5: otherlv_4= 'unnamed_addr'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1003:5: otherlv_4= 'unnamed_addr'
                     {
-                    otherlv_4=(Token)match(input,31,FOLLOW_31_in_ruleGlobalVariable2266); if (state.failed) return current;
+                    otherlv_4=(Token)match(input,31,FOLLOW_31_in_ruleGlobalVariable2240); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_4, grammarAccess.getGlobalVariableAccess().getUnnamed_addrKeyword_4());
@@ -3130,7 +3036,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1021:3: (otherlv_5= 'constant' | otherlv_6= 'global' )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1007:3: (otherlv_5= 'constant' | otherlv_6= 'global' )
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -3149,9 +3055,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt17) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1021:5: otherlv_5= 'constant'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1007:5: otherlv_5= 'constant'
                     {
-                    otherlv_5=(Token)match(input,32,FOLLOW_32_in_ruleGlobalVariable2281); if (state.failed) return current;
+                    otherlv_5=(Token)match(input,32,FOLLOW_32_in_ruleGlobalVariable2255); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_5, grammarAccess.getGlobalVariableAccess().getConstantKeyword_5_0());
@@ -3161,9 +3067,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1026:7: otherlv_6= 'global'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1012:7: otherlv_6= 'global'
                     {
-                    otherlv_6=(Token)match(input,33,FOLLOW_33_in_ruleGlobalVariable2299); if (state.failed) return current;
+                    otherlv_6=(Token)match(input,33,FOLLOW_33_in_ruleGlobalVariable2273); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_6, grammarAccess.getGlobalVariableAccess().getGlobalKeyword_5_1());
@@ -3175,18 +3081,18 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1030:2: ( (lv_type_7_0= ruleType ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1031:1: (lv_type_7_0= ruleType )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1016:2: ( (lv_type_7_0= ruleType ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1017:1: (lv_type_7_0= ruleType )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1031:1: (lv_type_7_0= ruleType )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1032:3: lv_type_7_0= ruleType
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1017:1: (lv_type_7_0= ruleType )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1018:3: lv_type_7_0= ruleType
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getTypeTypeParserRuleCall_6_0()); 
               	    
             }
-            pushFollow(FOLLOW_ruleType_in_ruleGlobalVariable2321);
+            pushFollow(FOLLOW_ruleType_in_ruleGlobalVariable2295);
             lv_type_7_0=ruleType();
 
             state._fsp--;
@@ -3210,26 +3116,33 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1048:2: ( (lv_initialValue_8_0= ruleConstant ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1034:2: ( (lv_initialValue_8_0= ruleConstant ) )?
             int alt18=2;
             int LA18_0 = input.LA(1);
 
             if ( ((LA18_0>=RULE_INTEGER && LA18_0<=RULE_METADATA_STRING)||LA18_0==38||(LA18_0>=40 && LA18_0<=69)||LA18_0==71||LA18_0==73||LA18_0==75||(LA18_0>=138 && LA18_0<=149)) ) {
                 alt18=1;
             }
+            else if ( (LA18_0==RULE_GLOBAL_ID) ) {
+                int LA18_2 = input.LA(2);
+
+                if ( (LA18_2==EOF||(LA18_2>=RULE_META_INT && LA18_2<=RULE_LOCAL_ID)||(LA18_2>=25 && LA18_2<=26)||LA18_2==29||(LA18_2>=31 && LA18_2<=34)||LA18_2==76||LA18_2==80||(LA18_2>=84 && LA18_2<=85)||LA18_2==193||(LA18_2>=203 && LA18_2<=218)) ) {
+                    alt18=1;
+                }
+            }
             switch (alt18) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1049:1: (lv_initialValue_8_0= ruleConstant )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1035:1: (lv_initialValue_8_0= ruleConstant )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1049:1: (lv_initialValue_8_0= ruleConstant )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1050:3: lv_initialValue_8_0= ruleConstant
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1035:1: (lv_initialValue_8_0= ruleConstant )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1036:3: lv_initialValue_8_0= ruleConstant
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getInitialValueConstantParserRuleCall_7_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleConstant_in_ruleGlobalVariable2342);
+                    pushFollow(FOLLOW_ruleConstant_in_ruleGlobalVariable2316);
                     lv_initialValue_8_0=ruleConstant();
 
                     state._fsp--;
@@ -3256,7 +3169,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1066:3: (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1052:3: (otherlv_9= ',' ( (lv_section_10_0= ruleSection ) ) )?
             int alt19=2;
             int LA19_0 = input.LA(1);
 
@@ -3269,26 +3182,26 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt19) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1066:5: otherlv_9= ',' ( (lv_section_10_0= ruleSection ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1052:5: otherlv_9= ',' ( (lv_section_10_0= ruleSection ) )
                     {
-                    otherlv_9=(Token)match(input,34,FOLLOW_34_in_ruleGlobalVariable2356); if (state.failed) return current;
+                    otherlv_9=(Token)match(input,34,FOLLOW_34_in_ruleGlobalVariable2330); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_9, grammarAccess.getGlobalVariableAccess().getCommaKeyword_8_0());
                           
                     }
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1070:1: ( (lv_section_10_0= ruleSection ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1071:1: (lv_section_10_0= ruleSection )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1056:1: ( (lv_section_10_0= ruleSection ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1057:1: (lv_section_10_0= ruleSection )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1071:1: (lv_section_10_0= ruleSection )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1072:3: lv_section_10_0= ruleSection
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1057:1: (lv_section_10_0= ruleSection )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1058:3: lv_section_10_0= ruleSection
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getSectionSectionParserRuleCall_8_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleSection_in_ruleGlobalVariable2377);
+                    pushFollow(FOLLOW_ruleSection_in_ruleGlobalVariable2351);
                     lv_section_10_0=ruleSection();
 
                     state._fsp--;
@@ -3318,7 +3231,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1088:4: (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )?
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1074:4: (otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) ) )?
             int alt20=2;
             int LA20_0 = input.LA(1);
 
@@ -3327,26 +3240,26 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             }
             switch (alt20) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1088:6: otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1074:6: otherlv_11= ',' ( (lv_align_12_0= ruleAlign ) )
                     {
-                    otherlv_11=(Token)match(input,34,FOLLOW_34_in_ruleGlobalVariable2392); if (state.failed) return current;
+                    otherlv_11=(Token)match(input,34,FOLLOW_34_in_ruleGlobalVariable2366); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                           	newLeafNode(otherlv_11, grammarAccess.getGlobalVariableAccess().getCommaKeyword_9_0());
                           
                     }
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1092:1: ( (lv_align_12_0= ruleAlign ) )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1093:1: (lv_align_12_0= ruleAlign )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1078:1: ( (lv_align_12_0= ruleAlign ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1079:1: (lv_align_12_0= ruleAlign )
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1093:1: (lv_align_12_0= ruleAlign )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1094:3: lv_align_12_0= ruleAlign
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1079:1: (lv_align_12_0= ruleAlign )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1080:3: lv_align_12_0= ruleAlign
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getGlobalVariableAccess().getAlignAlignParserRuleCall_9_1_0()); 
                       	    
                     }
-                    pushFollow(FOLLOW_ruleAlign_in_ruleGlobalVariable2413);
+                    pushFollow(FOLLOW_ruleAlign_in_ruleGlobalVariable2387);
                     lv_align_12_0=ruleAlign();
 
                     state._fsp--;
@@ -3399,7 +3312,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleConstant"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1118:1: entryRuleConstant returns [EObject current=null] : iv_ruleConstant= ruleConstant EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1104:1: entryRuleConstant returns [EObject current=null] : iv_ruleConstant= ruleConstant EOF ;
     public final EObject entryRuleConstant() throws RecognitionException {
         EObject current = null;
 
@@ -3407,13 +3320,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1119:2: (iv_ruleConstant= ruleConstant EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1120:2: iv_ruleConstant= ruleConstant EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1105:2: (iv_ruleConstant= ruleConstant EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1106:2: iv_ruleConstant= ruleConstant EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getConstantRule()); 
             }
-            pushFollow(FOLLOW_ruleConstant_in_entryRuleConstant2451);
+            pushFollow(FOLLOW_ruleConstant_in_entryRuleConstant2425);
             iv_ruleConstant=ruleConstant();
 
             state._fsp--;
@@ -3421,7 +3334,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleConstant; 
             }
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstant2461); if (state.failed) return current;
+            match(input,EOF,FOLLOW_EOF_in_entryRuleConstant2435); if (state.failed) return current;
 
             }
 
@@ -3439,10 +3352,11 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleConstant"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1127:1: ruleConstant returns [EObject current=null] : (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1113:1: ruleConstant returns [EObject current=null] : (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression | ( (otherlv_10= RULE_GLOBAL_ID ) ) ) ;
     public final EObject ruleConstant() throws RecognitionException {
         EObject current = null;
 
+        Token otherlv_10=null;
         EObject this_SimpleConstant_0 = null;
 
         EObject this_StructureConstant_1 = null;
@@ -3467,11 +3381,11 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1130:28: ( (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1131:1: (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1116:28: ( (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression | ( (otherlv_10= RULE_GLOBAL_ID ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1117:1: (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression | ( (otherlv_10= RULE_GLOBAL_ID ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1131:1: (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression )
-            int alt21=10;
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1117:1: (this_SimpleConstant_0= ruleSimpleConstant | this_StructureConstant_1= ruleStructureConstant | this_ArrayConstant_2= ruleArrayConstant | this_VectorConstant_3= ruleVectorConstant | this_ZeroInitializer_4= ruleZeroInitializer | this_MetadataNode_5= ruleMetadataNode | this_MetadataString_6= ruleMetadataString | this_BlockAddress_7= ruleBlockAddress | this_Undef_8= ruleUndef | this_ConstantExpression_9= ruleConstantExpression | ( (otherlv_10= RULE_GLOBAL_ID ) ) )
+            int alt21=11;
             switch ( input.LA(1) ) {
             case RULE_INTEGER:
             case RULE_SIGNED_INT:
@@ -3566,6 +3480,11 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 alt21=10;
                 }
                 break;
+            case RULE_GLOBAL_ID:
+                {
+                alt21=11;
+                }
+                break;
             default:
                 if (state.backtracking>0) {state.failed=true; return current;}
                 NoViableAltException nvae =
@@ -3576,14 +3495,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             switch (alt21) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1132:5: this_SimpleConstant_0= ruleSimpleConstant
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1118:5: this_SimpleConstant_0= ruleSimpleConstant
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getSimpleConstantParserRuleCall_0()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleSimpleConstant_in_ruleConstant2508);
+                    pushFollow(FOLLOW_ruleSimpleConstant_in_ruleConstant2482);
                     this_SimpleConstant_0=ruleSimpleConstant();
 
                     state._fsp--;
@@ -3598,14 +3517,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1142:5: this_StructureConstant_1= ruleStructureConstant
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1128:5: this_StructureConstant_1= ruleStructureConstant
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getStructureConstantParserRuleCall_1()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleStructureConstant_in_ruleConstant2535);
+                    pushFollow(FOLLOW_ruleStructureConstant_in_ruleConstant2509);
                     this_StructureConstant_1=ruleStructureConstant();
 
                     state._fsp--;
@@ -3620,14 +3539,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1152:5: this_ArrayConstant_2= ruleArrayConstant
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1138:5: this_ArrayConstant_2= ruleArrayConstant
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getArrayConstantParserRuleCall_2()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleArrayConstant_in_ruleConstant2562);
+                    pushFollow(FOLLOW_ruleArrayConstant_in_ruleConstant2536);
                     this_ArrayConstant_2=ruleArrayConstant();
 
                     state._fsp--;
@@ -3642,14 +3561,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1162:5: this_VectorConstant_3= ruleVectorConstant
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1148:5: this_VectorConstant_3= ruleVectorConstant
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getVectorConstantParserRuleCall_3()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleVectorConstant_in_ruleConstant2589);
+                    pushFollow(FOLLOW_ruleVectorConstant_in_ruleConstant2563);
                     this_VectorConstant_3=ruleVectorConstant();
 
                     state._fsp--;
@@ -3664,14 +3583,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1172:5: this_ZeroInitializer_4= ruleZeroInitializer
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1158:5: this_ZeroInitializer_4= ruleZeroInitializer
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getZeroInitializerParserRuleCall_4()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleZeroInitializer_in_ruleConstant2616);
+                    pushFollow(FOLLOW_ruleZeroInitializer_in_ruleConstant2590);
                     this_ZeroInitializer_4=ruleZeroInitializer();
 
                     state._fsp--;
@@ -3686,14 +3605,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1182:5: this_MetadataNode_5= ruleMetadataNode
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1168:5: this_MetadataNode_5= ruleMetadataNode
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getMetadataNodeParserRuleCall_5()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleMetadataNode_in_ruleConstant2643);
+                    pushFollow(FOLLOW_ruleMetadataNode_in_ruleConstant2617);
                     this_MetadataNode_5=ruleMetadataNode();
 
                     state._fsp--;
@@ -3708,14 +3627,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1192:5: this_MetadataString_6= ruleMetadataString
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1178:5: this_MetadataString_6= ruleMetadataString
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getMetadataStringParserRuleCall_6()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleMetadataString_in_ruleConstant2670);
+                    pushFollow(FOLLOW_ruleMetadataString_in_ruleConstant2644);
                     this_MetadataString_6=ruleMetadataString();
 
                     state._fsp--;
@@ -3730,14 +3649,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1202:5: this_BlockAddress_7= ruleBlockAddress
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1188:5: this_BlockAddress_7= ruleBlockAddress
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getBlockAddressParserRuleCall_7()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleBlockAddress_in_ruleConstant2697);
+                    pushFollow(FOLLOW_ruleBlockAddress_in_ruleConstant2671);
                     this_BlockAddress_7=ruleBlockAddress();
 
                     state._fsp--;
@@ -3752,14 +3671,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1212:5: this_Undef_8= ruleUndef
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1198:5: this_Undef_8= ruleUndef
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getUndefParserRuleCall_8()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleUndef_in_ruleConstant2724);
+                    pushFollow(FOLLOW_ruleUndef_in_ruleConstant2698);
                     this_Undef_8=ruleUndef();
 
                     state._fsp--;
@@ -3774,14 +3693,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1222:5: this_ConstantExpression_9= ruleConstantExpression
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1208:5: this_ConstantExpression_9= ruleConstantExpression
                     {
                     if ( state.backtracking==0 ) {
                        
                               newCompositeNode(grammarAccess.getConstantAccess().getConstantExpressionParserRuleCall_9()); 
                           
                     }
-                    pushFollow(FOLLOW_ruleConstantExpression_in_ruleConstant2751);
+                    pushFollow(FOLLOW_ruleConstantExpression_in_ruleConstant2725);
                     this_ConstantExpression_9=ruleConstantExpression();
 
                     state._fsp--;
@@ -3792,6 +3711,37 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                               afterParserOrEnumRuleCall();
                           
                     }
+
+                    }
+                    break;
+                case 11 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1217:6: ( (otherlv_10= RULE_GLOBAL_ID ) )
+                    {
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1217:6: ( (otherlv_10= RULE_GLOBAL_ID ) )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1218:1: (otherlv_10= RULE_GLOBAL_ID )
+                    {
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1218:1: (otherlv_10= RULE_GLOBAL_ID )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:1219:3: otherlv_10= RULE_GLOBAL_ID
+                    {
+                    if ( state.backtracking==0 ) {
+
+                      			if (current==null) {
+                      	            current = createModelElement(grammarAccess.getConstantRule());
+                      	        }
+                              
+                    }
+                    otherlv_10=(Token)match(input,RULE_GLOBAL_ID,FOLLOW_RULE_GLOBAL_ID_in_ruleConstant2750); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		newLeafNode(otherlv_10, grammarAccess.getConstantAccess().getRefGlobalValueDefCrossReference_10_0()); 
+                      	
+                    }
+
+                    }
+
+
+                    }
+
 
                     }
                     break;
@@ -23441,7 +23391,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 if ( (LA91_0==34) ) {
                     int LA91_2 = input.LA(2);
 
-                    if ( ((LA91_2>=RULE_INTEGER && LA91_2<=RULE_METADATA_STRING)||LA91_2==38||(LA91_2>=40 && LA91_2<=69)||LA91_2==71||LA91_2==73||LA91_2==75||(LA91_2>=138 && LA91_2<=149)) ) {
+                    if ( (LA91_2==RULE_GLOBAL_ID||(LA91_2>=RULE_INTEGER && LA91_2<=RULE_METADATA_STRING)||LA91_2==38||(LA91_2>=40 && LA91_2<=69)||LA91_2==71||LA91_2==73||LA91_2==75||(LA91_2>=138 && LA91_2<=149)) ) {
                         alt91=1;
                     }
 
@@ -23706,7 +23656,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 if ( (LA92_0==34) ) {
                     int LA92_2 = input.LA(2);
 
-                    if ( ((LA92_2>=RULE_INTEGER && LA92_2<=RULE_METADATA_STRING)||LA92_2==38||(LA92_2>=40 && LA92_2<=69)||LA92_2==71||LA92_2==73||LA92_2==75||(LA92_2>=138 && LA92_2<=149)) ) {
+                    if ( (LA92_2==RULE_GLOBAL_ID||(LA92_2>=RULE_INTEGER && LA92_2<=RULE_METADATA_STRING)||LA92_2==38||(LA92_2>=40 && LA92_2<=69)||LA92_2==71||LA92_2==73||LA92_2==75||(LA92_2>=138 && LA92_2<=149)) ) {
                         alt92=1;
                     }
 
@@ -36927,7 +36877,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             this.transition = DFA7_transition;
         }
         public String getDescription() {
-            return "547:1: (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias )";
+            return "533:1: (this_GlobalVariable_0= ruleGlobalVariable | this_Function_1= ruleFunction | this_Alias_2= ruleAlias )";
         }
     }
     static final String DFA8_eotS =
@@ -36984,7 +36934,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             this.transition = DFA8_transition;
         }
         public String getDescription() {
-            return "601:1: (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction )";
+            return "587:1: (this_StartingInstruction_0= ruleStartingInstruction | this_NamedMiddleInstruction_1= ruleNamedMiddleInstruction | this_NamedTerminatorInstruction_2= ruleNamedTerminatorInstruction )";
         }
     }
     static final String DFA54_eotS =
@@ -38168,76 +38118,76 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleLocalValueRef_in_ruleValueRef868 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleGlobalValueRef_in_entryRuleGlobalValueRef903 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleGlobalValueRef913 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleGlobalValueRef958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstant_in_ruleGlobalValueRef985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleGlobalValueRef1012 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunctionRef_in_entryRuleFunctionRef1048 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFunctionRef1058 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleFunctionRef1102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleLocalValueRef_in_entryRuleLocalValueRef1137 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleLocalValueRef1147 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_LOCAL_ID_in_ruleLocalValueRef1191 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGlobalValue_in_entryRuleGlobalValue1226 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGlobalValue1236 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGlobalVariable_in_ruleGlobalValue1283 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunction_in_ruleGlobalValue1310 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAlias_in_ruleGlobalValue1337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNamedInstruction_in_entryRuleNamedInstruction1376 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleNamedInstruction1386 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStartingInstruction_in_ruleNamedInstruction1433 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNamedMiddleInstruction_in_ruleNamedInstruction1460 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleNamedTerminatorInstruction_in_ruleNamedInstruction1487 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAlias_in_entryRuleAlias1524 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAlias1534 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGlobalName_in_ruleAlias1580 = new BitSet(new long[]{0x0000000002000000L});
-    public static final BitSet FOLLOW_25_in_ruleAlias1592 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleLinkage_in_ruleAlias1613 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleVisibility_in_ruleAlias1635 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleAlias1657 = new BitSet(new long[]{0x0000000000000040L,0x0000000000000000L,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleAliasee_in_ruleAlias1678 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAliasee_in_entryRuleAliasee1714 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAliasee1724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleAliasee1769 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantExpression_convert_in_ruleAliasee1796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleTargetInfo_in_entryRuleTargetInfo1832 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleTargetInfo1842 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ruleTargetInfo1879 = new BitSet(new long[]{0x0000000018000000L});
-    public static final BitSet FOLLOW_27_in_ruleTargetInfo1899 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_28_in_ruleTargetInfo1928 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_23_in_ruleTargetInfo1956 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleTargetInfo1973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleInlineAsm_in_entryRuleInlineAsm2014 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleInlineAsm2024 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_ruleInlineAsm2061 = new BitSet(new long[]{0x0000000040000000L});
-    public static final BitSet FOLLOW_30_in_ruleInlineAsm2073 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAsm2090 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGlobalVariable_in_entryRuleGlobalVariable2131 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleGlobalVariable2141 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleGlobalName_in_ruleGlobalVariable2187 = new BitSet(new long[]{0x0000000380000000L,0x0000000000011000L,0x0000000000000000L,0x0000000007FFF800L});
-    public static final BitSet FOLLOW_ruleLinkage_in_ruleGlobalVariable2208 = new BitSet(new long[]{0x0000000380000000L,0x0000000000011000L});
-    public static final BitSet FOLLOW_ruleAddressSpace_in_ruleGlobalVariable2230 = new BitSet(new long[]{0x0000000380000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_ruleTLSmodel_in_ruleGlobalVariable2252 = new BitSet(new long[]{0x0000000380000000L});
-    public static final BitSet FOLLOW_31_in_ruleGlobalVariable2266 = new BitSet(new long[]{0x0000000300000000L});
-    public static final BitSet FOLLOW_32_in_ruleGlobalVariable2281 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_33_in_ruleGlobalVariable2299 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
-    public static final BitSet FOLLOW_ruleType_in_ruleGlobalVariable2321 = new BitSet(new long[]{0xFFFFFF440000FE42L,0x0000000000000ABFL,0x00000000003FFC00L});
-    public static final BitSet FOLLOW_ruleConstant_in_ruleGlobalVariable2342 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleGlobalVariable2356 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_ruleSection_in_ruleGlobalVariable2377 = new BitSet(new long[]{0x0000000400000002L});
-    public static final BitSet FOLLOW_34_in_ruleGlobalVariable2392 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
-    public static final BitSet FOLLOW_ruleAlign_in_ruleGlobalVariable2413 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstant_in_entryRuleConstant2451 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstant2461 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleSimpleConstant_in_ruleConstant2508 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleStructureConstant_in_ruleConstant2535 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleArrayConstant_in_ruleConstant2562 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleVectorConstant_in_ruleConstant2589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleZeroInitializer_in_ruleConstant2616 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetadataNode_in_ruleConstant2643 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMetadataString_in_ruleConstant2670 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleBlockAddress_in_ruleConstant2697 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleUndef_in_ruleConstant2724 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstantExpression_in_ruleConstant2751 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstant_in_ruleGlobalValueRef959 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetadataRef_in_ruleGlobalValueRef986 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunctionRef_in_entryRuleFunctionRef1022 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleFunctionRef1032 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleFunctionRef1076 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleLocalValueRef_in_entryRuleLocalValueRef1111 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleLocalValueRef1121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LOCAL_ID_in_ruleLocalValueRef1165 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGlobalValue_in_entryRuleGlobalValue1200 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleGlobalValue1210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGlobalVariable_in_ruleGlobalValue1257 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunction_in_ruleGlobalValue1284 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAlias_in_ruleGlobalValue1311 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNamedInstruction_in_entryRuleNamedInstruction1350 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleNamedInstruction1360 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStartingInstruction_in_ruleNamedInstruction1407 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNamedMiddleInstruction_in_ruleNamedInstruction1434 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleNamedTerminatorInstruction_in_ruleNamedInstruction1461 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAlias_in_entryRuleAlias1498 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAlias1508 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGlobalName_in_ruleAlias1554 = new BitSet(new long[]{0x0000000002000000L});
+    public static final BitSet FOLLOW_25_in_ruleAlias1566 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleLinkage_in_ruleAlias1587 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleVisibility_in_ruleAlias1609 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleAlias1631 = new BitSet(new long[]{0x0000000000000040L,0x0000000000000000L,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleAliasee_in_ruleAlias1652 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAliasee_in_entryRuleAliasee1688 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAliasee1698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleAliasee1743 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstantExpression_convert_in_ruleAliasee1770 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleTargetInfo_in_entryRuleTargetInfo1806 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleTargetInfo1816 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_ruleTargetInfo1853 = new BitSet(new long[]{0x0000000018000000L});
+    public static final BitSet FOLLOW_27_in_ruleTargetInfo1873 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_28_in_ruleTargetInfo1902 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_23_in_ruleTargetInfo1930 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleTargetInfo1947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleInlineAsm_in_entryRuleInlineAsm1988 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleInlineAsm1998 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_ruleInlineAsm2035 = new BitSet(new long[]{0x0000000040000000L});
+    public static final BitSet FOLLOW_30_in_ruleInlineAsm2047 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAsm2064 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGlobalVariable_in_entryRuleGlobalVariable2105 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleGlobalVariable2115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleGlobalName_in_ruleGlobalVariable2161 = new BitSet(new long[]{0x0000000380000000L,0x0000000000011000L,0x0000000000000000L,0x0000000007FFF800L});
+    public static final BitSet FOLLOW_ruleLinkage_in_ruleGlobalVariable2182 = new BitSet(new long[]{0x0000000380000000L,0x0000000000011000L});
+    public static final BitSet FOLLOW_ruleAddressSpace_in_ruleGlobalVariable2204 = new BitSet(new long[]{0x0000000380000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_ruleTLSmodel_in_ruleGlobalVariable2226 = new BitSet(new long[]{0x0000000380000000L});
+    public static final BitSet FOLLOW_31_in_ruleGlobalVariable2240 = new BitSet(new long[]{0x0000000300000000L});
+    public static final BitSet FOLLOW_32_in_ruleGlobalVariable2255 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_33_in_ruleGlobalVariable2273 = new BitSet(new long[]{0x0000000001040080L,0x00000400000002A0L,0x0000000000000000L,0x0000000707FFFFF4L});
+    public static final BitSet FOLLOW_ruleType_in_ruleGlobalVariable2295 = new BitSet(new long[]{0xFFFFFF440000FE42L,0x0000000000000ABFL,0x00000000003FFC00L});
+    public static final BitSet FOLLOW_ruleConstant_in_ruleGlobalVariable2316 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleGlobalVariable2330 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_ruleSection_in_ruleGlobalVariable2351 = new BitSet(new long[]{0x0000000400000002L});
+    public static final BitSet FOLLOW_34_in_ruleGlobalVariable2366 = new BitSet(new long[]{0x0000000000000000L,0x0000000000040000L});
+    public static final BitSet FOLLOW_ruleAlign_in_ruleGlobalVariable2387 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstant_in_entryRuleConstant2425 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleConstant2435 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleSimpleConstant_in_ruleConstant2482 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleStructureConstant_in_ruleConstant2509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleArrayConstant_in_ruleConstant2536 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleVectorConstant_in_ruleConstant2563 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleZeroInitializer_in_ruleConstant2590 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetadataNode_in_ruleConstant2617 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMetadataString_in_ruleConstant2644 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleBlockAddress_in_ruleConstant2671 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleUndef_in_ruleConstant2698 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleConstantExpression_in_ruleConstant2725 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleConstant2750 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConstantExpression_in_entryRuleConstantExpression2786 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression2796 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleConstantExpression_convert_in_ruleConstantExpression2843 = new BitSet(new long[]{0x0000000000000002L});

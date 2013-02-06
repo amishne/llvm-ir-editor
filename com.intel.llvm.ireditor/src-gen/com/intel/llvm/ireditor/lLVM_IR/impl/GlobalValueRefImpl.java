@@ -3,7 +3,6 @@
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
-import com.intel.llvm.ireditor.lLVM_IR.GlobalValueDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.MetadataRef;
@@ -23,7 +22,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getConstant <em>Constant</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.GlobalValueRefImpl#getMetadata <em>Metadata</em>}</li>
  * </ul>
@@ -33,16 +31,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
 {
-  /**
-   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRef()
-   * @generated
-   * @ordered
-   */
-  protected GlobalValueDef ref;
-
   /**
    * The cached value of the '{@link #getConstant() <em>Constant</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -82,49 +70,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
   protected EClass eStaticClass()
   {
     return LLVM_IRPackage.Literals.GLOBAL_VALUE_REF;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GlobalValueDef getRef()
-  {
-    if (ref != null && ref.eIsProxy())
-    {
-      InternalEObject oldRef = (InternalEObject)ref;
-      ref = (GlobalValueDef)eResolveProxy(oldRef);
-      if (ref != oldRef)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LLVM_IRPackage.GLOBAL_VALUE_REF__REF, oldRef, ref));
-      }
-    }
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public GlobalValueDef basicGetRef()
-  {
-    return ref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setRef(GlobalValueDef newRef)
-  {
-    GlobalValueDef oldRef = ref;
-    ref = newRef;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.GLOBAL_VALUE_REF__REF, oldRef, ref));
   }
 
   /**
@@ -251,9 +196,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
-        if (resolve) return getRef();
-        return basicGetRef();
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         return getConstant();
       case LLVM_IRPackage.GLOBAL_VALUE_REF__METADATA:
@@ -272,9 +214,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
-        setRef((GlobalValueDef)newValue);
-        return;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         setConstant((Constant)newValue);
         return;
@@ -295,9 +234,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
-        setRef((GlobalValueDef)null);
-        return;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         setConstant((Constant)null);
         return;
@@ -318,8 +254,6 @@ public class GlobalValueRefImpl extends ValueRefImpl implements GlobalValueRef
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.GLOBAL_VALUE_REF__REF:
-        return ref != null;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__CONSTANT:
         return constant != null;
       case LLVM_IRPackage.GLOBAL_VALUE_REF__METADATA:

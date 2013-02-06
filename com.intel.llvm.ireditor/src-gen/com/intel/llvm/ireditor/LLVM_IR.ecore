@@ -16,7 +16,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ValueRef" eSuperTypes="#//Callee"/>
   <eClassifiers xsi:type="ecore:EClass" name="GlobalValueRef" eSuperTypes="#//ValueRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//GlobalValueDef"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="constant" eType="#//Constant"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" eType="#//MetadataRef"
@@ -70,7 +69,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="section" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="align" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Constant"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Constant">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//GlobalValueDef"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ConstantExpression" eSuperTypes="#//Constant">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>

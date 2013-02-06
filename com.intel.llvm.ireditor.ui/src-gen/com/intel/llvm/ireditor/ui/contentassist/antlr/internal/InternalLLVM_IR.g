@@ -4422,21 +4422,15 @@ rule__GlobalValueRef__Alternatives
     }
 :
 (
-{ before(grammarAccess.getGlobalValueRefAccess().getRefAssignment_0()); }
-(rule__GlobalValueRef__RefAssignment_0)
-{ after(grammarAccess.getGlobalValueRefAccess().getRefAssignment_0()); }
+{ before(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_0()); }
+(rule__GlobalValueRef__ConstantAssignment_0)
+{ after(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_0()); }
 )
 
     |(
-{ before(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_1()); }
-(rule__GlobalValueRef__ConstantAssignment_1)
-{ after(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_1()); }
-)
-
-    |(
-{ before(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_2()); }
-(rule__GlobalValueRef__MetadataAssignment_2)
-{ after(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_2()); }
+{ before(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_1()); }
+(rule__GlobalValueRef__MetadataAssignment_1)
+{ after(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_1()); }
 )
 
 ;
@@ -4640,6 +4634,12 @@ rule__Constant__Alternatives
 { before(grammarAccess.getConstantAccess().getConstantExpressionParserRuleCall_9()); }
 	ruleConstantExpression
 { after(grammarAccess.getConstantAccess().getConstantExpressionParserRuleCall_9()); }
+)
+
+    |(
+{ before(grammarAccess.getConstantAccess().getRefAssignment_10()); }
+(rule__Constant__RefAssignment_10)
+{ after(grammarAccess.getConstantAccess().getRefAssignment_10()); }
 )
 
 ;
@@ -28015,18 +28015,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GlobalValueRef__RefAssignment_0
+rule__GlobalValueRef__ConstantAssignment_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGlobalValueRefAccess().getRefGlobalValueDefCrossReference_0_0()); }
-(
-{ before(grammarAccess.getGlobalValueRefAccess().getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1()); }
-	RULE_GLOBAL_ID{ after(grammarAccess.getGlobalValueRefAccess().getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1()); }
-)
-{ after(grammarAccess.getGlobalValueRefAccess().getRefGlobalValueDefCrossReference_0_0()); }
+{ before(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_0_0()); }
+	ruleConstant{ after(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_0_0()); }
 )
 
 ;
@@ -28034,29 +28030,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__GlobalValueRef__ConstantAssignment_1
+rule__GlobalValueRef__MetadataAssignment_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_1_0()); }
-	ruleConstant{ after(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__GlobalValueRef__MetadataAssignment_2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_2_0()); }
-	ruleMetadataRef{ after(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_2_0()); }
+{ before(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_1_0()); }
+	ruleMetadataRef{ after(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_1_0()); }
 )
 
 ;
@@ -28370,6 +28351,25 @@ rule__GlobalVariable__AlignAssignment_9_1
 (
 { before(grammarAccess.getGlobalVariableAccess().getAlignAlignParserRuleCall_9_1_0()); }
 	ruleAlign{ after(grammarAccess.getGlobalVariableAccess().getAlignAlignParserRuleCall_9_1_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Constant__RefAssignment_10
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getConstantAccess().getRefGlobalValueDefCrossReference_10_0()); }
+(
+{ before(grammarAccess.getConstantAccess().getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_10_0_1()); }
+	RULE_GLOBAL_ID{ after(grammarAccess.getConstantAccess().getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_10_0_1()); }
+)
+{ after(grammarAccess.getConstantAccess().getRefGlobalValueDefCrossReference_10_0()); }
 )
 
 ;

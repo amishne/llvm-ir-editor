@@ -269,7 +269,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 			}
 		} else {
 			for (GlobalValueRef ref : EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class)) {
-				if (object == ref.getRef()) result.add(ref);
+				if (ref.getConstant() != null && object == ref.getConstant().getRef()) result.add(ref);
 			}
 		}
 		

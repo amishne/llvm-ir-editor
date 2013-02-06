@@ -258,9 +258,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getNamedMetadataAccess().getNameAssignment_1_0(), "rule__NamedMetadata__NameAssignment_1_0");
 					put(grammarAccess.getNamedMetadataAccess().getNodeAssignment_1_2(), "rule__NamedMetadata__NodeAssignment_1_2");
 					put(grammarAccess.getMetadataRefAccess().getRefAssignment(), "rule__MetadataRef__RefAssignment");
-					put(grammarAccess.getGlobalValueRefAccess().getRefAssignment_0(), "rule__GlobalValueRef__RefAssignment_0");
-					put(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_1(), "rule__GlobalValueRef__ConstantAssignment_1");
-					put(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_2(), "rule__GlobalValueRef__MetadataAssignment_2");
+					put(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_0(), "rule__GlobalValueRef__ConstantAssignment_0");
+					put(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_1(), "rule__GlobalValueRef__MetadataAssignment_1");
 					put(grammarAccess.getFunctionRefAccess().getRefAssignment(), "rule__FunctionRef__RefAssignment");
 					put(grammarAccess.getLocalValueRefAccess().getRefAssignment(), "rule__LocalValueRef__RefAssignment");
 					put(grammarAccess.getAliasAccess().getNameAssignment_0(), "rule__Alias__NameAssignment_0");
@@ -281,6 +280,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getGlobalVariableAccess().getInitialValueAssignment_7(), "rule__GlobalVariable__InitialValueAssignment_7");
 					put(grammarAccess.getGlobalVariableAccess().getSectionAssignment_8_1(), "rule__GlobalVariable__SectionAssignment_8_1");
 					put(grammarAccess.getGlobalVariableAccess().getAlignAssignment_9_1(), "rule__GlobalVariable__AlignAssignment_9_1");
+					put(grammarAccess.getConstantAccess().getRefAssignment_10(), "rule__Constant__RefAssignment_10");
 					put(grammarAccess.getConstantExpression_convertAccess().getOpcodeAssignment_0(), "rule__ConstantExpression_convert__OpcodeAssignment_0");
 					put(grammarAccess.getConstantExpression_convertAccess().getFromTypeAssignment_2(), "rule__ConstantExpression_convert__FromTypeAssignment_2");
 					put(grammarAccess.getConstantExpression_convertAccess().getConstantAssignment_3(), "rule__ConstantExpression_convert__ConstantAssignment_3");

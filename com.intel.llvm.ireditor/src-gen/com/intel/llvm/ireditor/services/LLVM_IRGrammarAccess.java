@@ -199,42 +199,30 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	public class GlobalValueRefElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "GlobalValueRef");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cRefAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final CrossReference cRefGlobalValueDefCrossReference_0_0 = (CrossReference)cRefAssignment_0.eContents().get(0);
-		private final RuleCall cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1 = (RuleCall)cRefGlobalValueDefCrossReference_0_0.eContents().get(1);
-		private final Assignment cConstantAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cConstantConstantParserRuleCall_1_0 = (RuleCall)cConstantAssignment_1.eContents().get(0);
-		private final Assignment cMetadataAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cMetadataMetadataRefParserRuleCall_2_0 = (RuleCall)cMetadataAssignment_2.eContents().get(0);
+		private final Assignment cConstantAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cConstantConstantParserRuleCall_0_0 = (RuleCall)cConstantAssignment_0.eContents().get(0);
+		private final Assignment cMetadataAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cMetadataMetadataRefParserRuleCall_1_0 = (RuleCall)cMetadataAssignment_1.eContents().get(0);
 		
 		//GlobalValueRef:
 		//
-		//	ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef;
+		//	constant=Constant | metadata=MetadataRef;
 		public ParserRule getRule() { return rule; }
 
-		//ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef
+		//constant=Constant | metadata=MetadataRef
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//ref=[GlobalValueDef|GLOBAL_ID]
-		public Assignment getRefAssignment_0() { return cRefAssignment_0; }
-
-		//[GlobalValueDef|GLOBAL_ID]
-		public CrossReference getRefGlobalValueDefCrossReference_0_0() { return cRefGlobalValueDefCrossReference_0_0; }
-
-		//GLOBAL_ID
-		public RuleCall getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1() { return cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_0_0_1; }
-
 		//constant=Constant
-		public Assignment getConstantAssignment_1() { return cConstantAssignment_1; }
+		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
 		//Constant
-		public RuleCall getConstantConstantParserRuleCall_1_0() { return cConstantConstantParserRuleCall_1_0; }
+		public RuleCall getConstantConstantParserRuleCall_0_0() { return cConstantConstantParserRuleCall_0_0; }
 
 		//metadata=MetadataRef
-		public Assignment getMetadataAssignment_2() { return cMetadataAssignment_2; }
+		public Assignment getMetadataAssignment_1() { return cMetadataAssignment_1; }
 
 		//MetadataRef
-		public RuleCall getMetadataMetadataRefParserRuleCall_2_0() { return cMetadataMetadataRefParserRuleCall_2_0; }
+		public RuleCall getMetadataMetadataRefParserRuleCall_1_0() { return cMetadataMetadataRefParserRuleCall_1_0; }
 	}
 
 	public class FunctionRefElements extends AbstractParserRuleElementFinder {
@@ -690,17 +678,20 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cBlockAddressParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
 		private final RuleCall cUndefParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
 		private final RuleCall cConstantExpressionParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
+		private final Assignment cRefAssignment_10 = (Assignment)cAlternatives.eContents().get(10);
+		private final CrossReference cRefGlobalValueDefCrossReference_10_0 = (CrossReference)cRefAssignment_10.eContents().get(0);
+		private final RuleCall cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_10_0_1 = (RuleCall)cRefGlobalValueDefCrossReference_10_0.eContents().get(1);
 		
 		//Constant:
 		//
 		//	SimpleConstant | StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString
 		//
-		//	| BlockAddress | Undef | ConstantExpression;
+		//	| BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID];
 		public ParserRule getRule() { return rule; }
 
 		//SimpleConstant | StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString |
 		//
-		//BlockAddress | Undef | ConstantExpression
+		//BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID]
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//SimpleConstant
@@ -732,6 +723,15 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ConstantExpression
 		public RuleCall getConstantExpressionParserRuleCall_9() { return cConstantExpressionParserRuleCall_9; }
+
+		//ref=[GlobalValueDef|GLOBAL_ID]
+		public Assignment getRefAssignment_10() { return cRefAssignment_10; }
+
+		//[GlobalValueDef|GLOBAL_ID]
+		public CrossReference getRefGlobalValueDefCrossReference_10_0() { return cRefGlobalValueDefCrossReference_10_0; }
+
+		//GLOBAL_ID
+		public RuleCall getRefGlobalValueDefGLOBAL_IDTerminalRuleCall_10_0_1() { return cRefGlobalValueDefGLOBAL_IDTerminalRuleCall_10_0_1; }
 	}
 
 	public class ConstantExpressionElements extends AbstractParserRuleElementFinder {
@@ -8173,7 +8173,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//GlobalValueRef:
 	//
-	//	ref=[GlobalValueDef|GLOBAL_ID] | constant=Constant | metadata=MetadataRef;
+	//	constant=Constant | metadata=MetadataRef;
 	public GlobalValueRefElements getGlobalValueRefAccess() {
 		return (pGlobalValueRef != null) ? pGlobalValueRef : (pGlobalValueRef = new GlobalValueRefElements());
 	}
@@ -8320,7 +8320,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	SimpleConstant | StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString
 	//
-	//	| BlockAddress | Undef | ConstantExpression;
+	//	| BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID];
 	public ConstantElements getConstantAccess() {
 		return (pConstant != null) ? pConstant : (pConstant = new ConstantElements());
 	}

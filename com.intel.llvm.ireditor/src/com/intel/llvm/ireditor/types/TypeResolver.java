@@ -143,9 +143,9 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	public ResolvedType resolve(EObject object) {
 		if (object == null) return TYPE_UNKNOWN;
-		return doSwitch(object);
+		ResolvedType result = doSwitch(object);
+		return result == null ? TYPE_UNKNOWN : result;
 	}
-	
 	
 	public ResolvedType defaultCase(EObject object) {
 		return TYPE_UNKNOWN;
@@ -257,8 +257,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseGlobalValueRef(GlobalValueRef object) {
 		if (object.getConstant() != null) return resolve(object.getConstant());
 		if (object.getMetadata() != null) return resolve(object.getMetadata());
-		if (object.getRef() != null) return resolve(object.getRef());
-		return TYPE_UNKNOWN;
+		return null;
 	}
 	
 	@Override
@@ -322,7 +321,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		} else if (content.equals("null")) {
 			return TYPE_ANY_POINTER;
 		}
-		return TYPE_UNKNOWN;
+		return null;
 	}
 	
 	@Override
@@ -406,7 +405,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseInstruction_shufflevector(Instruction_shufflevector object) {
 		ResolvedVectorType mask = (ResolvedVectorType) resolve(object.getMask().getType());
 		ResolvedType element = resolve(object.getVector1().getType()).getContainedType(0);
-		if (element == null) return TYPE_UNKNOWN;
+		if (element == null) return null;
 		return new ResolvedVectorType(mask.getSize(), element);
 	}
 	
@@ -426,7 +425,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 				return TYPE_ANY;
 			}
 			result = result.getContainedType(indexValue);
-			if (result == null) return TYPE_UNKNOWN;
+			if (result == null) return null;
 		}
 		
 		return result;
@@ -526,6 +525,11 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		return TYPE_ANY;
 	}
 	
+	@Override
+	public ResolvedType caseConstant(Constant object) {
+		return resolve(object.getRef());
+	}
+	
 	private ResolvedType resolveGep(Type baseType, EList<? extends EObject> indices) {
 		ResolvedType result = resolve(baseType);
 		if (result instanceof ResolvedVectorType) {
@@ -549,7 +553,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 				}
 			}
 			result = result.getContainedType(indexValue);
-			if (result == null) return TYPE_UNKNOWN;
+			if (result == null) return null;
 		}
 		
 		return new ResolvedPointerType(result, addrSpace);
@@ -585,8 +589,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	private ResolvedType getSimpleType(String text) {
-		ResolvedType result = SIMPLE_TYPES.get(text);
-		return result != null? result : TYPE_UNKNOWN;
+		return SIMPLE_TYPES.get(text);
 	}
 
 }

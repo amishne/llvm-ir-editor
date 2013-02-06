@@ -60,7 +60,6 @@ ValueRef:
 ;
 
 GlobalValueRef:
-	ref=[GlobalValueDef|GLOBAL_ID] |
 	constant=Constant |
 	metadata=MetadataRef
 ;
@@ -141,7 +140,8 @@ Constant:
 	MetadataString |
 	BlockAddress |
 	Undef |
-	ConstantExpression
+	ConstantExpression |
+	ref=[GlobalValueDef|GLOBAL_ID]
 ;
 
 ConstantExpression:

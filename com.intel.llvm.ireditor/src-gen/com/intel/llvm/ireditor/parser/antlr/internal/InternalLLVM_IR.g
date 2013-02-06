@@ -406,31 +406,17 @@ ruleGlobalValueRef returns [EObject current=null]
     @after { leaveRule(); }:
 ((
 (
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getGlobalValueRefRule());
-	        }
-        }
-	otherlv_0=RULE_GLOBAL_ID
-	{
-		newLeafNode(otherlv_0, grammarAccess.getGlobalValueRefAccess().getRefGlobalValueDefCrossReference_0_0()); 
-	}
-
-)
-)
-    |(
-(
 		{ 
-	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_1_0()); 
+	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getConstantConstantParserRuleCall_0_0()); 
 	    }
-		lv_constant_1_0=ruleConstant		{
+		lv_constant_0_0=ruleConstant		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGlobalValueRefRule());
 	        }
        		set(
        			$current, 
        			"constant",
-        		lv_constant_1_0, 
+        		lv_constant_0_0, 
         		"Constant");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -440,16 +426,16 @@ ruleGlobalValueRef returns [EObject current=null]
     |(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getGlobalValueRefAccess().getMetadataMetadataRefParserRuleCall_1_0()); 
 	    }
-		lv_metadata_2_0=ruleMetadataRef		{
+		lv_metadata_1_0=ruleMetadataRef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getGlobalValueRefRule());
 	        }
        		set(
        			$current, 
        			"metadata",
-        		lv_metadata_2_0, 
+        		lv_metadata_1_0, 
         		"MetadataRef");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -1227,7 +1213,21 @@ ruleConstant returns [EObject current=null]
         $current = $this_ConstantExpression_9.current; 
         afterParserOrEnumRuleCall();
     }
+
+    |(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantRule());
+	        }
+        }
+	otherlv_10=RULE_GLOBAL_ID
+	{
+		newLeafNode(otherlv_10, grammarAccess.getConstantAccess().getRefGlobalValueDefCrossReference_10_0()); 
+	}
+
 )
+))
 ;
 
 

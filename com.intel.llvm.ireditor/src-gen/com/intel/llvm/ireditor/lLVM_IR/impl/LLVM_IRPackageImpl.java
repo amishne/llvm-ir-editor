@@ -1268,7 +1268,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGlobalValueRef_Ref()
+  public EReference getGlobalValueRef_Constant()
   {
     return (EReference)globalValueRefEClass.getEStructuralFeatures().get(0);
   }
@@ -1278,19 +1278,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getGlobalValueRef_Constant()
-  {
-    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getGlobalValueRef_Metadata()
   {
-    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(2);
+    return (EReference)globalValueRefEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1641,6 +1631,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EClass getConstant()
   {
     return constantEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConstant_Ref()
+  {
+    return (EReference)constantEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5148,7 +5148,6 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     valueRefEClass = createEClass(VALUE_REF);
 
     globalValueRefEClass = createEClass(GLOBAL_VALUE_REF);
-    createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__REF);
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__CONSTANT);
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__METADATA);
 
@@ -5199,6 +5198,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(globalVariableEClass, GLOBAL_VARIABLE__ALIGN);
 
     constantEClass = createEClass(CONSTANT);
+    createEReference(constantEClass, CONSTANT__REF);
 
     constantExpressionEClass = createEClass(CONSTANT_EXPRESSION);
     createEAttribute(constantExpressionEClass, CONSTANT_EXPRESSION__OPCODE);
@@ -5789,7 +5789,6 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(valueRefEClass, ValueRef.class, "ValueRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(globalValueRefEClass, GlobalValueRef.class, "GlobalValueRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getGlobalValueRef_Ref(), this.getGlobalValueDef(), null, "ref", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalValueRef_Constant(), this.getConstant(), null, "constant", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalValueRef_Metadata(), this.getMetadataRef(), null, "metadata", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -5840,6 +5839,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getGlobalVariable_Align(), ecorePackage.getEString(), "align", null, 0, 1, GlobalVariable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constantEClass, Constant.class, "Constant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstant_Ref(), this.getGlobalValueDef(), null, "ref", null, 0, 1, Constant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(constantExpressionEClass, ConstantExpression.class, "ConstantExpression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getConstantExpression_Opcode(), ecorePackage.getEString(), "opcode", null, 0, 1, ConstantExpression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
