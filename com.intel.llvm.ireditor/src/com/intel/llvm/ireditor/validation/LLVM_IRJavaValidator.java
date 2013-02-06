@@ -259,7 +259,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkRequired(vectorType, Literals.INSTRUCTION_INSERTELEMENT__VECTOR, 0, TYPE_ANY_VECTOR);
 		checkRequired(inst.getIndex(), TYPE_I32);
 		
-		checkExpected(vectorType, inst.getElement());
+		checkExpected(vectorType.getContainedType(0), inst.getElement());
 	}
 	
 	@Check

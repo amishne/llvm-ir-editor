@@ -312,7 +312,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		String content = textOf(object);
 		if (content.startsWith("c\"")) {
 			return TYPE_CSTRING;
-		} else if (content.matches("-?\\d+\\.\\d+(e-?\\d+)?") ||
+		} else if (content.matches("-?\\d+\\.\\d+(e[+-]?\\d+)?") ||
 				content.matches("0x[klmhKLMH]?[0-9a-fA-F]+")) {
 			return TYPE_FLOATING;
 		} else if (content.matches("-?\\d+")) {
