@@ -412,25 +412,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedType caseInstruction_getelementptr(Instruction_getelementptr object) {
-		ResolvedType result = resolve(object.getBase().getType());
-		if (result instanceof ResolvedVectorType) {
-			return result;
-		}
-		
-		for (TypedValue index : object.getIndices()) {
-			Integer indexValue = 0;
-			if (result instanceof ResolvedStructType) {
-				indexValue = constResolver.getInteger(index.getRef());
-				if (indexValue == null) {
-					// We could not resolve the index constant, so we cannot tell what the type is.
-					return TYPE_ANY;
-				}
-			}
-			result = result.getContainedType(indexValue);
-			if (result == null) return TYPE_UNKNOWN;
-		}
-		
-		return new ResolvedPointerType(result, 0);
+		return resolveGep(object.getBase().getType(), object.getIndices());
 	}
 	
 	@Override
@@ -535,28 +517,42 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedType caseConstantExpression_getelementptr(ConstantExpression_getelementptr object) {
-		ResolvedType result = resolve(object.getConstant());
-		if (result instanceof ResolvedVectorType) {
-			return result;
-		}
-		
-		for (Constant index : object.getIndices()) {
-			Integer indexValue = constResolver.getInteger(index);
-			if (indexValue == null) {
-				// This should not happen in a constant expression
-				return TYPE_ANY;
-			}
-			result = result.getContainedType(indexValue);
-			if (result == null) return TYPE_UNKNOWN;
-		}
-		
-		return new ResolvedPointerType(result, 0);
+		return resolveGep(object.getConstantType(), object.getIndices());
 	}
 	
 	@Override
 	public ResolvedType caseConstantExpression(ConstantExpression object) {
 		// TODO remove this once all constant expression types are handled
 		return TYPE_ANY;
+	}
+	
+	private ResolvedType resolveGep(Type baseType, EList<? extends EObject> indices) {
+		ResolvedType result = resolve(baseType);
+		if (result instanceof ResolvedVectorType) {
+			return result;
+		}
+		
+		if (result instanceof ResolvedPointerType == false) {
+			// That's not legal
+			return TYPE_UNKNOWN;
+		}
+		
+		int addrSpace = ((ResolvedPointerType)result).getAddrSpace();
+		
+		for (EObject index : indices) {
+			Integer indexValue = 0;
+			if (result instanceof ResolvedStructType) {
+				indexValue = constResolver.getInteger(index);
+				if (indexValue == null) {
+					// We could not resolve the index constant, so we cannot tell what the type is.
+					return TYPE_ANY;
+				}
+			}
+			result = result.getContainedType(indexValue);
+			if (result == null) return TYPE_UNKNOWN;
+		}
+		
+		return new ResolvedPointerType(result, addrSpace);
 	}
 	
 	private String textOf(EObject object) {

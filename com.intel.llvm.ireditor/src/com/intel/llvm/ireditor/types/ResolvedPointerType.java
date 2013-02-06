@@ -50,4 +50,8 @@ public class ResolvedPointerType extends ResolvedType {
 				&& pointedType.accepts(((ResolvedPointerType)t).pointedType);
 	}
 
+	public int getAddrSpace() {
+		return addrSpace;
+	}
+
 }
