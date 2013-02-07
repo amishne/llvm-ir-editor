@@ -78,6 +78,8 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_shufflevector;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_va_arg;
 import com.intel.llvm.ireditor.lLVM_IR.IntType;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
+import com.intel.llvm.ireditor.lLVM_IR.MetadataNode;
+import com.intel.llvm.ireditor.lLVM_IR.MetadataString;
 import com.intel.llvm.ireditor.lLVM_IR.MetadataType;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
@@ -217,6 +219,16 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedMetadataType caseMetadataType(MetadataType object) {
+		return TYPE_METADATA;
+	}
+	
+	@Override
+	public ResolvedType caseMetadataNode(MetadataNode object) {
+		return TYPE_METADATA;
+	}
+	
+	@Override
+	public ResolvedType caseMetadataString(MetadataString object) {
 		return TYPE_METADATA;
 	}
 	
