@@ -99,6 +99,7 @@ import com.intel.llvm.ireditor.types.ResolvedPointerType;
 import com.intel.llvm.ireditor.types.ResolvedType;
 import com.intel.llvm.ireditor.types.ResolvedVarargType;
 import com.intel.llvm.ireditor.types.ResolvedVectorType;
+import com.intel.llvm.ireditor.types.ResolvedVoidType;
 import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
 
@@ -572,6 +573,16 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			}
 		} else {
 			checkExpected(type, resolveType(val.getAliasee().getRef()), Literals.ALIAS__ALIASEE);
+		}
+	}
+	
+	@Check
+	public void checkType(Type t) {
+		ResolvedType resolved = resolveType(t);
+		if (resolved instanceof ResolvedPointerType &&
+				resolved.getContainedType(0) instanceof ResolvedVoidType) {
+			error(resolved.toString() + " is not a legal LLVM type (use i8* for an arbitrary pointer)",
+					Literals.TYPE__BASE_TYPE);
 		}
 	}
 	
