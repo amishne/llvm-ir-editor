@@ -73,6 +73,8 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.eclipse.xtext.ui.editor.validation.ValidatingEditorCallback;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
+import org.eclipse.xtext.ui.resource.IResourceSetProvider;
+import org.eclipse.xtext.ui.resource.SimpleResourceSetProvider;
 import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.TextRegion;
 
@@ -126,6 +128,11 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	@Override
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
 		return ValidatingEditorCallback.class;
+	}
+	
+	@Override
+	public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
+		return SimpleResourceSetProvider.class;
 	}
 	
 	public static class LlvmRenameStrategy extends DefaultRenameStrategy {
