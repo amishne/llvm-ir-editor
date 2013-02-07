@@ -96,10 +96,12 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
+import com.intel.llvm.ireditor.lLVM_IR.Undef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
 import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
 import com.intel.llvm.ireditor.lLVM_IR.X86mmxType;
+import com.intel.llvm.ireditor.lLVM_IR.ZeroInitializer;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 
 /**
@@ -322,6 +324,16 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 			return TYPE_ANY_POINTER;
 		}
 		return null;
+	}
+	
+	@Override
+	public ResolvedType caseZeroInitializer(ZeroInitializer object) {
+		return TYPE_ANY;
+	}
+	
+	@Override
+	public ResolvedType caseUndef(Undef object) {
+		return TYPE_ANY;
 	}
 	
 	@Override
