@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.intel.llvm.ireditor.ui
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.8.1.qualifier
 Bundle-SymbolicName: com.intel.llvm.ireditor.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: com.intel.llvm.ireditor;visibility:=reexport,
