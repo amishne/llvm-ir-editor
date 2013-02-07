@@ -2128,6 +2128,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getStructureConstant_Packed()
+  {
+    return (EAttribute)structureConstantEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getArrayConstant()
   {
     return arrayConstantEClass;
@@ -5262,6 +5272,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     structureConstantEClass = createEClass(STRUCTURE_CONSTANT);
     createEReference(structureConstantEClass, STRUCTURE_CONSTANT__LIST);
+    createEAttribute(structureConstantEClass, STRUCTURE_CONSTANT__PACKED);
 
     arrayConstantEClass = createEClass(ARRAY_CONSTANT);
     createEReference(arrayConstantEClass, ARRAY_CONSTANT__LIST);
@@ -5903,6 +5914,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     initEClass(structureConstantEClass, StructureConstant.class, "StructureConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getStructureConstant_List(), this.getConstantList(), null, "list", null, 0, 1, StructureConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStructureConstant_Packed(), ecorePackage.getEString(), "packed", null, 0, 1, StructureConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(arrayConstantEClass, ArrayConstant.class, "ArrayConstant", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getArrayConstant_List(), this.getConstantList(), null, "list", null, 0, 1, ArrayConstant.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

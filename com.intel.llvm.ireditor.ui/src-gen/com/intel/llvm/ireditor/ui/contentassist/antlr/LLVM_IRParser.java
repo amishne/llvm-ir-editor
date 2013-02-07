@@ -54,6 +54,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantExpressionAccess().getAlternatives(), "rule__ConstantExpression__Alternatives");
 					put(grammarAccess.getConstantExpression_compareAccess().getAlternatives_0(), "rule__ConstantExpression_compare__Alternatives_0");
 					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAlternatives_0_0(), "rule__ConstantExpression_binary__OpcodeAlternatives_0_0");
+					put(grammarAccess.getStructureConstantAccess().getAlternatives_1(), "rule__StructureConstant__Alternatives_1");
 					put(grammarAccess.getSimpleConstantAccess().getValueAlternatives_0(), "rule__SimpleConstant__ValueAlternatives_0");
 					put(grammarAccess.getMetadataNodeElementAccess().getAlternatives(), "rule__MetadataNodeElement__Alternatives");
 					put(grammarAccess.getTLSoptionAccess().getAlternatives(), "rule__TLSoption__Alternatives");
@@ -120,6 +121,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getBlockAddressAccess().getGroup(), "rule__BlockAddress__Group__0");
 					put(grammarAccess.getZeroInitializerAccess().getGroup(), "rule__ZeroInitializer__Group__0");
 					put(grammarAccess.getStructureConstantAccess().getGroup(), "rule__StructureConstant__Group__0");
+					put(grammarAccess.getStructureConstantAccess().getGroup_1_0(), "rule__StructureConstant__Group_1_0__0");
+					put(grammarAccess.getStructureConstantAccess().getGroup_1_1(), "rule__StructureConstant__Group_1_1__0");
 					put(grammarAccess.getArrayConstantAccess().getGroup(), "rule__ArrayConstant__Group__0");
 					put(grammarAccess.getVectorConstantAccess().getGroup(), "rule__VectorConstant__Group__0");
 					put(grammarAccess.getConstantListAccess().getGroup(), "rule__ConstantList__Group__0");
@@ -324,7 +327,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantExpression_binaryAccess().getOp2Assignment_4(), "rule__ConstantExpression_binary__Op2Assignment_4");
 					put(grammarAccess.getBlockAddressAccess().getFunctionAssignment_2(), "rule__BlockAddress__FunctionAssignment_2");
 					put(grammarAccess.getBlockAddressAccess().getBasicBlockAssignment_4(), "rule__BlockAddress__BasicBlockAssignment_4");
-					put(grammarAccess.getStructureConstantAccess().getListAssignment_2(), "rule__StructureConstant__ListAssignment_2");
+					put(grammarAccess.getStructureConstantAccess().getListAssignment_1_0_1(), "rule__StructureConstant__ListAssignment_1_0_1");
+					put(grammarAccess.getStructureConstantAccess().getPackedAssignment_1_1_0(), "rule__StructureConstant__PackedAssignment_1_1_0");
+					put(grammarAccess.getStructureConstantAccess().getListAssignment_1_1_2(), "rule__StructureConstant__ListAssignment_1_1_2");
 					put(grammarAccess.getArrayConstantAccess().getListAssignment_2(), "rule__ArrayConstant__ListAssignment_2");
 					put(grammarAccess.getVectorConstantAccess().getListAssignment_2(), "rule__VectorConstant__ListAssignment_2");
 					put(grammarAccess.getConstantListAccess().getTypedConstantsAssignment_0(), "rule__ConstantList__TypedConstantsAssignment_0");

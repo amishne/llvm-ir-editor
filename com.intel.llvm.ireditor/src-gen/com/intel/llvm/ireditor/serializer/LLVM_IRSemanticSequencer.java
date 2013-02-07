@@ -2664,7 +2664,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (list=ConstantList?)
+	 *     (list=ConstantList? | (packed='<' list=ConstantList?))
 	 */
 	protected void sequence_StructureConstant(EObject context, StructureConstant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

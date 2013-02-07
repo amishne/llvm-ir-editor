@@ -1505,13 +1505,22 @@ public interface LLVM_IRPackage extends EPackage
   int STRUCTURE_CONSTANT__LIST = CONSTANT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Packed</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCTURE_CONSTANT__PACKED = CONSTANT_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Structure Constant</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRUCTURE_CONSTANT_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 1;
+  int STRUCTURE_CONSTANT_FEATURE_COUNT = CONSTANT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ArrayConstantImpl <em>Array Constant</em>}' class.
@@ -7173,6 +7182,17 @@ public interface LLVM_IRPackage extends EPackage
   EReference getStructureConstant_List();
 
   /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.StructureConstant#getPacked <em>Packed</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Packed</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.StructureConstant#getPacked()
+   * @see #getStructureConstant()
+   * @generated
+   */
+  EAttribute getStructureConstant_Packed();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.ArrayConstant <em>Array Constant</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -11207,6 +11227,14 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EReference STRUCTURE_CONSTANT__LIST = eINSTANCE.getStructureConstant_List();
+
+    /**
+     * The meta object literal for the '<em><b>Packed</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRUCTURE_CONSTANT__PACKED = eINSTANCE.getStructureConstant_Packed();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ArrayConstantImpl <em>Array Constant</em>}' class.

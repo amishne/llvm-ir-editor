@@ -102,6 +102,8 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		final String newInstName = name.charAt(0) + "converted." + name.substring(1);
 
 		EObject inst = findObject(doc, issue).eContainer();
+		// TODO replace with "findContainerNotOfType(bb)" to handle cases of both named and unnamed
+		// instructions.
 		
 		final int instOffset = offsetOf(inst);
 		

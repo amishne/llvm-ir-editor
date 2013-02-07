@@ -445,6 +445,13 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	@Check
+	public void checkGlobal(GlobalVariable val) {
+		if (val.getInitialValue() != null) {
+			checkExpected(val.getType(), val.getInitialValue());
+		}
+	}
+	
+	@Check
 	public void checkCall(Instruction_call_nonVoid inst) {
 		checkAnyCall(inst.getCallee(),
 				inst.getReturnType(),

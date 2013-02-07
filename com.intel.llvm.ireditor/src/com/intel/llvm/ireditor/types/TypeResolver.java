@@ -79,6 +79,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_va_arg;
 import com.intel.llvm.ireditor.lLVM_IR.IntType;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.MetadataNode;
+import com.intel.llvm.ireditor.lLVM_IR.MetadataRef;
 import com.intel.llvm.ireditor.lLVM_IR.MetadataString;
 import com.intel.llvm.ireditor.lLVM_IR.MetadataType;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
@@ -233,6 +234,11 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	@Override
+	public ResolvedType caseMetadataRef(MetadataRef object) {
+		return TYPE_METADATA;
+	}
+	
+	@Override
 	public ResolvedOpaqueType caseOpaqueType(OpaqueType object) {
 		return TYPE_OPAQUE;
 	}
@@ -367,7 +373,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		for (TypedConstant tc : values) {
 			resolvedTypes.add(resolve(tc.getType()));
 		}
-		return new ResolvedStructType(resolvedTypes, false);
+		return new ResolvedStructType(resolvedTypes, object.getPacked() != null);
 	}
 	
 	@Override

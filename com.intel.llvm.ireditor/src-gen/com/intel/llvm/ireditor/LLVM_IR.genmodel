@@ -129,6 +129,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//ZeroInitializer"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//StructureConstant">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//StructureConstant/list"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//StructureConstant/packed"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//ArrayConstant">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//ArrayConstant/list"/>

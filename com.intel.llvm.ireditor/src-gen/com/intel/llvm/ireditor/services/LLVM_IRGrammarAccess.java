@@ -684,20 +684,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Constant:
 		//
-		//	SimpleConstant | StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString
+		//	SimpleConstant // predicate because a vector constant and a structure constant can start with '<'
 		//
-		//	| BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID];
+		//	| => StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString |
+		//
+		//	BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID];
 		public ParserRule getRule() { return rule; }
 
-		//SimpleConstant | StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString |
+		//SimpleConstant // predicate because a vector constant and a structure constant can start with '<'
 		//
-		//BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID]
+		//| => StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString | BlockAddress
+		//
+		//| Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID]
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//SimpleConstant
 		public RuleCall getSimpleConstantParserRuleCall_0() { return cSimpleConstantParserRuleCall_0; }
 
-		//StructureConstant
+		//=> StructureConstant
 		public RuleCall getStructureConstantParserRuleCall_1() { return cStructureConstantParserRuleCall_1; }
 
 		//ArrayConstant
@@ -1610,33 +1614,73 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StructureConstant");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cStructureConstantAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cListAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cListConstantListParserRuleCall_2_0 = (RuleCall)cListAssignment_2.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cListAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cListConstantListParserRuleCall_1_0_1_0 = (RuleCall)cListAssignment_1_0_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_0_2 = (Keyword)cGroup_1_0.eContents().get(2);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Assignment cPackedAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
+		private final Keyword cPackedLessThanSignKeyword_1_1_0_0 = (Keyword)cPackedAssignment_1_1_0.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cListAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cListConstantListParserRuleCall_1_1_2_0 = (RuleCall)cListAssignment_1_1_2.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_1_1_3 = (Keyword)cGroup_1_1.eContents().get(3);
+		private final Keyword cGreaterThanSignKeyword_1_1_4 = (Keyword)cGroup_1_1.eContents().get(4);
 		
 		//StructureConstant:
 		//
-		//	{StructureConstant} "{" list=ConstantList? "}";
+		//	{StructureConstant} ("{" list=ConstantList? "}" | packed="<" "{" list=ConstantList? "}" ">");
 		public ParserRule getRule() { return rule; }
 
-		//{StructureConstant} "{" list=ConstantList? "}"
+		//{StructureConstant} ("{" list=ConstantList? "}" | packed="<" "{" list=ConstantList? "}" ">")
 		public Group getGroup() { return cGroup; }
 
 		//{StructureConstant}
 		public Action getStructureConstantAction_0() { return cStructureConstantAction_0; }
 
+		//"{" list=ConstantList? "}" | packed="<" "{" list=ConstantList? "}" ">"
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//"{" list=ConstantList? "}"
+		public Group getGroup_1_0() { return cGroup_1_0; }
+
 		//"{"
-		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
+		public Keyword getLeftCurlyBracketKeyword_1_0_0() { return cLeftCurlyBracketKeyword_1_0_0; }
 
 		//list=ConstantList?
-		public Assignment getListAssignment_2() { return cListAssignment_2; }
+		public Assignment getListAssignment_1_0_1() { return cListAssignment_1_0_1; }
 
 		//ConstantList
-		public RuleCall getListConstantListParserRuleCall_2_0() { return cListConstantListParserRuleCall_2_0; }
+		public RuleCall getListConstantListParserRuleCall_1_0_1_0() { return cListConstantListParserRuleCall_1_0_1_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
+		public Keyword getRightCurlyBracketKeyword_1_0_2() { return cRightCurlyBracketKeyword_1_0_2; }
+
+		//packed="<" "{" list=ConstantList? "}" ">"
+		public Group getGroup_1_1() { return cGroup_1_1; }
+
+		//packed="<"
+		public Assignment getPackedAssignment_1_1_0() { return cPackedAssignment_1_1_0; }
+
+		//"<"
+		public Keyword getPackedLessThanSignKeyword_1_1_0_0() { return cPackedLessThanSignKeyword_1_1_0_0; }
+
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_1_1_1() { return cLeftCurlyBracketKeyword_1_1_1; }
+
+		//list=ConstantList?
+		public Assignment getListAssignment_1_1_2() { return cListAssignment_1_1_2; }
+
+		//ConstantList
+		public RuleCall getListConstantListParserRuleCall_1_1_2_0() { return cListConstantListParserRuleCall_1_1_2_0; }
+
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_1_1_3() { return cRightCurlyBracketKeyword_1_1_3; }
+
+		//">"
+		public Keyword getGreaterThanSignKeyword_1_1_4() { return cGreaterThanSignKeyword_1_1_4; }
 	}
 
 	public class ArrayConstantElements extends AbstractParserRuleElementFinder {
@@ -8318,9 +8362,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Constant:
 	//
-	//	SimpleConstant | StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString
+	//	SimpleConstant // predicate because a vector constant and a structure constant can start with '<'
 	//
-	//	| BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID];
+	//	| => StructureConstant | ArrayConstant | VectorConstant | ZeroInitializer | MetadataNode | MetadataString |
+	//
+	//	BlockAddress | Undef | ConstantExpression | ref=[GlobalValueDef|GLOBAL_ID];
 	public ConstantElements getConstantAccess() {
 		return (pConstant != null) ? pConstant : (pConstant = new ConstantElements());
 	}
@@ -8499,7 +8545,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//StructureConstant:
 	//
-	//	{StructureConstant} "{" list=ConstantList? "}";
+	//	{StructureConstant} ("{" list=ConstantList? "}" | packed="<" "{" list=ConstantList? "}" ">");
 	public StructureConstantElements getStructureConstantAccess() {
 		return (pStructureConstant != null) ? pStructureConstant : (pStructureConstant = new StructureConstantElements());
 	}

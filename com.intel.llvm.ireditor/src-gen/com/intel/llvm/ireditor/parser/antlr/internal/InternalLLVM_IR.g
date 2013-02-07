@@ -1124,7 +1124,7 @@ ruleConstant returns [EObject current=null]
         afterParserOrEnumRuleCall();
     }
 
-    |
+    |((	ruleStructureConstant)=>
     { 
         newCompositeNode(grammarAccess.getConstantAccess().getStructureConstantParserRuleCall_1()); 
     }
@@ -1133,7 +1133,7 @@ ruleConstant returns [EObject current=null]
         $current = $this_StructureConstant_1.current; 
         afterParserOrEnumRuleCall();
     }
-
+)
     |
     { 
         newCompositeNode(grammarAccess.getConstantAccess().getArrayConstantParserRuleCall_2()); 
@@ -2775,14 +2775,14 @@ ruleStructureConstant returns [EObject current=null]
             grammarAccess.getStructureConstantAccess().getStructureConstantAction_0(),
             $current);
     }
-)	otherlv_1='{' 
+)((	otherlv_1='{' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getStructureConstantAccess().getLeftCurlyBracketKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getStructureConstantAccess().getLeftCurlyBracketKeyword_1_0_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getStructureConstantAccess().getListConstantListParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getStructureConstantAccess().getListConstantListParserRuleCall_1_0_1_0()); 
 	    }
 		lv_list_2_0=ruleConstantList		{
 	        if ($current==null) {
@@ -2799,9 +2799,55 @@ ruleStructureConstant returns [EObject current=null]
 )
 )?	otherlv_3='}' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getStructureConstantAccess().getRightCurlyBracketKeyword_3());
+    	newLeafNode(otherlv_3, grammarAccess.getStructureConstantAccess().getRightCurlyBracketKeyword_1_0_2());
     }
 )
+    |((
+(
+		lv_packed_4_0=	'<' 
+    {
+        newLeafNode(lv_packed_4_0, grammarAccess.getStructureConstantAccess().getPackedLessThanSignKeyword_1_1_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getStructureConstantRule());
+	        }
+       		setWithLastConsumed($current, "packed", lv_packed_4_0, "<");
+	    }
+
+)
+)	otherlv_5='{' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getStructureConstantAccess().getLeftCurlyBracketKeyword_1_1_1());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getStructureConstantAccess().getListConstantListParserRuleCall_1_1_2_0()); 
+	    }
+		lv_list_6_0=ruleConstantList		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getStructureConstantRule());
+	        }
+       		set(
+       			$current, 
+       			"list",
+        		lv_list_6_0, 
+        		"ConstantList");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)?	otherlv_7='}' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getStructureConstantAccess().getRightCurlyBracketKeyword_1_1_3());
+    }
+	otherlv_8='>' 
+    {
+    	newLeafNode(otherlv_8, grammarAccess.getStructureConstantAccess().getGreaterThanSignKeyword_1_1_4());
+    }
+)))
 ;
 
 

@@ -132,7 +132,7 @@ GlobalVariable:
 
 Constant:
 	SimpleConstant |
-	StructureConstant |
+	=>StructureConstant | // predicate because a vector constant and a structure constant can start with '<'
 	ArrayConstant |
 	VectorConstant |
 	ZeroInitializer |
@@ -230,7 +230,10 @@ ZeroInitializer:
 
 StructureConstant:
 	{StructureConstant}
-	'{' list=ConstantList? '}'
+	(
+	'{' list=ConstantList? '}' |
+	packed='<' '{' list=ConstantList? '}' '>'
+	)
 ;
 
 ArrayConstant:

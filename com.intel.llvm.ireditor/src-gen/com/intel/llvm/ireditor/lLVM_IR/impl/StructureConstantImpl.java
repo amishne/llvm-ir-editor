@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.StructureConstantImpl#getList <em>List</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.StructureConstantImpl#getPacked <em>Packed</em>}</li>
  * </ul>
  * </p>
  *
@@ -38,6 +39,26 @@ public class StructureConstantImpl extends ConstantImpl implements StructureCons
    * @ordered
    */
   protected ConstantList list;
+
+  /**
+   * The default value of the '{@link #getPacked() <em>Packed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPacked()
+   * @generated
+   * @ordered
+   */
+  protected static final String PACKED_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getPacked() <em>Packed</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPacked()
+   * @generated
+   * @ordered
+   */
+  protected String packed = PACKED_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -113,6 +134,29 @@ public class StructureConstantImpl extends ConstantImpl implements StructureCons
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getPacked()
+  {
+    return packed;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPacked(String newPacked)
+  {
+    String oldPacked = packed;
+    packed = newPacked;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.STRUCTURE_CONSTANT__PACKED, oldPacked, packed));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -136,6 +180,8 @@ public class StructureConstantImpl extends ConstantImpl implements StructureCons
     {
       case LLVM_IRPackage.STRUCTURE_CONSTANT__LIST:
         return getList();
+      case LLVM_IRPackage.STRUCTURE_CONSTANT__PACKED:
+        return getPacked();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -152,6 +198,9 @@ public class StructureConstantImpl extends ConstantImpl implements StructureCons
     {
       case LLVM_IRPackage.STRUCTURE_CONSTANT__LIST:
         setList((ConstantList)newValue);
+        return;
+      case LLVM_IRPackage.STRUCTURE_CONSTANT__PACKED:
+        setPacked((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,6 +219,9 @@ public class StructureConstantImpl extends ConstantImpl implements StructureCons
       case LLVM_IRPackage.STRUCTURE_CONSTANT__LIST:
         setList((ConstantList)null);
         return;
+      case LLVM_IRPackage.STRUCTURE_CONSTANT__PACKED:
+        setPacked(PACKED_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -186,8 +238,27 @@ public class StructureConstantImpl extends ConstantImpl implements StructureCons
     {
       case LLVM_IRPackage.STRUCTURE_CONSTANT__LIST:
         return list != null;
+      case LLVM_IRPackage.STRUCTURE_CONSTANT__PACKED:
+        return PACKED_EDEFAULT == null ? packed != null : !PACKED_EDEFAULT.equals(packed);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (packed: ");
+    result.append(packed);
+    result.append(')');
+    return result.toString();
   }
 
 } //StructureConstantImpl
