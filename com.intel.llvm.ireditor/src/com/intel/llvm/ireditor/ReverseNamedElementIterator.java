@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.BidiTreeIterator;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -33,7 +34,7 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			initialMode = Mode.GLOBAL;
 		} else {
 			throw new IllegalArgumentException(
-					"Can only reverse iterate from a basic block, a paremeter or an instruction");
+					"Can only reverse iterate from a basic block, a paremeter, a global or an instruction");
 		}
 	}
 	
@@ -64,6 +65,11 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		
 		@Override
 		public boolean hasNext() {
+			EObject obj = NodeModelUtils.findActualSemanticObjectFor(curr);
+			EObject prev = EcoreUtil2.getPreviousSibling(obj);
+			if (prev != null) {
+				System.out.println(prev);
+			}
 			return curr.hasPreviousSibling();
 		}
 	}

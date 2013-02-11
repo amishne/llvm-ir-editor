@@ -58,6 +58,7 @@ import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.resource.XtextResource;
+import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
@@ -72,7 +73,6 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.utils.TextStyle;
-import org.eclipse.xtext.ui.editor.validation.ValidatingEditorCallback;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
@@ -129,13 +129,15 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	
 	@Override
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-		return ValidatingEditorCallback.class;
+		return LlvmDirtyStateAwareEditorCallback.class;
 	}
 	
 	@Override
 	public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
 		return SimpleResourceSetProvider.class;
 	}
+	
+	public static class LlvmDirtyStateAwareEditorCallback extends AbstractDirtyStateAwareEditorCallback {}
 	
 	public static class LlvmRenameStrategy extends DefaultRenameStrategy {
 		@Override
