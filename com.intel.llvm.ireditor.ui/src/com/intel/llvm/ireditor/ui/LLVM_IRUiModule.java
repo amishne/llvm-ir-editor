@@ -32,7 +32,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
+import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
+import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
@@ -218,9 +220,21 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 			INode root = resource.getParseResult().getRootNode();
 			for (INode node : root.getAsTreeIterable()) {
 				EObject obj = NodeModelUtils.findActualSemanticObjectFor(node);
+				if (obj == null) continue;
 				if (isType(obj)) {
 					acceptor.addPosition(node.getOffset(), node.getLength(), LlvmHighlighter.TYPE_ID);
+				} else if (obj instanceof BasicBlockRef) {
+					acceptor.addPosition(node.getOffset(), node.getLength(), LlvmHighlighter.BASICBLOCK_ID);
+				} else if (obj instanceof BasicBlock) {
+					// The node contains the entire basic block; we just want to highlight the name, if
+					// it exists.
+					String name = (String) obj.eGet(Literals.BASIC_BLOCK__NAME);
+					if (node.getText().startsWith(name.substring(1))) {
+						// It is explicitly named - so there's something to highlight
+						acceptor.addPosition(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
+					}
 				}
+				
 			}
 		}
 
@@ -236,20 +250,28 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	public static class LlvmHighlighter extends DefaultHighlightingConfiguration {
 		public final static String TYPE_ID = "LLVM_Type"; 
 		public final static String FILECHECK_ID = "LLVM_FileCheck";
+		public final static String BASICBLOCK_ID = "LLVM_BasicBlock";
 		
 		public void configure(IHighlightingConfigurationAcceptor acceptor) {
 			super.configure(acceptor);
-			acceptor.acceptDefaultHighlighting(TYPE_ID, "Type", typeTypeStyle());
-			acceptor.acceptDefaultHighlighting(FILECHECK_ID, "FileCheck comment", typeFileCheckStyle());
+			acceptor.acceptDefaultHighlighting(TYPE_ID, "Type", typeTextStyle());
+			acceptor.acceptDefaultHighlighting(FILECHECK_ID, "FileCheck comment", fileCheckTextStyle());
+			acceptor.acceptDefaultHighlighting(BASICBLOCK_ID, "Basic block", basicBlockTextStyle());
 		}
 
-		public TextStyle typeTypeStyle() {
+		public TextStyle basicBlockTextStyle() {
+			TextStyle textStyle = new TextStyle();
+			textStyle.setColor(new RGB(148, 71, 41));
+			return textStyle;
+		}
+		
+		public TextStyle typeTextStyle() {
 			TextStyle textStyle = new TextStyle();
 			textStyle.setColor(new RGB(255, 0, 255));
 			return textStyle;
 		}
 		
-		public TextStyle typeFileCheckStyle() {
+		public TextStyle fileCheckTextStyle() {
 			TextStyle textStyle = commentTextStyle();
 			textStyle.setColor(new RGB(255, 128, 0));
 			textStyle.setStyle(SWT.BOLD);
