@@ -230,7 +230,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 				} else if (obj instanceof BasicBlock) {
 					// The node contains the entire basic block; we just want to highlight the name, if
 					// it exists.
-					String name = (String) obj.eGet(Literals.BASIC_BLOCK__NAME);
+					String name = NameFixer.restoreName((String) obj.eGet(Literals.BASIC_BLOCK__NAME));
 					if (node.getText().startsWith(name.substring(1))) {
 						// It is explicitly named - so there's something to highlight
 						acceptor.addPosition(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
