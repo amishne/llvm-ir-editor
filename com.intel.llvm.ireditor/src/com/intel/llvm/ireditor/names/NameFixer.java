@@ -46,10 +46,17 @@ public class NameFixer {
 		return s == null ? null : s.replace(PERIOD_REPLACEMENT, '.');
 	}
 	
-	public static String encodeForHtml(String s) {
+	public static String encodeTextForHtml(String s) {
 		return s
-				.replace("<", "&lt;")
-				.replace(">", "&gt;")
-				.replace("\n", "<br />");
+				.replaceAll("<", "&lt;")
+				.replaceAll(">", "&gt;")
+				.replaceAll("\\r?\\n", "<br />");
+	}
+	
+	public static String encodeCodeForHtml(String s) {
+		return "<pre>" + s
+				.replaceAll("<", "&lt;")
+				.replaceAll(">", "&gt;")
+				+ "</ pre>";
 	}
 }

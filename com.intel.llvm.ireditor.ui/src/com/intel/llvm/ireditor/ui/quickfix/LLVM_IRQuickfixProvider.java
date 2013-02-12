@@ -59,6 +59,7 @@ import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
+import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
@@ -307,7 +308,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		if (isCallToMissing(object) == false) {
 			return result;
 		}
-		final String declaration = buildDeclarationFromCall(object.eContainer());
+		final String declaration = buildDeclarationFromCall(object.eContainer().eContainer());
 		
 		result.add(new IssueResolution("Create function declaration",
 				"The signature\n" + declaration + "\nwill be appended to the end of the file.",
@@ -323,11 +324,12 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 	}
 
 	private boolean isCallToMissing(EObject object) {
-		return object instanceof GlobalValueRef &&
-				(object.eContainer() instanceof Instruction_call_nonVoid
-				|| object.eContainer() instanceof Instruction_call_void
-				|| object.eContainer() instanceof Instruction_invoke_nonVoid
-				|| object.eContainer() instanceof Instruction_invoke_void);
+		return object instanceof Constant &&
+				object.eContainer() instanceof GlobalValueRef &&
+				(object.eContainer().eContainer() instanceof Instruction_call_nonVoid
+				|| object.eContainer().eContainer() instanceof Instruction_call_void
+				|| object.eContainer().eContainer() instanceof Instruction_invoke_nonVoid
+				|| object.eContainer().eContainer() instanceof Instruction_invoke_void);
 	}
 	
 	private String buildDeclarationFromCall(Callee callee, Type functionPointerType, EObject rettype, ArgList args) {

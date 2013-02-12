@@ -64,11 +64,13 @@ public class DocProvider {
 		setupGlobalVariablesTLSModels();
 		setupParameterAttributes();
 		setupAtomicMemoryOrderingConstraints();
+		setupIcmpCc();
+		setupFcmpCc();
 	}
 	
 	private void setupLinkageTypes() {
 		String elementType = "linkage type";
-		// TODO "private" is problematic, it's both a linkage type and visiblity type
+		// "private" is problematic, it's both a linkage type and visibility type
 		keywordDoc.put("private", new Doc(elementType, "Global values with \"private\" linkage are only directly accessible by objects in the current module. In particular, linking code into a module with an private global value may cause the private to be renamed as necessary to avoid collisions. Because the symbol is private to the module, all references can be updated. This doesn't show up in any symbol table in the object file."));
 		keywordDoc.put("linker_private", new Doc(elementType, "Similar to private, but the symbol is passed through the assembler and evaluated by the linker. Unlike normal strong symbols, they are removed by the linker from the final linked image (executable or dynamic library)."));
 		keywordDoc.put("linker_private_weak", new Doc(elementType, "Similar to \"linker_private\", but the symbol is weak. Note that linker_private_weak symbols are subject to coalescing by the linker. The symbols are removed by the linker from the final linked image (executable or dynamic library)."));
@@ -90,7 +92,7 @@ public class DocProvider {
 	private void setupFunctionAttributes() {
 		String elementType = "function attribute";
 		keywordDoc.put("address_safety", new Doc(elementType, "This attribute indicates that the address safety analysis is enabled for this function."));
-		keywordDoc.put("alignstack(<n>)", new Doc(elementType, "This attribute indicates that, when emitting the prologue and epilogue, the backend should forcibly align the stack pointer. Specify the desired alignment, which must be a power of two, in parentheses."));
+		keywordDoc.put("alignstack", new Doc(elementType, "This attribute indicates that, when emitting the prologue and epilogue, the backend should forcibly align the stack pointer. Specify the desired alignment, which must be a power of two, in parentheses."));
 		keywordDoc.put("alwaysinline", new Doc(elementType, "This attribute indicates that the inliner should attempt to inline this function into callers whenever possible, ignoring any active inlining size threshold for this caller."));
 		keywordDoc.put("nonlazybind", new Doc(elementType, "This attribute suppresses lazy symbol binding for the function. This may make calls to the function faster, at the cost of extra program startup time if the function is not called during program startup."));
 		keywordDoc.put("ia_nsdialect", new Doc(elementType, "This attribute indicates the associated inline assembly call is using a non-standard assembly dialect. The standard dialect is ATT, which is assumed when this attribute is not present. When present, the dialect is assumed to be Intel. Currently, ATT and Intel are the only supported dialects."));
@@ -121,7 +123,7 @@ public class DocProvider {
 				"* On X86-32 only supports up to 4 bit type parameters. No floating point types are supported.\n" +
 				"* On X86-64 only supports up to 10 bit type parameters and 6 floating point parameters.\n" +
 				"This calling convention supports tail call optimization but requires both the caller and callee are using it."));
-		keywordDoc.put("cc <n>", new Doc(elementType, "Numbered convention:\nAny calling convention may be specified by number, allowing target-specific calling conventions to be used. Target specific calling conventions start at 64."));
+		keywordDoc.put("cc", new Doc(elementType, "Numbered convention:\nAny calling convention may be specified by number, allowing target-specific calling conventions to be used. Target specific calling conventions start at 64."));
 	}
 	
 	private void setupGlobalVariablesTLSModels() {
@@ -151,6 +153,41 @@ public class DocProvider {
 		keywordDoc.put("release", new Doc(elementType, "In addition to the guarantees of monotonic, if this operation writes a value which is subsequently read by an acquire operation, it synchronizes-with that operation. (This isn't a complete description; see the C++0x definition of a release sequence.) This corresponds to the C++0x/C1x memory_order_release."));
 		keywordDoc.put("acq_rel", new Doc(elementType, "(acquire+release)\nActs as both an acquire and release operation on its address. This corresponds to the C++0x/C1x memory_order_acq_rel."));
 		keywordDoc.put("seq_cst", new Doc(elementType, "(sequentially consistent)\nIn addition to the guarantees of acq_rel (acquire for an operation which only reads, release for an operation which only writes), there is a global total order on all sequentially-consistent operations on all addresses, which is consistent with the happens-before partial order and with the modification orders of all the affected addresses. Each sequentially-consistent read sees the last preceding write to the same address in this global order. This corresponds to the C++0x/C1x memory_order_seq_cst and Java volatile."));
+	}
+	
+	private void setupIcmpCc() {
+		String elementType = "icmp condition codes";
+		keywordDoc.put("eq", new Doc(elementType, "equal"));
+		keywordDoc.put("ne", new Doc(elementType, "not equal"));
+		keywordDoc.put("ugt", new Doc(elementType, "unsigned greater than"));
+		keywordDoc.put("uge", new Doc(elementType, "unsigned greater or equal"));
+		keywordDoc.put("ult", new Doc(elementType, "unsigned less than"));
+		keywordDoc.put("ule", new Doc(elementType, "unsigned less or equal"));
+		keywordDoc.put("sgt", new Doc(elementType, "signed greater than"));
+		keywordDoc.put("sge", new Doc(elementType, "signed greater or equal"));
+		keywordDoc.put("slt", new Doc(elementType, "signed less than"));
+		keywordDoc.put("sle", new Doc(elementType, "signed less or equal"));
+	}
+	
+	private void setupFcmpCc() {
+		String elementType = "fcmp condition codes";
+		// true and false are of course used in other contexts as well
+//		keywordDoc.put("false", new Doc(elementType, "no comparison, always returns false"));
+//		keywordDoc.put("true", new Doc(elementType, "no comparison, always returns true"));
+		keywordDoc.put("oeq", new Doc(elementType, "ordered and equal"));
+		keywordDoc.put("ogt", new Doc(elementType, "ordered and greater than"));
+		keywordDoc.put("oge", new Doc(elementType, "ordered and greater than or equal"));
+		keywordDoc.put("olt", new Doc(elementType, "ordered and less than"));
+		keywordDoc.put("ole", new Doc(elementType, "ordered and less than or equal"));
+		keywordDoc.put("one", new Doc(elementType, "ordered and not equal"));
+		keywordDoc.put("ord", new Doc(elementType, "ordered (no nans)"));
+		keywordDoc.put("ueq", new Doc(elementType, "unordered or equal"));
+		keywordDoc.put("ugt", new Doc(elementType, "unordered or greater than"));
+		keywordDoc.put("uge", new Doc(elementType, "unordered or greater than or equal"));
+		keywordDoc.put("ult", new Doc(elementType, "unordered or less than"));
+		keywordDoc.put("ule", new Doc(elementType, "unordered or less than or equal"));
+		keywordDoc.put("une", new Doc(elementType, "unordered or not equal"));
+		keywordDoc.put("uno", new Doc(elementType, "unordered (either nans)"));
 	}
 
 }
