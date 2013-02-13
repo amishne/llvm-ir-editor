@@ -452,7 +452,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		// Verify condition type
 		ResolvedType condType = resolveType(inst.getCondition().getType());
 		if (condType instanceof ResolvedVectorType) {
-			checkRequired(type, Literals.INSTRUCTION_SELECT__CONDITION, 0, TYPE_BOOLEAN_VECTOR);
+			checkRequired(condType, Literals.INSTRUCTION_SELECT__CONDITION, 0, TYPE_BOOLEAN_VECTOR);
 			// This is a vector select
 			if (((ResolvedVectorType) condType).getSize() != ((ResolvedVectorType) type).getSize()) {
 				error("select condition must be the same size as select values", Literals.INSTRUCTION_SELECT__CONDITION);
