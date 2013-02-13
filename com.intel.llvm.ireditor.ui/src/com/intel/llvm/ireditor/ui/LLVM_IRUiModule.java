@@ -31,57 +31,32 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-import com.intel.llvm.ireditor.LLVM_IRUtils;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
-import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
-import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
-import com.intel.llvm.ireditor.lLVM_IR.Alias;
-import com.intel.llvm.ireditor.lLVM_IR.Constant;
-import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
-import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
-import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.NonVoidType;
 import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.Type;
-import com.intel.llvm.ireditor.lLVM_IR.VectorType;
-import com.intel.llvm.ireditor.lLVM_IR.VoidType;
-import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.text.IRegion;
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.graphics.RGB;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.formatting.IIndentationInformation;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
-import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
-import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
-import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
-import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.eclipse.xtext.ui.editor.utils.TextStyle;
 import org.eclipse.xtext.ui.refactoring.IRenameStrategy;
 import org.eclipse.xtext.ui.refactoring.impl.DefaultRenameStrategy;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
@@ -130,11 +105,11 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		return LlvmRenameStrategy.class;
 	}
 	
-	@Override
-	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
-		// TODO workaround to add timeouts to content assist
-		return CustomLlvmContentAssistParser.class;
-	}
+//	@Override
+//	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
+//		// FIXME this is a workaround to add timeouts to content assist
+//		return CustomLlvmContentAssistParser.class;
+//	}
 	
 	@Override
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
@@ -156,267 +131,6 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 			int offset = NodeModelUtils.findActualNodeFor(targetElement).getOffset();
 			String text = getOriginalName();
 			return new TextRegion(offset, text.length());
-		}
-	}
-	
-	public static class LlvmHoverProvider extends DefaultEObjectHoverProvider {
-		DocProvider docProvider = new DocProvider();
-		ThreadLocal<IRegion> hover = new ThreadLocal<IRegion>();
-		
-		// Sanity values for hover sizes. We don't want load load an entire 100,000-line
-		// function as a hover popup.
-		int THRESHOLD_FIRST_LINE = 500;
-		int THRESHOLD_DOCUMENTATION = 50000;
-		
-		@Override
-		protected XtextBrowserInformationControlInput getHoverInfo(
-				EObject element, IRegion hoverRegion,
-				XtextBrowserInformationControlInput previous) {
-			// Remember what we're actually hovering over - for providing
-			// documentation for rule fragments (e.g. function attributes)
-			hover.set(hoverRegion);
-			return super.getHoverInfo(element, hoverRegion, previous);
-		}
-		
-		@Override
-		protected String getFirstLine(EObject o) {
-			String fulltext = getFullNodeText(o);
-			String parttext = getSubNodeText(o);
-			String result = fulltext.trim().split("\\r?\\n", 2)[0]; // Get first non-empty line
-			if (result.length() > THRESHOLD_FIRST_LINE) {
-				result = result.substring(0, THRESHOLD_FIRST_LINE) + " ... [snipped]";
-			}
-			if (docProvider.hasDoc(parttext)) {
-				result += " (" + docProvider.getType(parttext) + ")";
-			}
-			return LLVM_IRUtils.encodeTextForHtml(result);
-		};
-		
-		@Override
-		protected String getDocumentation(EObject o) {
-			String fulltext = (o instanceof FunctionHeader ?
-					getFullNodeText(o.eContainer()) :
-					getFullNodeText(o)).trim();
-			String parttext = getSubNodeText(o).trim();
-			
-			if (docProvider.hasDoc(parttext)) {
-				// This element has built-in documentation, return it
-				return "<b>" + LLVM_IRUtils.encodeTextForHtml(docProvider.getDoc(parttext)) + "</b>";
-			}
-			
-			if (fulltext.contains("\n")) {
-				// The full text has multiple lines, return it all as a documentation
-				// (but constraint the length, in case it's some huge function)
-				String result = LLVM_IRUtils.encodeCodeForHtml(
-						fulltext.split("\\r?\\n", 2)[1]);
-				if (result.length() > THRESHOLD_DOCUMENTATION) {
-					result = result.substring(0, THRESHOLD_DOCUMENTATION) + " ... [snipped]";
-				}
-				return result;
-			}
-			
-			return super.getDocumentation(o);
-		}
-		
-		private String getSubNodeText(EObject o) {
-			INode node = NodeModelUtils.getNode(o);
-			if (node == null) return null;
-			String fulltext = node.getRootNode().getText();
-			return fulltext.substring(hover.get().getOffset(),
-					hover.get().getOffset() + hover.get().getLength());
-		}
-		
-		private String getFullNodeText(EObject o) {
-			INode node = NodeModelUtils.getNode(o);
-			if (node == null) return null;
-			return node.getText();
-		}
-		
-		@Override
-		protected boolean hasHover(EObject o) {
-			return docProvider.hasDoc(getSubNodeText(o)) || super.hasHover(o);
-		}
-		
-	}
-	
-	private static class Position {
-		public final int offset;
-		public final int length;
-		public final String id;
-		public Position(int offset, int length, String id) {
-			this.offset = offset;
-			this.length = length;
-			this.id = id;
-		}
-	}
-	
-	public static class LlvmSemanticHighlighter extends LLVM_IRSwitch<Position> implements ISemanticHighlightingCalculator {
-		
-		private INode node;
-		
-		private Position caseAnyType(EObject object) {
-			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.TYPE_ID);
-		}
-		
-		@Override
-		public Position caseType(Type object) {
-			return caseAnyType(object);
-		}
-		
-		@Override
-		public Position caseVectorType(VectorType object) {
-			return caseAnyType(object);
-		}
-
-		@Override
-		public Position caseNonVoidType(NonVoidType object) {
-			return caseAnyType(object);
-		}
-		
-		@Override
-		public Position caseVoidType(VoidType object) {
-			return caseAnyType(object);
-		}
-		
-		@Override
-		public Position caseBasicBlockRef(BasicBlockRef object) {
-			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.BASICBLOCK_ID);
-		}
-		
-		@Override
-		public Position caseBasicBlock(BasicBlock object) {
-			// The node contains the entire basic block; we just want to highlight the name, if
-			// it exists.
-			String name = (String) object.eGet(Literals.BASIC_BLOCK__NAME);
-			if (node.getText().startsWith(name.substring(1))) {
-				// It is explicitly named - so there's something to highlight
-				return new Position(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
-			}
-			return null;
-		}
-		
-		@Override
-		public Position caseLocalValue(LocalValue object) {
-			String name = (String) object.eGet(Literals.LOCAL_VALUE__NAME);
-			if (node.getText().startsWith(name) == false) return null;
-			return new Position(node.getOffset(), name.length(), LlvmHighlighter.LOCALVALUE_ID);
-		}
-		
-		@Override
-		public Position caseLocalValueRef(LocalValueRef object) {
-			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.LOCALVALUE_ID);
-		}
-
-		@Override
-		public Position caseGlobalVariable(GlobalVariable object) {
-			String name = (String) object.eGet(Literals.GLOBAL_VARIABLE__NAME);
-			if (node.getText().startsWith(name) == false) return null;
-			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
-		}
-		
-		@Override
-		public Position caseAlias(Alias object) {
-			String name = (String) object.eGet(Literals.ALIAS__NAME);
-			if (node.getText().startsWith(name) == false) return null;
-			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
-		}
-		
-		@Override
-		public Position caseFunctionHeader(FunctionHeader object) {
-			String name = (String) object.eGet(Literals.FUNCTION_HEADER__NAME);
-			if (node.getText().startsWith(name) == false) return null;
-			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
-		}
-		
-		@Override
-		public Position caseConstant(Constant object) {
-			if (object.getRef() != null) {
-				return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.GLOBALVALUE_ID);
-			}
-			return super.caseConstant(object);
-		}
-		
-		public void provideHighlightingFor(XtextResource resource,
-				IHighlightedPositionAcceptor acceptor) {
-			if (resource == null || resource.getParseResult() == null)
-				return;
-
-			INode root = resource.getParseResult().getRootNode();
-			for (INode treeNode : root.getAsTreeIterable()) {
-				EObject obj = NodeModelUtils.findActualSemanticObjectFor(treeNode);
-				if (obj == null) continue;
-				node = treeNode;
-				Position pos = doSwitch(obj);
-				if (pos == null) continue;
-				acceptor.addPosition(pos.offset, pos.length, pos.id);
-			}
-		}
-
-	}
-	
-	public static class LlvmHighlighter extends DefaultHighlightingConfiguration {
-		public final static String TYPE_ID = "LLVM_Type"; 
-		public final static String FILECHECK_ID = "LLVM_FileCheck";
-		public final static String BASICBLOCK_ID = "LLVM_BasicBlock";
-		public final static String LOCALVALUE_ID = "LLVM_LocalValue";
-		public final static String GLOBALVALUE_ID = "LLVM_GlobalValue";
-		
-		public void configure(IHighlightingConfigurationAcceptor acceptor) {
-			super.configure(acceptor);
-			acceptor.acceptDefaultHighlighting(TYPE_ID, "Type", typeTextStyle());
-			acceptor.acceptDefaultHighlighting(FILECHECK_ID, "FileCheck Comment", fileCheckTextStyle());
-			acceptor.acceptDefaultHighlighting(BASICBLOCK_ID, "Basic Block", basicBlockTextStyle());
-			acceptor.acceptDefaultHighlighting(LOCALVALUE_ID, "Local Value", defaultTextStyle());
-			acceptor.acceptDefaultHighlighting(GLOBALVALUE_ID, "Global Value", defaultTextStyle());
-		}
-		
-		// Default values below. These are all customizable by the user.
-		
-		public TextStyle basicBlockTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(148, 71, 41));
-			return textStyle;
-		}
-		
-		public TextStyle typeTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(255, 0, 255));
-			return textStyle;
-		}
-		
-		public TextStyle fileCheckTextStyle() {
-			TextStyle textStyle = commentTextStyle();
-			textStyle.setColor(new RGB(255, 128, 0));
-			textStyle.setStyle(SWT.BOLD);
-			return textStyle;
-		}
-		
-		@Override
-		public TextStyle keywordTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(0, 0, 255));
-			return textStyle;
-		}
-		
-		@Override
-		public TextStyle stringTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(128, 64, 0));
-			return textStyle;
-		}
-		
-		@Override
-		public TextStyle punctuationTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(128, 128, 128));
-			return textStyle;
-		}
-		
-		@Override
-		public TextStyle numberTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(0, 0, 0));
-			return textStyle;
 		}
 	}
 	

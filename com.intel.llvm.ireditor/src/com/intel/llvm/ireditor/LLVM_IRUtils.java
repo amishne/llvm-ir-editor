@@ -41,6 +41,17 @@ import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 
 public class LLVM_IRUtils {
 
+	public static class Position {
+		public final int offset;
+		public final int length;
+		public final String id;
+		public Position(int offset, int length, String id) {
+			this.offset = offset;
+			this.length = length;
+			this.id = id;
+		}
+	}
+
 	public static List<EObject> xrefs(EObject object) {
 		List<EObject> result = new LinkedList<>();
 		EObject root = EcoreUtil2.getRootContainer(object);
