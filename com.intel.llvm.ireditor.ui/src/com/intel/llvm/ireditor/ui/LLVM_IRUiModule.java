@@ -36,6 +36,8 @@ import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
+import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
+import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
@@ -44,6 +46,7 @@ import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
+import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser;
@@ -233,52 +236,112 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		
 	}
 	
-	public static class LlvmSemanticHighlighter implements ISemanticHighlightingCalculator {
+	private static class Position {
+		public final int offset;
+		public final int length;
+		public final String id;
+		public Position(int offset, int length, String id) {
+			this.offset = offset;
+			this.length = length;
+			this.id = id;
+		}
+	}
+	
+	public static class LlvmSemanticHighlighter extends LLVM_IRSwitch<Position> implements ISemanticHighlightingCalculator {
+		
+		private INode node;
+		
+		private Position caseAnyType(EObject object) {
+			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.TYPE_ID);
+		}
+		
+		@Override
+		public Position caseType(Type object) {
+			return caseAnyType(object);
+		}
+		
+		@Override
+		public Position caseVectorType(VectorType object) {
+			return caseAnyType(object);
+		}
+
+		@Override
+		public Position caseNonVoidType(NonVoidType object) {
+			return caseAnyType(object);
+		}
+		
+		@Override
+		public Position caseVoidType(VoidType object) {
+			return caseAnyType(object);
+		}
+		
+		@Override
+		public Position caseBasicBlockRef(BasicBlockRef object) {
+			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.BASICBLOCK_ID);
+		}
+		
+		@Override
+		public Position caseBasicBlock(BasicBlock object) {
+			// The node contains the entire basic block; we just want to highlight the name, if
+			// it exists.
+			String name = NameFixer.restoreName((String) object.eGet(Literals.BASIC_BLOCK__NAME));
+			if (node.getText().startsWith(name.substring(1))) {
+				// It is explicitly named - so there's something to highlight
+				return new Position(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
+			}
+			return null;
+		}
+		
+		@Override
+		public Position caseLocalValue(LocalValue object) {
+			String name = NameFixer.restoreName((String) object.eGet(Literals.LOCAL_VALUE__NAME));
+			if (node.getText().startsWith(name) == false) return null;
+			return new Position(node.getOffset(), name.length(), LlvmHighlighter.LOCALVALUE_ID);
+		}
+		
+		@Override
+		public Position caseLocalValueRef(LocalValueRef object) {
+			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.LOCALVALUE_ID);
+		}
+		
 		public void provideHighlightingFor(XtextResource resource,
 				IHighlightedPositionAcceptor acceptor) {
 			if (resource == null || resource.getParseResult() == null)
 				return;
 
 			INode root = resource.getParseResult().getRootNode();
-			for (INode node : root.getAsTreeIterable()) {
-				EObject obj = NodeModelUtils.findActualSemanticObjectFor(node);
+			for (INode treeNode : root.getAsTreeIterable()) {
+				EObject obj = NodeModelUtils.findActualSemanticObjectFor(treeNode);
 				if (obj == null) continue;
-				if (isType(obj)) {
-					acceptor.addPosition(node.getOffset(), node.getLength(), LlvmHighlighter.TYPE_ID);
-				} else if (obj instanceof BasicBlockRef) {
-					acceptor.addPosition(node.getOffset(), node.getLength(), LlvmHighlighter.BASICBLOCK_ID);
-				} else if (obj instanceof BasicBlock) {
-					// The node contains the entire basic block; we just want to highlight the name, if
-					// it exists.
-					String name = NameFixer.restoreName((String) obj.eGet(Literals.BASIC_BLOCK__NAME));
-					if (node.getText().startsWith(name.substring(1))) {
-						// It is explicitly named - so there's something to highlight
-						acceptor.addPosition(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
-					}
-				}
-				
+				node = treeNode;
+				Position pos = doSwitch(obj);
+				if (pos == null) continue;
+				acceptor.addPosition(pos.offset, pos.length, pos.id);
 			}
 		}
 
-	}
-	
-	private static boolean isType(EObject obj) {
-		return obj instanceof Type
-				|| obj instanceof VectorType
-				|| obj instanceof NonVoidType
-				|| obj instanceof VoidType;
 	}
 	
 	public static class LlvmHighlighter extends DefaultHighlightingConfiguration {
 		public final static String TYPE_ID = "LLVM_Type"; 
 		public final static String FILECHECK_ID = "LLVM_FileCheck";
 		public final static String BASICBLOCK_ID = "LLVM_BasicBlock";
+		public final static String LOCALVALUE_ID = "LLVM_LocalValue";
 		
 		public void configure(IHighlightingConfigurationAcceptor acceptor) {
 			super.configure(acceptor);
 			acceptor.acceptDefaultHighlighting(TYPE_ID, "Type", typeTextStyle());
-			acceptor.acceptDefaultHighlighting(FILECHECK_ID, "FileCheck comment", fileCheckTextStyle());
-			acceptor.acceptDefaultHighlighting(BASICBLOCK_ID, "Basic block", basicBlockTextStyle());
+			acceptor.acceptDefaultHighlighting(FILECHECK_ID, "FileCheck Comment", fileCheckTextStyle());
+			acceptor.acceptDefaultHighlighting(BASICBLOCK_ID, "Basic Block", basicBlockTextStyle());
+			acceptor.acceptDefaultHighlighting(LOCALVALUE_ID, "Local Value", localValueTextStyle());
+		}
+		
+		// Default values below. These are all customizable by the user.
+		
+		private TextStyle localValueTextStyle() {
+			TextStyle textStyle = new TextStyle();
+			textStyle.setColor(new RGB(0, 0, 0));
+			return textStyle;
 		}
 
 		public TextStyle basicBlockTextStyle() {
