@@ -85,16 +85,19 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
+import com.intel.llvm.ireditor.lLVM_IR.Parameters;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
+import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 import com.intel.llvm.ireditor.types.ResolvedFloatingType;
 import com.intel.llvm.ireditor.types.ResolvedFunctionType;
 import com.intel.llvm.ireditor.types.ResolvedIntegerType;
+import com.intel.llvm.ireditor.types.ResolvedMetadataType;
 import com.intel.llvm.ireditor.types.ResolvedPointerType;
 import com.intel.llvm.ireditor.types.ResolvedType;
 import com.intel.llvm.ireditor.types.ResolvedVarargType;
@@ -482,6 +485,24 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				inst.getRettype(),
 				null,
 				inst.getArgs());
+	}
+	
+	@Check
+	public void checkFunctionHeaderParameters(Parameters val) {
+		if (val.eContainer() == null) return;
+		
+		// Verify a metadata type only appears in intrinsics
+		FunctionHeader header = (FunctionHeader) val.eContainer();
+		if (NameFixer.restoreName(header.getName()).startsWith("@llvm.")) return;
+		
+		int index = 0;
+		for (Parameter param : val.getParameters()) {
+			if (resolveType(param) instanceof ResolvedMetadataType) {
+				error("Metadata parameters are only permitted on intrinsic functions",
+						Literals.PARAMETERS__PARAMETERS, index);
+			}
+			index++;
+		}
 	}
 	
 	public void checkAnyCall(Callee callee, EObject retType, Type functionPointerType, ArgList args) {
