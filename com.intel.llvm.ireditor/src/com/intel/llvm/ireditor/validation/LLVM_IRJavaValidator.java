@@ -33,9 +33,11 @@ import java.util.LinkedList;
 import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 
+import com.intel.llvm.ireditor.LLVM_IRUtils;
 import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
@@ -49,6 +51,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
@@ -82,6 +85,8 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_sub;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_switch;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
+import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
@@ -117,6 +122,15 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	private final ConstantResolver constResolver = new ConstantResolver();
 	private final NameResolver namer = new NameResolver();
 
+	@Check
+	public void checkBasicBlock(BasicBlock val) {
+		if (val.equals(((FunctionDef)val.eContainer()).getBasicBlocks().get(0)) == false &&
+				hasPredecessors(val) == false) {
+			// Not the first basic block in its function, and doesn't have predecessors.
+			error("No predecessors!", Literals.BASIC_BLOCK__NAME);
+		}
+	}
+	
 	@Check
 	public void checkConstantList(ConstantList val) {
 		if (val.eContainer() instanceof VectorConstant) {
@@ -740,6 +754,17 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (result.isEmpty() && from.getBits() == to.getBits()) result.add("bitcast");
 		
 		return result;
+	}
+	
+	private boolean hasPredecessors(BasicBlock val) {
+		for (EObject ref : LLVM_IRUtils.xrefs(val)) {
+			// Check if at least one of its references is in a terminator instruction
+			if (EcoreUtil2.getContainerOfType(ref, TerminatorInstruction.class) != null ||
+					EcoreUtil2.getContainerOfType(ref, NamedTerminatorInstruction.class) != null) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	/**

@@ -36,7 +36,6 @@ import java.util.TreeSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.IContainer;
@@ -54,6 +53,7 @@ import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Inject;
+import com.intel.llvm.ireditor.LLVM_IRUtils;
 import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
@@ -67,15 +67,12 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
-import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
-import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.MiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Model;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
-import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 
@@ -262,23 +259,6 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 	IContainer.Manager containerManager;
 
 	
-	public List<ValueRef> xrefs(EObject object) {
-		List<ValueRef> result = new LinkedList<>();
-		EObject root = EcoreUtil2.getRootContainer(object);
-		
-		if (object instanceof LocalValue) {
-			for (LocalValueRef ref : EcoreUtil2.getAllContentsOfType(root, LocalValueRef.class)) {
-				if (object == ref.getRef()) result.add(ref);
-			}
-		} else {
-			for (GlobalValueRef ref : EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class)) {
-				if (ref.getConstant() != null && object == ref.getConstant().getRef()) result.add(ref);
-			}
-		}
-		
-		return result;
-	}
-	
 	private void performSmartRenameRefactoring(Replacements replacements, EObject object,
 			String oldName, String newName) throws BadLocationException {
 		// Rename object, if it has an explicit name already:
@@ -292,7 +272,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		}
 		
 		// Rename references:
-		for (ValueRef ref : xrefs(object)) {
+		for (EObject ref : LLVM_IRUtils.xrefs(object)) {
 			INode refNode = NodeModelUtils.findActualNodeFor(ref);
 			replacements.add(new Replacement(refNode.getOffset(), refNode.getLength(), newName));
 		}
