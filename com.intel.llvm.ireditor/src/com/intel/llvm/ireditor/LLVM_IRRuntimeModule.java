@@ -35,12 +35,13 @@ import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.conversion.impl.AbstractDeclarativeValueConverterService;
+import org.eclipse.xtext.naming.IQualifiedNameConverter;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 
 import com.intel.llvm.ireditor.ReverseNamedElementIterator.Mode;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
-import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.names.NameResolver;
 
 /**
@@ -48,36 +49,41 @@ import com.intel.llvm.ireditor.names.NameResolver;
  */
 public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_IRRuntimeModule {
 	/**
-	 * Registers a value converter, to deal with bad names - either names that need a fix, or missing
-	 * names for anonymous elements.
+	 * Registers a value converter, to deal missing names for anonymous elements.
 	 */
 	@Override
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return LlvmValueConverterService.class;
 	}
 	
+	/**
+	 * Registers a name converter, because Xtext by default works with qualified names
+	 * with the "." delimiter. We don't need no stinkin' qualifications and delimiters!
+	 */
+	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
+		return LlvmQualifiedNameConverter.class;
+	}
+	
+	public static class LlvmQualifiedNameConverter implements IQualifiedNameConverter {
+
+		@Override
+		public String toString(QualifiedName name) {
+			if (name == null) return null;
+			return name.getFirstSegment();
+		}
+
+		@Override
+		public QualifiedName toQualifiedName(String qualifiedNameAsText) {
+			if (qualifiedNameAsText == null) return null;
+			return QualifiedName.create(qualifiedNameAsText);
+		}
+		
+	}
+
+	/**
+	 * Name converters are for associating anonymous names (%<num>) with their elements
+	 */
 	public static class LlvmValueConverterService extends AbstractDeclarativeValueConverterService {
-		IValueConverter<String> dotFixConverter = new DotFixConverter();
-		
-		// ID converters are for fixing the dot in the name.
-		
-		@ValueConverter(rule="LOCAL_ID")
-		public IValueConverter<String> convertLOCAL_ID() {
-			return dotFixConverter;
-		}
-		
-		@ValueConverter(rule="GLOBAL_ID")
-		public IValueConverter<String> convertGLOBAL_ID() {
-			return dotFixConverter;
-		}
-		
-		@ValueConverter(rule="BASIC_BLOCK_ID")
-		public IValueConverter<String> convertBASIC_BLOCK_ID() {
-			return dotFixConverter;
-		}
-		
-		// Name converters are for associating anonymous names (%<num>) with their elements
-		
 		@ValueConverter(rule="LocalName")
 		public IValueConverter<String> convertLocalName() {
 			return new LocalNameConverter();
@@ -100,16 +106,6 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		
 	}
 	
-	public static class DotFixConverter implements IValueConverter<String> {
-		public String toValue(String string, INode node) throws ValueConverterException {
-			return NameFixer.fixName(string);
-		}
-
-		public String toString(String value) throws ValueConverterException {
-			return NameFixer.restoreName(value);
-		}
-	}
-
 	public static abstract class LlvmNameConverter implements IValueConverter<String> {
 		
 		private static long NAME_RESOLVE_TIMEOUT_MS = 5000;
@@ -119,11 +115,11 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 			if (string == null || string.isEmpty()) {
 				return nameFromIndex(findIndex(node));
 			}
-			return NameFixer.fixName(nameFromString(string));
+			return nameFromString(string);
 		}
 		
 		public String toString(String value) throws ValueConverterException {
-			return NameFixer.restoreName(value);
+			return value;
 		}
 		
 		private int findIndex(INode node) {

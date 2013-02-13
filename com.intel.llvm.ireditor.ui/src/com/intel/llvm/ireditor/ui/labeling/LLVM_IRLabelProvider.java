@@ -33,7 +33,6 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
-import com.intel.llvm.ireditor.names.NameFixer;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider; 
@@ -47,37 +46,33 @@ import com.google.inject.Inject;
  */
 public class LLVM_IRLabelProvider extends DefaultEObjectLabelProvider {
 
-	private String prepare(String s) {
-		return NameFixer.restoreName(s);
-	}
-	
 	@Inject
 	public LLVM_IRLabelProvider(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 	
 	String text(FunctionDef ele) {
-		return "define " + prepare(ele.getHeader().getName());
+		return "define " + ele.getHeader().getName();
 	}
 	
 	String text(FunctionDecl ele) {
-		return "declare " + prepare(ele.getHeader().getName());
+		return "declare " + ele.getHeader().getName();
 	}
 	
 	String text(TypeDef ele) {
-		return "typedef " + prepare(ele.getName());
+		return "typedef " + ele.getName();
 	}
 	
 	String text(Alias ele) {
-		return "alias " + prepare(ele.getName());
+		return "alias " + ele.getName();
 	}
 	
 	String text(GlobalVariable ele) {
-		return "global " + prepare(ele.getName());
+		return "global " + ele.getName();
 	}
 	
 	String text(BasicBlock ele) {
-		return String.format("%s (%d instructions)", prepare(ele.getName()), ele.getInstructions().size());
+		return String.format("%s (%d instructions)", ele.getName(), ele.getInstructions().size());
 	}
 	
 /*

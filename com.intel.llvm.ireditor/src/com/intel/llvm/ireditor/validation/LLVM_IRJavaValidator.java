@@ -96,7 +96,6 @@ import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
-import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 import com.intel.llvm.ireditor.types.ResolvedFloatingType;
@@ -507,7 +506,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		
 		// Verify a metadata type only appears in intrinsics
 		FunctionHeader header = (FunctionHeader) val.eContainer();
-		if (NameFixer.restoreName(header.getName()).startsWith("@llvm.")) return;
+		if (header.getName().startsWith("@llvm.")) return;
 		
 		int index = 0;
 		for (Parameter param : val.getParameters()) {

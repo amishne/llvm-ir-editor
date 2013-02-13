@@ -31,6 +31,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import com.intel.llvm.ireditor.LLVM_IRUtils;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
@@ -50,7 +51,6 @@ import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.VectorType;
 import com.intel.llvm.ireditor.lLVM_IR.VoidType;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
-import com.intel.llvm.ireditor.names.NameFixer;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser;
 
@@ -189,7 +189,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 			if (docProvider.hasDoc(parttext)) {
 				result += " (" + docProvider.getType(parttext) + ")";
 			}
-			return NameFixer.encodeTextForHtml(NameFixer.restoreName(result));
+			return LLVM_IRUtils.encodeTextForHtml(result);
 		};
 		
 		@Override
@@ -201,21 +201,21 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 			
 			if (docProvider.hasDoc(parttext)) {
 				// This element has built-in documentation, return it
-				return "<b>" + NameFixer.encodeTextForHtml(docProvider.getDoc(parttext)) + "</b>";
+				return "<b>" + LLVM_IRUtils.encodeTextForHtml(docProvider.getDoc(parttext)) + "</b>";
 			}
 			
 			if (fulltext.contains("\n")) {
 				// The full text has multiple lines, return it all as a documentation
 				// (but constraint the length, in case it's some huge function)
-				String result = NameFixer.encodeCodeForHtml(
-						NameFixer.restoreName(fulltext.split("\\r?\\n", 2)[1]));
+				String result = LLVM_IRUtils.encodeCodeForHtml(
+						fulltext.split("\\r?\\n", 2)[1]);
 				if (result.length() > THRESHOLD_DOCUMENTATION) {
 					result = result.substring(0, THRESHOLD_DOCUMENTATION) + " ... [snipped]";
 				}
 				return result;
 			}
 			
-			return NameFixer.restoreName(super.getDocumentation(o));
+			return super.getDocumentation(o);
 		}
 		
 		private String getSubNodeText(EObject o) {
@@ -287,7 +287,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		public Position caseBasicBlock(BasicBlock object) {
 			// The node contains the entire basic block; we just want to highlight the name, if
 			// it exists.
-			String name = NameFixer.restoreName((String) object.eGet(Literals.BASIC_BLOCK__NAME));
+			String name = (String) object.eGet(Literals.BASIC_BLOCK__NAME);
 			if (node.getText().startsWith(name.substring(1))) {
 				// It is explicitly named - so there's something to highlight
 				return new Position(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
@@ -297,7 +297,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		
 		@Override
 		public Position caseLocalValue(LocalValue object) {
-			String name = NameFixer.restoreName((String) object.eGet(Literals.LOCAL_VALUE__NAME));
+			String name = (String) object.eGet(Literals.LOCAL_VALUE__NAME);
 			if (node.getText().startsWith(name) == false) return null;
 			return new Position(node.getOffset(), name.length(), LlvmHighlighter.LOCALVALUE_ID);
 		}
@@ -309,21 +309,21 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 
 		@Override
 		public Position caseGlobalVariable(GlobalVariable object) {
-			String name = NameFixer.restoreName((String) object.eGet(Literals.GLOBAL_VARIABLE__NAME));
+			String name = (String) object.eGet(Literals.GLOBAL_VARIABLE__NAME);
 			if (node.getText().startsWith(name) == false) return null;
 			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
 		}
 		
 		@Override
 		public Position caseAlias(Alias object) {
-			String name = NameFixer.restoreName((String) object.eGet(Literals.ALIAS__NAME));
+			String name = (String) object.eGet(Literals.ALIAS__NAME);
 			if (node.getText().startsWith(name) == false) return null;
 			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
 		}
 		
 		@Override
 		public Position caseFunctionHeader(FunctionHeader object) {
-			String name = NameFixer.restoreName((String) object.eGet(Literals.FUNCTION_HEADER__NAME));
+			String name = (String) object.eGet(Literals.FUNCTION_HEADER__NAME);
 			if (node.getText().startsWith(name) == false) return null;
 			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
 		}
