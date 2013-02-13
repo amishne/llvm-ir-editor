@@ -36,6 +36,9 @@ import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
+import com.intel.llvm.ireditor.lLVM_IR.Alias;
+import com.intel.llvm.ireditor.lLVM_IR.Constant;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
@@ -303,6 +306,35 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		public Position caseLocalValueRef(LocalValueRef object) {
 			return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.LOCALVALUE_ID);
 		}
+
+		@Override
+		public Position caseGlobalVariable(GlobalVariable object) {
+			String name = NameFixer.restoreName((String) object.eGet(Literals.GLOBAL_VARIABLE__NAME));
+			if (node.getText().startsWith(name) == false) return null;
+			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
+		}
+		
+		@Override
+		public Position caseAlias(Alias object) {
+			String name = NameFixer.restoreName((String) object.eGet(Literals.ALIAS__NAME));
+			if (node.getText().startsWith(name) == false) return null;
+			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
+		}
+		
+		@Override
+		public Position caseFunctionHeader(FunctionHeader object) {
+			String name = NameFixer.restoreName((String) object.eGet(Literals.FUNCTION_HEADER__NAME));
+			if (node.getText().startsWith(name) == false) return null;
+			return new Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
+		}
+		
+		@Override
+		public Position caseConstant(Constant object) {
+			if (object.getRef() != null) {
+				return new Position(node.getOffset(), node.getLength(), LlvmHighlighter.GLOBALVALUE_ID);
+			}
+			return super.caseConstant(object);
+		}
 		
 		public void provideHighlightingFor(XtextResource resource,
 				IHighlightedPositionAcceptor acceptor) {
@@ -327,23 +359,19 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		public final static String FILECHECK_ID = "LLVM_FileCheck";
 		public final static String BASICBLOCK_ID = "LLVM_BasicBlock";
 		public final static String LOCALVALUE_ID = "LLVM_LocalValue";
+		public final static String GLOBALVALUE_ID = "LLVM_GlobalValue";
 		
 		public void configure(IHighlightingConfigurationAcceptor acceptor) {
 			super.configure(acceptor);
 			acceptor.acceptDefaultHighlighting(TYPE_ID, "Type", typeTextStyle());
 			acceptor.acceptDefaultHighlighting(FILECHECK_ID, "FileCheck Comment", fileCheckTextStyle());
 			acceptor.acceptDefaultHighlighting(BASICBLOCK_ID, "Basic Block", basicBlockTextStyle());
-			acceptor.acceptDefaultHighlighting(LOCALVALUE_ID, "Local Value", localValueTextStyle());
+			acceptor.acceptDefaultHighlighting(LOCALVALUE_ID, "Local Value", defaultTextStyle());
+			acceptor.acceptDefaultHighlighting(GLOBALVALUE_ID, "Global Value", defaultTextStyle());
 		}
 		
 		// Default values below. These are all customizable by the user.
 		
-		private TextStyle localValueTextStyle() {
-			TextStyle textStyle = new TextStyle();
-			textStyle.setColor(new RGB(0, 0, 0));
-			return textStyle;
-		}
-
 		public TextStyle basicBlockTextStyle() {
 			TextStyle textStyle = new TextStyle();
 			textStyle.setColor(new RGB(148, 71, 41));
