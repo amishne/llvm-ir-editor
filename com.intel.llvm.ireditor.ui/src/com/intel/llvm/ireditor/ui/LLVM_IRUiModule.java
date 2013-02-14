@@ -51,6 +51,7 @@ import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
@@ -105,11 +106,11 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		return LlvmRenameStrategy.class;
 	}
 	
-//	@Override
-//	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
-//		// FIXME this is a workaround to add timeouts to content assist
-//		return CustomLlvmContentAssistParser.class;
-//	}
+	@Override
+	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
+		// FIXME this is a workaround to add timeouts to content assist
+		return CustomLlvmContentAssistParser.class;
+	}
 	
 	@Override
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
