@@ -113,16 +113,26 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	}
 	
 	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-		return LlvmDirtyStateAwareEditorCallback.class;
-	}
-	
-	@Override
 	public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
+		// For performance: we don't need to look up any jar files.
 		return SimpleResourceSetProvider.class;
 	}
 	
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+//		// To prevent the plugin from offering to turn on xtext validation to the project.
+//		// TODO remove this if this is ever stable enough to re-enable the feature.
+		return LlvmDirtyStateAwareEditorCallback.class;
+	}
 	public static class LlvmDirtyStateAwareEditorCallback extends AbstractDirtyStateAwareEditorCallback {}
+	
+//	public Class<? extends ToggleXtextNatureAction> bindToggleXtextNatureAction() {
+//		return LlvmToggleXtextNatureAction.class;
+//	}
+//	
+//	public static class LlvmToggleXtextNatureAction extends ToggleXtextNatureAction {
+//		@Override public boolean hasNature(IProject project) { return true; }
+//	}
 	
 	public static class LlvmRenameStrategy extends DefaultRenameStrategy {
 		@Override
