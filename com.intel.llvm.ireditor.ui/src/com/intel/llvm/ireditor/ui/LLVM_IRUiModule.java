@@ -43,6 +43,7 @@ import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRPa
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.formatting.IIndentationInformation;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
@@ -53,6 +54,7 @@ import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.InfiniteRecursion;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
@@ -77,14 +79,17 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	}
 	
 	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		// Custom language highlighting
 		return LlvmHighlighter.class;
 	}
 	
 	public Class<? extends ISemanticHighlightingCalculator> bindSemanticHighlightingCalculator() {
+		// To match elements with their intended highlighting.
 		return LlvmSemanticHighlighter.class;
 	}
 	
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
+		// Custom hover provider.
 		return LlvmHoverProvider.class;
 	}
 	
@@ -94,21 +99,24 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	
 	@Override
 	public Class<? extends IIndentationInformation> bindIIndentationInformation() {
+		// Use "  " indentation instead of the default.
 		return LlvmIndentationInformation.class;
 	}
 
 	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
+		// In order to locate nameless elements.
 		return LlvmLocationInFileProvider.class;
 	}
 	
 	@Override
 	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
+		// To handle renaming elements such as "%name =". 
 		return LlvmRenameStrategy.class;
 	}
 	
 	@Override
 	public Class<? extends IContentAssistParser> bindIContentAssistParser() {
-		// FIXME this is a workaround to add timeouts to content assist
+		// Replace the default content assist parser with a "safer" one which doesn't hang as often :)
 		return CustomLlvmContentAssistParser.class;
 	}
 	
@@ -120,19 +128,11 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	
 	@Override
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-//		// To prevent the plugin from offering to turn on xtext validation to the project.
-//		// TODO remove this if this is ever stable enough to re-enable the feature.
+		// To prevent the plugin from offering to turn on xtext validation to the project.
+		// TODO remove this if this is ever stable enough to re-enable the feature.
 		return LlvmDirtyStateAwareEditorCallback.class;
 	}
 	public static class LlvmDirtyStateAwareEditorCallback extends AbstractDirtyStateAwareEditorCallback {}
-	
-//	public Class<? extends ToggleXtextNatureAction> bindToggleXtextNatureAction() {
-//		return LlvmToggleXtextNatureAction.class;
-//	}
-//	
-//	public static class LlvmToggleXtextNatureAction extends ToggleXtextNatureAction {
-//		@Override public boolean hasNature(IProject project) { return true; }
-//	}
 	
 	public static class LlvmRenameStrategy extends DefaultRenameStrategy {
 		@Override
@@ -206,8 +206,24 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 				@Override
 				public void before(EObject grammarElement) {
 					if (System.currentTimeMillis() - start > ASSIST_TIMEOUT_MS) return;
+					
+					// FIXME Hacking time!
+					// Content assist currently hangs in several cases, adding a check here to throw an
+					// exception before it can happen.
+					
+					// Content assist in function header also looks beyond the header
+					if (grammarElement instanceof Keyword) {
+						if (((Keyword) grammarElement).getValue().equals("{")) throw new InfiniteRecursion();
+					}
+					
 					super.before(grammarElement);
 				}
+				
+//				@Override
+//				public void recover(IntStream stream, RecognitionException ex) {
+//					System.out.println(getCurrentInputSymbol(stream).toString());
+//					super.recover(stream, ex);
+//				}
 			};
 			result.setGrammarAccess(getGrammarAccess());
 			return result;

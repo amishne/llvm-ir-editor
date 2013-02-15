@@ -29,6 +29,9 @@ package com.intel.llvm.ireditor;
 
 import java.util.regex.Pattern;
 
+import org.antlr.runtime.IntStream;
+import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.Token;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.IValueConverterService;
@@ -39,10 +42,14 @@ import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.parser.IParser;
+import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 
 import com.intel.llvm.ireditor.ReverseNamedElementIterator.Mode;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.names.NameResolver;
+import com.intel.llvm.ireditor.parser.antlr.LLVM_IRParser;
+import com.intel.llvm.ireditor.parser.antlr.internal.InternalLLVM_IRParser;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -62,6 +69,28 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	 */
 	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
 		return LlvmQualifiedNameConverter.class;
+	}
+	
+	@Override
+	public Class<? extends IParser> bindIParser() {
+		// To fix hanging on unclosed functions
+		return LlvmParser.class;
+	}
+	
+	public static class LlvmParser extends LLVM_IRParser {
+		@Override
+		protected InternalLLVM_IRParser createParser(XtextTokenStream stream) {
+			return new InternalLLVM_IRParser(stream, getGrammarAccess()) {
+				@Override
+				public void recover(IntStream input, RecognitionException re) {
+					if (re.token.getType() == Token.EOF) {
+						// Don't bother recovering if the input is EOF.
+						state.failed = true;
+					}
+					super.recover(input, re);
+				}
+			};
+		}
 	}
 	
 	public static class LlvmQualifiedNameConverter implements IQualifiedNameConverter {
