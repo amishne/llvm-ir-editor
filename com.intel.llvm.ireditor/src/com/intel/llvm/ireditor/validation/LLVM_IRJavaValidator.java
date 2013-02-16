@@ -28,9 +28,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.validation;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.EcoreUtil2;
@@ -85,6 +88,8 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_sub;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_switch;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
+import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
+import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
@@ -620,6 +625,41 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		}
 	}
 	
+	@Check
+	public void checkLocalValueRef(LocalValueRef val) {
+		LocalValue def = val.getRef();
+		if (dominates(def, val) == false) {
+			error("This use is not dominated by the referred value", Literals.LOCAL_VALUE_REF__REF);
+		}
+	}
+	
+	private boolean dominates(LocalValue def, LocalValueRef ref) {
+		if (def instanceof Parameter) return true;
+		
+		return dominates(EcoreUtil2.getContainerOfType(def, BasicBlock.class),
+				EcoreUtil2.getContainerOfType(ref, BasicBlock.class));
+	}
+
+	private boolean dominates(BasicBlock dominator, BasicBlock dominatee) {
+		Set<BasicBlock> seen = new HashSet<>();
+		seen.add(dominatee);
+		return dominates(dominator, dominatee, seen);
+	}
+	
+	private boolean dominates(BasicBlock dominator, BasicBlock dominatee, Set<BasicBlock> seen) {
+		if (dominator == dominatee) return true; // Dominator reached
+		Iterable<? extends BasicBlock> preds = predecessors(dominatee);
+		if (preds.iterator().hasNext() == false) return false; // Start of function reached
+		
+		// Otherwise, only return true if all predecessors are dominated by the dominator.
+		for (BasicBlock pred : preds) {
+			if (seen.contains(pred)) continue;
+			seen.add(pred);
+			if (dominates(dominator, pred, seen) == false) return false;
+		}
+		return true;
+	}
+
 	public void checkNumberSequence(EObject val, EObject forIter, EStructuralFeature feature) {
 		NumberedName name = namer.resolveNumberedName(val);
 		if (name == null) return; // Unnamed elements are always in proper sequence
@@ -752,6 +792,18 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		// If there's no other option and the types are of the same size, add the 'bitcast' option
 		if (result.isEmpty() && from.getBits() == to.getBits()) result.add("bitcast");
 		
+		return result;
+	}
+	
+	private Iterable<? extends BasicBlock> predecessors(BasicBlock val) {
+		LinkedList<BasicBlock> result = new LinkedList<>();
+		for (EObject ref : LLVM_IRUtils.xrefs(val)) {
+			// Check if at least one of its references is in a terminator instruction
+			if (EcoreUtil2.getContainerOfType(ref, TerminatorInstruction.class) != null ||
+					EcoreUtil2.getContainerOfType(ref, NamedTerminatorInstruction.class) != null) {
+				result.add(EcoreUtil2.getContainerOfType(ref, BasicBlock.class));
+			}
+		}
 		return result;
 	}
 	
