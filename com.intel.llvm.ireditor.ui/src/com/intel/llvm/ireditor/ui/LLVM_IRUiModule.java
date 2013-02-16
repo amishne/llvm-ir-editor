@@ -28,15 +28,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 package com.intel.llvm.ireditor.ui;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-
-import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
-import com.intel.llvm.ireditor.lLVM_IR.Instruction;
-import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser;
 
@@ -45,10 +36,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.formatting.IIndentationInformation;
-import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
-import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
@@ -103,11 +91,6 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		return LlvmIndentationInformation.class;
 	}
 
-	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider() {
-		// In order to locate nameless elements.
-		return LlvmLocationInFileProvider.class;
-	}
-	
 	@Override
 	public Class<? extends IRenameStrategy> bindIRenameStrategy() {
 		// To handle renaming elements such as "%name =". 
@@ -157,42 +140,6 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	public static class LlvmIndentationInformation implements IIndentationInformation {
 		public String getIndentString() {
 			return "  ";
-		}
-	}
-	
-	public static class LlvmLocationInFileProvider extends DefaultLocationInFileProvider {
-		protected List<INode> getLocationNodes(EObject obj) {
-			if (obj instanceof BasicBlock) {
-				BasicBlock block = (BasicBlock) obj;
-				String name = block.getName();
-				if (name == null || name.matches("%\\d+")) {
-					// Unnamed basic blocks don't have any name or ID-typed field, so
-					// need to manually set their location.
-					Iterator<Instruction> iter = block.getInstructions().iterator();
-					if (iter.hasNext()) obj = block.getInstructions().iterator().next();
-				}
-			} else if (obj instanceof NamedInstruction) {
-				NamedInstruction inst = (NamedInstruction) obj;
-				String name = inst.getName();
-				if (name == null || name.matches("%\\d+")) {
-					// Unnamed instructions don't have any name or ID-typed field, so
-					// need to manually set their location.
-					EObject actualInst = getOpcode(inst);
-					if (actualInst != null) obj = actualInst;
-				}
-			}
-			return super.getLocationNodes(obj);
-		}
-
-		private EObject getOpcode(NamedInstruction inst) {
-			if (inst instanceof StartingInstruction) {
-				return ((StartingInstruction) inst).getInstruction();
-			} else if (inst instanceof NamedMiddleInstruction) {
-				return ((NamedMiddleInstruction) inst).getInstruction();
-			} else if (inst instanceof NamedTerminatorInstruction) {
-				return ((NamedTerminatorInstruction) inst).getInstruction();
-			}
-			return null;
 		}
 	}
 	
