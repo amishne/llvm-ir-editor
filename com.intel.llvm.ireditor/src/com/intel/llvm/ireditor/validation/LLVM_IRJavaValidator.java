@@ -47,6 +47,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
+import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.BitwiseBinaryInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
@@ -438,12 +439,37 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkPhi(Instruction_phi inst) {
+		// Verify all values are of the appropriate type
 		ResolvedType type = resolveType(inst.getType());
-		
 		int index = 0;
 		for (ValueRef val : inst.getValues()) {
 			checkExpected(type, resolveType(val), Literals.INSTRUCTION_PHI__VALUES, index);
 			index++;
+		}
+		
+		// Populate the "mentionedBlocks" list, and verify it does not contain duplicates
+		List<BasicBlock> mentionedBlocks = new LinkedList<>();
+		index = 0;
+		for (BasicBlockRef ref : inst.getLabels()) {
+			BasicBlock actual = ref.getRef();
+			if (mentionedBlocks.contains(actual)) {
+				error("The basic block " + actual.getName() + " was already mentioned in this phi node",
+						Literals.INSTRUCTION_PHI__LABELS, index);
+			}
+			index++;
+			mentionedBlocks.add(actual);
+		}
+		
+		// Verify no predecessors are missing
+		for (BasicBlock pred : predecessors(EcoreUtil2.getContainerOfType(inst, BasicBlock.class))) {
+			if (mentionedBlocks.contains(pred)) {
+				// TODO add a check that the incoming value is dominated by the "pred".
+				mentionedBlocks.remove(pred);
+			} else {
+				error("The basic block " + pred.getName() +
+						" is a predecessor of the enclosing basic block, but is missing from this phi node",
+						Literals.INSTRUCTION_PHI__OPCODE);
+			}
 		}
 	}
 	
@@ -628,6 +654,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkLocalValueRef(LocalValueRef val) {
 		LocalValue def = val.getRef();
+		if (EcoreUtil2.getContainerOfType(val, Instruction_phi.class) != null) {
+			// A reference in a phi node does not need to be dominated
+			return;
+		}
 		if (dominates(def, val) == false) {
 			error("This use is not dominated by the referred value", Literals.LOCAL_VALUE_REF__REF);
 		}
