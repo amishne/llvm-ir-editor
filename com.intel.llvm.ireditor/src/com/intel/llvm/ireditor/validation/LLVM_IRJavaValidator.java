@@ -58,6 +58,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Function;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
@@ -463,7 +464,6 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		// Verify no predecessors are missing
 		for (BasicBlock pred : predecessors(EcoreUtil2.getContainerOfType(inst, BasicBlock.class))) {
 			if (mentionedBlocks.contains(pred)) {
-				// TODO add a check that the incoming value is dominated by the "pred".
 				mentionedBlocks.remove(pred);
 			} else {
 				error("The basic block " + pred.getName() +
@@ -653,21 +653,70 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkLocalValueRef(LocalValueRef val) {
+		// Check that the ref is indeed dominated by the def
 		LocalValue def = val.getRef();
-		if (EcoreUtil2.getContainerOfType(val, Instruction_phi.class) != null) {
-			// A reference in a phi node does not need to be dominated
+		if (def instanceof Parameter) return; // Parameters dominate the entire function
+		
+		Instruction_phi phi = EcoreUtil2.getContainerOfType(val, Instruction_phi.class);
+		if (phi == null) {
+			// If not in a phi node, just check if the def directly dominates the ref
+			if (dominates(def, val) == false) {
+				error("This use is not dominated by the referred value", Literals.LOCAL_VALUE_REF__REF);
+			}
 			return;
 		}
-		if (dominates(def, val) == false) {
-			error("This use is not dominated by the referred value", Literals.LOCAL_VALUE_REF__REF);
+		
+		// If in a phi node, check that the appropriate basic block either contains the def,
+		// or is dominated by it.
+		BasicBlock defBb = EcoreUtil2.getContainerOfType(def, BasicBlock.class);
+		if (defBb == null) {
+			// Not supposed to happen
+			return;
+		}
+		for (int i=0; i < phi.getValues().size(); i++) {
+			if (phi.getValues().get(i) == val) {
+				BasicBlock bb = phi.getLabels().get(i).getRef();
+				if (bb == defBb) return;
+				if (dominates(defBb, bb) == false) {
+					error("The value " + def.getName() + " is neither defined in " + bb.getName() +
+							" nor is dominating it", Literals.LOCAL_VALUE_REF__REF);
+				}
+				break;
+			}
 		}
 	}
 	
 	private boolean dominates(LocalValue def, LocalValueRef ref) {
 		if (def instanceof Parameter) return true;
 		
-		return dominates(EcoreUtil2.getContainerOfType(def, BasicBlock.class),
-				EcoreUtil2.getContainerOfType(ref, BasicBlock.class));
+		BasicBlock defBb = EcoreUtil2.getContainerOfType(def, BasicBlock.class);
+		BasicBlock refBb = EcoreUtil2.getContainerOfType(ref, BasicBlock.class);
+		if (defBb == null || refBb == null) {
+			// Should not happen
+			return true;
+		}
+		
+		if (defBb == refBb) {
+			return appearsInSameBbAndBefore(def, ref);
+		}
+		
+		return dominates(defBb, refBb);
+	}
+
+	private boolean appearsInSameBbAndBefore(EObject first, EObject second) {
+		Instruction firstInst = EcoreUtil2.getContainerOfType(first, Instruction.class);
+		Instruction secondInst = EcoreUtil2.getContainerOfType(second, Instruction.class);
+		if (secondInst == null) {
+			// Should not happen
+			return false;
+		}
+		ReverseNamedElementIterator iter = new ReverseNamedElementIterator(secondInst);
+		for (EObject prev : iter) {
+			if (prev == firstInst) return true;
+			if (prev instanceof BasicBlock) return false;
+		}
+		// We should not reach this location
+		return false;
 	}
 
 	private boolean dominates(BasicBlock dominator, BasicBlock dominatee) {
