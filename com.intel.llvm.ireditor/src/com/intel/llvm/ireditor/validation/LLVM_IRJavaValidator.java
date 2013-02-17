@@ -549,14 +549,18 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public void checkFunctionHeaderParameters(Parameters val) {
 		if (val.eContainer() == null) return;
 		
-		// Verify a metadata type only appears in intrinsics
 		FunctionHeader header = (FunctionHeader) val.eContainer();
-		if (header.getName().startsWith("@llvm.")) return;
+		boolean isIntrinsic = header.getName().startsWith("@llvm.");
 		
 		int index = 0;
 		for (Parameter param : val.getParameters()) {
-			if (resolveType(param) instanceof ResolvedMetadataType) {
+			ResolvedType t = resolveType(param);
+			// Verify a metadata type only appears in intrinsics
+			if (isIntrinsic == false && t instanceof ResolvedMetadataType) {
 				error("Metadata parameters are only permitted on intrinsic functions",
+						Literals.PARAMETERS__PARAMETERS, index);
+			} else if (t instanceof ResolvedVoidType) {
+				error(t.toString() + " is not a valid parameter type",
 						Literals.PARAMETERS__PARAMETERS, index);
 			}
 			index++;
