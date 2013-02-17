@@ -471,6 +471,20 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 						Literals.INSTRUCTION_PHI__OPCODE);
 			}
 		}
+		
+		// Produce error about unused labels
+		if (mentionedBlocks.isEmpty()) return;
+		index = -1;
+		for (BasicBlockRef ref : inst.getLabels()) {
+			index++;
+			BasicBlock actual = ref.getRef();
+			if (mentionedBlocks.contains(actual)) {
+				String name = actual.getName();
+				if (name == null) continue; // No name probably means bad reference; no need to add this error as well
+				error("The basic block " + name + " is not a predecessor of this phi node",
+						Literals.INSTRUCTION_PHI__LABELS, index);
+			}
+		}
 	}
 	
 	@Check

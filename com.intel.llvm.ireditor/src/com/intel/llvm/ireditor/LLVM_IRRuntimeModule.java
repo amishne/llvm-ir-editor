@@ -31,7 +31,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.antlr.runtime.EarlyExitException;
 import org.antlr.runtime.IntStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
@@ -105,10 +104,11 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override
 		public SyntaxErrorMessage getSyntaxErrorMessage(
 				IParserErrorContext context) {
-			if (context.getRecognitionException() instanceof EarlyExitException &&
-					((EarlyExitException)context.getRecognitionException()).token.getText().equals("}")) {
-				// Function closing brace while last BB doesn't have a terminator
-				return new SyntaxErrorMessage("Missing terminator instruction", null);
+			if (context.getCurrentContext() instanceof BasicBlock) {
+				// Enhance error message for unclosed basic blocks.
+				return new SyntaxErrorMessage(super.getSyntaxErrorMessage(context).getMessage() +
+						" (did you forget a terminator instruction for " +
+						((BasicBlock)context.getCurrentContext()).getName() + "?)", null);
 			}
 			return super.getSyntaxErrorMessage(context);
 		}
