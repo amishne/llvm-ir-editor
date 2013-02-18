@@ -34,7 +34,6 @@ import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRPa
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.xtext.Keyword;
 import org.eclipse.xtext.formatting.IIndentationInformation;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
@@ -42,7 +41,6 @@ import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
-import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.InfiniteRecursion;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
@@ -144,7 +142,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	}
 	
 	public static class CustomLlvmContentAssistParser extends LLVM_IRParser {
-		public static long ASSIST_TIMEOUT_MS = 3000;
+		public static long ASSIST_TIMEOUT_MS = 1000000;
 		long start;
 		
 		@Override
@@ -154,23 +152,9 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 				public void before(EObject grammarElement) {
 					if (System.currentTimeMillis() - start > ASSIST_TIMEOUT_MS) return;
 					
-					// FIXME Hacking time!
-					// Content assist currently hangs in several cases, adding a check here to throw an
-					// exception before it can happen.
-					
-					// Content assist in function header also looks beyond the header
-					if (grammarElement instanceof Keyword) {
-						if (((Keyword) grammarElement).getValue().equals("{")) throw new InfiniteRecursion();
-					}
-					
 					super.before(grammarElement);
 				}
 				
-//				@Override
-//				public void recover(IntStream stream, RecognitionException ex) {
-//					System.out.println(getCurrentInputSymbol(stream).toString());
-//					super.recover(stream, ex);
-//				}
 			};
 			result.setGrammarAccess(getGrammarAccess());
 			return result;
