@@ -12696,11 +12696,11 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(
+((
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeIntTypeParserRuleCall_0_0()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeIntTypeParserRuleCall_0_0_0()); 
 	    }
 		lv_type_0_1=ruleIntType		{
 	        if ($current==null) {
@@ -12715,7 +12715,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeFloatingTypeParserRuleCall_0_1()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeFloatingTypeParserRuleCall_0_0_1()); 
 	    }
 		lv_type_0_2=ruleFloatingType		{
 	        if ($current==null) {
@@ -12730,7 +12730,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeVectorTypeParserRuleCall_0_2()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeVectorTypeParserRuleCall_0_0_2()); 
 	    }
 		lv_type_0_3=ruleVectorType		{
 	        if ($current==null) {
@@ -12745,7 +12745,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeArrayTypeParserRuleCall_0_3()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeArrayTypeParserRuleCall_0_0_3()); 
 	    }
 		lv_type_0_4=ruleArrayType		{
 	        if ($current==null) {
@@ -12760,7 +12760,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeX86mmxTypeParserRuleCall_0_4()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeX86mmxTypeParserRuleCall_0_0_4()); 
 	    }
 		lv_type_0_5=ruleX86mmxType		{
 	        if ($current==null) {
@@ -12775,7 +12775,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeMetadataTypeParserRuleCall_0_5()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeMetadataTypeParserRuleCall_0_0_5()); 
 	    }
 		lv_type_0_6=ruleMetadataType		{
 	        if ($current==null) {
@@ -12790,7 +12790,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeStructTypeParserRuleCall_0_6()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeStructTypeParserRuleCall_0_0_6()); 
 	    }
 		lv_type_0_7=ruleStructType		{
 	        if ($current==null) {
@@ -12805,7 +12805,7 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeOpaqueTypeParserRuleCall_0_7()); 
+	        newCompositeNode(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeOpaqueTypeParserRuleCall_0_0_7()); 
 	    }
 		lv_type_0_8=ruleOpaqueType		{
 	        if ($current==null) {
@@ -12823,6 +12823,20 @@ ruleNonLeftRecursiveNonVoidType returns [EObject current=null]
 
 )
 )
+    |(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getNonLeftRecursiveNonVoidTypeRule());
+	        }
+        }
+	otherlv_1=RULE_LOCAL_ID
+	{
+		newLeafNode(otherlv_1, grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypedefTypeDefCrossReference_1_0()); 
+	}
+
+)
+))
 ;
 
 

@@ -638,6 +638,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="NonLeftRecursiveNonVoidType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="typedef" eType="#//TypeDef"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TypeDef" eSuperTypes="#//TopLevelElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

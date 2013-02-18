@@ -994,7 +994,7 @@ NonLeftRecursiveType:
 
 NonLeftRecursiveNonVoidType:
 	// Complete types:
-	type=(
+	(type=(
 		IntType |
 		FloatingType |
 		VectorType |
@@ -1003,7 +1003,8 @@ NonLeftRecursiveNonVoidType:
 		MetadataType |
 		StructType |
 		OpaqueType
-	)
+	) |
+	typedef=[TypeDef|LOCAL_ID])
 ;
 
 TypeDef:

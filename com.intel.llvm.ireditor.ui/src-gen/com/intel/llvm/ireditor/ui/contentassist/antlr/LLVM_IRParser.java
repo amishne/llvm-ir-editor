@@ -87,7 +87,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getAlternatives_2(), "rule__FunctionTypeOrPointerToFunctionTypeSuffix__Alternatives_2");
 					put(grammarAccess.getNonLeftRecursiveTypeAccess().getAlternatives(), "rule__NonLeftRecursiveType__Alternatives");
 					put(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeAlternatives_0_0(), "rule__NonLeftRecursiveType__TypeAlternatives_0_0");
-					put(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeAlternatives_0(), "rule__NonLeftRecursiveNonVoidType__TypeAlternatives_0");
+					put(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getAlternatives(), "rule__NonLeftRecursiveNonVoidType__Alternatives");
+					put(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeAlternatives_0_0(), "rule__NonLeftRecursiveNonVoidType__TypeAlternatives_0_0");
 					put(grammarAccess.getBinaryOpcodeAccess().getAlternatives(), "rule__BinaryOpcode__Alternatives");
 					put(grammarAccess.getStructTypeAccess().getAlternatives_1(), "rule__StructType__Alternatives_1");
 					put(grammarAccess.getFloatingTypeAccess().getAlternatives_0(), "rule__FloatingType__Alternatives_0");
@@ -626,7 +627,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsAssignment_4(), "rule__FunctionTypeOrPointerToFunctionTypeSuffix__StarsAssignment_4");
 					put(grammarAccess.getNonLeftRecursiveTypeAccess().getTypeAssignment_0(), "rule__NonLeftRecursiveType__TypeAssignment_0");
 					put(grammarAccess.getNonLeftRecursiveTypeAccess().getTypedefAssignment_1(), "rule__NonLeftRecursiveType__TypedefAssignment_1");
-					put(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeAssignment(), "rule__NonLeftRecursiveNonVoidType__TypeAssignment");
+					put(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypeAssignment_0(), "rule__NonLeftRecursiveNonVoidType__TypeAssignment_0");
+					put(grammarAccess.getNonLeftRecursiveNonVoidTypeAccess().getTypedefAssignment_1(), "rule__NonLeftRecursiveNonVoidType__TypedefAssignment_1");
 					put(grammarAccess.getTypeDefAccess().getNameAssignment_0(), "rule__TypeDef__NameAssignment_0");
 					put(grammarAccess.getTypeDefAccess().getTypeAssignment_2(), "rule__TypeDef__TypeAssignment_2");
 					put(grammarAccess.getStructTypeAccess().getTypesAssignment_1_0_1_0(), "rule__StructType__TypesAssignment_1_0_1_0");

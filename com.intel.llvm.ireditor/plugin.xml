@@ -5,9 +5,9 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.llvm.org/" 
+       uri = "http://www.intel.com/llvm/ireditor" 
        class = "com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage"
-       genModel = "org/llvm/eclipse/ireditor/LLVM_IR.genmodel" /> 
+       genModel = "com/intel/llvm/ireditor/LLVM_IR.genmodel" /> 
 	
   </extension>
 

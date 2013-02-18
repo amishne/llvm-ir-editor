@@ -36,6 +36,7 @@ import java.util.TreeSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.IContainer;
@@ -99,9 +100,12 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 
 		final String newInstName = name.charAt(0) + "converted." + name.substring(1);
 
-		EObject inst = findObject(doc, issue).eContainer();
-		// TODO replace with "findContainerNotOfType(bb)" to handle cases of both named and unnamed
-		// instructions.
+		EObject obj = findObject(doc, issue);
+		EObject inst = EcoreUtil2.getContainerOfType(obj, Instruction.class);
+		if (inst == null) {
+			// Not inside an instruction - don't suggest anything.
+			return;
+		}
 		
 		final int instOffset = offsetOf(inst);
 		

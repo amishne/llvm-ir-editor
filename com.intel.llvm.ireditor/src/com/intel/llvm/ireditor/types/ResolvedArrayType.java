@@ -26,31 +26,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
+
 public class ResolvedArrayType extends ResolvedAnyArrayType {
 
-	private final int size;
+	private final BigInteger size;
 
-	public ResolvedArrayType(int size, ResolvedType elementType) {
+	public ResolvedArrayType(BigInteger size, ResolvedType elementType) {
 		super(elementType);
 		this.size = size;
 	}
 	
-	public int getBits() {
-		return size * elementType.getBits();
+	public BigInteger getBits() {
+		return size.multiply(elementType.getBits());
 	}
 	
 	public String toString() {
-		return "[" + size + " x " + elementType.toString() + "]";
+		return "[" + size.toString() + " x " + elementType.toString() + "]";
 	}
 	
-	public ResolvedType getContainedType(int index) {
-		assert (index < size);
+	public ResolvedType getContainedType(BigInteger index) {
+		assert (index.compareTo(size) < 0);
 		return elementType;
 	}
 
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedArrayType
-				&& size == ((ResolvedArrayType)t).size
+				&& size.equals(((ResolvedArrayType)t).size)
 				&& elementType.accepts(t.getContainedType(0));
 	}
 	

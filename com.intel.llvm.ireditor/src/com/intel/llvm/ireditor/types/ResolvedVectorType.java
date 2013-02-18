@@ -26,34 +26,36 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
+
 public class ResolvedVectorType extends ResolvedAnyVectorType {
-	private final int size;
+	private final BigInteger size;
 	
-	public ResolvedVectorType(int size, ResolvedType elementType) {
+	public ResolvedVectorType(BigInteger size, ResolvedType elementType) {
 		super(elementType);
 		this.size = size;
 	}
 
-	public int getBits() {
-		return size * elementType.getBits();
+	public BigInteger getBits() {
+		return size.multiply(elementType.getBits());
 	}
 	
 	public String toString() {
 		return "<" + size + " x " + elementType.toString() + ">";
 	}
 	
-	public ResolvedType getContainedType(int index) {
-		assert (index < size);
+	public ResolvedType getContainedType(BigInteger index) {
+		assert (index.compareTo(size) < 0);
 		return elementType;
 	}
 	
-	public int getSize() {
+	public BigInteger getSize() {
 		return size;
 	}
 
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedVectorType
-				&& size == ((ResolvedVectorType)t).size
+				&& size.equals(((ResolvedVectorType)t).size)
 				&& elementType.accepts(t.getContainedType(0)); 
 	}
 	

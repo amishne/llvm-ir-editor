@@ -4938,6 +4938,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getNonLeftRecursiveNonVoidType_Typedef()
+  {
+    return (EReference)nonLeftRecursiveNonVoidTypeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getTypeDef()
   {
     return typeDefEClass;
@@ -5644,6 +5654,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     nonLeftRecursiveNonVoidTypeEClass = createEClass(NON_LEFT_RECURSIVE_NON_VOID_TYPE);
     createEReference(nonLeftRecursiveNonVoidTypeEClass, NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE);
+    createEReference(nonLeftRecursiveNonVoidTypeEClass, NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF);
 
     typeDefEClass = createEClass(TYPE_DEF);
     createEAttribute(typeDefEClass, TYPE_DEF__NAME);
@@ -6286,6 +6297,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     initEClass(nonLeftRecursiveNonVoidTypeEClass, NonLeftRecursiveNonVoidType.class, "NonLeftRecursiveNonVoidType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNonLeftRecursiveNonVoidType_Type(), ecorePackage.getEObject(), null, "type", null, 0, 1, NonLeftRecursiveNonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNonLeftRecursiveNonVoidType_Typedef(), this.getTypeDef(), null, "typedef", null, 0, 1, NonLeftRecursiveNonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(typeDefEClass, TypeDef.class, "TypeDef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTypeDef_Name(), ecorePackage.getEString(), "name", null, 0, 1, TypeDef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

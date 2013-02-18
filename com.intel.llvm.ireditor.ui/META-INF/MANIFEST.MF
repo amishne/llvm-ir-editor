@@ -19,6 +19,7 @@ Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.intel.llvm.ireditor.ui.contentassist,
  com.intel.llvm.ireditor.ui.contentassist.antlr,
- com.intel.llvm.ireditor.ui.internal
+ com.intel.llvm.ireditor.ui.internal,
+ com.intel.llvm.ireditor.ui.quickfix
 Bundle-Activator: com.intel.llvm.ireditor.ui.internal.LLVM_IRActivator
 Bundle-Vendor: Intel

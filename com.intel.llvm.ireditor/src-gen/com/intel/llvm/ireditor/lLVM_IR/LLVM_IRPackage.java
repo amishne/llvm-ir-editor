@@ -5888,13 +5888,22 @@ public interface LLVM_IRPackage extends EPackage
   int NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Typedef</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF = 1;
+
+  /**
    * The number of structural features of the '<em>Non Left Recursive Non Void Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NON_LEFT_RECURSIVE_NON_VOID_TYPE_FEATURE_COUNT = 1;
+  int NON_LEFT_RECURSIVE_NON_VOID_TYPE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeDefImpl <em>Type Def</em>}' class.
@@ -10182,6 +10191,17 @@ public interface LLVM_IRPackage extends EPackage
   EReference getNonLeftRecursiveNonVoidType_Type();
 
   /**
+   * Returns the meta object for the reference '{@link com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveNonVoidType#getTypedef <em>Typedef</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Typedef</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveNonVoidType#getTypedef()
+   * @see #getNonLeftRecursiveNonVoidType()
+   * @generated
+   */
+  EReference getNonLeftRecursiveNonVoidType_Typedef();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.TypeDef <em>Type Def</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -13657,6 +13677,14 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EReference NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE = eINSTANCE.getNonLeftRecursiveNonVoidType_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Typedef</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF = eINSTANCE.getNonLeftRecursiveNonVoidType_Typedef();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeDefImpl <em>Type Def</em>}' class.

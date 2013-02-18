@@ -4,6 +4,7 @@ package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveNonVoidType;
+import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.NonLeftRecursiveNonVoidTypeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.NonLeftRecursiveNonVoidTypeImpl#getTypedef <em>Typedef</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,6 +41,16 @@ public class NonLeftRecursiveNonVoidTypeImpl extends MinimalEObjectImpl.Containe
    * @ordered
    */
   protected EObject type;
+
+  /**
+   * The cached value of the '{@link #getTypedef() <em>Typedef</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTypedef()
+   * @generated
+   * @ordered
+   */
+  protected TypeDef typedef;
 
   /**
    * <!-- begin-user-doc -->
@@ -114,6 +126,49 @@ public class NonLeftRecursiveNonVoidTypeImpl extends MinimalEObjectImpl.Containe
    * <!-- end-user-doc -->
    * @generated
    */
+  public TypeDef getTypedef()
+  {
+    if (typedef != null && typedef.eIsProxy())
+    {
+      InternalEObject oldTypedef = (InternalEObject)typedef;
+      typedef = (TypeDef)eResolveProxy(oldTypedef);
+      if (typedef != oldTypedef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF, oldTypedef, typedef));
+      }
+    }
+    return typedef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TypeDef basicGetTypedef()
+  {
+    return typedef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTypedef(TypeDef newTypedef)
+  {
+    TypeDef oldTypedef = typedef;
+    typedef = newTypedef;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF, oldTypedef, typedef));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -137,6 +192,9 @@ public class NonLeftRecursiveNonVoidTypeImpl extends MinimalEObjectImpl.Containe
     {
       case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE:
         return getType();
+      case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF:
+        if (resolve) return getTypedef();
+        return basicGetTypedef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,6 +211,9 @@ public class NonLeftRecursiveNonVoidTypeImpl extends MinimalEObjectImpl.Containe
     {
       case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE:
         setType((EObject)newValue);
+        return;
+      case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF:
+        setTypedef((TypeDef)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,6 +232,9 @@ public class NonLeftRecursiveNonVoidTypeImpl extends MinimalEObjectImpl.Containe
       case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE:
         setType((EObject)null);
         return;
+      case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF:
+        setTypedef((TypeDef)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -187,6 +251,8 @@ public class NonLeftRecursiveNonVoidTypeImpl extends MinimalEObjectImpl.Containe
     {
       case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPE:
         return type != null;
+      case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE__TYPEDEF:
+        return typedef != null;
     }
     return super.eIsSet(featureID);
   }

@@ -26,6 +26,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
+
 public class ResolvedFloatingType extends ResolvedAnyFloatingType {
 
 	private final String typeStr;
@@ -40,8 +42,8 @@ public class ResolvedFloatingType extends ResolvedAnyFloatingType {
 		return typeStr;
 	}
 
-	public int getBits() {
-		return bits;
+	public BigInteger getBits() {
+		return BigInteger.valueOf(bits);
 	}
 
 	protected boolean uniAccepts(ResolvedType t) {

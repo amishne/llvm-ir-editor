@@ -26,6 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
 import java.util.Iterator;
 
 public abstract class ResolvedType {
@@ -45,7 +46,7 @@ public abstract class ResolvedType {
 	 * The number of bits used by this type.
 	 * @return
 	 */
-	public int getBits() { return 0; }
+	public BigInteger getBits() { return BigInteger.ZERO; }
 	
 	/**
 	 * @param t

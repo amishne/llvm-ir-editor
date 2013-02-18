@@ -26,17 +26,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
+
 public class ResolvedPointerType extends ResolvedType {
 	private final ResolvedType pointedType;
-	private final int addrSpace;
+	private final BigInteger addrSpace;
 	
-	public ResolvedPointerType(ResolvedType pointedType, int addrSpace) {
+	public ResolvedPointerType(ResolvedType pointedType, BigInteger addrSpace) {
 		this.pointedType = pointedType;
 		this.addrSpace = addrSpace;
 	}
 
 	public String toString() {
-		return pointedType.toString() + (addrSpace > 0 ? " addrspace(" + addrSpace + ")" : "") + "*";
+		return pointedType.toString() + (addrSpace.equals(BigInteger.ZERO) ?
+				"" : " addrspace(" + addrSpace.toString() + ")") + "*";
 	}
 	
 	public ResolvedType getContainedType(int index) {
@@ -46,11 +49,11 @@ public class ResolvedPointerType extends ResolvedType {
 	
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedPointerType
-				&& addrSpace == ((ResolvedPointerType)t).addrSpace
+				&& addrSpace.equals(((ResolvedPointerType)t).addrSpace)
 				&& pointedType.accepts(((ResolvedPointerType)t).pointedType);
 	}
 
-	public int getAddrSpace() {
+	public BigInteger getAddrSpace() {
 		return addrSpace;
 	}
 

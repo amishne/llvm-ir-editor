@@ -26,6 +26,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
+
 public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 
 	private final int bits;
@@ -34,8 +36,8 @@ public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 		this.bits = bits;
 	}
 	
-	public int getBits() {
-		return bits;
+	public BigInteger getBits() {
+		return BigInteger.valueOf(bits);
 	}
 
 	public String toString() {
@@ -44,6 +46,6 @@ public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedIntegerType
-				&& bits == t.getBits();
+				&& bits == ((ResolvedIntegerType)t).bits;
 	}
 }

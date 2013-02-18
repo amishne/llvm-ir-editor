@@ -29,7 +29,7 @@ package com.intel.llvm.ireditor.types;
 import java.util.Collections;
 
 /**
- * An array of any possible size.
+ * A function which accepts any other function type, and returns any type.
  */
 public class ResolvedAnyFunctionType extends ResolvedType {
 

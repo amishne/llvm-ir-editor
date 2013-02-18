@@ -27,11 +27,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.validation;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -400,9 +402,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkExpected(pointer.getContainedType(0), inst.getNewValue());
 		
 		// There are some special requirements on the type here
-		int width = pointer.getContainedType(0).getBits();
-		if (width < 8) error("cmpxchg type must have at least 8 bits", inst.eContainingFeature());
-		if ((width & (width-1)) != 0) error("cmpxchg type size must be a power of 2", inst.eContainingFeature());
+		BigInteger width = pointer.getContainedType(0).getBits();
+		if (width.compareTo(BigInteger.valueOf(8)) < 0) {
+			error("cmpxchg type must have at least 8 bits", inst.eContainingFeature());
+		} else if (width.bitCount() != 1) error("cmpxchg type size must be a power of 2", inst.eContainingFeature());
 	}
 	
 	@Check
@@ -413,9 +416,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkExpected(pointer.getContainedType(0), inst.getArgument());
 		
 		// There are some special requirements on the type here
-		int width = pointer.getContainedType(0).getBits();
-		if (width < 8) error("cmpxchg type must have at least 8 bits", inst.eContainingFeature());
-		if ((width & (width-1)) != 0) error("cmpxchg type size must be a power of 2", inst.eContainingFeature());
+		BigInteger width = pointer.getContainedType(0).getBits();
+		if (width.compareTo(BigInteger.valueOf(8)) < 0) {
+			error("atomicrmw type must have at least 8 bits", inst.eContainingFeature());
+		} else if (width.bitCount() != 1) error("atomicrmw type size must be a power of 2", inst.eContainingFeature());
 	}
 	
 	@Check
@@ -573,20 +577,26 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (checkRequired(calleeType, callee.eContainingFeature(), 0, TYPE_ANY_FUNCTION_POINTER) == false) {
 			return;
 		}
+		if (calleeType.getContainedType(0) instanceof ResolvedFunctionType == false) {
+			// Can happen, for example, if it's a pointer to "any" - in that case, do not perform
+			// any other check.
+			return;
+		}
+		
 		ResolvedFunctionType fType = (ResolvedFunctionType) calleeType.getContainedType(0);
 		checkExpected(fType.getReturnType(), retType);
 		
 		boolean typeOmitted = functionPointerType == null;
 		if (typeOmitted == false) {
 			// If a full function type is provided, verify that it matches the signature.
-			checkExpected(new ResolvedPointerType(fType, 0), functionPointerType);
+			checkExpected(new ResolvedPointerType(fType, BigInteger.ZERO), functionPointerType);
 		} else {
 			// Ensure the return type is not a function pointer
 			if (fType.getReturnType() instanceof ResolvedPointerType &&
 					fType.getReturnType().getContainedType(0) instanceof ResolvedFunctionType) {
 				error("Must provide a function pointer type if the function returns a function pointer",
 						functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
-						new ResolvedPointerType(fType, 0).toString());
+						new ResolvedPointerType(fType, BigInteger.ZERO).toString());
 			}
 		}
 		
@@ -597,7 +607,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				if (typeOmitted) {
 					error("Must provide a function pointer type if the function is varargs",
 							functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
-							new ResolvedPointerType(fType, 0).toString());
+							new ResolvedPointerType(fType, BigInteger.ZERO).toString());
 				}
 				// Once we've reached a vararg, perform no further validation
 				return;
@@ -762,12 +772,18 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (name == null) return; // Unnamed elements are always in proper sequence
 		
 		int expected = 0;
-		ReverseNamedElementIterator prevs = new ReverseNamedElementIterator(forIter);
-		for (EObject prev : prevs) {
-			NumberedName prevName = namer.resolveNumberedName(prev);
-			if (prevName == null) continue; // not an unnamed element
-			expected = prevName.getNumber() + 1;
-			break;
+		try {
+			ReverseNamedElementIterator prevs = new ReverseNamedElementIterator(forIter);
+			for (EObject prev : prevs) {
+				NumberedName prevName = namer.resolveNumberedName(prev);
+				if (prevName == null) continue; // not an unnamed element
+				expected = prevName.getNumber() + 1;
+				break;
+			}
+		} catch (NoSuchElementException e) {
+			// This can occur when the source is malformed; in this case another error should already
+			// be reported, so skip this.
+			return;
 		}
 		
 		if (name.getNumber() != expected) {
@@ -795,13 +811,12 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	private void checkConstantFitsInType(ResolvedType type, Constant val) {
-		int size = type.getBits();
+		long size = type.getBits().longValue();
+		String constText = NodeModelUtils.getTokenText(NodeModelUtils.getNode(val));
 		try {
-			String constText = NodeModelUtils.getTokenText(NodeModelUtils.getNode(val));
-			long number = Long.parseLong(constText);
-			long actual = number >= 0 ? number : 1 - number;
-			if (size - 1 < 64 - Long.numberOfLeadingZeros(actual)) {
-				warning("The value " + number + " won't fit inside the type " + type.toString(),
+			BigInteger number = new BigInteger(constText);
+			if (number.bitLength() > size) {
+				warning("The value " + constText + " won't fit inside the type " + type.toString(),
 						val.eContainingFeature());
 			}
 		} catch (NumberFormatException e) {
@@ -859,7 +874,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		
 		if (from instanceof ResolvedIntegerType) {
 			if (to instanceof ResolvedIntegerType) {
-				if (from.getBits() > to.getBits()) {
+				if (from.getBits().compareTo(to.getBits()) > 0) {
 					result.add("trunc");
 				} else {
 					result.add("zext");
@@ -876,7 +891,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				result.add("fptoui");
 				result.add("fptosi");
 			} else if (to instanceof ResolvedFloatingType) {
-				if (from.getBits() > to.getBits()) {
+				if (from.getBits().compareTo(to.getBits()) > 0) {
 					result.add("fptrunc");
 				} else {
 					result.add("fpext");

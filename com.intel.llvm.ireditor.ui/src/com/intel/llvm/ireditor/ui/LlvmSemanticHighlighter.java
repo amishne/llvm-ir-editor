@@ -88,6 +88,7 @@ public class LlvmSemanticHighlighter extends LLVM_IRSwitch<LLVM_IRUtils.Position
 		// The node contains the entire basic block; we just want to highlight the name, if
 		// it exists.
 		String name = (String) object.eGet(Literals.BASIC_BLOCK__NAME);
+		if (name == null) return null;
 		if (node.getText().startsWith(name.substring(1))) {
 			// It is explicitly named - so there's something to highlight
 			return new LLVM_IRUtils.Position(node.getOffset(), name.length(), LlvmHighlighter.BASICBLOCK_ID);
@@ -124,6 +125,7 @@ public class LlvmSemanticHighlighter extends LLVM_IRSwitch<LLVM_IRUtils.Position
 	@Override
 	public LLVM_IRUtils.Position caseFunctionHeader(FunctionHeader object) {
 		String name = (String) object.eGet(Literals.FUNCTION_HEADER__NAME);
+		if (name == null) return null;
 		if (node.getText().startsWith(name) == false) return null;
 		return new LLVM_IRUtils.Position(node.getOffset(), name.length(), LlvmHighlighter.GLOBALVALUE_ID);
 	}

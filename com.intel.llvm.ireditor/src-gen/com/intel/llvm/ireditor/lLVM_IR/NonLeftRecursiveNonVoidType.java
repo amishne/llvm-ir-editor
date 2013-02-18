@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveNonVoidType#getType <em>Type</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveNonVoidType#getTypedef <em>Typedef</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,5 +48,31 @@ public interface NonLeftRecursiveNonVoidType extends EObject
    * @generated
    */
   void setType(EObject value);
+
+  /**
+   * Returns the value of the '<em><b>Typedef</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Typedef</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Typedef</em>' reference.
+   * @see #setTypedef(TypeDef)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getNonLeftRecursiveNonVoidType_Typedef()
+   * @model
+   * @generated
+   */
+  TypeDef getTypedef();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveNonVoidType#getTypedef <em>Typedef</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Typedef</em>' reference.
+   * @see #getTypedef()
+   * @generated
+   */
+  void setTypedef(TypeDef value);
 
 } // NonLeftRecursiveNonVoidType

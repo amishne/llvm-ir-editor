@@ -2524,7 +2524,8 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         type=X86mmxType | 
 	 *         type=MetadataType | 
 	 *         type=StructType | 
-	 *         type=OpaqueType
+	 *         type=OpaqueType | 
+	 *         typedef=[TypeDef|LOCAL_ID]
 	 *     )
 	 */
 	protected void sequence_NonLeftRecursiveNonVoidType(EObject context, NonLeftRecursiveNonVoidType semanticObject) {

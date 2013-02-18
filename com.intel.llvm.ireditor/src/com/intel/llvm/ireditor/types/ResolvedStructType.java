@@ -26,6 +26,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class ResolvedStructType extends ResolvedAnyStructType {
@@ -37,9 +38,9 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 		this.packed = packed;
 	}
 	
-	public int getBits() {
-		int result = 0;
-		for (ResolvedType t : fieldTypes) result += t.getBits();
+	public BigInteger getBits() {
+		BigInteger result = BigInteger.ZERO;
+		for (ResolvedType t : fieldTypes) result = result.add(t.getBits());
 		return result;
 	}
 	

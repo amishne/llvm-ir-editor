@@ -27,6 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.types;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -118,7 +119,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();
 	public static final ResolvedVarargType TYPE_VARARG = new ResolvedVarargType();
 	public static final ResolvedAnyType TYPE_ANY = new ResolvedAnyType();
-	public static final ResolvedType TYPE_ANY_POINTER = new ResolvedPointerType(TYPE_ANY, 0);
+	public static final ResolvedType TYPE_ANY_POINTER = new ResolvedPointerType(TYPE_ANY, BigInteger.ZERO);
 	public static final ResolvedAnyArrayType TYPE_CSTRING = new ResolvedAnyArrayType(new ResolvedIntegerType(8));
 	public static final ResolvedAnyFloatingType TYPE_FLOATING = new ResolvedAnyFloatingType();
 	public static final ResolvedIntegerType TYPE_BOOLEAN = new ResolvedIntegerType(1);
@@ -127,7 +128,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedAnyIntegerType TYPE_ANY_INTEGER = new ResolvedAnyIntegerType();
 	public static final ResolvedAnyVectorType TYPE_ANY_VECTOR = new ResolvedAnyVectorType(TYPE_ANY);
 	public static final ResolvedAnyFunctionType TYPE_ANY_FUNCTION = new ResolvedAnyFunctionType();
-	public static final ResolvedPointerType TYPE_ANY_FUNCTION_POINTER = new ResolvedPointerType(TYPE_ANY_FUNCTION, 0);
+	public static final ResolvedPointerType TYPE_ANY_FUNCTION_POINTER = new ResolvedPointerType(TYPE_ANY_FUNCTION, BigInteger.ZERO);
 	public static final ResolvedIntegerType TYPE_I32 = new ResolvedIntegerType(32);
 	public static final ResolvedType TYPE_ANY_ARRAY = new ResolvedAnyArrayType(TYPE_ANY);
 	public static final ResolvedType TYPE_ANY_STRUCT = new ResolvedAnyStructType();
@@ -135,6 +136,8 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedAnyVectorType TYPE_POINTER_VECTOR = new ResolvedAnyVectorType(TYPE_ANY_POINTER);
 	public static final ResolvedAnyVectorType TYPE_FLOATING_VECTOR = new ResolvedAnyVectorType(TYPE_FLOATING);
 	public static final ResolvedAnyVectorType TYPE_BOOLEAN_VECTOR = new ResolvedAnyVectorType(TYPE_BOOLEAN);
+	
+	private static final BigInteger MAX_INTEGER_TYPE_SIZE = BigInteger.valueOf((2 << 23)-1);
 
 	static {
 		SIMPLE_TYPES.put("void", new ResolvedVoidType());
@@ -198,9 +201,10 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	@Override
-	public ResolvedIntegerType caseIntType(IntType object) {
-		int bits = atoi(textOf(object).substring(1));
-		return new ResolvedIntegerType(bits);
+	public ResolvedType caseIntType(IntType object) {
+		BigInteger bits = atoi(textOf(object).substring(1));
+		if (bits.compareTo(MAX_INTEGER_TYPE_SIZE) >= 0) return TYPE_UNKNOWN;
+		return new ResolvedIntegerType(bits.intValue());
 	}
 	
 	@Override
@@ -313,12 +317,12 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 			paramTypes.add(resolve(p.getType()));
 		}
 		if (object.getParameters().getVararg() != null) paramTypes.add(TYPE_VARARG);
-		return new ResolvedPointerType(new ResolvedFunctionType(rettype, paramTypes), 0);
+		return new ResolvedPointerType(new ResolvedFunctionType(rettype, paramTypes), BigInteger.ZERO);
 	}
 	
 	@Override
 	public ResolvedPointerType caseFunctionRef(FunctionRef object) {
-		return new ResolvedPointerType(resolve(object.getRef()), 0);
+		return new ResolvedPointerType(resolve(object.getRef()), BigInteger.ZERO);
 	}
 	
 	@Override
@@ -357,13 +361,13 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedVectorType caseVectorConstant(VectorConstant object) {
 		EList<TypedConstant> values = object.getList().getTypedConstants();
-		return new ResolvedVectorType(values.size(), resolve(values.get(0).getType()));
+		return new ResolvedVectorType(BigInteger.valueOf(values.size()), resolve(values.get(0).getType()));
 	}
 	
 	@Override
 	public ResolvedArrayType caseArrayConstant(ArrayConstant object) {
 		EList<TypedConstant> values = object.getList().getTypedConstants();
-		return new ResolvedArrayType(values.size(), resolve(values.get(0).getType()));
+		return new ResolvedArrayType(BigInteger.valueOf(values.size()), resolve(values.get(0).getType()));
 	}
 	
 	@Override
@@ -393,7 +397,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedPointerType caseInstruction_alloca(Instruction_alloca object) {
-		return new ResolvedPointerType(resolve(object.getType()), 0);
+		return new ResolvedPointerType(resolve(object.getType()), BigInteger.ZERO);
 	}
 	
 	@Override
@@ -571,7 +575,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 			return TYPE_UNKNOWN;
 		}
 		
-		int addrSpace = ((ResolvedPointerType)result).getAddrSpace();
+		BigInteger addrSpace = ((ResolvedPointerType)result).getAddrSpace();
 		
 		for (EObject index : indices) {
 			Integer indexValue = 0;
@@ -593,8 +597,12 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		return NodeModelUtils.getTokenText(NodeModelUtils.getNode(object));
 	}
 	
-	private int atoi(String s) {
-		return Integer.parseInt(s);
+	private BigInteger atoi(String s) {
+		try {
+			return new BigInteger(s);
+		} catch (NumberFormatException e) {
+			return null;
+		}
 	}
 	
 	private ResolvedType buildTypeFromSuffix(ResolvedType rettype,
@@ -612,7 +620,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		ResolvedType result = base;
 		for (Star star : stars) {
 			AddressSpace addrSpace = star.getAddressSpace();
-			int addrSpaceValue = addrSpace == null ? 0 : atoi(addrSpace.getValue());
+			BigInteger addrSpaceValue = addrSpace == null ? BigInteger.ZERO : atoi(addrSpace.getValue());
 			result = new ResolvedPointerType(result, addrSpaceValue);
 		}
 		return result;
