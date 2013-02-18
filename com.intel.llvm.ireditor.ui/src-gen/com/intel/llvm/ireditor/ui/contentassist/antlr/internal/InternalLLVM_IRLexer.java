@@ -9746,7 +9746,7 @@ public class InternalLLVM_IRLexer extends Lexer {
         }
     }
 
-    class DFA23 extends DFA {
+    static class DFA23 extends DFA {
 
         public DFA23(BaseRecognizer recognizer) {
             this.recognizer = recognizer;

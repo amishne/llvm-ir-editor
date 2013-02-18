@@ -26,11 +26,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
-public class ResolvedTypeReference extends ResolvedType {
+public class ResolvedNamedType extends ResolvedType {
 
 	private String name;
 	
-	public ResolvedTypeReference(String name) {
+	public ResolvedNamedType(String name) {
 		this.name = name;
 	}
 
@@ -39,7 +39,7 @@ public class ResolvedTypeReference extends ResolvedType {
 	}
 	
 	protected boolean uniAccepts(ResolvedType t) {
-		return t instanceof ResolvedTypeReference
+		return t instanceof ResolvedNamedType
 				&& name.equals(t.toString());
 	}
 

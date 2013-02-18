@@ -112,7 +112,6 @@ import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
  * Converts an EObject to a String representing its type.
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
-	private final LinkedList<TypeDef> enclosing = new LinkedList<TypeDef>();
 	private final ConstantResolver constResolver = new ConstantResolver();
 	
 	public static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
@@ -177,24 +176,21 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedType caseNonLeftRecursiveType(NonLeftRecursiveType object) {
-		TypeDef typeDef = object.getTypedef();
-		if (typeDef != null) {
-			if (enclosing.contains(typeDef)) {
-				return new ResolvedTypeReference(typeDef.getName());
-			}
-			enclosing.push(typeDef);
-			ResolvedType result = resolve(typeDef.getType());
-			enclosing.pop();
-			return result;
-		}
-		return resolve(object.getType());
+		return resolveNonLeftRecursiveType(object.getType(), object.getTypedef());
 	}
 	
 	@Override
 	public ResolvedType caseNonLeftRecursiveNonVoidType(NonLeftRecursiveNonVoidType object) {
-		return resolve(object.getType());
+		return resolveNonLeftRecursiveType(object.getType(), object.getTypedef());
 	}
 	
+	private ResolvedType resolveNonLeftRecursiveType(EObject type, TypeDef typeDef) {
+		if (type != null) return resolve(type);
+		
+		// Since named "identified" types are never uniqued by content, we just resolve them to a named reference
+		return new ResolvedNamedType(typeDef.getName());
+	}
+
 	@Override
 	public ResolvedType caseParameterType(ParameterType object) {
 		return resolve(object.getType());
