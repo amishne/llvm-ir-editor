@@ -135,7 +135,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (val.equals(((FunctionDef)val.eContainer()).getBasicBlocks().get(0)) == false &&
 				hasPredecessors(val) == false) {
 			// Not the first basic block in its function, and doesn't have predecessors.
-			error("No predecessors!", Literals.BASIC_BLOCK__NAME);
+			warning("No predecessors!", Literals.BASIC_BLOCK__NAME);
 		}
 	}
 	
