@@ -41,6 +41,7 @@ import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
+import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.InfiniteRecursion;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
@@ -142,7 +143,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	}
 	
 	public static class CustomLlvmContentAssistParser extends LLVM_IRParser {
-		public static long ASSIST_TIMEOUT_MS = 1000000;
+		public static long ASSIST_TIMEOUT_MS = 2000;
 		long start;
 		
 		@Override
@@ -150,7 +151,9 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 			com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser result = new com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRParser(null) {
 				@Override
 				public void before(EObject grammarElement) {
-					if (System.currentTimeMillis() - start > ASSIST_TIMEOUT_MS) return;
+					if (System.currentTimeMillis() - start > ASSIST_TIMEOUT_MS) {
+						throw new InfiniteRecursion();
+					}
 					
 					super.before(grammarElement);
 				}
