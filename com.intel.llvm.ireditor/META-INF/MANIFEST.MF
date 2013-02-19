@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: com.intel.llvm.ireditor
-Bundle-Version: 0.8.4.qualifier
+Bundle-Version: 0.8.5.qualifier
 Bundle-SymbolicName: com.intel.llvm.ireditor;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
