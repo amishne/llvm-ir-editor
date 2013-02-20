@@ -50,12 +50,16 @@ public abstract class ResolvedType {
 	
 	/**
 	 * @param t
-	 * @return True if it's okay to encounter 't' when 'this' is expected.
+	 * @return True if it's okay to encounter 't' when 'this' is expected, and vice versa.
 	 */
 	public final boolean accepts(ResolvedType t) {
 		return uniAccepts(t) || t.uniAccepts(this);
 	}
 	
+	/**
+	 * @param t
+	 * @return True if it's okay to encounter 't' when 'this' is expected.
+	 */
 	protected abstract boolean uniAccepts(ResolvedType t);
 	
 	protected boolean listAccepts(Iterable<? extends ResolvedType> list1, Iterable<? extends ResolvedType> list2) {
@@ -73,6 +77,18 @@ public abstract class ResolvedType {
 		if (list2Iter.hasNext()) return false;
 		
 		return true;
+	}
+
+	public boolean isStruct() {
+		return false;
+	}
+
+	public boolean isPointer() {
+		return false;
+	}
+
+	public boolean isVector() {
+		return false;
 	}
 
 	

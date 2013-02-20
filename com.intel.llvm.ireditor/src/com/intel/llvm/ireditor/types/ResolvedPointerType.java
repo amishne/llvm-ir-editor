@@ -56,5 +56,10 @@ public class ResolvedPointerType extends ResolvedType {
 	public BigInteger getAddrSpace() {
 		return addrSpace;
 	}
+	
+	@Override
+	public boolean isPointer() {
+		return true;
+	}
 
 }

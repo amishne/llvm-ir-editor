@@ -26,21 +26,68 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 package com.intel.llvm.ireditor.types;
 
-public class ResolvedNamedType extends ResolvedType {
+import java.math.BigInteger;
 
-	private String name;
+public class ResolvedNamedType extends ResolvedType {
+	private final String name;
+	private ResolvedType referredType;
 	
 	public ResolvedNamedType(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public String toString() {
 		return name;
 	}
 	
+	@Override
+	public BigInteger getBits() {
+		return referredType.getBits();
+	}
+	
+	@Override
+	public ResolvedType getContainedType(int index) {
+		return referredType.getContainedType(index);
+	}
+	
 	protected boolean uniAccepts(ResolvedType t) {
-		return t instanceof ResolvedNamedType
-				&& name.equals(t.toString());
+		if (t instanceof ResolvedNamedType && name.equals(t.toString())) {
+			// Same name means same type
+			return true;
+		}
+		
+		if (referredType instanceof ResolvedStructType && t instanceof ResolvedStructType) {
+			// Structures are uniqued by name, so unless this came from a literal value,
+			// this is illegal.
+			if (((ResolvedStructType)t).isFromLiteral() == false) return false;
+			// If it is from a literal, it will be covered by the general checks below.
+		}
+		
+		// Otherwise, compare the referred type
+		if (t instanceof ResolvedNamedType) {
+			// Wait, if t is a named value itself, we need to compare referred with referred
+			return referredType.accepts(((ResolvedNamedType)t).referredType);
+		}
+		return referredType.accepts(t);
 	}
 
+	public void setReferredType(ResolvedType t) {
+		referredType = t;
+	}
+
+	@Override
+	public boolean isStruct() {
+		return referredType.isStruct();
+	}
+	
+	@Override
+	public boolean isVector() {
+		return referredType.isVector();
+	}
+	
+	@Override
+	public boolean isPointer() {
+		return referredType.isPointer();
+	}
 }

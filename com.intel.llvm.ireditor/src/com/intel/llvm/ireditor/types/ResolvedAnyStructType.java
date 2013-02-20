@@ -43,4 +43,9 @@ public class ResolvedAnyStructType extends ResolvedType {
 		return t instanceof ResolvedAnyStructType;
 	}
 	
+	@Override
+	public boolean isStruct() {
+		return true;
+	}
+	
 }

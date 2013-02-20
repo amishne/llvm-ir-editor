@@ -30,12 +30,14 @@ import java.math.BigInteger;
 import java.util.List;
 
 public class ResolvedStructType extends ResolvedAnyStructType {
-	private List<ResolvedType> fieldTypes;
-	private boolean packed;
+	private final List<ResolvedType> fieldTypes;
+	private final boolean packed;
+	private final boolean fromLiteral;
 	
-	public ResolvedStructType(List<ResolvedType> fieldTypes, boolean packed) {
+	public ResolvedStructType(List<ResolvedType> fieldTypes, boolean packed, boolean fromLiteral) {
 		this.fieldTypes = fieldTypes;
 		this.packed = packed;
+		this.fromLiteral = fromLiteral;
 	}
 	
 	public BigInteger getBits() {
@@ -66,6 +68,10 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 		return t instanceof ResolvedStructType
 				&& packed == ((ResolvedStructType)t).packed
 				&& listAccepts(fieldTypes, ((ResolvedStructType)t).fieldTypes);
+	}
+
+	public boolean isFromLiteral() {
+		return fromLiteral;
 	}
 	
 }

@@ -113,6 +113,7 @@ import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private final ConstantResolver constResolver = new ConstantResolver();
+	private final Map<String, ResolvedNamedType> resolvedNamedTypes = new HashMap<>();
 	
 	public static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
 	public static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();
@@ -185,10 +186,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	}
 	
 	private ResolvedType resolveNonLeftRecursiveType(EObject type, TypeDef typeDef) {
-		if (type != null) return resolve(type);
-		
-		// Since named "identified" types are never uniqued by content, we just resolve them to a named reference
-		return new ResolvedNamedType(typeDef.getName());
+		return resolve(type != null ? type : typeDef);
 	}
 
 	@Override
@@ -260,7 +258,23 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		for (Type t : types) {
 			resolvedTypes.add(resolve(t));
 		}
-		return new ResolvedStructType(resolvedTypes, object.getPacked() != null);
+		return new ResolvedStructType(resolvedTypes, object.getPacked() != null, false);
+	}
+	
+	@Override
+	public ResolvedNamedType caseTypeDef(TypeDef object) {
+		String name = object.getName();
+		
+		// To prevent infinite recursion on recursive types:
+		ResolvedNamedType type = resolvedNamedTypes.get(name);
+		if (type != null) return type;
+		
+		// Create a named type, resolve the actual type, and then set the named type to refer to it
+		ResolvedNamedType result = new ResolvedNamedType(name);
+		resolvedNamedTypes.put(name, result);
+		result.setReferredType(resolve(object.getType()));
+		
+		return result;
 	}
 	
 	@Override
@@ -373,7 +387,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		for (TypedConstant tc : values) {
 			resolvedTypes.add(resolve(tc.getType()));
 		}
-		return new ResolvedStructType(resolvedTypes, object.getPacked() != null);
+		return new ResolvedStructType(resolvedTypes, object.getPacked() != null, true);
 	}
 	
 	@Override
@@ -409,7 +423,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseInstruction_select(Instruction_select object) {
 		ResolvedType conditionType = resolve(object.getCondition());
-		if (conditionType instanceof ResolvedVectorType) {
+		if (conditionType.isVector()) {
 			return new ResolvedVectorType(((ResolvedVectorType) conditionType).getSize(),
 					resolve(object.getValue1()).getContainedType(0));
 		}
@@ -474,7 +488,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseInstruction_icmp(Instruction_icmp object) {
 		ResolvedType type = resolve(object.getType());
-		if (type instanceof ResolvedVectorType) {
+		if (type.isVector()) {
 			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
 		}
 		return TYPE_BOOLEAN;
@@ -483,7 +497,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseInstruction_fcmp(Instruction_fcmp object) {
 		ResolvedType type = resolve(object.getType());
-		if (type instanceof ResolvedVectorType) {
+		if (type.isVector()) {
 			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
 		}
 		return TYPE_BOOLEAN;
@@ -523,7 +537,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseConstantExpression_compare(ConstantExpression_compare object) {
 		ResolvedType type = resolve(object.getOp1().getType());
-		if (type instanceof ResolvedVectorType) {
+		if (type.isVector()) {
 			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
 		}
 		return TYPE_BOOLEAN;
@@ -537,7 +551,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedType caseConstantExpression_select(ConstantExpression_select object) {
 		ResolvedType conditionType = resolve(object.getCondition());
-		if (conditionType instanceof ResolvedVectorType) {
+		if (conditionType.isVector()) {
 			return new ResolvedVectorType(((ResolvedVectorType) conditionType).getSize(),
 					resolve(object.getOp1()).getContainedType(0));
 		}
@@ -562,11 +576,11 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	private ResolvedType resolveGep(Type baseType, EList<? extends EObject> indices) {
 		ResolvedType result = resolve(baseType);
-		if (result instanceof ResolvedVectorType) {
+		if (result.isVector()) {
 			return result;
 		}
 		
-		if (result instanceof ResolvedPointerType == false) {
+		if (result.isPointer() == false) {
 			// That's not legal
 			return TYPE_UNKNOWN;
 		}
@@ -575,7 +589,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		
 		for (EObject index : indices) {
 			Integer indexValue = 0;
-			if (result instanceof ResolvedStructType) {
+			if (result.isStruct()) {
 				indexValue = constResolver.getInteger(index);
 				if (indexValue == null) {
 					// We could not resolve the index constant, so we cannot tell what the type is.
