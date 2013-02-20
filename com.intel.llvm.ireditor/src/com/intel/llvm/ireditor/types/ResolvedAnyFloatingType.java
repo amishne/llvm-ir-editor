@@ -39,4 +39,9 @@ public class ResolvedAnyFloatingType extends ResolvedType {
 		return t instanceof ResolvedAnyFloatingType;
 	}
 	
+	@Override
+	public boolean isFloating() {
+		return true;
+	}
+	
 }

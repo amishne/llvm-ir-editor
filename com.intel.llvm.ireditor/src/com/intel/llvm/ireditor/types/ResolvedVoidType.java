@@ -35,5 +35,10 @@ public class ResolvedVoidType extends ResolvedType {
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedVoidType;
 	}
+	
+	@Override
+	public boolean isVoid() {
+		return true;
+	}
 
 }

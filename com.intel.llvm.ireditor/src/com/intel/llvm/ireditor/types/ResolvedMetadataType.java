@@ -37,4 +37,9 @@ public class ResolvedMetadataType extends ResolvedType {
 		return t instanceof ResolvedMetadataType;
 	}
 	
+	@Override
+	public boolean isMetadata() {
+		return true;
+	}
+	
 }

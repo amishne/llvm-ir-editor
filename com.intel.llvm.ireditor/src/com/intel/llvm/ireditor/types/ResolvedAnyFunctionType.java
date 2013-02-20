@@ -49,4 +49,14 @@ public class ResolvedAnyFunctionType extends ResolvedType {
 		return Collections.singleton(new ResolvedAnyType());
 	}
 	
+	@Override
+	public boolean isFunction() {
+		return true;
+	}
+	
+	@Override
+	public ResolvedAnyFunctionType asFunction() {
+		return this;
+	};
+	
 }

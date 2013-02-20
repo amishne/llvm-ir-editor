@@ -90,4 +90,49 @@ public class ResolvedNamedType extends ResolvedType {
 	public boolean isPointer() {
 		return referredType.isPointer();
 	}
+	
+	@Override
+	public boolean isFloating() {
+		return referredType.isFloating();
+	}
+	
+	@Override
+	public boolean isFunction() {
+		return referredType.isFloating();
+	}
+	
+	@Override
+	public boolean isInteger() {
+		return referredType.isInteger();
+	}
+	
+	@Override
+	public boolean isMetadata() {
+		return referredType.isMetadata();
+	}
+	
+	@Override
+	public boolean isVararg() {
+		return referredType.isVararg();
+	}
+	
+	@Override
+	public boolean isVoid() {
+		return referredType.isVoid();
+	}
+	
+	@Override
+	public ResolvedPointerType asPointer() {
+		return referredType.asPointer();
+	}
+	
+	@Override
+	public ResolvedVectorType asVector() {
+		return referredType.asVector();
+	}
+	
+	@Override
+	public ResolvedAnyFunctionType asFunction() {
+		return referredType.asFunction();
+	}
 }

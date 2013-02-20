@@ -59,4 +59,9 @@ public class ResolvedVectorType extends ResolvedAnyVectorType {
 				&& elementType.accepts(t.getContainedType(0)); 
 	}
 	
+	@Override
+	public ResolvedVectorType asVector() {
+		return this;
+	}
+	
 }

@@ -107,15 +107,10 @@ import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
-import com.intel.llvm.ireditor.types.ResolvedFloatingType;
-import com.intel.llvm.ireditor.types.ResolvedFunctionType;
-import com.intel.llvm.ireditor.types.ResolvedIntegerType;
-import com.intel.llvm.ireditor.types.ResolvedMetadataType;
+import com.intel.llvm.ireditor.types.ResolvedAnyFunctionType;
 import com.intel.llvm.ireditor.types.ResolvedPointerType;
 import com.intel.llvm.ireditor.types.ResolvedType;
-import com.intel.llvm.ireditor.types.ResolvedVarargType;
 import com.intel.llvm.ireditor.types.ResolvedVectorType;
-import com.intel.llvm.ireditor.types.ResolvedVoidType;
 import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.AbstractLLVM_IRJavaValidator;
 
@@ -161,7 +156,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkExpected(type, val.getValue());
 		
 		// Integer constant should be small enough to fit in its type.
-		if (type instanceof ResolvedIntegerType) {
+		if (type.isInteger()) {
 			checkConstantFitsInType(type, val.getValue());
 		}
 	}
@@ -302,7 +297,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	public void checkGetelementpointer(Instruction_getelementptr inst) {
 		ResolvedType baseType = resolveType(inst.getBase().getType());
 		
-		if (baseType instanceof ResolvedPointerType) {
+		if (baseType.isPointer()) {
 			// Regular GEP
 			int index = 0;
 			for (TypedValue indexValue : inst.getIndices()) {
@@ -315,7 +310,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			return;
 		}
 		
-		if (baseType instanceof ResolvedVectorType == false) {
+		if (baseType.isVector() == false) {
 			error("A GEP instruction base must be either a pointer or a pointer of vectors",
 					Literals.INSTRUCTION_GETELEMENTPTR__BASE);
 			
@@ -343,14 +338,14 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (isVector == false) return;
 
 		// Verify the contained type in the (single) index is numeric
-		ResolvedVectorType indexVectorType = (ResolvedVectorType) indexType;
+		ResolvedVectorType indexVectorType = indexType.asVector();
 		checkRequired(indexVectorType.getContainedType(0),
 				Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
 				0,
 				TYPE_ANY_INTEGER);
 
 		// Verify the size of the (single) index is identical to the base size
-		if (((ResolvedVectorType)indexType).getSize() != ((ResolvedVectorType)baseType).getSize()) {
+		if (indexType.asVector().getSize().equals(baseType.asVector().getSize()) == false) {
 			error("The index of a GEP instruction with pointer vector base must be the same size as the base",
 					Literals.INSTRUCTION_GETELEMENTPTR__INDICES);
 		}
@@ -499,11 +494,11 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		
 		// Verify condition type
 		ResolvedType condType = resolveType(inst.getCondition().getType());
-		if (condType instanceof ResolvedVectorType) {
+		if (condType.isVector()) {
 			checkRequired(condType, Literals.INSTRUCTION_SELECT__CONDITION, 0, TYPE_BOOLEAN_VECTOR);
 			// This is a vector select
-			if (((ResolvedVectorType) condType).getSize() != ((ResolvedVectorType) type).getSize()) {
-				error("select condition must be the same size as select values", Literals.INSTRUCTION_SELECT__CONDITION);
+			if (condType.asVector().getSize().equals(type.asVector().getSize()) == false) {
+				error("Select condition must be the same size as select values", Literals.INSTRUCTION_SELECT__CONDITION);
 			}
 		} else {
 			checkRequired(condType, Literals.INSTRUCTION_SELECT__CONDITION, 0, TYPE_BOOLEAN);
@@ -560,10 +555,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		for (Parameter param : val.getParameters()) {
 			ResolvedType t = resolveType(param);
 			// Verify a metadata type only appears in intrinsics
-			if (isIntrinsic == false && t instanceof ResolvedMetadataType) {
+			if (isIntrinsic == false && t.isMetadata()) {
 				error("Metadata parameters are only permitted on intrinsic functions",
 						Literals.PARAMETERS__PARAMETERS, index);
-			} else if (t instanceof ResolvedVoidType) {
+			} else if (t.isVoid()) {
 				error(t.toString() + " is not a valid parameter type",
 						Literals.PARAMETERS__PARAMETERS, index);
 			}
@@ -577,13 +572,13 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (checkRequired(calleeType, callee.eContainingFeature(), 0, TYPE_ANY_FUNCTION_POINTER) == false) {
 			return;
 		}
-		if (calleeType.getContainedType(0) instanceof ResolvedFunctionType == false) {
+		if (calleeType.getContainedType(0).isFunction() == false) {
 			// Can happen, for example, if it's a pointer to "any" - in that case, do not perform
 			// any other check.
 			return;
 		}
 		
-		ResolvedFunctionType fType = (ResolvedFunctionType) calleeType.getContainedType(0);
+		ResolvedAnyFunctionType fType = calleeType.getContainedType(0).asFunction();
 		checkExpected(fType.getReturnType(), retType);
 		
 		boolean typeOmitted = functionPointerType == null;
@@ -592,8 +587,8 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			checkExpected(new ResolvedPointerType(fType, BigInteger.ZERO), functionPointerType);
 		} else {
 			// Ensure the return type is not a function pointer
-			if (fType.getReturnType() instanceof ResolvedPointerType &&
-					fType.getReturnType().getContainedType(0) instanceof ResolvedFunctionType) {
+			if (fType.getReturnType().isPointer() &&
+					fType.getReturnType().getContainedType(0).isFunction()) {
 				error("Must provide a function pointer type if the function returns a function pointer",
 						functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
 						new ResolvedPointerType(fType, BigInteger.ZERO).toString());
@@ -603,7 +598,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		
 		Iterator<Argument> iter = args.getArguments().iterator();
 		for (ResolvedType p : fType.getParameters()) {
-			if (p instanceof ResolvedVarargType) {
+			if (p.isVararg()) {
 				if (typeOmitted) {
 					error("Must provide a function pointer type if the function is varargs",
 							functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
@@ -672,8 +667,8 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkType(Type t) {
 		ResolvedType resolved = resolveType(t);
-		if (resolved instanceof ResolvedPointerType &&
-				resolved.getContainedType(0) instanceof ResolvedVoidType) {
+		if (resolved.isPointer() &&
+				resolved.getContainedType(0).isVoid()) {
 			error(resolved.toString() + " is not a legal LLVM type (use i8* for an arbitrary pointer)",
 					Literals.TYPE__BASE_TYPE);
 		}
@@ -872,37 +867,37 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	private List<String> getConversionOps(ResolvedType from, ResolvedType to) {
 		List<String> result = new LinkedList<String>();
 		
-		if (from instanceof ResolvedIntegerType) {
-			if (to instanceof ResolvedIntegerType) {
+		if (from.isInteger()) {
+			if (to.isInteger()) {
 				if (from.getBits().compareTo(to.getBits()) > 0) {
 					result.add("trunc");
 				} else {
 					result.add("zext");
 					result.add("sext");
 				}
-			} else if (to instanceof ResolvedPointerType) {
+			} else if (to.isPointer()) {
 				result.add("inttoptr");
-			} else if (to instanceof ResolvedFloatingType) {
+			} else if (to.isFloating()) {
 				result.add("sitofp");
 				result.add("uitofp");
 			}
-		} else if (from instanceof ResolvedFloatingType) {
-			if (to instanceof ResolvedIntegerType) {
+		} else if (from.isFloating()) {
+			if (to.isInteger()) {
 				result.add("fptoui");
 				result.add("fptosi");
-			} else if (to instanceof ResolvedFloatingType) {
+			} else if (to.isFloating()) {
 				if (from.getBits().compareTo(to.getBits()) > 0) {
 					result.add("fptrunc");
 				} else {
 					result.add("fpext");
 				}
 			}
-		} else if (from instanceof ResolvedPointerType && to instanceof ResolvedIntegerType) {
+		} else if (from.isPointer() && to.isInteger()) {
 			result.add("ptrtoint");
 		}
 		
 		// If there's no other option and the types are of the same size, add the 'bitcast' option
-		if (result.isEmpty() && from.getBits() == to.getBits()) result.add("bitcast");
+		if (result.isEmpty() && from.getBits().equals(to.getBits())) result.add("bitcast");
 		
 		return result;
 	}

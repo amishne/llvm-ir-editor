@@ -35,5 +35,10 @@ public class ResolvedVarargType extends ResolvedType {
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedVarargType;
 	}
+	
+	@Override
+	public boolean isVararg() {
+		return true;
+	}
 
 }

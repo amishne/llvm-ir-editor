@@ -39,4 +39,9 @@ public class ResolvedAnyIntegerType extends ResolvedType {
 		return t instanceof ResolvedAnyIntegerType;
 	}
 	
+	@Override
+	public boolean isInteger() {
+		return true;
+	}
+	
 }

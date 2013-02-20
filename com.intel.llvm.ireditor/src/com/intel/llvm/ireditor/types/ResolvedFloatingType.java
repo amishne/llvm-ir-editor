@@ -50,4 +50,9 @@ public class ResolvedFloatingType extends ResolvedAnyFloatingType {
 		return t instanceof ResolvedFloatingType
 				&& typeStr.equals(((ResolvedFloatingType)t).typeStr);
 	}
+	
+	@Override
+	public boolean isFloating() {
+		return true;
+	}
 }

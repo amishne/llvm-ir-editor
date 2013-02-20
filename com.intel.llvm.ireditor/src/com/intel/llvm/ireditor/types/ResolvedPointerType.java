@@ -61,5 +61,10 @@ public class ResolvedPointerType extends ResolvedType {
 	public boolean isPointer() {
 		return true;
 	}
+	
+	@Override
+	public ResolvedPointerType asPointer() {
+		return this;
+	}
 
 }

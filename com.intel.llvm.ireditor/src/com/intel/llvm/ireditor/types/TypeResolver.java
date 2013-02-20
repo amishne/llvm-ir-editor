@@ -424,7 +424,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseInstruction_select(Instruction_select object) {
 		ResolvedType conditionType = resolve(object.getCondition());
 		if (conditionType.isVector()) {
-			return new ResolvedVectorType(((ResolvedVectorType) conditionType).getSize(),
+			return new ResolvedVectorType(conditionType.asVector().getSize(),
 					resolve(object.getValue1()).getContainedType(0));
 		}
 		return resolve(object.getValue1().getType());
@@ -442,12 +442,12 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedVectorType caseInstruction_insertelement(Instruction_insertelement object) {
-		return (ResolvedVectorType) resolve(object.getVector().getType());
+		return resolve(object.getVector().getType()).asVector();
 	}
 	
 	@Override
 	public ResolvedType caseInstruction_shufflevector(Instruction_shufflevector object) {
-		ResolvedVectorType mask = (ResolvedVectorType) resolve(object.getMask().getType());
+		ResolvedVectorType mask = resolve(object.getMask().getType()).asVector();
 		ResolvedType element = resolve(object.getVector1().getType()).getContainedType(0);
 		if (element == null) return null;
 		return new ResolvedVectorType(mask.getSize(), element);
@@ -489,7 +489,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseInstruction_icmp(Instruction_icmp object) {
 		ResolvedType type = resolve(object.getType());
 		if (type.isVector()) {
-			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
+			return new ResolvedVectorType(type.asVector().getSize(), TYPE_BOOLEAN);
 		}
 		return TYPE_BOOLEAN;
 	}
@@ -498,7 +498,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseInstruction_fcmp(Instruction_fcmp object) {
 		ResolvedType type = resolve(object.getType());
 		if (type.isVector()) {
-			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
+			return new ResolvedVectorType(type.asVector().getSize(), TYPE_BOOLEAN);
 		}
 		return TYPE_BOOLEAN;
 	}
@@ -538,7 +538,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseConstantExpression_compare(ConstantExpression_compare object) {
 		ResolvedType type = resolve(object.getOp1().getType());
 		if (type.isVector()) {
-			return new ResolvedVectorType(((ResolvedVectorType) type).getSize(), TYPE_BOOLEAN);
+			return new ResolvedVectorType(type.asVector().getSize(), TYPE_BOOLEAN);
 		}
 		return TYPE_BOOLEAN;
 	}
@@ -552,7 +552,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseConstantExpression_select(ConstantExpression_select object) {
 		ResolvedType conditionType = resolve(object.getCondition());
 		if (conditionType.isVector()) {
-			return new ResolvedVectorType(((ResolvedVectorType) conditionType).getSize(),
+			return new ResolvedVectorType(conditionType.asVector().getSize(),
 					resolve(object.getOp1()).getContainedType(0));
 		}
 		return resolve(object.getOp1().getType());
@@ -585,7 +585,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 			return TYPE_UNKNOWN;
 		}
 		
-		BigInteger addrSpace = ((ResolvedPointerType)result).getAddrSpace();
+		BigInteger addrSpace = result.asPointer().getAddrSpace();
 		
 		for (EObject index : indices) {
 			Integer indexValue = 0;

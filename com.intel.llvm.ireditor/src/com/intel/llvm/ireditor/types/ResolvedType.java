@@ -91,5 +91,40 @@ public abstract class ResolvedType {
 		return false;
 	}
 
+	public boolean isInteger() {
+		return false;
+	}
+	
+	public boolean isFloating() {
+		return false;
+	}
+	
+	public boolean isFunction() {
+		return false;
+	}
+	
+	public boolean isMetadata() {
+		return false;
+	}
+	
+	public boolean isVararg() {
+		return false;
+	}
+	
+	public boolean isVoid() {
+		return false;
+	}
+	
+	public ResolvedVectorType asVector() {
+		throw new ClassCastException();
+	}
+	
+	public ResolvedPointerType asPointer() {
+		throw new ClassCastException();
+	}
+	
+	public ResolvedAnyFunctionType asFunction() {
+		throw new ClassCastException();
+	}
 	
 }
