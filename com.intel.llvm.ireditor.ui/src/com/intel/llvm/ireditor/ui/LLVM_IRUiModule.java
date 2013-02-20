@@ -121,7 +121,7 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 		protected ITextRegion getOriginalNameRegion(
 				EObject targetElement, EAttribute nameAttribute) {
 			// Use the actual name string for length calculation, not the entire name element.
-			int offset = NodeModelUtils.findActualNodeFor(targetElement).getOffset();
+			int offset = NodeModelUtils.findNodesForFeature(targetElement, nameAttribute).get(0).getOffset();
 			String text = getOriginalName();
 			return new TextRegion(offset, text.length());
 		}

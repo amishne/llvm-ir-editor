@@ -252,7 +252,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	
 	public static class LocalNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "%" + index; }
-		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=$", ""); }
+		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=\\s*$", ""); }
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
 		
 		protected Iterable<? extends EObject> previousElements(final INode node) {
@@ -278,7 +278,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	
 	public static class GlobalNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "@" + index; }
-		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=$", ""); }
+		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=\\s*$", ""); }
 		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("@\\d+"); }
 		
 		protected Iterable<? extends EObject> previousElements(final INode node) {
