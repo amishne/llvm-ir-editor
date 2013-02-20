@@ -40,8 +40,11 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
+import org.eclipse.xtext.util.Tuples;
 import org.eclipse.xtext.validation.Check;
 
+import com.google.inject.Provider;
 import com.intel.llvm.ireditor.LLVM_IRUtils;
 import com.intel.llvm.ireditor.ReverseNamedElementIterator;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
@@ -124,6 +127,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	private final TypeResolver typeResolver = new TypeResolver();
 	private final ConstantResolver constResolver = new ConstantResolver();
 	private final NameResolver namer = new NameResolver();
+	private final OnChangeEvictingCache dominationCache = new OnChangeEvictingCache();
 
 	@Check
 	public void checkBasicBlock(BasicBlock val) {
@@ -741,26 +745,33 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		// We should not reach this location
 		return false;
 	}
-
-	private boolean dominates(BasicBlock dominator, BasicBlock dominatee) {
-		Set<BasicBlock> seen = new HashSet<>();
-		seen.add(dominatee);
-		return dominates(dominator, dominatee, seen);
+	
+	private boolean dominates(final BasicBlock dominator, final BasicBlock dominatee) {
+		Object key = Tuples.create(dominator, dominatee);
+		return dominationCache.get(key, dominator.eResource(), new Provider<Boolean>() {
+			@Override
+			public Boolean get() {
+				Set<BasicBlock> seen = new HashSet<>();
+				seen.add(dominatee);
+				return dominates(dominator, dominatee, seen);
+			}
+			
+			private boolean dominates(BasicBlock dominator, BasicBlock dominatee, Set<BasicBlock> seen) {
+				if (dominator == dominatee) return true; // Dominator reached
+				Iterable<? extends BasicBlock> preds = predecessors(dominatee);
+				if (preds.iterator().hasNext() == false) return false; // Start of function reached
+				
+				// Otherwise, only return true if all predecessors are dominated by the dominator.
+				for (BasicBlock pred : preds) {
+					if (seen.contains(pred)) continue;
+					seen.add(pred);
+					if (dominates(dominator, pred, seen) == false) return false;
+				}
+				return true;
+			}
+		});
 	}
 	
-	private boolean dominates(BasicBlock dominator, BasicBlock dominatee, Set<BasicBlock> seen) {
-		if (dominator == dominatee) return true; // Dominator reached
-		Iterable<? extends BasicBlock> preds = predecessors(dominatee);
-		if (preds.iterator().hasNext() == false) return false; // Start of function reached
-		
-		// Otherwise, only return true if all predecessors are dominated by the dominator.
-		for (BasicBlock pred : preds) {
-			if (seen.contains(pred)) continue;
-			seen.add(pred);
-			if (dominates(dominator, pred, seen) == false) return false;
-		}
-		return true;
-	}
 
 	public void checkNumberSequence(EObject val, EObject forIter, EStructuralFeature feature) {
 		NumberedName name = namer.resolveNumberedName(val);

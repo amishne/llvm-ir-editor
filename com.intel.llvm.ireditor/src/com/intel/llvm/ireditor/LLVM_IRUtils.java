@@ -32,7 +32,9 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
 
+import com.google.inject.Provider;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
@@ -40,6 +42,11 @@ import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 
 public class LLVM_IRUtils {
+	private enum Refs {
+		LOCAL_VALUES,
+		BASIC_BLOCKS,
+		GLOBAL_VALUES
+	}
 
 	public static class Position {
 		public final int offset;
@@ -51,21 +58,41 @@ public class LLVM_IRUtils {
 			this.id = id;
 		}
 	}
-
+	
+	private static OnChangeEvictingCache xrefCache = new OnChangeEvictingCache();
+	
 	public static List<EObject> xrefs(EObject object) {
 		List<EObject> result = new LinkedList<>();
-		EObject root = EcoreUtil2.getRootContainer(object);
+		final EObject root = EcoreUtil2.getRootContainer(object);
 		
 		if (object instanceof LocalValue) {
-			for (LocalValueRef ref : EcoreUtil2.getAllContentsOfType(root, LocalValueRef.class)) {
+			List<LocalValueRef> list = xrefCache.get(Refs.LOCAL_VALUES, object.eResource(), new Provider<List<LocalValueRef>>() {
+				@Override
+				public List<LocalValueRef> get() {
+					return EcoreUtil2.getAllContentsOfType(root, LocalValueRef.class);
+				}
+			});
+			for (LocalValueRef ref : list) {
 				if (object == ref.getRef()) result.add(ref);
 			}
 		} else if (object instanceof BasicBlock) {
-			for (BasicBlockRef ref : EcoreUtil2.getAllContentsOfType(root, BasicBlockRef.class)) {
+			List<BasicBlockRef> list = xrefCache.get(Refs.BASIC_BLOCKS, object.eResource(), new Provider<List<BasicBlockRef>>() {
+				@Override
+				public List<BasicBlockRef> get() {
+					return EcoreUtil2.getAllContentsOfType(root, BasicBlockRef.class);
+				}
+			});
+			for (BasicBlockRef ref : list) {
 				if (object == ref.getRef()) result.add(ref);
 			}
 		} else {
-			for (GlobalValueRef ref : EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class)) {
+			List<GlobalValueRef> list = xrefCache.get(Refs.GLOBAL_VALUES, object.eResource(), new Provider<List<GlobalValueRef>>() {
+				@Override
+				public List<GlobalValueRef> get() {
+					return EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class);
+				}
+			});
+			for (GlobalValueRef ref : list) {
 				if (ref.getConstant() != null && object == ref.getConstant().getRef()) result.add(ref);
 			}
 		}
