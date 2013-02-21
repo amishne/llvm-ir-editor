@@ -621,8 +621,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkNumberSequence(NamedInstruction val) {
-		checkNumberSequence(val, val.eContainer(),
-				Literals.NAMED_INSTRUCTION.getEStructuralFeature("name"));
+		checkNumberSequence(val, val.eContainer(), null);
 	}
 	
 	@Check
@@ -796,9 +795,13 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			String prefix = val instanceof BasicBlock == false ? name.getPrefix() : "";
 			String actualStr = prefix + name.getNumber();
 			String expectedStr = prefix + expected;
-			error(String.format("Incorrect number in sequence: expected %s, got %s",
-					expectedStr, actualStr),
-					feature, ERROR_WRONG_NUMBER, actualStr, expectedStr);
+			String message = String.format("Incorrect number in sequence: expected %s, got %s", expectedStr, actualStr);
+			if (feature != null) {
+				error(message, feature, ERROR_WRONG_NUMBER, actualStr, expectedStr);
+			} else {
+				int offset = NodeModelUtils.findActualNodeFor(val).getOffset();
+				acceptError(message, val, offset, name.toString().length(), ERROR_WRONG_NUMBER, actualStr, expectedStr);
+			}
 		}
 	}
 	
