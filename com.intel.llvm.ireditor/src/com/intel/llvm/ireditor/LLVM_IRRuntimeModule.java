@@ -27,7 +27,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor;
 
-import java.util.Iterator;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -35,6 +35,8 @@ import org.antlr.runtime.IntStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.conversion.ValueConverter;
@@ -51,15 +53,17 @@ import org.eclipse.xtext.parser.antlr.SyntaxErrorMessageProvider;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.resource.DefaultLocationInFileProvider;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
+import org.eclipse.xtext.util.ITextRegion;
+import org.eclipse.xtext.util.TextRegion;
+import org.eclipse.xtext.util.TextRegionWithLineInformation;
 
 import com.intel.llvm.ireditor.ReverseNamedElementIterator.Mode;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
-import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
+import com.intel.llvm.ireditor.lLVM_IR.MiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
-import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.Parameter;
+import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.parser.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.parser.antlr.internal.InternalLLVM_IRParser;
@@ -115,38 +119,73 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	}
 	
 	public static class LlvmLocationInFileProvider extends DefaultLocationInFileProvider {
-		protected List<INode> getLocationNodes(EObject obj) {
-			if (obj instanceof BasicBlock) {
-				BasicBlock block = (BasicBlock) obj;
-				String name = block.getName();
-				if (name == null || name.matches("%\\d+")) {
-					// Unnamed basic blocks don't have any name or ID-typed field, so
-					// need to manually set their location.
-					Iterator<Instruction> iter = block.getInstructions().iterator();
-					if (iter.hasNext()) obj = block.getInstructions().iterator().next();
-				}
-			} else if (obj instanceof NamedInstruction) {
-				NamedInstruction inst = (NamedInstruction) obj;
-				String name = inst.getName();
-				if (name == null || name.matches("%\\d+")) {
-					// Unnamed instructions don't have any name or ID-typed field, so
-					// need to manually set their location.
-					EObject actualInst = getOpcode(inst);
-					if (actualInst != null) obj = actualInst;
+		
+		@Override
+		protected ITextRegion doGetTextRegion(EObject obj, @NonNull RegionDescription query) {
+			ITextRegion result = super.doGetTextRegion(obj, query);
+			if (obj instanceof NamedInstruction) {
+				// Check if this is a named object - and if it is, this is a solution to
+				// remove "=" from the region
+				EStructuralFeature nameFeature = obj.eClass().getEStructuralFeature("name");
+				List<INode> nodes = NodeModelUtils.findNodesForFeature(obj, nameFeature);
+				String text = NodeModelUtils.getTokenText(nodes.get(0));
+				if (text.isEmpty()) return result;
+				// It has a name! Remove the "=".
+				String name = ((NamedInstruction) obj).getName();
+				if (result instanceof TextRegionWithLineInformation) {
+					return new TextRegionWithLineInformation(result.getOffset(),
+							name.length(),
+							((TextRegionWithLineInformation) result).getLineNumber(),
+							((TextRegionWithLineInformation) result).getEndLineNumber());
+				} else {
+					return new TextRegion(result.getOffset(), name.length());
 				}
 			}
-			return super.getLocationNodes(obj);
+			return result;
 		}
-
-		private EObject getOpcode(NamedInstruction inst) {
-			if (inst instanceof StartingInstruction) {
-				return ((StartingInstruction) inst).getInstruction();
-			} else if (inst instanceof NamedMiddleInstruction) {
-				return ((NamedMiddleInstruction) inst).getInstruction();
-			} else if (inst instanceof NamedTerminatorInstruction) {
-				return ((NamedTerminatorInstruction) inst).getInstruction();
+		
+		@Override
+		protected List<INode> getLocationNodes(EObject obj) {
+			if (obj instanceof MiddleInstruction) {
+				return getLocationNodes(((MiddleInstruction) obj).getInstruction());
+			} else if (obj instanceof TerminatorInstruction) {
+				return getLocationNodes(((TerminatorInstruction) obj).getInstruction());
 			}
-			return null;
+			
+			EStructuralFeature nameFeature = obj.eClass().getEStructuralFeature("name");
+			if (nameFeature == null) return super.getLocationNodes(obj);
+			
+			List<INode> result = NodeModelUtils.findNodesForFeature(obj, nameFeature);
+			
+			// Special cases for nameless basic blocks, instructions and parameters
+			if (obj instanceof NamedInstruction) {
+				String text = NodeModelUtils.getTokenText(result.get(0));
+				if (text.isEmpty()) {
+					return Collections.singletonList(getOpcodeNode(obj));
+				}
+			} else if (obj instanceof Parameter) {
+				String text = NodeModelUtils.getTokenText(result.get(0));
+				if (text.isEmpty()) {
+					return Collections.singletonList((INode)(NodeModelUtils.getNode(((Parameter) obj).getType())));
+				}
+			} else if (obj instanceof BasicBlock) {
+				String text = NodeModelUtils.getTokenText(result.get(0));
+				if (text.isEmpty()) {
+					if (((BasicBlock) obj).getInstructions().isEmpty()) return Collections.emptyList();
+					EObject firstInstruction = ((BasicBlock) obj).getInstructions().get(0);
+					return getLocationNodes(firstInstruction);
+				}
+			}
+			
+			
+			return result;
+		}
+		
+		private INode getOpcodeNode(EObject inst) {
+			EStructuralFeature instructionFeature = inst.eClass().getEStructuralFeature("instruction");
+			EObject actualInst = (EObject) inst.eGet(instructionFeature);
+			EStructuralFeature opcodeFeature = actualInst.eClass().getEStructuralFeature("opcode");
+			return NodeModelUtils.findNodesForFeature(actualInst, opcodeFeature).get(0);
 		}
 	}
 	
