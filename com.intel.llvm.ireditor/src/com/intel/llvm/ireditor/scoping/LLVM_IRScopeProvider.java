@@ -34,7 +34,6 @@ import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
-import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.MiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Model;
@@ -67,11 +66,6 @@ public class LLVM_IRScopeProvider extends AbstractDeclarativeScopeProvider {
 			addLocalInstructions(inScope, func);
 			addParameters(inScope, func);
 			addGlobals(inScope, func);
-			// Only phi nodes can refer to themselves:
-			EObject inst = getContainedInstruction(getAncestor(context, Instruction.class));
-			if (inst != null && inst instanceof Instruction_phi == false) {
-				inScope.remove(inst);
-			}
 			return Scopes.scopeFor(inScope);
 		} else if (reference.getContainerClass() == BasicBlockRef.class) {
 			// A basic block reference can only refer to blocks within the

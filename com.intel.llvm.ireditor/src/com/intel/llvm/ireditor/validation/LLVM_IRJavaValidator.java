@@ -39,6 +39,7 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.EcoreUtil2;
+import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.util.OnChangeEvictingCache;
 import org.eclipse.xtext.util.Tuples;
@@ -60,6 +61,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
@@ -97,12 +99,14 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
+import com.intel.llvm.ireditor.lLVM_IR.Model;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.Parameters;
+import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
@@ -546,6 +550,59 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				inst.getRettype(),
 				null,
 				inst.getArgs());
+	}
+	
+	@Check
+	public void checkModel(Model model) {
+		// Verify that there's no two (or more) values with the same name in the model
+		Set<String> names = new HashSet<>();
+		for (TopLevelElement element : model.getElements()) {
+			String name = namer.resolveName(element);
+			if (name == null) continue;
+			if (names.add(name) == false) {
+				INode node = NodeModelUtils.findActualNodeFor(element);
+				int length = name.length();
+				// In function definitions and declarations the name doesn't appear first;
+				// meanwhile just give up and mark something else as erronous.
+				if (element instanceof FunctionDef) {
+					length = "define".length();
+				} else if (element instanceof FunctionDecl) {
+					length = "declare".length();
+				}
+				acceptError("More than one value is named " + name,
+						element, node.getOffset(), length, null);
+			}
+		}
+	}
+	
+	@Check
+	public void checkFunctionDef(FunctionDef def) {
+		// Verify that there's no two (or more) values with the same name in each function
+		Set<String> names = new HashSet<>();
+		for (Parameter p : def.getHeader().getParameters().getParameters()) {
+			String name = p.getName();
+			if (names.add(name) == false) {
+				INode node = NodeModelUtils.findActualNodeFor(p);
+				acceptError("More than one value is named " + name,
+						p, node.getOffset() + node.getLength() - name.length(), name.length(), null);
+			}
+		}
+		for (BasicBlock bb : def.getBasicBlocks()) {
+			String bbName = bb.getName();
+			if (names.add(bbName) == false) {
+				INode bbNode = NodeModelUtils.findActualNodeFor(bb);
+				acceptError("More than one value is named " + bbName,
+						bb, bbNode.getOffset(), bbName.length(), null);
+			}
+			for (Instruction inst : bb.getInstructions()) {
+				String instName = namer.resolveName(inst);
+				if (names.add(instName) == false) {
+					INode instNode = NodeModelUtils.findActualNodeFor(inst);
+					acceptError("More than one value is named " + instName,
+							bb, instNode.getOffset(), instName.length(), null);
+				}
+			}
+		}
 	}
 	
 	@Check
