@@ -27,16 +27,19 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor;
 
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.Collection;
+import java.util.Collections;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.util.OnChangeEvictingCache;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Multimaps;
 import com.google.inject.Provider;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
@@ -61,43 +64,62 @@ public class LLVM_IRUtils {
 	
 	private static OnChangeEvictingCache xrefCache = new OnChangeEvictingCache();
 	
-	public static List<EObject> xrefs(EObject object) {
-		List<EObject> result = new LinkedList<>();
+	public static Collection<? extends EObject> xrefs(EObject object) {
 		final EObject root = EcoreUtil2.getRootContainer(object);
-		
+
 		if (object instanceof LocalValue) {
-			List<LocalValueRef> list = xrefCache.get(Refs.LOCAL_VALUES, object.eResource(), new Provider<List<LocalValueRef>>() {
-				@Override
-				public List<LocalValueRef> get() {
-					return EcoreUtil2.getAllContentsOfType(root, LocalValueRef.class);
-				}
-			});
-			for (LocalValueRef ref : list) {
-				if (object == ref.getRef()) result.add(ref);
-			}
+			Multimap<LocalValue, LocalValueRef> map = xrefCache.get(
+					Refs.LOCAL_VALUES, object.eResource(), new Provider<Multimap<LocalValue, LocalValueRef>>() {
+						@Override
+						public Multimap<LocalValue, LocalValueRef> get() {
+							return Multimaps.index(EcoreUtil2.getAllContentsOfType(root, LocalValueRef.class),
+									new Function<LocalValueRef, LocalValue>() {
+								@Override
+								public LocalValue apply(LocalValueRef ref) {
+									return ref.getRef();
+								}
+							});
+						}
+					});
+			return map.get((LocalValue) object);
 		} else if (object instanceof BasicBlock) {
-			List<BasicBlockRef> list = xrefCache.get(Refs.BASIC_BLOCKS, object.eResource(), new Provider<List<BasicBlockRef>>() {
-				@Override
-				public List<BasicBlockRef> get() {
-					return EcoreUtil2.getAllContentsOfType(root, BasicBlockRef.class);
-				}
-			});
-			for (BasicBlockRef ref : list) {
-				if (object == ref.getRef()) result.add(ref);
-			}
-		} else {
-			List<GlobalValueRef> list = xrefCache.get(Refs.GLOBAL_VALUES, object.eResource(), new Provider<List<GlobalValueRef>>() {
-				@Override
-				public List<GlobalValueRef> get() {
-					return EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class);
-				}
-			});
-			for (GlobalValueRef ref : list) {
-				if (ref.getConstant() != null && object == ref.getConstant().getRef()) result.add(ref);
-			}
+			Multimap<BasicBlock, BasicBlockRef> map = xrefCache.get(
+					Refs.LOCAL_VALUES, object.eResource(), new Provider<Multimap<BasicBlock, BasicBlockRef>>() {
+						@Override
+						public Multimap<BasicBlock, BasicBlockRef> get() {
+							return Multimaps.index(EcoreUtil2.getAllContentsOfType(root, BasicBlockRef.class),
+									new Function<BasicBlockRef, BasicBlock>() {
+								@Override
+								public BasicBlock apply(BasicBlockRef ref) {
+									return ref.getRef();
+								}
+							});
+						}
+					});
+			return map.get((BasicBlock) object);
+		} else if (object instanceof GlobalValue) {
+			// Key is EObject and not GlobalValueDef because we need to map non-ref refs to something.
+			Multimap<EObject, GlobalValueRef> map = xrefCache.get(
+					Refs.LOCAL_VALUES, object.eResource(), new Provider<Multimap<EObject, GlobalValueRef>>() {
+						@Override
+						public Multimap<EObject, GlobalValueRef> get() {
+							return Multimaps.index(EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class),
+									new Function<GlobalValueRef, EObject>() {
+								@Override
+								public EObject apply(GlobalValueRef ref) {
+									if (ref.getConstant() != null && ref.getConstant().getRef() != null) {
+										return ref.getConstant().getRef();
+									} else {
+										return ref;
+									}
+								}
+							});
+						}
+					});
+			return map.get(object);
 		}
 		
-		return result;
+		return Collections.emptyList();
 	}
 	
 	public static String encodeTextForHtml(String s) {
