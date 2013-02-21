@@ -45,7 +45,7 @@ $(start);
 
 <header>
   <h1>LLVM IR SDK</h1>
-  LLVM IR SDK is a rich LLVM IR editor plugin for Eclipse, released for free by Intel.
+  <h3>LLVM IR SDK is a rich LLVM IR editor plugin for Eclipse, released for free by Intel.</h3>
   <nav>
     <a href='#Installation'>Installation</a>
     <a href='#Features'>Features</a>
@@ -69,34 +69,63 @@ $(start);
 <section id='Features'>
   <h1>Features</h1>
   <figure>
-    <h3>Hover</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
-    <img src='images/hover-basic_block.png' />
-    <div class='arrow'></div>
-    <img src='images/hover-locals.png' />
-    <div class='arrow'></div>
-    <img src='images/hover-keywords.png' />
-    <div class='arrow'></div>
-    <img src='images/hover-typedef.png' />
+    <h3>Syntax Highlighting</h3>
+	<table>
+	<tr>
+    <td><figcaption>Syntax highlighting which can deal with the complex type system and is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references)</figcaption></td>
+    <td><img src='images/syntax_coloring-basic.png' /></td>
+	</tr>
+	</table>
+	<table>
+	<tr>
+    <td>Fully Configurable</td>
+    <td>... via a simple GUI dialog</td>
+	</tr>
+	<tr>
+    <td><img src='images/syntax_coloring-variation.png' /></td>
+    <td><img src='images/syntax_coloring-dialog.png' /></td>
+	</tr>
+	</table>
   </figure>
   <figure>
-    <h3>Inferring</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
-    <img src='images/inferring.png' />
+    <h3>Hover for More Information</h3>
+	<table>
+	<tr>
+    <td><figcaption>Hovering over value references shows their entire definition in a handy popup</figcaption></td>
+    <td><img src='images/hover-locals.png' /></td>
+	</tr>
+	</table>
+	<table>
+	<tr>
+    <td>Also works for basic blocks and functions (with scrollbars if necessary),</td>
+    <td>named user-defined types,</td>
+	<td>and even for (some) keywords</td>
+	</tr>
+	<tr>
+    <td><img src='images/hover-basic_block.png' /></td>
+	<td><img src='images/hover-typedef.png' /></td>
+	<td><img src='images/hover-keywords.png' /></td>
+	</tr>
+	</table>
   </figure>
   <figure>
-    <h3>Syntax Coloring</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
-    <img src='images/syntax_coloring-basic.png' />
-    <div class='arrow'></div>
-    <img src='images/syntax_coloring-variation.png' />
-    <div class='arrow'></div>
-    <img src='images/syntax_coloring-dialog.png' />
+    <h3>Inferring Anonymous Element Names</h3>
+	<table>
+	<tr>
+    <td><figcaption>The editor can autonomously infer the names of anonymous values</figcaption></td>
+    <td><img src='images/inferring.png' /></td>
+	</tr>
+	</table>
   </figure>
+  
   <figure>
-    <h3>Occurrences</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
-    <img src='images/occurrences.png' />
+    <h3>Occurrence Marking</h3>
+	<table>
+	<tr>
+    <td><figcaption>Occurrence highlighting marks the definition and all the references for the value under the cursor, with a different color for the definition. This is an optional feature and is easily toggled with a toolbar button.</figcaption></td>
+    <td><img src='images/occurrences.png' /></td>
+	</tr>
+	</table>
   </figure>
 </section> 
  
@@ -105,6 +134,10 @@ $(start);
   <section>
     <h4>Is this plugin free to use?</h4>
     Yes, it is completely free to use (as well as to modify - it's an open-source project).
+  </section>
+  <section>
+    <h4>Does this require an installation of LLVM?</h4>
+    No, it is completely independent, the only requirements are the ones listed above in the <a href='#Installation'>installation</a> section.
   </section>
   <section>
     <h4>If the editor reports no errors for a given source file, does it mean LLVM will succesfully parse this file?</h4>
@@ -118,6 +151,14 @@ $(start);
     <h4>I've found a bug!</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where firstname, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
   </section>
+  <section>
+    <h4>I installed the plugin succesfully, but it doesn't seem to be working it all!</h4>
+    Make sure your Eclipse is running on top of Java 1.7 or newer. <a href="http://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F#Find_the_JVM">Here are instructions on how to select a vm</a>, and <a href="http://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM">here's how to edit <code>eclipse.ini</code> to always select a given vm</a>.
+  </section>
+  <section>
+    <h4>I installed the plugin succesfully and I'm running Java 1.7 or newer, but it doesn't seem to be working it all!</h4>
+    Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with -> llvm ir editor".
+  </section>
 </section>
 
 <section id='Developers'>
@@ -126,10 +167,10 @@ $(start);
 </section>
 
 <footer>
-  <!--blah blah blah-->
+  Project maintained by <a href='https://github.com/amishne'>Alon Mishne</a> | Site by &lt;whatever you want here&gt;
 </footer>
 
-<a href='https://github.com/amishne'><img style='position:fixed;top:0;right:0;border:0;' src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png' alt='Fork me on GitHub'></a>
+<a href='https://github.com/amishne/llvm-ir-editor'><img style='position:fixed;top:0;right:0;border:0;' src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png' alt='Fork me on GitHub'></a>
 
 <script type='text/javascript'>
   var _gaq = _gaq || [];
