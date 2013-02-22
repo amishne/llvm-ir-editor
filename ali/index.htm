@@ -77,17 +77,18 @@ $(start);
   <h1>Features</h1>
   <section>
     <h3>Syntax Highlighting</h3>
-    <figcaption>Syntax highlighting which can deal with the complex type system and is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references)</figcaption>
+    <figcaption>Syntax highlighting which is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references).</figcaption>
     <img src='images/syntax_coloring-basic.png' /><br /><br />
 
-    <a href=''><label for='SyntaxHighlighting'>Toggle more information</label></a>
+    <a href=''><label for='SyntaxHighlighting'>Show more information</label></a>
     <input type='checkbox' id='SyntaxHighlighting'>
     <span class='toggle'><br /><br />
-      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+	  <figcaption>Aware of the complex type system</figcaption>
+      <img src='images/syntax_coloring-types.png' /><br /><br />
+      <figcaption>Fully configurable</figcaption>
       <img src='images/syntax_coloring-variation.png' /><br /><br />
-      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <figcaption>Configured via a simple GUI dialog</figcaption>
       <img src='images/syntax_coloring-dialog.png' />
-      <!--Fully Configurable ... via a simple GUI dialog-->
     </span>
   </section>
   <section>
@@ -95,18 +96,15 @@ $(start);
     <figcaption>Hovering over value references shows their entire definition in a handy popup</figcaption>
     <img src='images/hover-locals.png' /><br /><br />
 
-    <a href=''><label for='Hover'>Toggle more information</label></a>
+    <a href=''><label for='Hover'>Show more information</label></a>
     <input type='checkbox' id='Hover'>
     <span class='toggle'><br /><br />
-      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <figcaption>Also works for basic blocks and functions (with scrollbars if necessary)</figcaption>
       <img src='images/hover-basic_block.png' /><br /><br />
-      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
-    	<img src='images/hover-typedef.png' /><br /><br />
-      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <figcaption>Also works for named user-defined types</figcaption>
+      <img src='images/hover-typedef.png' /><br /><br />
+      <figcaption>Also works for (some) keywords</figcaption>
       <img src='images/hover-keywords.png' />
-      <!--Also works for basic blocks and functions (with scrollbars if necessary),
-      named user-defined types,
-      and even for (some) keywords-->	
     </span>
   </section>
   <section>
@@ -114,13 +112,67 @@ $(start);
     <figcaption>The editor can autonomously infer the names of anonymous values</figcaption>
     <img src='images/inferring.png' />
   </section>
-  
   <section>
     <h3>Occurrence Marking</h3>
     <figcaption>Occurrence highlighting marks the definition and all the references for the value under the cursor, with a different color for the definition. This is an optional feature and is easily toggled with a toolbar button.</figcaption>
     <img src='images/occurrences.png' />
-	
-	
+  </section>
+  <section>
+    <h3>File Outline</h3>
+    <figcaption>An outline of the current file can be displayed side-by-side with the code, with two-way linking between the element under the cursor and the element selected in the outline view.</figcaption>
+    <img src='images/outline.png' />
+  </section>
+  <section>
+    <h3>Syntax Checking</h3>
+    <figcaption>Provides basic syntax error checking, identifying malformed files.</figcaption>
+    <img src='images/syntax_errors.png' /><br /><br />
+
+    <a href=''><label for='SyntaxErrors'>Show more information</label></a>
+    <input type='checkbox' id='SyntaxErrors'>
+    <span class='toggle'><br /><br />
+	  <figcaption>Also provides useful hints for some syntax errors.</figcaption>
+      <img src='images/syntax_errors-friendly.png' /><br /><br />
+    </span>
+  </section>
+  <section>
+    <h3>Content Assist</h3>
+    <figcaption>Ctrl+space opens a context-aware popup box with value suggestions</figcaption>
+    <img src='images/content_assist-values.png' /><br /><br />
+
+    <a href=''><label for='ContentAssist'>Show more information</label></a>
+    <input type='checkbox' id='ContentAssist'>
+    <span class='toggle'><br /><br />
+      <figcaption>Will not suggest values outisde the current scope</figcaption>
+      <img src='images/content_assist-scope.png' /><br /><br />
+	  <figcaption>Also works for non-value syntactic elements, such as instruction opcodes</figcaption>
+      <img src='images/content_assist-syntax.png' /><br /><br />
+    </span>
+  </section>
+  <section>
+    <h3>Per-Instruction Validation</h3>
+    <figcaption>Every instruction has its own validation check to verify it is being used legally</figcaption>
+    <img src='images/custom_validation-add.png' /><br /><br />
+
+    <a href=''><label for='CustomValidation'>Show more information</label></a>
+    <input type='checkbox' id='CustomValidation'>
+    <span class='toggle'><br /><br />
+      <figcaption>Some of the validation checks, such as for phi nodes, extend beyond simple type checks</figcaption>
+      <img src='images/custom_validation-phi.png' /><br /><br />
+    </span>
+  </section>
+  <section>
+    <h3>Control Flow Awareness</h3>
+    <figcaption>The editor is aware of the flow between basic blocks and can provide warnings and errors for problem in that flow, for example for a non-dominated use.</figcaption>
+    <img src='images/domination.png' /><br /><br />
+
+    <a href=''><label for='ControlFlow'>Show more information</label></a>
+    <input type='checkbox' id='ControlFlow'>
+    <span class='toggle'><br /><br />
+      <figcaption>With special rules for phi nodes</figcaption>
+      <img src='images/domination-phi.png' /><br /><br />
+	  <figcaption>And providing warnings for unreachable basic blocks</figcaption>
+      <img src='images/reachability.png' /><br /><br />
+    </span>
   </section>
 </section> 
  
@@ -135,14 +187,16 @@ $(start);
     No, it is completely independent, the only requirements are the ones listed above in the <a href='#Installation'>installation</a> section.
   </section>
   <section>
-    <h4>If the editor reports no errors for a given source file, does it mean LLVM will succesfully parse this file?</h4>
-    It is not guaranteed, though it is the intention of this plugin to get as close as possible to this state.
+    <h4>If the editor reports an error, does this mean this won't be accepted by LLVM? If it doesn't, does it mean it will?</h4>
+    Although it is not guaranteed, the purpose of this plugin is to get as close as possible to this state from both directions.
   </section>
   <section>
-    <h4>If the editor reports an error for a given source file, does it guarantee the LLVM parser will reject this file?</h4>
-    While not quite "guaranteed", it is indeed the intention of this plugin to ensure that this will always be the case.
+    <h4>How stable is this plugin? How robust for handling large files?</h4>
+    This project is in <em>beta</em> state, and the editor does occasionally produce an error dialog or hang for a few seconds, particularly when editing files (as opposed to just reading them). If this happens to you, please <a href="#open_a_bug">open a bug about it</a>.<br />
+	The editor's performance depends on the machine, but it can get sluggish when operating on files with thousands of lines.
   </section>
   <section>
+    <a id="open_a_bug" />
     <h4>I've found a bug!</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where firstname, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
   </section>
