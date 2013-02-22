@@ -20,7 +20,7 @@ section>section           { background-color: #ba9; }
 img                       { border: 1px #888 solid; }
 footer                    { text-align: center; }
 section>h3                { font-size: 20px; }
-section>figcaption        { margin-bottom: 20px; }
+section figcaption        { margin-bottom: 20px; }
 h1, h4, h3                { margin-top: 0em; }
 h1                        { text-shadow: 2px 2px 3px #a97; color: #000; font-size: }
 nav                       { margin-top: 20px; }
@@ -29,6 +29,10 @@ nav>a                     { margin-right: 20px; font-size: 18px; font-weight: bo
 .nonlink                  { color: #900; }
 a:link,a:visited,a:active { color: #731; text-decoration: none; }
 a:hover                   { color: #731; text-decoration: underline; }
+
+span.toggle { display: none; }
+input[type=checkbox] { position: absolute; top: -9999px; left: -9999px; }
+input[type=checkbox]:checked ~ span.toggle { display: inline; margin-top: 20px; }
 </style>
 
 <!--script type='text/javascript' src='js/jquery-1.9.1.min.js'></script>
@@ -75,25 +79,35 @@ $(start);
     <h3>Syntax Highlighting</h3>
     <figcaption>Syntax highlighting which can deal with the complex type system and is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references)</figcaption>
     <img src='images/syntax_coloring-basic.png' /><br /><br />
-    <figcaption>text.... . . ..... . .. .... .. .</figcaption>
-    <img src='images/syntax_coloring-variation.png' /><br /><br />
-    <figcaption>text.... . . ..... . .. .... .. .</figcaption>
-    <img src='images/syntax_coloring-dialog.png' />
-    <!--Fully Configurable ... via a simple GUI dialog-->
+
+    <a href=''><label for='SyntaxHighlighting'>Toggle more information</label></a>
+    <input type='checkbox' id='SyntaxHighlighting'>
+    <span class='toggle'><br /><br />
+      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <img src='images/syntax_coloring-variation.png' /><br /><br />
+      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <img src='images/syntax_coloring-dialog.png' />
+      <!--Fully Configurable ... via a simple GUI dialog-->
+    </span>
   </section>
   <section>
     <h3>Hover for More Information</h3>
     <figcaption>Hovering over value references shows their entire definition in a handy popup</figcaption>
     <img src='images/hover-locals.png' /><br /><br />
-    <figcaption>text.... . . ..... . .. .... .. .</figcaption>
-    <img src='images/hover-basic_block.png' /><br /><br />
-    <figcaption>text.... . . ..... . .. .... .. .</figcaption>
-  	<img src='images/hover-typedef.png' /><br /><br />
-    <figcaption>text.... . . ..... . .. .... .. .</figcaption>
-    <img src='images/hover-keywords.png' />
-    <!--Also works for basic blocks and functions (with scrollbars if necessary),
-    named user-defined types,
-    and even for (some) keywords-->	
+
+    <a href=''><label for='Hover'>Toggle more information</label></a>
+    <input type='checkbox' id='Hover'>
+    <span class='toggle'><br /><br />
+      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <img src='images/hover-basic_block.png' /><br /><br />
+      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+    	<img src='images/hover-typedef.png' /><br /><br />
+      <figcaption>text.... . . ..... . .. .... .. .</figcaption>
+      <img src='images/hover-keywords.png' />
+      <!--Also works for basic blocks and functions (with scrollbars if necessary),
+      named user-defined types,
+      and even for (some) keywords-->	
+    </span>
   </section>
   <section>
     <h3>Inferring Anonymous Element Names</h3>
