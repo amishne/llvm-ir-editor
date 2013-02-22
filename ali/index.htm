@@ -28,16 +28,17 @@ nav>a                     { margin-right: 20px; font-size: 18px; font-weight: bo
 .nonlink                  { color: #900; }
 a:link,a:visited,a:active { color: #731; text-decoration: none; }
 a:hover                   { color: #731; text-decoration: underline; }
+a.toggle                  { display: none; color: #731; }
 
-span.toggle { display: none; }
-input[type=checkbox] { position: absolute; top: -9999px; left: -9999px; }
-input[type=checkbox]:checked ~ span.toggle { display: inline; margin-top: 20px; }
 </style>
 
 <script type='text/javascript' src='js/jquery-1.9.1.min.js'></script>
 <script type='text/javascript'>
 function start() {
-  console.log('starting');
+  $('a.toggle.off,span.toggle').toggle();
+  $('a.toggle').click( function() {
+    $(this).parent().find('span.toggle,a.toggle').toggle();
+  });
 }
 $(start);
 </script>
@@ -78,9 +79,8 @@ $(start);
     <h3>Syntax Highlighting</h3>
     <figcaption>Syntax highlighting which is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references).</figcaption>
     <img src='images/syntax_coloring-basic.png' /><br /><br />
-
-    <a href=''><label for='SyntaxHighlighting'>Show more information</label></a>
-    <input type='checkbox' id='SyntaxHighlighting'>
+    <a class='toggle off'>Show more information</a>
+    <a class='toggle on'>Hide more information</a>
     <span class='toggle'><br /><br />
 	  <figcaption>Aware of the complex type system</figcaption>
       <img src='images/syntax_coloring-types.png' /><br /><br />
@@ -95,8 +95,8 @@ $(start);
     <figcaption>Hovering over value references shows their entire definition in a handy popup</figcaption>
     <img src='images/hover-locals.png' /><br /><br />
 
-    <a href=''><label for='Hover'>Show more information</label></a>
-    <input type='checkbox' id='Hover'>
+    <a class='toggle off'>Show more information</a>
+    <a class='toggle on'>Hide more information</a>
     <span class='toggle'><br /><br />
       <figcaption>Also works for basic blocks and functions (with scrollbars if necessary)</figcaption>
       <img src='images/hover-basic_block.png' /><br /><br />
