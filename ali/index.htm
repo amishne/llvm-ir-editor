@@ -10,7 +10,7 @@
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 
 <style>
-body                      { width: 900px; margin: auto; margin-top: 1em; background-color: #fff; }
+body                      { width: 900px; margin: auto; margin-top: 1em; background-color: #fff; font-family: Sans-Serif; }
 header, section, footer   { margin: 20px; padding: 20px; border-radius: 11px; width: 90%; }
 header                    { text-align: center; margin: 0px; }
 header>h1                 { font-size: 36px; }
@@ -67,8 +67,7 @@ $(start);
   <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.7 or newer</a>
   <li><a href='http://www.eclipse.org/downloads/'>Eclipse 3.5 or newer</a> (any package)</li>
   </ol>
-  Eclipse update site: <br />
-  <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
+  Eclipse update site: <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
   <a href='http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/index_v35.html#section1_0'>Click here</a> if not familiar with the Eclipse plugin installation procedure.
 </section>
 
@@ -79,8 +78,8 @@ $(start);
     <h3>Syntax Highlighting</h3>
     <figcaption>Syntax highlighting which is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references).</figcaption>
     <img src='images/syntax_coloring-basic.png' /><br /><br />
-    <a class='toggle off'>Show more information</a>
-    <a class='toggle on'>Hide more information</a>
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
 	  <figcaption>Aware of the complex type system</figcaption>
       <img src='images/syntax_coloring-types.png' /><br /><br />
@@ -91,12 +90,12 @@ $(start);
     </span>
   </section>
   <section>
-    <h3>Hover for More Information</h3>
+    <h3>Showing Definitions On Hovers</h3>
     <figcaption>Hovering over value references shows their entire definition in a handy popup</figcaption>
     <img src='images/hover-locals.png' /><br /><br />
 
-    <a class='toggle off'>Show more information</a>
-    <a class='toggle on'>Hide more information</a>
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
       <figcaption>Also works for basic blocks and functions (with scrollbars if necessary)</figcaption>
       <img src='images/hover-basic_block.png' /><br /><br />
@@ -126,8 +125,8 @@ $(start);
     <figcaption>Provides basic syntax error checking, identifying malformed files.</figcaption>
     <img src='images/syntax_errors.png' /><br /><br />
 
-    <a href=''><label for='SyntaxErrors'>Show more information</label></a>
-    <input type='checkbox' id='SyntaxErrors'>
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
 	  <figcaption>Also provides useful hints for some syntax errors.</figcaption>
       <img src='images/syntax_errors-friendly.png' /><br /><br />
@@ -138,8 +137,8 @@ $(start);
     <figcaption>Ctrl+space opens a context-aware popup box with value suggestions</figcaption>
     <img src='images/content_assist-values.png' /><br /><br />
 
-    <a href=''><label for='ContentAssist'>Show more information</label></a>
-    <input type='checkbox' id='ContentAssist'>
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
       <figcaption>Will not suggest values outisde the current scope</figcaption>
       <img src='images/content_assist-scope.png' /><br /><br />
@@ -152,10 +151,10 @@ $(start);
     <figcaption>Every instruction has its own validation check to verify it is being used legally</figcaption>
     <img src='images/custom_validation-add.png' /><br /><br />
 
-    <a href=''><label for='CustomValidation'>Show more information</label></a>
-    <input type='checkbox' id='CustomValidation'>
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
-      <figcaption>Some of the validation checks, such as for phi nodes, extend beyond simple type checks</figcaption>
+      <figcaption>With some of the validation checks, such as for phi nodes, extend beyond simple type checks</figcaption>
       <img src='images/custom_validation-phi.png' /><br /><br />
     </span>
   </section>
@@ -164,8 +163,8 @@ $(start);
     <figcaption>The editor is aware of the flow between basic blocks and can provide warnings and errors for problem in that flow, for example for a non-dominated use.</figcaption>
     <img src='images/domination.png' /><br /><br />
 
-    <a href=''><label for='ControlFlow'>Show more information</label></a>
-    <input type='checkbox' id='ControlFlow'>
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
       <figcaption>With special rules for phi nodes</figcaption>
       <img src='images/domination-phi.png' /><br /><br />
@@ -205,7 +204,7 @@ $(start);
   </section>
   <section>
     <h4>I installed the plugin succesfully and I'm running Java 1.7 or newer, but it doesn't seem to be working it all!</h4>
-    Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with -&gt; llvm ir editor".
+    Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with &rarr; llvm ir editor".
   </section>
 </section>
 
