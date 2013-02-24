@@ -207,13 +207,11 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	
 	public static class LlvmQualifiedNameConverter implements IQualifiedNameConverter {
 
-		@Override
 		public String toString(QualifiedName name) {
 			if (name == null) return null;
 			return name.getFirstSegment();
 		}
 
-		@Override
 		public QualifiedName toQualifiedName(String qualifiedNameAsText) {
 			if (qualifiedNameAsText == null) return null;
 			return QualifiedName.create(qualifiedNameAsText);

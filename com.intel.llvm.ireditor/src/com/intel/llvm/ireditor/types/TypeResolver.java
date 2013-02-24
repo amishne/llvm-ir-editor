@@ -113,7 +113,7 @@ import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private final ConstantResolver constResolver = new ConstantResolver();
-	private final Map<String, ResolvedNamedType> resolvedNamedTypes = new HashMap<>();
+	private final Map<String, ResolvedNamedType> resolvedNamedTypes = new HashMap<String, ResolvedNamedType>();
 	
 	public static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
 	public static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();

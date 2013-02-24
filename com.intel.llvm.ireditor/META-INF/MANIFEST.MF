@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib,
  com.intel.llvm.ireditor.lLVM_IR
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.intel.llvm.ireditor,
  com.intel.llvm.ireditor.formatting,
  com.intel.llvm.ireditor.generator,

@@ -69,7 +69,6 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		this.initialMode = initialMode;
 	}
 
-	@Override
 	public Iterator<EObject> iterator() {
 		return initialMode == Mode.GLOBAL ? new ReverseGlobalIterator() : new ReverseLocalIterator();
 	}
@@ -77,19 +76,16 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 	class ReverseGlobalIterator implements Iterator<EObject> {
 		INode curr = node.getParent().getParent().getParent();
 		
-		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
 		
-		@Override
 		public EObject next() {
 			INode prev = curr.getPreviousSibling();
 			curr = prev;
 			return NodeModelUtils.findActualSemanticObjectFor(prev.getLeafNodes().iterator().next());
 		}
 		
-		@Override
 		public boolean hasNext() {
 			return curr.hasPreviousSibling();
 		}
@@ -100,12 +96,10 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 		INode curr = node;
 		ReverseNamedElementIterator.Mode mode = initialMode;
 		
-		@Override
 		public void remove() {
 			throw new UnsupportedOperationException();
 		}
 		
-		@Override
 		public EObject next() {
 			switch (mode) {
 			case INST: {
@@ -144,7 +138,6 @@ public class ReverseNamedElementIterator implements Iterable<EObject> {
 			return NodeModelUtils.findActualSemanticObjectFor(curr);
 		}
 		
-		@Override
 		public boolean hasNext() {
 			switch (mode) {
 			case INST: return true; // There's always a preceding bb

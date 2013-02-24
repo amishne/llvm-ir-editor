@@ -88,20 +88,20 @@ public class ConstantResolver extends LLVM_IRSwitch<Integer> {
 		Integer op2 = doSwitch(object.getOp2());
 		if (op1 == null || op2 == null) return null;
 		
-		switch (object.getOpcode()) {
-		case "add": return op1 + op2;
-		case "sub": return op1 - op2;
-		case "mul": return op1 * op2;
-		case "udiv": return (int)((op1 & 0xFFFFFFFFL) / (op2 & 0xFFFFFFFFL));
-		case "sdiv": return op1 / op2;
-		case "shl": return op1 << op2;
-		case "lshr": return op1 >>> op2;
-		case "ashr": return op1 >> op2;
-		case "and": return op1 & op2;
-		case "or": return op1 | op2;
-		case "xor": return op1 ^ op2;
-		default: return null;
-		}
+		String opcode = object.getOpcode();
+		
+		     if (opcode.equals("add")) return op1 + op2;
+		else if (opcode.equals("sub")) return op1 - op2;
+		else if (opcode.equals("mul")) return op1 * op2;
+		else if (opcode.equals("udiv")) return (int)((op1 & 0xFFFFFFFFL) / (op2 & 0xFFFFFFFFL));
+		else if (opcode.equals("sdiv")) return op1 / op2;
+		else if (opcode.equals("shl")) return op1 << op2;
+		else if (opcode.equals("lshr")) return op1 >>> op2;
+		else if (opcode.equals("ashr")) return op1 >> op2;
+		else if (opcode.equals("and")) return op1 & op2;
+		else if (opcode.equals("or")) return op1 | op2;
+		else if (opcode.equals("xor")) return op1 ^ op2;
+		else return null;
 	}
 	
 	@Override
@@ -109,11 +109,8 @@ public class ConstantResolver extends LLVM_IRSwitch<Integer> {
 		Integer op1 = doSwitch(object.getOp1());
 		Integer op2 = doSwitch(object.getOp2());
 		if (op1 == null || op2 == null) return null;
-		
-		switch (object.getOpcode()) {
-		case "icmp": return op1.equals(op2) ? 1 : 0;
-		default: return null;
-		}
+		if (object.getOpcode().equals("icmp")) return op1.equals(op2) ? 1 : 0;
+		return null;
 	}
 	
 	@Override

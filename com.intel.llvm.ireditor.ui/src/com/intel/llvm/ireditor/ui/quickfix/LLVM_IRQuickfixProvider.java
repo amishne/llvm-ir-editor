@@ -394,7 +394,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 	}
 	
 	private static class Replacements {
-		private SortedSet<Replacement> replacements = new TreeSet<>();
+		private SortedSet<Replacement> replacements = new TreeSet<Replacement>();
 		
 		public void add(Replacement r) {
 			replacements.add(r);

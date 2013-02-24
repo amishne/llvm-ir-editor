@@ -456,7 +456,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		}
 		
 		// Populate the "mentionedBlocks" list, and verify it does not contain duplicates
-		List<BasicBlock> mentionedBlocks = new LinkedList<>();
+		List<BasicBlock> mentionedBlocks = new LinkedList<BasicBlock>();
 		index = 0;
 		for (BasicBlockRef ref : inst.getLabels()) {
 			BasicBlock actual = ref.getRef();
@@ -555,7 +555,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkModel(Model model) {
 		// Verify that there's no two (or more) values with the same name in the model
-		Set<String> names = new HashSet<>();
+		Set<String> names = new HashSet<String>();
 		for (TopLevelElement element : model.getElements()) {
 			String name = namer.resolveName(element);
 			if (name == null) continue;
@@ -578,7 +578,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkFunctionDef(FunctionDef def) {
 		// Verify that there's no two (or more) values with the same name in each function
-		Set<String> names = new HashSet<>();
+		Set<String> names = new HashSet<String>();
 		for (Parameter p : def.getHeader().getParameters().getParameters()) {
 			String name = p.getName();
 			if (names.add(name) == false) {
@@ -805,9 +805,8 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	private boolean dominates(final BasicBlock dominator, final BasicBlock dominatee) {
 		Object key = Tuples.create(dominator, dominatee);
 		return dominationCache.get(key, dominator.eResource(), new Provider<Boolean>() {
-			@Override
 			public Boolean get() {
-				Set<BasicBlock> seen = new HashSet<>();
+				Set<BasicBlock> seen = new HashSet<BasicBlock>();
 				seen.add(dominatee);
 				return dominates(dominator, dominatee, seen);
 			}
@@ -974,7 +973,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 	private Iterable<? extends BasicBlock> predecessors(BasicBlock val) {
-		LinkedList<BasicBlock> result = new LinkedList<>();
+		LinkedList<BasicBlock> result = new LinkedList<BasicBlock>();
 		for (EObject ref : LLVM_IRUtils.xrefs(val)) {
 			// Check if at least one of its references is in a terminator instruction
 			if (EcoreUtil2.getContainerOfType(ref, TerminatorInstruction.class) != null ||
