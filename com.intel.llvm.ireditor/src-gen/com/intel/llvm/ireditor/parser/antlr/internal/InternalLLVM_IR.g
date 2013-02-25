@@ -11987,13 +11987,26 @@ ruleParameterAttribute returns [AntlrDatatypeRuleToken current=new AntlrDatatype
         newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getInregKeyword_2()); 
     }
 
-    |
+    |(
 	kw='byval' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getByvalKeyword_3()); 
+        newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getByvalKeyword_3_0()); 
+    }
+(
+	kw='align' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getAlignKeyword_3_1_0()); 
+    }
+    this_INTEGER_5=RULE_INTEGER    {
+		$current.merge(this_INTEGER_5);
     }
 
+    { 
+    newLeafNode(this_INTEGER_5, grammarAccess.getParameterAttributeAccess().getINTEGERTerminalRuleCall_3_1_1()); 
+    }
+)?)
     |
 	kw='sret' 
     {

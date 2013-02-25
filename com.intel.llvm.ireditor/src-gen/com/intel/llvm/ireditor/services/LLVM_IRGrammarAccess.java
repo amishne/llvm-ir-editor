@@ -6896,7 +6896,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cZeroextKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cSignextKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cInregKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cByvalKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Keyword cByvalKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Keyword cAlignKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final RuleCall cINTEGERTerminalRuleCall_3_1_1 = (RuleCall)cGroup_3_1.eContents().get(1);
 		private final Keyword cSretKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
 		private final Keyword cNoaliasKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		private final Keyword cNocaptureKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
@@ -6904,10 +6908,10 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ParameterAttribute:
 		//
-		//	"zeroext" | "signext" | "inreg" | "byval" | "sret" | "noalias" | "nocapture" | "nest";
+		//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest";
 		public ParserRule getRule() { return rule; }
 
-		//"zeroext" | "signext" | "inreg" | "byval" | "sret" | "noalias" | "nocapture" | "nest"
+		//"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"zeroext"
@@ -6919,8 +6923,20 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"inreg"
 		public Keyword getInregKeyword_2() { return cInregKeyword_2; }
 
+		//"byval" ("align" INTEGER)?
+		public Group getGroup_3() { return cGroup_3; }
+
 		//"byval"
-		public Keyword getByvalKeyword_3() { return cByvalKeyword_3; }
+		public Keyword getByvalKeyword_3_0() { return cByvalKeyword_3_0; }
+
+		//("align" INTEGER)?
+		public Group getGroup_3_1() { return cGroup_3_1; }
+
+		//"align"
+		public Keyword getAlignKeyword_3_1_0() { return cAlignKeyword_3_1_0; }
+
+		//INTEGER
+		public RuleCall getINTEGERTerminalRuleCall_3_1_1() { return cINTEGERTerminalRuleCall_3_1_1; }
 
 		//"sret"
 		public Keyword getSretKeyword_4() { return cSretKeyword_4; }
@@ -9885,7 +9901,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ParameterAttribute:
 	//
-	//	"zeroext" | "signext" | "inreg" | "byval" | "sret" | "noalias" | "nocapture" | "nest";
+	//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest";
 	public ParameterAttributeElements getParameterAttributeAccess() {
 		return (pParameterAttribute != null) ? pParameterAttribute : (pParameterAttribute = new ParameterAttributeElements());
 	}

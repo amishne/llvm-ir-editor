@@ -929,7 +929,7 @@ ParameterAttributes:
 ;
 
 ParameterAttribute:
-	'zeroext' | 'signext' | 'inreg' | 'byval' | 'sret' | 'noalias' | 'nocapture' | 'nest'
+	'zeroext' | 'signext' | 'inreg' | ('byval' ('align' INTEGER)?) | 'sret' | 'noalias' | 'nocapture' | 'nest'
 ;
 
 Argument:
