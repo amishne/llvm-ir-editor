@@ -2,7 +2,7 @@
 <feature
       id="com.intel.llvm.ireditor.sdk"
       label="LLVM IR SDK Feature"
-      version="0.8.6.qualifier"
+      version="0.8.7.qualifier"
       provider-name="Intel">
 
    <description url="An LLVM IR editor plugin">
@@ -60,14 +60,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          id="com.intel.llvm.ireditor"
          download-size="0"
          install-size="0"
-         version="0.8.6.qualifier"
+         version="0.8.7.qualifier"
          unpack="false"/>
 
    <plugin
          id="com.intel.llvm.ireditor.ui"
          download-size="0"
          install-size="0"
-         version="0.8.6.qualifier"
+         version="0.8.7.qualifier"
          unpack="false"/>
 
 </feature>
