@@ -73,7 +73,11 @@ public class ResolvedNamedType extends ResolvedType {
 	}
 
 	public void setReferredType(ResolvedType t) {
-		referredType = t;
+		referredType = this != t ? t : new ResolvedUnknownType();
+	}
+	
+	public ResolvedType getReferredType() {
+		return referredType;
 	}
 
 	@Override

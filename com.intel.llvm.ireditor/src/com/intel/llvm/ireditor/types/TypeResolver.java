@@ -37,7 +37,9 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
 
+import com.google.inject.Provider;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
 import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
@@ -113,7 +115,7 @@ import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
  */
 public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	private final ConstantResolver constResolver = new ConstantResolver();
-	private final Map<String, ResolvedNamedType> resolvedNamedTypes = new HashMap<String, ResolvedNamedType>();
+	private final OnChangeEvictingCache resolvedNamedTypesCache = new OnChangeEvictingCache();
 	
 	public static final Map<String, ResolvedType> SIMPLE_TYPES = new HashMap<String, ResolvedType>();
 	public static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();
@@ -138,6 +140,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedAnyVectorType TYPE_BOOLEAN_VECTOR = new ResolvedAnyVectorType(TYPE_BOOLEAN);
 	
 	private static final BigInteger MAX_INTEGER_TYPE_SIZE = BigInteger.valueOf((2 << 23)-1);
+	private static final Object RESOLVED_NAMED_TYPES_CACHE_KEY = new Object();
 
 	static {
 		SIMPLE_TYPES.put("void", new ResolvedVoidType());
@@ -265,6 +268,13 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedNamedType caseTypeDef(TypeDef object) {
 		String name = object.getName();
 		
+		Map<String, ResolvedNamedType> resolvedNamedTypes = resolvedNamedTypesCache.get(
+				RESOLVED_NAMED_TYPES_CACHE_KEY, object.eResource(), new Provider<Map<String, ResolvedNamedType>>() {
+					public Map<String, ResolvedNamedType> get() {
+						return new HashMap<String, ResolvedNamedType>();
+					}
+				});
+
 		// To prevent infinite recursion on recursive types:
 		ResolvedNamedType type = resolvedNamedTypes.get(name);
 		if (type != null) return type;

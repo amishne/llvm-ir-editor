@@ -108,6 +108,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.Parameters;
 import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
+import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.ValueRef;
@@ -115,6 +116,7 @@ import com.intel.llvm.ireditor.lLVM_IR.VectorConstant;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 import com.intel.llvm.ireditor.types.ResolvedAnyFunctionType;
+import com.intel.llvm.ireditor.types.ResolvedNamedType;
 import com.intel.llvm.ireditor.types.ResolvedPointerType;
 import com.intel.llvm.ireditor.types.ResolvedType;
 import com.intel.llvm.ireditor.types.ResolvedVectorType;
@@ -726,6 +728,15 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				resolved.getContainedType(0).isVoid()) {
 			error(resolved.toString() + " is not a legal LLVM type (use i8* for an arbitrary pointer)",
 					Literals.TYPE__BASE_TYPE);
+		}
+	}
+	
+	@Check
+	public void checkTypeDef(TypeDef val) {
+		ResolvedNamedType typedefType = (ResolvedNamedType) resolveType(val);
+		ResolvedType referred = resolveType(val.getType());
+		if (typedefType == referred) {
+			error("Recursive types are illegal (did you forget {} ?)", Literals.TYPE_DEF__TYPE);
 		}
 	}
 	
