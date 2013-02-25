@@ -27,6 +27,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.names;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.eclipse.emf.ecore.EObject;
 
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
@@ -45,18 +48,28 @@ import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 
 public class NameResolver extends LLVM_IRSwitch<String> {
+	private static Pattern NUMBERED_NAME_PATTERN = Pattern.compile("([%@!])(\\d+)(\\s*=\\s*)?");
+	private static Pattern NUMBERED_BB_PATTERN = Pattern.compile("(\\d+):");
+	
 	public String resolveName(EObject element) {
 		return doSwitch(element);
 	}
 	
 	public NumberedName resolveNumberedName(EObject element) {
+		if (element == null) return null;
 		String name = resolveName(element);
 		// No name:
 		if (name == null) return null;
 		
-		// Numbered name:
-		if (name.matches("[%@]\\d+")) {
-			return new NumberedName(name.substring(0, 1), Integer.parseInt(name.substring(1)));
+		Matcher m = NUMBERED_NAME_PATTERN.matcher(name);
+		if (m.matches()) {
+			// Numbered non-bb name:
+			return new NumberedName(m.group(1), Integer.parseInt(m.group(2)));
+		}
+		m = NUMBERED_BB_PATTERN.matcher(name);
+		if (m.matches()) {
+			// Numbered bb name:
+			return new NumberedName("%", Integer.parseInt(m.group(1)));
 		}
 		
 		// Non-numbered name:

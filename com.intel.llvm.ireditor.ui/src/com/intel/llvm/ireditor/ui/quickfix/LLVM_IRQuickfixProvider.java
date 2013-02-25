@@ -55,7 +55,7 @@ import org.eclipse.xtext.validation.Issue;
 
 import com.google.inject.Inject;
 import com.intel.llvm.ireditor.LLVM_IRUtils;
-import com.intel.llvm.ireditor.ReverseNamedElementIterator;
+import com.intel.llvm.ireditor.ReverseElementIterable;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
@@ -205,7 +205,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		if (lastInContext == null) return result;
 		Deque<EObject> toRename = new LinkedList<EObject>();
 		toRename.push(lastInContext);
-		ReverseNamedElementIterator iter = new ReverseNamedElementIterator(lastInContext);
+		ReverseElementIterable iter = new ReverseElementIterable(lastInContext);
 		for (EObject namedElement : iter) {
 			toRename.push(namedElement);
 		}

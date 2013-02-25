@@ -29,8 +29,6 @@ package com.intel.llvm.ireditor;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.regex.Pattern;
-
 import org.antlr.runtime.IntStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.Token;
@@ -57,14 +55,13 @@ import org.eclipse.xtext.util.ITextRegion;
 import org.eclipse.xtext.util.TextRegion;
 import org.eclipse.xtext.util.TextRegionWithLineInformation;
 
-import com.intel.llvm.ireditor.ReverseNamedElementIterator.Mode;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
-import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.lLVM_IR.MiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.names.NameResolver;
+import com.intel.llvm.ireditor.names.NumberedName;
 import com.intel.llvm.ireditor.parser.antlr.LLVM_IRParser;
 import com.intel.llvm.ireditor.parser.antlr.internal.InternalLLVM_IRParser;
 
@@ -203,6 +200,15 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 				}
 			};
 		}
+		
+		@Override
+		protected boolean isReparseSupported() {
+			// Reparse is disabled because right now the repase region for elements inside a function
+			// does not include the header, but the header is important because it contains the parameters,
+			// and name inferring cannot be accurate without looking at parameters.
+			// TODO re-enable this.
+			return false;
+		}
 	}
 	
 	public static class LlvmQualifiedNameConverter implements IQualifiedNameConverter {
@@ -247,7 +253,6 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	
 	public static abstract class LlvmNameConverter implements IValueConverter<String> {
 		
-		private static long NAME_RESOLVE_TIMEOUT_MS = 5000;
 		private NameResolver namer = new NameResolver();
 		
 		public String toValue(String string, INode node) throws ValueConverterException {
@@ -264,73 +269,36 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		private int findIndex(INode node) {
 			// This works by searching for the last location in which an unnamed object was
 			// defined in this scope, taking its name, and incrementing it by one.
-			long start = System.currentTimeMillis();
-			for (EObject element : previousElements(node)) {
-				if (System.currentTimeMillis() - start > NAME_RESOLVE_TIMEOUT_MS) return 0;
-				String name = getObjectName(element);
+			for (EObject element : new ReverseElementIterable(node)) {
+				NumberedName name = namer.resolveNumberedName(element);
 				if (name == null) continue;
-				if (getAnonymousPattern().matcher(name).find()) {
-					return Integer.valueOf(name.substring(1)) + 1;
-				}
+				return name.getNumber()+1;
 			}
 			return 0;
 		}
 		
-		private String getObjectName(EObject obj) {
-			if (obj == null) return null;
-			return namer.resolveName(obj);
-		}
-		
-		protected abstract Iterable<? extends EObject> previousElements(final INode node);
 		protected abstract String nameFromIndex(int index);
 		protected abstract String nameFromString(String string);
-		protected abstract Pattern getAnonymousPattern();
 	}
 	
 	public static class LocalNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "%" + index; }
 		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=\\s*$", ""); }
-		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
-		
-		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseNamedElementIterator(getEnclosingInstruction(node), Mode.INST);
-		}
-		
-		private INode getEnclosingInstruction(INode instNode) {
-			EObject object = NodeModelUtils.findActualSemanticObjectFor(instNode);
-			if (object instanceof Instruction_phi) return instNode.getParent();
-			return instNode.getParent().getParent();
-		}
 	}
 	
 	public static class ParamNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "%" + index; }
 		@Override protected String nameFromString(String string) { return string; }
-		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
-		
-		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseNamedElementIterator(node.getParent(), Mode.PARAM);
-		}
 	}
 	
 	public static class GlobalNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "@" + index; }
 		@Override protected String nameFromString(String string) { return string.replaceFirst("\\s*=\\s*$", ""); }
-		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("@\\d+"); }
-		
-		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseNamedElementIterator(node, Mode.GLOBAL);
-		}
 	}
 	
 	public static class BasicBlockNameConverter extends LlvmNameConverter {
 		@Override protected String nameFromIndex(int index) { return "%" + index; }
 		@Override protected String nameFromString(String string) { return "%" + string.substring(0, string.length()-1); }
-		@Override protected Pattern getAnonymousPattern() { return Pattern.compile("%\\d+"); }
-		
-		protected Iterable<? extends EObject> previousElements(final INode node) {
-			return new ReverseNamedElementIterator(node.getParent(), Mode.BB);
-		}
 	}
 	
 }

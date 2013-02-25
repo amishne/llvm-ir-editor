@@ -47,7 +47,7 @@ import org.eclipse.xtext.validation.Check;
 
 import com.google.inject.Provider;
 import com.intel.llvm.ireditor.LLVM_IRUtils;
-import com.intel.llvm.ireditor.ReverseNamedElementIterator;
+import com.intel.llvm.ireditor.ReverseElementIterable;
 import com.intel.llvm.ireditor.constants.ConstantResolver;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
@@ -669,7 +669,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				return;
 			}
 			if (iter.hasNext() == false) {
-				error("Expected " + p.toString() + " as next argument", args.eContainingFeature());
+				error("Expected " + p.toString() + " as nextNode argument", args.eContainingFeature());
 				return;
 			}
 			checkExpected(p, resolveType(iter.next().getType()), args.eContainingFeature());
@@ -678,37 +678,32 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkNumberSequence(NamedInstruction val) {
-		checkNumberSequence(val, val.eContainer(), null);
+		checkNumberSequence(val, null);
 	}
 	
 	@Check
 	public void checkNumberSequence(Parameter val) {
-		checkNumberSequence(val, val,
-				Literals.PARAMETER.getEStructuralFeature("name"));
+		checkNumberSequence(val, Literals.PARAMETER.getEStructuralFeature("name"));
 	}
 	
 	@Check
 	public void checkNumberSequence(BasicBlock val) {
-		checkNumberSequence(val, val,
-				Literals.BASIC_BLOCK__NAME);
+		checkNumberSequence(val, Literals.BASIC_BLOCK__NAME);
 	}
 	
 	@Check
 	public void checkNumberSequence(GlobalVariable val) {
-		checkNumberSequence(val, val,
-				Literals.GLOBAL_VARIABLE__NAME);
+		checkNumberSequence(val, Literals.GLOBAL_VARIABLE__NAME);
 	}
 	
 	@Check
 	public void checkNumberSequence(FunctionHeader val) {
-		checkNumberSequence(val, val.eContainer(),
-				Literals.FUNCTION_HEADER__NAME);
+		checkNumberSequence(val, Literals.FUNCTION_HEADER__NAME);
 	}
 	
 	@Check
 	public void checkNumberSequence(Alias val) {
-		checkNumberSequence(val, val,
-				Literals.ALIAS__NAME);
+		checkNumberSequence(val, Literals.ALIAS__NAME);
 	}
 	
 	@Check
@@ -793,8 +788,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			// Should not happen
 			return false;
 		}
-		ReverseNamedElementIterator iter = new ReverseNamedElementIterator(secondInst);
-		for (EObject prev : iter) {
+		for (EObject prev : new ReverseElementIterable(secondInst)) {
 			if (prev == firstInst) return true;
 			if (prev instanceof BasicBlock) return false;
 		}
@@ -828,14 +822,13 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	}
 	
 
-	public void checkNumberSequence(EObject val, EObject forIter, EStructuralFeature feature) {
+	public void checkNumberSequence(EObject val, EStructuralFeature feature) {
 		NumberedName name = namer.resolveNumberedName(val);
-		if (name == null) return; // Unnamed elements are always in proper sequence
+		if (name == null) return; // It has a regular name 
 		
 		int expected = 0;
 		try {
-			ReverseNamedElementIterator prevs = new ReverseNamedElementIterator(forIter);
-			for (EObject prev : prevs) {
+			for (EObject prev : new ReverseElementIterable(val)) {
 				NumberedName prevName = namer.resolveNumberedName(prev);
 				if (prevName == null) continue; // not an unnamed element
 				expected = prevName.getNumber() + 1;
