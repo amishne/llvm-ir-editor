@@ -9,9 +9,8 @@
 <meta name='keywords' content='' />
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 
-<!--link type='text/css' rel='stylesheet' media='all' href='css/style.css' /-->
 <style>
-body                      { width: 900px; margin: auto; margin-top: 1em; background-color: #fff; }
+body                      { width: 900px; margin: auto; margin-top: 1em; background-color: #fff; font-family: Sans-Serif; }
 header, section, footer   { margin: 20px; padding: 20px; border-radius: 11px; width: 90%; }
 header                    { text-align: center; margin: 0px; }
 header>h1                 { font-size: 36px; }
@@ -19,33 +18,39 @@ section                   { background-color: #dcb; }
 section>section           { background-color: #ba9; }
 img                       { border: 1px #888 solid; }
 footer                    { text-align: center; }
-figure>h3                 { margin-bottom: 10px; margin-top: 30px; font-size: 20px; }
-figure>figcaption         { margin-bottom: 20px; }
-h1, h4                    { margin-top: 0em; }
+section>h3                { font-size: 20px; }
+section figcaption        { margin-bottom: 20px; }
+h1, h4, h3                { margin-top: 0em; }
 h1                        { text-shadow: 2px 2px 3px #a97; color: #000; font-size: }
 nav                       { margin-top: 20px; }
 nav>a                     { margin-right: 20px; font-size: 18px; font-weight: bold; }
-.arrow                    { margin: 10px; margin-left: 100px; width: 30px; height: 100px; background: url(arrow.png); }
+.arrow                    { margin: 10px; margin-left: 100px; width: 32px; height: 63px; background: url(images/arrow.png); }
 .nonlink                  { color: #900; }
 a:link,a:visited,a:active { color: #731; text-decoration: none; }
 a:hover                   { color: #731; text-decoration: underline; }
+a.toggle                  { display: none; color: #731; font-weight: bold; font-size: 20px; cursor: pointer; }
+
 </style>
 
-<!--script type='text/javascript' src='jquery-1.9.1.min.js'></script>
+<script type='text/javascript' src='js/jquery-1.9.1.min.js'></script>
 <script type='text/javascript'>
 function start() {
-  console.log('starting');
+  $('a.toggle.off,span.toggle').toggle();
+  $('a.toggle').click( function() {
+    $(this).parent().find('span.toggle,a.toggle').toggle();
+  });
 }
 $(start);
-</script-->
+</script>
 
 </head>
 
 <body>
 
+
 <header>
   <h1>LLVM IR SDK</h1>
-  LLVM IR SDK is a rich LLVM IR editor plugin for Eclipse, released for free by Intel.
+  <h3>LLVM IR SDK is a rich LLVM IR editor plugin for Eclipse, released for free by Intel.</h3>
   <nav>
     <a href='#Installation'>Installation</a>
     <a href='#Features'>Features</a>
@@ -54,6 +59,7 @@ $(start);
   </nav>
 </header>
 
+
 <section id='Installation'>
   <h1>Download and Installation</h1>
   Requirements:
@@ -61,43 +67,111 @@ $(start);
   <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.7 or newer</a>
   <li><a href='http://www.eclipse.org/downloads/'>Eclipse 3.5 or newer</a> (any package)</li>
   </ol>
-  Eclipse update site: <br />
-  <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
+  Eclipse update site: <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
   <a href='http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/index_v35.html#section1_0'>Click here</a> if not familiar with the Eclipse plugin installation procedure.
 </section>
 
+
 <section id='Features'>
   <h1>Features</h1>
-  <figure>
-    <h3>Hover</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
-    <img src='images/hover-basic_block.png' />
-    <div class='arrow'></div>
-    <img src='images/hover-locals.png' />
-    <div class='arrow'></div>
-    <img src='images/hover-keywords.png' />
-    <div class='arrow'></div>
-    <img src='images/hover-typedef.png' />
-  </figure>
-  <figure>
-    <h3>Inferring</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
+  <section>
+    <h3>Syntax Highlighting</h3>
+    <figcaption>Syntax highlighting which is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references).</figcaption>
+    <img src='images/syntax_coloring-basic.png' /><br /><br />
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+	  <figcaption>Aware of the complex type system</figcaption>
+      <img src='images/syntax_coloring-types.png' /><br /><br />
+      <figcaption>Fully configurable</figcaption>
+      <img src='images/syntax_coloring-variation.png' /><br /><br />
+      <figcaption>Configured via a simple GUI dialog</figcaption>
+      <img src='images/syntax_coloring-dialog.png' />
+    </span>
+  </section>
+  <section>
+    <h3>Showing Definitions On Hovers</h3>
+    <figcaption>Hovering over value references shows their entire definition in a handy popup</figcaption>
+    <img src='images/hover-locals.png' /><br /><br />
+
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+      <figcaption>Also works for basic blocks and functions (with scrollbars if necessary)</figcaption>
+      <img src='images/hover-basic_block.png' /><br /><br />
+      <figcaption>Also works for named user-defined types</figcaption>
+      <img src='images/hover-typedef.png' /><br /><br />
+      <figcaption>Also works for (some) keywords</figcaption>
+      <img src='images/hover-keywords.png' />
+    </span>
+  </section>
+  <section>
+    <h3>Inferring Anonymous Element Names</h3>
+    <figcaption>The editor can autonomously infer the names of anonymous values</figcaption>
     <img src='images/inferring.png' />
-  </figure>
-  <figure>
-    <h3>Syntax Coloring</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
-    <img src='images/syntax_coloring-basic.png' />
-    <div class='arrow'></div>
-    <img src='images/syntax_coloring-variation.png' />
-    <div class='arrow'></div>
-    <img src='images/syntax_coloring-dialog.png' />
-  </figure>
-  <figure>
-    <h3>Occurrences</h3>
-    <figcaption>Features description, can be a one-liner or multiple text lines</figcaption>
+  </section>
+  <section>
+    <h3>Occurrence Marking</h3>
+    <figcaption>Occurrence highlighting marks the definition and all the references for the value under the cursor, with a different color for the definition. This is an optional feature and is easily toggled with a toolbar button.</figcaption>
     <img src='images/occurrences.png' />
-  </figure>
+  </section>
+  <section>
+    <h3>File Outline</h3>
+    <figcaption>An outline of the current file can be displayed side-by-side with the code, with two-way linking between the element under the cursor and the element selected in the outline view.</figcaption>
+    <img src='images/outline.png' />
+  </section>
+  <section>
+    <h3>Syntax Checking</h3>
+    <figcaption>Provides basic syntax error checking, identifying malformed files.</figcaption>
+    <img src='images/syntax_errors.png' /><br /><br />
+
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+	  <figcaption>Also provides useful hints for some syntax errors.</figcaption>
+      <img src='images/syntax_errors-friendly.png' /><br /><br />
+    </span>
+  </section>
+  <section>
+    <h3>Content Assist</h3>
+    <figcaption>Ctrl+space opens a context-aware popup box with value suggestions</figcaption>
+    <img src='images/content_assist-values.png' /><br /><br />
+
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+      <figcaption>Will not suggest values outisde the current scope</figcaption>
+      <img src='images/content_assist-scope.png' /><br /><br />
+	  <figcaption>Also works for non-value syntactic elements, such as instruction opcodes</figcaption>
+      <img src='images/content_assist-syntax.png' /><br /><br />
+    </span>
+  </section>
+  <section>
+    <h3>Per-Instruction Validation</h3>
+    <figcaption>Every instruction has its own validation check to verify it is being used legally</figcaption>
+    <img src='images/custom_validation-add.png' /><br /><br />
+
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+      <figcaption>With some of the validation checks, such as for phi nodes, extend beyond simple type checks</figcaption>
+      <img src='images/custom_validation-phi.png' /><br /><br />
+    </span>
+  </section>
+  <section>
+    <h3>Control Flow Awareness</h3>
+    <figcaption>The editor is aware of the flow between basic blocks and can provide warnings and errors for problem in that flow, for example for a non-dominated use.</figcaption>
+    <img src='images/domination.png' /><br /><br />
+
+    <a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+      <figcaption>With special rules for phi nodes</figcaption>
+      <img src='images/domination-phi.png' /><br /><br />
+	  <figcaption>And providing warnings for unreachable basic blocks</figcaption>
+      <img src='images/reachability.png' /><br /><br />
+    </span>
+  </section>
 </section> 
  
 <section id='FAQ'>
@@ -107,16 +181,30 @@ $(start);
     Yes, it is completely free to use (as well as to modify - it's an open-source project).
   </section>
   <section>
-    <h4>If the editor reports no errors for a given source file, does it mean LLVM will succesfully parse this file?</h4>
-    It is not guaranteed, though it is the intention of this plugin to get as close as possible to this state.
+    <h4>Does this require an installation of LLVM?</h4>
+    No, it is completely independent, the only requirements are the ones listed above in the <a href='#Installation'>installation</a> section.
   </section>
   <section>
-    <h4>If the editor reports an error for a given source file, does it guarantee the LLVM parser will reject this file?</h4>
-    While not quite "guaranteed", it is indeed the intention of this plugin to ensure that this will always be the case.
+    <h4>If the editor reports an error, does this mean this won't be accepted by LLVM? If it doesn't, does it mean it will?</h4>
+    Although it is not guaranteed, the purpose of this plugin is to get as close as possible to this state from both directions.
   </section>
   <section>
+    <h4>How stable is this plugin? How robust for handling large files?</h4>
+    This project is in <em>beta</em> state, and the editor does occasionally produce an error dialog or hang for a few seconds, particularly when editing files (as opposed to just reading them). If this happens to you, please <a href="#open_a_bug">open a bug about it</a>.<br />
+	The editor's performance depends on the machine, but it can get sluggish when operating on files with thousands of lines.
+  </section>
+  <section>
+    <a id="open_a_bug" />
     <h4>I've found a bug!</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where firstname, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
+  </section>
+  <section>
+    <h4>I installed the plugin succesfully, but it doesn't seem to be working it all!</h4>
+    Make sure your Eclipse is running on top of Java 1.7 or newer. <a href="http://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F#Find_the_JVM">Here are instructions on how to select a vm</a>, and <a href="http://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM">here's how to edit <code>eclipse.ini</code> to always select a given vm</a>.
+  </section>
+  <section>
+    <h4>I installed the plugin succesfully and I'm running Java 1.7 or newer, but it doesn't seem to be working it all!</h4>
+    Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with &rarr; llvm ir editor".
   </section>
 </section>
 
@@ -126,10 +214,10 @@ $(start);
 </section>
 
 <footer>
-  blah blah blah
+  Project maintained by <a href='https://github.com/amishne'>Alon Mishne</a> | Site by <a href='//DanyShaanan.com'>Dany Shaanan</a>
 </footer>
 
-<a href='https://github.com/amishne'><img style='position:fixed;top:0;right:0;border:0;' src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png' alt='Fork me on GitHub'></a>
+<a href='https://github.com/amishne/llvm-ir-editor'><img style='position:fixed;top:0;right:0;border:0;' src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png' alt='Fork me on GitHub'></a>
 
 <script type='text/javascript'>
   var _gaq = _gaq || [];
