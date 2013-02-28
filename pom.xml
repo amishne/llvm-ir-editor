@@ -6,6 +6,13 @@
   <artifactId>llvm-ir-editor</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
+  <repositories>
+    <repository>
+      <id>juno</id>
+      <url>http://download.eclipse.org/releases/juno/</url>
+      <layout>p2</layout>
+    </repository>
+  </repositories>
   <modules>
     <module>com.intel.llvm.ireditor</module>
     <module>com.intel.llvm.ireditor.sdk</module>
