@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.intel.llvm.ireditor</groupId>
+  <artifactId>llvm-ir-editor</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>com.intel.llvm.ireditor</module>
+    <module>com.intel.llvm.ireditor.sdk</module>
+    <module>com.intel.llvm.ireditor.tests</module>
+    <module>com.intel.llvm.ireditor.ui</module>
+    <module>com.intel.llvm.ireditor.cfg</module>
+    <module>com.intel.llvm.ireditor.cfg.sdk</module>
+    <module>update</module>
+  </modules>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>0.16.0</version>
+        <extensions>true</extensions>
+      </plugin>
+    </plugins>
+  </build>
+</project>
