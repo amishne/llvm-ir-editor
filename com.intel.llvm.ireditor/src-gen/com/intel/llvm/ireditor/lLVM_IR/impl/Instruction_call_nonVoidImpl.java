@@ -9,7 +9,6 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.NonVoidType;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterAttributes;
-import com.intel.llvm.ireditor.lLVM_IR.Type;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -31,8 +30,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getOpcode <em>Opcode</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getCconv <em>Cconv</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getReturnAttributes <em>Return Attributes</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getFunctionPointerType <em>Function Pointer Type</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getCallee <em>Callee</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_nonVoidImpl#getFunctionAttributes <em>Function Attributes</em>}</li>
@@ -114,24 +112,14 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
   protected ParameterAttributes returnAttributes;
 
   /**
-   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getReturnType()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected NonVoidType returnType;
-
-  /**
-   * The cached value of the '{@link #getFunctionPointerType() <em>Function Pointer Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getFunctionPointerType()
-   * @generated
-   * @ordered
-   */
-  protected Type functionPointerType;
+  protected NonVoidType type;
 
   /**
    * The cached value of the '{@link #getCallee() <em>Callee</em>}' containment reference.
@@ -306,9 +294,9 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
-  public NonVoidType getReturnType()
+  public NonVoidType getType()
   {
-    return returnType;
+    return type;
   }
 
   /**
@@ -316,13 +304,13 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetReturnType(NonVoidType newReturnType, NotificationChain msgs)
+  public NotificationChain basicSetType(NonVoidType newType, NotificationChain msgs)
   {
-    NonVoidType oldReturnType = returnType;
-    returnType = newReturnType;
+    NonVoidType oldType = type;
+    type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE, oldReturnType, newReturnType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -333,68 +321,20 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setReturnType(NonVoidType newReturnType)
+  public void setType(NonVoidType newType)
   {
-    if (newReturnType != returnType)
+    if (newType != type)
     {
       NotificationChain msgs = null;
-      if (returnType != null)
-        msgs = ((InternalEObject)returnType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE, null, msgs);
-      if (newReturnType != null)
-        msgs = ((InternalEObject)newReturnType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE, null, msgs);
-      msgs = basicSetReturnType(newReturnType, msgs);
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE, newReturnType, newReturnType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Type getFunctionPointerType()
-  {
-    return functionPointerType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetFunctionPointerType(Type newFunctionPointerType, NotificationChain msgs)
-  {
-    Type oldFunctionPointerType = functionPointerType;
-    functionPointerType = newFunctionPointerType;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE, oldFunctionPointerType, newFunctionPointerType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setFunctionPointerType(Type newFunctionPointerType)
-  {
-    if (newFunctionPointerType != functionPointerType)
-    {
-      NotificationChain msgs = null;
-      if (functionPointerType != null)
-        msgs = ((InternalEObject)functionPointerType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE, null, msgs);
-      if (newFunctionPointerType != null)
-        msgs = ((InternalEObject)newFunctionPointerType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE, null, msgs);
-      msgs = basicSetFunctionPointerType(newFunctionPointerType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE, newFunctionPointerType, newFunctionPointerType));
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE, newType, newType));
   }
 
   /**
@@ -553,10 +493,8 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
     {
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES:
         return basicSetReturnAttributes(null, msgs);
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE:
-        return basicSetReturnType(null, msgs);
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE:
-        return basicSetFunctionPointerType(null, msgs);
+      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE:
+        return basicSetType(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__CALLEE:
         return basicSetCallee(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__ARGS:
@@ -585,10 +523,8 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
         return getCconv();
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES:
         return getReturnAttributes();
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE:
-        return getReturnType();
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE:
-        return getFunctionPointerType();
+      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE:
+        return getType();
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__CALLEE:
         return getCallee();
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__ARGS:
@@ -621,11 +557,8 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES:
         setReturnAttributes((ParameterAttributes)newValue);
         return;
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE:
-        setReturnType((NonVoidType)newValue);
-        return;
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE:
-        setFunctionPointerType((Type)newValue);
+      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE:
+        setType((NonVoidType)newValue);
         return;
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__CALLEE:
         setCallee((Callee)newValue);
@@ -662,11 +595,8 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES:
         setReturnAttributes((ParameterAttributes)null);
         return;
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE:
-        setReturnType((NonVoidType)null);
-        return;
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE:
-        setFunctionPointerType((Type)null);
+      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE:
+        setType((NonVoidType)null);
         return;
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__CALLEE:
         setCallee((Callee)null);
@@ -699,10 +629,8 @@ public class Instruction_call_nonVoidImpl extends MinimalEObjectImpl.Container i
         return CCONV_EDEFAULT == null ? cconv != null : !CCONV_EDEFAULT.equals(cconv);
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES:
         return returnAttributes != null;
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__RETURN_TYPE:
-        return returnType != null;
-      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE:
-        return functionPointerType != null;
+      case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__TYPE:
+        return type != null;
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__CALLEE:
         return callee != null;
       case LLVM_IRPackage.INSTRUCTION_CALL_NON_VOID__ARGS:

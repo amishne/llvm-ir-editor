@@ -215,7 +215,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rettype" eType="#//ParameterType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rettypeAttrs" eType="#//ParameterAttributes"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rettype" eType="#//Type"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" eType="#//Parameters"
@@ -302,7 +304,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_invoke_void">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rettype" eType="#//VoidType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//VoidType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="callee" eType="#//Callee"
         containment="true"/>
@@ -318,7 +320,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_invoke_nonVoid">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rettype" eType="#//NonVoidType"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//NonVoidType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="callee" eType="#//Callee"
         containment="true"/>
@@ -518,9 +520,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnAttributes" eType="#//ParameterAttributes"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//NonVoidType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="functionPointerType" eType="#//Type"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//NonVoidType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="callee" eType="#//Callee"
         containment="true"/>
@@ -535,9 +535,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnAttributes" eType="#//ParameterAttributes"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="returnType" eType="#//VoidType"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="functionPointerType" eType="#//Type"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//VoidType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="callee" eType="#//Callee"
         containment="true"/>

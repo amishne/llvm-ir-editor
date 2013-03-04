@@ -1293,7 +1293,8 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         linkage=Linkage? 
 	 *         visibility=Visibility? 
 	 *         cconv=CConv? 
-	 *         rettype=ParameterType 
+	 *         rettypeAttrs=ParameterAttributes? 
+	 *         rettype=Type 
 	 *         name=GLOBAL_ID 
 	 *         parameters=Parameters 
 	 *         attrs=FunctionAttributes? 
@@ -1522,8 +1523,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         opcode='call' 
 	 *         cconv=CConv? 
 	 *         returnAttributes=ParameterAttributes? 
-	 *         returnType=NonVoidType 
-	 *         functionPointerType=Type? 
+	 *         type=NonVoidType 
 	 *         callee=Callee 
 	 *         args=ArgList 
 	 *         functionAttributes=FunctionAttributes?
@@ -1541,8 +1541,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         opcode='call' 
 	 *         cconv=CConv? 
 	 *         returnAttributes=ParameterAttributes? 
-	 *         returnType=VoidType 
-	 *         functionPointerType=Type? 
+	 *         type=VoidType 
 	 *         callee=Callee 
 	 *         args=ArgList 
 	 *         functionAttributes=FunctionAttributes?
@@ -1869,7 +1868,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (
 	 *         opcode='invoke' 
 	 *         cconv=CConv? 
-	 *         rettype=NonVoidType 
+	 *         type=NonVoidType 
 	 *         callee=Callee 
 	 *         args=ArgList 
 	 *         attributes=FunctionAttributes? 
@@ -1887,7 +1886,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (
 	 *         opcode='invoke' 
 	 *         cconv=CConv? 
-	 *         rettype=VoidType 
+	 *         type=VoidType 
 	 *         callee=Callee 
 	 *         args=ArgList 
 	 *         attributes=FunctionAttributes? 

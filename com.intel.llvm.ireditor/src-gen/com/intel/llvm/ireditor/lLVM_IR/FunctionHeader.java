@@ -14,6 +14,7 @@ package com.intel.llvm.ireditor.lLVM_IR;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getLinkage <em>Linkage</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getCconv <em>Cconv</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettypeAttrs <em>Rettype Attrs</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettype <em>Rettype</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getName <em>Name</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getParameters <em>Parameters</em>}</li>
@@ -109,6 +110,32 @@ public interface FunctionHeader extends GlobalValueDef
   void setCconv(String value);
 
   /**
+   * Returns the value of the '<em><b>Rettype Attrs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Rettype Attrs</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Rettype Attrs</em>' containment reference.
+   * @see #setRettypeAttrs(ParameterAttributes)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_RettypeAttrs()
+   * @model containment="true"
+   * @generated
+   */
+  ParameterAttributes getRettypeAttrs();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettypeAttrs <em>Rettype Attrs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Rettype Attrs</em>' containment reference.
+   * @see #getRettypeAttrs()
+   * @generated
+   */
+  void setRettypeAttrs(ParameterAttributes value);
+
+  /**
    * Returns the value of the '<em><b>Rettype</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
@@ -117,12 +144,12 @@ public interface FunctionHeader extends GlobalValueDef
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Rettype</em>' containment reference.
-   * @see #setRettype(ParameterType)
+   * @see #setRettype(Type)
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_Rettype()
    * @model containment="true"
    * @generated
    */
-  ParameterType getRettype();
+  Type getRettype();
 
   /**
    * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettype <em>Rettype</em>}' containment reference.
@@ -132,7 +159,7 @@ public interface FunctionHeader extends GlobalValueDef
    * @see #getRettype()
    * @generated
    */
-  void setRettype(ParameterType value);
+  void setRettype(Type value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

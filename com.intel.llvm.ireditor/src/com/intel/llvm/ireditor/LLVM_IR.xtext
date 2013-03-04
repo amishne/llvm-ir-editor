@@ -315,7 +315,8 @@ FunctionHeader:
 	visibility=Visibility?
 	cconv=CConv?
 	'unnamed_addr'?
-	rettype=ParameterType
+	rettypeAttrs=ParameterAttributes?
+	rettype=Type
 	name=GLOBAL_ID
 	'(' parameters=Parameters ')'
 	attrs=FunctionAttributes?
@@ -481,12 +482,12 @@ Instruction_indirectbr:
 
 // <result> = invoke [cconv] [ret attrs] <ptr to function ty> <function ptr val>(<function args>) [fn attrs]
 //                 to label <normal label> unwind label <exception label>
-// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
-// the function return type, just like with the call instruction.
+// Notice this template as it appears in the reference is incorrect, <ptr to function ty> actually
+// behaves just like in a call instruction, so it's possible to provide return type only.
 Instruction_invoke_void:
 	opcode='invoke' cconv=CConv?
 	('zeroext'? & 'signext'? & 'inreg'?)
-	rettype=VoidType
+	type=VoidType
 	callee=Callee
 	args=ArgList
 	attributes=FunctionAttributes?
@@ -495,12 +496,12 @@ Instruction_invoke_void:
 
 // <result> = invoke [cconv] [ret attrs] <ptr to function ty> <function ptr val>(<function args>) [fn attrs]
 //                 to label <normal label> unwind label <exception label>
-// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
-// the function return type, just like with the call instruction.
+// Notice this template as it appears in the reference is incorrect, <ptr to function ty> actually
+// behaves just like in a call instruction, so it's possible to provide return type only.
 Instruction_invoke_nonVoid:
 	opcode='invoke' cconv=CConv?
 	('zeroext'? & 'signext'? & 'inreg'?)
-	rettype=NonVoidType
+	type=NonVoidType
 	callee=Callee
 	args=ArgList
 	attributes=FunctionAttributes?
@@ -854,10 +855,7 @@ Instruction_call_nonVoid:
 	opcode='call'
 	cconv=CConv?
 	returnAttributes=ParameterAttributes?
-	returnType=NonVoidType
-	// Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
-	// opening the argument list or if it's part of a type.
-	(=>functionPointerType=Type)?
+	type=NonVoidType
 	callee=Callee
 	args=ArgList
 	functionAttributes=FunctionAttributes?
@@ -868,10 +866,7 @@ Instruction_call_void:
 	opcode='call'
 	cconv=CConv?
 	returnAttributes=ParameterAttributes?
-	returnType=VoidType
-	// Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
-	// opening the argument list or if it's part of a type.
-	(=>functionPointerType=Type)?
+	type=VoidType
 	callee=Callee
 	args=ArgList
 	functionAttributes=FunctionAttributes?

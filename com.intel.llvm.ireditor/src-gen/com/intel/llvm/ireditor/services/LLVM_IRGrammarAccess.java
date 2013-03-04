@@ -2215,33 +2215,35 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCconvAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCconvCConvParserRuleCall_2_0 = (RuleCall)cCconvAssignment_2.eContents().get(0);
 		private final Keyword cUnnamed_addrKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cRettypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cRettypeParameterTypeParserRuleCall_4_0 = (RuleCall)cRettypeAssignment_4.eContents().get(0);
-		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cNameGLOBAL_IDTerminalRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
-		private final Keyword cLeftParenthesisKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Assignment cParametersAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cParametersParametersParserRuleCall_7_0 = (RuleCall)cParametersAssignment_7.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_8 = (Keyword)cGroup.eContents().get(8);
-		private final Assignment cAttrsAssignment_9 = (Assignment)cGroup.eContents().get(9);
-		private final RuleCall cAttrsFunctionAttributesParserRuleCall_9_0 = (RuleCall)cAttrsAssignment_9.eContents().get(0);
-		private final Assignment cSectionAssignment_10 = (Assignment)cGroup.eContents().get(10);
-		private final RuleCall cSectionSectionParserRuleCall_10_0 = (RuleCall)cSectionAssignment_10.eContents().get(0);
-		private final Assignment cAlignAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cAlignAlignParserRuleCall_11_0 = (RuleCall)cAlignAssignment_11.eContents().get(0);
-		private final Assignment cGcAssignment_12 = (Assignment)cGroup.eContents().get(12);
-		private final RuleCall cGcGcParserRuleCall_12_0 = (RuleCall)cGcAssignment_12.eContents().get(0);
+		private final Assignment cRettypeAttrsAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cRettypeAttrsParameterAttributesParserRuleCall_4_0 = (RuleCall)cRettypeAttrsAssignment_4.eContents().get(0);
+		private final Assignment cRettypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cRettypeTypeParserRuleCall_5_0 = (RuleCall)cRettypeAssignment_5.eContents().get(0);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameGLOBAL_IDTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cParametersAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final RuleCall cParametersParametersParserRuleCall_8_0 = (RuleCall)cParametersAssignment_8.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Assignment cAttrsAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cAttrsFunctionAttributesParserRuleCall_10_0 = (RuleCall)cAttrsAssignment_10.eContents().get(0);
+		private final Assignment cSectionAssignment_11 = (Assignment)cGroup.eContents().get(11);
+		private final RuleCall cSectionSectionParserRuleCall_11_0 = (RuleCall)cSectionAssignment_11.eContents().get(0);
+		private final Assignment cAlignAssignment_12 = (Assignment)cGroup.eContents().get(12);
+		private final RuleCall cAlignAlignParserRuleCall_12_0 = (RuleCall)cAlignAssignment_12.eContents().get(0);
+		private final Assignment cGcAssignment_13 = (Assignment)cGroup.eContents().get(13);
+		private final RuleCall cGcGcParserRuleCall_13_0 = (RuleCall)cGcAssignment_13.eContents().get(0);
 		
 		//FunctionHeader:
 		//
-		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
+		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettypeAttrs=ParameterAttributes? rettype=Type
 		//
-		//	parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
+		//	name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
 		public ParserRule getRule() { return rule; }
 
-		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
+		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettypeAttrs=ParameterAttributes? rettype=Type
 		//
-		//parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?
+		//name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?
 		public Group getGroup() { return cGroup; }
 
 		//linkage=Linkage?
@@ -2265,53 +2267,59 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"unnamed_addr"?
 		public Keyword getUnnamed_addrKeyword_3() { return cUnnamed_addrKeyword_3; }
 
-		//rettype=ParameterType
-		public Assignment getRettypeAssignment_4() { return cRettypeAssignment_4; }
+		//rettypeAttrs=ParameterAttributes?
+		public Assignment getRettypeAttrsAssignment_4() { return cRettypeAttrsAssignment_4; }
 
-		//ParameterType
-		public RuleCall getRettypeParameterTypeParserRuleCall_4_0() { return cRettypeParameterTypeParserRuleCall_4_0; }
+		//ParameterAttributes
+		public RuleCall getRettypeAttrsParameterAttributesParserRuleCall_4_0() { return cRettypeAttrsParameterAttributesParserRuleCall_4_0; }
+
+		//rettype=Type
+		public Assignment getRettypeAssignment_5() { return cRettypeAssignment_5; }
+
+		//Type
+		public RuleCall getRettypeTypeParserRuleCall_5_0() { return cRettypeTypeParserRuleCall_5_0; }
 
 		//name=GLOBAL_ID
-		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
 
 		//GLOBAL_ID
-		public RuleCall getNameGLOBAL_IDTerminalRuleCall_5_0() { return cNameGLOBAL_IDTerminalRuleCall_5_0; }
+		public RuleCall getNameGLOBAL_IDTerminalRuleCall_6_0() { return cNameGLOBAL_IDTerminalRuleCall_6_0; }
 
 		//"("
-		public Keyword getLeftParenthesisKeyword_6() { return cLeftParenthesisKeyword_6; }
+		public Keyword getLeftParenthesisKeyword_7() { return cLeftParenthesisKeyword_7; }
 
 		//parameters=Parameters
-		public Assignment getParametersAssignment_7() { return cParametersAssignment_7; }
+		public Assignment getParametersAssignment_8() { return cParametersAssignment_8; }
 
 		//Parameters
-		public RuleCall getParametersParametersParserRuleCall_7_0() { return cParametersParametersParserRuleCall_7_0; }
+		public RuleCall getParametersParametersParserRuleCall_8_0() { return cParametersParametersParserRuleCall_8_0; }
 
 		//")"
-		public Keyword getRightParenthesisKeyword_8() { return cRightParenthesisKeyword_8; }
+		public Keyword getRightParenthesisKeyword_9() { return cRightParenthesisKeyword_9; }
 
 		//attrs=FunctionAttributes?
-		public Assignment getAttrsAssignment_9() { return cAttrsAssignment_9; }
+		public Assignment getAttrsAssignment_10() { return cAttrsAssignment_10; }
 
 		//FunctionAttributes
-		public RuleCall getAttrsFunctionAttributesParserRuleCall_9_0() { return cAttrsFunctionAttributesParserRuleCall_9_0; }
+		public RuleCall getAttrsFunctionAttributesParserRuleCall_10_0() { return cAttrsFunctionAttributesParserRuleCall_10_0; }
 
 		//section=Section?
-		public Assignment getSectionAssignment_10() { return cSectionAssignment_10; }
+		public Assignment getSectionAssignment_11() { return cSectionAssignment_11; }
 
 		//Section
-		public RuleCall getSectionSectionParserRuleCall_10_0() { return cSectionSectionParserRuleCall_10_0; }
+		public RuleCall getSectionSectionParserRuleCall_11_0() { return cSectionSectionParserRuleCall_11_0; }
 
 		//align=Align?
-		public Assignment getAlignAssignment_11() { return cAlignAssignment_11; }
+		public Assignment getAlignAssignment_12() { return cAlignAssignment_12; }
 
 		//Align
-		public RuleCall getAlignAlignParserRuleCall_11_0() { return cAlignAlignParserRuleCall_11_0; }
+		public RuleCall getAlignAlignParserRuleCall_12_0() { return cAlignAlignParserRuleCall_12_0; }
 
 		//gc=Gc?
-		public Assignment getGcAssignment_12() { return cGcAssignment_12; }
+		public Assignment getGcAssignment_13() { return cGcAssignment_13; }
 
 		//Gc
-		public RuleCall getGcGcParserRuleCall_12_0() { return cGcGcParserRuleCall_12_0; }
+		public RuleCall getGcGcParserRuleCall_13_0() { return cGcGcParserRuleCall_13_0; }
 	}
 
 	public class ParametersElements extends AbstractParserRuleElementFinder {
@@ -3285,8 +3293,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cZeroextKeyword_2_0 = (Keyword)cUnorderedGroup_2.eContents().get(0);
 		private final Keyword cSignextKeyword_2_1 = (Keyword)cUnorderedGroup_2.eContents().get(1);
 		private final Keyword cInregKeyword_2_2 = (Keyword)cUnorderedGroup_2.eContents().get(2);
-		private final Assignment cRettypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRettypeVoidTypeParserRuleCall_3_0 = (RuleCall)cRettypeAssignment_3.eContents().get(0);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeVoidTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
 		private final Assignment cCalleeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCalleeCalleeParserRuleCall_4_0 = (RuleCall)cCalleeAssignment_4.eContents().get(0);
 		private final Assignment cArgsAssignment_5 = (Assignment)cGroup.eContents().get(5);
@@ -3306,18 +3314,18 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////                 to label <normal label> unwind label <exception label>
 		//
-		//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+		//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> actually
 		//
-		//// the function return type, just like with the call instruction.
+		//// behaves just like in a call instruction, so it's possible to provide return type only.
 		//
 		//Instruction_invoke_void:
 		//
-		//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) rettype=VoidType callee=Callee args=ArgList
+		//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) type=VoidType callee=Callee args=ArgList
 		//
 		//	attributes=FunctionAttributes? "to" "label" toLabel=BasicBlockRef "unwind" "label" exceptionLabel=BasicBlockRef;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) rettype=VoidType callee=Callee args=ArgList
+		//opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) type=VoidType callee=Callee args=ArgList
 		//
 		//attributes=FunctionAttributes? "to" "label" toLabel=BasicBlockRef "unwind" "label" exceptionLabel=BasicBlockRef
 		public Group getGroup() { return cGroup; }
@@ -3346,11 +3354,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"inreg"?
 		public Keyword getInregKeyword_2_2() { return cInregKeyword_2_2; }
 
-		//rettype=VoidType
-		public Assignment getRettypeAssignment_3() { return cRettypeAssignment_3; }
+		//type=VoidType
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 
 		//VoidType
-		public RuleCall getRettypeVoidTypeParserRuleCall_3_0() { return cRettypeVoidTypeParserRuleCall_3_0; }
+		public RuleCall getTypeVoidTypeParserRuleCall_3_0() { return cTypeVoidTypeParserRuleCall_3_0; }
 
 		//callee=Callee
 		public Assignment getCalleeAssignment_4() { return cCalleeAssignment_4; }
@@ -3406,8 +3414,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cZeroextKeyword_2_0 = (Keyword)cUnorderedGroup_2.eContents().get(0);
 		private final Keyword cSignextKeyword_2_1 = (Keyword)cUnorderedGroup_2.eContents().get(1);
 		private final Keyword cInregKeyword_2_2 = (Keyword)cUnorderedGroup_2.eContents().get(2);
-		private final Assignment cRettypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cRettypeNonVoidTypeParserRuleCall_3_0 = (RuleCall)cRettypeAssignment_3.eContents().get(0);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypeNonVoidTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
 		private final Assignment cCalleeAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCalleeCalleeParserRuleCall_4_0 = (RuleCall)cCalleeAssignment_4.eContents().get(0);
 		private final Assignment cArgsAssignment_5 = (Assignment)cGroup.eContents().get(5);
@@ -3427,18 +3435,18 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		////                 to label <normal label> unwind label <exception label>
 		//
-		//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+		//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> actually
 		//
-		//// the function return type, just like with the call instruction.
+		//// behaves just like in a call instruction, so it's possible to provide return type only.
 		//
 		//Instruction_invoke_nonVoid:
 		//
-		//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) rettype=NonVoidType callee=Callee args=ArgList
+		//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) type=NonVoidType callee=Callee args=ArgList
 		//
 		//	attributes=FunctionAttributes? "to" "label" toLabel=BasicBlockRef "unwind" "label" exceptionLabel=BasicBlockRef;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) rettype=NonVoidType callee=Callee args=ArgList
+		//opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) type=NonVoidType callee=Callee args=ArgList
 		//
 		//attributes=FunctionAttributes? "to" "label" toLabel=BasicBlockRef "unwind" "label" exceptionLabel=BasicBlockRef
 		public Group getGroup() { return cGroup; }
@@ -3467,11 +3475,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"inreg"?
 		public Keyword getInregKeyword_2_2() { return cInregKeyword_2_2; }
 
-		//rettype=NonVoidType
-		public Assignment getRettypeAssignment_3() { return cRettypeAssignment_3; }
+		//type=NonVoidType
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 
 		//NonVoidType
-		public RuleCall getRettypeNonVoidTypeParserRuleCall_3_0() { return cRettypeNonVoidTypeParserRuleCall_3_0; }
+		public RuleCall getTypeNonVoidTypeParserRuleCall_3_0() { return cTypeNonVoidTypeParserRuleCall_3_0; }
 
 		//callee=Callee
 		public Assignment getCalleeAssignment_4() { return cCalleeAssignment_4; }
@@ -6291,33 +6299,27 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCconvCConvParserRuleCall_2_0 = (RuleCall)cCconvAssignment_2.eContents().get(0);
 		private final Assignment cReturnAttributesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cReturnAttributesParameterAttributesParserRuleCall_3_0 = (RuleCall)cReturnAttributesAssignment_3.eContents().get(0);
-		private final Assignment cReturnTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cReturnTypeNonVoidTypeParserRuleCall_4_0 = (RuleCall)cReturnTypeAssignment_4.eContents().get(0);
-		private final Assignment cFunctionPointerTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cFunctionPointerTypeTypeParserRuleCall_5_0 = (RuleCall)cFunctionPointerTypeAssignment_5.eContents().get(0);
-		private final Assignment cCalleeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cCalleeCalleeParserRuleCall_6_0 = (RuleCall)cCalleeAssignment_6.eContents().get(0);
-		private final Assignment cArgsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cArgsArgListParserRuleCall_7_0 = (RuleCall)cArgsAssignment_7.eContents().get(0);
-		private final Assignment cFunctionAttributesAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cFunctionAttributesFunctionAttributesParserRuleCall_8_0 = (RuleCall)cFunctionAttributesAssignment_8.eContents().get(0);
+		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTypeNonVoidTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final Assignment cCalleeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCalleeCalleeParserRuleCall_5_0 = (RuleCall)cCalleeAssignment_5.eContents().get(0);
+		private final Assignment cArgsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cArgsArgListParserRuleCall_6_0 = (RuleCall)cArgsAssignment_6.eContents().get(0);
+		private final Assignment cFunctionAttributesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cFunctionAttributesFunctionAttributesParserRuleCall_7_0 = (RuleCall)cFunctionAttributesAssignment_7.eContents().get(0);
 		
 		//// <result> = [tail] call [cconv] [ret attrs] <ty> [<fnty>*] <fnptrval>(<function args>) [fn attrs]
 		//
 		//Instruction_call_nonVoid:
 		//
-		//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? returnType=NonVoidType // Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
+		//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? type=NonVoidType callee=Callee
 		//
-		//	// opening the argument list or if it's part of a type.
-		//
-		//	=> functionPointerType=Type? callee=Callee args=ArgList functionAttributes=FunctionAttributes?;
+		//	args=ArgList functionAttributes=FunctionAttributes?;
 		public ParserRule getRule() { return rule; }
 
-		//isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? returnType=NonVoidType // Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
+		//isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? type=NonVoidType callee=Callee
 		//
-		//// opening the argument list or if it's part of a type.
-		//
-		//=> functionPointerType=Type? callee=Callee args=ArgList functionAttributes=FunctionAttributes?
+		//args=ArgList functionAttributes=FunctionAttributes?
 		public Group getGroup() { return cGroup; }
 
 		//isTail?="tail"?
@@ -6344,35 +6346,29 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterAttributes
 		public RuleCall getReturnAttributesParameterAttributesParserRuleCall_3_0() { return cReturnAttributesParameterAttributesParserRuleCall_3_0; }
 
-		//returnType=NonVoidType
-		public Assignment getReturnTypeAssignment_4() { return cReturnTypeAssignment_4; }
+		//type=NonVoidType
+		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
 
 		//NonVoidType
-		public RuleCall getReturnTypeNonVoidTypeParserRuleCall_4_0() { return cReturnTypeNonVoidTypeParserRuleCall_4_0; }
-
-		//=> functionPointerType=Type?
-		public Assignment getFunctionPointerTypeAssignment_5() { return cFunctionPointerTypeAssignment_5; }
-
-		//Type
-		public RuleCall getFunctionPointerTypeTypeParserRuleCall_5_0() { return cFunctionPointerTypeTypeParserRuleCall_5_0; }
+		public RuleCall getTypeNonVoidTypeParserRuleCall_4_0() { return cTypeNonVoidTypeParserRuleCall_4_0; }
 
 		//callee=Callee
-		public Assignment getCalleeAssignment_6() { return cCalleeAssignment_6; }
+		public Assignment getCalleeAssignment_5() { return cCalleeAssignment_5; }
 
 		//Callee
-		public RuleCall getCalleeCalleeParserRuleCall_6_0() { return cCalleeCalleeParserRuleCall_6_0; }
+		public RuleCall getCalleeCalleeParserRuleCall_5_0() { return cCalleeCalleeParserRuleCall_5_0; }
 
 		//args=ArgList
-		public Assignment getArgsAssignment_7() { return cArgsAssignment_7; }
+		public Assignment getArgsAssignment_6() { return cArgsAssignment_6; }
 
 		//ArgList
-		public RuleCall getArgsArgListParserRuleCall_7_0() { return cArgsArgListParserRuleCall_7_0; }
+		public RuleCall getArgsArgListParserRuleCall_6_0() { return cArgsArgListParserRuleCall_6_0; }
 
 		//functionAttributes=FunctionAttributes?
-		public Assignment getFunctionAttributesAssignment_8() { return cFunctionAttributesAssignment_8; }
+		public Assignment getFunctionAttributesAssignment_7() { return cFunctionAttributesAssignment_7; }
 
 		//FunctionAttributes
-		public RuleCall getFunctionAttributesFunctionAttributesParserRuleCall_8_0() { return cFunctionAttributesFunctionAttributesParserRuleCall_8_0; }
+		public RuleCall getFunctionAttributesFunctionAttributesParserRuleCall_7_0() { return cFunctionAttributesFunctionAttributesParserRuleCall_7_0; }
 	}
 
 	public class Instruction_call_voidElements extends AbstractParserRuleElementFinder {
@@ -6386,31 +6382,25 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCconvCConvParserRuleCall_2_0 = (RuleCall)cCconvAssignment_2.eContents().get(0);
 		private final Assignment cReturnAttributesAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cReturnAttributesParameterAttributesParserRuleCall_3_0 = (RuleCall)cReturnAttributesAssignment_3.eContents().get(0);
-		private final Assignment cReturnTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cReturnTypeVoidTypeParserRuleCall_4_0 = (RuleCall)cReturnTypeAssignment_4.eContents().get(0);
-		private final Assignment cFunctionPointerTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cFunctionPointerTypeTypeParserRuleCall_5_0 = (RuleCall)cFunctionPointerTypeAssignment_5.eContents().get(0);
-		private final Assignment cCalleeAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cCalleeCalleeParserRuleCall_6_0 = (RuleCall)cCalleeAssignment_6.eContents().get(0);
-		private final Assignment cArgsAssignment_7 = (Assignment)cGroup.eContents().get(7);
-		private final RuleCall cArgsArgListParserRuleCall_7_0 = (RuleCall)cArgsAssignment_7.eContents().get(0);
-		private final Assignment cFunctionAttributesAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cFunctionAttributesFunctionAttributesParserRuleCall_8_0 = (RuleCall)cFunctionAttributesAssignment_8.eContents().get(0);
+		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTypeVoidTypeParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final Assignment cCalleeAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cCalleeCalleeParserRuleCall_5_0 = (RuleCall)cCalleeAssignment_5.eContents().get(0);
+		private final Assignment cArgsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cArgsArgListParserRuleCall_6_0 = (RuleCall)cArgsAssignment_6.eContents().get(0);
+		private final Assignment cFunctionAttributesAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cFunctionAttributesFunctionAttributesParserRuleCall_7_0 = (RuleCall)cFunctionAttributesAssignment_7.eContents().get(0);
 		
 		//Instruction_call_void:
 		//
-		//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? returnType=VoidType // Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
+		//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? type=VoidType callee=Callee
 		//
-		//	// opening the argument list or if it's part of a type.
-		//
-		//	=> functionPointerType=Type? callee=Callee args=ArgList functionAttributes=FunctionAttributes?;
+		//	args=ArgList functionAttributes=FunctionAttributes?;
 		public ParserRule getRule() { return rule; }
 
-		//isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? returnType=VoidType // Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
+		//isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? type=VoidType callee=Callee
 		//
-		//// opening the argument list or if it's part of a type.
-		//
-		//=> functionPointerType=Type? callee=Callee args=ArgList functionAttributes=FunctionAttributes?
+		//args=ArgList functionAttributes=FunctionAttributes?
 		public Group getGroup() { return cGroup; }
 
 		//isTail?="tail"?
@@ -6437,35 +6427,29 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//ParameterAttributes
 		public RuleCall getReturnAttributesParameterAttributesParserRuleCall_3_0() { return cReturnAttributesParameterAttributesParserRuleCall_3_0; }
 
-		//returnType=VoidType
-		public Assignment getReturnTypeAssignment_4() { return cReturnTypeAssignment_4; }
+		//type=VoidType
+		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
 
 		//VoidType
-		public RuleCall getReturnTypeVoidTypeParserRuleCall_4_0() { return cReturnTypeVoidTypeParserRuleCall_4_0; }
-
-		//=> functionPointerType=Type?
-		public Assignment getFunctionPointerTypeAssignment_5() { return cFunctionPointerTypeAssignment_5; }
-
-		//Type
-		public RuleCall getFunctionPointerTypeTypeParserRuleCall_5_0() { return cFunctionPointerTypeTypeParserRuleCall_5_0; }
+		public RuleCall getTypeVoidTypeParserRuleCall_4_0() { return cTypeVoidTypeParserRuleCall_4_0; }
 
 		//callee=Callee
-		public Assignment getCalleeAssignment_6() { return cCalleeAssignment_6; }
+		public Assignment getCalleeAssignment_5() { return cCalleeAssignment_5; }
 
 		//Callee
-		public RuleCall getCalleeCalleeParserRuleCall_6_0() { return cCalleeCalleeParserRuleCall_6_0; }
+		public RuleCall getCalleeCalleeParserRuleCall_5_0() { return cCalleeCalleeParserRuleCall_5_0; }
 
 		//args=ArgList
-		public Assignment getArgsAssignment_7() { return cArgsAssignment_7; }
+		public Assignment getArgsAssignment_6() { return cArgsAssignment_6; }
 
 		//ArgList
-		public RuleCall getArgsArgListParserRuleCall_7_0() { return cArgsArgListParserRuleCall_7_0; }
+		public RuleCall getArgsArgListParserRuleCall_6_0() { return cArgsArgListParserRuleCall_6_0; }
 
 		//functionAttributes=FunctionAttributes?
-		public Assignment getFunctionAttributesAssignment_8() { return cFunctionAttributesAssignment_8; }
+		public Assignment getFunctionAttributesAssignment_7() { return cFunctionAttributesAssignment_7; }
 
 		//FunctionAttributes
-		public RuleCall getFunctionAttributesFunctionAttributesParserRuleCall_8_0() { return cFunctionAttributesFunctionAttributesParserRuleCall_8_0; }
+		public RuleCall getFunctionAttributesFunctionAttributesParserRuleCall_7_0() { return cFunctionAttributesFunctionAttributesParserRuleCall_7_0; }
 	}
 
 	public class ArgListElements extends AbstractParserRuleElementFinder {
@@ -8778,9 +8762,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionHeader:
 	//
-	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettype=ParameterType name=GLOBAL_ID "("
+	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettypeAttrs=ParameterAttributes? rettype=Type
 	//
-	//	parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
+	//	name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
 	public FunctionHeaderElements getFunctionHeaderAccess() {
 		return (pFunctionHeader != null) ? pFunctionHeader : (pFunctionHeader = new FunctionHeaderElements());
 	}
@@ -9037,13 +9021,13 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////                 to label <normal label> unwind label <exception label>
 	//
-	//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+	//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> actually
 	//
-	//// the function return type, just like with the call instruction.
+	//// behaves just like in a call instruction, so it's possible to provide return type only.
 	//
 	//Instruction_invoke_void:
 	//
-	//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) rettype=VoidType callee=Callee args=ArgList
+	//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) type=VoidType callee=Callee args=ArgList
 	//
 	//	attributes=FunctionAttributes? "to" "label" toLabel=BasicBlockRef "unwind" "label" exceptionLabel=BasicBlockRef;
 	public Instruction_invoke_voidElements getInstruction_invoke_voidAccess() {
@@ -9058,13 +9042,13 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	////                 to label <normal label> unwind label <exception label>
 	//
-	//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> is actually
+	//// Notice this template as it appears in the reference is incorrect, <ptr to function ty> actually
 	//
-	//// the function return type, just like with the call instruction.
+	//// behaves just like in a call instruction, so it's possible to provide return type only.
 	//
 	//Instruction_invoke_nonVoid:
 	//
-	//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) rettype=NonVoidType callee=Callee args=ArgList
+	//	opcode="invoke" cconv=CConv? ("zeroext"? & "signext"? & "inreg"?) type=NonVoidType callee=Callee args=ArgList
 	//
 	//	attributes=FunctionAttributes? "to" "label" toLabel=BasicBlockRef "unwind" "label" exceptionLabel=BasicBlockRef;
 	public Instruction_invoke_nonVoidElements getInstruction_invoke_nonVoidAccess() {
@@ -9747,11 +9731,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//Instruction_call_nonVoid:
 	//
-	//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? returnType=NonVoidType // Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
+	//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? type=NonVoidType callee=Callee
 	//
-	//	// opening the argument list or if it's part of a type.
-	//
-	//	=> functionPointerType=Type? callee=Callee args=ArgList functionAttributes=FunctionAttributes?;
+	//	args=ArgList functionAttributes=FunctionAttributes?;
 	public Instruction_call_nonVoidElements getInstruction_call_nonVoidAccess() {
 		return (pInstruction_call_nonVoid != null) ? pInstruction_call_nonVoid : (pInstruction_call_nonVoid = new Instruction_call_nonVoidElements());
 	}
@@ -9762,11 +9744,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Instruction_call_void:
 	//
-	//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? returnType=VoidType // Need a syntactic predicate here, I believe because it cannot tell in advance if '(' is
+	//	isTail?="tail"? opcode="call" cconv=CConv? returnAttributes=ParameterAttributes? type=VoidType callee=Callee
 	//
-	//	// opening the argument list or if it's part of a type.
-	//
-	//	=> functionPointerType=Type? callee=Callee args=ArgList functionAttributes=FunctionAttributes?;
+	//	args=ArgList functionAttributes=FunctionAttributes?;
 	public Instruction_call_voidElements getInstruction_call_voidAccess() {
 		return (pInstruction_call_void != null) ? pInstruction_call_void : (pInstruction_call_void = new Instruction_call_voidElements());
 	}

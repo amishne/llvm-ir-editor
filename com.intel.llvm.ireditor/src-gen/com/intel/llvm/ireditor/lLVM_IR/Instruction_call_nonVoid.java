@@ -16,8 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getOpcode <em>Opcode</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCconv <em>Cconv</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getReturnAttributes <em>Return Attributes</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getReturnType <em>Return Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getFunctionPointerType <em>Function Pointer Type</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getType <em>Type</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCallee <em>Callee</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getArgs <em>Args</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getFunctionAttributes <em>Function Attributes</em>}</li>
@@ -135,56 +134,30 @@ public interface Instruction_call_nonVoid extends EObject
   void setReturnAttributes(ParameterAttributes value);
 
   /**
-   * Returns the value of the '<em><b>Return Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Return Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Return Type</em>' containment reference.
-   * @see #setReturnType(NonVoidType)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_call_nonVoid_ReturnType()
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(NonVoidType)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_call_nonVoid_Type()
    * @model containment="true"
    * @generated
    */
-  NonVoidType getReturnType();
+  NonVoidType getType();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getReturnType <em>Return Type</em>}' containment reference.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Return Type</em>' containment reference.
-   * @see #getReturnType()
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
    * @generated
    */
-  void setReturnType(NonVoidType value);
-
-  /**
-   * Returns the value of the '<em><b>Function Pointer Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Function Pointer Type</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Function Pointer Type</em>' containment reference.
-   * @see #setFunctionPointerType(Type)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_call_nonVoid_FunctionPointerType()
-   * @model containment="true"
-   * @generated
-   */
-  Type getFunctionPointerType();
-
-  /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getFunctionPointerType <em>Function Pointer Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function Pointer Type</em>' containment reference.
-   * @see #getFunctionPointerType()
-   * @generated
-   */
-  void setFunctionPointerType(Type value);
+  void setType(NonVoidType value);
 
   /**
    * Returns the value of the '<em><b>Callee</b></em>' containment reference.

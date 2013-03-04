@@ -525,13 +525,21 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedType caseInstruction_call_nonVoid(Instruction_call_nonVoid object) {
-		return resolve(object.getReturnType());
+		return resolveCall(object.getType());
 	}
 	
 	@Override
 	public ResolvedType caseInstruction_invoke_nonVoid(Instruction_invoke_nonVoid object) {
-		return resolve(object.getRettype());
+		return resolveCall(object.getType());
 	};
+	
+	private ResolvedType resolveCall(NonVoidType type) {
+		ResolvedType t = resolve(type);
+		if (t.isPointer() && t.getContainedType(0).isFunction()) {
+			return t.getContainedType(0).asFunction().getReturnType();
+		}
+		return t;
+	}
 	
 	@Override
 	public ResolvedPointerType caseGlobalVariable(GlobalVariable object) {

@@ -73,10 +73,11 @@ import com.intel.llvm.ireditor.lLVM_IR.Model;
 import com.intel.llvm.ireditor.lLVM_IR.Parameter;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
-import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.names.NameResolver;
 import com.intel.llvm.ireditor.names.NumberedName;
 
+import com.intel.llvm.ireditor.types.ResolvedAnyFunctionType;
+import com.intel.llvm.ireditor.types.ResolvedType;
 import com.intel.llvm.ireditor.types.TypeResolver;
 import com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator;
 
@@ -292,6 +293,9 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		if (isCallToMissing(object) == false) {
 			return result;
 		}
+		
+		// This replacement is done via text, though it should really be done
+		// using an LLVM_IRFactory instead.
 		final String declaration = buildDeclarationFromCall(object.eContainer().eContainer());
 		
 		result.add(new IssueResolution("Create function declaration",
@@ -316,65 +320,78 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 				|| object.eContainer().eContainer() instanceof Instruction_invoke_void);
 	}
 	
-	private String buildDeclarationFromCall(Callee callee, Type functionPointerType, EObject rettype, ArgList args) {
-		String name = textOf(callee);
-		String sig = null;
-		if (functionPointerType != null) {
-			// We got the whole type! :)
-			sig = resolver.resolve(functionPointerType).toString().replaceFirst("\\(", name + "(");
-		} else {
-			// Otherwise, build it from the arguments and return type.
-			StringBuilder sb = new StringBuilder();
-			sb.append(resolver.resolve(rettype));
-			sb.append(" ");
-			sb.append(name);
-			sb.append("(");
-			boolean first = true;
-			for (Argument a : args.getArguments()) {
-				if (first == false) {
-					sb.append(", ");
-				}
-				first = false;
-				sb.append(resolver.resolve(a.getType()).toString());
-			}
-			sb.append(")");
-			sig = sb.toString();
+	private String buildDeclarationFromCall(Callee callee, EObject functionPointerType) {
+		
+		ResolvedAnyFunctionType fType =
+				resolver.resolve(functionPointerType).getContainedType(0).asFunction();
+		StringBuilder paramString = new StringBuilder();
+		for (ResolvedType pType : fType.getParameters()) {
+			if (paramString.length() != 0) paramString.append(", ");
+			paramString.append(pType.toString());
 		}
-		return "\ndeclare " + sig + "\n";
+		return String.format("\ndeclare %s %s(%s)\n",
+				fType.getReturnType(), textOf(callee), paramString.toString());
+	}
+	
+	/**
+	 * Get the full IR text for a function declaration.
+	 * @param callee The called function.
+	 * @param rettype Return type of the function.
+	 * @param args Parameter types of the function.
+	 * @return
+	 */
+	private String buildDeclarationFromCall(Callee callee, EObject rettype, ArgList args) {
+		String name = textOf(callee);
+		StringBuilder sb = new StringBuilder();
+		sb.append(resolver.resolve(rettype));
+		sb.append(" ");
+		sb.append(name);
+		sb.append("(");
+		boolean first = true;
+		for (Argument a : args.getArguments()) {
+			if (first == false) {
+				sb.append(", ");
+			}
+			first = false;
+			sb.append(resolver.resolve(a.getType()).toString());
+		}
+		sb.append(")");
+		return "\ndeclare " + sb.toString() + "\n";
 	}
 	
 	private String buildDeclarationFromCall(EObject inst) {
 		Callee callee = null;
-		Type functionPointerType = null;
-		EObject rettype = null;
+		EObject type = null;
 		ArgList args = null;
 		if (inst instanceof Instruction_call_nonVoid) {
 			Instruction_call_nonVoid actual = (Instruction_call_nonVoid) inst;
 			callee = actual.getCallee();
-			functionPointerType = actual.getFunctionPointerType();
-			rettype = actual.getReturnType();
+			type = actual.getType();
 			args = actual.getArgs();
 		} else if (inst instanceof Instruction_call_void) {
 			Instruction_call_void actual = (Instruction_call_void) inst;
 			callee = actual.getCallee();
-			functionPointerType = actual.getFunctionPointerType();
-			rettype = actual.getReturnType();
+			type = actual.getType();
 			args = actual.getArgs();
 		} else if (inst instanceof Instruction_invoke_nonVoid) {
 			Instruction_invoke_nonVoid actual = (Instruction_invoke_nonVoid) inst;
 			callee = actual.getCallee();
-			rettype = actual.getRettype();
+			type = actual.getType();
 			args = actual.getArgs();
 		} else if (inst instanceof Instruction_invoke_void) {
 			Instruction_invoke_void actual = (Instruction_invoke_void) inst;
 			callee = actual.getCallee();
-			rettype = actual.getRettype();
+			type = actual.getType();
 			args = actual.getArgs();
 		} else {
 			return null;
 		}
 		
-		return buildDeclarationFromCall(callee, functionPointerType, rettype, args);
+		ResolvedType resolvedType = resolver.resolve(type);
+		if (resolvedType.isPointer() && resolvedType.getContainedType(0).isFunction()) {
+			return buildDeclarationFromCall(callee, type);
+		}
+		return buildDeclarationFromCall(callee, type, args);
 	}
 
 	private EObject findObject(IXtextDocument doc, final Issue issue) {

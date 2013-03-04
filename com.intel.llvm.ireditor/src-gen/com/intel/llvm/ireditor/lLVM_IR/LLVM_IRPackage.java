@@ -1977,13 +1977,22 @@ public interface LLVM_IRPackage extends EPackage
   int FUNCTION_HEADER__CCONV = GLOBAL_VALUE_DEF_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Rettype Attrs</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCTION_HEADER__RETTYPE_ATTRS = GLOBAL_VALUE_DEF_FEATURE_COUNT + 3;
+
+  /**
    * The feature id for the '<em><b>Rettype</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__RETTYPE = GLOBAL_VALUE_DEF_FEATURE_COUNT + 3;
+  int FUNCTION_HEADER__RETTYPE = GLOBAL_VALUE_DEF_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1992,7 +2001,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__NAME = GLOBAL_VALUE_DEF_FEATURE_COUNT + 4;
+  int FUNCTION_HEADER__NAME = GLOBAL_VALUE_DEF_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Parameters</b></em>' containment reference.
@@ -2001,7 +2010,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__PARAMETERS = GLOBAL_VALUE_DEF_FEATURE_COUNT + 5;
+  int FUNCTION_HEADER__PARAMETERS = GLOBAL_VALUE_DEF_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Attrs</b></em>' containment reference.
@@ -2010,7 +2019,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__ATTRS = GLOBAL_VALUE_DEF_FEATURE_COUNT + 6;
+  int FUNCTION_HEADER__ATTRS = GLOBAL_VALUE_DEF_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Section</b></em>' attribute.
@@ -2019,7 +2028,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__SECTION = GLOBAL_VALUE_DEF_FEATURE_COUNT + 7;
+  int FUNCTION_HEADER__SECTION = GLOBAL_VALUE_DEF_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Align</b></em>' attribute.
@@ -2028,7 +2037,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__ALIGN = GLOBAL_VALUE_DEF_FEATURE_COUNT + 8;
+  int FUNCTION_HEADER__ALIGN = GLOBAL_VALUE_DEF_FEATURE_COUNT + 9;
 
   /**
    * The feature id for the '<em><b>Gc</b></em>' attribute.
@@ -2037,7 +2046,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER__GC = GLOBAL_VALUE_DEF_FEATURE_COUNT + 9;
+  int FUNCTION_HEADER__GC = GLOBAL_VALUE_DEF_FEATURE_COUNT + 10;
 
   /**
    * The number of structural features of the '<em>Function Header</em>' class.
@@ -2046,7 +2055,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_HEADER_FEATURE_COUNT = GLOBAL_VALUE_DEF_FEATURE_COUNT + 10;
+  int FUNCTION_HEADER_FEATURE_COUNT = GLOBAL_VALUE_DEF_FEATURE_COUNT + 11;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ParametersImpl <em>Parameters</em>}' class.
@@ -2621,13 +2630,13 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_INVOKE_VOID__CCONV = 1;
 
   /**
-   * The feature id for the '<em><b>Rettype</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_INVOKE_VOID__RETTYPE = 2;
+  int INSTRUCTION_INVOKE_VOID__TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Callee</b></em>' containment reference.
@@ -2712,13 +2721,13 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_INVOKE_NON_VOID__CCONV = 1;
 
   /**
-   * The feature id for the '<em><b>Rettype</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_INVOKE_NON_VOID__RETTYPE = 2;
+  int INSTRUCTION_INVOKE_NON_VOID__TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Callee</b></em>' containment reference.
@@ -5106,22 +5115,13 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES = 3;
 
   /**
-   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_NON_VOID__RETURN_TYPE = 4;
-
-  /**
-   * The feature id for the '<em><b>Function Pointer Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE = 5;
+  int INSTRUCTION_CALL_NON_VOID__TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Callee</b></em>' containment reference.
@@ -5130,7 +5130,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_NON_VOID__CALLEE = 6;
+  int INSTRUCTION_CALL_NON_VOID__CALLEE = 5;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference.
@@ -5139,7 +5139,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_NON_VOID__ARGS = 7;
+  int INSTRUCTION_CALL_NON_VOID__ARGS = 6;
 
   /**
    * The feature id for the '<em><b>Function Attributes</b></em>' containment reference.
@@ -5148,7 +5148,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_NON_VOID__FUNCTION_ATTRIBUTES = 8;
+  int INSTRUCTION_CALL_NON_VOID__FUNCTION_ATTRIBUTES = 7;
 
   /**
    * The number of structural features of the '<em>Instruction call non Void</em>' class.
@@ -5157,7 +5157,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_NON_VOID_FEATURE_COUNT = 9;
+  int INSTRUCTION_CALL_NON_VOID_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_call_voidImpl <em>Instruction call void</em>}' class.
@@ -5206,22 +5206,13 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES = 3;
 
   /**
-   * The feature id for the '<em><b>Return Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_VOID__RETURN_TYPE = 4;
-
-  /**
-   * The feature id for the '<em><b>Function Pointer Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTRUCTION_CALL_VOID__FUNCTION_POINTER_TYPE = 5;
+  int INSTRUCTION_CALL_VOID__TYPE = 4;
 
   /**
    * The feature id for the '<em><b>Callee</b></em>' containment reference.
@@ -5230,7 +5221,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_VOID__CALLEE = 6;
+  int INSTRUCTION_CALL_VOID__CALLEE = 5;
 
   /**
    * The feature id for the '<em><b>Args</b></em>' containment reference.
@@ -5239,7 +5230,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_VOID__ARGS = 7;
+  int INSTRUCTION_CALL_VOID__ARGS = 6;
 
   /**
    * The feature id for the '<em><b>Function Attributes</b></em>' containment reference.
@@ -5248,7 +5239,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_VOID__FUNCTION_ATTRIBUTES = 8;
+  int INSTRUCTION_CALL_VOID__FUNCTION_ATTRIBUTES = 7;
 
   /**
    * The number of structural features of the '<em>Instruction call void</em>' class.
@@ -5257,7 +5248,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INSTRUCTION_CALL_VOID_FEATURE_COUNT = 9;
+  int INSTRUCTION_CALL_VOID_FEATURE_COUNT = 8;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.ArgListImpl <em>Arg List</em>}' class.
@@ -7519,6 +7510,17 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getFunctionHeader_Cconv();
 
   /**
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettypeAttrs <em>Rettype Attrs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Rettype Attrs</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettypeAttrs()
+   * @see #getFunctionHeader()
+   * @generated
+   */
+  EReference getFunctionHeader_RettypeAttrs();
+
+  /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettype <em>Rettype</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8055,15 +8057,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getInstruction_invoke_void_Cconv();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getRettype <em>Rettype</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rettype</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getRettype()
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getType()
    * @see #getInstruction_invoke_void()
    * @generated
    */
-  EReference getInstruction_invoke_void_Rettype();
+  EReference getInstruction_invoke_void_Type();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getCallee <em>Callee</em>}'.
@@ -8153,15 +8155,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getInstruction_invoke_nonVoid_Cconv();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getRettype <em>Rettype</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Rettype</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getRettype()
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getType()
    * @see #getInstruction_invoke_nonVoid()
    * @generated
    */
-  EReference getInstruction_invoke_nonVoid_Rettype();
+  EReference getInstruction_invoke_nonVoid_Type();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getCallee <em>Callee</em>}'.
@@ -9483,26 +9485,15 @@ public interface LLVM_IRPackage extends EPackage
   EReference getInstruction_call_nonVoid_ReturnAttributes();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getReturnType <em>Return Type</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Return Type</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getReturnType()
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getType()
    * @see #getInstruction_call_nonVoid()
    * @generated
    */
-  EReference getInstruction_call_nonVoid_ReturnType();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getFunctionPointerType <em>Function Pointer Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Function Pointer Type</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getFunctionPointerType()
-   * @see #getInstruction_call_nonVoid()
-   * @generated
-   */
-  EReference getInstruction_call_nonVoid_FunctionPointerType();
+  EReference getInstruction_call_nonVoid_Type();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCallee <em>Callee</em>}'.
@@ -9592,26 +9583,15 @@ public interface LLVM_IRPackage extends EPackage
   EReference getInstruction_call_void_ReturnAttributes();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getReturnType <em>Return Type</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Return Type</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getReturnType()
+   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getType()
    * @see #getInstruction_call_void()
    * @generated
    */
-  EReference getInstruction_call_void_ReturnType();
-
-  /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getFunctionPointerType <em>Function Pointer Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Function Pointer Type</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getFunctionPointerType()
-   * @see #getInstruction_call_void()
-   * @generated
-   */
-  EReference getInstruction_call_void_FunctionPointerType();
+  EReference getInstruction_call_void_Type();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getCallee <em>Callee</em>}'.
@@ -11523,6 +11503,14 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute FUNCTION_HEADER__CCONV = eINSTANCE.getFunctionHeader_Cconv();
 
     /**
+     * The meta object literal for the '<em><b>Rettype Attrs</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCTION_HEADER__RETTYPE_ATTRS = eINSTANCE.getFunctionHeader_RettypeAttrs();
+
+    /**
      * The meta object literal for the '<em><b>Rettype</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -11951,12 +11939,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute INSTRUCTION_INVOKE_VOID__CCONV = eINSTANCE.getInstruction_invoke_void_Cconv();
 
     /**
-     * The meta object literal for the '<em><b>Rettype</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSTRUCTION_INVOKE_VOID__RETTYPE = eINSTANCE.getInstruction_invoke_void_Rettype();
+    EReference INSTRUCTION_INVOKE_VOID__TYPE = eINSTANCE.getInstruction_invoke_void_Type();
 
     /**
      * The meta object literal for the '<em><b>Callee</b></em>' containment reference feature.
@@ -12025,12 +12013,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute INSTRUCTION_INVOKE_NON_VOID__CCONV = eINSTANCE.getInstruction_invoke_nonVoid_Cconv();
 
     /**
-     * The meta object literal for the '<em><b>Rettype</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSTRUCTION_INVOKE_NON_VOID__RETTYPE = eINSTANCE.getInstruction_invoke_nonVoid_Rettype();
+    EReference INSTRUCTION_INVOKE_NON_VOID__TYPE = eINSTANCE.getInstruction_invoke_nonVoid_Type();
 
     /**
      * The meta object literal for the '<em><b>Callee</b></em>' containment reference feature.
@@ -13115,20 +13103,12 @@ public interface LLVM_IRPackage extends EPackage
     EReference INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES = eINSTANCE.getInstruction_call_nonVoid_ReturnAttributes();
 
     /**
-     * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSTRUCTION_CALL_NON_VOID__RETURN_TYPE = eINSTANCE.getInstruction_call_nonVoid_ReturnType();
-
-    /**
-     * The meta object literal for the '<em><b>Function Pointer Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE = eINSTANCE.getInstruction_call_nonVoid_FunctionPointerType();
+    EReference INSTRUCTION_CALL_NON_VOID__TYPE = eINSTANCE.getInstruction_call_nonVoid_Type();
 
     /**
      * The meta object literal for the '<em><b>Callee</b></em>' containment reference feature.
@@ -13197,20 +13177,12 @@ public interface LLVM_IRPackage extends EPackage
     EReference INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES = eINSTANCE.getInstruction_call_void_ReturnAttributes();
 
     /**
-     * The meta object literal for the '<em><b>Return Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference INSTRUCTION_CALL_VOID__RETURN_TYPE = eINSTANCE.getInstruction_call_void_ReturnType();
-
-    /**
-     * The meta object literal for the '<em><b>Function Pointer Type</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTRUCTION_CALL_VOID__FUNCTION_POINTER_TYPE = eINSTANCE.getInstruction_call_void_FunctionPointerType();
+    EReference INSTRUCTION_CALL_VOID__TYPE = eINSTANCE.getInstruction_call_void_Type();
 
     /**
      * The meta object literal for the '<em><b>Callee</b></em>' containment reference feature.

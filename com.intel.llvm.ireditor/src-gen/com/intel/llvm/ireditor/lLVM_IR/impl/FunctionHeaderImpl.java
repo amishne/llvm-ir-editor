@@ -5,8 +5,9 @@ package com.intel.llvm.ireditor.lLVM_IR.impl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
-import com.intel.llvm.ireditor.lLVM_IR.ParameterType;
+import com.intel.llvm.ireditor.lLVM_IR.ParameterAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.Parameters;
+import com.intel.llvm.ireditor.lLVM_IR.Type;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getLinkage <em>Linkage</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getVisibility <em>Visibility</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getCconv <em>Cconv</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getRettypeAttrs <em>Rettype Attrs</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getRettype <em>Rettype</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getParameters <em>Parameters</em>}</li>
@@ -101,6 +103,16 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
   protected String cconv = CCONV_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getRettypeAttrs() <em>Rettype Attrs</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRettypeAttrs()
+   * @generated
+   * @ordered
+   */
+  protected ParameterAttributes rettypeAttrs;
+
+  /**
    * The cached value of the '{@link #getRettype() <em>Rettype</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -108,7 +120,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * @generated
    * @ordered
    */
-  protected ParameterType rettype;
+  protected Type rettype;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -305,7 +317,55 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  public ParameterType getRettype()
+  public ParameterAttributes getRettypeAttrs()
+  {
+    return rettypeAttrs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetRettypeAttrs(ParameterAttributes newRettypeAttrs, NotificationChain msgs)
+  {
+    ParameterAttributes oldRettypeAttrs = rettypeAttrs;
+    rettypeAttrs = newRettypeAttrs;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS, oldRettypeAttrs, newRettypeAttrs);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRettypeAttrs(ParameterAttributes newRettypeAttrs)
+  {
+    if (newRettypeAttrs != rettypeAttrs)
+    {
+      NotificationChain msgs = null;
+      if (rettypeAttrs != null)
+        msgs = ((InternalEObject)rettypeAttrs).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS, null, msgs);
+      if (newRettypeAttrs != null)
+        msgs = ((InternalEObject)newRettypeAttrs).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS, null, msgs);
+      msgs = basicSetRettypeAttrs(newRettypeAttrs, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS, newRettypeAttrs, newRettypeAttrs));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Type getRettype()
   {
     return rettype;
   }
@@ -315,9 +375,9 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRettype(ParameterType newRettype, NotificationChain msgs)
+  public NotificationChain basicSetRettype(Type newRettype, NotificationChain msgs)
   {
-    ParameterType oldRettype = rettype;
+    Type oldRettype = rettype;
     rettype = newRettype;
     if (eNotificationRequired())
     {
@@ -332,7 +392,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRettype(ParameterType newRettype)
+  public void setRettype(Type newRettype)
   {
     if (newRettype != rettype)
     {
@@ -546,6 +606,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
   {
     switch (featureID)
     {
+      case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
+        return basicSetRettypeAttrs(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
         return basicSetRettype(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__PARAMETERS:
@@ -572,6 +634,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return getVisibility();
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
         return getCconv();
+      case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
+        return getRettypeAttrs();
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
         return getRettype();
       case LLVM_IRPackage.FUNCTION_HEADER__NAME:
@@ -609,8 +673,11 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
         setCconv((String)newValue);
         return;
+      case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
+        setRettypeAttrs((ParameterAttributes)newValue);
+        return;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
-        setRettype((ParameterType)newValue);
+        setRettype((Type)newValue);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__NAME:
         setName((String)newValue);
@@ -653,8 +720,11 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
         setCconv(CCONV_EDEFAULT);
         return;
+      case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
+        setRettypeAttrs((ParameterAttributes)null);
+        return;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
-        setRettype((ParameterType)null);
+        setRettype((Type)null);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__NAME:
         setName(NAME_EDEFAULT);
@@ -694,6 +764,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return VISIBILITY_EDEFAULT == null ? visibility != null : !VISIBILITY_EDEFAULT.equals(visibility);
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
         return CCONV_EDEFAULT == null ? cconv != null : !CCONV_EDEFAULT.equals(cconv);
+      case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
+        return rettypeAttrs != null;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
         return rettype != null;
       case LLVM_IRPackage.FUNCTION_HEADER__NAME:

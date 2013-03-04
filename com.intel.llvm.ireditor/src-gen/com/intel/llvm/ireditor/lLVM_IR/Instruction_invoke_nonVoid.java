@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getOpcode <em>Opcode</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getCconv <em>Cconv</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getRettype <em>Rettype</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getType <em>Type</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getCallee <em>Callee</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getArgs <em>Args</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getAttributes <em>Attributes</em>}</li>
@@ -82,30 +82,30 @@ public interface Instruction_invoke_nonVoid extends EObject
   void setCconv(String value);
 
   /**
-   * Returns the value of the '<em><b>Rettype</b></em>' containment reference.
+   * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rettype</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rettype</em>' containment reference.
-   * @see #setRettype(NonVoidType)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_invoke_nonVoid_Rettype()
+   * @return the value of the '<em>Type</em>' containment reference.
+   * @see #setType(NonVoidType)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_invoke_nonVoid_Type()
    * @model containment="true"
    * @generated
    */
-  NonVoidType getRettype();
+  NonVoidType getType();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getRettype <em>Rettype</em>}' containment reference.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getType <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Rettype</em>' containment reference.
-   * @see #getRettype()
+   * @param value the new value of the '<em>Type</em>' containment reference.
+   * @see #getType()
    * @generated
    */
-  void setRettype(NonVoidType value);
+  void setType(NonVoidType value);
 
   /**
    * Returns the value of the '<em><b>Callee</b></em>' containment reference.

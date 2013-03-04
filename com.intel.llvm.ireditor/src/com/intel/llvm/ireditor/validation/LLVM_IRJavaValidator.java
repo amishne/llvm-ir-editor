@@ -525,32 +525,28 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkCall(Instruction_call_nonVoid inst) {
 		checkAnyCall(inst.getCallee(),
-				inst.getReturnType(),
-				inst.getFunctionPointerType(),
+				inst.getType(),
 				inst.getArgs());
 	}
 	
 	@Check
 	public void checkCall(Instruction_call_void inst) {
 		checkAnyCall(inst.getCallee(),
-				inst.getReturnType(),
-				inst.getFunctionPointerType(),
+				inst.getType(),
 				inst.getArgs());
 	}
 	
 	@Check
 	public void checkInvoke(Instruction_invoke_nonVoid inst) {
 		checkAnyCall(inst.getCallee(),
-				inst.getRettype(),
-				null,
+				inst.getType(),
 				inst.getArgs());
 	}
 	
 	@Check
 	public void checkInvoke(Instruction_invoke_void inst) {
 		checkAnyCall(inst.getCallee(),
-				inst.getRettype(),
-				null,
+				inst.getType(),
 				inst.getArgs());
 	}
 	
@@ -629,7 +625,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		}
 	}
 	
-	public void checkAnyCall(Callee callee, EObject retType, Type functionPointerType, ArgList args) {
+	public void checkAnyCall(Callee callee, EObject type, ArgList args) {
 		if (callee instanceof ValueRef == false) return;
 		ResolvedType calleeType = resolveType(callee);
 		if (checkRequired(calleeType, callee.eContainingFeature(), 0, TYPE_ANY_FUNCTION_POINTER) == false) {
@@ -641,19 +637,22 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			return;
 		}
 		
+		boolean typeOmitted = false;
 		ResolvedAnyFunctionType fType = calleeType.getContainedType(0).asFunction();
-		checkExpected(fType.getReturnType(), retType);
-		
-		boolean typeOmitted = functionPointerType == null;
-		if (typeOmitted == false) {
-			// If a full function type is provided, verify that it matches the signature.
-			checkExpected(new ResolvedPointerType(fType, BigInteger.ZERO), functionPointerType);
+		ResolvedType retType = resolveType(type);
+		if (retType.isPointer() && retType.getContainedType(0).isFunction()) {
+			// Invoke instructions and some call instructions have the full signature
+			// as type; in those cases, just compare these types.
+			retType = retType.getContainedType(0).asFunction().getReturnType();
+			checkExpected(new ResolvedPointerType(fType, BigInteger.ZERO), type);
 		} else {
+			typeOmitted = true;
+			checkExpected(fType.getReturnType(), type);
 			// Ensure the return type is not a function pointer
 			if (fType.getReturnType().isPointer() &&
 					fType.getReturnType().getContainedType(0).isFunction()) {
 				error("Must provide a function pointer type if the function returns a function pointer",
-						functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
+						type.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
 						new ResolvedPointerType(fType, BigInteger.ZERO).toString());
 			}
 		}
@@ -664,7 +663,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			if (p.isVararg()) {
 				if (typeOmitted) {
 					error("Must provide a function pointer type if the function is varargs",
-							functionPointerType.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
+							type.eContainingFeature(), ERROR_MISSING_FUNCTION_PTR_TYPE,
 							new ResolvedPointerType(fType, BigInteger.ZERO).toString());
 				}
 				// Once we've reached a vararg, perform no further validation

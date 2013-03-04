@@ -900,8 +900,11 @@
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.154"/>
       </elements>
       <elements xsi:type="xtext:Keyword" cardinality="?" value="unnamed_addr"/>
+      <elements xsi:type="xtext:Assignment" cardinality="?" feature="rettypeAttrs" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.132"/>
+      </elements>
       <elements xsi:type="xtext:Assignment" feature="rettype" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.131"/>
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.138"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="name" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.159"/>
@@ -1280,7 +1283,7 @@
         <elements xsi:type="xtext:Keyword" cardinality="?" value="signext"/>
         <elements xsi:type="xtext:Keyword" cardinality="?" value="inreg"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="rettype" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.150"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="callee" operator="=">
@@ -1320,7 +1323,7 @@
         <elements xsi:type="xtext:Keyword" cardinality="?" value="signext"/>
         <elements xsi:type="xtext:Keyword" cardinality="?" value="inreg"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="rettype" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.136"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="callee" operator="=">
@@ -2366,11 +2369,8 @@
       <elements xsi:type="xtext:Assignment" cardinality="?" feature="returnAttributes" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.132"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="returnType" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.136"/>
-      </elements>
-      <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="functionPointerType" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.138"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="callee" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.124"/>
@@ -2400,11 +2400,8 @@
       <elements xsi:type="xtext:Assignment" cardinality="?" feature="returnAttributes" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.132"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" feature="returnType" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="type" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.150"/>
-      </elements>
-      <elements xsi:type="xtext:Assignment" cardinality="?" predicated="true" feature="functionPointerType" operator="=">
-        <terminal xsi:type="xtext:RuleCall" rule="//@rules.138"/>
       </elements>
       <elements xsi:type="xtext:Assignment" feature="callee" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.124"/>

@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getOpcode <em>Opcode</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getCconv <em>Cconv</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getRettype <em>Rettype</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getCallee <em>Callee</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getArgs <em>Args</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_invoke_nonVoidImpl#getAttributes <em>Attributes</em>}</li>
@@ -82,14 +82,14 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
   protected String cconv = CCONV_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getRettype() <em>Rettype</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRettype()
+   * @see #getType()
    * @generated
    * @ordered
    */
-  protected NonVoidType rettype;
+  protected NonVoidType type;
 
   /**
    * The cached value of the '{@link #getCallee() <em>Callee</em>}' containment reference.
@@ -213,9 +213,9 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
    * <!-- end-user-doc -->
    * @generated
    */
-  public NonVoidType getRettype()
+  public NonVoidType getType()
   {
-    return rettype;
+    return type;
   }
 
   /**
@@ -223,13 +223,13 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRettype(NonVoidType newRettype, NotificationChain msgs)
+  public NotificationChain basicSetType(NonVoidType newType, NotificationChain msgs)
   {
-    NonVoidType oldRettype = rettype;
-    rettype = newRettype;
+    NonVoidType oldType = type;
+    type = newType;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE, oldRettype, newRettype);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -240,20 +240,20 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRettype(NonVoidType newRettype)
+  public void setType(NonVoidType newType)
   {
-    if (newRettype != rettype)
+    if (newType != type)
     {
       NotificationChain msgs = null;
-      if (rettype != null)
-        msgs = ((InternalEObject)rettype).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE, null, msgs);
-      if (newRettype != null)
-        msgs = ((InternalEObject)newRettype).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE, null, msgs);
-      msgs = basicSetRettype(newRettype, msgs);
+      if (type != null)
+        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE, null, msgs);
+      if (newType != null)
+        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE, null, msgs);
+      msgs = basicSetType(newType, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE, newRettype, newRettype));
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE, newType, newType));
   }
 
   /**
@@ -506,8 +506,8 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE:
-        return basicSetRettype(null, msgs);
+      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE:
+        return basicSetType(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CALLEE:
         return basicSetCallee(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__ARGS:
@@ -536,8 +536,8 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
         return getOpcode();
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CCONV:
         return getCconv();
-      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE:
-        return getRettype();
+      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE:
+        return getType();
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CALLEE:
         return getCallee();
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__ARGS:
@@ -568,8 +568,8 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CCONV:
         setCconv((String)newValue);
         return;
-      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE:
-        setRettype((NonVoidType)newValue);
+      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE:
+        setType((NonVoidType)newValue);
         return;
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CALLEE:
         setCallee((Callee)newValue);
@@ -606,8 +606,8 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CCONV:
         setCconv(CCONV_EDEFAULT);
         return;
-      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE:
-        setRettype((NonVoidType)null);
+      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE:
+        setType((NonVoidType)null);
         return;
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CALLEE:
         setCallee((Callee)null);
@@ -642,8 +642,8 @@ public class Instruction_invoke_nonVoidImpl extends MinimalEObjectImpl.Container
         return OPCODE_EDEFAULT == null ? opcode != null : !OPCODE_EDEFAULT.equals(opcode);
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CCONV:
         return CCONV_EDEFAULT == null ? cconv != null : !CCONV_EDEFAULT.equals(cconv);
-      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__RETTYPE:
-        return rettype != null;
+      case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__TYPE:
+        return type != null;
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__CALLEE:
         return callee != null;
       case LLVM_IRPackage.INSTRUCTION_INVOKE_NON_VOID__ARGS:

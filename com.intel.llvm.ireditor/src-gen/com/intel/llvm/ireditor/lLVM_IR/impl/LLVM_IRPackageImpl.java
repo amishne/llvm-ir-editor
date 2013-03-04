@@ -2438,7 +2438,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunctionHeader_Rettype()
+  public EReference getFunctionHeader_RettypeAttrs()
   {
     return (EReference)functionHeaderEClass.getEStructuralFeatures().get(3);
   }
@@ -2448,9 +2448,19 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getFunctionHeader_Rettype()
+  {
+    return (EReference)functionHeaderEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EAttribute getFunctionHeader_Name()
   {
-    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -2460,7 +2470,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    */
   public EReference getFunctionHeader_Parameters()
   {
-    return (EReference)functionHeaderEClass.getEStructuralFeatures().get(5);
+    return (EReference)functionHeaderEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -2470,7 +2480,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    */
   public EReference getFunctionHeader_Attrs()
   {
-    return (EReference)functionHeaderEClass.getEStructuralFeatures().get(6);
+    return (EReference)functionHeaderEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -2480,7 +2490,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    */
   public EAttribute getFunctionHeader_Section()
   {
-    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(7);
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -2490,7 +2500,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    */
   public EAttribute getFunctionHeader_Align()
   {
-    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(8);
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(9);
   }
 
   /**
@@ -2500,7 +2510,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    */
   public EAttribute getFunctionHeader_Gc()
   {
-    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(9);
+    return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(10);
   }
 
   /**
@@ -2938,7 +2948,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_invoke_void_Rettype()
+  public EReference getInstruction_invoke_void_Type()
   {
     return (EReference)instruction_invoke_voidEClass.getEStructuralFeatures().get(2);
   }
@@ -3028,7 +3038,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_invoke_nonVoid_Rettype()
+  public EReference getInstruction_invoke_nonVoid_Type()
   {
     return (EReference)instruction_invoke_nonVoidEClass.getEStructuralFeatures().get(2);
   }
@@ -4278,7 +4288,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_nonVoid_ReturnType()
+  public EReference getInstruction_call_nonVoid_Type()
   {
     return (EReference)instruction_call_nonVoidEClass.getEStructuralFeatures().get(4);
   }
@@ -4288,7 +4298,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_nonVoid_FunctionPointerType()
+  public EReference getInstruction_call_nonVoid_Callee()
   {
     return (EReference)instruction_call_nonVoidEClass.getEStructuralFeatures().get(5);
   }
@@ -4298,7 +4308,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_nonVoid_Callee()
+  public EReference getInstruction_call_nonVoid_Args()
   {
     return (EReference)instruction_call_nonVoidEClass.getEStructuralFeatures().get(6);
   }
@@ -4308,19 +4318,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_nonVoid_Args()
-  {
-    return (EReference)instruction_call_nonVoidEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getInstruction_call_nonVoid_FunctionAttributes()
   {
-    return (EReference)instruction_call_nonVoidEClass.getEStructuralFeatures().get(8);
+    return (EReference)instruction_call_nonVoidEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -4378,7 +4378,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_void_ReturnType()
+  public EReference getInstruction_call_void_Type()
   {
     return (EReference)instruction_call_voidEClass.getEStructuralFeatures().get(4);
   }
@@ -4388,7 +4388,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_void_FunctionPointerType()
+  public EReference getInstruction_call_void_Callee()
   {
     return (EReference)instruction_call_voidEClass.getEStructuralFeatures().get(5);
   }
@@ -4398,7 +4398,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_void_Callee()
+  public EReference getInstruction_call_void_Args()
   {
     return (EReference)instruction_call_voidEClass.getEStructuralFeatures().get(6);
   }
@@ -4408,19 +4408,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_call_void_Args()
-  {
-    return (EReference)instruction_call_voidEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getInstruction_call_void_FunctionAttributes()
   {
-    return (EReference)instruction_call_voidEClass.getEStructuralFeatures().get(8);
+    return (EReference)instruction_call_voidEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -5326,6 +5316,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__LINKAGE);
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__VISIBILITY);
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__CCONV);
+    createEReference(functionHeaderEClass, FUNCTION_HEADER__RETTYPE_ATTRS);
     createEReference(functionHeaderEClass, FUNCTION_HEADER__RETTYPE);
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__NAME);
     createEReference(functionHeaderEClass, FUNCTION_HEADER__PARAMETERS);
@@ -5390,7 +5381,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     instruction_invoke_voidEClass = createEClass(INSTRUCTION_INVOKE_VOID);
     createEAttribute(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__OPCODE);
     createEAttribute(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__CCONV);
-    createEReference(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__RETTYPE);
+    createEReference(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__TYPE);
     createEReference(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__CALLEE);
     createEReference(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__ARGS);
     createEReference(instruction_invoke_voidEClass, INSTRUCTION_INVOKE_VOID__ATTRIBUTES);
@@ -5400,7 +5391,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     instruction_invoke_nonVoidEClass = createEClass(INSTRUCTION_INVOKE_NON_VOID);
     createEAttribute(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__OPCODE);
     createEAttribute(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__CCONV);
-    createEReference(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__RETTYPE);
+    createEReference(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__TYPE);
     createEReference(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__CALLEE);
     createEReference(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__ARGS);
     createEReference(instruction_invoke_nonVoidEClass, INSTRUCTION_INVOKE_NON_VOID__ATTRIBUTES);
@@ -5570,8 +5561,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__OPCODE);
     createEAttribute(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__CCONV);
     createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__RETURN_ATTRIBUTES);
-    createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__RETURN_TYPE);
-    createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__FUNCTION_POINTER_TYPE);
+    createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__TYPE);
     createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__CALLEE);
     createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__ARGS);
     createEReference(instruction_call_nonVoidEClass, INSTRUCTION_CALL_NON_VOID__FUNCTION_ATTRIBUTES);
@@ -5581,8 +5571,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__OPCODE);
     createEAttribute(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__CCONV);
     createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES);
-    createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__RETURN_TYPE);
-    createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__FUNCTION_POINTER_TYPE);
+    createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__TYPE);
     createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__CALLEE);
     createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__ARGS);
     createEReference(instruction_call_voidEClass, INSTRUCTION_CALL_VOID__FUNCTION_ATTRIBUTES);
@@ -5969,7 +5958,8 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getFunctionHeader_Linkage(), ecorePackage.getEString(), "linkage", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionHeader_Visibility(), ecorePackage.getEString(), "visibility", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionHeader_Cconv(), ecorePackage.getEString(), "cconv", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionHeader_Rettype(), this.getParameterType(), null, "rettype", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionHeader_RettypeAttrs(), this.getParameterAttributes(), null, "rettypeAttrs", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionHeader_Rettype(), this.getType(), null, "rettype", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionHeader_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionHeader_Parameters(), this.getParameters(), null, "parameters", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionHeader_Attrs(), this.getFunctionAttributes(), null, "attrs", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6033,7 +6023,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(instruction_invoke_voidEClass, Instruction_invoke_void.class, "Instruction_invoke_void", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInstruction_invoke_void_Opcode(), ecorePackage.getEString(), "opcode", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getInstruction_invoke_void_Cconv(), ecorePackage.getEString(), "cconv", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_invoke_void_Rettype(), this.getVoidType(), null, "rettype", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_invoke_void_Type(), this.getVoidType(), null, "type", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_invoke_void_Callee(), this.getCallee(), null, "callee", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_invoke_void_Args(), this.getArgList(), null, "args", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_invoke_void_Attributes(), this.getFunctionAttributes(), null, "attributes", null, 0, 1, Instruction_invoke_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6043,7 +6033,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(instruction_invoke_nonVoidEClass, Instruction_invoke_nonVoid.class, "Instruction_invoke_nonVoid", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getInstruction_invoke_nonVoid_Opcode(), ecorePackage.getEString(), "opcode", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getInstruction_invoke_nonVoid_Cconv(), ecorePackage.getEString(), "cconv", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_invoke_nonVoid_Rettype(), this.getNonVoidType(), null, "rettype", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_invoke_nonVoid_Type(), this.getNonVoidType(), null, "type", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_invoke_nonVoid_Callee(), this.getCallee(), null, "callee", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_invoke_nonVoid_Args(), this.getArgList(), null, "args", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_invoke_nonVoid_Attributes(), this.getFunctionAttributes(), null, "attributes", null, 0, 1, Instruction_invoke_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6213,8 +6203,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getInstruction_call_nonVoid_Opcode(), ecorePackage.getEString(), "opcode", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getInstruction_call_nonVoid_Cconv(), ecorePackage.getEString(), "cconv", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_nonVoid_ReturnAttributes(), this.getParameterAttributes(), null, "returnAttributes", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_call_nonVoid_ReturnType(), this.getNonVoidType(), null, "returnType", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_call_nonVoid_FunctionPointerType(), this.getType(), null, "functionPointerType", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_call_nonVoid_Type(), this.getNonVoidType(), null, "type", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_nonVoid_Callee(), this.getCallee(), null, "callee", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_nonVoid_Args(), this.getArgList(), null, "args", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_nonVoid_FunctionAttributes(), this.getFunctionAttributes(), null, "functionAttributes", null, 0, 1, Instruction_call_nonVoid.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -6224,8 +6213,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getInstruction_call_void_Opcode(), ecorePackage.getEString(), "opcode", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getInstruction_call_void_Cconv(), ecorePackage.getEString(), "cconv", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_void_ReturnAttributes(), this.getParameterAttributes(), null, "returnAttributes", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_call_void_ReturnType(), this.getVoidType(), null, "returnType", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_call_void_FunctionPointerType(), this.getType(), null, "functionPointerType", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_call_void_Type(), this.getVoidType(), null, "type", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_void_Callee(), this.getCallee(), null, "callee", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_void_Args(), this.getArgList(), null, "args", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_call_void_FunctionAttributes(), this.getFunctionAttributes(), null, "functionAttributes", null, 0, 1, Instruction_call_void.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

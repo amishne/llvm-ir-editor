@@ -187,6 +187,7 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 	}
 	
 	public static class LlvmParser extends LLVM_IRParser {
+		
 		@Override
 		protected InternalLLVM_IRParser createParser(XtextTokenStream stream) {
 			return new InternalLLVM_IRParser(stream, getGrammarAccess()) {
