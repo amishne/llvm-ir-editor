@@ -64,7 +64,7 @@ $(start);
   <h1>Download and Installation</h1>
   Requirements:
   <ol>
-  <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.7 or newer</a>
+  <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.6 or newer</a>
   <li><a href='http://www.eclipse.org/downloads/'>Eclipse 3.5 or newer</a> (any package)</li>
   </ol>
   Eclipse update site: <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
@@ -140,7 +140,7 @@ $(start);
     <a class='toggle off'>More information</a>
     <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
-      <figcaption>Will not suggest values outisde the current scope</figcaption>
+      <figcaption>Will not suggest values outside the current scope</figcaption>
       <img src='images/content_assist-scope.png' /><br /><br />
 	  <figcaption>Also works for non-value syntactic elements, such as instruction opcodes</figcaption>
       <img src='images/content_assist-syntax.png' /><br /><br />
@@ -154,7 +154,7 @@ $(start);
     <a class='toggle off'>More information</a>
     <a class='toggle on'>Less information</a>
     <span class='toggle'><br /><br />
-      <figcaption>With some of the validation checks, such as for phi nodes, extend beyond simple type checks</figcaption>
+      <figcaption>With some of the validation checks, such as for phi nodes, extending beyond simple type checks</figcaption>
       <img src='images/custom_validation-phi.png' /><br /><br />
     </span>
   </section>
@@ -190,20 +190,26 @@ $(start);
   </section>
   <section>
     <h4>How stable is this plugin? How robust for handling large files?</h4>
-    This project is in <em>beta</em> state, and the editor does occasionally produce an error dialog or hang for a few seconds, particularly when editing files (as opposed to just reading them). If this happens to you, please <a href="#open_a_bug">open a bug about it</a>.<br />
+    This project is in <em>beta</em> phase, and the editor does occasionally produce an error dialog or hang for a few seconds, particularly when editing files (as opposed to just reading them). If this happens to you, please <a href="#open_a_bug">open a bug about it</a>.<br />
 	The editor's performance depends on the machine, but it can get sluggish when operating on files with thousands of lines.
   </section>
   <section>
     <a id="open_a_bug" />
     <h4>I've found a bug!</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where firstname, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
+	<br /><br />
+	The quality of the project will never improve if no bugs are reported, so if you find it useful <em>please</em> open bug reports for every little problem you encounter.
+  </section>
+  <section>
+    <h4>I'd like to request a feature.</h4>
+	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where firstname, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
   </section>
   <section>
     <h4>I installed the plugin succesfully, but it doesn't seem to be working it all!</h4>
-    Make sure your Eclipse is running on top of Java 1.7 or newer. <a href="http://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F#Find_the_JVM">Here are instructions on how to select a vm</a>, and <a href="http://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM">here's how to edit <code>eclipse.ini</code> to always select a given vm</a>.
+    Make sure your Eclipse is running on top of Java 1.6 or newer. <a href="http://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F#Find_the_JVM">Here are instructions on how to select a vm</a>, and <a href="http://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM">here's how to edit <code>eclipse.ini</code> to always select a given vm</a>.
   </section>
   <section>
-    <h4>I installed the plugin succesfully and I'm running Java 1.7 or newer, but it doesn't seem to be working it all!</h4>
+    <h4>I installed the plugin succesfully and I'm running Java 1.6 or newer, but it doesn't seem to be working it all!</h4>
     Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with &rarr; llvm ir editor".
   </section>
 </section>
