@@ -36,4 +36,9 @@ public class ResolvedUnknownType extends ResolvedType {
 		return false;
 	}
 	
+	@Override
+	public boolean isUnknown() {
+		return true;
+	}
+	
 }

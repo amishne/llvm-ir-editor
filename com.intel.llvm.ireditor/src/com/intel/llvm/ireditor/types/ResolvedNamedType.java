@@ -126,6 +126,11 @@ public class ResolvedNamedType extends ResolvedType {
 	}
 	
 	@Override
+	public boolean isUnknown() {
+		return referredType.isUnknown();
+	}
+	
+	@Override
 	public ResolvedPointerType asPointer() {
 		return referredType.asPointer();
 	}

@@ -305,63 +305,78 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	@Check
 	public void checkGetelementpointer(Instruction_getelementptr inst) {
+		if (verifyGepStructure(inst)) verifyGepType(inst);
+	}
+	
+	private void verifyGepType(Instruction_getelementptr inst) {
+		if (resolveType(inst).isUnknown()) {
+			INode node = NodeModelUtils.findActualNodeFor(inst);
+			acceptError("Cannot resolve the type of this instruction (too many indices?)",
+					inst, node.getOffset(), inst.getOpcode().length(), null);
+		}
+	}
+
+	private boolean verifyGepStructure(Instruction_getelementptr inst) {
 		ResolvedType baseType = resolveType(inst.getBase().getType());
 		
 		if (baseType.isPointer()) {
 			// Regular GEP
 			int index = 0;
+			boolean isLegal = true;
 			for (TypedValue indexValue : inst.getIndices()) {
 				// Verify the index is numeric
-				checkRequired(resolveType(indexValue.getType()),
+				isLegal &= checkRequired(resolveType(indexValue.getType()),
 						Literals.INSTRUCTION_GETELEMENTPTR__INDICES, index, TYPE_ANY_INTEGER);
 				index++;
 			}
 			
-			return;
+			return isLegal;
 		}
 		
 		if (baseType.isVector() == false) {
 			error("A GEP instruction base must be either a pointer or a pointer of vectors",
 					Literals.INSTRUCTION_GETELEMENTPTR__BASE);
 			
-			return;
+			return false;
 		}
 
 		// Vector GEP
 
 		// Verify it's a vector of pointers
-		checkRequired(baseType, Literals.INSTRUCTION_GETELEMENTPTR__BASE, 0, TYPE_POINTER_VECTOR);
+		if (checkRequired(baseType, Literals.INSTRUCTION_GETELEMENTPTR__BASE, 0, TYPE_POINTER_VECTOR) == false) {
+			return false;
+		}
 
 		// Verify the index list is of size 1
 		if (inst.getIndices().size() != 1) {
 			error("A GEP instruction with pointer vector base can receive only one index",
 					Literals.INSTRUCTION_GETELEMENTPTR__INDICES);
+			return false;
 		}
 
 		// Verify the (single) index is a vector
 		ResolvedType indexType = resolveType(inst.getIndices().get(0));
-		boolean isVector = checkRequired(indexType,
-				Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
-				0,
-				TYPE_ANY_VECTOR);
-		
-		if (isVector == false) return;
+		if (checkRequired(indexType, Literals.INSTRUCTION_GETELEMENTPTR__INDICES, 0, TYPE_ANY_VECTOR) == false) {
+			return false;
+		}
 
 		// Verify the contained type in the (single) index is numeric
 		ResolvedVectorType indexVectorType = indexType.asVector();
-		checkRequired(indexVectorType.getContainedType(0),
-				Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
-				0,
-				TYPE_ANY_INTEGER);
+		if (checkRequired(indexVectorType.getContainedType(0), Literals.INSTRUCTION_GETELEMENTPTR__INDICES,
+				0, TYPE_ANY_INTEGER) == false) {
+			return false;
+		}
 
 		// Verify the size of the (single) index is identical to the base size
 		if (indexType.asVector().getSize().equals(baseType.asVector().getSize()) == false) {
 			error("The index of a GEP instruction with pointer vector base must be the same size as the base",
 					Literals.INSTRUCTION_GETELEMENTPTR__INDICES);
+			return false;
 		}
-
+		
+		return true;
 	}
-	
+
 	@Check
 	public void checkExtractvalue(Instruction_extractvalue inst) {
 		checkRequired(inst.getAggregate(), TYPE_ANY_ARRAY, TYPE_ANY_STRUCT);
@@ -901,6 +916,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			error("Unknown type expected", feature);
 			return false;
 		}
+		if (instType.isUnknown()) {
+			warning("Cannot resolve element type", feature);
+			return false;
+		}
 		for (ResolvedType t : types) {
 			if (instType.accepts(t)) return true;
 		}
@@ -923,6 +942,10 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	private void checkExpected(ResolvedType expectedType, ResolvedType actualType, EStructuralFeature feature, int index) {
 		if (expectedType == null) {
 			error("Unknown type expected", feature);
+			return;
+		}
+		if (actualType.isUnknown()) {
+			warning("Cannot resolve element type", feature);
 			return;
 		}
 		if (expectedType.accepts(actualType)) return;

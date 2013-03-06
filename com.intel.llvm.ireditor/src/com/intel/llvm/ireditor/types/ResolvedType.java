@@ -115,6 +115,10 @@ public abstract class ResolvedType {
 		return false;
 	}
 	
+	public boolean isUnknown() {
+		return false;
+	}
+	
 	public ResolvedVectorType asVector() {
 		throw new ClassCastException();
 	}
@@ -126,5 +130,5 @@ public abstract class ResolvedType {
 	public ResolvedAnyFunctionType asFunction() {
 		throw new ClassCastException();
 	}
-	
+
 }
