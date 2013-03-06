@@ -69,6 +69,10 @@ $(start);
   </ol>
   Eclipse update site: <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
   <a href='http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/index_v35.html#section1_0'>Click here</a> if not familiar with the Eclipse plugin installation procedure.
+  <br /><br />
+  
+  <h3>Updating to a Newer Version</h3>
+  From inside Eclipse, just select Help &rarr; Check for Updates.
 </section>
 
 
@@ -108,7 +112,16 @@ $(start);
   <section>
     <h3>Inferring Anonymous Element Names</h3>
     <figcaption>The editor can autonomously infer the names of anonymous values</figcaption>
-    <img src='images/inferring.png' />
+    <img src='images/inferring.png' /><br /><br />
+	
+	<a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+      <figcaption>Also identifies and can offer fixes for out-of-sequence names</figcaption>
+      <img align="top" src='images/quickfix-numbers-1.png' />
+      <img align="top" src='images/quickfix-numbers-2.png' />
+	  <img align="top" src='images/quickfix-numbers-3.png' /><br /><br />
+    </span>
   </section>
   <section>
     <h3>Occurrence Marking</h3>
@@ -116,9 +129,16 @@ $(start);
     <img src='images/occurrences.png' />
   </section>
   <section>
-    <h3>File Outline</h3>
+    <h3>File Outline and Folding</h3>
     <figcaption>An outline of the current file can be displayed side-by-side with the code, with two-way linking between the element under the cursor and the element selected in the outline view.</figcaption>
-    <img src='images/outline.png' />
+    <img src='images/outline.png' /><br /><br />
+	
+	<a class='toggle off'>More information</a>
+    <a class='toggle on'>Less information</a>
+    <span class='toggle'><br /><br />
+      <figcaption>The same hierarchy can be used to "fold" function bodies and basic blocks to only appear on one line, to save screen space</figcaption>
+      <img src='images/folding.png' /><br /><br />
+    </span>
   </section>
   <section>
     <h3>Syntax Checking</h3>
@@ -171,6 +191,12 @@ $(start);
 	  <figcaption>And providing warnings for unreachable basic blocks</figcaption>
       <img src='images/reachability.png' /><br /><br />
     </span>
+  </section>
+  <section>
+    <h3>Creating Function Declarations</h3>
+    <figcaption>A quickfix option can generate function declarations directly from function calls.</figcaption>
+    <img align="top" src='images/quickfix-create_function-1.png' />
+	<img align="top" src='images/quickfix-create_function-2.png' /><br /><br />
   </section>
 </section> 
  
