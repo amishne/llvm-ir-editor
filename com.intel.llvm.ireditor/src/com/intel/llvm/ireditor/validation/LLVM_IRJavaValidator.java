@@ -685,7 +685,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				return;
 			}
 			if (iter.hasNext() == false) {
-				error("Expected " + p.toString() + " as nextNode argument", args.eContainingFeature());
+				error("Expected " + p.toString() + " as next argument", args.eContainingFeature());
 				return;
 			}
 			checkExpected(p, resolveType(iter.next().getType()), args.eContainingFeature());
@@ -733,6 +733,11 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		} else {
 			checkExpected(type, resolveType(val.getAliasee().getRef()), Literals.ALIAS__ALIASEE);
 		}
+	}
+	
+	@Check
+	public void checkArgument(Argument val) {
+		checkExpected(val.getType(), val.getRef());
 	}
 	
 	@Check
