@@ -239,6 +239,14 @@ $(start);
 	The editor's performance depends on the machine, but it can get sluggish when operating on files with thousands of lines.
   </section>
   <section>
+    <h4>Do I really have to install Java and Eclipse for this editor?</h4>
+	Yes, this plugin deeply integrates with Eclipse, which in turn requires Java. However:
+	<ol>
+	<li>Neither Java nor Eclipse require actual installation, they can just be uncompressed somewhere and executed there.</li>
+	<li>It's possible to download the relatively-lightweight <a href="http://download.eclipse.org/eclipse/downloads/drops4/R-4.2-201206081400/#PlatformRuntime">Eclipse Platform Runtime Binary</a> and install the plugin on top of it, no need for one of the packaged versions.</li>
+	</ol>
+  </section>
+  <section>
     <a id="open_a_bug" />
     <h4>I've found a bug!</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where first_name, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
@@ -254,7 +262,7 @@ $(start);
     Make sure your Eclipse is running on top of Java 1.6 or newer. <a href="http://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F#Find_the_JVM">Here are instructions on how to select a vm</a>, and <a href="http://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM">here's how to edit <code>eclipse.ini</code> to always select a given vm</a>.
   </section>
   <section>
-    <h4>I've installed the plugin succesfully and I'm running Java 1.6 or newer, but it doesn't seem to be working at all!</h4>
+    <h4>I've installed the plugin succesfully and I'm running Java 1.6 or newer, but <code>.ll</code> files still open with a different editor.</h4>
     Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with &rarr; llvm ir editor".
   </section>
 </section>
