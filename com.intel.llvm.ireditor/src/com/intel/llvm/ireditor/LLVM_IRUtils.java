@@ -82,7 +82,7 @@ public class LLVM_IRUtils {
 			return map.get((LocalValue) object);
 		} else if (object instanceof BasicBlock) {
 			Multimap<BasicBlock, BasicBlockRef> map = xrefCache.get(
-					Refs.LOCAL_VALUES, object.eResource(), new Provider<Multimap<BasicBlock, BasicBlockRef>>() {
+					Refs.BASIC_BLOCKS, object.eResource(), new Provider<Multimap<BasicBlock, BasicBlockRef>>() {
 						public Multimap<BasicBlock, BasicBlockRef> get() {
 							return Multimaps.index(EcoreUtil2.getAllContentsOfType(root, BasicBlockRef.class),
 									new Function<BasicBlockRef, BasicBlock>() {
@@ -96,7 +96,7 @@ public class LLVM_IRUtils {
 		} else if (object instanceof GlobalValue) {
 			// Key is EObject and not GlobalValueDef because we need to map non-ref refs to something.
 			Multimap<EObject, GlobalValueRef> map = xrefCache.get(
-					Refs.LOCAL_VALUES, object.eResource(), new Provider<Multimap<EObject, GlobalValueRef>>() {
+					Refs.GLOBAL_VALUES, object.eResource(), new Provider<Multimap<EObject, GlobalValueRef>>() {
 						public Multimap<EObject, GlobalValueRef> get() {
 							return Multimaps.index(EcoreUtil2.getAllContentsOfType(root, GlobalValueRef.class),
 									new Function<GlobalValueRef, EObject>() {
