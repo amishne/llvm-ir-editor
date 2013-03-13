@@ -82,7 +82,13 @@ public class ReverseElementIterable implements Iterable<EObject> {
 			EObject container = EcoreUtil2.getContainerOfType(object, mode.getEObjectType());
 			if (container != null) {
 				initialMode = mode;
-				initialNode = NodeModelUtils.findActualNodeFor(container);
+				if (initialMode != Mode.GLOBAL) {
+					initialNode = NodeModelUtils.findActualNodeFor(container);
+				} else {
+					// FIXME this returns the node associated with the TopLevelElement, though I don't
+					// understand why.
+					initialNode = ((ICompositeNode)NodeModelUtils.findActualNodeFor(container)).getFirstChild();
+				}
 				return;
 			}
 		}
@@ -187,12 +193,15 @@ public class ReverseElementIterable implements Iterable<EObject> {
 		
 		private INode bb2inst(INode node) {
 			INode prev = node.getPreviousSibling();
-			if (prev instanceof ICompositeNode== false) return null;
+			if (prev instanceof ICompositeNode == false) return null;
 			return ((ICompositeNode)prev).getLastChild();
 		}
 
 		private INode global2global(INode node) {
-			return node.getPreviousSibling();
+			INode toplevel = node.getParent();
+			INode prev = toplevel.getPreviousSibling();
+			if (prev instanceof ICompositeNode == false) return null;
+			return ((ICompositeNode)prev).getFirstChild();
 		}
 
 		private INode param2param(INode node) {
