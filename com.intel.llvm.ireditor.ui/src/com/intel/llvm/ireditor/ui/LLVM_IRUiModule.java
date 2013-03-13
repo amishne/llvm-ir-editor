@@ -33,16 +33,20 @@ import com.intel.llvm.ireditor.ui.contentassist.antlr.internal.InternalLLVM_IRPa
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.formatting.IIndentationInformation;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
-import org.eclipse.xtext.ui.editor.AbstractDirtyStateAwareEditorCallback;
+import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.FollowElement;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.IContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.AbstractInternalContentAssistParser;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.InfiniteRecursion;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
+import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
+import org.eclipse.xtext.ui.editor.model.ResourceForIEditorInputFactory;
+//import org.eclipse.xtext.ui.editor.model.JavaClassPathResourceForIEditorInputFactory;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -109,12 +113,26 @@ public class LLVM_IRUiModule extends com.intel.llvm.ireditor.ui.AbstractLLVM_IRU
 	}
 	
 	@Override
-	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
-		// To prevent the plugin from offering to turn on xtext validation to the project.
-		// TODO remove this if this is ever stable enough to re-enable the feature.
-		return LlvmDirtyStateAwareEditorCallback.class;
+	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
+	    return LlvmResourceForIEditorInputFactory.class;
 	}
-	public static class LlvmDirtyStateAwareEditorCallback extends AbstractDirtyStateAwareEditorCallback {}
+	
+	@Override
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+		// 1. Prevent the plugin from offering to turn on xtext validation to the project.
+		// 2. Enable validation when the file is loaded, not only after a modification.
+		return LlvmXtextEditorCallback.class;
+	}
+	
+	// Reenable validation - see https://bugs.eclipse.org/bugs/show_bug.cgi?id=388399
+	public static class LlvmResourceForIEditorInputFactory extends ResourceForIEditorInputFactory {
+	    @Override
+	    protected Resource createResource(java.net.URI uri) {
+	        XtextResource resource = (XtextResource) super.createResource(uri);
+	        resource.setValidationDisabled(false);
+	        return resource;
+	    }
+	}
 	
 	public static class LlvmRenameStrategy extends DefaultRenameStrategy {
 		@Override
