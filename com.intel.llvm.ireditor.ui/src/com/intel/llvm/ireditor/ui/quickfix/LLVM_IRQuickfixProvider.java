@@ -36,12 +36,15 @@ import java.util.TreeSet;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.BadLocationException;
+import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.resource.IContainer;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
+import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.model.IXtextDocument;
 import org.eclipse.xtext.ui.editor.model.edit.IModification;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
@@ -95,7 +98,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		if (data.length <= 2) return;
 		
 		IModificationContext context = getModificationContextFactory().createModificationContext(issue);
-		final IXtextDocument doc = context.getXtextDocument();
+		final IXtextDocument doc = getDoc(context);
 		String name = doc.get(issue.getOffset(), issue.getLength());
 		if (name.matches("^[%@].*") == false) return; // not a convertible variable
 
@@ -138,7 +141,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		String description = "This will add the function pointer type\n" + fType + "\nto this call.";
 		acceptor.accept(issue, "Add function type", description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException {
-				final IXtextDocument doc = context.getXtextDocument();
+				final IXtextDocument doc = getDoc(context);
 				EObject object = findObject(doc, issue).eContainer();
 				int offset = issue.getOffset();
 				if (object instanceof Instruction_call_nonVoid) {
@@ -179,7 +182,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		description = name + " will be replaced by " + newName + " here and everywhere it is used in this context.";
 		acceptor.accept(issue, label, description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
-				IXtextDocument doc = context.getXtextDocument();
+				IXtextDocument doc = getDoc(context);
 				EObject namedInst = findObject(doc, issue);
 				Replacements replacements = new Replacements();
 				performSmartRenameRefactoring(replacements, namedInst, name, newName);
@@ -192,7 +195,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		description = label;
 		acceptor.accept(issue, label, description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException, InterruptedException {
-				IXtextDocument doc = context.getXtextDocument();
+				IXtextDocument doc = getDoc(context);
 				EObject namedInst = findObject(doc, issue);
 				Replacements replacements = fixSequence(namedInst);
 				replacements.execute(doc);
@@ -288,11 +291,20 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		List<IssueResolution> result = super.getResolutionsForLinkingIssue(issue);
 		
 		IModificationContext context = getModificationContextFactory().createModificationContext(issue);
-		IXtextDocument doc = context.getXtextDocument();
+		IXtextDocument doc = getDoc(context);
+		if (doc == null) {
+			IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (editor instanceof XtextEditor) {
+				doc = ((XtextEditor) editor).getDocument();
+			} else {
+				return result;
+			}
+		}
 		EObject object = findObject(doc, issue);
 		if (isCallToMissing(object) == false) {
 			return result;
 		}
+		
 		
 		// This replacement is done via text, though it should really be done
 		// using an LLVM_IRFactory instead.
@@ -303,7 +315,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 				"upcase.png", context, new IModification() {
 
 			public void apply(IModificationContext context) throws Exception {
-				IXtextDocument doc = context.getXtextDocument();
+				IXtextDocument doc = getDoc(context);
 				doc.replace(doc.getLength(), 0, declaration);
 			}
 			
@@ -479,4 +491,16 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		
 	}
 	
+	private IXtextDocument getDoc(IModificationContext context) {
+		IXtextDocument doc = context.getXtextDocument();
+		if (doc != null) return doc;
+		
+		// We should only reach this point if this is a workspace-external file
+		IEditorPart editor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+		if (editor instanceof XtextEditor) {
+			return ((XtextEditor) editor).getDocument();
+		}
+		
+		return null;
+	}
 }

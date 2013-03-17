@@ -34,19 +34,15 @@ public class LlvmXtextEditorCallback extends AbstractDirtyStateAwareEditorCallba
     }
 
     private void validate(XtextEditor xtextEditor) {
-        if (xtextEditor == null) {
-            return;
-        }
-        if (xtextEditor.getInternalSourceViewer() == null) {
-            return;
-        }
-        IValidationIssueProcessor issueProcessor;
+        if (xtextEditor == null) return;
+        if (xtextEditor.getInternalSourceViewer() == null) return;
+        
         IXtextDocument xtextDocument = xtextEditor.getDocument();
         IResource resource = xtextEditor.getResource();
-        if(resource != null)
-            issueProcessor = new MarkerIssueProcessor(resource, markerCreator, markerTypeProvider);
-        else
-            issueProcessor = new AnnotationIssueProcessor(xtextDocument, xtextEditor.getInternalSourceViewer().getAnnotationModel(), issueResolutionProvider);
+        IValidationIssueProcessor issueProcessor = resource != null ?
+            new MarkerIssueProcessor(resource, markerCreator, markerTypeProvider) :
+            new AnnotationIssueProcessor(xtextDocument, xtextEditor.getInternalSourceViewer().getAnnotationModel(),
+            		issueResolutionProvider);
         ValidationJob validationJob = new ValidationJob(resourceValidator, xtextDocument, issueProcessor,
                 CheckMode.ALL);
         validationJob.schedule();
