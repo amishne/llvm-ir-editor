@@ -685,9 +685,9 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createTypeAdapter();
       }
       @Override
-      public Adapter caseFunctionTypeOrPointerToFunctionTypeSuffix(FunctionTypeOrPointerToFunctionTypeSuffix object)
+      public Adapter caseTypeSuffix(TypeSuffix object)
       {
-        return createFunctionTypeOrPointerToFunctionTypeSuffixAdapter();
+        return createTypeSuffixAdapter();
       }
       @Override
       public Adapter caseNonLeftRecursiveType(NonLeftRecursiveType object)
@@ -2602,16 +2602,16 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix <em>Function Type Or Pointer To Function Type Suffix</em>}'.
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix <em>Type Suffix</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix
+   * @see com.intel.llvm.ireditor.lLVM_IR.TypeSuffix
    * @generated
    */
-  public Adapter createFunctionTypeOrPointerToFunctionTypeSuffixAdapter()
+  public Adapter createTypeSuffixAdapter()
   {
     return null;
   }

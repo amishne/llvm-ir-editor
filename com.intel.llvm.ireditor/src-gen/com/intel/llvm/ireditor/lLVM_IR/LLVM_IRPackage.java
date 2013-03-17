@@ -5676,13 +5676,13 @@ public interface LLVM_IRPackage extends EPackage
   int NON_VOID_TYPE__BASE_TYPE = 0;
 
   /**
-   * The feature id for the '<em><b>Function Suffix</b></em>' containment reference.
+   * The feature id for the '<em><b>Suffixes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int NON_VOID_TYPE__FUNCTION_SUFFIX = 1;
+  int NON_VOID_TYPE__SUFFIXES = 1;
 
   /**
    * The feature id for the '<em><b>Stars</b></em>' containment reference list.
@@ -5759,13 +5759,13 @@ public interface LLVM_IRPackage extends EPackage
   int TYPE__STARS = 1;
 
   /**
-   * The feature id for the '<em><b>Function Suffix</b></em>' containment reference.
+   * The feature id for the '<em><b>Suffixes</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE__FUNCTION_SUFFIX = 2;
+  int TYPE__SUFFIXES = 2;
 
   /**
    * The number of structural features of the '<em>Type</em>' class.
@@ -5777,14 +5777,14 @@ public interface LLVM_IRPackage extends EPackage
   int TYPE_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl <em>Function Type Or Pointer To Function Type Suffix</em>}' class.
+   * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl <em>Type Suffix</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl
-   * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFunctionTypeOrPointerToFunctionTypeSuffix()
+   * @see com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl
+   * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getTypeSuffix()
    * @generated
    */
-  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX = 122;
+  int TYPE_SUFFIX = 122;
 
   /**
    * The feature id for the '<em><b>Contained Types</b></em>' containment reference list.
@@ -5793,7 +5793,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES = 0;
+  int TYPE_SUFFIX__CONTAINED_TYPES = 0;
 
   /**
    * The feature id for the '<em><b>Vararg</b></em>' attribute.
@@ -5802,7 +5802,7 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG = 1;
+  int TYPE_SUFFIX__VARARG = 1;
 
   /**
    * The feature id for the '<em><b>Stars</b></em>' containment reference list.
@@ -5811,16 +5811,16 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS = 2;
+  int TYPE_SUFFIX__STARS = 2;
 
   /**
-   * The number of structural features of the '<em>Function Type Or Pointer To Function Type Suffix</em>' class.
+   * The number of structural features of the '<em>Type Suffix</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX_FEATURE_COUNT = 3;
+  int TYPE_SUFFIX_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.NonLeftRecursiveTypeImpl <em>Non Left Recursive Type</em>}' class.
@@ -9989,15 +9989,15 @@ public interface LLVM_IRPackage extends EPackage
   EReference getNonVoidType_BaseType();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getFunctionSuffix <em>Function Suffix</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getSuffixes <em>Suffixes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Function Suffix</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getFunctionSuffix()
+   * @return the meta object for the containment reference list '<em>Suffixes</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getSuffixes()
    * @see #getNonVoidType()
    * @generated
    */
-  EReference getNonVoidType_FunctionSuffix();
+  EReference getNonVoidType_Suffixes();
 
   /**
    * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getStars <em>Stars</em>}'.
@@ -10064,58 +10064,58 @@ public interface LLVM_IRPackage extends EPackage
   EReference getType_Stars();
 
   /**
-   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Type#getFunctionSuffix <em>Function Suffix</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.Type#getSuffixes <em>Suffixes</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Function Suffix</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.Type#getFunctionSuffix()
+   * @return the meta object for the containment reference list '<em>Suffixes</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Type#getSuffixes()
    * @see #getType()
    * @generated
    */
-  EReference getType_FunctionSuffix();
+  EReference getType_Suffixes();
 
   /**
-   * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix <em>Function Type Or Pointer To Function Type Suffix</em>}'.
+   * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix <em>Type Suffix</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Function Type Or Pointer To Function Type Suffix</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix
+   * @return the meta object for class '<em>Type Suffix</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.TypeSuffix
    * @generated
    */
-  EClass getFunctionTypeOrPointerToFunctionTypeSuffix();
+  EClass getTypeSuffix();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getContainedTypes <em>Contained Types</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getContainedTypes <em>Contained Types</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Contained Types</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getContainedTypes()
-   * @see #getFunctionTypeOrPointerToFunctionTypeSuffix()
+   * @see com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getContainedTypes()
+   * @see #getTypeSuffix()
    * @generated
    */
-  EReference getFunctionTypeOrPointerToFunctionTypeSuffix_ContainedTypes();
+  EReference getTypeSuffix_ContainedTypes();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getVararg <em>Vararg</em>}'.
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getVararg <em>Vararg</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Vararg</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getVararg()
-   * @see #getFunctionTypeOrPointerToFunctionTypeSuffix()
+   * @see com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getVararg()
+   * @see #getTypeSuffix()
    * @generated
    */
-  EAttribute getFunctionTypeOrPointerToFunctionTypeSuffix_Vararg();
+  EAttribute getTypeSuffix_Vararg();
 
   /**
-   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getStars <em>Stars</em>}'.
+   * Returns the meta object for the containment reference list '{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getStars <em>Stars</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Stars</em>'.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getStars()
-   * @see #getFunctionTypeOrPointerToFunctionTypeSuffix()
+   * @see com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getStars()
+   * @see #getTypeSuffix()
    * @generated
    */
-  EReference getFunctionTypeOrPointerToFunctionTypeSuffix_Stars();
+  EReference getTypeSuffix_Stars();
 
   /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveType <em>Non Left Recursive Type</em>}'.
@@ -13505,12 +13505,12 @@ public interface LLVM_IRPackage extends EPackage
     EReference NON_VOID_TYPE__BASE_TYPE = eINSTANCE.getNonVoidType_BaseType();
 
     /**
-     * The meta object literal for the '<em><b>Function Suffix</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Suffixes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference NON_VOID_TYPE__FUNCTION_SUFFIX = eINSTANCE.getNonVoidType_FunctionSuffix();
+    EReference NON_VOID_TYPE__SUFFIXES = eINSTANCE.getNonVoidType_Suffixes();
 
     /**
      * The meta object literal for the '<em><b>Stars</b></em>' containment reference list feature.
@@ -13565,22 +13565,22 @@ public interface LLVM_IRPackage extends EPackage
     EReference TYPE__STARS = eINSTANCE.getType_Stars();
 
     /**
-     * The meta object literal for the '<em><b>Function Suffix</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Suffixes</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE__FUNCTION_SUFFIX = eINSTANCE.getType_FunctionSuffix();
+    EReference TYPE__SUFFIXES = eINSTANCE.getType_Suffixes();
 
     /**
-     * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl <em>Function Type Or Pointer To Function Type Suffix</em>}' class.
+     * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl <em>Type Suffix</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl
-     * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getFunctionTypeOrPointerToFunctionTypeSuffix()
+     * @see com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl
+     * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getTypeSuffix()
      * @generated
      */
-    EClass FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX = eINSTANCE.getFunctionTypeOrPointerToFunctionTypeSuffix();
+    EClass TYPE_SUFFIX = eINSTANCE.getTypeSuffix();
 
     /**
      * The meta object literal for the '<em><b>Contained Types</b></em>' containment reference list feature.
@@ -13588,7 +13588,7 @@ public interface LLVM_IRPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES = eINSTANCE.getFunctionTypeOrPointerToFunctionTypeSuffix_ContainedTypes();
+    EReference TYPE_SUFFIX__CONTAINED_TYPES = eINSTANCE.getTypeSuffix_ContainedTypes();
 
     /**
      * The meta object literal for the '<em><b>Vararg</b></em>' attribute feature.
@@ -13596,7 +13596,7 @@ public interface LLVM_IRPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG = eINSTANCE.getFunctionTypeOrPointerToFunctionTypeSuffix_Vararg();
+    EAttribute TYPE_SUFFIX__VARARG = eINSTANCE.getTypeSuffix_Vararg();
 
     /**
      * The meta object literal for the '<em><b>Stars</b></em>' containment reference list feature.
@@ -13604,7 +13604,7 @@ public interface LLVM_IRPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS = eINSTANCE.getFunctionTypeOrPointerToFunctionTypeSuffix_Stars();
+    EReference TYPE_SUFFIX__STARS = eINSTANCE.getTypeSuffix_Stars();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.NonLeftRecursiveTypeImpl <em>Non Left Recursive Type</em>}' class.

@@ -457,7 +457,7 @@
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//NonVoidType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NonVoidType/baseType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NonVoidType/functionSuffix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NonVoidType/suffixes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NonVoidType/stars"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Star">
@@ -466,12 +466,12 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//Type">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Type/baseType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Type/stars"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Type/functionSuffix"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Type/suffixes"/>
     </genClasses>
-    <genClasses ecoreClass="LLVM_IR.ecore#//FunctionTypeOrPointerToFunctionTypeSuffix">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionTypeOrPointerToFunctionTypeSuffix/containedTypes"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionTypeOrPointerToFunctionTypeSuffix/vararg"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionTypeOrPointerToFunctionTypeSuffix/stars"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//TypeSuffix">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//TypeSuffix/containedTypes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//TypeSuffix/vararg"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//TypeSuffix/stars"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//NonLeftRecursiveType">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NonLeftRecursiveType/type"/>

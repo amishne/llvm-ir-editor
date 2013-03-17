@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Type#getBaseType <em>Base Type</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Type#getStars <em>Stars</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Type#getFunctionSuffix <em>Function Suffix</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Type#getSuffixes <em>Suffixes</em>}</li>
  * </ul>
  * </p>
  *
@@ -69,29 +69,19 @@ public interface Type extends EObject
   EList<Star> getStars();
 
   /**
-   * Returns the value of the '<em><b>Function Suffix</b></em>' containment reference.
+   * Returns the value of the '<em><b>Suffixes</b></em>' containment reference list.
+   * The list contents are of type {@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Function Suffix</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Suffixes</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function Suffix</em>' containment reference.
-   * @see #setFunctionSuffix(FunctionTypeOrPointerToFunctionTypeSuffix)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getType_FunctionSuffix()
+   * @return the value of the '<em>Suffixes</em>' containment reference list.
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getType_Suffixes()
    * @model containment="true"
    * @generated
    */
-  FunctionTypeOrPointerToFunctionTypeSuffix getFunctionSuffix();
-
-  /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Type#getFunctionSuffix <em>Function Suffix</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function Suffix</em>' containment reference.
-   * @see #getFunctionSuffix()
-   * @generated
-   */
-  void setFunctionSuffix(FunctionTypeOrPointerToFunctionTypeSuffix value);
+  EList<TypeSuffix> getSuffixes();
 
 } // Type

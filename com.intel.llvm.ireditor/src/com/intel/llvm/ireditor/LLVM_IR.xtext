@@ -938,7 +938,7 @@ Parameter:
 NonVoidType:
 	// A function which returns void, or a pointer to such a function.
 	baseType=VoidType
-	functionSuffix=FunctionTypeOrPointerToFunctionTypeSuffix
+	suffixes+=TypeSuffix+
 	|
 	// A non-void single type, or a pointer to such a type, or a function which returns
 	// such a type or a pointer to such a type, or a pointer to such a function. In short,
@@ -946,7 +946,7 @@ NonVoidType:
 	// which is the only type not allowed.
 	baseType=NonLeftRecursiveNonVoidType
 	stars+=Star*
-	functionSuffix=FunctionTypeOrPointerToFunctionTypeSuffix?
+	suffixes+=TypeSuffix*
 ;
 
 Star:
@@ -958,12 +958,13 @@ Type:
 	baseType=NonLeftRecursiveType
 	// Pointers or functions:
 	stars+=Star*
-	functionSuffix=FunctionTypeOrPointerToFunctionTypeSuffix?
+	suffixes+=TypeSuffix*
 ;
 
-FunctionTypeOrPointerToFunctionTypeSuffix:
-	// Basically the entire function type, not including the return type.
-	{FunctionTypeOrPointerToFunctionTypeSuffix}
+// A suffix of a function type or a pointer to a function type - basically
+// the entire function type, not including the return type.  
+TypeSuffix:
+	{TypeSuffix}
 	'(' (
 		(containedTypes+=ParameterType (',' containedTypes+=ParameterType)* (',' vararg='...')?)? |
 		vararg='...'

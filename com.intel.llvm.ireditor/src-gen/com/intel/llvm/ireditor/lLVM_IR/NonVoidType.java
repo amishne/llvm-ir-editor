@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getBaseType <em>Base Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getFunctionSuffix <em>Function Suffix</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getSuffixes <em>Suffixes</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getStars <em>Stars</em>}</li>
  * </ul>
  * </p>
@@ -53,30 +53,20 @@ public interface NonVoidType extends EObject
   void setBaseType(EObject value);
 
   /**
-   * Returns the value of the '<em><b>Function Suffix</b></em>' containment reference.
+   * Returns the value of the '<em><b>Suffixes</b></em>' containment reference list.
+   * The list contents are of type {@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Function Suffix</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Suffixes</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Function Suffix</em>' containment reference.
-   * @see #setFunctionSuffix(FunctionTypeOrPointerToFunctionTypeSuffix)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getNonVoidType_FunctionSuffix()
+   * @return the value of the '<em>Suffixes</em>' containment reference list.
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getNonVoidType_Suffixes()
    * @model containment="true"
    * @generated
    */
-  FunctionTypeOrPointerToFunctionTypeSuffix getFunctionSuffix();
-
-  /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.NonVoidType#getFunctionSuffix <em>Function Suffix</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Function Suffix</em>' containment reference.
-   * @see #getFunctionSuffix()
-   * @generated
-   */
-  void setFunctionSuffix(FunctionTypeOrPointerToFunctionTypeSuffix value);
+  EList<TypeSuffix> getSuffixes();
 
   /**
    * Returns the value of the '<em><b>Stars</b></em>' containment reference list.

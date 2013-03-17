@@ -1121,13 +1121,13 @@ public interface LLVM_IRFactory extends EFactory
   Type createType();
 
   /**
-   * Returns a new object of class '<em>Function Type Or Pointer To Function Type Suffix</em>'.
+   * Returns a new object of class '<em>Type Suffix</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Type Or Pointer To Function Type Suffix</em>'.
+   * @return a new object of class '<em>Type Suffix</em>'.
    * @generated
    */
-  FunctionTypeOrPointerToFunctionTypeSuffix createFunctionTypeOrPointerToFunctionTypeSuffix();
+  TypeSuffix createTypeSuffix();
 
   /**
    * Returns a new object of class '<em>Non Left Recursive Type</em>'.

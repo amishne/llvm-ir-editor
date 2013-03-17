@@ -186,7 +186,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.NON_VOID_TYPE: return createNonVoidType();
       case LLVM_IRPackage.STAR: return createStar();
       case LLVM_IRPackage.TYPE: return createType();
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX: return createFunctionTypeOrPointerToFunctionTypeSuffix();
+      case LLVM_IRPackage.TYPE_SUFFIX: return createTypeSuffix();
       case LLVM_IRPackage.NON_LEFT_RECURSIVE_TYPE: return createNonLeftRecursiveType();
       case LLVM_IRPackage.NON_LEFT_RECURSIVE_NON_VOID_TYPE: return createNonLeftRecursiveNonVoidType();
       case LLVM_IRPackage.TYPE_DEF: return createTypeDef();
@@ -1551,10 +1551,10 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionTypeOrPointerToFunctionTypeSuffix createFunctionTypeOrPointerToFunctionTypeSuffix()
+  public TypeSuffix createTypeSuffix()
   {
-    FunctionTypeOrPointerToFunctionTypeSuffixImpl functionTypeOrPointerToFunctionTypeSuffix = new FunctionTypeOrPointerToFunctionTypeSuffixImpl();
-    return functionTypeOrPointerToFunctionTypeSuffix;
+    TypeSuffixImpl typeSuffix = new TypeSuffixImpl();
+    return typeSuffix;
   }
 
   /**

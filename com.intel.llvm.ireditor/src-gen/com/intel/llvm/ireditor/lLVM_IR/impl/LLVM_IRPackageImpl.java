@@ -37,7 +37,6 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
@@ -129,6 +128,7 @@ import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
+import com.intel.llvm.ireditor.lLVM_IR.TypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.Undef;
@@ -1014,7 +1014,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass functionTypeOrPointerToFunctionTypeSuffixEClass = null;
+  private EClass typeSuffixEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -4758,7 +4758,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getNonVoidType_FunctionSuffix()
+  public EReference getNonVoidType_Suffixes()
   {
     return (EReference)nonVoidTypeEClass.getEStructuralFeatures().get(1);
   }
@@ -4828,7 +4828,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getType_FunctionSuffix()
+  public EReference getType_Suffixes()
   {
     return (EReference)typeEClass.getEStructuralFeatures().get(2);
   }
@@ -4838,9 +4838,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getFunctionTypeOrPointerToFunctionTypeSuffix()
+  public EClass getTypeSuffix()
   {
-    return functionTypeOrPointerToFunctionTypeSuffixEClass;
+    return typeSuffixEClass;
   }
 
   /**
@@ -4848,9 +4848,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunctionTypeOrPointerToFunctionTypeSuffix_ContainedTypes()
+  public EReference getTypeSuffix_ContainedTypes()
   {
-    return (EReference)functionTypeOrPointerToFunctionTypeSuffixEClass.getEStructuralFeatures().get(0);
+    return (EReference)typeSuffixEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -4858,9 +4858,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionTypeOrPointerToFunctionTypeSuffix_Vararg()
+  public EAttribute getTypeSuffix_Vararg()
   {
-    return (EAttribute)functionTypeOrPointerToFunctionTypeSuffixEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)typeSuffixEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -4868,9 +4868,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunctionTypeOrPointerToFunctionTypeSuffix_Stars()
+  public EReference getTypeSuffix_Stars()
   {
-    return (EReference)functionTypeOrPointerToFunctionTypeSuffixEClass.getEStructuralFeatures().get(2);
+    return (EReference)typeSuffixEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -5621,7 +5621,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     nonVoidTypeEClass = createEClass(NON_VOID_TYPE);
     createEReference(nonVoidTypeEClass, NON_VOID_TYPE__BASE_TYPE);
-    createEReference(nonVoidTypeEClass, NON_VOID_TYPE__FUNCTION_SUFFIX);
+    createEReference(nonVoidTypeEClass, NON_VOID_TYPE__SUFFIXES);
     createEReference(nonVoidTypeEClass, NON_VOID_TYPE__STARS);
 
     starEClass = createEClass(STAR);
@@ -5630,12 +5630,12 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     typeEClass = createEClass(TYPE);
     createEReference(typeEClass, TYPE__BASE_TYPE);
     createEReference(typeEClass, TYPE__STARS);
-    createEReference(typeEClass, TYPE__FUNCTION_SUFFIX);
+    createEReference(typeEClass, TYPE__SUFFIXES);
 
-    functionTypeOrPointerToFunctionTypeSuffixEClass = createEClass(FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX);
-    createEReference(functionTypeOrPointerToFunctionTypeSuffixEClass, FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES);
-    createEAttribute(functionTypeOrPointerToFunctionTypeSuffixEClass, FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG);
-    createEReference(functionTypeOrPointerToFunctionTypeSuffixEClass, FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS);
+    typeSuffixEClass = createEClass(TYPE_SUFFIX);
+    createEReference(typeSuffixEClass, TYPE_SUFFIX__CONTAINED_TYPES);
+    createEAttribute(typeSuffixEClass, TYPE_SUFFIX__VARARG);
+    createEReference(typeSuffixEClass, TYPE_SUFFIX__STARS);
 
     nonLeftRecursiveTypeEClass = createEClass(NON_LEFT_RECURSIVE_TYPE);
     createEReference(nonLeftRecursiveTypeEClass, NON_LEFT_RECURSIVE_TYPE__TYPE);
@@ -6263,7 +6263,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     initEClass(nonVoidTypeEClass, NonVoidType.class, "NonVoidType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNonVoidType_BaseType(), ecorePackage.getEObject(), null, "baseType", null, 0, 1, NonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getNonVoidType_FunctionSuffix(), this.getFunctionTypeOrPointerToFunctionTypeSuffix(), null, "functionSuffix", null, 0, 1, NonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getNonVoidType_Suffixes(), this.getTypeSuffix(), null, "suffixes", null, 0, -1, NonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getNonVoidType_Stars(), this.getStar(), null, "stars", null, 0, -1, NonVoidType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(starEClass, Star.class, "Star", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -6272,12 +6272,12 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getType_BaseType(), this.getNonLeftRecursiveType(), null, "baseType", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getType_Stars(), this.getStar(), null, "stars", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getType_FunctionSuffix(), this.getFunctionTypeOrPointerToFunctionTypeSuffix(), null, "functionSuffix", null, 0, 1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getType_Suffixes(), this.getTypeSuffix(), null, "suffixes", null, 0, -1, Type.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionTypeOrPointerToFunctionTypeSuffixEClass, FunctionTypeOrPointerToFunctionTypeSuffix.class, "FunctionTypeOrPointerToFunctionTypeSuffix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFunctionTypeOrPointerToFunctionTypeSuffix_ContainedTypes(), this.getParameterType(), null, "containedTypes", null, 0, -1, FunctionTypeOrPointerToFunctionTypeSuffix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFunctionTypeOrPointerToFunctionTypeSuffix_Vararg(), ecorePackage.getEString(), "vararg", null, 0, 1, FunctionTypeOrPointerToFunctionTypeSuffix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionTypeOrPointerToFunctionTypeSuffix_Stars(), this.getStar(), null, "stars", null, 0, -1, FunctionTypeOrPointerToFunctionTypeSuffix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(typeSuffixEClass, TypeSuffix.class, "TypeSuffix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getTypeSuffix_ContainedTypes(), this.getParameterType(), null, "containedTypes", null, 0, -1, TypeSuffix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTypeSuffix_Vararg(), ecorePackage.getEString(), "vararg", null, 0, 1, TypeSuffix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getTypeSuffix_Stars(), this.getStar(), null, "stars", null, 0, -1, TypeSuffix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(nonLeftRecursiveTypeEClass, NonLeftRecursiveType.class, "NonLeftRecursiveType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getNonLeftRecursiveType_Type(), ecorePackage.getEObject(), null, "type", null, 0, 1, NonLeftRecursiveType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

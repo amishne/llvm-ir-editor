@@ -12164,22 +12164,22 @@ ruleNonVoidType returns [EObject current=null]
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_0_1_0()); 
+	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getSuffixesTypeSuffixParserRuleCall_0_1_0()); 
 	    }
-		lv_functionSuffix_1_0=ruleFunctionTypeOrPointerToFunctionTypeSuffix		{
+		lv_suffixes_1_0=ruleTypeSuffix		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getNonVoidTypeRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"functionSuffix",
-        		lv_functionSuffix_1_0, 
-        		"FunctionTypeOrPointerToFunctionTypeSuffix");
+       			"suffixes",
+        		lv_suffixes_1_0, 
+        		"TypeSuffix");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)+)
     |((
 (
 		{ 
@@ -12219,22 +12219,22 @@ ruleNonVoidType returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_1_2_0()); 
+	        newCompositeNode(grammarAccess.getNonVoidTypeAccess().getSuffixesTypeSuffixParserRuleCall_1_2_0()); 
 	    }
-		lv_functionSuffix_4_0=ruleFunctionTypeOrPointerToFunctionTypeSuffix		{
+		lv_suffixes_4_0=ruleTypeSuffix		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getNonVoidTypeRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"functionSuffix",
-        		lv_functionSuffix_4_0, 
-        		"FunctionTypeOrPointerToFunctionTypeSuffix");
+       			"suffixes",
+        		lv_suffixes_4_0, 
+        		"TypeSuffix");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?))
+)*))
 ;
 
 
@@ -12343,60 +12343,60 @@ ruleType returns [EObject current=null]
 )*(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getTypeAccess().getSuffixesTypeSuffixParserRuleCall_2_0()); 
 	    }
-		lv_functionSuffix_2_0=ruleFunctionTypeOrPointerToFunctionTypeSuffix		{
+		lv_suffixes_2_0=ruleTypeSuffix		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getTypeRule());
 	        }
-       		set(
+       		add(
        			$current, 
-       			"functionSuffix",
-        		lv_functionSuffix_2_0, 
-        		"FunctionTypeOrPointerToFunctionTypeSuffix");
+       			"suffixes",
+        		lv_suffixes_2_0, 
+        		"TypeSuffix");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)?)
+)*)
 ;
 
 
 
 
 
-// Entry rule entryRuleFunctionTypeOrPointerToFunctionTypeSuffix
-entryRuleFunctionTypeOrPointerToFunctionTypeSuffix returns [EObject current=null] 
+// Entry rule entryRuleTypeSuffix
+entryRuleTypeSuffix returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule()); }
-	 iv_ruleFunctionTypeOrPointerToFunctionTypeSuffix=ruleFunctionTypeOrPointerToFunctionTypeSuffix 
-	 { $current=$iv_ruleFunctionTypeOrPointerToFunctionTypeSuffix.current; } 
+	{ newCompositeNode(grammarAccess.getTypeSuffixRule()); }
+	 iv_ruleTypeSuffix=ruleTypeSuffix 
+	 { $current=$iv_ruleTypeSuffix.current; } 
 	 EOF 
 ;
 
-// Rule FunctionTypeOrPointerToFunctionTypeSuffix
-ruleFunctionTypeOrPointerToFunctionTypeSuffix returns [EObject current=null] 
+// Rule TypeSuffix
+ruleTypeSuffix returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
 ((
     {
         $current = forceCreateModelElement(
-            grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getFunctionTypeOrPointerToFunctionTypeSuffixAction_0(),
+            grammarAccess.getTypeSuffixAccess().getTypeSuffixAction_0(),
             $current);
     }
 )	otherlv_1='(' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getLeftParenthesisKeyword_1());
+    	newLeafNode(otherlv_1, grammarAccess.getTypeSuffixAccess().getLeftParenthesisKeyword_1());
     }
 (((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); 
+	        newCompositeNode(grammarAccess.getTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); 
 	    }
 		lv_containedTypes_2_0=ruleParameterType		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule());
+	            $current = createModelElementForParent(grammarAccess.getTypeSuffixRule());
 	        }
        		add(
        			$current, 
@@ -12409,16 +12409,16 @@ ruleFunctionTypeOrPointerToFunctionTypeSuffix returns [EObject current=null]
 )
 )(	otherlv_3=',' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_1_0());
+    	newLeafNode(otherlv_3, grammarAccess.getTypeSuffixAccess().getCommaKeyword_2_0_1_0());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); 
+	        newCompositeNode(grammarAccess.getTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); 
 	    }
 		lv_containedTypes_4_0=ruleParameterType		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule());
+	            $current = createModelElementForParent(grammarAccess.getTypeSuffixRule());
 	        }
        		add(
        			$current, 
@@ -12431,18 +12431,18 @@ ruleFunctionTypeOrPointerToFunctionTypeSuffix returns [EObject current=null]
 )
 ))*(	otherlv_5=',' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_2_0());
+    	newLeafNode(otherlv_5, grammarAccess.getTypeSuffixAccess().getCommaKeyword_2_0_2_0());
     }
 (
 (
 		lv_vararg_6_0=	'...' 
     {
-        newLeafNode(lv_vararg_6_0, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0());
+        newLeafNode(lv_vararg_6_0, grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0());
     }
  
 	    {
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule());
+	            $current = createModelElement(grammarAccess.getTypeSuffixRule());
 	        }
        		setWithLastConsumed($current, "vararg", lv_vararg_6_0, "...");
 	    }
@@ -12453,12 +12453,12 @@ ruleFunctionTypeOrPointerToFunctionTypeSuffix returns [EObject current=null]
 (
 		lv_vararg_7_0=	'...' 
     {
-        newLeafNode(lv_vararg_7_0, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0());
+        newLeafNode(lv_vararg_7_0, grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0());
     }
  
 	    {
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule());
+	            $current = createModelElement(grammarAccess.getTypeSuffixRule());
 	        }
        		setWithLastConsumed($current, "vararg", lv_vararg_7_0, "...");
 	    }
@@ -12466,16 +12466,16 @@ ruleFunctionTypeOrPointerToFunctionTypeSuffix returns [EObject current=null]
 )
 ))	otherlv_8=')' 
     {
-    	newLeafNode(otherlv_8, grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getRightParenthesisKeyword_3());
+    	newLeafNode(otherlv_8, grammarAccess.getTypeSuffixAccess().getRightParenthesisKeyword_3());
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); 
+	        newCompositeNode(grammarAccess.getTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); 
 	    }
 		lv_stars_9_0=ruleStar		{
 	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule());
+	            $current = createModelElementForParent(grammarAccess.getTypeSuffixRule());
 	        }
        		add(
        			$current, 

@@ -58,7 +58,6 @@ import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_alloca;
@@ -100,6 +99,7 @@ import com.intel.llvm.ireditor.lLVM_IR.StructType;
 import com.intel.llvm.ireditor.lLVM_IR.StructureConstant;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
+import com.intel.llvm.ireditor.lLVM_IR.TypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.Undef;
@@ -166,16 +166,20 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public ResolvedType caseType(Type object) {
 		ResolvedType result = resolve(object.getBaseType());
 		result = buildPointersTo(result, object.getStars());
-		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
-		return suffix == null? result : buildTypeFromSuffix(result, suffix);
+		for (TypeSuffix suffix : object.getSuffixes()) {
+			result = buildTypeFromSuffix(result, suffix);
+		}
+		return result;
 	}
 	
 	@Override
 	public ResolvedType caseNonVoidType(NonVoidType object) {
 		ResolvedType result = resolve(object.getBaseType());
 		result = buildPointersTo(result, object.getStars());
-		FunctionTypeOrPointerToFunctionTypeSuffix suffix = object.getFunctionSuffix();
-		return suffix == null? result : buildTypeFromSuffix(result, suffix);
+		for (TypeSuffix suffix : object.getSuffixes()) {
+			result = buildTypeFromSuffix(result, suffix);
+		}
+		return result;
 	}
 	
 	@Override
@@ -633,8 +637,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		}
 	}
 	
-	private ResolvedType buildTypeFromSuffix(ResolvedType rettype,
-			FunctionTypeOrPointerToFunctionTypeSuffix suffix) {
+	private ResolvedType buildTypeFromSuffix(ResolvedType rettype, TypeSuffix suffix) {
 		List<ResolvedType> paramTypes = new LinkedList<ResolvedType>();
 		for (ParameterType t : suffix.getContainedTypes()) {
 			paramTypes.add(resolve(t));

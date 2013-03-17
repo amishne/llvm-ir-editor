@@ -1027,10 +1027,10 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX:
+      case LLVM_IRPackage.TYPE_SUFFIX:
       {
-        FunctionTypeOrPointerToFunctionTypeSuffix functionTypeOrPointerToFunctionTypeSuffix = (FunctionTypeOrPointerToFunctionTypeSuffix)theEObject;
-        T result = caseFunctionTypeOrPointerToFunctionTypeSuffix(functionTypeOrPointerToFunctionTypeSuffix);
+        TypeSuffix typeSuffix = (TypeSuffix)theEObject;
+        T result = caseTypeSuffix(typeSuffix);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -3076,17 +3076,17 @@ public class LLVM_IRSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Function Type Or Pointer To Function Type Suffix</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Type Suffix</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Function Type Or Pointer To Function Type Suffix</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Type Suffix</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseFunctionTypeOrPointerToFunctionTypeSuffix(FunctionTypeOrPointerToFunctionTypeSuffix object)
+  public T caseTypeSuffix(TypeSuffix object)
   {
     return null;
   }

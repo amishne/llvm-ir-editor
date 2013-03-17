@@ -604,8 +604,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="NonVoidType">
     <eStructuralFeatures xsi:type="ecore:EReference" name="baseType" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="functionSuffix" eType="#//FunctionTypeOrPointerToFunctionTypeSuffix"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="suffixes" upperBound="-1"
+        eType="#//TypeSuffix" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stars" upperBound="-1"
         eType="#//Star" containment="true"/>
   </eClassifiers>
@@ -618,10 +618,10 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stars" upperBound="-1"
         eType="#//Star" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="functionSuffix" eType="#//FunctionTypeOrPointerToFunctionTypeSuffix"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="suffixes" upperBound="-1"
+        eType="#//TypeSuffix" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FunctionTypeOrPointerToFunctionTypeSuffix">
+  <eClassifiers xsi:type="ecore:EClass" name="TypeSuffix">
     <eStructuralFeatures xsi:type="ecore:EReference" name="containedTypes" upperBound="-1"
         eType="#//ParameterType" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vararg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

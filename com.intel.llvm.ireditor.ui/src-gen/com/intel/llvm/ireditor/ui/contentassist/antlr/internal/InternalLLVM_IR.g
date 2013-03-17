@@ -3859,25 +3859,25 @@ finally {
 
 
 
-// Entry rule entryRuleFunctionTypeOrPointerToFunctionTypeSuffix
-entryRuleFunctionTypeOrPointerToFunctionTypeSuffix 
+// Entry rule entryRuleTypeSuffix
+entryRuleTypeSuffix 
 :
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule()); }
-	 ruleFunctionTypeOrPointerToFunctionTypeSuffix
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule()); } 
+{ before(grammarAccess.getTypeSuffixRule()); }
+	 ruleTypeSuffix
+{ after(grammarAccess.getTypeSuffixRule()); } 
 	 EOF 
 ;
 
-// Rule FunctionTypeOrPointerToFunctionTypeSuffix
-ruleFunctionTypeOrPointerToFunctionTypeSuffix
+// Rule TypeSuffix
+ruleTypeSuffix
     @init {
 		int stackSize = keepStackSize();
     }
 	:
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__0)
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup()); }
+{ before(grammarAccess.getTypeSuffixAccess().getGroup()); }
+(rule__TypeSuffix__Group__0)
+{ after(grammarAccess.getTypeSuffixAccess().getGroup()); }
 )
 
 ;
@@ -6344,21 +6344,21 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Alternatives_2
+rule__TypeSuffix__Alternatives_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup_2_0()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__0)?
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup_2_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getGroup_2_0()); }
+(rule__TypeSuffix__Group_2_0__0)?
+{ after(grammarAccess.getTypeSuffixAccess().getGroup_2_0()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargAssignment_2_1()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__VarargAssignment_2_1)
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargAssignment_2_1()); }
+{ before(grammarAccess.getTypeSuffixAccess().getVarargAssignment_2_1()); }
+(rule__TypeSuffix__VarargAssignment_2_1)
+{ after(grammarAccess.getTypeSuffixAccess().getVarargAssignment_2_1()); }
 )
 
 ;
@@ -25476,9 +25476,16 @@ rule__NonVoidType__Group_0__1__Impl
     }
 :
 (
-{ before(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixAssignment_0_1()); }
-(rule__NonVoidType__FunctionSuffixAssignment_0_1)
-{ after(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixAssignment_0_1()); }
+(
+{ before(grammarAccess.getNonVoidTypeAccess().getSuffixesAssignment_0_1()); }
+(rule__NonVoidType__SuffixesAssignment_0_1)
+{ after(grammarAccess.getNonVoidTypeAccess().getSuffixesAssignment_0_1()); }
+)
+(
+{ before(grammarAccess.getNonVoidTypeAccess().getSuffixesAssignment_0_1()); }
+(rule__NonVoidType__SuffixesAssignment_0_1)*
+{ after(grammarAccess.getNonVoidTypeAccess().getSuffixesAssignment_0_1()); }
+)
 )
 
 ;
@@ -25566,9 +25573,9 @@ rule__NonVoidType__Group_1__2__Impl
     }
 :
 (
-{ before(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixAssignment_1_2()); }
-(rule__NonVoidType__FunctionSuffixAssignment_1_2)?
-{ after(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixAssignment_1_2()); }
+{ before(grammarAccess.getNonVoidTypeAccess().getSuffixesAssignment_1_2()); }
+(rule__NonVoidType__SuffixesAssignment_1_2)*
+{ after(grammarAccess.getNonVoidTypeAccess().getSuffixesAssignment_1_2()); }
 )
 
 ;
@@ -25754,9 +25761,9 @@ rule__Type__Group__2__Impl
     }
 :
 (
-{ before(grammarAccess.getTypeAccess().getFunctionSuffixAssignment_2()); }
-(rule__Type__FunctionSuffixAssignment_2)?
-{ after(grammarAccess.getTypeAccess().getFunctionSuffixAssignment_2()); }
+{ before(grammarAccess.getTypeAccess().getSuffixesAssignment_2()); }
+(rule__Type__SuffixesAssignment_2)*
+{ after(grammarAccess.getTypeAccess().getSuffixesAssignment_2()); }
 )
 
 ;
@@ -25771,29 +25778,29 @@ finally {
 
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__0
+rule__TypeSuffix__Group__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__0__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__1
+	rule__TypeSuffix__Group__0__Impl
+	rule__TypeSuffix__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__0__Impl
+rule__TypeSuffix__Group__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getFunctionTypeOrPointerToFunctionTypeSuffixAction_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getTypeSuffixAction_0()); }
 (
 
 )
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getFunctionTypeOrPointerToFunctionTypeSuffixAction_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getTypeSuffixAction_0()); }
 )
 
 ;
@@ -25802,29 +25809,29 @@ finally {
 }
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__1
+rule__TypeSuffix__Group__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__1__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__2
+	rule__TypeSuffix__Group__1__Impl
+	rule__TypeSuffix__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__1__Impl
+rule__TypeSuffix__Group__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getLeftParenthesisKeyword_1()); }
+{ before(grammarAccess.getTypeSuffixAccess().getLeftParenthesisKeyword_1()); }
 
 	'(' 
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getLeftParenthesisKeyword_1()); }
+{ after(grammarAccess.getTypeSuffixAccess().getLeftParenthesisKeyword_1()); }
 )
 
 ;
@@ -25833,27 +25840,27 @@ finally {
 }
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__2
+rule__TypeSuffix__Group__2
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__2__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__3
+	rule__TypeSuffix__Group__2__Impl
+	rule__TypeSuffix__Group__3
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__2__Impl
+rule__TypeSuffix__Group__2__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getAlternatives_2()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__Alternatives_2)
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getAlternatives_2()); }
+{ before(grammarAccess.getTypeSuffixAccess().getAlternatives_2()); }
+(rule__TypeSuffix__Alternatives_2)
+{ after(grammarAccess.getTypeSuffixAccess().getAlternatives_2()); }
 )
 
 ;
@@ -25862,29 +25869,29 @@ finally {
 }
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__3
+rule__TypeSuffix__Group__3
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__3__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__4
+	rule__TypeSuffix__Group__3__Impl
+	rule__TypeSuffix__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__3__Impl
+rule__TypeSuffix__Group__3__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getRightParenthesisKeyword_3()); }
+{ before(grammarAccess.getTypeSuffixAccess().getRightParenthesisKeyword_3()); }
 
 	')' 
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getRightParenthesisKeyword_3()); }
+{ after(grammarAccess.getTypeSuffixAccess().getRightParenthesisKeyword_3()); }
 )
 
 ;
@@ -25893,122 +25900,26 @@ finally {
 }
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__4
+rule__TypeSuffix__Group__4
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__4__Impl
+	rule__TypeSuffix__Group__4__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group__4__Impl
+rule__TypeSuffix__Group__4__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsAssignment_4()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__StarsAssignment_4)*
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsAssignment_4()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__0__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesAssignment_2_0_0()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__ContainedTypesAssignment_2_0_0)
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesAssignment_2_0_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__1__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__2
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__1__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup_2_0_1()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__0)*
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup_2_0_1()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__2
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0__2__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup_2_0_2()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__0)?
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getGroup_2_0_2()); }
+{ before(grammarAccess.getTypeSuffixAccess().getStarsAssignment_4()); }
+(rule__TypeSuffix__StarsAssignment_4)*
+{ after(grammarAccess.getTypeSuffixAccess().getStarsAssignment_4()); }
 )
 
 ;
@@ -26023,29 +25934,125 @@ finally {
 
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__0
+
+
+
+
+rule__TypeSuffix__Group_2_0__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__0__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__1
+	rule__TypeSuffix__Group_2_0__0__Impl
+	rule__TypeSuffix__Group_2_0__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__0__Impl
+rule__TypeSuffix__Group_2_0__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_1_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getContainedTypesAssignment_2_0_0()); }
+(rule__TypeSuffix__ContainedTypesAssignment_2_0_0)
+{ after(grammarAccess.getTypeSuffixAccess().getContainedTypesAssignment_2_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__TypeSuffix__Group_2_0__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__TypeSuffix__Group_2_0__1__Impl
+	rule__TypeSuffix__Group_2_0__2
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TypeSuffix__Group_2_0__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getTypeSuffixAccess().getGroup_2_0_1()); }
+(rule__TypeSuffix__Group_2_0_1__0)*
+{ after(grammarAccess.getTypeSuffixAccess().getGroup_2_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__TypeSuffix__Group_2_0__2
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__TypeSuffix__Group_2_0__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TypeSuffix__Group_2_0__2__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getTypeSuffixAccess().getGroup_2_0_2()); }
+(rule__TypeSuffix__Group_2_0_2__0)?
+{ after(grammarAccess.getTypeSuffixAccess().getGroup_2_0_2()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+
+
+rule__TypeSuffix__Group_2_0_1__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__TypeSuffix__Group_2_0_1__0__Impl
+	rule__TypeSuffix__Group_2_0_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__TypeSuffix__Group_2_0_1__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getTypeSuffixAccess().getCommaKeyword_2_0_1_0()); }
 
 	',' 
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_1_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getCommaKeyword_2_0_1_0()); }
 )
 
 ;
@@ -26054,26 +26061,26 @@ finally {
 }
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__1
+rule__TypeSuffix__Group_2_0_1__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__1__Impl
+	rule__TypeSuffix__Group_2_0_1__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_1__1__Impl
+rule__TypeSuffix__Group_2_0_1__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesAssignment_2_0_1_1()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__ContainedTypesAssignment_2_0_1_1)
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesAssignment_2_0_1_1()); }
+{ before(grammarAccess.getTypeSuffixAccess().getContainedTypesAssignment_2_0_1_1()); }
+(rule__TypeSuffix__ContainedTypesAssignment_2_0_1_1)
+{ after(grammarAccess.getTypeSuffixAccess().getContainedTypesAssignment_2_0_1_1()); }
 )
 
 ;
@@ -26086,29 +26093,29 @@ finally {
 
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__0
+rule__TypeSuffix__Group_2_0_2__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__0__Impl
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__1
+	rule__TypeSuffix__Group_2_0_2__0__Impl
+	rule__TypeSuffix__Group_2_0_2__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__0__Impl
+rule__TypeSuffix__Group_2_0_2__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_2_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getCommaKeyword_2_0_2_0()); }
 
 	',' 
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getCommaKeyword_2_0_2_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getCommaKeyword_2_0_2_0()); }
 )
 
 ;
@@ -26117,26 +26124,26 @@ finally {
 }
 
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__1
+rule__TypeSuffix__Group_2_0_2__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__1__Impl
+	rule__TypeSuffix__Group_2_0_2__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__Group_2_0_2__1__Impl
+rule__TypeSuffix__Group_2_0_2__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargAssignment_2_0_2_1()); }
-(rule__FunctionTypeOrPointerToFunctionTypeSuffix__VarargAssignment_2_0_2_1)
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargAssignment_2_0_2_1()); }
+{ before(grammarAccess.getTypeSuffixAccess().getVarargAssignment_2_0_2_1()); }
+(rule__TypeSuffix__VarargAssignment_2_0_2_1)
+{ after(grammarAccess.getTypeSuffixAccess().getVarargAssignment_2_0_2_1()); }
 )
 
 ;
@@ -34099,14 +34106,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__NonVoidType__FunctionSuffixAssignment_0_1
+rule__NonVoidType__SuffixesAssignment_0_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_0_1_0()); }
-	ruleFunctionTypeOrPointerToFunctionTypeSuffix{ after(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_0_1_0()); }
+{ before(grammarAccess.getNonVoidTypeAccess().getSuffixesTypeSuffixParserRuleCall_0_1_0()); }
+	ruleTypeSuffix{ after(grammarAccess.getNonVoidTypeAccess().getSuffixesTypeSuffixParserRuleCall_0_1_0()); }
 )
 
 ;
@@ -34144,14 +34151,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__NonVoidType__FunctionSuffixAssignment_1_2
+rule__NonVoidType__SuffixesAssignment_1_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_1_2_0()); }
-	ruleFunctionTypeOrPointerToFunctionTypeSuffix{ after(grammarAccess.getNonVoidTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_1_2_0()); }
+{ before(grammarAccess.getNonVoidTypeAccess().getSuffixesTypeSuffixParserRuleCall_1_2_0()); }
+	ruleTypeSuffix{ after(grammarAccess.getNonVoidTypeAccess().getSuffixesTypeSuffixParserRuleCall_1_2_0()); }
 )
 
 ;
@@ -34204,14 +34211,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Type__FunctionSuffixAssignment_2
+rule__Type__SuffixesAssignment_2
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_2_0()); }
-	ruleFunctionTypeOrPointerToFunctionTypeSuffix{ after(grammarAccess.getTypeAccess().getFunctionSuffixFunctionTypeOrPointerToFunctionTypeSuffixParserRuleCall_2_0()); }
+{ before(grammarAccess.getTypeAccess().getSuffixesTypeSuffixParserRuleCall_2_0()); }
+	ruleTypeSuffix{ after(grammarAccess.getTypeAccess().getSuffixesTypeSuffixParserRuleCall_2_0()); }
 )
 
 ;
@@ -34219,14 +34226,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__ContainedTypesAssignment_2_0_0
+rule__TypeSuffix__ContainedTypesAssignment_2_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); }
-	ruleParameterType{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); }
+	ruleParameterType{ after(grammarAccess.getTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_0_0()); }
 )
 
 ;
@@ -34234,14 +34241,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__ContainedTypesAssignment_2_0_1_1
+rule__TypeSuffix__ContainedTypesAssignment_2_0_1_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); }
-	ruleParameterType{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); }
+	ruleParameterType{ after(grammarAccess.getTypeSuffixAccess().getContainedTypesParameterTypeParserRuleCall_2_0_1_1_0()); }
 )
 
 ;
@@ -34249,22 +34256,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__VarargAssignment_2_0_2_1
+rule__TypeSuffix__VarargAssignment_2_0_2_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
 
 	'...' 
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
 )
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_0_2_1_0()); }
 )
 
 ;
@@ -34272,22 +34279,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__VarargAssignment_2_1
+rule__TypeSuffix__VarargAssignment_2_1
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
 
 	'...' 
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
 )
 
-{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
+{ after(grammarAccess.getTypeSuffixAccess().getVarargFullStopFullStopFullStopKeyword_2_1_0()); }
 )
 
 ;
@@ -34295,14 +34302,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionTypeOrPointerToFunctionTypeSuffix__StarsAssignment_4
+rule__TypeSuffix__StarsAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); }
-	ruleStar{ after(grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); }
+{ before(grammarAccess.getTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); }
+	ruleStar{ after(grammarAccess.getTypeSuffixAccess().getStarsStarParserRuleCall_4_0()); }
 )
 
 ;

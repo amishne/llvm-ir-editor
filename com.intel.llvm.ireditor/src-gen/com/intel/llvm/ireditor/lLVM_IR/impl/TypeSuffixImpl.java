@@ -2,10 +2,10 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
-import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterType;
 import com.intel.llvm.ireditor.lLVM_IR.Star;
+import com.intel.llvm.ireditor.lLVM_IR.TypeSuffix;
 
 import java.util.Collection;
 
@@ -25,20 +25,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Function Type Or Pointer To Function Type Suffix</b></em>'.
+ * An implementation of the model object '<em><b>Type Suffix</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl#getContainedTypes <em>Contained Types</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl#getVararg <em>Vararg</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionTypeOrPointerToFunctionTypeSuffixImpl#getStars <em>Stars</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl#getContainedTypes <em>Contained Types</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl#getVararg <em>Vararg</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeSuffixImpl#getStars <em>Stars</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjectImpl.Container implements FunctionTypeOrPointerToFunctionTypeSuffix
+public class TypeSuffixImpl extends MinimalEObjectImpl.Container implements TypeSuffix
 {
   /**
    * The cached value of the '{@link #getContainedTypes() <em>Contained Types</em>}' containment reference list.
@@ -85,7 +85,7 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
    * <!-- end-user-doc -->
    * @generated
    */
-  protected FunctionTypeOrPointerToFunctionTypeSuffixImpl()
+  protected TypeSuffixImpl()
   {
     super();
   }
@@ -98,7 +98,7 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   @Override
   protected EClass eStaticClass()
   {
-    return LLVM_IRPackage.Literals.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX;
+    return LLVM_IRPackage.Literals.TYPE_SUFFIX;
   }
 
   /**
@@ -110,7 +110,7 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     if (containedTypes == null)
     {
-      containedTypes = new EObjectContainmentEList<ParameterType>(ParameterType.class, this, LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES);
+      containedTypes = new EObjectContainmentEList<ParameterType>(ParameterType.class, this, LLVM_IRPackage.TYPE_SUFFIX__CONTAINED_TYPES);
     }
     return containedTypes;
   }
@@ -135,7 +135,7 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
     String oldVararg = vararg;
     vararg = newVararg;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG, oldVararg, vararg));
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.TYPE_SUFFIX__VARARG, oldVararg, vararg));
   }
 
   /**
@@ -147,7 +147,7 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     if (stars == null)
     {
-      stars = new EObjectContainmentEList<Star>(Star.class, this, LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS);
+      stars = new EObjectContainmentEList<Star>(Star.class, this, LLVM_IRPackage.TYPE_SUFFIX__STARS);
     }
     return stars;
   }
@@ -162,9 +162,9 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES:
+      case LLVM_IRPackage.TYPE_SUFFIX__CONTAINED_TYPES:
         return ((InternalEList<?>)getContainedTypes()).basicRemove(otherEnd, msgs);
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS:
+      case LLVM_IRPackage.TYPE_SUFFIX__STARS:
         return ((InternalEList<?>)getStars()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -180,11 +180,11 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES:
+      case LLVM_IRPackage.TYPE_SUFFIX__CONTAINED_TYPES:
         return getContainedTypes();
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG:
+      case LLVM_IRPackage.TYPE_SUFFIX__VARARG:
         return getVararg();
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS:
+      case LLVM_IRPackage.TYPE_SUFFIX__STARS:
         return getStars();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -201,14 +201,14 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES:
+      case LLVM_IRPackage.TYPE_SUFFIX__CONTAINED_TYPES:
         getContainedTypes().clear();
         getContainedTypes().addAll((Collection<? extends ParameterType>)newValue);
         return;
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG:
+      case LLVM_IRPackage.TYPE_SUFFIX__VARARG:
         setVararg((String)newValue);
         return;
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS:
+      case LLVM_IRPackage.TYPE_SUFFIX__STARS:
         getStars().clear();
         getStars().addAll((Collection<? extends Star>)newValue);
         return;
@@ -226,13 +226,13 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES:
+      case LLVM_IRPackage.TYPE_SUFFIX__CONTAINED_TYPES:
         getContainedTypes().clear();
         return;
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG:
+      case LLVM_IRPackage.TYPE_SUFFIX__VARARG:
         setVararg(VARARG_EDEFAULT);
         return;
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS:
+      case LLVM_IRPackage.TYPE_SUFFIX__STARS:
         getStars().clear();
         return;
     }
@@ -249,11 +249,11 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
   {
     switch (featureID)
     {
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__CONTAINED_TYPES:
+      case LLVM_IRPackage.TYPE_SUFFIX__CONTAINED_TYPES:
         return containedTypes != null && !containedTypes.isEmpty();
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__VARARG:
+      case LLVM_IRPackage.TYPE_SUFFIX__VARARG:
         return VARARG_EDEFAULT == null ? vararg != null : !VARARG_EDEFAULT.equals(vararg);
-      case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX__STARS:
+      case LLVM_IRPackage.TYPE_SUFFIX__STARS:
         return stars != null && !stars.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -276,4 +276,4 @@ public class FunctionTypeOrPointerToFunctionTypeSuffixImpl extends MinimalEObjec
     return result.toString();
   }
 
-} //FunctionTypeOrPointerToFunctionTypeSuffixImpl
+} //TypeSuffixImpl

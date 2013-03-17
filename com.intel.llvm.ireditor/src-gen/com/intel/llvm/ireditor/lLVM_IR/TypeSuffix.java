@@ -8,23 +8,23 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Function Type Or Pointer To Function Type Suffix</b></em>'.
+ * A representation of the model object '<em><b>Type Suffix</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getContainedTypes <em>Contained Types</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getVararg <em>Vararg</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getStars <em>Stars</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getContainedTypes <em>Contained Types</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getVararg <em>Vararg</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getStars <em>Stars</em>}</li>
  * </ul>
  * </p>
  *
- * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionTypeOrPointerToFunctionTypeSuffix()
+ * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getTypeSuffix()
  * @model
  * @generated
  */
-public interface FunctionTypeOrPointerToFunctionTypeSuffix extends EObject
+public interface TypeSuffix extends EObject
 {
   /**
    * Returns the value of the '<em><b>Contained Types</b></em>' containment reference list.
@@ -36,7 +36,7 @@ public interface FunctionTypeOrPointerToFunctionTypeSuffix extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Contained Types</em>' containment reference list.
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionTypeOrPointerToFunctionTypeSuffix_ContainedTypes()
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getTypeSuffix_ContainedTypes()
    * @model containment="true"
    * @generated
    */
@@ -52,14 +52,14 @@ public interface FunctionTypeOrPointerToFunctionTypeSuffix extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Vararg</em>' attribute.
    * @see #setVararg(String)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionTypeOrPointerToFunctionTypeSuffix_Vararg()
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getTypeSuffix_Vararg()
    * @model
    * @generated
    */
   String getVararg();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix#getVararg <em>Vararg</em>}' attribute.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.TypeSuffix#getVararg <em>Vararg</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Vararg</em>' attribute.
@@ -78,10 +78,10 @@ public interface FunctionTypeOrPointerToFunctionTypeSuffix extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Stars</em>' containment reference list.
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionTypeOrPointerToFunctionTypeSuffix_Stars()
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getTypeSuffix_Stars()
    * @model containment="true"
    * @generated
    */
   EList<Star> getStars();
 
-} // FunctionTypeOrPointerToFunctionTypeSuffix
+} // TypeSuffix

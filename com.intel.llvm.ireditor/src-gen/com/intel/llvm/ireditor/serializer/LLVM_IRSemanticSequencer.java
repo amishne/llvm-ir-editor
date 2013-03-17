@@ -31,7 +31,6 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.InlineAsm;
@@ -114,6 +113,7 @@ import com.intel.llvm.ireditor.lLVM_IR.TargetInfo;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
+import com.intel.llvm.ireditor.lLVM_IR.TypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.TypedConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 import com.intel.llvm.ireditor.lLVM_IR.Undef;
@@ -346,12 +346,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case LLVM_IRPackage.FUNCTION_REF:
 				if(context == grammarAccess.getFunctionRefRule()) {
 					sequence_FunctionRef(context, (FunctionRef) semanticObject); 
-					return; 
-				}
-				else break;
-			case LLVM_IRPackage.FUNCTION_TYPE_OR_POINTER_TO_FUNCTION_TYPE_SUFFIX:
-				if(context == grammarAccess.getFunctionTypeOrPointerToFunctionTypeSuffixRule()) {
-					sequence_FunctionTypeOrPointerToFunctionTypeSuffix(context, (FunctionTypeOrPointerToFunctionTypeSuffix) semanticObject); 
 					return; 
 				}
 				else break;
@@ -902,6 +896,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case LLVM_IRPackage.TYPE_SUFFIX:
+				if(context == grammarAccess.getTypeSuffixRule()) {
+					sequence_TypeSuffix(context, (TypeSuffix) semanticObject); 
+					return; 
+				}
+				else break;
 			case LLVM_IRPackage.TYPED_CONSTANT:
 				if(context == grammarAccess.getTypedConstantRule()) {
 					sequence_TypedConstant(context, (TypedConstant) semanticObject); 
@@ -1321,15 +1321,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getFunctionRefAccess().getRefFunctionHeaderGLOBAL_IDTerminalRuleCall_0_1(), semanticObject.getRef());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (((containedTypes+=ParameterType containedTypes+=ParameterType* vararg='...'?)? | vararg='...') stars+=Star*)
-	 */
-	protected void sequence_FunctionTypeOrPointerToFunctionTypeSuffix(EObject context, FunctionTypeOrPointerToFunctionTypeSuffix semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -2554,10 +2545,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         (baseType=VoidType functionSuffix=FunctionTypeOrPointerToFunctionTypeSuffix) | 
-	 *         (baseType=NonLeftRecursiveNonVoidType stars+=Star* functionSuffix=FunctionTypeOrPointerToFunctionTypeSuffix?)
-	 *     )
+	 *     ((baseType=VoidType suffixes+=TypeSuffix+) | (baseType=NonLeftRecursiveNonVoidType stars+=Star* suffixes+=TypeSuffix*))
 	 */
 	protected void sequence_NonVoidType(EObject context, NonVoidType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2722,7 +2710,16 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (baseType=NonLeftRecursiveType stars+=Star* functionSuffix=FunctionTypeOrPointerToFunctionTypeSuffix?)
+	 *     (((containedTypes+=ParameterType containedTypes+=ParameterType* vararg='...'?)? | vararg='...') stars+=Star*)
+	 */
+	protected void sequence_TypeSuffix(EObject context, TypeSuffix semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (baseType=NonLeftRecursiveType stars+=Star* suffixes+=TypeSuffix*)
 	 */
 	protected void sequence_Type(EObject context, Type semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

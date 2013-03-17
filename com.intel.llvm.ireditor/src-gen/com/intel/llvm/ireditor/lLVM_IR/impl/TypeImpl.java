@@ -2,11 +2,11 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
-import com.intel.llvm.ireditor.lLVM_IR.FunctionTypeOrPointerToFunctionTypeSuffix;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.NonLeftRecursiveType;
 import com.intel.llvm.ireditor.lLVM_IR.Star;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
+import com.intel.llvm.ireditor.lLVM_IR.TypeSuffix;
 
 import java.util.Collection;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeImpl#getBaseType <em>Base Type</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeImpl#getStars <em>Stars</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeImpl#getFunctionSuffix <em>Function Suffix</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.TypeImpl#getSuffixes <em>Suffixes</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,14 +62,14 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
   protected EList<Star> stars;
 
   /**
-   * The cached value of the '{@link #getFunctionSuffix() <em>Function Suffix</em>}' containment reference.
+   * The cached value of the '{@link #getSuffixes() <em>Suffixes</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getFunctionSuffix()
+   * @see #getSuffixes()
    * @generated
    * @ordered
    */
-  protected FunctionTypeOrPointerToFunctionTypeSuffix functionSuffix;
+  protected EList<TypeSuffix> suffixes;
 
   /**
    * <!-- begin-user-doc -->
@@ -159,47 +159,13 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionTypeOrPointerToFunctionTypeSuffix getFunctionSuffix()
+  public EList<TypeSuffix> getSuffixes()
   {
-    return functionSuffix;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetFunctionSuffix(FunctionTypeOrPointerToFunctionTypeSuffix newFunctionSuffix, NotificationChain msgs)
-  {
-    FunctionTypeOrPointerToFunctionTypeSuffix oldFunctionSuffix = functionSuffix;
-    functionSuffix = newFunctionSuffix;
-    if (eNotificationRequired())
+    if (suffixes == null)
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.TYPE__FUNCTION_SUFFIX, oldFunctionSuffix, newFunctionSuffix);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
+      suffixes = new EObjectContainmentEList<TypeSuffix>(TypeSuffix.class, this, LLVM_IRPackage.TYPE__SUFFIXES);
     }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setFunctionSuffix(FunctionTypeOrPointerToFunctionTypeSuffix newFunctionSuffix)
-  {
-    if (newFunctionSuffix != functionSuffix)
-    {
-      NotificationChain msgs = null;
-      if (functionSuffix != null)
-        msgs = ((InternalEObject)functionSuffix).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.TYPE__FUNCTION_SUFFIX, null, msgs);
-      if (newFunctionSuffix != null)
-        msgs = ((InternalEObject)newFunctionSuffix).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.TYPE__FUNCTION_SUFFIX, null, msgs);
-      msgs = basicSetFunctionSuffix(newFunctionSuffix, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.TYPE__FUNCTION_SUFFIX, newFunctionSuffix, newFunctionSuffix));
+    return suffixes;
   }
 
   /**
@@ -216,8 +182,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
         return basicSetBaseType(null, msgs);
       case LLVM_IRPackage.TYPE__STARS:
         return ((InternalEList<?>)getStars()).basicRemove(otherEnd, msgs);
-      case LLVM_IRPackage.TYPE__FUNCTION_SUFFIX:
-        return basicSetFunctionSuffix(null, msgs);
+      case LLVM_IRPackage.TYPE__SUFFIXES:
+        return ((InternalEList<?>)getSuffixes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -236,8 +202,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
         return getBaseType();
       case LLVM_IRPackage.TYPE__STARS:
         return getStars();
-      case LLVM_IRPackage.TYPE__FUNCTION_SUFFIX:
-        return getFunctionSuffix();
+      case LLVM_IRPackage.TYPE__SUFFIXES:
+        return getSuffixes();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -260,8 +226,9 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
         getStars().clear();
         getStars().addAll((Collection<? extends Star>)newValue);
         return;
-      case LLVM_IRPackage.TYPE__FUNCTION_SUFFIX:
-        setFunctionSuffix((FunctionTypeOrPointerToFunctionTypeSuffix)newValue);
+      case LLVM_IRPackage.TYPE__SUFFIXES:
+        getSuffixes().clear();
+        getSuffixes().addAll((Collection<? extends TypeSuffix>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -283,8 +250,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
       case LLVM_IRPackage.TYPE__STARS:
         getStars().clear();
         return;
-      case LLVM_IRPackage.TYPE__FUNCTION_SUFFIX:
-        setFunctionSuffix((FunctionTypeOrPointerToFunctionTypeSuffix)null);
+      case LLVM_IRPackage.TYPE__SUFFIXES:
+        getSuffixes().clear();
         return;
     }
     super.eUnset(featureID);
@@ -304,8 +271,8 @@ public class TypeImpl extends MinimalEObjectImpl.Container implements Type
         return baseType != null;
       case LLVM_IRPackage.TYPE__STARS:
         return stars != null && !stars.isEmpty();
-      case LLVM_IRPackage.TYPE__FUNCTION_SUFFIX:
-        return functionSuffix != null;
+      case LLVM_IRPackage.TYPE__SUFFIXES:
+        return suffixes != null && !suffixes.isEmpty();
     }
     return super.eIsSet(featureID);
   }
