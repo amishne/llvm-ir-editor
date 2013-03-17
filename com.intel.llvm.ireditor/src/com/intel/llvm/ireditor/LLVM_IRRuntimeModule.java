@@ -105,10 +105,11 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		@Override
 		public SyntaxErrorMessage getSyntaxErrorMessage(
 				IParserErrorContext context) {
-			if (context.getCurrentContext() instanceof BasicBlock) {
+			if (context.getCurrentContext() instanceof BasicBlock &&
+					context.getRecognitionException().token.getText().equals("}")) {
 				// Enhance error message for unclosed basic blocks.
 				return new SyntaxErrorMessage(super.getSyntaxErrorMessage(context).getMessage() +
-						" (did you forget a terminator instruction for " +
+						" (did you forget a terminator instruction for basic block " +
 						((BasicBlock)context.getCurrentContext()).getName() + "?)", null);
 			}
 			return super.getSyntaxErrorMessage(context);
