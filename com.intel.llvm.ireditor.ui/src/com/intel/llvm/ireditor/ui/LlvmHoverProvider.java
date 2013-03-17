@@ -7,7 +7,7 @@ modification, are permitted provided that the following conditions are met:
     * Redistributions of source code must retain the above copyright notice,
       this list of conditions and the following disclaimer.
     * Redistributions in binary form must reproduce the above copyright notice,
-      this list of conditions and the following disclaimer in the documentation
+      this list of conditions and the following disclaimer in the docProvider
       and/or other materials provided with the distribution.
     * Neither the name of Intel Corporation nor the names of its contributors
       may be used to endorse or promote products derived from this software
@@ -32,76 +32,128 @@ import org.eclipse.jface.text.IRegion;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
-import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
 
 import com.intel.llvm.ireditor.LLVM_IRUtils;
+import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_fcmp;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_icmp;
+import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
+import com.intel.llvm.ireditor.lLVM_IR.Parameter;
+import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
+import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 
 public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
-	DocProvider docProvider = new DocProvider();
+	ExtraInfoProvider extraInfoProvider = new ExtraInfoProvider();
 	ThreadLocal<IRegion> hover = new ThreadLocal<IRegion>();
+	OnChangeEvictingCache cache = new OnChangeEvictingCache();
+	HoverDocumentationProvider docProvider = new HoverDocumentationProvider();
+	HoverFirstLineProvider firstLineProvider = new HoverFirstLineProvider();
 	
-	// Sanity values for hover sizes. We don't want load load an entire 100,000-line
-	// function as a hover popup.
-	int THRESHOLD_FIRST_LINE = 500;
-	int THRESHOLD_DOCUMENTATION = 50000;
+	private class HoverFirstLineProvider extends LLVM_IRSwitch<String> {
+		@Override
+		public String caseFunctionAttributes(FunctionAttributes object) {
+			return "Function Attributes";
+		}
+		
+		@Override
+		public String caseInstruction(Instruction object) {
+			return textOf(object);
+		}
+		
+		@Override
+		public String caseLocalValue(LocalValue object) {
+			return textOf(object);
+		}
+		
+		@Override
+		public String caseGlobalValue(GlobalValue object) {
+			return textOf(object);
+		}
+		
+		@Override
+		public String caseParameter(Parameter object) {
+			return textOf(object) + "<code>  </code><b>(parameter)</b>";
+		}
+		
+		@Override
+		public String caseInstruction_icmp(Instruction_icmp object) {
+			return "Integer comparison: <b>" +
+					extraInfoProvider.getExtraInfo(object.getCondition()) + "</b>";
+		}
+		
+		@Override
+		public String caseInstruction_fcmp(Instruction_fcmp object) {
+			return "Floating-point comparison: <b>" +
+					extraInfoProvider.getExtraInfo(object.getCondition()) + "</b>";
+		}
+		
+		@Override
+		public String caseFunctionHeader(FunctionHeader object) {
+			return (object.eContainer() instanceof FunctionDecl ? "declare " : "define ") +
+					textOf(object);
+		}
+		
+		@Override
+		public String caseBasicBlock(BasicBlock object) {
+			return object.getName();
+		}
+		
+		@Override
+		public String caseTypeDef(TypeDef object) {
+			return textOf(object);
+		}
+	}
 	
-	@Override
-	protected XtextBrowserInformationControlInput getHoverInfo(
-			EObject element, IRegion hoverRegion,
-			XtextBrowserInformationControlInput previous) {
-		// Remember what we're actually hovering over - for providing
-		// documentation for rule fragments (e.g. function attributes)
-		hover.set(hoverRegion);
-		return super.getHoverInfo(element, hoverRegion, previous);
+	private class HoverDocumentationProvider extends LLVM_IRSwitch<String> {
+		@Override
+		public String caseFunctionAttributes(FunctionAttributes object) {
+			StringBuilder sb = new StringBuilder();
+			for (String s : object.getAttributes()) {
+				sb.append(String.format("<b>%s</b> - %s<br />",
+						s,
+						LLVM_IRUtils.encodeTextForHtml(extraInfoProvider.getExtraInfo(s))));
+			}
+			return sb.toString();
+		}
+		
+		@Override
+		public String caseFunctionHeader(FunctionHeader object) {
+			if (object.eContainer() instanceof FunctionDecl) return null;
+			
+			// It's a definition!
+			int headerLength = firstLineProvider.caseFunctionHeader(object).length();
+			String bodyText = textOf(object.eContainer()).substring(headerLength).trim();
+			return "<pre>" + limit(bodyText, 50000) + "</pre>";
+		}
+		
+		@Override
+		public String caseBasicBlock(BasicBlock object) {
+			return "<pre>" + limit(textOf(object).trim(), 50000) + "</pre>";
+		}
+		
 	}
 	
 	@Override
 	protected String getFirstLine(EObject o) {
-		String fulltext = getFullNodeText(o);
-		String parttext = getSubNodeText(o);
-		String result = fulltext.trim().split("\\r?\\n", 2)[0]; // Get first non-empty line
-		if (result.length() > THRESHOLD_FIRST_LINE) {
-			result = result.substring(0, THRESHOLD_FIRST_LINE) + " ... [snipped]";
-		}
-		if (docProvider.hasDoc(parttext)) {
-			result += " (" + docProvider.getType(parttext) + ")";
-		}
-		return LLVM_IRUtils.encodeTextForHtml(result);
-	};
+		String result = firstLineProvider.doSwitch(o);
+		return result != null ? result : super.getFirstLine(o);
+	}
 	
 	@Override
 	protected String getDocumentation(EObject o) {
-		String fulltext = (o instanceof FunctionHeader ?
-				getFullNodeText(o.eContainer()) :
-				getFullNodeText(o)).trim();
-		String parttext = getSubNodeText(o).trim();
-		
-		if (docProvider.hasDoc(parttext)) {
-			// This element has built-in documentation, return it
-			return "<b>" + LLVM_IRUtils.encodeTextForHtml(docProvider.getDoc(parttext)) + "</b>";
-		}
-		
-		if (fulltext.contains("\n")) {
-			// The full text has multiple lines, return it all as a documentation
-			// (but constraint the length, in case it's some huge function)
-			String result = LLVM_IRUtils.encodeCodeForHtml(
-					fulltext.split("\\r?\\n", 2)[1]);
-			if (result.length() > THRESHOLD_DOCUMENTATION) {
-				result = result.substring(0, THRESHOLD_DOCUMENTATION) + " ... [snipped]";
-			}
-			return result;
-		}
-		
-		return super.getDocumentation(o);
+		String result = docProvider.doSwitch(o);
+		return result != null ? result : super.getDocumentation(o);
 	}
 	
-	private String getSubNodeText(EObject o) {
-		INode node = NodeModelUtils.getNode(o);
-		if (node == null) return null;
-		String fulltext = node.getRootNode().getText();
-		return fulltext.substring(hover.get().getOffset(),
-				hover.get().getOffset() + hover.get().getLength());
+	@Override
+	protected boolean hasHover(EObject o) {
+		return firstLineProvider.doSwitch(o) != null;
 	}
 	
 	private String getFullNodeText(EObject o) {
@@ -110,9 +162,15 @@ public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
 		return node.getText();
 	}
 	
-	@Override
-	protected boolean hasHover(EObject o) {
-		return docProvider.hasDoc(getSubNodeText(o)) || super.hasHover(o);
+	private String textOf(EObject object) {
+		String result = getFullNodeText(object).trim();
+		if (result == null) return result;
+		return LLVM_IRUtils.encodeTextForHtml(result);
+	}
+	
+	private String limit(String s, int limit) {
+		if (s.length() <= limit) return s;
+		return s.substring(0, limit) + " ... [snipped]";
 	}
 	
 }
