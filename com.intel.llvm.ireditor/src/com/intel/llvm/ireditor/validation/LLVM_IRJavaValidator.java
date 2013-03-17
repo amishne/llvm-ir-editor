@@ -68,6 +68,7 @@ import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_add;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_atomicrmw;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_br;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_cmpxchg;
@@ -81,6 +82,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_frem;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_fsub;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_getelementptr;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_icmp;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_indirectbr;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertvalue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
@@ -196,8 +198,44 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			ResolvedType conditionType = resolveType(v);
 			checkExpected(t, conditionType, Literals.INSTRUCTION_SWITCH__CASE_CONDITIONS, index);
 		}
+		
+		// Verify none of the referred bb is the entry bb
+		for (BasicBlockRef ref : val.getDestinations()) {
+			verifyNotEntry(ref);
+		}
+		verifyNotEntry(val.getDefaultDest());
 	}
 	
+	@Check
+	public void checkBranch(Instruction_br val) {
+		BasicBlockRef bb = val.getUnconditional();
+		if (bb != null) {
+			verifyNotEntry(bb);
+		} else {
+			verifyNotEntry(val.getTrue());
+			verifyNotEntry(val.getFalse());
+			if (val.getTrue().getRef() == val.getFalse().getRef()) {
+				warning("Both true and false branch to the same basic block",
+						Literals.INSTRUCTION_BR__OPCODE);
+			}
+		}
+	}
+	
+	@Check
+	public void checkIndirectBr(Instruction_indirectbr val) {
+		for (BasicBlockRef ref : val.getDestinations()) {
+			verifyNotEntry(ref);
+		}
+	}
+	
+	private void verifyNotEntry(BasicBlockRef ref) {
+		if (ref == null) return;
+		FunctionDef def = (FunctionDef) ref.getRef().eContainer();
+		if (def.getBasicBlocks().get(0) == ref.getRef()) {
+			error("Cannot branch to entry block", ref.eContainingFeature());
+		}
+	}
+
 	@Check
 	public void checkAdd(Instruction_add inst) {
 		checkIntegerBinary(inst);
@@ -556,6 +594,8 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkAnyCall(inst.getCallee(),
 				inst.getType(),
 				inst.getArgs());
+		verifyNotEntry(inst.getToLabel());
+		verifyNotEntry(inst.getExceptionLabel());
 	}
 	
 	@Check
@@ -563,6 +603,8 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		checkAnyCall(inst.getCallee(),
 				inst.getType(),
 				inst.getArgs());
+		verifyNotEntry(inst.getToLabel());
+		verifyNotEntry(inst.getExceptionLabel());
 	}
 	
 	@Check
