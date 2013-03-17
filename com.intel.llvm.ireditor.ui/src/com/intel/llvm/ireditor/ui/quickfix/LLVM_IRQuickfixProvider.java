@@ -142,18 +142,7 @@ public class LLVM_IRQuickfixProvider extends DefaultQuickfixProvider {
 		acceptor.accept(issue, "Add function type", description, "upcase.png", new IModification() {
 			public void apply(IModificationContext context) throws BadLocationException {
 				final IXtextDocument doc = getDoc(context);
-				EObject object = findObject(doc, issue).eContainer();
-				int offset = issue.getOffset();
-				if (object instanceof Instruction_call_nonVoid) {
-					offset = NodeModelUtils.findActualNodeFor(((Instruction_call_nonVoid) object).getCallee()).getOffset();
-				} else if (object instanceof Instruction_call_void) {
-					offset = NodeModelUtils.findActualNodeFor(((Instruction_call_void) object).getCallee()).getOffset();
-				} else if (object instanceof Instruction_invoke_nonVoid) {
-					offset = NodeModelUtils.findActualNodeFor(((Instruction_invoke_nonVoid) object).getCallee()).getOffset();
-				} else if (object instanceof Instruction_invoke_void) {
-					offset = NodeModelUtils.findActualNodeFor(((Instruction_invoke_void) object).getCallee()).getOffset();
-				}
-				doc.replace(offset, 0, fType + " ");
+				doc.replace(issue.getOffset(), issue.getLength(), fType);
 			}
 		});
 	}
