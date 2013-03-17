@@ -130,5 +130,9 @@ public abstract class ResolvedType {
 	public ResolvedAnyFunctionType asFunction() {
 		throw new ClassCastException();
 	}
+	
+	public ResolvedAnyIntegerType asInteger() {
+		throw new ClassCastException();
+	}
 
 }

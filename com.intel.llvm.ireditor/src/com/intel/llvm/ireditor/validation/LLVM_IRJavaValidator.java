@@ -313,6 +313,63 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkConversion(ConversionInstruction inst) {
 		checkExpected(inst.getFromType(), inst.getValue());
+		String opc = inst.getOpcode();
+		if (opc.equals("ptrtoint")) {
+			checkRequired(inst.getFromType(), TYPE_ANY_POINTER);
+			checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
+		} else if (opc.equals("inttoptr")) {
+			checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
+			checkRequired(inst.getTargetType(), TYPE_ANY_POINTER);
+		} else if (opc.equals("trunc")) {
+			ResolvedType from = resolveType(inst.getFromType());
+			ResolvedType to = resolveType(inst.getTargetType());
+			boolean valid = checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
+			valid &= checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
+			if (valid && from.getBits().compareTo(to.getBits()) <= 0) {
+				error("Target type must be smaller than original type",
+						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			}
+		} else if (opc.equals("sext") || opc.equals("zext")) {
+			ResolvedType from = resolveType(inst.getFromType());
+			ResolvedType to = resolveType(inst.getTargetType());
+			boolean valid = checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
+			valid = checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
+			if (valid && from.getBits().compareTo(to.getBits()) > 0) {
+				error("Target type must be greater than original type",
+						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			}
+		} else if (opc.equals("bitcast")) {
+			ResolvedType from = resolveType(inst.getFromType());
+			ResolvedType to = resolveType(inst.getTargetType());
+			if (from.getBits().equals(to.getBits()) == false) {
+				warning("Types don't seem to have matching size",
+						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			}
+		} else if (opc.equals("fptrunc")) {
+			ResolvedType from = resolveType(inst.getFromType());
+			ResolvedType to = resolveType(inst.getTargetType());
+			boolean valid = checkRequired(inst.getFromType(), TYPE_FLOATING);
+			valid &= checkRequired(inst.getTargetType(), TYPE_FLOATING);
+			if (valid && from.getBits().compareTo(to.getBits()) <= 0) {
+				error("Target type must be smaller than original type",
+						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			}
+		} else if (opc.equals("fpext")) {
+			ResolvedType from = resolveType(inst.getFromType());
+			ResolvedType to = resolveType(inst.getTargetType());
+			boolean valid = checkRequired(inst.getFromType(), TYPE_FLOATING);
+			valid &= checkRequired(inst.getTargetType(), TYPE_FLOATING);
+			if (valid && from.getBits().compareTo(to.getBits()) > 0) {
+				error("Target type must be greater than original type",
+						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			}
+		} else if (opc.equals("sitofp") || opc.equals("uitofp")) {
+			checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
+			checkRequired(inst.getTargetType(), TYPE_FLOATING);
+		} else if (opc.equals("fptosi") || opc.equals("fptoui")) {
+			checkRequired(inst.getFromType(), TYPE_FLOATING);
+			checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
+		}
 	}
 	
 	@Check
@@ -954,8 +1011,8 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		}
 	}
 	
-	private void checkRequired(EObject obj, ResolvedType... types) {
-		checkRequired(resolveType(obj), obj.eContainingFeature(), 0, types);
+	private boolean checkRequired(EObject obj, ResolvedType... types) {
+		return checkRequired(resolveType(obj), obj.eContainingFeature(), 0, types);
 	}
 	
 	private boolean checkRequired(ResolvedType instType, EStructuralFeature feature, int index, ResolvedType... types) {

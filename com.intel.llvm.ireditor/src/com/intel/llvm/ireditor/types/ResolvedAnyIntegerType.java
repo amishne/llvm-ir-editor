@@ -44,4 +44,9 @@ public class ResolvedAnyIntegerType extends ResolvedType {
 		return true;
 	}
 	
+	@Override
+	public ResolvedAnyIntegerType asInteger() {
+		return this;
+	}
+	
 }

@@ -144,4 +144,9 @@ public class ResolvedNamedType extends ResolvedType {
 	public ResolvedAnyFunctionType asFunction() {
 		return referredType.asFunction();
 	}
+	
+	@Override
+	public ResolvedAnyIntegerType asInteger() {
+		return referredType.asInteger();
+	}
 }
