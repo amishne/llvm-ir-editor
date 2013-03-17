@@ -784,10 +784,22 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				return;
 			}
 			if (iter.hasNext() == false) {
+//				INode argsNode = NodeModelUtils.findActualNodeFor(args);
 				error("Expected " + p.toString() + " as next argument", args.eContainingFeature());
+//				acceptError("Expected " + p.toString() + " as next argument", args,
+//						argsNode.getOffset() + argsNode.getLength(), 1, null);
 				return;
 			}
-			checkExpected(p, resolveType(iter.next().getType()), args.eContainingFeature());
+			Argument arg = iter.next();
+			INode argNode = NodeModelUtils.findActualNodeFor(arg);
+			checkExpected(p, resolveType(arg.getType()), arg, argNode.getOffset(), argNode.getLength());
+		}
+		// Verify there are no extra args:
+		while (iter.hasNext()) {
+			Argument arg = iter.next();
+			INode argNode = NodeModelUtils.findActualNodeFor(arg);
+			acceptError("Argument found where none is expected", args,
+					argNode.getOffset(), argNode.getLength(), null);
 		}
 	}
 	
@@ -1062,6 +1074,28 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			data[i+2] = ops.get(i);
 		}
 		error("Expected " + expectedType.toString() + ", found " + actualType.toString(), feature, index, ERROR_EXPECTED_TYPE, data);
+	}
+	
+	private void checkExpected(ResolvedType expectedType, ResolvedType actualType, EObject obj,
+			int offset, int length) {
+		if (expectedType == null) {
+			acceptError("Unknown type expected", obj, offset, length, null);
+			return;
+		}
+		if (actualType.isUnknown()) {
+			acceptWarning("Cannot resolve element type", obj, offset, length, null);
+			return;
+		}
+		if (expectedType.accepts(actualType)) return;
+
+		List<String> ops = getConversionOps(actualType, expectedType);
+		String[] data = new String[ops.size()+2];
+		data[0] = expectedType.toString();
+		data[1] = actualType.toString();
+		for (int i = 0; i < ops.size(); i++) {
+			data[i+2] = ops.get(i);
+		}
+		acceptError("Expected " + expectedType.toString() + ", found " + actualType.toString(), obj, offset, length, ERROR_EXPECTED_TYPE, data);
 	}
 
 	private List<String> getConversionOps(ResolvedType from, ResolvedType to) {
