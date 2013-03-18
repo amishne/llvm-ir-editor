@@ -24,6 +24,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1;
 	protected AbstractElementAlias match_GlobalVariable_Unnamed_addrKeyword_4_q;
 	protected AbstractElementAlias match_InlineAssembler_AlignstackKeyword_2_q;
+	protected AbstractElementAlias match_InlineAssembler_InteldialectKeyword_3_q;
 	protected AbstractElementAlias match_InlineAssembler_SideeffectKeyword_1_q;
 	protected AbstractElementAlias match_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a;
 	protected AbstractElementAlias match_Instruction_ashr_ExactKeyword_1_q;
@@ -57,6 +58,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getGlobalVariableAccess().getConstantKeyword_5_0()), new TokenAlias(false, false, grammarAccess.getGlobalVariableAccess().getGlobalKeyword_5_1()));
 		match_GlobalVariable_Unnamed_addrKeyword_4_q = new TokenAlias(false, true, grammarAccess.getGlobalVariableAccess().getUnnamed_addrKeyword_4());
 		match_InlineAssembler_AlignstackKeyword_2_q = new TokenAlias(false, true, grammarAccess.getInlineAssemblerAccess().getAlignstackKeyword_2());
+		match_InlineAssembler_InteldialectKeyword_3_q = new TokenAlias(false, true, grammarAccess.getInlineAssemblerAccess().getInteldialectKeyword_3());
 		match_InlineAssembler_SideeffectKeyword_1_q = new TokenAlias(false, true, grammarAccess.getInlineAssemblerAccess().getSideeffectKeyword_1());
 		match_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getInstruction_addAccess().getNswKeyword_1_1()), new TokenAlias(false, false, grammarAccess.getInstruction_addAccess().getNuwKeyword_1_0()));
 		match_Instruction_ashr_ExactKeyword_1_q = new TokenAlias(false, true, grammarAccess.getInstruction_ashrAccess().getExactKeyword_1());
@@ -118,6 +120,8 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_GlobalVariable_Unnamed_addrKeyword_4_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_InlineAssembler_AlignstackKeyword_2_q.equals(syntax))
 				emit_InlineAssembler_AlignstackKeyword_2_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_InlineAssembler_InteldialectKeyword_3_q.equals(syntax))
+				emit_InlineAssembler_InteldialectKeyword_3_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_InlineAssembler_SideeffectKeyword_1_q.equals(syntax))
 				emit_InlineAssembler_SideeffectKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a.equals(syntax))
@@ -179,10 +183,10 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * Syntax:
 	 *     (
-	     'ppc_fp128' | 
 	     'double' | 
-	     'x86_fp80' | 
+	     'ppc_fp128' | 
 	     'half' | 
+	     'x86_fp80' | 
 	     'fp128' | 
 	     'float'
 	 )
@@ -220,6 +224,14 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'alignstack'?
 	 */
 	protected void emit_InlineAssembler_AlignstackKeyword_2_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     'inteldialect'?
+	 */
+	protected void emit_InlineAssembler_InteldialectKeyword_3_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -297,7 +309,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('signext' | 'zeroext' | 'inreg')*
+	 *     ('zeroext' | 'signext' | 'inreg')*
 	 */
 	protected void emit_Instruction_invoke_nonVoid___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -305,7 +317,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('inreg' | 'zeroext' | 'signext')*
+	 *     ('signext' | 'zeroext' | 'inreg')*
 	 */
 	protected void emit_Instruction_invoke_void___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -345,7 +357,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nsw' | 'nuw')*
+	 *     ('nuw' | 'nsw')*
 	 */
 	protected void emit_Instruction_mul___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -361,7 +373,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_shl___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

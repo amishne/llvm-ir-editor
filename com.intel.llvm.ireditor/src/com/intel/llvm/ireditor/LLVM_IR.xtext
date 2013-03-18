@@ -882,7 +882,7 @@ Callee:
 ;
 
 InlineAssembler:
-	'asm' 'sideeffect'? 'alignstack'? assembler=STRING ',' flags=STRING
+	'asm' 'sideeffect'? 'alignstack'? 'inteldialect'? assembler=STRING ',' flags=STRING
 ;
 
 

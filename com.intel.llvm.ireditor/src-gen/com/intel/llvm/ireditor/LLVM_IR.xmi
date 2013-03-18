@@ -2456,6 +2456,7 @@
       <elements xsi:type="xtext:Keyword" value="asm"/>
       <elements xsi:type="xtext:Keyword" cardinality="?" value="sideeffect"/>
       <elements xsi:type="xtext:Keyword" cardinality="?" value="alignstack"/>
+      <elements xsi:type="xtext:Keyword" cardinality="?" value="inteldialect"/>
       <elements xsi:type="xtext:Assignment" feature="assembler" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.168"/>
       </elements>

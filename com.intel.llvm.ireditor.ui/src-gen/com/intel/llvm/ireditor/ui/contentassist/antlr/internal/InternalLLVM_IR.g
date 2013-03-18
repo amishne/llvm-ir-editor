@@ -24482,9 +24482,11 @@ rule__InlineAssembler__Group__3__Impl
     }
 :
 (
-{ before(grammarAccess.getInlineAssemblerAccess().getAssemblerAssignment_3()); }
-(rule__InlineAssembler__AssemblerAssignment_3)
-{ after(grammarAccess.getInlineAssemblerAccess().getAssemblerAssignment_3()); }
+{ before(grammarAccess.getInlineAssemblerAccess().getInteldialectKeyword_3()); }
+(
+	'inteldialect' 
+)?
+{ after(grammarAccess.getInlineAssemblerAccess().getInteldialectKeyword_3()); }
 )
 
 ;
@@ -24511,11 +24513,9 @@ rule__InlineAssembler__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getInlineAssemblerAccess().getCommaKeyword_4()); }
-
-	',' 
-
-{ after(grammarAccess.getInlineAssemblerAccess().getCommaKeyword_4()); }
+{ before(grammarAccess.getInlineAssemblerAccess().getAssemblerAssignment_4()); }
+(rule__InlineAssembler__AssemblerAssignment_4)
+{ after(grammarAccess.getInlineAssemblerAccess().getAssemblerAssignment_4()); }
 )
 
 ;
@@ -24530,6 +24530,7 @@ rule__InlineAssembler__Group__5
     }
 :
 	rule__InlineAssembler__Group__5__Impl
+	rule__InlineAssembler__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -24541,15 +24542,47 @@ rule__InlineAssembler__Group__5__Impl
     }
 :
 (
-{ before(grammarAccess.getInlineAssemblerAccess().getFlagsAssignment_5()); }
-(rule__InlineAssembler__FlagsAssignment_5)
-{ after(grammarAccess.getInlineAssemblerAccess().getFlagsAssignment_5()); }
+{ before(grammarAccess.getInlineAssemblerAccess().getCommaKeyword_5()); }
+
+	',' 
+
+{ after(grammarAccess.getInlineAssemblerAccess().getCommaKeyword_5()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+rule__InlineAssembler__Group__6
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__InlineAssembler__Group__6__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__InlineAssembler__Group__6__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getInlineAssemblerAccess().getFlagsAssignment_6()); }
+(rule__InlineAssembler__FlagsAssignment_6)
+{ after(grammarAccess.getInlineAssemblerAccess().getFlagsAssignment_6()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
 
 
 
@@ -33684,14 +33717,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__InlineAssembler__AssemblerAssignment_3
+rule__InlineAssembler__AssemblerAssignment_4
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_3_0()); }
-	RULE_STRING{ after(grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_3_0()); }
+{ before(grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_4_0()); }
+	RULE_STRING{ after(grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_4_0()); }
 )
 
 ;
@@ -33699,14 +33732,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__InlineAssembler__FlagsAssignment_5
+rule__InlineAssembler__FlagsAssignment_6
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_5_0()); }
-	RULE_STRING{ after(grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_5_0()); }
+{ before(grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_6_0()); }
+	RULE_STRING{ after(grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_6_0()); }
 )
 
 ;

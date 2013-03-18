@@ -587,8 +587,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstruction_call_voidAccess().getFunctionAttributesAssignment_7(), "rule__Instruction_call_void__FunctionAttributesAssignment_7");
 					put(grammarAccess.getArgListAccess().getArgumentsAssignment_2_0(), "rule__ArgList__ArgumentsAssignment_2_0");
 					put(grammarAccess.getArgListAccess().getArgumentsAssignment_2_1_1(), "rule__ArgList__ArgumentsAssignment_2_1_1");
-					put(grammarAccess.getInlineAssemblerAccess().getAssemblerAssignment_3(), "rule__InlineAssembler__AssemblerAssignment_3");
-					put(grammarAccess.getInlineAssemblerAccess().getFlagsAssignment_5(), "rule__InlineAssembler__FlagsAssignment_5");
+					put(grammarAccess.getInlineAssemblerAccess().getAssemblerAssignment_4(), "rule__InlineAssembler__AssemblerAssignment_4");
+					put(grammarAccess.getInlineAssemblerAccess().getFlagsAssignment_6(), "rule__InlineAssembler__FlagsAssignment_6");
 					put(grammarAccess.getInstruction_va_argAccess().getOpcodeAssignment_0(), "rule__Instruction_va_arg__OpcodeAssignment_0");
 					put(grammarAccess.getInstruction_va_argAccess().getArglistAssignment_1(), "rule__Instruction_va_arg__ArglistAssignment_1");
 					put(grammarAccess.getInstruction_va_argAccess().getTypeAssignment_3(), "rule__Instruction_va_arg__TypeAssignment_3");

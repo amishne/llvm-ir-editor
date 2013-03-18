@@ -11347,11 +11347,15 @@ ruleInlineAssembler returns [EObject current=null]
     {
     	newLeafNode(otherlv_2, grammarAccess.getInlineAssemblerAccess().getAlignstackKeyword_2());
     }
+)?(	otherlv_3='inteldialect' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getInlineAssemblerAccess().getInteldialectKeyword_3());
+    }
 )?(
 (
-		lv_assembler_3_0=RULE_STRING
+		lv_assembler_4_0=RULE_STRING
 		{
-			newLeafNode(lv_assembler_3_0, grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_3_0()); 
+			newLeafNode(lv_assembler_4_0, grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_4_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -11360,20 +11364,20 @@ ruleInlineAssembler returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"assembler",
-        		lv_assembler_3_0, 
+        		lv_assembler_4_0, 
         		"STRING");
 	    }
 
 )
-)	otherlv_4=',' 
+)	otherlv_5=',' 
     {
-    	newLeafNode(otherlv_4, grammarAccess.getInlineAssemblerAccess().getCommaKeyword_4());
+    	newLeafNode(otherlv_5, grammarAccess.getInlineAssemblerAccess().getCommaKeyword_5());
     }
 (
 (
-		lv_flags_5_0=RULE_STRING
+		lv_flags_6_0=RULE_STRING
 		{
-			newLeafNode(lv_flags_5_0, grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_5_0()); 
+			newLeafNode(lv_flags_6_0, grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_6_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -11382,7 +11386,7 @@ ruleInlineAssembler returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"flags",
-        		lv_flags_5_0, 
+        		lv_flags_6_0, 
         		"STRING");
 	    }
 

@@ -1380,8 +1380,8 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_3_0(), semanticObject.getAssembler());
-		feeder.accept(grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_5_0(), semanticObject.getFlags());
+		feeder.accept(grammarAccess.getInlineAssemblerAccess().getAssemblerSTRINGTerminalRuleCall_4_0(), semanticObject.getAssembler());
+		feeder.accept(grammarAccess.getInlineAssemblerAccess().getFlagsSTRINGTerminalRuleCall_6_0(), semanticObject.getFlags());
 		feeder.finish();
 	}
 	
