@@ -33,6 +33,7 @@ public class ResolvedMetadataType extends ResolvedType {
 		return "metadata";
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedMetadataType;
 	}

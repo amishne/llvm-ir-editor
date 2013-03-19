@@ -31,10 +31,12 @@ package com.intel.llvm.ireditor.types;
  */
 public class ResolvedAnyFloatingType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "floating-point";
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedAnyFloatingType;
 	}

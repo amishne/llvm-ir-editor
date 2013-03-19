@@ -36,14 +36,17 @@ public class ResolvedIntegerType extends ResolvedAnyIntegerType {
 		this.bits = bits;
 	}
 	
+	@Override
 	public BigInteger getBits() {
 		return BigInteger.valueOf(bits);
 	}
 
+	@Override
 	public String toString() {
 		return "i" + bits;
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedIntegerType
 				&& bits == ((ResolvedIntegerType)t).bits;

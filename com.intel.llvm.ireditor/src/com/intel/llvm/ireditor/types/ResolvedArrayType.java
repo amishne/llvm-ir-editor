@@ -30,29 +30,32 @@ import java.math.BigInteger;
 
 public class ResolvedArrayType extends ResolvedAnyArrayType {
 
-	private final BigInteger size;
+	private final int size;
 
-	public ResolvedArrayType(BigInteger size, ResolvedType elementType) {
+	public ResolvedArrayType(int size, ResolvedType elementType) {
 		super(elementType);
 		this.size = size;
 	}
-	
+
+	@Override
 	public BigInteger getBits() {
-		return size.multiply(elementType.getBits());
+		return BigInteger.valueOf(size).multiply(elementType.getBits());
 	}
 	
+	@Override
 	public String toString() {
-		return "[" + size.toString() + " x " + elementType.toString() + "]";
+		return "[" + size + " x " + elementType.toString() + "]";
 	}
 	
-	public ResolvedType getContainedType(BigInteger index) {
-		assert (index.compareTo(size) < 0);
+	@Override
+	public ResolvedType getContainedType(int index) {
+		assert (index < size);
 		return elementType;
 	}
 
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedArrayType
-				&& size.equals(((ResolvedArrayType)t).size)
+				&& size == ((ResolvedArrayType)t).size
 				&& elementType.accepts(t.getContainedType(0));
 	}
 	

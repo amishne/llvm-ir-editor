@@ -28,10 +28,12 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedVarargType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "...";
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedVarargType;
 	}

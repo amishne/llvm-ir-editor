@@ -28,10 +28,12 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedUnknownType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "unknown";
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return false;
 	}

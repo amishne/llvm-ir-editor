@@ -37,16 +37,19 @@ public class ResolvedPointerType extends ResolvedType {
 		this.addrSpace = addrSpace;
 	}
 
+	@Override
 	public String toString() {
 		return pointedType.toString() + (addrSpace.equals(BigInteger.ZERO) ?
 				"" : " addrspace(" + addrSpace.toString() + ")") + "*";
 	}
 	
+	@Override
 	public ResolvedType getContainedType(int index) {
 		assert(index == 0);
 		return pointedType;
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedPointerType
 				&& addrSpace.equals(((ResolvedPointerType)t).addrSpace)

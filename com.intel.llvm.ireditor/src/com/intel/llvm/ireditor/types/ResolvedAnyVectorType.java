@@ -37,14 +37,17 @@ public class ResolvedAnyVectorType extends ResolvedType {
 		this.elementType = elementType;
 	}
 	
+	@Override
 	public String toString() {
 		return "<n x " + elementType.toString() + ">";
 	}
 	
+	@Override
 	public ResolvedType getContainedType(int index) {
 		return elementType;
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedAnyVectorType
 				&& elementType.accepts(t.getContainedType(0));

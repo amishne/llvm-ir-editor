@@ -38,14 +38,17 @@ public class ResolvedFloatingType extends ResolvedAnyFloatingType {
 		this.bits = bits;
 	}
 
+	@Override
 	public String toString() {
 		return typeStr;
 	}
 
+	@Override
 	public BigInteger getBits() {
 		return BigInteger.valueOf(bits);
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedFloatingType
 				&& typeStr.equals(((ResolvedFloatingType)t).typeStr);

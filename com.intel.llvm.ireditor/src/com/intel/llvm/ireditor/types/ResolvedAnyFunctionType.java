@@ -33,10 +33,12 @@ import java.util.Collections;
  */
 public class ResolvedAnyFunctionType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "function";
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedAnyFunctionType;
 	}

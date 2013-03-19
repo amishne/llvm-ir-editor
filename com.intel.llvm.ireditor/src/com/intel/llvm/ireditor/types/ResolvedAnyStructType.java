@@ -31,14 +31,17 @@ package com.intel.llvm.ireditor.types;
  */
 public class ResolvedAnyStructType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "struct";
 	}
 	
+	@Override
 	public ResolvedType getContainedType(int index) {
 		return new ResolvedAnyType();
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedAnyStructType;
 	}

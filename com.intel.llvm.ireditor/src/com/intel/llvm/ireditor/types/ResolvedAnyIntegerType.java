@@ -31,10 +31,12 @@ package com.intel.llvm.ireditor.types;
  */
 public class ResolvedAnyIntegerType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "integer";
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedAnyIntegerType;
 	}

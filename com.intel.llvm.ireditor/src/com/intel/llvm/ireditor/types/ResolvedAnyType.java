@@ -28,14 +28,17 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedAnyType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "any";
 	}
 	
+	@Override
 	public ResolvedType getContainedType(int index) {
 		return this;
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return true;
 	}

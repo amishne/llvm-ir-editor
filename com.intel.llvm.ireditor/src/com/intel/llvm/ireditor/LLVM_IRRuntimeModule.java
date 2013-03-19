@@ -106,6 +106,8 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 		public SyntaxErrorMessage getSyntaxErrorMessage(
 				IParserErrorContext context) {
 			if (context.getCurrentContext() instanceof BasicBlock &&
+					context.getRecognitionException() != null &&
+					context.getRecognitionException().token.getText() != null &&
 					context.getRecognitionException().token.getText().equals("}")) {
 				// Enhance error message for unclosed basic blocks.
 				return new SyntaxErrorMessage(super.getSyntaxErrorMessage(context).getMessage() +

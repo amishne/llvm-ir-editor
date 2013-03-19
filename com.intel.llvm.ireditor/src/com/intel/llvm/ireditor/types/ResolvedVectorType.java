@@ -29,33 +29,37 @@ package com.intel.llvm.ireditor.types;
 import java.math.BigInteger;
 
 public class ResolvedVectorType extends ResolvedAnyVectorType {
-	private final BigInteger size;
+	private final int size;
 	
-	public ResolvedVectorType(BigInteger size, ResolvedType elementType) {
+	public ResolvedVectorType(int size, ResolvedType elementType) {
 		super(elementType);
 		this.size = size;
 	}
 
+	@Override
 	public BigInteger getBits() {
-		return size.multiply(elementType.getBits());
+		return BigInteger.valueOf(size).multiply(elementType.getBits());
 	}
 	
+	@Override
 	public String toString() {
 		return "<" + size + " x " + elementType.toString() + ">";
 	}
 	
-	public ResolvedType getContainedType(BigInteger index) {
-		assert (index.compareTo(size) < 0);
+	@Override
+	public ResolvedType getContainedType(int index) {
+		assert (index < size);
 		return elementType;
 	}
 	
-	public BigInteger getSize() {
+	public int getSize() {
 		return size;
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedVectorType
-				&& size.equals(((ResolvedVectorType)t).size)
+				&& size == ((ResolvedVectorType)t).size
 				&& elementType.accepts(t.getContainedType(0)); 
 	}
 	

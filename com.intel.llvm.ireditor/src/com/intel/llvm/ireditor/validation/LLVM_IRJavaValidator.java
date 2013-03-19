@@ -313,62 +313,106 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkConversion(ConversionInstruction inst) {
 		checkExpected(inst.getFromType(), inst.getValue());
+		
+		// The below checks seem to have some duplication, but I could not find
+		// an elegant way to generalize them.
 		String opc = inst.getOpcode();
+		Type from = inst.getFromType();
+		Type to = inst.getTargetType();
+		ResolvedType fromType = resolveType(from);
+		ResolvedType toType = resolveType(to);
+		EStructuralFeature fromFeature = Literals.CONVERSION_INSTRUCTION__FROM_TYPE;
+		EStructuralFeature toFeature = Literals.CONVERSION_INSTRUCTION__TARGET_TYPE;
 		if (opc.equals("ptrtoint")) {
-			checkRequired(inst.getFromType(), TYPE_ANY_POINTER);
-			checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
+			if (TYPE_ANY_POINTER.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0, TYPE_ANY_INTEGER);
+			} else if (TYPE_POINTER_VECTOR.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_ANY_INTEGER));
+			} else {
+				error("ptrtoint can only convert from pointer or pointer vector", fromFeature);
+			}
 		} else if (opc.equals("inttoptr")) {
-			checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
-			checkRequired(inst.getTargetType(), TYPE_ANY_POINTER);
+			if (TYPE_ANY_INTEGER.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0, TYPE_ANY_POINTER);
+			} else if (TYPE_INTEGER_VECTOR.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_ANY_POINTER));
+			} else {
+				error("inttoptr can only convert from integer or integer vector", fromFeature);
+			}
 		} else if (opc.equals("trunc")) {
-			ResolvedType from = resolveType(inst.getFromType());
-			ResolvedType to = resolveType(inst.getTargetType());
-			boolean valid = checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
-			valid &= checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
-			if (valid && from.getBits().compareTo(to.getBits()) <= 0) {
-				error("Target type must be smaller than original type",
-						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			if (TYPE_ANY_INTEGER.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0, TYPE_ANY_INTEGER);
+				if (valid && fromType.getBits().compareTo(toType.getBits()) <= 0) {
+					error("Target type must be smaller than original type", toFeature);
+				}
+			} else if (TYPE_INTEGER_VECTOR.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_ANY_INTEGER));
+				if (valid && fromType.getContainedType(0).getBits().compareTo(
+						toType.getContainedType(0).getBits()) <= 0) {
+					error("Target type must be smaller than original type", toFeature);
+				}
+			} else {
+				error("trunc can only convert from integer or integer vector", fromFeature);
 			}
 		} else if (opc.equals("sext") || opc.equals("zext")) {
-			ResolvedType from = resolveType(inst.getFromType());
-			ResolvedType to = resolveType(inst.getTargetType());
-			boolean valid = checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
-			valid = checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
-			if (valid && from.getBits().compareTo(to.getBits()) > 0) {
-				error("Target type must be greater than original type",
-						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			if (TYPE_ANY_INTEGER.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0, TYPE_ANY_INTEGER);
+				if (valid && fromType.getBits().compareTo(toType.getBits()) >= 0) {
+					error("Target type must be larger than original type", toFeature);
+				}
+			} else if (TYPE_INTEGER_VECTOR.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_ANY_INTEGER));
+				if (valid && fromType.getContainedType(0).getBits().compareTo(
+						toType.getContainedType(0).getBits()) >= 0) {
+					error("Target type must be larger than original type", toFeature);
+				}
+			} else {
+				error(opc + " can only convert from integer or integer vector", fromFeature);
 			}
 		} else if (opc.equals("bitcast")) {
-			ResolvedType from = resolveType(inst.getFromType());
-			ResolvedType to = resolveType(inst.getTargetType());
-			if (from.getBits().equals(to.getBits()) == false) {
-				warning("Types don't seem to have matching size",
-						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			if (fromType.getBits().equals(toType.getBits()) == false) {
+				warning("Bitcast types don't seem to have matching size", toFeature);
 			}
 		} else if (opc.equals("fptrunc")) {
-			ResolvedType from = resolveType(inst.getFromType());
-			ResolvedType to = resolveType(inst.getTargetType());
-			boolean valid = checkRequired(inst.getFromType(), TYPE_FLOATING);
-			valid &= checkRequired(inst.getTargetType(), TYPE_FLOATING);
-			if (valid && from.getBits().compareTo(to.getBits()) <= 0) {
-				error("Target type must be smaller than original type",
-						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			if (TYPE_FLOATING.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0, TYPE_FLOATING);
+				if (valid && fromType.getBits().compareTo(toType.getBits()) <= 0) {
+					error("Target type must be smaller than original type", toFeature);
+				}
+			} else {
+				error("fptrunc can only convert from floating-point type", fromFeature);
 			}
 		} else if (opc.equals("fpext")) {
-			ResolvedType from = resolveType(inst.getFromType());
-			ResolvedType to = resolveType(inst.getTargetType());
-			boolean valid = checkRequired(inst.getFromType(), TYPE_FLOATING);
-			valid &= checkRequired(inst.getTargetType(), TYPE_FLOATING);
-			if (valid && from.getBits().compareTo(to.getBits()) > 0) {
-				error("Target type must be greater than original type",
-						Literals.CONVERSION_INSTRUCTION__TARGET_TYPE);
+			if (TYPE_FLOATING.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0, TYPE_FLOATING);
+				if (valid && fromType.getBits().compareTo(toType.getBits()) >= 0) {
+					error("Target type must be larger than original type", toFeature);
+				}
+			} else {
+				error("fpext can only convert from floating-point type", fromFeature);
 			}
 		} else if (opc.equals("sitofp") || opc.equals("uitofp")) {
-			checkRequired(inst.getFromType(), TYPE_ANY_INTEGER);
-			checkRequired(inst.getTargetType(), TYPE_FLOATING);
+			if (TYPE_ANY_INTEGER.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0, TYPE_FLOATING);
+			} else if (TYPE_INTEGER_VECTOR.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_FLOATING));
+			} else {
+				error(opc + " can only convert from integer or integer vector", fromFeature);
+			}
 		} else if (opc.equals("fptosi") || opc.equals("fptoui")) {
-			checkRequired(inst.getFromType(), TYPE_FLOATING);
-			checkRequired(inst.getTargetType(), TYPE_ANY_INTEGER);
+			if (TYPE_FLOATING.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0, TYPE_ANY_INTEGER);
+			} else if (TYPE_FLOATING_VECTOR.accepts(fromType)) {
+				checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_ANY_INTEGER));
+			} else {
+				error(opc + " can only convert from floating-point or floating-point vector", fromFeature);
+			}
 		}
 	}
 	
@@ -463,7 +507,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		}
 
 		// Verify the size of the (single) index is identical to the base size
-		if (indexType.asVector().getSize().equals(baseType.asVector().getSize()) == false) {
+		if (indexType.asVector().getSize() != baseType.asVector().getSize()) {
 			error("The index of a GEP instruction with pointer vector base must be the same size as the base",
 					Literals.INSTRUCTION_GETELEMENTPTR__INDICES);
 			return false;
@@ -617,7 +661,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (condType.isVector()) {
 			checkRequired(condType, Literals.INSTRUCTION_SELECT__CONDITION, 0, TYPE_BOOLEAN_VECTOR);
 			// This is a vector select
-			if (condType.asVector().getSize().equals(type.asVector().getSize()) == false) {
+			if (condType.asVector().getSize() != type.asVector().getSize()) {
 				error("Select condition must be the same size as select values", Literals.INSTRUCTION_SELECT__CONDITION);
 			}
 		} else {
@@ -1029,7 +1073,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	
 	private boolean checkRequired(ResolvedType instType, EStructuralFeature feature, int index, ResolvedType... types) {
 		if (instType == null) {
-			error("Unknown type expected", feature);
+			warning("Unknown type expected", feature);
 			return false;
 		}
 		if (instType.isUnknown()) {

@@ -51,6 +51,7 @@ public class ResolvedNamedType extends ResolvedType {
 		return referredType.getContainedType(index);
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		if (t instanceof ResolvedNamedType && name.equals(t.toString())) {
 			// Same name means same type

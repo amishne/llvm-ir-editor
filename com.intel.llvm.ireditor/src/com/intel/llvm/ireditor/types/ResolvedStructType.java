@@ -40,12 +40,14 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 		this.fromLiteral = fromLiteral;
 	}
 	
+	@Override
 	public BigInteger getBits() {
 		BigInteger result = BigInteger.ZERO;
 		for (ResolvedType t : fieldTypes) result = result.add(t.getBits());
 		return result;
 	}
 	
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		if (packed) sb.append("<");
@@ -59,11 +61,13 @@ public class ResolvedStructType extends ResolvedAnyStructType {
 		return sb.toString();
 	}
 
+	@Override
 	public ResolvedType getContainedType(int index) {
 		if (index >= fieldTypes.size()) return null;
 		return fieldTypes.get(index);
 	}
 	
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedStructType
 				&& packed == ((ResolvedStructType)t).packed

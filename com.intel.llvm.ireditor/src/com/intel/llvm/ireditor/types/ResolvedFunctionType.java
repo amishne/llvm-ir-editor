@@ -36,7 +36,8 @@ public class ResolvedFunctionType extends ResolvedAnyFunctionType {
 		this.retType = rettype;
 		this.paramTypes = paramTypes;
 	}
-	
+
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append(retType.toString());
@@ -58,10 +59,12 @@ public class ResolvedFunctionType extends ResolvedAnyFunctionType {
 				&& listAccepts(paramTypes, ((ResolvedFunctionType)t).paramTypes);
 	}
 
+	@Override
 	public ResolvedType getReturnType() {
 		return retType;
 	}
 
+	@Override
 	public Iterable<? extends ResolvedType> getParameters() {
 		return paramTypes;
 	}

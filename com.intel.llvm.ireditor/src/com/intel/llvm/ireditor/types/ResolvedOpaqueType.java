@@ -29,10 +29,12 @@ package com.intel.llvm.ireditor.types;
 
 public class ResolvedOpaqueType extends ResolvedType {
 
+	@Override
 	public String toString() {
 		return "opaque";
 	}
 
+	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedOpaqueType;
 	}

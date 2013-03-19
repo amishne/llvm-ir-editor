@@ -250,12 +250,12 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	
 	@Override
 	public ResolvedVectorType caseVectorType(VectorType object) {
-		return new ResolvedVectorType(atoi(object.getSize()), resolve(object.getElemType()));
+		return new ResolvedVectorType(atoi(object.getSize()).intValue(), resolve(object.getElemType()));
 	}
 	
 	@Override
 	public ResolvedArrayType caseArrayType(ArrayType object) {
-		return new ResolvedArrayType(atoi(object.getSize()), resolve(object.getElemType()));
+		return new ResolvedArrayType(atoi(object.getSize()).intValue(), resolve(object.getElemType()));
 	}
 	
 	@Override
@@ -385,13 +385,13 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	@Override
 	public ResolvedVectorType caseVectorConstant(VectorConstant object) {
 		EList<TypedConstant> values = object.getList().getTypedConstants();
-		return new ResolvedVectorType(BigInteger.valueOf(values.size()), resolve(values.get(0).getType()));
+		return new ResolvedVectorType(BigInteger.valueOf(values.size()).intValue(), resolve(values.get(0).getType()));
 	}
 	
 	@Override
 	public ResolvedArrayType caseArrayConstant(ArrayConstant object) {
 		EList<TypedConstant> values = object.getList().getTypedConstants();
-		return new ResolvedArrayType(BigInteger.valueOf(values.size()), resolve(values.get(0).getType()));
+		return new ResolvedArrayType(BigInteger.valueOf(values.size()).intValue(), resolve(values.get(0).getType()));
 	}
 	
 	@Override
