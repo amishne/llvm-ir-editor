@@ -64,10 +64,6 @@ GlobalValueRef:
 	metadata=MetadataRef
 ;
 
-FunctionRef:
-	ref=[FunctionHeader|GLOBAL_ID]
-;
-
 LocalValueRef:
 	ref=[LocalValue|LOCAL_ID]
 ;
@@ -221,7 +217,7 @@ Undef:
 ;
 
 BlockAddress:
-	'blockaddress' '(' function=FunctionRef ',' basicBlock=BasicBlockRef ')'
+	'blockaddress' '(' function=GlobalValueRef ',' basicBlock=BasicBlockRef ')'
 ;
 
 ZeroInitializer:
@@ -896,8 +892,7 @@ Instruction_va_arg:
 // <clause> := catch <type> <value>
 // <clause> := filter <array constant type> <array constant>
 Instruction_landingpad:
-	opcode='landingpad' resultType=Type 'personality' personalityType=Type
-	personalityFunction=FunctionRef
+	opcode='landingpad' resultType=Type 'personality' personality=TypedValue
 	(clauses+=LandingpadClause | 'cleanup')
 	clauses+=LandingpadClause*
 ;

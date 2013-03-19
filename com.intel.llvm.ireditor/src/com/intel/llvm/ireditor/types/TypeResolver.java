@@ -57,7 +57,6 @@ import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_select;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_alloca;
@@ -342,11 +341,6 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 		}
 		if (object.getParameters().getVararg() != null) paramTypes.add(TYPE_VARARG);
 		return new ResolvedPointerType(new ResolvedFunctionType(rettype, paramTypes), BigInteger.ZERO);
-	}
-	
-	@Override
-	public ResolvedPointerType caseFunctionRef(FunctionRef object) {
-		return new ResolvedPointerType(resolve(object.getRef()), BigInteger.ZERO);
 	}
 	
 	@Override

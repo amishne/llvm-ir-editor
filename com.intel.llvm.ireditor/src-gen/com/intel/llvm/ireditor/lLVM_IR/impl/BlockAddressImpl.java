@@ -4,7 +4,7 @@ package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.BlockAddress;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
+import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -39,7 +39,7 @@ public class BlockAddressImpl extends ConstantImpl implements BlockAddress
    * @generated
    * @ordered
    */
-  protected FunctionRef function;
+  protected GlobalValueRef function;
 
   /**
    * The cached value of the '{@link #getBasicBlock() <em>Basic Block</em>}' containment reference.
@@ -77,7 +77,7 @@ public class BlockAddressImpl extends ConstantImpl implements BlockAddress
    * <!-- end-user-doc -->
    * @generated
    */
-  public FunctionRef getFunction()
+  public GlobalValueRef getFunction()
   {
     return function;
   }
@@ -87,9 +87,9 @@ public class BlockAddressImpl extends ConstantImpl implements BlockAddress
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetFunction(FunctionRef newFunction, NotificationChain msgs)
+  public NotificationChain basicSetFunction(GlobalValueRef newFunction, NotificationChain msgs)
   {
-    FunctionRef oldFunction = function;
+    GlobalValueRef oldFunction = function;
     function = newFunction;
     if (eNotificationRequired())
     {
@@ -104,7 +104,7 @@ public class BlockAddressImpl extends ConstantImpl implements BlockAddress
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFunction(FunctionRef newFunction)
+  public void setFunction(GlobalValueRef newFunction)
   {
     if (newFunction != function)
     {
@@ -215,7 +215,7 @@ public class BlockAddressImpl extends ConstantImpl implements BlockAddress
     switch (featureID)
     {
       case LLVM_IRPackage.BLOCK_ADDRESS__FUNCTION:
-        setFunction((FunctionRef)newValue);
+        setFunction((GlobalValueRef)newValue);
         return;
       case LLVM_IRPackage.BLOCK_ADDRESS__BASIC_BLOCK:
         setBasicBlock((BasicBlockRef)newValue);
@@ -235,7 +235,7 @@ public class BlockAddressImpl extends ConstantImpl implements BlockAddress
     switch (featureID)
     {
       case LLVM_IRPackage.BLOCK_ADDRESS__FUNCTION:
-        setFunction((FunctionRef)null);
+        setFunction((GlobalValueRef)null);
         return;
       case LLVM_IRPackage.BLOCK_ADDRESS__BASIC_BLOCK:
         setBasicBlock((BasicBlockRef)null);

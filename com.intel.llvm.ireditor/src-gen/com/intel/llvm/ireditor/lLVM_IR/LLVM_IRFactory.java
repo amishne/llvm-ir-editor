@@ -77,15 +77,6 @@ public interface LLVM_IRFactory extends EFactory
   GlobalValueRef createGlobalValueRef();
 
   /**
-   * Returns a new object of class '<em>Function Ref</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Function Ref</em>'.
-   * @generated
-   */
-  FunctionRef createFunctionRef();
-
-  /**
    * Returns a new object of class '<em>Local Value Ref</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -13,8 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getResultType <em>Result Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getPersonalityType <em>Personality Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getPersonalityFunction <em>Personality Function</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getPersonality <em>Personality</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getClauses <em>Clauses</em>}</li>
  * </ul>
  * </p>
@@ -52,56 +51,30 @@ public interface Instruction_landingpad extends OtherInstruction
   void setResultType(Type value);
 
   /**
-   * Returns the value of the '<em><b>Personality Type</b></em>' containment reference.
+   * Returns the value of the '<em><b>Personality</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Personality Type</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Personality</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Personality Type</em>' containment reference.
-   * @see #setPersonalityType(Type)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_landingpad_PersonalityType()
+   * @return the value of the '<em>Personality</em>' containment reference.
+   * @see #setPersonality(TypedValue)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_landingpad_Personality()
    * @model containment="true"
    * @generated
    */
-  Type getPersonalityType();
+  TypedValue getPersonality();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getPersonalityType <em>Personality Type</em>}' containment reference.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getPersonality <em>Personality</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Personality Type</em>' containment reference.
-   * @see #getPersonalityType()
+   * @param value the new value of the '<em>Personality</em>' containment reference.
+   * @see #getPersonality()
    * @generated
    */
-  void setPersonalityType(Type value);
-
-  /**
-   * Returns the value of the '<em><b>Personality Function</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Personality Function</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Personality Function</em>' containment reference.
-   * @see #setPersonalityFunction(FunctionRef)
-   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_landingpad_PersonalityFunction()
-   * @model containment="true"
-   * @generated
-   */
-  FunctionRef getPersonalityFunction();
-
-  /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad#getPersonalityFunction <em>Personality Function</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Personality Function</em>' containment reference.
-   * @see #getPersonalityFunction()
-   * @generated
-   */
-  void setPersonalityFunction(FunctionRef value);
+  void setPersonality(TypedValue value);
 
   /**
    * Returns the value of the '<em><b>Clauses</b></em>' containment reference list.

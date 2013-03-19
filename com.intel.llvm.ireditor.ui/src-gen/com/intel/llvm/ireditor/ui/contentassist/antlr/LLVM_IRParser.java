@@ -79,7 +79,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getIcmpConditionAccess().getAlternatives(), "rule__IcmpCondition__Alternatives");
 					put(grammarAccess.getFcmpConditionAccess().getAlternatives(), "rule__FcmpCondition__Alternatives");
 					put(grammarAccess.getCalleeAccess().getAlternatives(), "rule__Callee__Alternatives");
-					put(grammarAccess.getInstruction_landingpadAccess().getAlternatives_5(), "rule__Instruction_landingpad__Alternatives_5");
+					put(grammarAccess.getInstruction_landingpadAccess().getAlternatives_4(), "rule__Instruction_landingpad__Alternatives_4");
 					put(grammarAccess.getLandingpadClauseAccess().getAlternatives(), "rule__LandingpadClause__Alternatives");
 					put(grammarAccess.getOrderingAccess().getAlternatives(), "rule__Ordering__Alternatives");
 					put(grammarAccess.getParameterAttributeAccess().getAlternatives(), "rule__ParameterAttribute__Alternatives");
@@ -266,7 +266,6 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetadataRefAccess().getRefAssignment(), "rule__MetadataRef__RefAssignment");
 					put(grammarAccess.getGlobalValueRefAccess().getConstantAssignment_0(), "rule__GlobalValueRef__ConstantAssignment_0");
 					put(grammarAccess.getGlobalValueRefAccess().getMetadataAssignment_1(), "rule__GlobalValueRef__MetadataAssignment_1");
-					put(grammarAccess.getFunctionRefAccess().getRefAssignment(), "rule__FunctionRef__RefAssignment");
 					put(grammarAccess.getLocalValueRefAccess().getRefAssignment(), "rule__LocalValueRef__RefAssignment");
 					put(grammarAccess.getAliasAccess().getNameAssignment_0(), "rule__Alias__NameAssignment_0");
 					put(grammarAccess.getAliasAccess().getLinkageAssignment_2(), "rule__Alias__LinkageAssignment_2");
@@ -594,10 +593,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstruction_va_argAccess().getTypeAssignment_3(), "rule__Instruction_va_arg__TypeAssignment_3");
 					put(grammarAccess.getInstruction_landingpadAccess().getOpcodeAssignment_0(), "rule__Instruction_landingpad__OpcodeAssignment_0");
 					put(grammarAccess.getInstruction_landingpadAccess().getResultTypeAssignment_1(), "rule__Instruction_landingpad__ResultTypeAssignment_1");
-					put(grammarAccess.getInstruction_landingpadAccess().getPersonalityTypeAssignment_3(), "rule__Instruction_landingpad__PersonalityTypeAssignment_3");
-					put(grammarAccess.getInstruction_landingpadAccess().getPersonalityFunctionAssignment_4(), "rule__Instruction_landingpad__PersonalityFunctionAssignment_4");
-					put(grammarAccess.getInstruction_landingpadAccess().getClausesAssignment_5_0(), "rule__Instruction_landingpad__ClausesAssignment_5_0");
-					put(grammarAccess.getInstruction_landingpadAccess().getClausesAssignment_6(), "rule__Instruction_landingpad__ClausesAssignment_6");
+					put(grammarAccess.getInstruction_landingpadAccess().getPersonalityAssignment_3(), "rule__Instruction_landingpad__PersonalityAssignment_3");
+					put(grammarAccess.getInstruction_landingpadAccess().getClausesAssignment_4_0(), "rule__Instruction_landingpad__ClausesAssignment_4_0");
+					put(grammarAccess.getInstruction_landingpadAccess().getClausesAssignment_5(), "rule__Instruction_landingpad__ClausesAssignment_5");
 					put(grammarAccess.getLandingpadClauseAccess().getLandingPadTypeAssignment_0_0(), "rule__LandingpadClause__LandingPadTypeAssignment_0_0");
 					put(grammarAccess.getLandingpadClauseAccess().getCatchTypeAssignment_0_1(), "rule__LandingpadClause__CatchTypeAssignment_0_1");
 					put(grammarAccess.getLandingpadClauseAccess().getLandingPadTypeAssignment_1_0(), "rule__LandingpadClause__LandingPadTypeAssignment_1_0");

@@ -2,11 +2,11 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
-import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.LandingpadClause;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
+import com.intel.llvm.ireditor.lLVM_IR.TypedValue;
 
 import java.util.Collection;
 
@@ -31,8 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_landingpadImpl#getResultType <em>Result Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_landingpadImpl#getPersonalityType <em>Personality Type</em>}</li>
- *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_landingpadImpl#getPersonalityFunction <em>Personality Function</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_landingpadImpl#getPersonality <em>Personality</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_landingpadImpl#getClauses <em>Clauses</em>}</li>
  * </ul>
  * </p>
@@ -52,24 +51,14 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
   protected Type resultType;
 
   /**
-   * The cached value of the '{@link #getPersonalityType() <em>Personality Type</em>}' containment reference.
+   * The cached value of the '{@link #getPersonality() <em>Personality</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getPersonalityType()
+   * @see #getPersonality()
    * @generated
    * @ordered
    */
-  protected Type personalityType;
-
-  /**
-   * The cached value of the '{@link #getPersonalityFunction() <em>Personality Function</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPersonalityFunction()
-   * @generated
-   * @ordered
-   */
-  protected FunctionRef personalityFunction;
+  protected TypedValue personality;
 
   /**
    * The cached value of the '{@link #getClauses() <em>Clauses</em>}' containment reference list.
@@ -155,9 +144,9 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getPersonalityType()
+  public TypedValue getPersonality()
   {
-    return personalityType;
+    return personality;
   }
 
   /**
@@ -165,13 +154,13 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPersonalityType(Type newPersonalityType, NotificationChain msgs)
+  public NotificationChain basicSetPersonality(TypedValue newPersonality, NotificationChain msgs)
   {
-    Type oldPersonalityType = personalityType;
-    personalityType = newPersonalityType;
+    TypedValue oldPersonality = personality;
+    personality = newPersonality;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE, oldPersonalityType, newPersonalityType);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY, oldPersonality, newPersonality);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -182,68 +171,20 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPersonalityType(Type newPersonalityType)
+  public void setPersonality(TypedValue newPersonality)
   {
-    if (newPersonalityType != personalityType)
+    if (newPersonality != personality)
     {
       NotificationChain msgs = null;
-      if (personalityType != null)
-        msgs = ((InternalEObject)personalityType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE, null, msgs);
-      if (newPersonalityType != null)
-        msgs = ((InternalEObject)newPersonalityType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE, null, msgs);
-      msgs = basicSetPersonalityType(newPersonalityType, msgs);
+      if (personality != null)
+        msgs = ((InternalEObject)personality).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY, null, msgs);
+      if (newPersonality != null)
+        msgs = ((InternalEObject)newPersonality).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY, null, msgs);
+      msgs = basicSetPersonality(newPersonality, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE, newPersonalityType, newPersonalityType));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FunctionRef getPersonalityFunction()
-  {
-    return personalityFunction;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetPersonalityFunction(FunctionRef newPersonalityFunction, NotificationChain msgs)
-  {
-    FunctionRef oldPersonalityFunction = personalityFunction;
-    personalityFunction = newPersonalityFunction;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION, oldPersonalityFunction, newPersonalityFunction);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setPersonalityFunction(FunctionRef newPersonalityFunction)
-  {
-    if (newPersonalityFunction != personalityFunction)
-    {
-      NotificationChain msgs = null;
-      if (personalityFunction != null)
-        msgs = ((InternalEObject)personalityFunction).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION, null, msgs);
-      if (newPersonalityFunction != null)
-        msgs = ((InternalEObject)newPersonalityFunction).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION, null, msgs);
-      msgs = basicSetPersonalityFunction(newPersonalityFunction, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION, newPersonalityFunction, newPersonalityFunction));
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY, newPersonality, newPersonality));
   }
 
   /**
@@ -272,10 +213,8 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
     {
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__RESULT_TYPE:
         return basicSetResultType(null, msgs);
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE:
-        return basicSetPersonalityType(null, msgs);
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION:
-        return basicSetPersonalityFunction(null, msgs);
+      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY:
+        return basicSetPersonality(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__CLAUSES:
         return ((InternalEList<?>)getClauses()).basicRemove(otherEnd, msgs);
     }
@@ -294,10 +233,8 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
     {
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__RESULT_TYPE:
         return getResultType();
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE:
-        return getPersonalityType();
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION:
-        return getPersonalityFunction();
+      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY:
+        return getPersonality();
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__CLAUSES:
         return getClauses();
     }
@@ -318,11 +255,8 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__RESULT_TYPE:
         setResultType((Type)newValue);
         return;
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE:
-        setPersonalityType((Type)newValue);
-        return;
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION:
-        setPersonalityFunction((FunctionRef)newValue);
+      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY:
+        setPersonality((TypedValue)newValue);
         return;
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__CLAUSES:
         getClauses().clear();
@@ -345,11 +279,8 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__RESULT_TYPE:
         setResultType((Type)null);
         return;
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE:
-        setPersonalityType((Type)null);
-        return;
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION:
-        setPersonalityFunction((FunctionRef)null);
+      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY:
+        setPersonality((TypedValue)null);
         return;
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__CLAUSES:
         getClauses().clear();
@@ -370,10 +301,8 @@ public class Instruction_landingpadImpl extends OtherInstructionImpl implements 
     {
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__RESULT_TYPE:
         return resultType != null;
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE:
-        return personalityType != null;
-      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION:
-        return personalityFunction != null;
+      case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__PERSONALITY:
+        return personality != null;
       case LLVM_IRPackage.INSTRUCTION_LANDINGPAD__CLAUSES:
         return clauses != null && !clauses.isEmpty();
     }

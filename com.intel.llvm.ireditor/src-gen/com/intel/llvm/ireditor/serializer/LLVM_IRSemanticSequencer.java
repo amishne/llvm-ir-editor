@@ -30,7 +30,6 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.InlineAsm;
@@ -340,12 +339,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 				if(context == grammarAccess.getFunctionHeaderRule() ||
 				   context == grammarAccess.getGlobalValueDefRule()) {
 					sequence_FunctionHeader(context, (FunctionHeader) semanticObject); 
-					return; 
-				}
-				else break;
-			case LLVM_IRPackage.FUNCTION_REF:
-				if(context == grammarAccess.getFunctionRefRule()) {
-					sequence_FunctionRef(context, (FunctionRef) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1074,7 +1067,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (function=FunctionRef basicBlock=BasicBlockRef)
+	 *     (function=GlobalValueRef basicBlock=BasicBlockRef)
 	 */
 	protected void sequence_BlockAddress(EObject context, BlockAddress semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1305,22 +1298,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 */
 	protected void sequence_FunctionHeader(EObject context, FunctionHeader semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     ref=[FunctionHeader|GLOBAL_ID]
-	 */
-	protected void sequence_FunctionRef(EObject context, FunctionRef semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.FUNCTION_REF__REF) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.FUNCTION_REF__REF));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunctionRefAccess().getRefFunctionHeaderGLOBAL_IDTerminalRuleCall_0_1(), semanticObject.getRef());
-		feeder.finish();
 	}
 	
 	
@@ -1892,14 +1869,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (
-	 *         opcode='landingpad' 
-	 *         resultType=Type 
-	 *         personalityType=Type 
-	 *         personalityFunction=FunctionRef 
-	 *         clauses+=LandingpadClause? 
-	 *         clauses+=LandingpadClause*
-	 *     )
+	 *     (opcode='landingpad' resultType=Type personality=TypedValue clauses+=LandingpadClause? clauses+=LandingpadClause*)
 	 */
 	protected void sequence_Instruction_landingpad(EObject context, Instruction_landingpad semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

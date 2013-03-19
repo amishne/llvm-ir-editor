@@ -184,11 +184,11 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * Syntax:
 	 *     (
 	     'double' | 
-	     'ppc_fp128' | 
+	     'fp128' | 
 	     'half' | 
 	     'x86_fp80' | 
-	     'fp128' | 
-	     'float'
+	     'float' | 
+	     'ppc_fp128'
 	 )
 	 */
 	protected void emit_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -205,7 +205,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'constant' | 'global'
+	 *     'global' | 'constant'
 	 */
 	protected void emit_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -245,7 +245,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -309,7 +309,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('zeroext' | 'signext' | 'inreg')*
+	 *     ('inreg' | 'signext' | 'zeroext')*
 	 */
 	protected void emit_Instruction_invoke_nonVoid___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -317,7 +317,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('signext' | 'zeroext' | 'inreg')*
+	 *     ('signext' | 'inreg' | 'zeroext')*
 	 */
 	protected void emit_Instruction_invoke_void___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -357,7 +357,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_mul___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -373,7 +373,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nsw' | 'nuw')*
+	 *     ('nuw' | 'nsw')*
 	 */
 	protected void emit_Instruction_shl___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -405,7 +405,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nsw' | 'nuw')*
+	 *     ('nuw' | 'nsw')*
 	 */
 	protected void emit_Instruction_sub___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

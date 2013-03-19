@@ -21,9 +21,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="metadata" eType="#//MetadataRef"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FunctionRef">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//FunctionHeader"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LocalValueRef" eSuperTypes="#//ValueRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ref" eType="#//LocalValue"/>
   </eClassifiers>
@@ -154,7 +151,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Undef" eSuperTypes="#//Constant"/>
   <eClassifiers xsi:type="ecore:EClass" name="BlockAddress" eSuperTypes="#//Constant">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//FunctionRef"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="function" eType="#//GlobalValueRef"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="basicBlock" eType="#//BasicBlockRef"
         containment="true"/>
@@ -561,9 +558,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_landingpad" eSuperTypes="#//OtherInstruction">
     <eStructuralFeatures xsi:type="ecore:EReference" name="resultType" eType="#//Type"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="personalityType" eType="#//Type"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="personalityFunction" eType="#//FunctionRef"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personality" eType="#//TypedValue"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="clauses" upperBound="-1"
         eType="#//LandingpadClause" containment="true"/>

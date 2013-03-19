@@ -105,11 +105,6 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createGlobalValueRefAdapter();
       }
       @Override
-      public Adapter caseFunctionRef(FunctionRef object)
-      {
-        return createFunctionRefAdapter();
-      }
-      @Override
       public Adapter caseLocalValueRef(LocalValueRef object)
       {
         return createLocalValueRefAdapter();
@@ -857,21 +852,6 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createGlobalValueRefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionRef <em>Function Ref</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionRef
-   * @generated
-   */
-  public Adapter createFunctionRefAdapter()
   {
     return null;
   }

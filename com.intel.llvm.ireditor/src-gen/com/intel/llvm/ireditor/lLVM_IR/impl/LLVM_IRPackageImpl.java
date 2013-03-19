@@ -36,7 +36,6 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
@@ -196,13 +195,6 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass globalValueRefEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass functionRefEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1281,26 +1273,6 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EReference getGlobalValueRef_Metadata()
   {
     return (EReference)globalValueRefEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getFunctionRef()
-  {
-    return functionRefEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getFunctionRef_Ref()
-  {
-    return (EReference)functionRefEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -4528,7 +4500,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_landingpad_PersonalityType()
+  public EReference getInstruction_landingpad_Personality()
   {
     return (EReference)instruction_landingpadEClass.getEStructuralFeatures().get(1);
   }
@@ -4538,19 +4510,9 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getInstruction_landingpad_PersonalityFunction()
-  {
-    return (EReference)instruction_landingpadEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getInstruction_landingpad_Clauses()
   {
-    return (EReference)instruction_landingpadEClass.getEStructuralFeatures().get(3);
+    return (EReference)instruction_landingpadEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -5161,9 +5123,6 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__CONSTANT);
     createEReference(globalValueRefEClass, GLOBAL_VALUE_REF__METADATA);
 
-    functionRefEClass = createEClass(FUNCTION_REF);
-    createEReference(functionRefEClass, FUNCTION_REF__REF);
-
     localValueRefEClass = createEClass(LOCAL_VALUE_REF);
     createEReference(localValueRefEClass, LOCAL_VALUE_REF__REF);
 
@@ -5591,8 +5550,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     instruction_landingpadEClass = createEClass(INSTRUCTION_LANDINGPAD);
     createEReference(instruction_landingpadEClass, INSTRUCTION_LANDINGPAD__RESULT_TYPE);
-    createEReference(instruction_landingpadEClass, INSTRUCTION_LANDINGPAD__PERSONALITY_TYPE);
-    createEReference(instruction_landingpadEClass, INSTRUCTION_LANDINGPAD__PERSONALITY_FUNCTION);
+    createEReference(instruction_landingpadEClass, INSTRUCTION_LANDINGPAD__PERSONALITY);
     createEReference(instruction_landingpadEClass, INSTRUCTION_LANDINGPAD__CLAUSES);
 
     landingpadClauseEClass = createEClass(LANDINGPAD_CLAUSE);
@@ -5803,9 +5761,6 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEReference(getGlobalValueRef_Constant(), this.getConstant(), null, "constant", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGlobalValueRef_Metadata(), this.getMetadataRef(), null, "metadata", null, 0, 1, GlobalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(functionRefEClass, FunctionRef.class, "FunctionRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getFunctionRef_Ref(), this.getFunctionHeader(), null, "ref", null, 0, 1, FunctionRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(localValueRefEClass, LocalValueRef.class, "LocalValueRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getLocalValueRef_Ref(), this.getLocalValue(), null, "ref", null, 0, 1, LocalValueRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -5907,7 +5862,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(undefEClass, Undef.class, "Undef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(blockAddressEClass, BlockAddress.class, "BlockAddress", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getBlockAddress_Function(), this.getFunctionRef(), null, "function", null, 0, 1, BlockAddress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBlockAddress_Function(), this.getGlobalValueRef(), null, "function", null, 0, 1, BlockAddress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBlockAddress_BasicBlock(), this.getBasicBlockRef(), null, "basicBlock", null, 0, 1, BlockAddress.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(zeroInitializerEClass, ZeroInitializer.class, "ZeroInitializer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -6233,8 +6188,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     initEClass(instruction_landingpadEClass, Instruction_landingpad.class, "Instruction_landingpad", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getInstruction_landingpad_ResultType(), this.getType(), null, "resultType", null, 0, 1, Instruction_landingpad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_landingpad_PersonalityType(), this.getType(), null, "personalityType", null, 0, 1, Instruction_landingpad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruction_landingpad_PersonalityFunction(), this.getFunctionRef(), null, "personalityFunction", null, 0, 1, Instruction_landingpad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getInstruction_landingpad_Personality(), this.getTypedValue(), null, "personality", null, 0, 1, Instruction_landingpad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getInstruction_landingpad_Clauses(), this.getLandingpadClause(), null, "clauses", null, 0, -1, Instruction_landingpad.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(landingpadClauseEClass, LandingpadClause.class, "LandingpadClause", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

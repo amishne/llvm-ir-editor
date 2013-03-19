@@ -23,9 +23,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/constant"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//GlobalValueRef/metadata"/>
     </genClasses>
-    <genClasses ecoreClass="LLVM_IR.ecore#//FunctionRef">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionRef/ref"/>
-    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//LocalValueRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//LocalValueRef/ref"/>
     </genClasses>
@@ -427,8 +424,7 @@
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_landingpad">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_landingpad/resultType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_landingpad/personalityType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_landingpad/personalityFunction"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_landingpad/personality"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_landingpad/clauses"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//LandingpadClause">

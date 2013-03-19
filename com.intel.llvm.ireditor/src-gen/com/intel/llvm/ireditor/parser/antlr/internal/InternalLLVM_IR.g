@@ -448,40 +448,6 @@ ruleGlobalValueRef returns [EObject current=null]
 
 
 
-// Entry rule entryRuleFunctionRef
-entryRuleFunctionRef returns [EObject current=null] 
-	:
-	{ newCompositeNode(grammarAccess.getFunctionRefRule()); }
-	 iv_ruleFunctionRef=ruleFunctionRef 
-	 { $current=$iv_ruleFunctionRef.current; } 
-	 EOF 
-;
-
-// Rule FunctionRef
-ruleFunctionRef returns [EObject current=null] 
-    @init { enterRule(); 
-    }
-    @after { leaveRule(); }:
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getFunctionRefRule());
-	        }
-        }
-	otherlv_0=RULE_GLOBAL_ID
-	{
-		newLeafNode(otherlv_0, grammarAccess.getFunctionRefAccess().getRefFunctionHeaderCrossReference_0()); 
-	}
-
-)
-)
-;
-
-
-
-
-
 // Entry rule entryRuleLocalValueRef
 entryRuleLocalValueRef returns [EObject current=null] 
 	:
@@ -2676,9 +2642,9 @@ ruleBlockAddress returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getBlockAddressAccess().getFunctionFunctionRefParserRuleCall_2_0()); 
+	        newCompositeNode(grammarAccess.getBlockAddressAccess().getFunctionGlobalValueRefParserRuleCall_2_0()); 
 	    }
-		lv_function_2_0=ruleFunctionRef		{
+		lv_function_2_0=ruleGlobalValueRef		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getBlockAddressRule());
 	        }
@@ -2686,7 +2652,7 @@ ruleBlockAddress returns [EObject current=null]
        			$current, 
        			"function",
         		lv_function_2_0, 
-        		"FunctionRef");
+        		"GlobalValueRef");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -11528,35 +11494,17 @@ ruleInstruction_landingpad returns [EObject current=null]
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getPersonalityTypeTypeParserRuleCall_3_0()); 
+	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getPersonalityTypedValueParserRuleCall_3_0()); 
 	    }
-		lv_personalityType_3_0=ruleType		{
+		lv_personality_3_0=ruleTypedValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getInstruction_landingpadRule());
 	        }
        		set(
        			$current, 
-       			"personalityType",
-        		lv_personalityType_3_0, 
-        		"Type");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-)(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getPersonalityFunctionFunctionRefParserRuleCall_4_0()); 
-	    }
-		lv_personalityFunction_4_0=ruleFunctionRef		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getInstruction_landingpadRule());
-	        }
-       		set(
-       			$current, 
-       			"personalityFunction",
-        		lv_personalityFunction_4_0, 
-        		"FunctionRef");
+       			"personality",
+        		lv_personality_3_0, 
+        		"TypedValue");
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -11564,39 +11512,39 @@ ruleInstruction_landingpad returns [EObject current=null]
 )((
 (
 		{ 
-	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getClausesLandingpadClauseParserRuleCall_5_0_0()); 
+	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getClausesLandingpadClauseParserRuleCall_4_0_0()); 
 	    }
-		lv_clauses_5_0=ruleLandingpadClause		{
+		lv_clauses_4_0=ruleLandingpadClause		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getInstruction_landingpadRule());
 	        }
        		add(
        			$current, 
        			"clauses",
-        		lv_clauses_5_0, 
+        		lv_clauses_4_0, 
         		"LandingpadClause");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
 )
-    |	otherlv_6='cleanup' 
+    |	otherlv_5='cleanup' 
     {
-    	newLeafNode(otherlv_6, grammarAccess.getInstruction_landingpadAccess().getCleanupKeyword_5_1());
+    	newLeafNode(otherlv_5, grammarAccess.getInstruction_landingpadAccess().getCleanupKeyword_4_1());
     }
 )(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getClausesLandingpadClauseParserRuleCall_6_0()); 
+	        newCompositeNode(grammarAccess.getInstruction_landingpadAccess().getClausesLandingpadClauseParserRuleCall_5_0()); 
 	    }
-		lv_clauses_7_0=ruleLandingpadClause		{
+		lv_clauses_6_0=ruleLandingpadClause		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getInstruction_landingpadRule());
 	        }
        		add(
        			$current, 
        			"clauses",
-        		lv_clauses_7_0, 
+        		lv_clauses_6_0, 
         		"LandingpadClause");
 	        afterParserOrEnumRuleCall();
 	    }

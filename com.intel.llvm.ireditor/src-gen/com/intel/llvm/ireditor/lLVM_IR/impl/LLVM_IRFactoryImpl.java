@@ -70,7 +70,6 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.METADATA_REF: return createMetadataRef();
       case LLVM_IRPackage.VALUE_REF: return createValueRef();
       case LLVM_IRPackage.GLOBAL_VALUE_REF: return createGlobalValueRef();
-      case LLVM_IRPackage.FUNCTION_REF: return createFunctionRef();
       case LLVM_IRPackage.LOCAL_VALUE_REF: return createLocalValueRef();
       case LLVM_IRPackage.GLOBAL_VALUE: return createGlobalValue();
       case LLVM_IRPackage.GLOBAL_VALUE_DEF: return createGlobalValueDef();
@@ -268,17 +267,6 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     GlobalValueRefImpl globalValueRef = new GlobalValueRefImpl();
     return globalValueRef;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public FunctionRef createFunctionRef()
-  {
-    FunctionRefImpl functionRef = new FunctionRefImpl();
-    return functionRef;
   }
 
   /**

@@ -31,12 +31,12 @@ public interface BlockAddress extends Constant
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Function</em>' containment reference.
-   * @see #setFunction(FunctionRef)
+   * @see #setFunction(GlobalValueRef)
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getBlockAddress_Function()
    * @model containment="true"
    * @generated
    */
-  FunctionRef getFunction();
+  GlobalValueRef getFunction();
 
   /**
    * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.BlockAddress#getFunction <em>Function</em>}' containment reference.
@@ -46,7 +46,7 @@ public interface BlockAddress extends Constant
    * @see #getFunction()
    * @generated
    */
-  void setFunction(FunctionRef value);
+  void setFunction(GlobalValueRef value);
 
   /**
    * Returns the value of the '<em><b>Basic Block</b></em>' containment reference.
