@@ -5,10 +5,12 @@ import com.google.inject.Provider;
 import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.Aliasee;
+import com.intel.llvm.ireditor.lLVM_IR.AlignStack;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayConstant;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayType;
+import com.intel.llvm.ireditor.lLVM_IR.AttributeGroup;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.BlockAddress;
@@ -26,6 +28,7 @@ import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_shufflevector;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
@@ -163,6 +166,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case LLVM_IRPackage.ALIGN_STACK:
+				if(context == grammarAccess.getAlignStackRule()) {
+					sequence_AlignStack(context, (AlignStack) semanticObject); 
+					return; 
+				}
+				else break;
 			case LLVM_IRPackage.ARG_LIST:
 				if(context == grammarAccess.getArgListRule()) {
 					sequence_ArgList(context, (ArgList) semanticObject); 
@@ -185,6 +194,13 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case LLVM_IRPackage.ARRAY_TYPE:
 				if(context == grammarAccess.getArrayTypeRule()) {
 					sequence_ArrayType(context, (ArrayType) semanticObject); 
+					return; 
+				}
+				else break;
+			case LLVM_IRPackage.ATTRIBUTE_GROUP:
+				if(context == grammarAccess.getAttributeGroupRule() ||
+				   context == grammarAccess.getTopLevelElementRule()) {
+					sequence_AttributeGroup(context, (AttributeGroup) semanticObject); 
 					return; 
 				}
 				else break;
@@ -308,6 +324,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case LLVM_IRPackage.FLOATING_TYPE:
 				if(context == grammarAccess.getFloatingTypeRule()) {
 					sequence_FloatingType(context, (FloatingType) semanticObject); 
+					return; 
+				}
+				else break;
+			case LLVM_IRPackage.FUNCTION_ATTRIBUTE:
+				if(context == grammarAccess.getFunctionAttributeRule()) {
+					sequence_FunctionAttribute(context, (FunctionAttribute) semanticObject); 
 					return; 
 				}
 				else break;
@@ -986,6 +1008,15 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
+	 *     {AlignStack}
+	 */
+	protected void sequence_AlignStack(EObject context, AlignStack semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     ((arguments+=Argument arguments+=Argument*)?)
 	 */
 	protected void sequence_ArgList(EObject context, ArgList semanticObject) {
@@ -1037,6 +1068,15 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 		feeder.accept(grammarAccess.getArrayTypeAccess().getSizeINTEGERTerminalRuleCall_1_0(), semanticObject.getSize());
 		feeder.accept(grammarAccess.getArrayTypeAccess().getElemTypeTypeParserRuleCall_3_0(), semanticObject.getElemType());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ATTRIBUTE_ID (attributes+=FunctionAttribute | (alignstack+=AlignStack alignstackValue+=INTEGER) | targetSpecificAttributes+=STRING)+)
+	 */
+	protected void sequence_AttributeGroup(EObject context, AttributeGroup semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1248,7 +1288,38 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     attributes+=FunctionAttribute+
+	 *     (
+	 *         attribute='address_safety' | 
+	 *         attribute='alwaysinline' | 
+	 *         attribute='nonlazybind' | 
+	 *         attribute='inlinehint' | 
+	 *         attribute='naked' | 
+	 *         attribute='noimplicitfloat' | 
+	 *         attribute='noinline' | 
+	 *         attribute='noredzone' | 
+	 *         attribute='noreturn' | 
+	 *         attribute='nounwind' | 
+	 *         attribute='optsize' | 
+	 *         attribute='readnone' | 
+	 *         attribute='readonly' | 
+	 *         attribute='returns_twice' | 
+	 *         attribute='ssp' | 
+	 *         attribute='sspreq' | 
+	 *         attribute='uwtable'
+	 *     )
+	 */
+	protected void sequence_FunctionAttribute(EObject context, FunctionAttribute semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         functionAttributes+=FunctionAttribute | 
+	 *         (alignstack+=AlignStack alignstackValue+=INTEGER) | 
+	 *         functionAttributeGroupRefs+=[AttributeGroup|ATTRIBUTE_ID]
+	 *     )+
 	 */
 	protected void sequence_FunctionAttributes(EObject context, FunctionAttributes semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

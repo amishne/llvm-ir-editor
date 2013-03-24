@@ -11,6 +11,13 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Model/elements"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//TopLevelElement"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//AttributeGroup">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AttributeGroup/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AttributeGroup/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AttributeGroup/alignstack"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AttributeGroup/alignstackValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AttributeGroup/targetSpecificAttributes"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//NamedMetadata">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//NamedMetadata/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//NamedMetadata/node"/>
@@ -183,7 +190,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Parameters/vararg"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionAttributes">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionAttributes/attributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionAttributes/functionAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionAttributes/alignstack"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionAttributes/alignstackValue"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionAttributes/functionAttributeGroupRefs"/>
+    </genClasses>
+    <genClasses ecoreClass="LLVM_IR.ecore#//AlignStack"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//FunctionAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionAttribute/attribute"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//BasicBlock">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//BasicBlock/name"/>

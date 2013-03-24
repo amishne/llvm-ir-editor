@@ -85,6 +85,11 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createTopLevelElementAdapter();
       }
       @Override
+      public Adapter caseAttributeGroup(AttributeGroup object)
+      {
+        return createAttributeGroupAdapter();
+      }
+      @Override
       public Adapter caseNamedMetadata(NamedMetadata object)
       {
         return createNamedMetadataAdapter();
@@ -313,6 +318,16 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
       public Adapter caseFunctionAttributes(FunctionAttributes object)
       {
         return createFunctionAttributesAdapter();
+      }
+      @Override
+      public Adapter caseAlignStack(AlignStack object)
+      {
+        return createAlignStackAdapter();
+      }
+      @Override
+      public Adapter caseFunctionAttribute(FunctionAttribute object)
+      {
+        return createFunctionAttributeAdapter();
       }
       @Override
       public Adapter caseBasicBlock(BasicBlock object)
@@ -792,6 +807,21 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTopLevelElementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.AttributeGroup <em>Attribute Group</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.AttributeGroup
+   * @generated
+   */
+  public Adapter createAttributeGroupAdapter()
   {
     return null;
   }
@@ -1482,6 +1512,36 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionAttributesAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.AlignStack <em>Align Stack</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.AlignStack
+   * @generated
+   */
+  public Adapter createAlignStackAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute <em>Function Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute
+   * @generated
+   */
+  public Adapter createFunctionAttributeAdapter()
   {
     return null;
   }

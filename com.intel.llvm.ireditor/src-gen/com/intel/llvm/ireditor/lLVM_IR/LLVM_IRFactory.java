@@ -41,6 +41,15 @@ public interface LLVM_IRFactory extends EFactory
   TopLevelElement createTopLevelElement();
 
   /**
+   * Returns a new object of class '<em>Attribute Group</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Attribute Group</em>'.
+   * @generated
+   */
+  AttributeGroup createAttributeGroup();
+
+  /**
    * Returns a new object of class '<em>Named Metadata</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -453,6 +462,24 @@ public interface LLVM_IRFactory extends EFactory
    * @generated
    */
   FunctionAttributes createFunctionAttributes();
+
+  /**
+   * Returns a new object of class '<em>Align Stack</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Align Stack</em>'.
+   * @generated
+   */
+  AlignStack createAlignStack();
+
+  /**
+   * Returns a new object of class '<em>Function Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Attribute</em>'.
+   * @generated
+   */
+  FunctionAttribute createFunctionAttribute();
 
   /**
    * Returns a new object of class '<em>Basic Block</em>'.

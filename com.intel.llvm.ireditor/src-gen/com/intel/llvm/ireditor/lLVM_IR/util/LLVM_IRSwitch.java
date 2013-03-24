@@ -86,6 +86,14 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LLVM_IRPackage.ATTRIBUTE_GROUP:
+      {
+        AttributeGroup attributeGroup = (AttributeGroup)theEObject;
+        T result = caseAttributeGroup(attributeGroup);
+        if (result == null) result = caseTopLevelElement(attributeGroup);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LLVM_IRPackage.NAMED_METADATA:
       {
         NamedMetadata namedMetadata = (NamedMetadata)theEObject;
@@ -460,6 +468,20 @@ public class LLVM_IRSwitch<T> extends Switch<T>
       {
         FunctionAttributes functionAttributes = (FunctionAttributes)theEObject;
         T result = caseFunctionAttributes(functionAttributes);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LLVM_IRPackage.ALIGN_STACK:
+      {
+        AlignStack alignStack = (AlignStack)theEObject;
+        T result = caseAlignStack(alignStack);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case LLVM_IRPackage.FUNCTION_ATTRIBUTE:
+      {
+        FunctionAttribute functionAttribute = (FunctionAttribute)theEObject;
+        T result = caseFunctionAttribute(functionAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1144,6 +1166,22 @@ public class LLVM_IRSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTopLevelElement(TopLevelElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Attribute Group</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Attribute Group</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAttributeGroup(AttributeGroup object)
   {
     return null;
   }
@@ -1880,6 +1918,38 @@ public class LLVM_IRSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionAttributes(FunctionAttributes object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Align Stack</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Align Stack</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAlignStack(AlignStack object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Attribute</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionAttribute(FunctionAttribute object)
   {
     return null;
   }

@@ -38,7 +38,17 @@ Model:
 ;
 
 TopLevelElement:
-	TypeDef | InlineAsm | TargetInfo | GlobalValue | NamedMetadata
+	TypeDef | InlineAsm | TargetInfo | GlobalValue | NamedMetadata | AttributeGroup
+;
+
+AttributeGroup:
+	name=ATTRIBUTE_ID '=' 'attributes' '{'
+	(
+			attributes+=FunctionAttribute |
+			alignstack+=AlignStack '=' alignstackValue+=INTEGER |
+			targetSpecificAttributes+=STRING
+	)+
+	'}'
 ;
 
 NamedMetadata:
@@ -330,28 +340,38 @@ Parameters:
 ;
 
 FunctionAttributes:
-	attributes+=FunctionAttribute+
+	(
+		functionAttributes+=FunctionAttribute |
+		(alignstack+=AlignStack '(' alignstackValue+=INTEGER ')') |
+		functionAttributeGroupRefs+=[AttributeGroup|ATTRIBUTE_ID]
+	)+
+;
+
+AlignStack:
+	{AlignStack}
+	'alignstack'
 ;
 
 FunctionAttribute:
-	'address_safety' |
-	('alignstack(' INTEGER ')') |
-	'alwaysinline' |
-	'nonlazybind' |
-	'inlinehint' |
-	'naked' |
-	'noimplicitfloat' |
-	'noinline' |
-	'noredzone' |
-	'noreturn' |
-	'nounwind' |
-	'optsize' |
-	'readnone' |
-	'readonly' |
-	'returns_twice' |
-	'ssp' |
-	'sspreq' |
-	'uwtable'
+	attribute=(
+		'address_safety' |
+		'alwaysinline' |
+		'nonlazybind' |
+		'inlinehint' |
+		'naked' |
+		'noimplicitfloat' |
+		'noinline' |
+		'noredzone' |
+		'noreturn' |
+		'nounwind' |
+		'optsize' |
+		'readnone' |
+		'readonly' |
+		'returns_twice' |
+		'ssp' |
+		'sspreq' |
+		'uwtable'
+	)
 ;
 
 BasicBlock:
@@ -1109,6 +1129,10 @@ terminal META_INT:
 
 terminal META_NAME:
 	'!' NAME
+;
+
+terminal ATTRIBUTE_ID:
+	'#' (INTEGER | NAME)
 ;
 
 terminal INTEGER:

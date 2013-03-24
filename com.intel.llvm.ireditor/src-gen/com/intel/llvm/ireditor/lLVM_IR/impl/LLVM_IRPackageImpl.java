@@ -6,10 +6,12 @@ import com.intel.llvm.ireditor.lLVM_IR.AddressSpace;
 import com.intel.llvm.ireditor.lLVM_IR.AggregateInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.Aliasee;
+import com.intel.llvm.ireditor.lLVM_IR.AlignStack;
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
 import com.intel.llvm.ireditor.lLVM_IR.Argument;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayConstant;
 import com.intel.llvm.ireditor.lLVM_IR.ArrayType;
+import com.intel.llvm.ireditor.lLVM_IR.AttributeGroup;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.BinaryInstruction;
@@ -32,6 +34,7 @@ import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
 import com.intel.llvm.ireditor.lLVM_IR.Function;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
@@ -167,6 +170,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass topLevelElementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass attributeGroupEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -489,6 +499,20 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass functionAttributesEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass alignStackEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1183,6 +1207,66 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EClass getTopLevelElement()
   {
     return topLevelElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAttributeGroup()
+  {
+    return attributeGroupEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttributeGroup_Name()
+  {
+    return (EAttribute)attributeGroupEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAttributeGroup_Attributes()
+  {
+    return (EReference)attributeGroupEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAttributeGroup_Alignstack()
+  {
+    return (EReference)attributeGroupEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttributeGroup_AlignstackValue()
+  {
+    return (EAttribute)attributeGroupEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAttributeGroup_TargetSpecificAttributes()
+  {
+    return (EAttribute)attributeGroupEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -2530,9 +2614,69 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunctionAttributes_Attributes()
+  public EReference getFunctionAttributes_FunctionAttributes()
   {
-    return (EAttribute)functionAttributesEClass.getEStructuralFeatures().get(0);
+    return (EReference)functionAttributesEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionAttributes_Alignstack()
+  {
+    return (EReference)functionAttributesEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionAttributes_AlignstackValue()
+  {
+    return (EAttribute)functionAttributesEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionAttributes_FunctionAttributeGroupRefs()
+  {
+    return (EReference)functionAttributesEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAlignStack()
+  {
+    return alignStackEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunctionAttribute()
+  {
+    return functionAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getFunctionAttribute_Attribute()
+  {
+    return (EAttribute)functionAttributeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5110,6 +5254,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
 
     topLevelElementEClass = createEClass(TOP_LEVEL_ELEMENT);
 
+    attributeGroupEClass = createEClass(ATTRIBUTE_GROUP);
+    createEAttribute(attributeGroupEClass, ATTRIBUTE_GROUP__NAME);
+    createEReference(attributeGroupEClass, ATTRIBUTE_GROUP__ATTRIBUTES);
+    createEReference(attributeGroupEClass, ATTRIBUTE_GROUP__ALIGNSTACK);
+    createEAttribute(attributeGroupEClass, ATTRIBUTE_GROUP__ALIGNSTACK_VALUE);
+    createEAttribute(attributeGroupEClass, ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES);
+
     namedMetadataEClass = createEClass(NAMED_METADATA);
     createEAttribute(namedMetadataEClass, NAMED_METADATA__NAME);
     createEReference(namedMetadataEClass, NAMED_METADATA__NODE);
@@ -5289,7 +5440,15 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(parametersEClass, PARAMETERS__VARARG);
 
     functionAttributesEClass = createEClass(FUNCTION_ATTRIBUTES);
-    createEAttribute(functionAttributesEClass, FUNCTION_ATTRIBUTES__ATTRIBUTES);
+    createEReference(functionAttributesEClass, FUNCTION_ATTRIBUTES__FUNCTION_ATTRIBUTES);
+    createEReference(functionAttributesEClass, FUNCTION_ATTRIBUTES__ALIGNSTACK);
+    createEAttribute(functionAttributesEClass, FUNCTION_ATTRIBUTES__ALIGNSTACK_VALUE);
+    createEReference(functionAttributesEClass, FUNCTION_ATTRIBUTES__FUNCTION_ATTRIBUTE_GROUP_REFS);
+
+    alignStackEClass = createEClass(ALIGN_STACK);
+
+    functionAttributeEClass = createEClass(FUNCTION_ATTRIBUTE);
+    createEAttribute(functionAttributeEClass, FUNCTION_ATTRIBUTE__ATTRIBUTE);
 
     basicBlockEClass = createEClass(BASIC_BLOCK);
     createEAttribute(basicBlockEClass, BASIC_BLOCK__NAME);
@@ -5661,6 +5820,7 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    attributeGroupEClass.getESuperTypes().add(this.getTopLevelElement());
     namedMetadataEClass.getESuperTypes().add(this.getTopLevelElement());
     valueRefEClass.getESuperTypes().add(this.getCallee());
     globalValueRefEClass.getESuperTypes().add(this.getValueRef());
@@ -5747,6 +5907,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEReference(getModel_Elements(), this.getTopLevelElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(topLevelElementEClass, TopLevelElement.class, "TopLevelElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(attributeGroupEClass, AttributeGroup.class, "AttributeGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAttributeGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttributeGroup_Attributes(), this.getFunctionAttribute(), null, "attributes", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttributeGroup_Alignstack(), this.getAlignStack(), null, "alignstack", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttributeGroup_AlignstackValue(), ecorePackage.getEString(), "alignstackValue", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAttributeGroup_TargetSpecificAttributes(), ecorePackage.getEString(), "targetSpecificAttributes", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(namedMetadataEClass, NamedMetadata.class, "NamedMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNamedMetadata_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5927,7 +6094,15 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getParameters_Vararg(), ecorePackage.getEString(), "vararg", null, 0, 1, Parameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(functionAttributesEClass, FunctionAttributes.class, "FunctionAttributes", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunctionAttributes_Attributes(), ecorePackage.getEString(), "attributes", null, 0, -1, FunctionAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionAttributes_FunctionAttributes(), this.getFunctionAttribute(), null, "functionAttributes", null, 0, -1, FunctionAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionAttributes_Alignstack(), this.getAlignStack(), null, "alignstack", null, 0, -1, FunctionAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFunctionAttributes_AlignstackValue(), ecorePackage.getEString(), "alignstackValue", null, 0, -1, FunctionAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionAttributes_FunctionAttributeGroupRefs(), this.getAttributeGroup(), null, "functionAttributeGroupRefs", null, 0, -1, FunctionAttributes.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(alignStackEClass, AlignStack.class, "AlignStack", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(functionAttributeEClass, FunctionAttribute.class, "FunctionAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getFunctionAttribute_Attribute(), ecorePackage.getEString(), "attribute", null, 0, 1, FunctionAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(basicBlockEClass, BasicBlock.class, "BasicBlock", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBasicBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, BasicBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

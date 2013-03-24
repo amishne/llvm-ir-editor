@@ -38,6 +38,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getTopLevelElementAccess().getAlternatives(), "rule__TopLevelElement__Alternatives");
+					put(grammarAccess.getAttributeGroupAccess().getAlternatives_4(), "rule__AttributeGroup__Alternatives_4");
 					put(grammarAccess.getNamedMetadataAccess().getAlternatives(), "rule__NamedMetadata__Alternatives");
 					put(grammarAccess.getMetadataIdentifierAccess().getAlternatives(), "rule__MetadataIdentifier__Alternatives");
 					put(grammarAccess.getValueRefAccess().getAlternatives(), "rule__ValueRef__Alternatives");
@@ -60,7 +61,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTLSoptionAccess().getAlternatives(), "rule__TLSoption__Alternatives");
 					put(grammarAccess.getFunctionAccess().getAlternatives(), "rule__Function__Alternatives");
 					put(grammarAccess.getParametersAccess().getAlternatives_1(), "rule__Parameters__Alternatives_1");
-					put(grammarAccess.getFunctionAttributeAccess().getAlternatives(), "rule__FunctionAttribute__Alternatives");
+					put(grammarAccess.getFunctionAttributesAccess().getAlternatives(), "rule__FunctionAttributes__Alternatives");
+					put(grammarAccess.getFunctionAttributeAccess().getAttributeAlternatives_0(), "rule__FunctionAttribute__AttributeAlternatives_0");
 					put(grammarAccess.getMiddleInstructionAccess().getInstructionAlternatives_0_0(), "rule__MiddleInstruction__InstructionAlternatives_0_0");
 					put(grammarAccess.getNamedMiddleInstructionAccess().getInstructionAlternatives_1_0(), "rule__NamedMiddleInstruction__InstructionAlternatives_1_0");
 					put(grammarAccess.getTerminatorInstructionAccess().getInstructionAlternatives_0_0(), "rule__TerminatorInstruction__InstructionAlternatives_0_0");
@@ -95,6 +97,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getLinkageAccess().getAlternatives(), "rule__Linkage__Alternatives");
 					put(grammarAccess.getCConvAccess().getAlternatives(), "rule__CConv__Alternatives");
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
+					put(grammarAccess.getAttributeGroupAccess().getGroup(), "rule__AttributeGroup__Group__0");
+					put(grammarAccess.getAttributeGroupAccess().getGroup_4_1(), "rule__AttributeGroup__Group_4_1__0");
 					put(grammarAccess.getNamedMetadataAccess().getGroup_0(), "rule__NamedMetadata__Group_0__0");
 					put(grammarAccess.getNamedMetadataAccess().getGroup_1(), "rule__NamedMetadata__Group_1__0");
 					put(grammarAccess.getAliasAccess().getGroup(), "rule__Alias__Group__0");
@@ -144,7 +148,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParametersAccess().getGroup_1_0(), "rule__Parameters__Group_1_0__0");
 					put(grammarAccess.getParametersAccess().getGroup_1_0_1(), "rule__Parameters__Group_1_0_1__0");
 					put(grammarAccess.getParametersAccess().getGroup_1_0_2(), "rule__Parameters__Group_1_0_2__0");
-					put(grammarAccess.getFunctionAttributeAccess().getGroup_1(), "rule__FunctionAttribute__Group_1__0");
+					put(grammarAccess.getFunctionAttributesAccess().getGroup_1(), "rule__FunctionAttributes__Group_1__0");
+					put(grammarAccess.getAlignStackAccess().getGroup(), "rule__AlignStack__Group__0");
 					put(grammarAccess.getBasicBlockAccess().getGroup(), "rule__BasicBlock__Group__0");
 					put(grammarAccess.getMetadataSuffixAccess().getGroup(), "rule__MetadataSuffix__Group__0");
 					put(grammarAccess.getStartingInstructionAccess().getGroup(), "rule__StartingInstruction__Group__0");
@@ -259,6 +264,11 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFloatingTypeAccess().getGroup(), "rule__FloatingType__Group__0");
 					put(grammarAccess.getCConvAccess().getGroup_4(), "rule__CConv__Group_4__0");
 					put(grammarAccess.getModelAccess().getElementsAssignment(), "rule__Model__ElementsAssignment");
+					put(grammarAccess.getAttributeGroupAccess().getNameAssignment_0(), "rule__AttributeGroup__NameAssignment_0");
+					put(grammarAccess.getAttributeGroupAccess().getAttributesAssignment_4_0(), "rule__AttributeGroup__AttributesAssignment_4_0");
+					put(grammarAccess.getAttributeGroupAccess().getAlignstackAssignment_4_1_0(), "rule__AttributeGroup__AlignstackAssignment_4_1_0");
+					put(grammarAccess.getAttributeGroupAccess().getAlignstackValueAssignment_4_1_2(), "rule__AttributeGroup__AlignstackValueAssignment_4_1_2");
+					put(grammarAccess.getAttributeGroupAccess().getTargetSpecificAttributesAssignment_4_2(), "rule__AttributeGroup__TargetSpecificAttributesAssignment_4_2");
 					put(grammarAccess.getNamedMetadataAccess().getNameAssignment_0_0(), "rule__NamedMetadata__NameAssignment_0_0");
 					put(grammarAccess.getNamedMetadataAccess().getNodeAssignment_0_3(), "rule__NamedMetadata__NodeAssignment_0_3");
 					put(grammarAccess.getNamedMetadataAccess().getNameAssignment_1_0(), "rule__NamedMetadata__NameAssignment_1_0");
@@ -364,7 +374,11 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getParametersAccess().getParametersAssignment_1_0_1_1(), "rule__Parameters__ParametersAssignment_1_0_1_1");
 					put(grammarAccess.getParametersAccess().getVarargAssignment_1_0_2_1(), "rule__Parameters__VarargAssignment_1_0_2_1");
 					put(grammarAccess.getParametersAccess().getVarargAssignment_1_1(), "rule__Parameters__VarargAssignment_1_1");
-					put(grammarAccess.getFunctionAttributesAccess().getAttributesAssignment(), "rule__FunctionAttributes__AttributesAssignment");
+					put(grammarAccess.getFunctionAttributesAccess().getFunctionAttributesAssignment_0(), "rule__FunctionAttributes__FunctionAttributesAssignment_0");
+					put(grammarAccess.getFunctionAttributesAccess().getAlignstackAssignment_1_0(), "rule__FunctionAttributes__AlignstackAssignment_1_0");
+					put(grammarAccess.getFunctionAttributesAccess().getAlignstackValueAssignment_1_2(), "rule__FunctionAttributes__AlignstackValueAssignment_1_2");
+					put(grammarAccess.getFunctionAttributesAccess().getFunctionAttributeGroupRefsAssignment_2(), "rule__FunctionAttributes__FunctionAttributeGroupRefsAssignment_2");
+					put(grammarAccess.getFunctionAttributeAccess().getAttributeAssignment(), "rule__FunctionAttribute__AttributeAssignment");
 					put(grammarAccess.getBasicBlockAccess().getNameAssignment_0(), "rule__BasicBlock__NameAssignment_0");
 					put(grammarAccess.getBasicBlockAccess().getInstructionsAssignment_1(), "rule__BasicBlock__InstructionsAssignment_1");
 					put(grammarAccess.getBasicBlockAccess().getInstructionsAssignment_2(), "rule__BasicBlock__InstructionsAssignment_2");

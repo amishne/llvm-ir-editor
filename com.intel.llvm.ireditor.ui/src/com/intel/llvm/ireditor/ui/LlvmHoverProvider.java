@@ -35,8 +35,10 @@ import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 import org.eclipse.xtext.util.OnChangeEvictingCache;
 
 import com.intel.llvm.ireditor.LLVM_IRUtils;
+import com.intel.llvm.ireditor.lLVM_IR.AlignStack;
+import com.intel.llvm.ireditor.lLVM_IR.AttributeGroup;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
-import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
@@ -57,11 +59,6 @@ public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
 	
 	private class HoverFirstLineProvider extends LLVM_IRSwitch<String> {
 		@Override
-		public String caseFunctionAttributes(FunctionAttributes object) {
-			return "Function Attributes";
-		}
-		
-		@Override
 		public String caseInstruction(Instruction object) {
 			return textOf(object);
 		}
@@ -79,6 +76,11 @@ public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
 		@Override
 		public String caseParameter(Parameter object) {
 			return textOf(object) + "<code>  </code><b>(parameter)</b>";
+		}
+		
+		@Override
+		public String caseAttributeGroup(AttributeGroup object) {
+			return textOf(object);
 		}
 		
 		@Override
@@ -108,18 +110,29 @@ public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
 		public String caseTypeDef(TypeDef object) {
 			return textOf(object);
 		}
+		
+		@Override
+		public String caseFunctionAttribute(FunctionAttribute object) {
+			String s = object.getAttribute();
+			return "<b>" + s + "</b> (" + extraInfoProvider.getExtraInfoType(s) + ")";
+		}
+		
+		@Override
+		public String caseAlignStack(AlignStack object) {
+			String s = "alignstack";
+			return "<b>" + s + "</b> (" + extraInfoProvider.getExtraInfoType(s) + ")";
+		}
 	}
 	
 	private class HoverDocumentationProvider extends LLVM_IRSwitch<String> {
 		@Override
-		public String caseFunctionAttributes(FunctionAttributes object) {
-			StringBuilder sb = new StringBuilder();
-			for (String s : object.getAttributes()) {
-				sb.append(String.format("<b>%s</b> - %s<br />",
-						s,
-						LLVM_IRUtils.encodeTextForHtml(extraInfoProvider.getExtraInfo(s))));
-			}
-			return sb.toString();
+		public String caseFunctionAttribute(FunctionAttribute object) {
+			return LLVM_IRUtils.encodeTextForHtml(extraInfoProvider.getExtraInfo(object.getAttribute()));
+		}
+		
+		@Override
+		public String caseAlignStack(AlignStack object) {
+			return LLVM_IRUtils.encodeTextForHtml(extraInfoProvider.getExtraInfo("alignstack"));
 		}
 		
 		@Override

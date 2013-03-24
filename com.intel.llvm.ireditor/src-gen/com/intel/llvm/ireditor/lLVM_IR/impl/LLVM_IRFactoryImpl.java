@@ -66,6 +66,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
     {
       case LLVM_IRPackage.MODEL: return createModel();
       case LLVM_IRPackage.TOP_LEVEL_ELEMENT: return createTopLevelElement();
+      case LLVM_IRPackage.ATTRIBUTE_GROUP: return createAttributeGroup();
       case LLVM_IRPackage.NAMED_METADATA: return createNamedMetadata();
       case LLVM_IRPackage.METADATA_REF: return createMetadataRef();
       case LLVM_IRPackage.VALUE_REF: return createValueRef();
@@ -112,6 +113,8 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.FUNCTION_HEADER: return createFunctionHeader();
       case LLVM_IRPackage.PARAMETERS: return createParameters();
       case LLVM_IRPackage.FUNCTION_ATTRIBUTES: return createFunctionAttributes();
+      case LLVM_IRPackage.ALIGN_STACK: return createAlignStack();
+      case LLVM_IRPackage.FUNCTION_ATTRIBUTE: return createFunctionAttribute();
       case LLVM_IRPackage.BASIC_BLOCK: return createBasicBlock();
       case LLVM_IRPackage.METADATA_SUFFIX: return createMetadataSuffix();
       case LLVM_IRPackage.STARTING_INSTRUCTION: return createStartingInstruction();
@@ -223,6 +226,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     TopLevelElementImpl topLevelElement = new TopLevelElementImpl();
     return topLevelElement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AttributeGroup createAttributeGroup()
+  {
+    AttributeGroupImpl attributeGroup = new AttributeGroupImpl();
+    return attributeGroup;
   }
 
   /**
@@ -729,6 +743,28 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     FunctionAttributesImpl functionAttributes = new FunctionAttributesImpl();
     return functionAttributes;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AlignStack createAlignStack()
+  {
+    AlignStackImpl alignStack = new AlignStackImpl();
+    return alignStack;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FunctionAttribute createFunctionAttribute()
+  {
+    FunctionAttributeImpl functionAttribute = new FunctionAttributeImpl();
+    return functionAttribute;
   }
 
   /**

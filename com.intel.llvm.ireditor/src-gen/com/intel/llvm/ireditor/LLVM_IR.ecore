@@ -6,6 +6,17 @@
         eType="#//TopLevelElement" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TopLevelElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeGroup" eSuperTypes="#//TopLevelElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="#//FunctionAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alignstack" upperBound="-1"
+        eType="#//AlignStack" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignstackValue" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetSpecificAttributes"
+        unique="false" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="NamedMetadata" eSuperTypes="#//TopLevelElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="node" eType="#//MetadataNode"
@@ -231,8 +242,18 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="vararg" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionAttributes">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attributes" unique="false"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionAttributes" upperBound="-1"
+        eType="#//FunctionAttribute" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alignstack" upperBound="-1"
+        eType="#//AlignStack" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alignstackValue" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functionAttributeGroupRefs"
+        unique="false" upperBound="-1" eType="#//AttributeGroup"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AlignStack"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FunctionAttribute">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BasicBlock">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
