@@ -3,17 +3,19 @@
 <head> 
 <title>LLVM IR SDK</title> 
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8'>
-<meta name='description' content='LLVM IR SDK is a rich LLVM IR (.ll files) editor plugin for Eclipse, released for free by Intel' />
-<meta name='keywords' content='llvm, ir, eclipse, plugin, sdk, editor, intel' />
+<meta name='googlebot' content='noarchive, nosnippet'>
+<meta name='robots'    content='noarchive, nosnippet'>
+<meta name='description' content='' />
+<meta name='keywords' content='' />
 <link href='http://fonts.googleapis.com/css?family=PT+Serif:400,700' rel='stylesheet' type='text/css'>
 
 <style>
-body                      { width: 900px; margin: auto; margin-top: 1em; background-color: #fff; font-family: Sans-Serif; }
+body                      { margin: auto; margin-top: 1em; background-color: #fff; font-family: Sans-Serif; image-rendering: crisp-edges; }
 header, section, footer   { margin: 20px; padding: 20px; border-radius: 11px; width: 90%; }
 header                    { text-align: center; margin: 0px; }
 header>h1                 { font-size: 36px; }
-section                   { background-color: #dcb; }
-section>section           { background-color: #ba9; }
+.top                      { background-color: #dcb; }
+.top section              { background-color: #ba9; }
 img                       { border: 1px #888 solid; }
 footer                    { text-align: center; }
 section>h3                { font-size: 20px; }
@@ -27,19 +29,11 @@ nav>a                     { margin-right: 20px; font-size: 18px; font-weight: bo
 a:link,a:visited,a:active { color: #731; text-decoration: none; }
 a:hover                   { color: #731; text-decoration: underline; }
 a.toggle                  { display: none; color: #731; font-weight: bold; font-size: 20px; cursor: pointer; }
+td                        { vertical-align: top; }
+table                     { width: 3000px; }
+table table               { width: 90%; }
 
 </style>
-
-<script type='text/javascript' src='js/jquery-1.9.1.min.js'></script>
-<script type='text/javascript'>
-function start() {
-  $('a.toggle.off,span.toggle').toggle();
-  $('a.toggle').click( function() {
-    $(this).parent().find('span.toggle,a.toggle').toggle();
-  });
-}
-$(start);
-</script>
 
 </head>
 
@@ -49,34 +43,13 @@ $(start);
 <header>
   <h1>LLVM IR SDK</h1>
   <h3>LLVM IR SDK is a rich LLVM IR editor plugin for Eclipse, released for free by Intel.</h3>
-  <nav>
-    <a href='#Installation'>Installation</a>
-    <a href='#Features'>Features</a>
-    <a href='#FAQ'>FAQ</a>
-    <a href='#Developers'>Developers</a>
-  </nav>
 </header>
-
-
-<section id='Installation'>
-  <h1>Download and Installation</h1>
-  <h3>Initial Installation</h3>
-  Requirements:
-  <ol>
-  <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.6 or newer</a>
-  <li><a href='http://www.eclipse.org/downloads/'>Eclipse 3.5 or newer</a> (any package)</li>
-  </ol>
-  Eclipse update site: <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
-  <a href='http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/index_v35.html#section1_0'>Click here</a> if not familiar with the Eclipse plugin installation procedure.
-  <br /><br />
-  
-  <h3>Updating to a Newer Version</h3>
-  From inside Eclipse, select Help &rarr; Check for Updates.
-</section>
-
-
-<section id='Features'>
+<table><tr>
+<td>
+<section id='Features' class='top'>
   <h1>Features</h1>
+  <table><tr>
+  <td>
   <section>
     <h3>Syntax Highlighting</h3>
     <figcaption>Syntax highlighting which is aware of the semantic differences between elements that syntactically appear the same (e.g. basic block references and parameter references).</figcaption>
@@ -109,6 +82,9 @@ $(start);
       <img src='images/hover-keywords.png' />
     </span>
   </section>
+  
+  </td><td>
+  
   <section>
     <h3>Inferring Anonymous Element Names</h3>
     <figcaption>The editor can autonomously infer the names of anonymous values</figcaption>
@@ -140,6 +116,7 @@ $(start);
       <img src='images/folding.png' /><br /><br />
     </span>
   </section>
+  </td><td>
   <section>
     <h3>Type Checking</h3>
     <figcaption>Verifies that every usage of a value is correct according to its type.</figcaption>
@@ -183,6 +160,9 @@ $(start);
       <img src='images/custom_validation-phi.png' /><br /><br />
     </span>
   </section>
+  
+  </td><td>
+  
   <section>
     <h3>Control Flow Awareness</h3>
     <figcaption>The editor is aware of the flow between basic blocks and can provide warnings and errors for problem in that flow, for example for a non-dominated use.</figcaption>
@@ -211,9 +191,13 @@ $(start);
       <img src='images/quickfix-typefix-2.png' /><br /><br />
     </span>
   </section>
+  </td>
+  </tr></table>
 </section> 
- 
-<section id='FAQ'>
+
+</td><td>
+
+<section id='FAQ' class='top'>
   <h1>FAQ</h1>
   <section>
     <h4>Is this plugin free to use?</h4>
@@ -245,47 +229,20 @@ $(start);
 	</ol>
   </section>
   <section>
-    <a id="open_a_bug" />
-    <h4>I've found a bug!</h4>
-	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where first_name, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
-	<br /><br />
-	The quality of the project will never improve if no bugs are reported, so if you find it useful <em>please</em> open bug reports for every little problem you encounter.
-  </section>
-  <section>
     <h4>I'd like to request a feature.</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where first_name, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
   </section>
-  <section>
-    <h4>I've installed the plugin succesfully, but it doesn't seem to be working at all!</h4>
-    Make sure your Eclipse is running on top of Java 1.6 or newer. <a href="http://wiki.eclipse.org/FAQ_How_do_I_run_Eclipse%3F#Find_the_JVM">Here are instructions on how to select a vm</a>, and <a href="http://wiki.eclipse.org/Eclipse.ini#Specifying_the_JVM">here's how to edit <code>eclipse.ini</code> to always select a given vm</a>.
-  </section>
-  <section>
-    <h4>I've installed the plugin succesfully and I'm running Java 1.6 or newer, but <code>.ll</code> files still open with a different editor.</h4>
-    Your <code>.ll</code> files might be associated with another editor in Eclipse. Right-click an <code>.ll</code> file and select "open with &rarr; llvm ir editor".
-  </section>
 </section>
 
-<section id='Developers'>
-  <h1>Developers</h1>
-  <a href='https://github.com/amishne/llvm-ir-editor'>Visit the Github site</a> for source code, issue list and developer FAQ.
+<section id='Website' class='top'>
+  <h1>Website</h1>
+  <img src='images/qr.png' /><br />
+  <em>http://amishne.github.com/llvm-ir-editor/</em>
 </section>
 
-<footer>
-  Project maintained by <a href='https://github.com/amishne'>Alon Mishne</a> | Site by <a href='//DanyShaanan.com'>Dany Shaanan</a>
-</footer>
+</td>
 
-<a href='https://github.com/amishne/llvm-ir-editor'><img style='position:fixed;top:0;right:0;border:0;' src='https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png' alt='Fork me on GitHub'></a>
-
-<script type='text/javascript'>
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-38111467-1']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
+</tr></table>
 
 </body>
 </html>
