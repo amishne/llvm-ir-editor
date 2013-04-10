@@ -2,7 +2,7 @@
 <feature
       id="com.intel.llvm.ireditor.sdk"
       label="LLVM IR SDK Feature"
-      version="0.9.5.qualifier"
+      version="0.9.6.qualifier"
       provider-name="Intel">
 
    <description url="An LLVM IR editor plugin">
@@ -37,22 +37,22 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    </license>
 
    <requires>
-      <import plugin="org.eclipse.xtext" version="2.3" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.util" version="2.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.util" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.antlr.runtime"/>
-      <import plugin="org.eclipse.xtext.common.types" version="2.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.3" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.ui" version="2.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.ui.shared" version="2.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.shared" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui"/>
-      <import plugin="org.eclipse.xtext.builder" version="2.3" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.common.types.ui" version="2.3" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.3" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.common.types.ui" version="2.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.3.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.compare"/>
    </requires>
 
@@ -60,14 +60,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          id="com.intel.llvm.ireditor"
          download-size="0"
          install-size="0"
-         version="0.9.5.qualifier"
+         version="0.9.6.qualifier"
          unpack="false"/>
 
    <plugin
          id="com.intel.llvm.ireditor.ui"
          download-size="0"
          install-size="0"
-         version="0.9.5.qualifier"
+         version="0.9.6.qualifier"
          unpack="false"/>
 
 </feature>
