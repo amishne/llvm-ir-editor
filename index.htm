@@ -23,10 +23,10 @@ h1                        { text-shadow: 2px 2px 3px #a97; color: #000; font-siz
 nav                       { margin-top: 20px; }
 nav>a                     { margin-right: 20px; font-size: 18px; font-weight: bold; }
 .arrow                    { margin: 10px; margin-left: 100px; width: 32px; height: 63px; background: url(images/arrow.png); }
-.nonlink                  { color: #900; }
 a:link,a:visited,a:active { color: #731; text-decoration: none; }
 a:hover                   { color: #731; text-decoration: underline; }
 a.toggle                  { display: none; color: #731; font-weight: bold; font-size: 20px; cursor: pointer; }
+.nonlink                  { color: #900; }
 
 </style>
 
@@ -63,10 +63,10 @@ $(start);
   <h3>Initial Installation</h3>
   Requirements:
   <ol>
-  <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.6 or newer</a>
-  <li><a href='http://www.eclipse.org/downloads/'>Eclipse 3.5 or newer</a> (any package)</li>
+  <li><a href='http://www.java.com/en/download/index.jsp'>Java 1.6 or newer</a>.
+  <li><a href='http://www.eclipse.org/downloads/'>Eclipse 3.8 or newer</a> (any package). See <a href="#older_eclipse">below</a> if you have an older Eclipse version.</li>
   </ol>
-  Eclipse update site: <span class='nonlink'>http://amishne.github.com/llvm-ir-editor/update</span><br />
+  Eclipse update site: <a class='nonlink' href="http://amishne.github.com/llvm-ir-editor/update">http://amishne.github.com/llvm-ir-editor/update</a><br />
   <a href='http://agile.csc.ncsu.edu/SEMaterials/tutorials/install_plugin/index_v35.html#section1_0'>Click here</a> if not familiar with the Eclipse plugin installation procedure.
   <br /><br />
   
@@ -238,14 +238,19 @@ $(start);
   </section>
   <section>
     <h4>Do I really have to install Java and Eclipse for this editor?</h4>
-	Yes, this plugin deeply integrates with Eclipse, which in turn requires Java. However:
+	Yes, this plugin is deeply integrated with Eclipse, which in turn requires Java. However:
 	<ol>
 	<li>Neither Java nor Eclipse require actual installation, they can just be uncompressed somewhere and executed there.</li>
 	<li>It's possible to download the relatively-lightweight <a href="http://download.eclipse.org/eclipse/downloads/drops4/R-4.2-201206081400/#PlatformRuntime">Eclipse Platform Runtime Binary</a> and install the plugin on top of it, no need for one of the packaged versions.</li>
 	</ol>
   </section>
   <section>
-    <a id="open_a_bug" />
+    <a id="older_eclipse"></a>
+	<h4>Can I install this plugin on Eclipse versions earlier than 3.8?</h4>
+	You should be able to install it on Eclipse 3.5 or later, but you have to manually add this additional update site first (via Preferences &rarr; Install/Update &rarr; Available Software Sites &rarr; Add...): <a class='nonlink' href="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/">http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</a>.
+  </section>
+  <section>
+    <a id="open_a_bug"></a>
     <h4>I've found a bug!</h4>
 	Please first check the <a href='https://github.com/amishne/llvm-ir-editor/issues?labels=&milestone=&page=1&state=open'>open issue list</a> and verify it isn't already there. If it isn't, please either <a href='https://github.com/amishne/llvm-ir-editor/issues/new'>open an issue on Github</a> or send an e-mail to the maintainer (first_name.last_name@company.com, where first_name, last_name and company are listed on <a href='https://github.com/amishne'>the github user page</a>).
 	<br /><br />
