@@ -129,38 +129,44 @@ public class ReverseElementIterable implements Iterable<EObject> {
 		Mode nextMode;
 
 		public boolean hasNext() {
-			switch (currMode) {
-			case STARTING_INST:
-			case MIDDLE_INST:
-			case TERMINATOR_INST: {
-				nextNode = inst2inst(currNode); // This also sets nextMode if it doesn't return null
-				if (nextNode == null) {
-					nextNode = inst2bb(currNode);
-					nextMode = Mode.BB;
+			try {
+				switch (currMode) {
+				case STARTING_INST:
+				case MIDDLE_INST:
+				case TERMINATOR_INST: {
+					nextNode = inst2inst(currNode); // This also sets nextMode if it doesn't return null
+					if (nextNode == null) {
+						nextNode = inst2bb(currNode);
+						nextMode = Mode.BB;
+					}
+					break;
 				}
-				break;
-			}
-			case BB: {
-				nextNode = bb2inst(currNode);
-				nextMode = Mode.TERMINATOR_INST;
-				if (nextNode == null) {
-					nextNode = bb2param(currNode);
-					nextMode = Mode.PARAM;
+				case BB: {
+					nextNode = bb2inst(currNode);
+					nextMode = Mode.TERMINATOR_INST;
+					if (nextNode == null) {
+						nextNode = bb2param(currNode);
+						nextMode = Mode.PARAM;
+					}
+					break;
 				}
-				break;
+				case PARAM: {
+					nextNode = param2param(currNode);
+					nextMode = currMode;
+					break;
+				}
+				case GLOBAL: {
+					nextNode = global2global(currNode);
+					nextMode = currMode;
+					break;
+				}
+				}
+				return nextNode != null;
+			} catch (RuntimeException e) {
+				// There's likely another error involved here. We don't find to report
+				// an error from the reverse element iterator in that case, so we just give up.
+				return false;
 			}
-			case PARAM: {
-				nextNode = param2param(currNode);
-				nextMode = currMode;
-				break;
-			}
-			case GLOBAL: {
-				nextNode = global2global(currNode);
-				nextMode = currMode;
-				break;
-			}
-			}
-			return nextNode != null;
 		}
 
 		public EObject next() {

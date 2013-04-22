@@ -629,8 +629,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 			if (mentionedBlocks.contains(pred)) {
 				mentionedBlocks.remove(pred);
 			} else {
-				error("The basic block " + pred.getName() +
-						" is a predecessor of the enclosing basic block, but is missing from this phi node",
+				error("The basic block " + pred.getName() + " is missing from this phi node",
 						Literals.INSTRUCTION_PHI__OPCODE);
 			}
 		}
@@ -719,7 +718,7 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				INode node = NodeModelUtils.findActualNodeFor(element);
 				int length = name.length();
 				// In function definitions and declarations the name doesn't appear first;
-				// meanwhile just give up and mark something else as erronous.
+				// meanwhile just give up and mark something else as erroneous.
 				if (element instanceof FunctionDef) {
 					length = "define".length();
 				} else if (element instanceof FunctionDecl) {
