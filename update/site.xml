@@ -3,7 +3,7 @@
    <description name="LLVM IR Editor Update Site">
       An editor for LLVM IR language.
    </description>
-   <feature url="features/com.intel.llvm.ireditor.sdk_0.9.6.201304101600.jar" id="com.intel.llvm.ireditor.sdk" version="0.9.6.201304101600">
+   <feature url="features/com.intel.llvm.ireditor.sdk_0.9.7.201304241431.jar" id="com.intel.llvm.ireditor.sdk" version="0.9.7.201304241431">
       <category name="llvm_ir_sdk"/>
    </feature>
    <category-def name="llvm_ir_sdk" label="LLVM IR SDK"/>
