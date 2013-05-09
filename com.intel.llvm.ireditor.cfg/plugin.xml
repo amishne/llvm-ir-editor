@@ -9,11 +9,12 @@
             id="com.intel.llvm.ireditor.cfg">
       </category>
       <view
-            name="LLVM CFG"
-            icon="icons/sample.gif"
+            allowMultiple="true"
             category="com.intel.llvm.ireditor.cfg"
             class="com.intel.llvm.ireditor.cfg.views.LlvmCfgView"
-            id="com.intel.llvm.ireditor.cfg.views.LlvmCfgView">
+            icon="icons/sample.gif"
+            id="com.intel.llvm.ireditor.cfg.views.LlvmCfgView"
+            name="LLVM Visualizer">
       </view>
    </extension>
    <extension

@@ -34,9 +34,12 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 import org.eclipse.emf.ecore.EObject;
@@ -78,6 +81,9 @@ import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.util.LLVM_IRSwitch;
 
 public class LlvmCfgView extends ViewPart {
+	private final Color COLOR_NORMAL_BB;
+	private final Color COLOR_NO_PREDECESSORS;
+	private final Color COLOR_FUNCTION;
 
 	class LinkWithEditorPartListener implements IPartListener2 {
 		@Override public void partHidden(IWorkbenchPartReference partRef) {
@@ -138,7 +144,7 @@ public class LlvmCfgView extends ViewPart {
 			
 			@Override public Collection<? extends EObject> caseBasicBlock(BasicBlock object) {
 				if (nodes.containsKey(object) == false) {
-					String name = currFunc.get().getHeader().getName() + " :: " + object.getName();
+					String name = object.getName();
 					GraphNode node = createNode(object, name);
 					nodes.put(object, node);
 				}
@@ -146,80 +152,108 @@ public class LlvmCfgView extends ViewPart {
 			}
 		}
 		
-		class ConnectionCreator extends LLVM_IRSwitch<Boolean> {
+		class ConnectionCreator extends LLVM_IRSwitch<Collection<BasicBlock>> {
 			ThreadLocal<BasicBlock> currBB = new ThreadLocal<BasicBlock>();
 			
-			@Override public Boolean caseModel(Model object) {
+			@Override public Collection<BasicBlock> caseModel(Model object) {
+				List<BasicBlock> havePredecessors = new LinkedList<BasicBlock>();
 				for (TopLevelElement toplevel : object.getElements()) {
-					doSwitch(toplevel);
+					Collection<BasicBlock> result = doSwitch(toplevel);
+					if (result != null) havePredecessors.addAll(result);
 				}
-				return true;
+				return havePredecessors;
 			}
 			
-			@Override public Boolean caseFunctionDef(FunctionDef object) {
+			@Override public Collection<BasicBlock> caseFunctionDef(FunctionDef object) {
 				if (object.getBasicBlocks().size() == 0) {
 					// Missing basic blocks!
-					return true;
+					return Collections.emptyList();
 				}
-				connect(object, object.getBasicBlocks().get(0));
+				BasicBlock first = object.getBasicBlocks().get(0);
+				List<BasicBlock> havePredecessors = new LinkedList<BasicBlock>();
+				havePredecessors.add(first);
+				connect(object, first);
 				
 				for (BasicBlock bb : object.getBasicBlocks()) {
-					doSwitch(bb);
+					Collection<BasicBlock> result = doSwitch(bb);
+					if (result != null) havePredecessors.addAll(result);
 				}
-				return true;
+				return havePredecessors;
 			}
 			
-			@Override public Boolean caseBasicBlock(BasicBlock object) {
+			@Override public Collection<BasicBlock> caseBasicBlock(BasicBlock object) {
 				if (object.getInstructions().size() == 0) {
 					// Missing instructions!
-					return true;
+					return Collections.emptyList();
 				}
 				currBB.set(object);
 				return doSwitch(object.getInstructions().get(object.getInstructions().size()-1));
 			}
 			
 			@Override
-			public Boolean caseTerminatorInstruction(TerminatorInstruction object) {
+			public Collection<BasicBlock> caseTerminatorInstruction(TerminatorInstruction object) {
 				return doSwitch(object.getInstruction());
 			}
 			
 			@Override
-			public Boolean caseInstruction_br(Instruction_br object) {
-				if (object.getUnconditional() != null) connect(currBB.get(), object.getUnconditional().getRef());
-				if (object.getTrue() != null) connect(currBB.get(), object.getTrue().getRef());
-				if (object.getFalse() != null) connect(currBB.get(), object.getFalse().getRef());
-				return true;
-			}
-			
-			@Override
-			public Boolean caseInstruction_switch(Instruction_switch object) {
-				for (BasicBlockRef bb : object.getDestinations()) {
-					connect(currBB.get(), bb.getRef());
+			public Collection<BasicBlock> caseInstruction_br(Instruction_br object) {
+				List<BasicBlock> targets = new LinkedList<BasicBlock>();
+				if (object.getUnconditional() != null) targets.add(object.getUnconditional().getRef());
+				if (object.getTrue() != null) targets.add(object.getTrue().getRef());
+				if (object.getFalse() != null) targets.add(object.getFalse().getRef());
+				for (BasicBlock target : targets) {
+					connect(currBB.get(), target);
 				}
-				if (object.getDefaultDest() != null) connect(currBB.get(), object.getDefaultDest().getRef());
-				return true;
+				return targets;
 			}
 			
 			@Override
-			public Boolean caseInstruction_indirectbr(Instruction_indirectbr object) {
+			public Collection<BasicBlock> caseInstruction_switch(Instruction_switch object) {
+				List<BasicBlock> targets = new LinkedList<BasicBlock>();
 				for (BasicBlockRef bb : object.getDestinations()) {
-					connect(currBB.get(), bb.getRef());
+					targets.add(bb.getRef());
 				}
-				return true;
+				if (object.getDefaultDest() != null) {
+					targets.add(object.getDefaultDest().getRef());
+				}
+				for (BasicBlock target : targets) {
+					connect(currBB.get(), target);
+				}
+				return targets;
 			}
 			
 			@Override
-			public Boolean caseInstruction_invoke_void(Instruction_invoke_void object) {
-				if (object.getToLabel() != null) connect(currBB.get(), object.getToLabel().getRef());
-				if (object.getExceptionLabel() != null) connect(currBB.get(), object.getExceptionLabel().getRef());
-				return true;
+			public Collection<BasicBlock> caseInstruction_indirectbr(Instruction_indirectbr object) {
+				List<BasicBlock> targets = new LinkedList<BasicBlock>();
+				for (BasicBlockRef bb : object.getDestinations()) {
+					targets.add(bb.getRef());
+				}
+				for (BasicBlock target : targets) {
+					connect(currBB.get(), target);
+				}
+				return targets;
 			}
 			
 			@Override
-			public Boolean caseInstruction_invoke_nonVoid(Instruction_invoke_nonVoid object) {
-				if (object.getToLabel() != null) connect(currBB.get(), object.getToLabel().getRef());
-				if (object.getExceptionLabel() != null) connect(currBB.get(), object.getExceptionLabel().getRef());
-				return true;
+			public Collection<BasicBlock> caseInstruction_invoke_void(Instruction_invoke_void object) {
+				List<BasicBlock> targets = new LinkedList<BasicBlock>();
+				if (object.getToLabel() != null) targets.add(object.getToLabel().getRef());
+				if (object.getExceptionLabel() != null) targets.add(object.getExceptionLabel().getRef());
+				for (BasicBlock target : targets) {
+					connect(currBB.get(), target);
+				}
+				return targets;
+			}
+			
+			@Override
+			public Collection<BasicBlock> caseInstruction_invoke_nonVoid(Instruction_invoke_nonVoid object) {
+				List<BasicBlock> targets = new LinkedList<BasicBlock>();
+				if (object.getToLabel() != null) targets.add(object.getToLabel().getRef());
+				if (object.getExceptionLabel() != null) targets.add(object.getExceptionLabel().getRef());
+				for (BasicBlock target : targets) {
+					connect(currBB.get(), target);
+				}
+				return targets;
 			}
 		}
 		
@@ -262,8 +296,18 @@ public class LlvmCfgView extends ViewPart {
 			}
 			
 			// All basic blocks have been added now; connect them.
+			Collection<BasicBlock> havePredecessors = new LinkedList<BasicBlock>();
 			for (EObject model : resource.getContents()) {
-				connectionCreator.doSwitch(model);
+				Collection<BasicBlock> results = connectionCreator.doSwitch(model);
+				if (results != null) havePredecessors.addAll(results);
+			}
+			
+			for (Entry<EObject, GraphNode> entry : nodes.entrySet()) {
+				if (entry.getKey() instanceof BasicBlock && havePredecessors.contains(entry.getKey()) == false) {
+					entry.getValue().setBackgroundColor(COLOR_NO_PREDECESSORS);
+				} else {
+					setColor(entry.getKey(), entry.getValue());
+				}
 			}
 			
 			graph.applyLayout();
@@ -277,6 +321,7 @@ public class LlvmCfgView extends ViewPart {
 		
 		public GraphNode createNode(final EObject obj, String name) {
 			GraphNode result = new GraphNode(graph, ZestStyles.NODES_NO_ANIMATION, name);
+			setColor(obj, result);
 			result.addListener(SWT.MouseDoubleClick, new Listener() {
 				@Override
 				public void handleEvent(Event event) {
@@ -288,6 +333,10 @@ public class LlvmCfgView extends ViewPart {
 			return result;
 		}
 		
+		private void setColor(EObject obj, GraphNode node) {
+			node.setBackgroundColor(obj instanceof BasicBlock ? COLOR_NORMAL_BB : COLOR_FUNCTION);
+		}
+
 		private void clear() {
 			for (GraphConnection conn : connections) {
 				conn.dispose();
@@ -296,6 +345,7 @@ public class LlvmCfgView extends ViewPart {
 			for (GraphNode node : nodes.values()) {
 				node.dispose();
 			}
+			
 			graph.applyLayout();
 		}
 
@@ -314,6 +364,19 @@ public class LlvmCfgView extends ViewPart {
 
 	private Graph graph;
 	private Map<XtextEditor, GraphicalModel> active = new HashMap<XtextEditor, GraphicalModel>();
+	
+	public LlvmCfgView() {
+		COLOR_FUNCTION = new Color(Display.getCurrent(), 152, 251, 152);
+		COLOR_NORMAL_BB = new Color(Display.getCurrent(), 193, 236, 250);
+		COLOR_NO_PREDECESSORS = new Color(Display.getCurrent(), 208, 163, 163);
+	}
+	
+	@Override
+	public void dispose() {
+		COLOR_NORMAL_BB.dispose();
+		COLOR_NO_PREDECESSORS.dispose();
+		COLOR_FUNCTION.dispose();
+	}
 	
 	private synchronized void linkWithPart(IWorkbenchPart part) {
 		if (part instanceof XtextEditor == false) return;
