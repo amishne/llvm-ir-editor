@@ -120,7 +120,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedUnknownType TYPE_UNKNOWN = new ResolvedUnknownType();
 	public static final ResolvedVarargType TYPE_VARARG = new ResolvedVarargType();
 	public static final ResolvedAnyType TYPE_ANY = new ResolvedAnyType();
-	public static final ResolvedType TYPE_ANY_POINTER = new ResolvedPointerType(TYPE_ANY, BigInteger.ZERO);
+	public static final ResolvedType TYPE_ANY_POINTER = new ResolvedPointerType(TYPE_ANY, BigInteger.valueOf(-1));
 	public static final ResolvedAnyArrayType TYPE_CSTRING = new ResolvedAnyArrayType(new ResolvedIntegerType(8));
 	public static final ResolvedAnyFloatingType TYPE_FLOATING = new ResolvedAnyFloatingType();
 	public static final ResolvedIntegerType TYPE_BOOLEAN = new ResolvedIntegerType(1);

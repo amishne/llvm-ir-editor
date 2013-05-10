@@ -52,7 +52,7 @@ public class ResolvedPointerType extends ResolvedType {
 	@Override
 	protected boolean uniAccepts(ResolvedType t) {
 		return t instanceof ResolvedPointerType
-				&& addrSpace.equals(((ResolvedPointerType)t).addrSpace)
+				&& (addrSpace.longValue() == -1 || addrSpace.equals(((ResolvedPointerType)t).addrSpace))
 				&& pointedType.accepts(((ResolvedPointerType)t).pointedType);
 	}
 
