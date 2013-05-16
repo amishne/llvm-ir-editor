@@ -2,7 +2,7 @@
 <feature
       id="com.intel.llvm.ireditor.cfg.sdk"
       label="LLVM IR Visualizer"
-      version="0.1.0.qualifier"
+      version="0.1.1.qualifier"
       provider-name="Intel">
 
    <description>
@@ -50,6 +50,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
          id="com.intel.llvm.ireditor.cfg"
          download-size="0"
          install-size="0"
-         version="0.1.0.qualifier"/>
+         version="0.1.1.qualifier"/>
 
 </feature>
