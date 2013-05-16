@@ -316,6 +316,10 @@ public class LlvmCfgView extends ViewPart {
 		public void connect(EObject from, EObject to) {
 			GraphConnection conn =
 					new GraphConnection(graph, ZestStyles.CONNECTIONS_DIRECTED, nodes.get(from), nodes.get(to));
+			conn.setLineWidth(2);
+			if (from == to) {
+				conn.setCurveDepth(30);
+			}
 			connections.add(conn);
 		}
 		
@@ -398,9 +402,9 @@ public class LlvmCfgView extends ViewPart {
 	public void createPartControl(Composite parent) {
 		graph = new Graph(parent, SWT.NONE);
 		graph.setLayoutAlgorithm(
-				new CompositeLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING, new LayoutAlgorithm[] {
+				new CompositeLayoutAlgorithm(ZestStyles.NODES_NO_ANIMATION, new LayoutAlgorithm[] {
 						new DirectedGraphLayoutAlgorithm(LayoutStyles.NO_LAYOUT_NODE_RESIZING),
-						new HorizontalShift(LayoutStyles.NO_LAYOUT_NODE_RESIZING)
+						new HorizontalShift(LayoutStyles.NO_LAYOUT_NODE_RESIZING),
 				}), true);
 		
 		getSite().getPage().addPartListener(new LinkWithEditorPartListener());

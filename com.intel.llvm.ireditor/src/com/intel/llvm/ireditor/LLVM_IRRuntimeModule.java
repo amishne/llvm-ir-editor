@@ -158,19 +158,13 @@ public class LLVM_IRRuntimeModule extends com.intel.llvm.ireditor.AbstractLLVM_I
 			List<INode> result = NodeModelUtils.findNodesForFeature(obj, nameFeature);
 			
 			// Special cases for nameless basic blocks, instructions and parameters
-			if (obj instanceof NamedInstruction) {
-				String text = NodeModelUtils.getTokenText(result.get(0));
-				if (text.isEmpty()) {
+			String text = NodeModelUtils.getTokenText(result.get(0));
+			if (text.isEmpty()) {
+				if (obj instanceof NamedInstruction) {
 					return Collections.singletonList(getOpcodeNode(obj));
-				}
-			} else if (obj instanceof Parameter) {
-				String text = NodeModelUtils.getTokenText(result.get(0));
-				if (text.isEmpty()) {
+				} else if (obj instanceof Parameter) {
 					return Collections.singletonList((INode)(NodeModelUtils.getNode(((Parameter) obj).getType())));
-				}
-			} else if (obj instanceof BasicBlock) {
-				String text = NodeModelUtils.getTokenText(result.get(0));
-				if (text.isEmpty()) {
+				} else if (obj instanceof BasicBlock) {
 					if (((BasicBlock) obj).getInstructions().isEmpty()) return Collections.emptyList();
 					EObject firstInstruction = ((BasicBlock) obj).getInstructions().get(0);
 					return getLocationNodes(firstInstruction);

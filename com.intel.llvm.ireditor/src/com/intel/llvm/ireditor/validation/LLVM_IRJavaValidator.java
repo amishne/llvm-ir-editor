@@ -142,7 +142,22 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		if (val.equals(((FunctionDef)val.eContainer()).getBasicBlocks().get(0)) == false &&
 				hasPredecessors(val) == false) {
 			// Not the first basic block in its function, and doesn't have predecessors.
-			warning("No predecessors!", Literals.BASIC_BLOCK__NAME);
+			if (val.getInstructions().size() == 0) {
+				// Don't bother reporting anything, there's a bigger problem here
+				return;
+			}
+			String message = "No predecessors for basic block " + val.getName();
+			INode nameNode = NodeModelUtils.findNodesForFeature(val, Literals.BASIC_BLOCK__NAME).get(0);
+			boolean hasName = NodeModelUtils.getTokenText(nameNode).isEmpty() == false;
+			if (hasName) {
+				// This basic block has a name - use that as the report location
+				warning(message, Literals.BASIC_BLOCK__NAME);
+				return;
+			}
+
+			// No name - report on first instruction
+			INode node = NodeModelUtils.findActualNodeFor(val.getInstructions().get(0));
+			acceptWarning(message, val, node.getOffset(), node.getLength(), null);
 		}
 	}
 	
