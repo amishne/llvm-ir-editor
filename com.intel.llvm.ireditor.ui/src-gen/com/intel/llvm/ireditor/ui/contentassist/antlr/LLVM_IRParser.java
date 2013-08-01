@@ -262,7 +262,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVoidTypeAccess().getGroup(), "rule__VoidType__Group__0");
 					put(grammarAccess.getMetadataTypeAccess().getGroup(), "rule__MetadataType__Group__0");
 					put(grammarAccess.getFloatingTypeAccess().getGroup(), "rule__FloatingType__Group__0");
-					put(grammarAccess.getCConvAccess().getGroup_4(), "rule__CConv__Group_4__0");
+					put(grammarAccess.getCConvAccess().getGroup_17(), "rule__CConv__Group_17__0");
 					put(grammarAccess.getModelAccess().getElementsAssignment(), "rule__Model__ElementsAssignment");
 					put(grammarAccess.getAttributeGroupAccess().getNameAssignment_0(), "rule__AttributeGroup__NameAssignment_0");
 					put(grammarAccess.getAttributeGroupAccess().getAttributesAssignment_4_0(), "rule__AttributeGroup__AttributesAssignment_4_0");

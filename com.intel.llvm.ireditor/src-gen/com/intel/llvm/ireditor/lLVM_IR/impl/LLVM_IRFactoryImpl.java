@@ -30,7 +30,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     try
     {
-      LLVM_IRFactory theLLVM_IRFactory = (LLVM_IRFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.intel.com/llvm/ireditor"); 
+      LLVM_IRFactory theLLVM_IRFactory = (LLVM_IRFactory)EPackage.Registry.INSTANCE.getEFactory(LLVM_IRPackage.eNS_URI);
       if (theLLVM_IRFactory != null)
       {
         return theLLVM_IRFactory;

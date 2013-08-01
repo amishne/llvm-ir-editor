@@ -1089,7 +1089,22 @@ CConv:
 	'ccc' |
 	'fastcc' |
 	'coldcc' |
-	'cc 10' |
+	// The following are not documented in the langref:
+    "intel_ocl_bicc" |
+    "x86_stdcallcc" |
+    "x86_fastcallcc" |
+    "x86_thiscallcc" |
+    "arm_apcscc" |
+    "arm_aapcscc" |
+    "arm_aapcs_vfpcc" |
+    "msp430_intrcc" |
+    "ptx_kernel" |
+    "ptx_device" |
+    "spir_kernel" |
+    "spir_func" |
+    "x86_64_sysvcc" |
+    "x86_64_win64cc" |
+    // Custom
 	'cc' INTEGER
 ;
 

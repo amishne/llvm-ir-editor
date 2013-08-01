@@ -4,7 +4,7 @@
     editorDirectory="/com.intel.llvm.ireditor.editor/src" modelPluginID="com.intel.llvm.ireditor"
     forceOverwrite="true" modelName="LLVM_IR" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.intel.llvm.ireditor.edit"
-    editorPluginID="com.intel.llvm.ireditor.editor" runtimeVersion="2.8">
+    editorPluginID="com.intel.llvm.ireditor.editor" runtimeVersion="2.9">
   <genPackages prefix="LLVM_IR" basePackage="com.intel.llvm.ireditor" disposableProviderFactory="true"
       ecorePackage="LLVM_IR.ecore#/">
     <genClasses ecoreClass="LLVM_IR.ecore#//Model">

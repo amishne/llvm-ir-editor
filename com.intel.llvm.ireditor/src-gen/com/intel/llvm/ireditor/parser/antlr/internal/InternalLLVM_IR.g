@@ -13810,24 +13810,115 @@ ruleCConv returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
     }
 
     |
-	kw='cc 10' 
+	kw='intel_ocl_bicc' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getCc10Keyword_3()); 
+        newLeafNode(kw, grammarAccess.getCConvAccess().getIntel_ocl_biccKeyword_3()); 
+    }
+
+    |
+	kw='x86_stdcallcc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_stdcallccKeyword_4()); 
+    }
+
+    |
+	kw='x86_fastcallcc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_fastcallccKeyword_5()); 
+    }
+
+    |
+	kw='x86_thiscallcc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_thiscallccKeyword_6()); 
+    }
+
+    |
+	kw='arm_apcscc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getArm_apcsccKeyword_7()); 
+    }
+
+    |
+	kw='arm_aapcscc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getArm_aapcsccKeyword_8()); 
+    }
+
+    |
+	kw='arm_aapcs_vfpcc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getArm_aapcs_vfpccKeyword_9()); 
+    }
+
+    |
+	kw='msp430_intrcc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getMsp430_intrccKeyword_10()); 
+    }
+
+    |
+	kw='ptx_kernel' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getPtx_kernelKeyword_11()); 
+    }
+
+    |
+	kw='ptx_device' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getPtx_deviceKeyword_12()); 
+    }
+
+    |
+	kw='spir_kernel' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getSpir_kernelKeyword_13()); 
+    }
+
+    |
+	kw='spir_func' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getSpir_funcKeyword_14()); 
+    }
+
+    |
+	kw='x86_64_sysvcc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_64_sysvccKeyword_15()); 
+    }
+
+    |
+	kw='x86_64_win64cc' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_64_win64ccKeyword_16()); 
     }
 
     |(
 	kw='cc' 
     {
         $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getCcKeyword_4_0()); 
+        newLeafNode(kw, grammarAccess.getCConvAccess().getCcKeyword_17_0()); 
     }
-    this_INTEGER_5=RULE_INTEGER    {
-		$current.merge(this_INTEGER_5);
+    this_INTEGER_18=RULE_INTEGER    {
+		$current.merge(this_INTEGER_18);
     }
 
     { 
-    newLeafNode(this_INTEGER_5, grammarAccess.getCConvAccess().getINTEGERTerminalRuleCall_4_1()); 
+    newLeafNode(this_INTEGER_18, grammarAccess.getCConvAccess().getINTEGERTerminalRuleCall_17_1()); 
     }
 ))
     ;

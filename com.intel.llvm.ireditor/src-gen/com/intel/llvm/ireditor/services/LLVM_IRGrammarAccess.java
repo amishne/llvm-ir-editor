@@ -8026,17 +8026,46 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cCccKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cFastccKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cColdccKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cCc10Keyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Group cGroup_4 = (Group)cAlternatives.eContents().get(4);
-		private final Keyword cCcKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final RuleCall cINTEGERTerminalRuleCall_4_1 = (RuleCall)cGroup_4.eContents().get(1);
+		private final Keyword cIntel_ocl_biccKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cX86_stdcallccKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cX86_fastcallccKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cX86_thiscallccKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cArm_apcsccKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cArm_aapcsccKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cArm_aapcs_vfpccKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cMsp430_intrccKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cPtx_kernelKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cPtx_deviceKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		private final Keyword cSpir_kernelKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
+		private final Keyword cSpir_funcKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
+		private final Keyword cX86_64_sysvccKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
+		private final Keyword cX86_64_win64ccKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
+		private final Group cGroup_17 = (Group)cAlternatives.eContents().get(17);
+		private final Keyword cCcKeyword_17_0 = (Keyword)cGroup_17.eContents().get(0);
+		private final RuleCall cINTEGERTerminalRuleCall_17_1 = (RuleCall)cGroup_17.eContents().get(1);
 		
 		//CConv:
 		//
-		//	"ccc" | "fastcc" | "coldcc" | "cc 10" | "cc" INTEGER;
+		//	"ccc" | "fastcc" | "coldcc" | // The following are not documented in the langref:
+		//
+		//	"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
+		//
+		//	"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
+		//
+		//	"x86_64_win64cc" | // Custom
+		//
+		//	"cc" INTEGER;
 		public ParserRule getRule() { return rule; }
 
-		//"ccc" | "fastcc" | "coldcc" | "cc 10" | "cc" INTEGER
+		//"ccc" | "fastcc" | "coldcc" | // The following are not documented in the langref:
+		//
+		//"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
+		//
+		//"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
+		//
+		//"x86_64_win64cc" | // Custom
+		//
+		//"cc" INTEGER
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"ccc"
@@ -8048,17 +8077,62 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"coldcc"
 		public Keyword getColdccKeyword_2() { return cColdccKeyword_2; }
 
-		//"cc 10"
-		public Keyword getCc10Keyword_3() { return cCc10Keyword_3; }
+		//// The following are not documented in the langref:
+		//
+		//"intel_ocl_bicc"
+		public Keyword getIntel_ocl_biccKeyword_3() { return cIntel_ocl_biccKeyword_3; }
 
+		//"x86_stdcallcc"
+		public Keyword getX86_stdcallccKeyword_4() { return cX86_stdcallccKeyword_4; }
+
+		//"x86_fastcallcc"
+		public Keyword getX86_fastcallccKeyword_5() { return cX86_fastcallccKeyword_5; }
+
+		//"x86_thiscallcc"
+		public Keyword getX86_thiscallccKeyword_6() { return cX86_thiscallccKeyword_6; }
+
+		//"arm_apcscc"
+		public Keyword getArm_apcsccKeyword_7() { return cArm_apcsccKeyword_7; }
+
+		//"arm_aapcscc"
+		public Keyword getArm_aapcsccKeyword_8() { return cArm_aapcsccKeyword_8; }
+
+		//"arm_aapcs_vfpcc"
+		public Keyword getArm_aapcs_vfpccKeyword_9() { return cArm_aapcs_vfpccKeyword_9; }
+
+		//"msp430_intrcc"
+		public Keyword getMsp430_intrccKeyword_10() { return cMsp430_intrccKeyword_10; }
+
+		//"ptx_kernel"
+		public Keyword getPtx_kernelKeyword_11() { return cPtx_kernelKeyword_11; }
+
+		//"ptx_device"
+		public Keyword getPtx_deviceKeyword_12() { return cPtx_deviceKeyword_12; }
+
+		//"spir_kernel"
+		public Keyword getSpir_kernelKeyword_13() { return cSpir_kernelKeyword_13; }
+
+		//"spir_func"
+		public Keyword getSpir_funcKeyword_14() { return cSpir_funcKeyword_14; }
+
+		//"x86_64_sysvcc"
+		public Keyword getX86_64_sysvccKeyword_15() { return cX86_64_sysvccKeyword_15; }
+
+		//"x86_64_win64cc"
+		public Keyword getX86_64_win64ccKeyword_16() { return cX86_64_win64ccKeyword_16; }
+
+		//// Custom
+		//
 		//"cc" INTEGER
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_17() { return cGroup_17; }
 
+		//// Custom
+		//
 		//"cc"
-		public Keyword getCcKeyword_4_0() { return cCcKeyword_4_0; }
+		public Keyword getCcKeyword_17_0() { return cCcKeyword_17_0; }
 
 		//INTEGER
-		public RuleCall getINTEGERTerminalRuleCall_4_1() { return cINTEGERTerminalRuleCall_4_1; }
+		public RuleCall getINTEGERTerminalRuleCall_17_1() { return cINTEGERTerminalRuleCall_17_1; }
 	}
 
 	public class VisibilityElements extends AbstractParserRuleElementFinder {
@@ -10282,7 +10356,15 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//CConv:
 	//
-	//	"ccc" | "fastcc" | "coldcc" | "cc 10" | "cc" INTEGER;
+	//	"ccc" | "fastcc" | "coldcc" | // The following are not documented in the langref:
+	//
+	//	"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
+	//
+	//	"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
+	//
+	//	"x86_64_win64cc" | // Custom
+	//
+	//	"cc" INTEGER;
 	public CConvElements getCConvAccess() {
 		return (pCConv != null) ? pCConv : (pCConv = new CConvElements());
 	}

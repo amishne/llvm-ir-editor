@@ -22,7 +22,7 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ATTRIBUTE_ID", "RULE_INTEGER", "RULE_STRING", "RULE_META_INT", "RULE_META_NAME", "RULE_LOCAL_ID", "RULE_GLOBAL_ID", "RULE_SIGNED_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_NULL", "RULE_CSTRING", "RULE_METADATA_STRING", "RULE_BASIC_BLOCK_ID", "RULE_WS", "RULE_INT_TYPE", "RULE_NAME", "RULE_FILECHECK_COMMENT", "RULE_SL_COMMENT", "RULE_ANY_OTHER", "'='", "'attributes'", "'{'", "'}'", "'metadata'", "'alias'", "'target'", "'datalayout'", "'triple'", "'module'", "'asm'", "'unnamed_addr'", "'constant'", "'global'", "','", "'('", "'to'", "')'", "'getelementptr'", "'inbounds'", "'select'", "'icmp'", "'fcmp'", "'extractelement'", "'insertelement'", "'shufflevector'", "'extractvalue'", "'insertvalue'", "'add'", "'fadd'", "'sub'", "'fsub'", "'mul'", "'fmul'", "'udiv'", "'sdiv'", "'fdiv'", "'urem'", "'srem'", "'frem'", "'shl'", "'lshr'", "'ashr'", "'and'", "'or'", "'xor'", "'undef'", "'blockaddress'", "'zeroinitializer'", "'<'", "'>'", "'['", "']'", "'!'", "'thread_local'", "'localdynamic'", "'initialexec'", "'localexec'", "'addrspace'", "'section'", "'align'", "'gc'", "'define'", "'declare'", "'...'", "'alignstack'", "'address_safety'", "'alwaysinline'", "'nonlazybind'", "'inlinehint'", "'naked'", "'noimplicitfloat'", "'noinline'", "'noredzone'", "'noreturn'", "'nounwind'", "'optsize'", "'readnone'", "'readonly'", "'returns_twice'", "'ssp'", "'sspreq'", "'uwtable'", "'ret'", "'void'", "'br'", "'label'", "'switch'", "'indirectbr'", "'invoke'", "'zeroext'", "'signext'", "'inreg'", "'unwind'", "'resume'", "'unreachable'", "'nuw'", "'nsw'", "'exact'", "'alloca'", "'load'", "'volatile'", "'!nontemporal'", "'!invariant.load'", "'atomic'", "'singlethread'", "'store'", "'fence'", "'cmpxchg'", "'atomicrmw'", "'xchg'", "'nand'", "'max'", "'min'", "'umax'", "'umin'", "'trunc'", "'zext'", "'sext'", "'fptrunc'", "'fpext'", "'fptoui'", "'fptosi'", "'uitofp'", "'sitofp'", "'ptrtoint'", "'inttoptr'", "'bitcast'", "'eq'", "'ne'", "'ugt'", "'uge'", "'ult'", "'ule'", "'sgt'", "'sge'", "'slt'", "'sle'", "'oeq'", "'ogt'", "'oge'", "'olt'", "'ole'", "'one'", "'ord'", "'ueq'", "'une'", "'uno'", "'phi'", "'tail'", "'call'", "'sideeffect'", "'inteldialect'", "'va_arg'", "'landingpad'", "'personality'", "'cleanup'", "'catch'", "'filter'", "'unordered'", "'monotonic'", "'acquire'", "'release'", "'acq_rel'", "'seq_cst'", "'byval'", "'sret'", "'noalias'", "'nocapture'", "'nest'", "'*'", "'type'", "'opaque'", "'x'", "'x86_mmx'", "'half'", "'float'", "'double'", "'fp128'", "'x86_fp80'", "'ppc_fp128'", "'private'", "'linker_private'", "'linker_private_weak'", "'linker_private_weak_def_auto'", "'internal'", "'available_externally'", "'linkonce'", "'weak'", "'common'", "'appending'", "'extern_weak'", "'linkonce_odr'", "'weak_odr'", "'external'", "'dllimport'", "'dllexport'", "'ccc'", "'fastcc'", "'coldcc'", "'cc 10'", "'cc'", "'default'", "'hidden'", "'protected'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ATTRIBUTE_ID", "RULE_INTEGER", "RULE_STRING", "RULE_META_INT", "RULE_META_NAME", "RULE_LOCAL_ID", "RULE_GLOBAL_ID", "RULE_SIGNED_INT", "RULE_FLOAT", "RULE_BOOLEAN", "RULE_NULL", "RULE_CSTRING", "RULE_METADATA_STRING", "RULE_BASIC_BLOCK_ID", "RULE_WS", "RULE_INT_TYPE", "RULE_NAME", "RULE_FILECHECK_COMMENT", "RULE_SL_COMMENT", "RULE_ANY_OTHER", "'='", "'attributes'", "'{'", "'}'", "'metadata'", "'alias'", "'target'", "'datalayout'", "'triple'", "'module'", "'asm'", "'unnamed_addr'", "'constant'", "'global'", "','", "'('", "'to'", "')'", "'getelementptr'", "'inbounds'", "'select'", "'icmp'", "'fcmp'", "'extractelement'", "'insertelement'", "'shufflevector'", "'extractvalue'", "'insertvalue'", "'add'", "'fadd'", "'sub'", "'fsub'", "'mul'", "'fmul'", "'udiv'", "'sdiv'", "'fdiv'", "'urem'", "'srem'", "'frem'", "'shl'", "'lshr'", "'ashr'", "'and'", "'or'", "'xor'", "'undef'", "'blockaddress'", "'zeroinitializer'", "'<'", "'>'", "'['", "']'", "'!'", "'thread_local'", "'localdynamic'", "'initialexec'", "'localexec'", "'addrspace'", "'section'", "'align'", "'gc'", "'define'", "'declare'", "'...'", "'alignstack'", "'address_safety'", "'alwaysinline'", "'nonlazybind'", "'inlinehint'", "'naked'", "'noimplicitfloat'", "'noinline'", "'noredzone'", "'noreturn'", "'nounwind'", "'optsize'", "'readnone'", "'readonly'", "'returns_twice'", "'ssp'", "'sspreq'", "'uwtable'", "'ret'", "'void'", "'br'", "'label'", "'switch'", "'indirectbr'", "'invoke'", "'zeroext'", "'signext'", "'inreg'", "'unwind'", "'resume'", "'unreachable'", "'nuw'", "'nsw'", "'exact'", "'alloca'", "'load'", "'volatile'", "'!nontemporal'", "'!invariant.load'", "'atomic'", "'singlethread'", "'store'", "'fence'", "'cmpxchg'", "'atomicrmw'", "'xchg'", "'nand'", "'max'", "'min'", "'umax'", "'umin'", "'trunc'", "'zext'", "'sext'", "'fptrunc'", "'fpext'", "'fptoui'", "'fptosi'", "'uitofp'", "'sitofp'", "'ptrtoint'", "'inttoptr'", "'bitcast'", "'eq'", "'ne'", "'ugt'", "'uge'", "'ult'", "'ule'", "'sgt'", "'sge'", "'slt'", "'sle'", "'oeq'", "'ogt'", "'oge'", "'olt'", "'ole'", "'one'", "'ord'", "'ueq'", "'une'", "'uno'", "'phi'", "'tail'", "'call'", "'sideeffect'", "'inteldialect'", "'va_arg'", "'landingpad'", "'personality'", "'cleanup'", "'catch'", "'filter'", "'unordered'", "'monotonic'", "'acquire'", "'release'", "'acq_rel'", "'seq_cst'", "'byval'", "'sret'", "'noalias'", "'nocapture'", "'nest'", "'*'", "'type'", "'opaque'", "'x'", "'x86_mmx'", "'half'", "'float'", "'double'", "'fp128'", "'x86_fp80'", "'ppc_fp128'", "'private'", "'linker_private'", "'linker_private_weak'", "'linker_private_weak_def_auto'", "'internal'", "'available_externally'", "'linkonce'", "'weak'", "'common'", "'appending'", "'extern_weak'", "'linkonce_odr'", "'weak_odr'", "'external'", "'dllimport'", "'dllexport'", "'ccc'", "'fastcc'", "'coldcc'", "'intel_ocl_bicc'", "'x86_stdcallcc'", "'x86_fastcallcc'", "'x86_thiscallcc'", "'arm_apcscc'", "'arm_aapcscc'", "'arm_aapcs_vfpcc'", "'msp430_intrcc'", "'ptx_kernel'", "'ptx_device'", "'spir_kernel'", "'spir_func'", "'x86_64_sysvcc'", "'x86_64_win64cc'", "'cc'", "'default'", "'hidden'", "'protected'"
     };
     public static final int T__159=159;
     public static final int T__158=158;
@@ -151,16 +151,29 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
     public static final int T__210=210;
     public static final int T__212=212;
     public static final int T__211=211;
+    public static final int T__239=239;
+    public static final int T__237=237;
+    public static final int T__238=238;
+    public static final int T__235=235;
+    public static final int T__236=236;
     public static final int T__102=102;
     public static final int T__101=101;
     public static final int T__100=100;
     public static final int RULE_GLOBAL_ID=10;
     public static final int RULE_SL_COMMENT=22;
+    public static final int T__241=241;
+    public static final int T__240=240;
     public static final int T__228=228;
+    public static final int T__229=229;
     public static final int T__224=224;
     public static final int T__225=225;
     public static final int T__226=226;
     public static final int T__227=227;
+    public static final int T__232=232;
+    public static final int T__231=231;
+    public static final int T__234=234;
+    public static final int T__233=233;
+    public static final int T__230=230;
     public static final int T__29=29;
     public static final int T__28=28;
     public static final int T__27=27;
@@ -2433,7 +2446,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt11=2;
             int LA11_0 = input.LA(1);
 
-            if ( ((LA11_0>=226 && LA11_0<=228)) ) {
+            if ( ((LA11_0>=239 && LA11_0<=241)) ) {
                 alt11=1;
             }
             switch (alt11) {
@@ -10818,7 +10831,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt44=2;
             int LA44_0 = input.LA(1);
 
-            if ( ((LA44_0>=226 && LA44_0<=228)) ) {
+            if ( ((LA44_0>=239 && LA44_0<=241)) ) {
                 alt44=1;
             }
             switch (alt44) {
@@ -10864,7 +10877,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt45=2;
             int LA45_0 = input.LA(1);
 
-            if ( ((LA45_0>=221 && LA45_0<=225)) ) {
+            if ( ((LA45_0>=221 && LA45_0<=238)) ) {
                 alt45=1;
             }
             switch (alt45) {
@@ -16304,7 +16317,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt77=2;
             int LA77_0 = input.LA(1);
 
-            if ( ((LA77_0>=221 && LA77_0<=225)) ) {
+            if ( ((LA77_0>=221 && LA77_0<=238)) ) {
                 alt77=1;
             }
             switch (alt77) {
@@ -16902,7 +16915,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt80=2;
             int LA80_0 = input.LA(1);
 
-            if ( ((LA80_0>=221 && LA80_0<=225)) ) {
+            if ( ((LA80_0>=221 && LA80_0<=238)) ) {
                 alt80=1;
             }
             switch (alt80) {
@@ -29909,7 +29922,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt126=2;
             int LA126_0 = input.LA(1);
 
-            if ( ((LA126_0>=221 && LA126_0<=225)) ) {
+            if ( ((LA126_0>=221 && LA126_0<=238)) ) {
                 alt126=1;
             }
             switch (alt126) {
@@ -30306,7 +30319,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             int alt130=2;
             int LA130_0 = input.LA(1);
 
-            if ( ((LA130_0>=221 && LA130_0<=225)) ) {
+            if ( ((LA130_0>=221 && LA130_0<=238)) ) {
                 alt130=1;
             }
             switch (alt130) {
@@ -37235,21 +37248,21 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCConv"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13787:1: ruleCConv returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'cc 10' | (kw= 'cc' this_INTEGER_5= RULE_INTEGER ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13787:1: ruleCConv returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'intel_ocl_bicc' | kw= 'x86_stdcallcc' | kw= 'x86_fastcallcc' | kw= 'x86_thiscallcc' | kw= 'arm_apcscc' | kw= 'arm_aapcscc' | kw= 'arm_aapcs_vfpcc' | kw= 'msp430_intrcc' | kw= 'ptx_kernel' | kw= 'ptx_device' | kw= 'spir_kernel' | kw= 'spir_func' | kw= 'x86_64_sysvcc' | kw= 'x86_64_win64cc' | (kw= 'cc' this_INTEGER_18= RULE_INTEGER ) ) ;
     public final AntlrDatatypeRuleToken ruleCConv() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
         Token kw=null;
-        Token this_INTEGER_5=null;
+        Token this_INTEGER_18=null;
 
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13790:28: ( (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'cc 10' | (kw= 'cc' this_INTEGER_5= RULE_INTEGER ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13791:1: (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'cc 10' | (kw= 'cc' this_INTEGER_5= RULE_INTEGER ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13790:28: ( (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'intel_ocl_bicc' | kw= 'x86_stdcallcc' | kw= 'x86_fastcallcc' | kw= 'x86_thiscallcc' | kw= 'arm_apcscc' | kw= 'arm_aapcscc' | kw= 'arm_aapcs_vfpcc' | kw= 'msp430_intrcc' | kw= 'ptx_kernel' | kw= 'ptx_device' | kw= 'spir_kernel' | kw= 'spir_func' | kw= 'x86_64_sysvcc' | kw= 'x86_64_win64cc' | (kw= 'cc' this_INTEGER_18= RULE_INTEGER ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13791:1: (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'intel_ocl_bicc' | kw= 'x86_stdcallcc' | kw= 'x86_fastcallcc' | kw= 'x86_thiscallcc' | kw= 'arm_apcscc' | kw= 'arm_aapcscc' | kw= 'arm_aapcs_vfpcc' | kw= 'msp430_intrcc' | kw= 'ptx_kernel' | kw= 'ptx_device' | kw= 'spir_kernel' | kw= 'spir_func' | kw= 'x86_64_sysvcc' | kw= 'x86_64_win64cc' | (kw= 'cc' this_INTEGER_18= RULE_INTEGER ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13791:1: (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'cc 10' | (kw= 'cc' this_INTEGER_5= RULE_INTEGER ) )
-            int alt170=5;
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13791:1: (kw= 'ccc' | kw= 'fastcc' | kw= 'coldcc' | kw= 'intel_ocl_bicc' | kw= 'x86_stdcallcc' | kw= 'x86_fastcallcc' | kw= 'x86_thiscallcc' | kw= 'arm_apcscc' | kw= 'arm_aapcscc' | kw= 'arm_aapcs_vfpcc' | kw= 'msp430_intrcc' | kw= 'ptx_kernel' | kw= 'ptx_device' | kw= 'spir_kernel' | kw= 'spir_func' | kw= 'x86_64_sysvcc' | kw= 'x86_64_win64cc' | (kw= 'cc' this_INTEGER_18= RULE_INTEGER ) )
+            int alt170=18;
             switch ( input.LA(1) ) {
             case 221:
                 {
@@ -37274,6 +37287,71 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             case 225:
                 {
                 alt170=5;
+                }
+                break;
+            case 226:
+                {
+                alt170=6;
+                }
+                break;
+            case 227:
+                {
+                alt170=7;
+                }
+                break;
+            case 228:
+                {
+                alt170=8;
+                }
+                break;
+            case 229:
+                {
+                alt170=9;
+                }
+                break;
+            case 230:
+                {
+                alt170=10;
+                }
+                break;
+            case 231:
+                {
+                alt170=11;
+                }
+                break;
+            case 232:
+                {
+                alt170=12;
+                }
+                break;
+            case 233:
+                {
+                alt170=13;
+                }
+                break;
+            case 234:
+                {
+                alt170=14;
+                }
+                break;
+            case 235:
+                {
+                alt170=15;
+                }
+                break;
+            case 236:
+                {
+                alt170=16;
+                }
+                break;
+            case 237:
+                {
+                alt170=17;
+                }
+                break;
+            case 238:
+                {
+                alt170=18;
                 }
                 break;
             default:
@@ -37325,40 +37403,209 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13813:2: kw= 'cc 10'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13813:2: kw= 'intel_ocl_bicc'
                     {
                     kw=(Token)match(input,224,FollowSets002.FOLLOW_224_in_ruleCConv29727); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getCConvAccess().getCc10Keyword_3()); 
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getIntel_ocl_biccKeyword_3()); 
                           
                     }
 
                     }
                     break;
                 case 5 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13819:6: (kw= 'cc' this_INTEGER_5= RULE_INTEGER )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13820:2: kw= 'x86_stdcallcc'
                     {
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13819:6: (kw= 'cc' this_INTEGER_5= RULE_INTEGER )
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13820:2: kw= 'cc' this_INTEGER_5= RULE_INTEGER
-                    {
-                    kw=(Token)match(input,225,FollowSets002.FOLLOW_225_in_ruleCConv29747); if (state.failed) return current;
+                    kw=(Token)match(input,225,FollowSets002.FOLLOW_225_in_ruleCConv29746); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
-                              newLeafNode(kw, grammarAccess.getCConvAccess().getCcKeyword_4_0()); 
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getX86_stdcallccKeyword_4()); 
                           
                     }
-                    this_INTEGER_5=(Token)match(input,RULE_INTEGER,FollowSets002.FOLLOW_RULE_INTEGER_in_ruleCConv29762); if (state.failed) return current;
+
+                    }
+                    break;
+                case 6 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13827:2: kw= 'x86_fastcallcc'
+                    {
+                    kw=(Token)match(input,226,FollowSets002.FOLLOW_226_in_ruleCConv29765); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
-                      		current.merge(this_INTEGER_5);
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getX86_fastcallccKeyword_5()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 7 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13834:2: kw= 'x86_thiscallcc'
+                    {
+                    kw=(Token)match(input,227,FollowSets002.FOLLOW_227_in_ruleCConv29784); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getX86_thiscallccKeyword_6()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 8 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13841:2: kw= 'arm_apcscc'
+                    {
+                    kw=(Token)match(input,228,FollowSets002.FOLLOW_228_in_ruleCConv29803); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getArm_apcsccKeyword_7()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 9 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13848:2: kw= 'arm_aapcscc'
+                    {
+                    kw=(Token)match(input,229,FollowSets002.FOLLOW_229_in_ruleCConv29822); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getArm_aapcsccKeyword_8()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 10 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13855:2: kw= 'arm_aapcs_vfpcc'
+                    {
+                    kw=(Token)match(input,230,FollowSets002.FOLLOW_230_in_ruleCConv29841); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getArm_aapcs_vfpccKeyword_9()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 11 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13862:2: kw= 'msp430_intrcc'
+                    {
+                    kw=(Token)match(input,231,FollowSets002.FOLLOW_231_in_ruleCConv29860); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getMsp430_intrccKeyword_10()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 12 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13869:2: kw= 'ptx_kernel'
+                    {
+                    kw=(Token)match(input,232,FollowSets002.FOLLOW_232_in_ruleCConv29879); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getPtx_kernelKeyword_11()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 13 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13876:2: kw= 'ptx_device'
+                    {
+                    kw=(Token)match(input,233,FollowSets002.FOLLOW_233_in_ruleCConv29898); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getPtx_deviceKeyword_12()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 14 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13883:2: kw= 'spir_kernel'
+                    {
+                    kw=(Token)match(input,234,FollowSets002.FOLLOW_234_in_ruleCConv29917); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getSpir_kernelKeyword_13()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 15 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13890:2: kw= 'spir_func'
+                    {
+                    kw=(Token)match(input,235,FollowSets002.FOLLOW_235_in_ruleCConv29936); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getSpir_funcKeyword_14()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 16 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13897:2: kw= 'x86_64_sysvcc'
+                    {
+                    kw=(Token)match(input,236,FollowSets002.FOLLOW_236_in_ruleCConv29955); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getX86_64_sysvccKeyword_15()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 17 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13904:2: kw= 'x86_64_win64cc'
+                    {
+                    kw=(Token)match(input,237,FollowSets002.FOLLOW_237_in_ruleCConv29974); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getX86_64_win64ccKeyword_16()); 
+                          
+                    }
+
+                    }
+                    break;
+                case 18 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13910:6: (kw= 'cc' this_INTEGER_18= RULE_INTEGER )
+                    {
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13910:6: (kw= 'cc' this_INTEGER_18= RULE_INTEGER )
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13911:2: kw= 'cc' this_INTEGER_18= RULE_INTEGER
+                    {
+                    kw=(Token)match(input,238,FollowSets002.FOLLOW_238_in_ruleCConv29994); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                              current.merge(kw);
+                              newLeafNode(kw, grammarAccess.getCConvAccess().getCcKeyword_17_0()); 
+                          
+                    }
+                    this_INTEGER_18=(Token)match(input,RULE_INTEGER,FollowSets002.FOLLOW_RULE_INTEGER_in_ruleCConv30009); if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      		current.merge(this_INTEGER_18);
                           
                     }
                     if ( state.backtracking==0 ) {
                        
-                          newLeafNode(this_INTEGER_5, grammarAccess.getCConvAccess().getINTEGERTerminalRuleCall_4_1()); 
+                          newLeafNode(this_INTEGER_18, grammarAccess.getCConvAccess().getINTEGERTerminalRuleCall_17_1()); 
                           
                     }
 
@@ -37390,7 +37637,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVisibility"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13840:1: entryRuleVisibility returns [String current=null] : iv_ruleVisibility= ruleVisibility EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13931:1: entryRuleVisibility returns [String current=null] : iv_ruleVisibility= ruleVisibility EOF ;
     public final String entryRuleVisibility() throws RecognitionException {
         String current = null;
 
@@ -37398,13 +37645,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13841:2: (iv_ruleVisibility= ruleVisibility EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13842:2: iv_ruleVisibility= ruleVisibility EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13932:2: (iv_ruleVisibility= ruleVisibility EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13933:2: iv_ruleVisibility= ruleVisibility EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getVisibilityRule()); 
             }
-            pushFollow(FollowSets002.FOLLOW_ruleVisibility_in_entryRuleVisibility29809);
+            pushFollow(FollowSets002.FOLLOW_ruleVisibility_in_entryRuleVisibility30056);
             iv_ruleVisibility=ruleVisibility();
 
             state._fsp--;
@@ -37412,7 +37659,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleVisibility.getText(); 
             }
-            match(input,EOF,FollowSets002.FOLLOW_EOF_in_entryRuleVisibility29820); if (state.failed) return current;
+            match(input,EOF,FollowSets002.FOLLOW_EOF_in_entryRuleVisibility30067); if (state.failed) return current;
 
             }
 
@@ -37430,7 +37677,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVisibility"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13849:1: ruleVisibility returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'default' | kw= 'hidden' | kw= 'protected' ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13940:1: ruleVisibility returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'default' | kw= 'hidden' | kw= 'protected' ) ;
     public final AntlrDatatypeRuleToken ruleVisibility() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -37439,23 +37686,23 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13852:28: ( (kw= 'default' | kw= 'hidden' | kw= 'protected' ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13853:1: (kw= 'default' | kw= 'hidden' | kw= 'protected' )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13943:28: ( (kw= 'default' | kw= 'hidden' | kw= 'protected' ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13944:1: (kw= 'default' | kw= 'hidden' | kw= 'protected' )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13853:1: (kw= 'default' | kw= 'hidden' | kw= 'protected' )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13944:1: (kw= 'default' | kw= 'hidden' | kw= 'protected' )
             int alt171=3;
             switch ( input.LA(1) ) {
-            case 226:
+            case 239:
                 {
                 alt171=1;
                 }
                 break;
-            case 227:
+            case 240:
                 {
                 alt171=2;
                 }
                 break;
-            case 228:
+            case 241:
                 {
                 alt171=3;
                 }
@@ -37470,9 +37717,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             switch (alt171) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13854:2: kw= 'default'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13945:2: kw= 'default'
                     {
-                    kw=(Token)match(input,226,FollowSets002.FOLLOW_226_in_ruleVisibility29858); if (state.failed) return current;
+                    kw=(Token)match(input,239,FollowSets002.FOLLOW_239_in_ruleVisibility30105); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -37483,9 +37730,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13861:2: kw= 'hidden'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13952:2: kw= 'hidden'
                     {
-                    kw=(Token)match(input,227,FollowSets002.FOLLOW_227_in_ruleVisibility29877); if (state.failed) return current;
+                    kw=(Token)match(input,240,FollowSets002.FOLLOW_240_in_ruleVisibility30124); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -37496,9 +37743,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13868:2: kw= 'protected'
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:13959:2: kw= 'protected'
                     {
-                    kw=(Token)match(input,228,FollowSets002.FOLLOW_228_in_ruleVisibility29896); if (state.failed) return current;
+                    kw=(Token)match(input,241,FollowSets002.FOLLOW_241_in_ruleVisibility30143); if (state.failed) return current;
                     if ( state.backtracking==0 ) {
 
                               current.merge(kw);
@@ -37966,80 +38213,120 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA62_eotS =
-        "\32\uffff";
+        "\47\uffff";
     static final String DFA62_eofS =
-        "\32\uffff";
+        "\47\uffff";
     static final String DFA62_minS =
-        "\1\11\1\uffff\1\u00ae\1\11\4\uffff\4\11\1\5\10\11\1\5\1\11\1\5"+
+        "\1\11\1\uffff\1\u00ae\1\11\4\uffff\21\11\1\5\10\11\1\5\1\11\1\5"+
         "\1\uffff\1\11";
     static final String DFA62_maxS =
-        "\1\u00b2\1\uffff\1\u00ae\1\u00e1\4\uffff\4\u00cc\1\5\10\u00cc\1"+
-        "\u0097\1\u00cc\1\5\1\uffff\1\u00cc";
+        "\1\u00b2\1\uffff\1\u00ae\1\u00ee\4\uffff\21\u00cc\1\5\10\u00cc"+
+        "\1\u0097\1\u00cc\1\5\1\uffff\1\u00cc";
     static final String DFA62_acceptS =
-        "\1\uffff\1\1\2\uffff\1\2\1\3\1\4\1\5\20\uffff\1\6\1\uffff";
+        "\1\uffff\1\1\2\uffff\1\2\1\3\1\4\1\5\35\uffff\1\6\1\uffff";
     static final String DFA62_specialS =
-        "\32\uffff}>";
+        "\47\uffff}>";
     static final String[] DFA62_transitionS = {
             "\1\1\40\uffff\1\1\1\uffff\32\1\65\uffff\2\1\5\uffff\1\4\1\5"+
             "\1\6\1\7\6\uffff\14\1\25\uffff\1\2\1\3\2\uffff\2\1",
             "",
             "\1\3",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1\20\uffff\1\10\1\11\1"+
-            "\12\1\13\1\14",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1\20\uffff\1\10\1\11\1"+
+            "\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1"+
+            "\26\1\27\1\30\1\31",
             "",
             "",
             "",
             "",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
-            "\1\26",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\10\uffff\1\27\27\uffff\1\25\5\uffff\1\15\1\16\1\17\110"+
-            "\uffff\1\20\1\21\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
-            "\1\30\1\uffff\12\30\11\uffff\1\30\7\uffff\1\30\4\uffff\1\1"+
-            "\2\uffff\1\30\1\uffff\36\30\1\uffff\1\30\1\uffff\1\30\76\uffff"+
-            "\14\30",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1",
-            "\1\31",
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\43",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\10\uffff\1\44\27\uffff\1\42\5\uffff\1\32\1\33\1\34\110"+
+            "\uffff\1\35\1\36\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\45\1\uffff\12\45\11\uffff\1\45\7\uffff\1\45\4\uffff\1\1"+
+            "\2\uffff\1\45\1\uffff\36\45\1\uffff\1\45\1\uffff\1\45\76\uffff"+
+            "\14\45",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\46",
             "",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\25\5\uffff\1\15\1\16\1\17\110\uffff\1\20\1\21"+
-            "\1\22\1\23\1\24\2\uffff\1\1\1\uffff\7\1"
+            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\110\uffff\1\35\1\36"+
+            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1"
     };
 
     static final short[] DFA62_eot = DFA.unpackEncodedString(DFA62_eotS);
@@ -38076,25 +38363,26 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA70_eotS =
-        "\24\uffff";
+        "\41\uffff";
     static final String DFA70_eofS =
-        "\24\uffff";
+        "\41\uffff";
     static final String DFA70_minS =
-        "\1\11\1\uffff\1\11\6\uffff\4\11\1\5\3\11\1\5\1\11\1\uffff";
+        "\1\11\1\uffff\1\11\6\uffff\21\11\1\5\3\11\1\5\1\11\1\uffff";
     static final String DFA70_maxS =
-        "\1\167\1\uffff\1\u00e1\6\uffff\4\u00cc\1\5\3\u00cc\1\u0097\1\u00cc"+
+        "\1\167\1\uffff\1\u00ee\6\uffff\21\u00cc\1\5\3\u00cc\1\u0097\1\u00cc"+
         "\1\uffff";
     static final String DFA70_acceptS =
-        "\1\uffff\1\1\1\uffff\1\2\1\3\1\4\1\5\1\6\1\7\12\uffff\1\10";
+        "\1\uffff\1\1\1\uffff\1\2\1\3\1\4\1\5\1\6\1\7\27\uffff\1\10";
     static final String DFA70_specialS =
-        "\24\uffff}>";
+        "\41\uffff}>";
     static final String[] DFA70_transitionS = {
             "\1\1\141\uffff\1\3\1\uffff\1\4\1\uffff\1\5\1\6\1\2\4\uffff"+
             "\1\7\1\10",
             "",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
-            "\7\1\20\uffff\1\11\1\12\1\13\1\14\1\15",
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1\20\uffff\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1"+
+            "\22\1\23\1\24\1\25\1\26\1\27\1\30\1\31\1\32",
             "",
             "",
             "",
@@ -38102,32 +38390,71 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             "",
             "",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
-            "\7\1",
-            "\1\22",
-            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
-            "\1\23\1\uffff\12\23\11\uffff\1\23\7\uffff\1\23\4\uffff\1\1"+
-            "\2\uffff\1\23\1\uffff\36\23\1\uffff\1\23\1\uffff\1\23\76\uffff"+
-            "\14\23",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\21\5\uffff\1\16\1\17\1\20\117\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\37",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
+            "\7\1",
+            "\1\40\1\uffff\12\40\11\uffff\1\40\7\uffff\1\40\4\uffff\1\1"+
+            "\2\uffff\1\40\1\uffff\36\40\1\uffff\1\40\1\uffff\1\40\76\uffff"+
+            "\14\40",
+            "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\54\uffff\1\1\1\uffff"+
+            "\1\1\40\uffff\1\36\5\uffff\1\33\1\34\1\35\117\uffff\1\1\1\uffff"+
             "\7\1",
             ""
     };
@@ -38608,9 +38935,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleAlias_in_entryRuleAlias1692 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleAlias1702 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleGlobalName_in_ruleAlias1748 = new BitSet(new long[]{0x0000000020000000L});
-        public static final BitSet FOLLOW_29_in_ruleAlias1760 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_ruleLinkage_in_ruleAlias1781 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_ruleVisibility_in_ruleAlias1803 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_29_in_ruleAlias1760 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_ruleLinkage_in_ruleAlias1781 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_ruleVisibility_in_ruleAlias1803 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleAlias1825 = new BitSet(new long[]{0x0000000000000400L,0x0000000000000000L,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleAliasee_in_ruleAlias1846 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleAliasee_in_entryRuleAliasee1882 = new BitSet(new long[]{0x0000000000000000L});
@@ -38636,8 +38963,8 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleAddressSpace_in_ruleGlobalVariable2398 = new BitSet(new long[]{0x0000003800000000L,0x0000000000004000L});
         public static final BitSet FOLLOW_ruleTLSmodel_in_ruleGlobalVariable2420 = new BitSet(new long[]{0x0000003800000000L});
         public static final BitSet FOLLOW_35_in_ruleGlobalVariable2434 = new BitSet(new long[]{0x0000003000000000L});
-        public static final BitSet FOLLOW_36_in_ruleGlobalVariable2449 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_37_in_ruleGlobalVariable2467 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_36_in_ruleGlobalVariable2449 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_37_in_ruleGlobalVariable2467 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleGlobalVariable2489 = new BitSet(new long[]{0xFFFFF4400401FC22L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleConstant_in_ruleGlobalVariable2510 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_38_in_ruleGlobalVariable2524 = new BitSet(new long[]{0x0000000000000000L,0x0000000000080000L});
@@ -38672,31 +38999,31 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleConstantExpression_convert_in_entryRuleConstantExpression_convert3322 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_convert3332 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConvertionOpcode_in_ruleConstantExpression_convert3378 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_convert3390 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_convert3390 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleConstantExpression_convert3411 = new BitSet(new long[]{0xFFFFF4000401FDA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleGlobalValueRef_in_ruleConstantExpression_convert3432 = new BitSet(new long[]{0x0000010000000000L});
-        public static final BitSet FOLLOW_40_in_ruleConstantExpression_convert3444 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_40_in_ruleConstantExpression_convert3444 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleConstantExpression_convert3465 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_convert3477 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_getelementptr_in_entryRuleConstantExpression_getelementptr3513 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_getelementptr3523 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_42_in_ruleConstantExpression_getelementptr3566 = new BitSet(new long[]{0x0000088000000000L});
         public static final BitSet FOLLOW_43_in_ruleConstantExpression_getelementptr3592 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_getelementptr3606 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_getelementptr3606 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleConstantExpression_getelementptr3627 = new BitSet(new long[]{0xFFFFF4000401FDA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleGlobalValueRef_in_ruleConstantExpression_getelementptr3648 = new BitSet(new long[]{0x0000024000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_getelementptr3661 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_getelementptr3661 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleConstantExpression_getelementptr3682 = new BitSet(new long[]{0xFFFFF4000401FC20L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleConstant_in_ruleConstantExpression_getelementptr3703 = new BitSet(new long[]{0x0000024000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_getelementptr3717 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_select_in_entryRuleConstantExpression_select3753 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_select3763 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_44_in_ruleConstantExpression_select3806 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_select3831 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_select3831 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_select3852 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_select3864 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_select3864 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_select3885 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_select3897 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_select3897 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_select3918 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_select3930 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_compare_in_entryRuleConstantExpression_compare3966 = new BitSet(new long[]{0x0000000000000000L});
@@ -38705,17 +39032,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleIcmpCondition_in_ruleConstantExpression_compare4055 = new BitSet(new long[]{0x0000008000000000L});
         public static final BitSet FOLLOW_46_in_ruleConstantExpression_compare4081 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000000L,0x00000FFC3C000000L});
         public static final BitSet FOLLOW_ruleFcmpCondition_in_ruleConstantExpression_compare4115 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_compare4129 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_compare4129 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_compare4150 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_compare4162 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_compare4162 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_compare4183 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_compare4195 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_extractelement_in_entryRuleConstantExpression_extractelement4231 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_extractelement4241 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_47_in_ruleConstantExpression_extractelement4284 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_extractelement4309 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_extractelement4309 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_extractelement4330 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_extractelement4342 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_extractelement4342 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_extractelement4363 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_extractelement4375 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_insertelement_in_entryRuleConstantExpression_insertelement4411 = new BitSet(new long[]{0x0000000000000000L});
@@ -38724,25 +39051,25 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_39_in_ruleConstantExpression_insertelement4489 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000200L});
         public static final BitSet FOLLOW_ruleVectorType_in_ruleConstantExpression_insertelement4510 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleConstantExpression_insertelement4531 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertelement4543 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertelement4543 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_insertelement4564 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertelement4576 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertelement4576 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_insertelement4597 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_insertelement4609 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_shufflevector_in_entryRuleConstantExpression_shufflevector4645 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_shufflevector4655 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_49_in_ruleConstantExpression_shufflevector4698 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_shufflevector4723 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_shufflevector4723 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_shufflevector4744 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_shufflevector4756 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_shufflevector4756 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_shufflevector4777 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_shufflevector4789 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_shufflevector4789 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_shufflevector4810 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_shufflevector4822 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantExpression_extractvalue_in_entryRuleConstantExpression_extractvalue4858 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_extractvalue4868 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_50_in_ruleConstantExpression_extractvalue4911 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_extractvalue4936 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_extractvalue4936 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_extractvalue4957 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleConstantExpression_extractvalue4970 = new BitSet(new long[]{0x0000000000000020L});
         public static final BitSet FOLLOW_RULE_INTEGER_in_ruleConstantExpression_extractvalue4987 = new BitSet(new long[]{0x0000024000000000L});
@@ -38750,9 +39077,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleConstantExpression_insertvalue_in_entryRuleConstantExpression_insertvalue5042 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantExpression_insertvalue5052 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_51_in_ruleConstantExpression_insertvalue5095 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_insertvalue5120 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_insertvalue5120 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_insertvalue5141 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertvalue5153 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertvalue5153 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_insertvalue5174 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleConstantExpression_insertvalue5187 = new BitSet(new long[]{0x0000000000000020L});
         public static final BitSet FOLLOW_RULE_INTEGER_in_ruleConstantExpression_insertvalue5204 = new BitSet(new long[]{0x0000024000000000L});
@@ -38777,9 +39104,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_67_in_ruleConstantExpression_binary5749 = new BitSet(new long[]{0x0000008000000000L});
         public static final BitSet FOLLOW_68_in_ruleConstantExpression_binary5778 = new BitSet(new long[]{0x0000008000000000L});
         public static final BitSet FOLLOW_69_in_ruleConstantExpression_binary5807 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleConstantExpression_binary5835 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleConstantExpression_binary5835 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_binary5856 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleConstantExpression_binary5868 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantExpression_binary5868 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleConstantExpression_binary5889 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleConstantExpression_binary5901 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleUndef_in_entryRuleUndef5937 = new BitSet(new long[]{0x0000000000000000L});
@@ -38798,28 +39125,28 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_72_in_ruleZeroInitializer6237 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleStructureConstant_in_entryRuleStructureConstant6282 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleStructureConstant6292 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_26_in_ruleStructureConstant6340 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_26_in_ruleStructureConstant6340 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleConstantList_in_ruleStructureConstant6361 = new BitSet(new long[]{0x0000000008000000L});
         public static final BitSet FOLLOW_27_in_ruleStructureConstant6374 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_73_in_ruleStructureConstant6400 = new BitSet(new long[]{0x0000000004000000L});
-        public static final BitSet FOLLOW_26_in_ruleStructureConstant6425 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_26_in_ruleStructureConstant6425 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleConstantList_in_ruleStructureConstant6446 = new BitSet(new long[]{0x0000000008000000L});
         public static final BitSet FOLLOW_27_in_ruleStructureConstant6459 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
         public static final BitSet FOLLOW_74_in_ruleStructureConstant6471 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleArrayConstant_in_entryRuleArrayConstant6509 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleArrayConstant6519 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_75_in_ruleArrayConstant6565 = new BitSet(new long[]{0x0000000014080200L,0x0000100000001A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_75_in_ruleArrayConstant6565 = new BitSet(new long[]{0x0000000014080200L,0x0000100000001A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleConstantList_in_ruleArrayConstant6586 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
         public static final BitSet FOLLOW_76_in_ruleArrayConstant6599 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleVectorConstant_in_entryRuleVectorConstant6635 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleVectorConstant6645 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_73_in_ruleVectorConstant6691 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000E00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_73_in_ruleVectorConstant6691 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000E00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleConstantList_in_ruleVectorConstant6712 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
         public static final BitSet FOLLOW_74_in_ruleVectorConstant6725 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConstantList_in_entryRuleConstantList6761 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConstantList6771 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleTypedConstant_in_ruleConstantList6817 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_38_in_ruleConstantList6830 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleConstantList6830 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedConstant_in_ruleConstantList6851 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleTypedConstant_in_entryRuleTypedConstant6889 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleTypedConstant6899 = new BitSet(new long[]{0x0000000000000002L});
@@ -38836,9 +39163,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleMetadataNode_in_entryRuleMetadataNode7198 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleMetadataNode7208 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_77_in_ruleMetadataNode7254 = new BitSet(new long[]{0x0000000004000000L});
-        public static final BitSet FOLLOW_26_in_ruleMetadataNode7266 = new BitSet(new long[]{0xFFFFF4001C09FFA0L,0x0000100000002BFFL,0x0000000000FFF000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_26_in_ruleMetadataNode7266 = new BitSet(new long[]{0xFFFFF4001C09FFA0L,0x0000100000002BFFL,0x0000000000FFF000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleMetadataNodeElement_in_ruleMetadataNode7288 = new BitSet(new long[]{0x0000004008000000L});
-        public static final BitSet FOLLOW_38_in_ruleMetadataNode7301 = new BitSet(new long[]{0xFFFFF4001409FFA0L,0x0000100000002BFFL,0x0000000000FFF000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleMetadataNode7301 = new BitSet(new long[]{0xFFFFF4001409FFA0L,0x0000100000002BFFL,0x0000000000FFF000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleMetadataNodeElement_in_ruleMetadataNode7322 = new BitSet(new long[]{0x0000004008000000L});
         public static final BitSet FOLLOW_27_in_ruleMetadataNode7338 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleMetadataNodeElement_in_entryRuleMetadataNodeElement7374 = new BitSet(new long[]{0x0000000000000000L});
@@ -38884,25 +39211,25 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleFunctionDecl_in_ruleFunction8426 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleFunctionDef_in_entryRuleFunctionDef8461 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleFunctionDef8471 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_86_in_ruleFunctionDef8508 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0000001FFFFFFFD3L});
+        public static final BitSet FOLLOW_86_in_ruleFunctionDef8508 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0003FFFFFFFFFFD3L});
         public static final BitSet FOLLOW_ruleFunctionHeader_in_ruleFunctionDef8529 = new BitSet(new long[]{0x0000000004000000L});
         public static final BitSet FOLLOW_26_in_ruleFunctionDef8541 = new BitSet(new long[]{0xFFFFF40000020600L,0x18C3A8000000003FL,0x0006700000FFF03CL});
         public static final BitSet FOLLOW_ruleBasicBlock_in_ruleFunctionDef8562 = new BitSet(new long[]{0xFFFFF40008020600L,0x18C3A8000000003FL,0x0006700000FFF03CL});
         public static final BitSet FOLLOW_27_in_ruleFunctionDef8575 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleFunctionDecl_in_entryRuleFunctionDecl8611 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleFunctionDecl8621 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_87_in_ruleFunctionDecl8658 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0000001FFFFFFFD3L});
+        public static final BitSet FOLLOW_87_in_ruleFunctionDecl8658 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0003FFFFFFFFFFD3L});
         public static final BitSet FOLLOW_ruleFunctionHeader_in_ruleFunctionDecl8679 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleFunctionHeader_in_entryRuleFunctionHeader8715 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleFunctionHeader8725 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLinkage_in_ruleFunctionHeader8771 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0000001FFFFFFFD3L});
-        public static final BitSet FOLLOW_ruleVisibility_in_ruleFunctionHeader8793 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0000001FFFFFFFD3L});
-        public static final BitSet FOLLOW_ruleCConv_in_ruleFunctionHeader8815 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0000001C1FFFFFD3L});
-        public static final BitSet FOLLOW_35_in_ruleFunctionHeader8829 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0xE000000000000000L,0x0000001C1FFFFFD3L});
-        public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleFunctionHeader8852 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_ruleLinkage_in_ruleFunctionHeader8771 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0003FFFFFFFFFFD3L});
+        public static final BitSet FOLLOW_ruleVisibility_in_ruleFunctionHeader8793 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x0003FFFFFFFFFFD3L});
+        public static final BitSet FOLLOW_ruleCConv_in_ruleFunctionHeader8815 = new BitSet(new long[]{0x0000000814080200L,0x001C100000000A00L,0xE000000000000000L,0x000380001FFFFFD3L});
+        public static final BitSet FOLLOW_35_in_ruleFunctionHeader8829 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0xE000000000000000L,0x000380001FFFFFD3L});
+        public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleFunctionHeader8852 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleFunctionHeader8874 = new BitSet(new long[]{0x0000000000000400L});
         public static final BitSet FOLLOW_RULE_GLOBAL_ID_in_ruleFunctionHeader8891 = new BitSet(new long[]{0x0000008000000000L});
-        public static final BitSet FOLLOW_39_in_ruleFunctionHeader8908 = new BitSet(new long[]{0x0000020014080200L,0x0000100001000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleFunctionHeader8908 = new BitSet(new long[]{0x0000020014080200L,0x0000100001000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleParameters_in_ruleFunctionHeader8929 = new BitSet(new long[]{0x0000020000000000L});
         public static final BitSet FOLLOW_41_in_ruleFunctionHeader8941 = new BitSet(new long[]{0x0000000000000012L,0x000007FFFE380000L});
         public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleFunctionHeader8962 = new BitSet(new long[]{0x0000000000000002L,0x0000000000380000L});
@@ -38912,7 +39239,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleParameters_in_entryRuleParameters9065 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleParameters9075 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleParameter_in_ruleParameters9132 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_38_in_ruleParameters9145 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleParameters9145 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleParameter_in_ruleParameters9166 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_38_in_ruleParameters9181 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
         public static final BitSet FOLLOW_88_in_ruleParameters9199 = new BitSet(new long[]{0x0000000000000002L});
@@ -39018,12 +39345,12 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_invoke_nonVoid_in_ruleNamedTerminatorInstruction11859 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_ret_in_entryRuleInstruction_ret11895 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_ret11905 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_107_in_ruleInstruction_ret11948 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_107_in_ruleInstruction_ret11948 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_ret11983 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_108_in_ruleInstruction_ret12001 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_br_in_entryRuleInstruction_br12038 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_br12048 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_109_in_ruleInstruction_br12091 = new BitSet(new long[]{0x0000000014080200L,0x0000500000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_109_in_ruleInstruction_br12091 = new BitSet(new long[]{0x0000000014080200L,0x0000500000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_br12127 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_br12139 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
         public static final BitSet FOLLOW_110_in_ruleInstruction_br12151 = new BitSet(new long[]{0x0000000000000200L});
@@ -39035,23 +39362,23 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_br12258 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_switch_in_entryRuleInstruction_switch12296 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_switch12306 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_111_in_ruleInstruction_switch12349 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_111_in_ruleInstruction_switch12349 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_switch12383 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_switch12395 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
         public static final BitSet FOLLOW_110_in_ruleInstruction_switch12407 = new BitSet(new long[]{0x0000000000000200L});
         public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_switch12428 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
-        public static final BitSet FOLLOW_75_in_ruleInstruction_switch12440 = new BitSet(new long[]{0x0000000014080200L,0x0000100000001A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_75_in_ruleInstruction_switch12440 = new BitSet(new long[]{0x0000000014080200L,0x0000100000001A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_switch12462 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_switch12474 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
         public static final BitSet FOLLOW_110_in_ruleInstruction_switch12486 = new BitSet(new long[]{0x0000000000000200L});
-        public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_switch12507 = new BitSet(new long[]{0x0000000014080200L,0x0000100000001A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_switch12507 = new BitSet(new long[]{0x0000000014080200L,0x0000100000001A00L,0x0000000000000000L,0x000380001FFFFFD0L});
     }
 
     private static class FollowSets001 {
         public static final BitSet FOLLOW_76_in_ruleInstruction_switch12521 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_indirectbr_in_entryRuleInstruction_indirectbr12557 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_indirectbr12567 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_112_in_ruleInstruction_indirectbr12610 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_112_in_ruleInstruction_indirectbr12610 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_indirectbr12644 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_indirectbr12656 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
         public static final BitSet FOLLOW_75_in_ruleInstruction_indirectbr12668 = new BitSet(new long[]{0x0000000000000000L,0x0000400000001000L});
@@ -39063,7 +39390,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_76_in_ruleInstruction_indirectbr12764 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_invoke_void_in_entryRuleInstruction_invoke_void12800 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_invoke_void12810 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_113_in_ruleInstruction_invoke_void12853 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L,0x0000000000000000L,0x00000003E0000000L});
+        public static final BitSet FOLLOW_113_in_ruleInstruction_invoke_void12853 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L,0x0000000000000000L,0x00007FFFE0000000L});
         public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_invoke_void12887 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L});
         public static final BitSet FOLLOW_114_in_ruleInstruction_invoke_void12946 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L});
         public static final BitSet FOLLOW_115_in_ruleInstruction_invoke_void13014 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L});
@@ -39080,11 +39407,11 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_invoke_void13298 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_invoke_nonVoid_in_entryRuleInstruction_invoke_nonVoid13334 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_invoke_nonVoid13344 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_113_in_ruleInstruction_invoke_nonVoid13387 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
-        public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_invoke_nonVoid13421 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
-        public static final BitSet FOLLOW_114_in_ruleInstruction_invoke_nonVoid13480 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
-        public static final BitSet FOLLOW_115_in_ruleInstruction_invoke_nonVoid13548 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
-        public static final BitSet FOLLOW_116_in_ruleInstruction_invoke_nonVoid13616 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
+        public static final BitSet FOLLOW_113_in_ruleInstruction_invoke_nonVoid13387 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
+        public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_invoke_nonVoid13421 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
+        public static final BitSet FOLLOW_114_in_ruleInstruction_invoke_nonVoid13480 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
+        public static final BitSet FOLLOW_115_in_ruleInstruction_invoke_nonVoid13548 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
+        public static final BitSet FOLLOW_116_in_ruleInstruction_invoke_nonVoid13616 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
         public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_invoke_nonVoid13678 = new BitSet(new long[]{0xFFFFF4040401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_invoke_nonVoid13699 = new BitSet(new long[]{0x0000008000000000L});
         public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_invoke_nonVoid13720 = new BitSet(new long[]{0x0000010000000010L,0x000007FFFE000000L});
@@ -39097,7 +39424,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleBasicBlockRef_in_ruleInstruction_invoke_nonVoid13832 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_resume_in_entryRuleInstruction_resume13868 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_resume13878 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_118_in_ruleInstruction_resume13921 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_118_in_ruleInstruction_resume13921 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_resume13955 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_unreachable_in_entryRuleInstruction_unreachable13991 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_unreachable14001 = new BitSet(new long[]{0x0000000000000002L});
@@ -39121,92 +39448,92 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_frem_in_ruleBinaryInstruction14534 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_add_in_entryRuleInstruction_add14569 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_add14579 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_52_in_ruleInstruction_add14622 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_120_in_ruleInstruction_add14693 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_121_in_ruleInstruction_add14761 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_52_in_ruleInstruction_add14622 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_120_in_ruleInstruction_add14693 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_121_in_ruleInstruction_add14761 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_add14823 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_add14844 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_add14856 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_add14877 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_fadd_in_entryRuleInstruction_fadd14913 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fadd14923 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_53_in_ruleInstruction_fadd14966 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_53_in_ruleInstruction_fadd14966 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fadd15000 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fadd15021 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_fadd15033 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fadd15054 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_sub_in_entryRuleInstruction_sub15090 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_sub15100 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_54_in_ruleInstruction_sub15143 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_120_in_ruleInstruction_sub15214 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_121_in_ruleInstruction_sub15282 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_54_in_ruleInstruction_sub15143 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_120_in_ruleInstruction_sub15214 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_121_in_ruleInstruction_sub15282 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_sub15344 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_sub15365 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_sub15377 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_sub15398 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_fsub_in_entryRuleInstruction_fsub15434 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fsub15444 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_55_in_ruleInstruction_fsub15487 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_55_in_ruleInstruction_fsub15487 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fsub15521 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fsub15542 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_fsub15554 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fsub15575 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_mul_in_entryRuleInstruction_mul15611 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_mul15621 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_56_in_ruleInstruction_mul15664 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_120_in_ruleInstruction_mul15735 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_121_in_ruleInstruction_mul15803 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_56_in_ruleInstruction_mul15664 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_120_in_ruleInstruction_mul15735 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_121_in_ruleInstruction_mul15803 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_mul15865 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_mul15886 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_mul15898 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_mul15919 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_fmul_in_entryRuleInstruction_fmul15955 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fmul15965 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_57_in_ruleInstruction_fmul16008 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_57_in_ruleInstruction_fmul16008 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fmul16042 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fmul16063 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_fmul16075 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fmul16096 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_udiv_in_entryRuleInstruction_udiv16132 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_udiv16142 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_58_in_ruleInstruction_udiv16185 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_122_in_ruleInstruction_udiv16211 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_58_in_ruleInstruction_udiv16185 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_122_in_ruleInstruction_udiv16211 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_udiv16234 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_udiv16255 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_udiv16267 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_udiv16288 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_sdiv_in_entryRuleInstruction_sdiv16324 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_sdiv16334 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_59_in_ruleInstruction_sdiv16377 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_122_in_ruleInstruction_sdiv16403 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_59_in_ruleInstruction_sdiv16377 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_122_in_ruleInstruction_sdiv16403 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_sdiv16426 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_sdiv16447 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_sdiv16459 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_sdiv16480 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_fdiv_in_entryRuleInstruction_fdiv16516 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fdiv16526 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_60_in_ruleInstruction_fdiv16569 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_60_in_ruleInstruction_fdiv16569 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fdiv16603 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fdiv16624 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_fdiv16636 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fdiv16657 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_urem_in_entryRuleInstruction_urem16693 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_urem16703 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_61_in_ruleInstruction_urem16746 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_61_in_ruleInstruction_urem16746 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_urem16780 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_urem16801 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_urem16813 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_urem16834 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_srem_in_entryRuleInstruction_srem16870 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_srem16880 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_62_in_ruleInstruction_srem16923 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_62_in_ruleInstruction_srem16923 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_srem16957 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_srem16978 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_srem16990 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_srem17011 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_frem_in_entryRuleInstruction_frem17047 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_frem17057 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_63_in_ruleInstruction_frem17100 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_63_in_ruleInstruction_frem17100 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_frem17134 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_frem17155 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_frem17167 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
@@ -39221,46 +39548,46 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_xor_in_ruleBitwiseBinaryInstruction17416 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_shl_in_entryRuleInstruction_shl17451 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_shl17461 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_64_in_ruleInstruction_shl17504 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_120_in_ruleInstruction_shl17575 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_121_in_ruleInstruction_shl17643 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_64_in_ruleInstruction_shl17504 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_120_in_ruleInstruction_shl17575 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_121_in_ruleInstruction_shl17643 = new BitSet(new long[]{0x0000000014080200L,0x0300100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_shl17705 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_shl17726 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_shl17738 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_shl17759 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_lshr_in_entryRuleInstruction_lshr17795 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_lshr17805 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_65_in_ruleInstruction_lshr17848 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_122_in_ruleInstruction_lshr17874 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_65_in_ruleInstruction_lshr17848 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_122_in_ruleInstruction_lshr17874 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_lshr17897 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_lshr17918 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_lshr17930 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_lshr17951 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_ashr_in_entryRuleInstruction_ashr17987 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_ashr17997 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_66_in_ruleInstruction_ashr18040 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_122_in_ruleInstruction_ashr18066 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_66_in_ruleInstruction_ashr18040 = new BitSet(new long[]{0x0000000014080200L,0x0400100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_122_in_ruleInstruction_ashr18066 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_ashr18089 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_ashr18110 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_ashr18122 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_ashr18143 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_and_in_entryRuleInstruction_and18179 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_and18189 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_67_in_ruleInstruction_and18232 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_67_in_ruleInstruction_and18232 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_and18266 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_and18287 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_and18299 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_and18320 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_or_in_entryRuleInstruction_or18356 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_or18366 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_68_in_ruleInstruction_or18409 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_68_in_ruleInstruction_or18409 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_or18443 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_or18464 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_or18476 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_or18497 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_xor_in_entryRuleInstruction_xor18533 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_xor18543 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_69_in_ruleInstruction_xor18586 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_69_in_ruleInstruction_xor18586 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_xor18620 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_xor18641 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_xor18653 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
@@ -39272,25 +39599,25 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_shufflevector_in_ruleVectorInstructions18821 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_extractelement_in_entryRuleInstruction_extractelement18856 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_extractelement18866 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_47_in_ruleInstruction_extractelement18909 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_47_in_ruleInstruction_extractelement18909 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_extractelement18943 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_extractelement18955 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_extractelement18955 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_extractelement18976 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_insertelement_in_entryRuleInstruction_insertelement19012 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_insertelement19022 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_48_in_ruleInstruction_insertelement19065 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_48_in_ruleInstruction_insertelement19065 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertelement19099 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_insertelement19111 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_insertelement19111 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertelement19132 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_insertelement19144 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_insertelement19144 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertelement19165 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_shufflevector_in_entryRuleInstruction_shufflevector19201 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_shufflevector19211 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_49_in_ruleInstruction_shufflevector19254 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_49_in_ruleInstruction_shufflevector19254 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_shufflevector19288 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_shufflevector19300 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_shufflevector19300 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_shufflevector19321 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_shufflevector19333 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_shufflevector19333 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_shufflevector19354 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleAggregateInstruction_in_entryRuleAggregateInstruction19390 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleAggregateInstruction19400 = new BitSet(new long[]{0x0000000000000002L});
@@ -39298,30 +39625,30 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_insertvalue_in_ruleAggregateInstruction19474 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_extractvalue_in_entryRuleInstruction_extractvalue19509 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_extractvalue19519 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_50_in_ruleInstruction_extractvalue19562 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_50_in_ruleInstruction_extractvalue19562 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_extractvalue19596 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_extractvalue19609 = new BitSet(new long[]{0xFFFFF4000401FC20L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleConstant_in_ruleInstruction_extractvalue19630 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleInstruction_insertvalue_in_entryRuleInstruction_insertvalue19668 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_insertvalue19678 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_51_in_ruleInstruction_insertvalue19721 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_51_in_ruleInstruction_insertvalue19721 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue19755 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_insertvalue19767 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_insertvalue19767 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_insertvalue19788 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_insertvalue19801 = new BitSet(new long[]{0xFFFFF4000401FC20L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleConstant_in_ruleInstruction_insertvalue19822 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleInstruction_alloca_in_entryRuleInstruction_alloca19862 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_alloca19872 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_123_in_ruleInstruction_alloca19915 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_123_in_ruleInstruction_alloca19915 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_alloca19949 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_alloca19962 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_alloca19962 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_alloca19983 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_alloca19998 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_alloca20019 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_load_in_entryRuleInstruction_load20057 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_load20067 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_124_in_ruleInstruction_load20110 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000001L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_125_in_ruleInstruction_load20138 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_124_in_ruleInstruction_load20110 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000001L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_125_in_ruleInstruction_load20138 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_load20161 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_load20174 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_load20195 = new BitSet(new long[]{0x0000004000000002L});
@@ -39331,27 +39658,27 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_38_in_ruleInstruction_load20258 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
         public static final BitSet FOLLOW_127_in_ruleInstruction_load20270 = new BitSet(new long[]{0xFFFFF4000401FDA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_load20291 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_128_in_ruleInstruction_load20313 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_125_in_ruleInstruction_load20326 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_128_in_ruleInstruction_load20313 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_125_in_ruleInstruction_load20326 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_load20349 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_129_in_ruleInstruction_load20362 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_load20385 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_load20406 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_store_in_entryRuleInstruction_store20444 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_store20454 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_130_in_ruleInstruction_store20497 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000001L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_125_in_ruleInstruction_store20525 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_130_in_ruleInstruction_store20497 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000001L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_125_in_ruleInstruction_store20525 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store20548 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_store20560 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_store20560 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store20581 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_store20594 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
         public static final BitSet FOLLOW_ruleAlign_in_ruleInstruction_store20615 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_store20630 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
         public static final BitSet FOLLOW_126_in_ruleInstruction_store20642 = new BitSet(new long[]{0xFFFFF4000401FDA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleMetadataRef_in_ruleInstruction_store20663 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_128_in_ruleInstruction_store20685 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_125_in_ruleInstruction_store20698 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store20721 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_128_in_ruleInstruction_store20685 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_125_in_ruleInstruction_store20698 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store20721 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_store20742 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_129_in_ruleInstruction_store20755 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_store20778 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
@@ -39363,12 +39690,12 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_fence20939 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_cmpxchg_in_entryRuleInstruction_cmpxchg20975 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_cmpxchg20985 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_132_in_ruleInstruction_cmpxchg21028 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_125_in_ruleInstruction_cmpxchg21054 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_132_in_ruleInstruction_cmpxchg21028 = new BitSet(new long[]{0x0000000014080200L,0x2000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_125_in_ruleInstruction_cmpxchg21054 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg21077 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_cmpxchg21089 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_cmpxchg21089 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg21110 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_cmpxchg21122 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_cmpxchg21122 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_cmpxchg21143 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_129_in_ruleInstruction_cmpxchg21156 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_cmpxchg21179 = new BitSet(new long[]{0x0000000000000002L});
@@ -39376,9 +39703,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_atomicrmw21225 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_133_in_ruleInstruction_atomicrmw21268 = new BitSet(new long[]{0x0050000000000000L,0x2000000000000038L,0x0000000000000FC0L});
         public static final BitSet FOLLOW_125_in_ruleInstruction_atomicrmw21294 = new BitSet(new long[]{0x0050000000000000L,0x2000000000000038L,0x0000000000000FC0L});
-        public static final BitSet FOLLOW_ruleAtomicrmw_operation_in_ruleInstruction_atomicrmw21317 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_ruleAtomicrmw_operation_in_ruleInstruction_atomicrmw21317 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw21338 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_atomicrmw21350 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_atomicrmw21350 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_atomicrmw21371 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_129_in_ruleInstruction_atomicrmw21384 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x1F80000000000002L});
         public static final BitSet FOLLOW_ruleOrdering_in_ruleInstruction_atomicrmw21407 = new BitSet(new long[]{0x0000000000000002L});
@@ -39397,17 +39724,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_139_in_ruleAtomicrmw_operation21683 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_getelementptr_in_entryRuleInstruction_getelementptr21723 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_getelementptr21733 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_42_in_ruleInstruction_getelementptr21776 = new BitSet(new long[]{0x0000080014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
-        public static final BitSet FOLLOW_43_in_ruleInstruction_getelementptr21802 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_42_in_ruleInstruction_getelementptr21776 = new BitSet(new long[]{0x0000080014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
+        public static final BitSet FOLLOW_43_in_ruleInstruction_getelementptr21802 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr21825 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_getelementptr21838 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_getelementptr21838 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_getelementptr21859 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleConversionInstruction_in_entryRuleConversionInstruction21897 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConversionInstruction21907 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleConvertionOpcode_in_ruleConversionInstruction21953 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_ruleConvertionOpcode_in_ruleConversionInstruction21953 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleConversionInstruction21974 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleConversionInstruction21995 = new BitSet(new long[]{0x0000010000000000L});
-        public static final BitSet FOLLOW_40_in_ruleConversionInstruction22007 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_40_in_ruleConversionInstruction22007 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleConversionInstruction22028 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConvertionOpcode_in_entryRuleConvertionOpcode22065 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleConvertionOpcode22076 = new BitSet(new long[]{0x0000000000000002L});
@@ -39433,7 +39760,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_icmp_in_entryRuleInstruction_icmp22563 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_icmp22573 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_45_in_ruleInstruction_icmp22616 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x00000003FF000000L});
-        public static final BitSet FOLLOW_ruleIcmpCondition_in_ruleInstruction_icmp22650 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_ruleIcmpCondition_in_ruleInstruction_icmp22650 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_icmp22671 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_icmp22692 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_icmp22704 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
@@ -39453,7 +39780,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_fcmp_in_entryRuleInstruction_fcmp23022 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_fcmp23032 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_46_in_ruleInstruction_fcmp23075 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000000L,0x00000FFC3C000000L});
-        public static final BitSet FOLLOW_ruleFcmpCondition_in_ruleInstruction_fcmp23109 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_ruleFcmpCondition_in_ruleInstruction_fcmp23109 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_fcmp23130 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_fcmp23151 = new BitSet(new long[]{0x0000004000000000L});
         public static final BitSet FOLLOW_38_in_ruleInstruction_fcmp23163 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
@@ -39477,7 +39804,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_171_in_ruleFcmpCondition23543 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_phi_in_entryRuleInstruction_phi23583 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_phi23593 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_172_in_ruleInstruction_phi23636 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_172_in_ruleInstruction_phi23636 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_phi23670 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
         public static final BitSet FOLLOW_75_in_ruleInstruction_phi23683 = new BitSet(new long[]{0xFFFFF4000401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleValueRef_in_ruleInstruction_phi23704 = new BitSet(new long[]{0x0000004000000000L});
@@ -39492,18 +39819,18 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_76_in_ruleInstruction_phi23841 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleInstruction_select_in_entryRuleInstruction_select23879 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_select23889 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_44_in_ruleInstruction_select23932 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_44_in_ruleInstruction_select23932 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23966 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_select23978 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_select23978 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select23999 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_select24011 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_select24011 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_select24032 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_call_nonVoid_in_entryRuleInstruction_call_nonVoid24068 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_call_nonVoid24078 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_173_in_ruleInstruction_call_nonVoid24121 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000400000000000L});
-        public static final BitSet FOLLOW_174_in_ruleInstruction_call_nonVoid24153 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0xE000000000000000L,0x00000003E0001FD3L});
-        public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid24187 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0xE000000000000000L,0x00000003E0001FD3L});
-        public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid24209 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
+        public static final BitSet FOLLOW_174_in_ruleInstruction_call_nonVoid24153 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0xE000000000000000L,0x00007FFFE0001FD3L});
+        public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_nonVoid24187 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0xE000000000000000L,0x00007FFFE0001FD3L});
+        public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_nonVoid24209 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
         public static final BitSet FOLLOW_ruleNonVoidType_in_ruleInstruction_call_nonVoid24231 = new BitSet(new long[]{0xFFFFF4040401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
         public static final BitSet FOLLOW_ruleCallee_in_ruleInstruction_call_nonVoid24252 = new BitSet(new long[]{0x0000008000000000L});
         public static final BitSet FOLLOW_ruleArgList_in_ruleInstruction_call_nonVoid24273 = new BitSet(new long[]{0x0000000000000012L,0x000007FFFE000000L});
@@ -39511,7 +39838,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleInstruction_call_void_in_entryRuleInstruction_call_void24331 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_call_void24341 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_173_in_ruleInstruction_call_void24384 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000400000000000L});
-        public static final BitSet FOLLOW_174_in_ruleInstruction_call_void24416 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L,0xE000000000000000L,0x00000003E0000003L});
+        public static final BitSet FOLLOW_174_in_ruleInstruction_call_void24416 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L,0xE000000000000000L,0x00007FFFE0000003L});
         public static final BitSet FOLLOW_ruleCConv_in_ruleInstruction_call_void24450 = new BitSet(new long[]{0x0000000000000000L,0x001C100000000000L,0xE000000000000000L,0x0000000000000003L});
         public static final BitSet FOLLOW_ruleParameterAttributes_in_ruleInstruction_call_void24472 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
         public static final BitSet FOLLOW_ruleVoidType_in_ruleInstruction_call_void24494 = new BitSet(new long[]{0xFFFFF4040401FFA0L,0x0000000000002BFFL,0x0000000000FFF000L});
@@ -39520,9 +39847,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleFunctionAttributes_in_ruleInstruction_call_void24557 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleArgList_in_entryRuleArgList24594 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleArgList24604 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_39_in_ruleArgList24650 = new BitSet(new long[]{0x0000020014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleArgList24650 = new BitSet(new long[]{0x0000020014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleArgument_in_ruleArgList24672 = new BitSet(new long[]{0x0000024000000000L});
-        public static final BitSet FOLLOW_38_in_ruleArgList24685 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleArgList24685 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleArgument_in_ruleArgList24706 = new BitSet(new long[]{0x0000024000000000L});
         public static final BitSet FOLLOW_41_in_ruleArgList24722 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleCallee_in_entryRuleCallee24758 = new BitSet(new long[]{0x0000000000000000L});
@@ -39540,25 +39867,25 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_RULE_STRING_in_ruleInlineAssembler25020 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_va_arg_in_entryRuleInstruction_va_arg25061 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_va_arg25071 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_177_in_ruleInstruction_va_arg25114 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_177_in_ruleInstruction_va_arg25114 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_va_arg25148 = new BitSet(new long[]{0x0000004000000000L});
-        public static final BitSet FOLLOW_38_in_ruleInstruction_va_arg25160 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleInstruction_va_arg25160 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_va_arg25181 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_landingpad_in_entryRuleInstruction_landingpad25217 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleInstruction_landingpad25227 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_178_in_ruleInstruction_landingpad25270 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_178_in_ruleInstruction_landingpad25270 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleInstruction_landingpad25304 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0008000000000000L});
     }
 
     private static class FollowSets002 {
-        public static final BitSet FOLLOW_179_in_ruleInstruction_landingpad25316 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_179_in_ruleInstruction_landingpad25316 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleInstruction_landingpad25337 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0070000000000000L});
         public static final BitSet FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad25359 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0060000000000000L});
         public static final BitSet FOLLOW_180_in_ruleInstruction_landingpad25377 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0060000000000000L});
         public static final BitSet FOLLOW_ruleLandingpadClause_in_ruleInstruction_landingpad25399 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0060000000000000L});
         public static final BitSet FOLLOW_ruleLandingpadClause_in_entryRuleLandingpadClause25436 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleLandingpadClause25446 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_181_in_ruleLandingpadClause25490 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_181_in_ruleLandingpadClause25490 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleTypedValue_in_ruleLandingpadClause25524 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_182_in_ruleLandingpadClause25550 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
         public static final BitSet FOLLOW_ruleArrayType_in_ruleLandingpadClause25584 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000800L});
@@ -39620,9 +39947,9 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleTypeSuffix_in_ruleType27034 = new BitSet(new long[]{0x0000008000000002L});
         public static final BitSet FOLLOW_ruleTypeSuffix_in_entryRuleTypeSuffix27071 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleTypeSuffix27081 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_39_in_ruleTypeSuffix27127 = new BitSet(new long[]{0x0000020014080200L,0x0000100001000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_39_in_ruleTypeSuffix27127 = new BitSet(new long[]{0x0000020014080200L,0x0000100001000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleParameterType_in_ruleTypeSuffix27150 = new BitSet(new long[]{0x0000024000000000L});
-        public static final BitSet FOLLOW_38_in_ruleTypeSuffix27163 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleTypeSuffix27163 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleParameterType_in_ruleTypeSuffix27184 = new BitSet(new long[]{0x0000024000000000L});
         public static final BitSet FOLLOW_38_in_ruleTypeSuffix27199 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
         public static final BitSet FOLLOW_88_in_ruleTypeSuffix27217 = new BitSet(new long[]{0x0000020000000000L});
@@ -39655,7 +39982,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleTypeDef_in_entryRuleTypeDef27873 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleTypeDef27883 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleLocalName_in_ruleTypeDef27929 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});
-        public static final BitSet FOLLOW_195_in_ruleTypeDef27941 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00000003E0001FD0L});
+        public static final BitSet FOLLOW_195_in_ruleTypeDef27941 = new BitSet(new long[]{0x0000000014080200L,0x001C100000000A00L,0x0000000000000000L,0x00007FFFE0001FD0L});
         public static final BitSet FOLLOW_ruleNonVoidType_in_ruleTypeDef27962 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleIntType_in_entryRuleIntType28000 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleIntType28010 = new BitSet(new long[]{0x0000000000000002L});
@@ -39665,15 +39992,15 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_196_in_ruleOpaqueType28137 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleStructType_in_entryRuleStructType28182 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleStructType28192 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_26_in_ruleStructType28240 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_26_in_ruleStructType28240 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleStructType28262 = new BitSet(new long[]{0x0000004008000000L});
-        public static final BitSet FOLLOW_38_in_ruleStructType28275 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleStructType28275 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleStructType28296 = new BitSet(new long[]{0x0000004008000000L});
         public static final BitSet FOLLOW_27_in_ruleStructType28312 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_73_in_ruleStructType28338 = new BitSet(new long[]{0x0000000004000000L});
-        public static final BitSet FOLLOW_26_in_ruleStructType28363 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_26_in_ruleStructType28363 = new BitSet(new long[]{0x000000001C080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleStructType28385 = new BitSet(new long[]{0x0000004008000000L});
-        public static final BitSet FOLLOW_38_in_ruleStructType28398 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_38_in_ruleStructType28398 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleStructType28419 = new BitSet(new long[]{0x0000004008000000L});
         public static final BitSet FOLLOW_27_in_ruleStructType28435 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
         public static final BitSet FOLLOW_74_in_ruleStructType28447 = new BitSet(new long[]{0x0000000000000002L});
@@ -39681,14 +40008,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_EOF_in_entryRuleVectorType28495 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_73_in_ruleVectorType28532 = new BitSet(new long[]{0x0000000000000020L});
         public static final BitSet FOLLOW_RULE_INTEGER_in_ruleVectorType28549 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-        public static final BitSet FOLLOW_197_in_ruleVectorType28566 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_197_in_ruleVectorType28566 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleVectorType28587 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000400L});
         public static final BitSet FOLLOW_74_in_ruleVectorType28599 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleArrayType_in_entryRuleArrayType28635 = new BitSet(new long[]{0x0000000000000000L});
         public static final BitSet FOLLOW_EOF_in_entryRuleArrayType28645 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_75_in_ruleArrayType28682 = new BitSet(new long[]{0x0000000000000020L});
         public static final BitSet FOLLOW_RULE_INTEGER_in_ruleArrayType28699 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-        public static final BitSet FOLLOW_197_in_ruleArrayType28716 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x0000001C1FFFFFD0L});
+        public static final BitSet FOLLOW_197_in_ruleArrayType28716 = new BitSet(new long[]{0x0000000014080200L,0x0000100000000A00L,0x0000000000000000L,0x000380001FFFFFD0L});
         public static final BitSet FOLLOW_ruleType_in_ruleArrayType28737 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
         public static final BitSet FOLLOW_76_in_ruleArrayType28749 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleX86mmxType_in_entryRuleX86mmxType28785 = new BitSet(new long[]{0x0000000000000000L});
@@ -39732,13 +40059,26 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_222_in_ruleCConv29689 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_223_in_ruleCConv29708 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_224_in_ruleCConv29727 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_225_in_ruleCConv29747 = new BitSet(new long[]{0x0000000000000020L});
-        public static final BitSet FOLLOW_RULE_INTEGER_in_ruleCConv29762 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleVisibility_in_entryRuleVisibility29809 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleVisibility29820 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_226_in_ruleVisibility29858 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_227_in_ruleVisibility29877 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_228_in_ruleVisibility29896 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_225_in_ruleCConv29746 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_226_in_ruleCConv29765 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_227_in_ruleCConv29784 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_228_in_ruleCConv29803 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_229_in_ruleCConv29822 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_230_in_ruleCConv29841 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_231_in_ruleCConv29860 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_232_in_ruleCConv29879 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_233_in_ruleCConv29898 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_234_in_ruleCConv29917 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_235_in_ruleCConv29936 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_236_in_ruleCConv29955 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_237_in_ruleCConv29974 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_238_in_ruleCConv29994 = new BitSet(new long[]{0x0000000000000020L});
+        public static final BitSet FOLLOW_RULE_INTEGER_in_ruleCConv30009 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleVisibility_in_entryRuleVisibility30056 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleVisibility30067 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_239_in_ruleVisibility30105 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_240_in_ruleVisibility30124 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_241_in_ruleVisibility30143 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleStructureConstant_in_synpred1_InternalLLVM_IR2693 = new BitSet(new long[]{0x0000000000000002L});
     }
 
