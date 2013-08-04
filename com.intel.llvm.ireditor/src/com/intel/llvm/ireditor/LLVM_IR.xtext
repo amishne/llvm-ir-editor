@@ -209,15 +209,10 @@ ConstantExpression_insertvalue:
 ;
 
 ConstantExpression_binary:
-	opcode=(
-		// Binary:
-		'add' | 'fadd' |
-		'sub' | 'fsub' |
-		'mul' | 'fmul' |
-		'udiv' | 'sdiv' | 'fdiv' |
-		'urem' | 'srem' | 'frem' |
-		// Bitwise binary:
-		'shl' | 'lshr' | 'ashr' | 'and' | 'or' | 'xor'
+	(
+		(opcode=('add' | 'sub' | 'mul' | 'shl') ('nuw'? & 'nsw'?)) |
+		(opcode=('sdiv' | 'udiv' | 'lshr' | 'ashr') 'exact'?) |
+		opcode=('fadd' | 'fsub' | 'fmul' | 'fdiv' | 'urem' | 'srem' | 'frem' | 'and' | 'or' | 'xor')
 	)
 	'(' op1=TypedValue ',' op2=TypedValue ')'
 ;

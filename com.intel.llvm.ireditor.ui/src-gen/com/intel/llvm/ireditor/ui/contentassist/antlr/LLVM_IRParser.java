@@ -54,7 +54,10 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantAccess().getAlternatives(), "rule__Constant__Alternatives");
 					put(grammarAccess.getConstantExpressionAccess().getAlternatives(), "rule__ConstantExpression__Alternatives");
 					put(grammarAccess.getConstantExpression_compareAccess().getAlternatives_0(), "rule__ConstantExpression_compare__Alternatives_0");
-					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAlternatives_0_0(), "rule__ConstantExpression_binary__OpcodeAlternatives_0_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getAlternatives_0(), "rule__ConstantExpression_binary__Alternatives_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAlternatives_0_0_0_0(), "rule__ConstantExpression_binary__OpcodeAlternatives_0_0_0_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAlternatives_0_1_0_0(), "rule__ConstantExpression_binary__OpcodeAlternatives_0_1_0_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAlternatives_0_2_0(), "rule__ConstantExpression_binary__OpcodeAlternatives_0_2_0");
 					put(grammarAccess.getStructureConstantAccess().getAlternatives_1(), "rule__StructureConstant__Alternatives_1");
 					put(grammarAccess.getSimpleConstantAccess().getValueAlternatives_0(), "rule__SimpleConstant__ValueAlternatives_0");
 					put(grammarAccess.getMetadataNodeElementAccess().getAlternatives(), "rule__MetadataNodeElement__Alternatives");
@@ -123,6 +126,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantExpression_insertvalueAccess().getGroup(), "rule__ConstantExpression_insertvalue__Group__0");
 					put(grammarAccess.getConstantExpression_insertvalueAccess().getGroup_5(), "rule__ConstantExpression_insertvalue__Group_5__0");
 					put(grammarAccess.getConstantExpression_binaryAccess().getGroup(), "rule__ConstantExpression_binary__Group__0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getGroup_0_0(), "rule__ConstantExpression_binary__Group_0_0__0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getGroup_0_1(), "rule__ConstantExpression_binary__Group_0_1__0");
 					put(grammarAccess.getUndefAccess().getGroup(), "rule__Undef__Group__0");
 					put(grammarAccess.getBlockAddressAccess().getGroup(), "rule__BlockAddress__Group__0");
 					put(grammarAccess.getZeroInitializerAccess().getGroup(), "rule__ZeroInitializer__Group__0");
@@ -335,7 +340,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getConstantExpression_insertvalueAccess().getValueAssignment_2(), "rule__ConstantExpression_insertvalue__ValueAssignment_2");
 					put(grammarAccess.getConstantExpression_insertvalueAccess().getElementAssignment_4(), "rule__ConstantExpression_insertvalue__ElementAssignment_4");
 					put(grammarAccess.getConstantExpression_insertvalueAccess().getIndicesAssignment_5_1(), "rule__ConstantExpression_insertvalue__IndicesAssignment_5_1");
-					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAssignment_0(), "rule__ConstantExpression_binary__OpcodeAssignment_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAssignment_0_0_0(), "rule__ConstantExpression_binary__OpcodeAssignment_0_0_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAssignment_0_1_0(), "rule__ConstantExpression_binary__OpcodeAssignment_0_1_0");
+					put(grammarAccess.getConstantExpression_binaryAccess().getOpcodeAssignment_0_2(), "rule__ConstantExpression_binary__OpcodeAssignment_0_2");
 					put(grammarAccess.getConstantExpression_binaryAccess().getOp1Assignment_2(), "rule__ConstantExpression_binary__Op1Assignment_2");
 					put(grammarAccess.getConstantExpression_binaryAccess().getOp2Assignment_4(), "rule__ConstantExpression_binary__Op2Assignment_4");
 					put(grammarAccess.getBlockAddressAccess().getFunctionAssignment_2(), "rule__BlockAddress__FunctionAssignment_2");
@@ -658,6 +665,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVectorTypeAccess().getElemTypeAssignment_3(), "rule__VectorType__ElemTypeAssignment_3");
 					put(grammarAccess.getArrayTypeAccess().getSizeAssignment_1(), "rule__ArrayType__SizeAssignment_1");
 					put(grammarAccess.getArrayTypeAccess().getElemTypeAssignment_3(), "rule__ArrayType__ElemTypeAssignment_3");
+					put(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1(), "rule__ConstantExpression_binary__UnorderedGroup_0_0_1");
 					put(grammarAccess.getInstruction_invoke_voidAccess().getUnorderedGroup_2(), "rule__Instruction_invoke_void__UnorderedGroup_2");
 					put(grammarAccess.getInstruction_invoke_nonVoidAccess().getUnorderedGroup_2(), "rule__Instruction_invoke_nonVoid__UnorderedGroup_2");
 					put(grammarAccess.getInstruction_addAccess().getUnorderedGroup_1(), "rule__Instruction_add__UnorderedGroup_1");

@@ -1454,26 +1454,37 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	public class ConstantExpression_binaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ConstantExpression_binary");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cOpcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Alternatives cOpcodeAlternatives_0_0 = (Alternatives)cOpcodeAssignment_0.eContents().get(0);
-		private final Keyword cOpcodeAddKeyword_0_0_0 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(0);
-		private final Keyword cOpcodeFaddKeyword_0_0_1 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(1);
-		private final Keyword cOpcodeSubKeyword_0_0_2 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(2);
-		private final Keyword cOpcodeFsubKeyword_0_0_3 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(3);
-		private final Keyword cOpcodeMulKeyword_0_0_4 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(4);
-		private final Keyword cOpcodeFmulKeyword_0_0_5 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(5);
-		private final Keyword cOpcodeUdivKeyword_0_0_6 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(6);
-		private final Keyword cOpcodeSdivKeyword_0_0_7 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(7);
-		private final Keyword cOpcodeFdivKeyword_0_0_8 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(8);
-		private final Keyword cOpcodeUremKeyword_0_0_9 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(9);
-		private final Keyword cOpcodeSremKeyword_0_0_10 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(10);
-		private final Keyword cOpcodeFremKeyword_0_0_11 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(11);
-		private final Keyword cOpcodeShlKeyword_0_0_12 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(12);
-		private final Keyword cOpcodeLshrKeyword_0_0_13 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(13);
-		private final Keyword cOpcodeAshrKeyword_0_0_14 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(14);
-		private final Keyword cOpcodeAndKeyword_0_0_15 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(15);
-		private final Keyword cOpcodeOrKeyword_0_0_16 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(16);
-		private final Keyword cOpcodeXorKeyword_0_0_17 = (Keyword)cOpcodeAlternatives_0_0.eContents().get(17);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Group cGroup_0_0 = (Group)cAlternatives_0.eContents().get(0);
+		private final Assignment cOpcodeAssignment_0_0_0 = (Assignment)cGroup_0_0.eContents().get(0);
+		private final Alternatives cOpcodeAlternatives_0_0_0_0 = (Alternatives)cOpcodeAssignment_0_0_0.eContents().get(0);
+		private final Keyword cOpcodeAddKeyword_0_0_0_0_0 = (Keyword)cOpcodeAlternatives_0_0_0_0.eContents().get(0);
+		private final Keyword cOpcodeSubKeyword_0_0_0_0_1 = (Keyword)cOpcodeAlternatives_0_0_0_0.eContents().get(1);
+		private final Keyword cOpcodeMulKeyword_0_0_0_0_2 = (Keyword)cOpcodeAlternatives_0_0_0_0.eContents().get(2);
+		private final Keyword cOpcodeShlKeyword_0_0_0_0_3 = (Keyword)cOpcodeAlternatives_0_0_0_0.eContents().get(3);
+		private final UnorderedGroup cUnorderedGroup_0_0_1 = (UnorderedGroup)cGroup_0_0.eContents().get(1);
+		private final Keyword cNuwKeyword_0_0_1_0 = (Keyword)cUnorderedGroup_0_0_1.eContents().get(0);
+		private final Keyword cNswKeyword_0_0_1_1 = (Keyword)cUnorderedGroup_0_0_1.eContents().get(1);
+		private final Group cGroup_0_1 = (Group)cAlternatives_0.eContents().get(1);
+		private final Assignment cOpcodeAssignment_0_1_0 = (Assignment)cGroup_0_1.eContents().get(0);
+		private final Alternatives cOpcodeAlternatives_0_1_0_0 = (Alternatives)cOpcodeAssignment_0_1_0.eContents().get(0);
+		private final Keyword cOpcodeSdivKeyword_0_1_0_0_0 = (Keyword)cOpcodeAlternatives_0_1_0_0.eContents().get(0);
+		private final Keyword cOpcodeUdivKeyword_0_1_0_0_1 = (Keyword)cOpcodeAlternatives_0_1_0_0.eContents().get(1);
+		private final Keyword cOpcodeLshrKeyword_0_1_0_0_2 = (Keyword)cOpcodeAlternatives_0_1_0_0.eContents().get(2);
+		private final Keyword cOpcodeAshrKeyword_0_1_0_0_3 = (Keyword)cOpcodeAlternatives_0_1_0_0.eContents().get(3);
+		private final Keyword cExactKeyword_0_1_1 = (Keyword)cGroup_0_1.eContents().get(1);
+		private final Assignment cOpcodeAssignment_0_2 = (Assignment)cAlternatives_0.eContents().get(2);
+		private final Alternatives cOpcodeAlternatives_0_2_0 = (Alternatives)cOpcodeAssignment_0_2.eContents().get(0);
+		private final Keyword cOpcodeFaddKeyword_0_2_0_0 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(0);
+		private final Keyword cOpcodeFsubKeyword_0_2_0_1 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(1);
+		private final Keyword cOpcodeFmulKeyword_0_2_0_2 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(2);
+		private final Keyword cOpcodeFdivKeyword_0_2_0_3 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(3);
+		private final Keyword cOpcodeUremKeyword_0_2_0_4 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(4);
+		private final Keyword cOpcodeSremKeyword_0_2_0_5 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(5);
+		private final Keyword cOpcodeFremKeyword_0_2_0_6 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(6);
+		private final Keyword cOpcodeAndKeyword_0_2_0_7 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(7);
+		private final Keyword cOpcodeOrKeyword_0_2_0_8 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(8);
+		private final Keyword cOpcodeXorKeyword_0_2_0_9 = (Keyword)cOpcodeAlternatives_0_2_0.eContents().get(9);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cOp1Assignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cOp1TypedValueParserRuleCall_2_0 = (RuleCall)cOp1Assignment_2.eContents().get(0);
@@ -1484,91 +1495,114 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ConstantExpression_binary:
 		//
-		//	opcode= // Binary:
+		//	(opcode=("add" | "sub" | "mul" | "shl") ("nuw"? & "nsw"?) | opcode=("sdiv" | "udiv" | "lshr" | "ashr") "exact"? |
 		//
-		//	("add" | "fadd" | "sub" | "fsub" | "mul" | "fmul" | "udiv" | "sdiv" | "fdiv" | "urem" | "srem" | "frem" | // Bitwise binary:
+		//	opcode=("fadd" | "fsub" | "fmul" | "fdiv" | "urem" | "srem" | "frem" | "and" | "or" | "xor")) "(" op1=TypedValue ","
 		//
-		//	"shl" | "lshr" | "ashr" | "and" | "or" | "xor") "(" op1=TypedValue "," op2=TypedValue ")";
+		//	op2=TypedValue ")";
 		public ParserRule getRule() { return rule; }
 
-		//opcode= // Binary:
+		//(opcode=("add" | "sub" | "mul" | "shl") ("nuw"? & "nsw"?) | opcode=("sdiv" | "udiv" | "lshr" | "ashr") "exact"? |
 		//
-		//("add" | "fadd" | "sub" | "fsub" | "mul" | "fmul" | "udiv" | "sdiv" | "fdiv" | "urem" | "srem" | "frem" | // Bitwise binary:
+		//opcode=("fadd" | "fsub" | "fmul" | "fdiv" | "urem" | "srem" | "frem" | "and" | "or" | "xor")) "(" op1=TypedValue ","
 		//
-		//"shl" | "lshr" | "ashr" | "and" | "or" | "xor") "(" op1=TypedValue "," op2=TypedValue ")"
+		//op2=TypedValue ")"
 		public Group getGroup() { return cGroup; }
 
-		//opcode= // Binary:
+		//opcode=("add" | "sub" | "mul" | "shl") ("nuw"? & "nsw"?) | opcode=("sdiv" | "udiv" | "lshr" | "ashr") "exact"? |
 		//
-		//("add" | "fadd" | "sub" | "fsub" | "mul" | "fmul" | "udiv" | "sdiv" | "fdiv" | "urem" | "srem" | "frem" | // Bitwise binary:
-		//
-		//"shl" | "lshr" | "ashr" | "and" | "or" | "xor")
-		public Assignment getOpcodeAssignment_0() { return cOpcodeAssignment_0; }
+		//opcode=("fadd" | "fsub" | "fmul" | "fdiv" | "urem" | "srem" | "frem" | "and" | "or" | "xor")
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
-		//// Binary:
-		//
-		//"add" | "fadd" | "sub" | "fsub" | "mul" | "fmul" | "udiv" | "sdiv" | "fdiv" | "urem" | "srem" | "frem" | // Bitwise binary:
-		//
-		//"shl" | "lshr" | "ashr" | "and" | "or" | "xor"
-		public Alternatives getOpcodeAlternatives_0_0() { return cOpcodeAlternatives_0_0; }
+		//opcode=("add" | "sub" | "mul" | "shl") ("nuw"? & "nsw"?)
+		public Group getGroup_0_0() { return cGroup_0_0; }
 
-		//// Binary:
-		//
+		//opcode=("add" | "sub" | "mul" | "shl")
+		public Assignment getOpcodeAssignment_0_0_0() { return cOpcodeAssignment_0_0_0; }
+
+		//"add" | "sub" | "mul" | "shl"
+		public Alternatives getOpcodeAlternatives_0_0_0_0() { return cOpcodeAlternatives_0_0_0_0; }
+
 		//"add"
-		public Keyword getOpcodeAddKeyword_0_0_0() { return cOpcodeAddKeyword_0_0_0; }
-
-		//"fadd"
-		public Keyword getOpcodeFaddKeyword_0_0_1() { return cOpcodeFaddKeyword_0_0_1; }
+		public Keyword getOpcodeAddKeyword_0_0_0_0_0() { return cOpcodeAddKeyword_0_0_0_0_0; }
 
 		//"sub"
-		public Keyword getOpcodeSubKeyword_0_0_2() { return cOpcodeSubKeyword_0_0_2; }
-
-		//"fsub"
-		public Keyword getOpcodeFsubKeyword_0_0_3() { return cOpcodeFsubKeyword_0_0_3; }
+		public Keyword getOpcodeSubKeyword_0_0_0_0_1() { return cOpcodeSubKeyword_0_0_0_0_1; }
 
 		//"mul"
-		public Keyword getOpcodeMulKeyword_0_0_4() { return cOpcodeMulKeyword_0_0_4; }
+		public Keyword getOpcodeMulKeyword_0_0_0_0_2() { return cOpcodeMulKeyword_0_0_0_0_2; }
 
-		//"fmul"
-		public Keyword getOpcodeFmulKeyword_0_0_5() { return cOpcodeFmulKeyword_0_0_5; }
+		//"shl"
+		public Keyword getOpcodeShlKeyword_0_0_0_0_3() { return cOpcodeShlKeyword_0_0_0_0_3; }
 
-		//"udiv"
-		public Keyword getOpcodeUdivKeyword_0_0_6() { return cOpcodeUdivKeyword_0_0_6; }
+		//"nuw"? & "nsw"?
+		public UnorderedGroup getUnorderedGroup_0_0_1() { return cUnorderedGroup_0_0_1; }
+
+		//"nuw"?
+		public Keyword getNuwKeyword_0_0_1_0() { return cNuwKeyword_0_0_1_0; }
+
+		//"nsw"?
+		public Keyword getNswKeyword_0_0_1_1() { return cNswKeyword_0_0_1_1; }
+
+		//opcode=("sdiv" | "udiv" | "lshr" | "ashr") "exact"?
+		public Group getGroup_0_1() { return cGroup_0_1; }
+
+		//opcode=("sdiv" | "udiv" | "lshr" | "ashr")
+		public Assignment getOpcodeAssignment_0_1_0() { return cOpcodeAssignment_0_1_0; }
+
+		//"sdiv" | "udiv" | "lshr" | "ashr"
+		public Alternatives getOpcodeAlternatives_0_1_0_0() { return cOpcodeAlternatives_0_1_0_0; }
 
 		//"sdiv"
-		public Keyword getOpcodeSdivKeyword_0_0_7() { return cOpcodeSdivKeyword_0_0_7; }
+		public Keyword getOpcodeSdivKeyword_0_1_0_0_0() { return cOpcodeSdivKeyword_0_1_0_0_0; }
 
-		//"fdiv"
-		public Keyword getOpcodeFdivKeyword_0_0_8() { return cOpcodeFdivKeyword_0_0_8; }
-
-		//"urem"
-		public Keyword getOpcodeUremKeyword_0_0_9() { return cOpcodeUremKeyword_0_0_9; }
-
-		//"srem"
-		public Keyword getOpcodeSremKeyword_0_0_10() { return cOpcodeSremKeyword_0_0_10; }
-
-		//"frem"
-		public Keyword getOpcodeFremKeyword_0_0_11() { return cOpcodeFremKeyword_0_0_11; }
-
-		//// Bitwise binary:
-		//
-		//"shl"
-		public Keyword getOpcodeShlKeyword_0_0_12() { return cOpcodeShlKeyword_0_0_12; }
+		//"udiv"
+		public Keyword getOpcodeUdivKeyword_0_1_0_0_1() { return cOpcodeUdivKeyword_0_1_0_0_1; }
 
 		//"lshr"
-		public Keyword getOpcodeLshrKeyword_0_0_13() { return cOpcodeLshrKeyword_0_0_13; }
+		public Keyword getOpcodeLshrKeyword_0_1_0_0_2() { return cOpcodeLshrKeyword_0_1_0_0_2; }
 
 		//"ashr"
-		public Keyword getOpcodeAshrKeyword_0_0_14() { return cOpcodeAshrKeyword_0_0_14; }
+		public Keyword getOpcodeAshrKeyword_0_1_0_0_3() { return cOpcodeAshrKeyword_0_1_0_0_3; }
+
+		//"exact"?
+		public Keyword getExactKeyword_0_1_1() { return cExactKeyword_0_1_1; }
+
+		//opcode=("fadd" | "fsub" | "fmul" | "fdiv" | "urem" | "srem" | "frem" | "and" | "or" | "xor")
+		public Assignment getOpcodeAssignment_0_2() { return cOpcodeAssignment_0_2; }
+
+		//"fadd" | "fsub" | "fmul" | "fdiv" | "urem" | "srem" | "frem" | "and" | "or" | "xor"
+		public Alternatives getOpcodeAlternatives_0_2_0() { return cOpcodeAlternatives_0_2_0; }
+
+		//"fadd"
+		public Keyword getOpcodeFaddKeyword_0_2_0_0() { return cOpcodeFaddKeyword_0_2_0_0; }
+
+		//"fsub"
+		public Keyword getOpcodeFsubKeyword_0_2_0_1() { return cOpcodeFsubKeyword_0_2_0_1; }
+
+		//"fmul"
+		public Keyword getOpcodeFmulKeyword_0_2_0_2() { return cOpcodeFmulKeyword_0_2_0_2; }
+
+		//"fdiv"
+		public Keyword getOpcodeFdivKeyword_0_2_0_3() { return cOpcodeFdivKeyword_0_2_0_3; }
+
+		//"urem"
+		public Keyword getOpcodeUremKeyword_0_2_0_4() { return cOpcodeUremKeyword_0_2_0_4; }
+
+		//"srem"
+		public Keyword getOpcodeSremKeyword_0_2_0_5() { return cOpcodeSremKeyword_0_2_0_5; }
+
+		//"frem"
+		public Keyword getOpcodeFremKeyword_0_2_0_6() { return cOpcodeFremKeyword_0_2_0_6; }
 
 		//"and"
-		public Keyword getOpcodeAndKeyword_0_0_15() { return cOpcodeAndKeyword_0_0_15; }
+		public Keyword getOpcodeAndKeyword_0_2_0_7() { return cOpcodeAndKeyword_0_2_0_7; }
 
 		//"or"
-		public Keyword getOpcodeOrKeyword_0_0_16() { return cOpcodeOrKeyword_0_0_16; }
+		public Keyword getOpcodeOrKeyword_0_2_0_8() { return cOpcodeOrKeyword_0_2_0_8; }
 
 		//"xor"
-		public Keyword getOpcodeXorKeyword_0_0_17() { return cOpcodeXorKeyword_0_0_17; }
+		public Keyword getOpcodeXorKeyword_0_2_0_9() { return cOpcodeXorKeyword_0_2_0_9; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
@@ -8785,11 +8819,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ConstantExpression_binary:
 	//
-	//	opcode= // Binary:
+	//	(opcode=("add" | "sub" | "mul" | "shl") ("nuw"? & "nsw"?) | opcode=("sdiv" | "udiv" | "lshr" | "ashr") "exact"? |
 	//
-	//	("add" | "fadd" | "sub" | "fsub" | "mul" | "fmul" | "udiv" | "sdiv" | "fdiv" | "urem" | "srem" | "frem" | // Bitwise binary:
+	//	opcode=("fadd" | "fsub" | "fmul" | "fdiv" | "urem" | "srem" | "frem" | "and" | "or" | "xor")) "(" op1=TypedValue ","
 	//
-	//	"shl" | "lshr" | "ashr" | "and" | "or" | "xor") "(" op1=TypedValue "," op2=TypedValue ")";
+	//	op2=TypedValue ")";
 	public ConstantExpression_binaryElements getConstantExpression_binaryAccess() {
 		return (pConstantExpression_binary != null) ? pConstantExpression_binary : (pConstantExpression_binary = new ConstantExpression_binaryElements());
 	}

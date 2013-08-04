@@ -1119,20 +1119,20 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (
 	 *         (
 	 *             opcode='add' | 
-	 *             opcode='fadd' | 
 	 *             opcode='sub' | 
-	 *             opcode='fsub' | 
 	 *             opcode='mul' | 
-	 *             opcode='fmul' | 
-	 *             opcode='udiv' | 
+	 *             opcode='shl' | 
 	 *             opcode='sdiv' | 
+	 *             opcode='udiv' | 
+	 *             opcode='lshr' | 
+	 *             opcode='ashr' | 
+	 *             opcode='fadd' | 
+	 *             opcode='fsub' | 
+	 *             opcode='fmul' | 
 	 *             opcode='fdiv' | 
 	 *             opcode='urem' | 
 	 *             opcode='srem' | 
 	 *             opcode='frem' | 
-	 *             opcode='shl' | 
-	 *             opcode='lshr' | 
-	 *             opcode='ashr' | 
 	 *             opcode='and' | 
 	 *             opcode='or' | 
 	 *             opcode='xor'

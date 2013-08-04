@@ -18,6 +18,8 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected LLVM_IRGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_ConstantExpression_binary_ExactKeyword_0_1_1_q;
+	protected AbstractElementAlias match_ConstantExpression_binary___NswKeyword_0_0_1_1_or_NuwKeyword_0_0_1_0__a;
 	protected AbstractElementAlias match_ConstantExpression_getelementptr_InboundsKeyword_1_q;
 	protected AbstractElementAlias match_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4;
 	protected AbstractElementAlias match_FunctionHeader_Unnamed_addrKeyword_3_q;
@@ -52,6 +54,8 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (LLVM_IRGrammarAccess) access;
+		match_ConstantExpression_binary_ExactKeyword_0_1_1_q = new TokenAlias(false, true, grammarAccess.getConstantExpression_binaryAccess().getExactKeyword_0_1_1());
+		match_ConstantExpression_binary___NswKeyword_0_0_1_1_or_NuwKeyword_0_0_1_0__a = new AlternativeAlias(true, true, new TokenAlias(false, false, grammarAccess.getConstantExpression_binaryAccess().getNswKeyword_0_0_1_1()), new TokenAlias(false, false, grammarAccess.getConstantExpression_binaryAccess().getNuwKeyword_0_0_1_0()));
 		match_ConstantExpression_getelementptr_InboundsKeyword_1_q = new TokenAlias(false, true, grammarAccess.getConstantExpression_getelementptrAccess().getInboundsKeyword_1());
 		match_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFloatingTypeAccess().getDoubleKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getFloatingTypeAccess().getFloatKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getFloatingTypeAccess().getFp128Keyword_0_3()), new TokenAlias(false, false, grammarAccess.getFloatingTypeAccess().getHalfKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getFloatingTypeAccess().getPpc_fp128Keyword_0_5()), new TokenAlias(false, false, grammarAccess.getFloatingTypeAccess().getX86_fp80Keyword_0_4()));
 		match_FunctionHeader_Unnamed_addrKeyword_3_q = new TokenAlias(false, true, grammarAccess.getFunctionHeaderAccess().getUnnamed_addrKeyword_3());
@@ -108,7 +112,11 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_ConstantExpression_getelementptr_InboundsKeyword_1_q.equals(syntax))
+			if(match_ConstantExpression_binary_ExactKeyword_0_1_1_q.equals(syntax))
+				emit_ConstantExpression_binary_ExactKeyword_0_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ConstantExpression_binary___NswKeyword_0_0_1_1_or_NuwKeyword_0_0_1_0__a.equals(syntax))
+				emit_ConstantExpression_binary___NswKeyword_0_0_1_1_or_NuwKeyword_0_0_1_0__a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_ConstantExpression_getelementptr_InboundsKeyword_1_q.equals(syntax))
 				emit_ConstantExpression_getelementptr_InboundsKeyword_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4.equals(syntax))
 				emit_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -174,6 +182,22 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	/**
 	 * Syntax:
+	 *     'exact'?
+	 */
+	protected void emit_ConstantExpression_binary_ExactKeyword_0_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
+	 *     ('nuw' | 'nsw')*
+	 */
+	protected void emit_ConstantExpression_binary___NswKeyword_0_0_1_1_or_NuwKeyword_0_0_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Syntax:
 	 *     'inbounds'?
 	 */
 	protected void emit_ConstantExpression_getelementptr_InboundsKeyword_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -184,11 +208,11 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * Syntax:
 	 *     (
 	     'float' | 
-	     'fp128' | 
-	     'half' | 
 	     'x86_fp80' | 
 	     'double' | 
-	     'ppc_fp128'
+	     'half' | 
+	     'ppc_fp128' | 
+	     'fp128'
 	 )
 	 */
 	protected void emit_FloatingType_DoubleKeyword_0_2_or_FloatKeyword_0_1_or_Fp128Keyword_0_3_or_HalfKeyword_0_0_or_Ppc_fp128Keyword_0_5_or_X86_fp80Keyword_0_4(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
@@ -205,7 +229,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     'constant' | 'global'
+	 *     'global' | 'constant'
 	 */
 	protected void emit_GlobalVariable_ConstantKeyword_5_0_or_GlobalKeyword_5_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -245,7 +269,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_add___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -309,7 +333,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('signext' | 'zeroext' | 'inreg')*
+	 *     ('signext' | 'inreg' | 'zeroext')*
 	 */
 	protected void emit_Instruction_invoke_nonVoid___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -317,7 +341,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('signext' | 'zeroext' | 'inreg')*
+	 *     ('signext' | 'inreg' | 'zeroext')*
 	 */
 	protected void emit_Instruction_invoke_void___InregKeyword_2_2_or_SignextKeyword_2_1_or_ZeroextKeyword_2_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
@@ -405,7 +429,7 @@ public class LLVM_IRSyntacticSequencer extends AbstractSyntacticSequencer {
 	
 	/**
 	 * Syntax:
-	 *     ('nuw' | 'nsw')*
+	 *     ('nsw' | 'nuw')*
 	 */
 	protected void emit_Instruction_sub___NswKeyword_1_1_or_NuwKeyword_1_0__a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);

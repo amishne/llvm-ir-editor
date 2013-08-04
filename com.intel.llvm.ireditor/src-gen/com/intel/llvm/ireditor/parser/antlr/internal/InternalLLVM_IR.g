@@ -2452,12 +2452,12 @@ ruleConstantExpression_binary returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+((((
 (
 (
 		lv_opcode_0_1=	'add' 
     {
-        newLeafNode(lv_opcode_0_1, grammarAccess.getConstantExpression_binaryAccess().getOpcodeAddKeyword_0_0_0());
+        newLeafNode(lv_opcode_0_1, grammarAccess.getConstantExpression_binaryAccess().getOpcodeAddKeyword_0_0_0_0_0());
     }
  
 	    {
@@ -2467,9 +2467,9 @@ ruleConstantExpression_binary returns [EObject current=null]
        		setWithLastConsumed($current, "opcode", lv_opcode_0_1, null);
 	    }
 
-    |		lv_opcode_0_2=	'fadd' 
+    |		lv_opcode_0_2=	'sub' 
     {
-        newLeafNode(lv_opcode_0_2, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFaddKeyword_0_0_1());
+        newLeafNode(lv_opcode_0_2, grammarAccess.getConstantExpression_binaryAccess().getOpcodeSubKeyword_0_0_0_0_1());
     }
  
 	    {
@@ -2479,9 +2479,9 @@ ruleConstantExpression_binary returns [EObject current=null]
        		setWithLastConsumed($current, "opcode", lv_opcode_0_2, null);
 	    }
 
-    |		lv_opcode_0_3=	'sub' 
+    |		lv_opcode_0_3=	'mul' 
     {
-        newLeafNode(lv_opcode_0_3, grammarAccess.getConstantExpression_binaryAccess().getOpcodeSubKeyword_0_0_2());
+        newLeafNode(lv_opcode_0_3, grammarAccess.getConstantExpression_binaryAccess().getOpcodeMulKeyword_0_0_0_0_2());
     }
  
 	    {
@@ -2491,9 +2491,9 @@ ruleConstantExpression_binary returns [EObject current=null]
        		setWithLastConsumed($current, "opcode", lv_opcode_0_3, null);
 	    }
 
-    |		lv_opcode_0_4=	'fsub' 
+    |		lv_opcode_0_4=	'shl' 
     {
-        newLeafNode(lv_opcode_0_4, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFsubKeyword_0_0_3());
+        newLeafNode(lv_opcode_0_4, grammarAccess.getConstantExpression_binaryAccess().getOpcodeShlKeyword_0_0_0_0_3());
     }
  
 	    {
@@ -2503,224 +2503,290 @@ ruleConstantExpression_binary returns [EObject current=null]
        		setWithLastConsumed($current, "opcode", lv_opcode_0_4, null);
 	    }
 
-    |		lv_opcode_0_5=	'mul' 
+)
+
+)
+)(
+
+(
+	{ 
+	  getUnorderedGroupHelper().enter(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1());
+	}
+	(
+		(
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1(), 0)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1(), 0);
+	 				}
+					({true}?=>(	otherlv_2='nuw' 
     {
-        newLeafNode(lv_opcode_0_5, grammarAccess.getConstantExpression_binaryAccess().getOpcodeMulKeyword_0_0_4());
+    	newLeafNode(otherlv_2, grammarAccess.getConstantExpression_binaryAccess().getNuwKeyword_0_0_1_0());
+    }
+))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1());
+	 				}
+ 				)
+			)  |
+
+			( 
+				{getUnorderedGroupHelper().canSelect(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1(), 1)}?=>(
+					{ 
+	 				  getUnorderedGroupHelper().select(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1(), 1);
+	 				}
+					({true}?=>(	otherlv_3='nsw' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getConstantExpression_binaryAccess().getNswKeyword_0_0_1_1());
+    }
+))
+					{ 
+	 				  getUnorderedGroupHelper().returnFromSelection(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1());
+	 				}
+ 				)
+			)  
+
+		)*	
+	)
+)
+	{ 
+	  getUnorderedGroupHelper().leave(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1());
+	}
+
+))
+    |((
+(
+(
+		lv_opcode_4_1=	'sdiv' 
+    {
+        newLeafNode(lv_opcode_4_1, grammarAccess.getConstantExpression_binaryAccess().getOpcodeSdivKeyword_0_1_0_0_0());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
 	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_5, null);
+       		setWithLastConsumed($current, "opcode", lv_opcode_4_1, null);
 	    }
 
-    |		lv_opcode_0_6=	'fmul' 
+    |		lv_opcode_4_2=	'udiv' 
     {
-        newLeafNode(lv_opcode_0_6, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFmulKeyword_0_0_5());
+        newLeafNode(lv_opcode_4_2, grammarAccess.getConstantExpression_binaryAccess().getOpcodeUdivKeyword_0_1_0_0_1());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
 	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_6, null);
+       		setWithLastConsumed($current, "opcode", lv_opcode_4_2, null);
 	    }
 
-    |		lv_opcode_0_7=	'udiv' 
+    |		lv_opcode_4_3=	'lshr' 
     {
-        newLeafNode(lv_opcode_0_7, grammarAccess.getConstantExpression_binaryAccess().getOpcodeUdivKeyword_0_0_6());
+        newLeafNode(lv_opcode_4_3, grammarAccess.getConstantExpression_binaryAccess().getOpcodeLshrKeyword_0_1_0_0_2());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
 	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_7, null);
+       		setWithLastConsumed($current, "opcode", lv_opcode_4_3, null);
 	    }
 
-    |		lv_opcode_0_8=	'sdiv' 
+    |		lv_opcode_4_4=	'ashr' 
     {
-        newLeafNode(lv_opcode_0_8, grammarAccess.getConstantExpression_binaryAccess().getOpcodeSdivKeyword_0_0_7());
+        newLeafNode(lv_opcode_4_4, grammarAccess.getConstantExpression_binaryAccess().getOpcodeAshrKeyword_0_1_0_0_3());
     }
  
 	    {
 	        if ($current==null) {
 	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
 	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_8, null);
-	    }
-
-    |		lv_opcode_0_9=	'fdiv' 
-    {
-        newLeafNode(lv_opcode_0_9, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFdivKeyword_0_0_8());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_9, null);
-	    }
-
-    |		lv_opcode_0_10=	'urem' 
-    {
-        newLeafNode(lv_opcode_0_10, grammarAccess.getConstantExpression_binaryAccess().getOpcodeUremKeyword_0_0_9());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_10, null);
-	    }
-
-    |		lv_opcode_0_11=	'srem' 
-    {
-        newLeafNode(lv_opcode_0_11, grammarAccess.getConstantExpression_binaryAccess().getOpcodeSremKeyword_0_0_10());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_11, null);
-	    }
-
-    |		lv_opcode_0_12=	'frem' 
-    {
-        newLeafNode(lv_opcode_0_12, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFremKeyword_0_0_11());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_12, null);
-	    }
-
-    |		lv_opcode_0_13=	'shl' 
-    {
-        newLeafNode(lv_opcode_0_13, grammarAccess.getConstantExpression_binaryAccess().getOpcodeShlKeyword_0_0_12());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_13, null);
-	    }
-
-    |		lv_opcode_0_14=	'lshr' 
-    {
-        newLeafNode(lv_opcode_0_14, grammarAccess.getConstantExpression_binaryAccess().getOpcodeLshrKeyword_0_0_13());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_14, null);
-	    }
-
-    |		lv_opcode_0_15=	'ashr' 
-    {
-        newLeafNode(lv_opcode_0_15, grammarAccess.getConstantExpression_binaryAccess().getOpcodeAshrKeyword_0_0_14());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_15, null);
-	    }
-
-    |		lv_opcode_0_16=	'and' 
-    {
-        newLeafNode(lv_opcode_0_16, grammarAccess.getConstantExpression_binaryAccess().getOpcodeAndKeyword_0_0_15());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_16, null);
-	    }
-
-    |		lv_opcode_0_17=	'or' 
-    {
-        newLeafNode(lv_opcode_0_17, grammarAccess.getConstantExpression_binaryAccess().getOpcodeOrKeyword_0_0_16());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_17, null);
-	    }
-
-    |		lv_opcode_0_18=	'xor' 
-    {
-        newLeafNode(lv_opcode_0_18, grammarAccess.getConstantExpression_binaryAccess().getOpcodeXorKeyword_0_0_17());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
-	        }
-       		setWithLastConsumed($current, "opcode", lv_opcode_0_18, null);
+       		setWithLastConsumed($current, "opcode", lv_opcode_4_4, null);
 	    }
 
 )
 
 )
-)	otherlv_1='(' 
+)(	otherlv_5='exact' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getConstantExpression_binaryAccess().getLeftParenthesisKeyword_1());
+    	newLeafNode(otherlv_5, grammarAccess.getConstantExpression_binaryAccess().getExactKeyword_0_1_1());
+    }
+)?)
+    |(
+(
+(
+		lv_opcode_6_1=	'fadd' 
+    {
+        newLeafNode(lv_opcode_6_1, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFaddKeyword_0_2_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_1, null);
+	    }
+
+    |		lv_opcode_6_2=	'fsub' 
+    {
+        newLeafNode(lv_opcode_6_2, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFsubKeyword_0_2_0_1());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_2, null);
+	    }
+
+    |		lv_opcode_6_3=	'fmul' 
+    {
+        newLeafNode(lv_opcode_6_3, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFmulKeyword_0_2_0_2());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_3, null);
+	    }
+
+    |		lv_opcode_6_4=	'fdiv' 
+    {
+        newLeafNode(lv_opcode_6_4, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFdivKeyword_0_2_0_3());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_4, null);
+	    }
+
+    |		lv_opcode_6_5=	'urem' 
+    {
+        newLeafNode(lv_opcode_6_5, grammarAccess.getConstantExpression_binaryAccess().getOpcodeUremKeyword_0_2_0_4());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_5, null);
+	    }
+
+    |		lv_opcode_6_6=	'srem' 
+    {
+        newLeafNode(lv_opcode_6_6, grammarAccess.getConstantExpression_binaryAccess().getOpcodeSremKeyword_0_2_0_5());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_6, null);
+	    }
+
+    |		lv_opcode_6_7=	'frem' 
+    {
+        newLeafNode(lv_opcode_6_7, grammarAccess.getConstantExpression_binaryAccess().getOpcodeFremKeyword_0_2_0_6());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_7, null);
+	    }
+
+    |		lv_opcode_6_8=	'and' 
+    {
+        newLeafNode(lv_opcode_6_8, grammarAccess.getConstantExpression_binaryAccess().getOpcodeAndKeyword_0_2_0_7());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_8, null);
+	    }
+
+    |		lv_opcode_6_9=	'or' 
+    {
+        newLeafNode(lv_opcode_6_9, grammarAccess.getConstantExpression_binaryAccess().getOpcodeOrKeyword_0_2_0_8());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_9, null);
+	    }
+
+    |		lv_opcode_6_10=	'xor' 
+    {
+        newLeafNode(lv_opcode_6_10, grammarAccess.getConstantExpression_binaryAccess().getOpcodeXorKeyword_0_2_0_9());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstantExpression_binaryRule());
+	        }
+       		setWithLastConsumed($current, "opcode", lv_opcode_6_10, null);
+	    }
+
+)
+
+)
+))	otherlv_7='(' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getConstantExpression_binaryAccess().getLeftParenthesisKeyword_1());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getConstantExpression_binaryAccess().getOp1TypedValueParserRuleCall_2_0()); 
 	    }
-		lv_op1_2_0=ruleTypedValue		{
+		lv_op1_8_0=ruleTypedValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getConstantExpression_binaryRule());
 	        }
        		set(
        			$current, 
        			"op1",
-        		lv_op1_2_0, 
+        		lv_op1_8_0, 
         		"TypedValue");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_3=',' 
+)	otherlv_9=',' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getConstantExpression_binaryAccess().getCommaKeyword_3());
+    	newLeafNode(otherlv_9, grammarAccess.getConstantExpression_binaryAccess().getCommaKeyword_3());
     }
 (
 (
 		{ 
 	        newCompositeNode(grammarAccess.getConstantExpression_binaryAccess().getOp2TypedValueParserRuleCall_4_0()); 
 	    }
-		lv_op2_4_0=ruleTypedValue		{
+		lv_op2_10_0=ruleTypedValue		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getConstantExpression_binaryRule());
 	        }
        		set(
        			$current, 
        			"op2",
-        		lv_op2_4_0, 
+        		lv_op2_10_0, 
         		"TypedValue");
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-)	otherlv_5=')' 
+)	otherlv_11=')' 
     {
-    	newLeafNode(otherlv_5, grammarAccess.getConstantExpression_binaryAccess().getRightParenthesisKeyword_5());
+    	newLeafNode(otherlv_11, grammarAccess.getConstantExpression_binaryAccess().getRightParenthesisKeyword_5());
     }
 )
 ;
