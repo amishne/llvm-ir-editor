@@ -3354,6 +3354,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getInstruction_fadd_FastMathFlags()
+  {
+    return (EAttribute)instruction_faddEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getInstruction_sub()
   {
     return instruction_subEClass;
@@ -3374,6 +3384,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getInstruction_fsub_FastMathFlags()
+  {
+    return (EAttribute)instruction_fsubEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getInstruction_mul()
   {
     return instruction_mulEClass;
@@ -3387,6 +3407,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EClass getInstruction_fmul()
   {
     return instruction_fmulEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInstruction_fmul_FastMathFlags()
+  {
+    return (EAttribute)instruction_fmulEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3417,6 +3447,16 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EClass getInstruction_fdiv()
   {
     return instruction_fdivEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getInstruction_fdiv_FastMathFlags()
+  {
+    return (EAttribute)instruction_fdivEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5535,20 +5575,24 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     instruction_addEClass = createEClass(INSTRUCTION_ADD);
 
     instruction_faddEClass = createEClass(INSTRUCTION_FADD);
+    createEAttribute(instruction_faddEClass, INSTRUCTION_FADD__FAST_MATH_FLAGS);
 
     instruction_subEClass = createEClass(INSTRUCTION_SUB);
 
     instruction_fsubEClass = createEClass(INSTRUCTION_FSUB);
+    createEAttribute(instruction_fsubEClass, INSTRUCTION_FSUB__FAST_MATH_FLAGS);
 
     instruction_mulEClass = createEClass(INSTRUCTION_MUL);
 
     instruction_fmulEClass = createEClass(INSTRUCTION_FMUL);
+    createEAttribute(instruction_fmulEClass, INSTRUCTION_FMUL__FAST_MATH_FLAGS);
 
     instruction_udivEClass = createEClass(INSTRUCTION_UDIV);
 
     instruction_sdivEClass = createEClass(INSTRUCTION_SDIV);
 
     instruction_fdivEClass = createEClass(INSTRUCTION_FDIV);
+    createEAttribute(instruction_fdivEClass, INSTRUCTION_FDIV__FAST_MATH_FLAGS);
 
     instruction_uremEClass = createEClass(INSTRUCTION_UREM);
 
@@ -6189,20 +6233,24 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEClass(instruction_addEClass, Instruction_add.class, "Instruction_add", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(instruction_faddEClass, Instruction_fadd.class, "Instruction_fadd", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInstruction_fadd_FastMathFlags(), ecorePackage.getEString(), "fastMathFlags", null, 0, -1, Instruction_fadd.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruction_subEClass, Instruction_sub.class, "Instruction_sub", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(instruction_fsubEClass, Instruction_fsub.class, "Instruction_fsub", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInstruction_fsub_FastMathFlags(), ecorePackage.getEString(), "fastMathFlags", null, 0, -1, Instruction_fsub.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruction_mulEClass, Instruction_mul.class, "Instruction_mul", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(instruction_fmulEClass, Instruction_fmul.class, "Instruction_fmul", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInstruction_fmul_FastMathFlags(), ecorePackage.getEString(), "fastMathFlags", null, 0, -1, Instruction_fmul.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruction_udivEClass, Instruction_udiv.class, "Instruction_udiv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(instruction_sdivEClass, Instruction_sdiv.class, "Instruction_sdiv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(instruction_fdivEClass, Instruction_fdiv.class, "Instruction_fdiv", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getInstruction_fdiv_FastMathFlags(), ecorePackage.getEString(), "fastMathFlags", null, 0, -1, Instruction_fdiv.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruction_uremEClass, Instruction_urem.class, "Instruction_urem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

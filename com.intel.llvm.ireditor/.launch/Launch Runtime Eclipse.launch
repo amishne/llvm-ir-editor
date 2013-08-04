@@ -14,7 +14,7 @@
 <booleanAttribute key="default" value="true"/>
 <stringAttribute key="deselected_workspace_plugins" value="com.intel.llvm.ireditor.tests"/>
 <booleanAttribute key="includeOptional" value="true"/>
-<stringAttribute key="location" value="${workspace_loc}/../runtime-workspace"/>
+<stringAttribute key="location" value="C:\Users\amishne\runtime-workspace"/>
 <mapAttribute key="org.eclipse.debug.core.environmentVariables">
 <mapEntry key="jna.library.path" value="C:\Users\amishne\Downloads\clang+llvm-3.2-x86-mingw32-EXPERIMENTAL\bin"/>
 </mapAttribute>

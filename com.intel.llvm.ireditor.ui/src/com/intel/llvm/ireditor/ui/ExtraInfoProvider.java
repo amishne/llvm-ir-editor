@@ -66,6 +66,7 @@ public class ExtraInfoProvider {
 		setupAtomicMemoryOrderingConstraints();
 		setupIcmpCc();
 		setupFcmpCc();
+		setupFastMathFlags();
 	}
 	
 	private void setupLinkageTypes() {
@@ -188,6 +189,15 @@ public class ExtraInfoProvider {
 		infos.put("ule", new ExtraInfo(elementType, "unordered or less than or equal"));
 		infos.put("une", new ExtraInfo(elementType, "unordered or not equal"));
 		infos.put("uno", new ExtraInfo(elementType, "unordered (either nans)"));
+	}
+	
+	private void setupFastMathFlags() {
+		String elementType = "fast-math flag";
+		infos.put("nnan", new ExtraInfo(elementType, "No NaNs - Allow optimizations to assume the arguments and result are not NaN. Such optimizations are required to retain defined behavior over NaNs, but the value of the result is undefined."));
+		infos.put("ninf", new ExtraInfo(elementType, "No Infs - Allow optimizations to assume the arguments and result are not +/-Inf. Such optimizations are required to retain defined behavior over +/-Inf, but the value of the result is undefined."));
+		infos.put("nsz", new ExtraInfo(elementType, "No Signed Zeros - Allow optimizations to treat the sign of a zero argument or result as insignificant."));
+		infos.put("arcp", new ExtraInfo(elementType, "Allow Reciprocal - Allow optimizations to use the reciprocal of an argument rather than perform division."));
+		infos.put("fast", new ExtraInfo(elementType, "Fast - Allow algebraically equivalent transformations that may dramatically change results in floating point (e.g. reassociate). This flag implies all the others."));
 	}
 
 }

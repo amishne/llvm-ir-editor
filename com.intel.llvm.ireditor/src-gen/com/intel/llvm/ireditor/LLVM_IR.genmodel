@@ -282,14 +282,22 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//BinaryInstruction/op2"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_add"/>
-    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fadd"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fadd">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_fadd/fastMathFlags"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_sub"/>
-    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fsub"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fsub">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_fsub/fastMathFlags"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_mul"/>
-    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fmul"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fmul">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_fmul/fastMathFlags"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_udiv"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_sdiv"/>
-    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fdiv"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_fdiv">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_fdiv/fastMathFlags"/>
+    </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_urem"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_srem"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_frem"/>

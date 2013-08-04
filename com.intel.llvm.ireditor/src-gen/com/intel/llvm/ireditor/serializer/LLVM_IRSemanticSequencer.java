@@ -1652,26 +1652,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='fadd' type=Type op1=ValueRef op2=ValueRef)
+	 *     (opcode='fadd' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef op2=ValueRef)
 	 */
 	protected void sequence_Instruction_fadd(EObject context, Instruction_fadd semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getInstruction_faddAccess().getOpcodeFaddKeyword_0_0(), semanticObject.getOpcode());
-		feeder.accept(grammarAccess.getInstruction_faddAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getInstruction_faddAccess().getOp1ValueRefParserRuleCall_2_0(), semanticObject.getOp1());
-		feeder.accept(grammarAccess.getInstruction_faddAccess().getOp2ValueRefParserRuleCall_4_0(), semanticObject.getOp2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1705,26 +1689,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='fdiv' type=Type op1=ValueRef op2=ValueRef)
+	 *     (opcode='fdiv' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef op2=ValueRef)
 	 */
 	protected void sequence_Instruction_fdiv(EObject context, Instruction_fdiv semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getInstruction_fdivAccess().getOpcodeFdivKeyword_0_0(), semanticObject.getOpcode());
-		feeder.accept(grammarAccess.getInstruction_fdivAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getInstruction_fdivAccess().getOp1ValueRefParserRuleCall_2_0(), semanticObject.getOp1());
-		feeder.accept(grammarAccess.getInstruction_fdivAccess().getOp2ValueRefParserRuleCall_4_0(), semanticObject.getOp2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1749,26 +1717,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='fmul' type=Type op1=ValueRef op2=ValueRef)
+	 *     (opcode='fmul' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef op2=ValueRef)
 	 */
 	protected void sequence_Instruction_fmul(EObject context, Instruction_fmul semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getInstruction_fmulAccess().getOpcodeFmulKeyword_0_0(), semanticObject.getOpcode());
-		feeder.accept(grammarAccess.getInstruction_fmulAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getInstruction_fmulAccess().getOp1ValueRefParserRuleCall_2_0(), semanticObject.getOp1());
-		feeder.accept(grammarAccess.getInstruction_fmulAccess().getOp2ValueRefParserRuleCall_4_0(), semanticObject.getOp2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -1799,26 +1751,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (opcode='fsub' type=Type op1=ValueRef op2=ValueRef)
+	 *     (opcode='fsub' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef op2=ValueRef)
 	 */
 	protected void sequence_Instruction_fsub(EObject context, Instruction_fsub semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OPCODE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__TYPE));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP1));
-			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.BINARY_INSTRUCTION__OP2));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getInstruction_fsubAccess().getOpcodeFsubKeyword_0_0(), semanticObject.getOpcode());
-		feeder.accept(grammarAccess.getInstruction_fsubAccess().getTypeTypeParserRuleCall_1_0(), semanticObject.getType());
-		feeder.accept(grammarAccess.getInstruction_fsubAccess().getOp1ValueRefParserRuleCall_2_0(), semanticObject.getOp1());
-		feeder.accept(grammarAccess.getInstruction_fsubAccess().getOp2ValueRefParserRuleCall_4_0(), semanticObject.getOp2());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

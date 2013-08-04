@@ -3865,22 +3865,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cOpcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cOpcodeFaddKeyword_0_0 = (Keyword)cOpcodeAssignment_0.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cOp1Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOp1ValueRefParserRuleCall_2_0 = (RuleCall)cOp1Assignment_2.eContents().get(0);
-		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cOp2Assignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cOp2ValueRefParserRuleCall_4_0 = (RuleCall)cOp2Assignment_4.eContents().get(0);
+		private final Assignment cFastMathFlagsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFastMathFlagsFastMathFlagParserRuleCall_1_0 = (RuleCall)cFastMathFlagsAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cOp1Assignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOp1ValueRefParserRuleCall_3_0 = (RuleCall)cOp1Assignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cOp2Assignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOp2ValueRefParserRuleCall_5_0 = (RuleCall)cOp2Assignment_5.eContents().get(0);
 		
-		//// <result> = fadd <ty> <op1>, <op2>   ; yields {ty}:result
+		//// <result> = fadd [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 		//
 		//Instruction_fadd:
 		//
-		//	opcode="fadd" type=Type op1=ValueRef "," op2=ValueRef;
+		//	opcode="fadd" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="fadd" type=Type op1=ValueRef "," op2=ValueRef
+		//opcode="fadd" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef
 		public Group getGroup() { return cGroup; }
 
 		//opcode="fadd"
@@ -3889,26 +3891,65 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"fadd"
 		public Keyword getOpcodeFaddKeyword_0_0() { return cOpcodeFaddKeyword_0_0; }
 
+		//fastMathFlags+=FastMathFlag*
+		public Assignment getFastMathFlagsAssignment_1() { return cFastMathFlagsAssignment_1; }
+
+		//FastMathFlag
+		public RuleCall getFastMathFlagsFastMathFlagParserRuleCall_1_0() { return cFastMathFlagsFastMathFlagParserRuleCall_1_0; }
+
 		//type=Type
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 
 		//Type
-		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
+		public RuleCall getTypeTypeParserRuleCall_2_0() { return cTypeTypeParserRuleCall_2_0; }
 
 		//op1=ValueRef
-		public Assignment getOp1Assignment_2() { return cOp1Assignment_2; }
+		public Assignment getOp1Assignment_3() { return cOp1Assignment_3; }
 
 		//ValueRef
-		public RuleCall getOp1ValueRefParserRuleCall_2_0() { return cOp1ValueRefParserRuleCall_2_0; }
+		public RuleCall getOp1ValueRefParserRuleCall_3_0() { return cOp1ValueRefParserRuleCall_3_0; }
 
 		//","
-		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 
 		//op2=ValueRef
-		public Assignment getOp2Assignment_4() { return cOp2Assignment_4; }
+		public Assignment getOp2Assignment_5() { return cOp2Assignment_5; }
 
 		//ValueRef
-		public RuleCall getOp2ValueRefParserRuleCall_4_0() { return cOp2ValueRefParserRuleCall_4_0; }
+		public RuleCall getOp2ValueRefParserRuleCall_5_0() { return cOp2ValueRefParserRuleCall_5_0; }
+	}
+
+	public class FastMathFlagElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FastMathFlag");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cNnanKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cNinfKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cNszKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cArcpKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cFastKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		
+		//FastMathFlag:
+		//
+		//	"nnan" | "ninf" | "nsz" | "arcp" | "fast";
+		public ParserRule getRule() { return rule; }
+
+		//"nnan" | "ninf" | "nsz" | "arcp" | "fast"
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//"nnan"
+		public Keyword getNnanKeyword_0() { return cNnanKeyword_0; }
+
+		//"ninf"
+		public Keyword getNinfKeyword_1() { return cNinfKeyword_1; }
+
+		//"nsz"
+		public Keyword getNszKeyword_2() { return cNszKeyword_2; }
+
+		//"arcp"
+		public Keyword getArcpKeyword_3() { return cArcpKeyword_3; }
+
+		//"fast"
+		public Keyword getFastKeyword_4() { return cFastKeyword_4; }
 	}
 
 	public class Instruction_subElements extends AbstractParserRuleElementFinder {
@@ -3985,22 +4026,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cOpcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cOpcodeFsubKeyword_0_0 = (Keyword)cOpcodeAssignment_0.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cOp1Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOp1ValueRefParserRuleCall_2_0 = (RuleCall)cOp1Assignment_2.eContents().get(0);
-		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cOp2Assignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cOp2ValueRefParserRuleCall_4_0 = (RuleCall)cOp2Assignment_4.eContents().get(0);
+		private final Assignment cFastMathFlagsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFastMathFlagsFastMathFlagParserRuleCall_1_0 = (RuleCall)cFastMathFlagsAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cOp1Assignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOp1ValueRefParserRuleCall_3_0 = (RuleCall)cOp1Assignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cOp2Assignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOp2ValueRefParserRuleCall_5_0 = (RuleCall)cOp2Assignment_5.eContents().get(0);
 		
-		//// <result> = fsub <ty> <op1>, <op2>   ; yields {ty}:result
+		//// <result> = fsub [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 		//
 		//Instruction_fsub:
 		//
-		//	opcode="fsub" type=Type op1=ValueRef "," op2=ValueRef;
+		//	opcode="fsub" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="fsub" type=Type op1=ValueRef "," op2=ValueRef
+		//opcode="fsub" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef
 		public Group getGroup() { return cGroup; }
 
 		//opcode="fsub"
@@ -4009,26 +4052,32 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"fsub"
 		public Keyword getOpcodeFsubKeyword_0_0() { return cOpcodeFsubKeyword_0_0; }
 
+		//fastMathFlags+=FastMathFlag*
+		public Assignment getFastMathFlagsAssignment_1() { return cFastMathFlagsAssignment_1; }
+
+		//FastMathFlag
+		public RuleCall getFastMathFlagsFastMathFlagParserRuleCall_1_0() { return cFastMathFlagsFastMathFlagParserRuleCall_1_0; }
+
 		//type=Type
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 
 		//Type
-		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
+		public RuleCall getTypeTypeParserRuleCall_2_0() { return cTypeTypeParserRuleCall_2_0; }
 
 		//op1=ValueRef
-		public Assignment getOp1Assignment_2() { return cOp1Assignment_2; }
+		public Assignment getOp1Assignment_3() { return cOp1Assignment_3; }
 
 		//ValueRef
-		public RuleCall getOp1ValueRefParserRuleCall_2_0() { return cOp1ValueRefParserRuleCall_2_0; }
+		public RuleCall getOp1ValueRefParserRuleCall_3_0() { return cOp1ValueRefParserRuleCall_3_0; }
 
 		//","
-		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 
 		//op2=ValueRef
-		public Assignment getOp2Assignment_4() { return cOp2Assignment_4; }
+		public Assignment getOp2Assignment_5() { return cOp2Assignment_5; }
 
 		//ValueRef
-		public RuleCall getOp2ValueRefParserRuleCall_4_0() { return cOp2ValueRefParserRuleCall_4_0; }
+		public RuleCall getOp2ValueRefParserRuleCall_5_0() { return cOp2ValueRefParserRuleCall_5_0; }
 	}
 
 	public class Instruction_mulElements extends AbstractParserRuleElementFinder {
@@ -4105,22 +4154,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cOpcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cOpcodeFmulKeyword_0_0 = (Keyword)cOpcodeAssignment_0.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cOp1Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOp1ValueRefParserRuleCall_2_0 = (RuleCall)cOp1Assignment_2.eContents().get(0);
-		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cOp2Assignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cOp2ValueRefParserRuleCall_4_0 = (RuleCall)cOp2Assignment_4.eContents().get(0);
+		private final Assignment cFastMathFlagsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFastMathFlagsFastMathFlagParserRuleCall_1_0 = (RuleCall)cFastMathFlagsAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cOp1Assignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOp1ValueRefParserRuleCall_3_0 = (RuleCall)cOp1Assignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cOp2Assignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOp2ValueRefParserRuleCall_5_0 = (RuleCall)cOp2Assignment_5.eContents().get(0);
 		
-		//// <result> = fmul <ty> <op1>, <op2>   ; yields {ty}:result
+		//// <result> = fmul [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 		//
 		//Instruction_fmul:
 		//
-		//	opcode="fmul" type=Type op1=ValueRef "," op2=ValueRef;
+		//	opcode="fmul" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="fmul" type=Type op1=ValueRef "," op2=ValueRef
+		//opcode="fmul" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef
 		public Group getGroup() { return cGroup; }
 
 		//opcode="fmul"
@@ -4129,26 +4180,32 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"fmul"
 		public Keyword getOpcodeFmulKeyword_0_0() { return cOpcodeFmulKeyword_0_0; }
 
+		//fastMathFlags+=FastMathFlag*
+		public Assignment getFastMathFlagsAssignment_1() { return cFastMathFlagsAssignment_1; }
+
+		//FastMathFlag
+		public RuleCall getFastMathFlagsFastMathFlagParserRuleCall_1_0() { return cFastMathFlagsFastMathFlagParserRuleCall_1_0; }
+
 		//type=Type
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 
 		//Type
-		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
+		public RuleCall getTypeTypeParserRuleCall_2_0() { return cTypeTypeParserRuleCall_2_0; }
 
 		//op1=ValueRef
-		public Assignment getOp1Assignment_2() { return cOp1Assignment_2; }
+		public Assignment getOp1Assignment_3() { return cOp1Assignment_3; }
 
 		//ValueRef
-		public RuleCall getOp1ValueRefParserRuleCall_2_0() { return cOp1ValueRefParserRuleCall_2_0; }
+		public RuleCall getOp1ValueRefParserRuleCall_3_0() { return cOp1ValueRefParserRuleCall_3_0; }
 
 		//","
-		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 
 		//op2=ValueRef
-		public Assignment getOp2Assignment_4() { return cOp2Assignment_4; }
+		public Assignment getOp2Assignment_5() { return cOp2Assignment_5; }
 
 		//ValueRef
-		public RuleCall getOp2ValueRefParserRuleCall_4_0() { return cOp2ValueRefParserRuleCall_4_0; }
+		public RuleCall getOp2ValueRefParserRuleCall_5_0() { return cOp2ValueRefParserRuleCall_5_0; }
 	}
 
 	public class Instruction_udivElements extends AbstractParserRuleElementFinder {
@@ -4270,22 +4327,24 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cOpcodeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cOpcodeFdivKeyword_0_0 = (Keyword)cOpcodeAssignment_0.eContents().get(0);
-		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTypeTypeParserRuleCall_1_0 = (RuleCall)cTypeAssignment_1.eContents().get(0);
-		private final Assignment cOp1Assignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cOp1ValueRefParserRuleCall_2_0 = (RuleCall)cOp1Assignment_2.eContents().get(0);
-		private final Keyword cCommaKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cOp2Assignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cOp2ValueRefParserRuleCall_4_0 = (RuleCall)cOp2Assignment_4.eContents().get(0);
+		private final Assignment cFastMathFlagsAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cFastMathFlagsFastMathFlagParserRuleCall_1_0 = (RuleCall)cFastMathFlagsAssignment_1.eContents().get(0);
+		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTypeTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Assignment cOp1Assignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cOp1ValueRefParserRuleCall_3_0 = (RuleCall)cOp1Assignment_3.eContents().get(0);
+		private final Keyword cCommaKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cOp2Assignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cOp2ValueRefParserRuleCall_5_0 = (RuleCall)cOp2Assignment_5.eContents().get(0);
 		
-		//// <result> = fdiv <ty> <op1>, <op2>   ; yields {ty}:result
+		//// <result> = fdiv [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 		//
 		//Instruction_fdiv:
 		//
-		//	opcode="fdiv" type=Type op1=ValueRef "," op2=ValueRef;
+		//	opcode="fdiv" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 		public ParserRule getRule() { return rule; }
 
-		//opcode="fdiv" type=Type op1=ValueRef "," op2=ValueRef
+		//opcode="fdiv" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef
 		public Group getGroup() { return cGroup; }
 
 		//opcode="fdiv"
@@ -4294,26 +4353,32 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"fdiv"
 		public Keyword getOpcodeFdivKeyword_0_0() { return cOpcodeFdivKeyword_0_0; }
 
+		//fastMathFlags+=FastMathFlag*
+		public Assignment getFastMathFlagsAssignment_1() { return cFastMathFlagsAssignment_1; }
+
+		//FastMathFlag
+		public RuleCall getFastMathFlagsFastMathFlagParserRuleCall_1_0() { return cFastMathFlagsFastMathFlagParserRuleCall_1_0; }
+
 		//type=Type
-		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
 
 		//Type
-		public RuleCall getTypeTypeParserRuleCall_1_0() { return cTypeTypeParserRuleCall_1_0; }
+		public RuleCall getTypeTypeParserRuleCall_2_0() { return cTypeTypeParserRuleCall_2_0; }
 
 		//op1=ValueRef
-		public Assignment getOp1Assignment_2() { return cOp1Assignment_2; }
+		public Assignment getOp1Assignment_3() { return cOp1Assignment_3; }
 
 		//ValueRef
-		public RuleCall getOp1ValueRefParserRuleCall_2_0() { return cOp1ValueRefParserRuleCall_2_0; }
+		public RuleCall getOp1ValueRefParserRuleCall_3_0() { return cOp1ValueRefParserRuleCall_3_0; }
 
 		//","
-		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
+		public Keyword getCommaKeyword_4() { return cCommaKeyword_4; }
 
 		//op2=ValueRef
-		public Assignment getOp2Assignment_4() { return cOp2Assignment_4; }
+		public Assignment getOp2Assignment_5() { return cOp2Assignment_5; }
 
 		//ValueRef
-		public RuleCall getOp2ValueRefParserRuleCall_4_0() { return cOp2ValueRefParserRuleCall_4_0; }
+		public RuleCall getOp2ValueRefParserRuleCall_5_0() { return cOp2ValueRefParserRuleCall_5_0; }
 	}
 
 	public class Instruction_uremElements extends AbstractParserRuleElementFinder {
@@ -8241,6 +8306,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private BinaryInstructionElements pBinaryInstruction;
 	private Instruction_addElements pInstruction_add;
 	private Instruction_faddElements pInstruction_fadd;
+	private FastMathFlagElements pFastMathFlag;
 	private Instruction_subElements pInstruction_sub;
 	private Instruction_fsubElements pInstruction_fsub;
 	private Instruction_mulElements pInstruction_mul;
@@ -9346,17 +9412,28 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		return getInstruction_addAccess().getRule();
 	}
 
-	//// <result> = fadd <ty> <op1>, <op2>   ; yields {ty}:result
+	//// <result> = fadd [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 	//
 	//Instruction_fadd:
 	//
-	//	opcode="fadd" type=Type op1=ValueRef "," op2=ValueRef;
+	//	opcode="fadd" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 	public Instruction_faddElements getInstruction_faddAccess() {
 		return (pInstruction_fadd != null) ? pInstruction_fadd : (pInstruction_fadd = new Instruction_faddElements());
 	}
 	
 	public ParserRule getInstruction_faddRule() {
 		return getInstruction_faddAccess().getRule();
+	}
+
+	//FastMathFlag:
+	//
+	//	"nnan" | "ninf" | "nsz" | "arcp" | "fast";
+	public FastMathFlagElements getFastMathFlagAccess() {
+		return (pFastMathFlag != null) ? pFastMathFlag : (pFastMathFlag = new FastMathFlagElements());
+	}
+	
+	public ParserRule getFastMathFlagRule() {
+		return getFastMathFlagAccess().getRule();
 	}
 
 	//// <result> = sub <ty> <op1>, <op2>          ; yields {ty}:result
@@ -9378,11 +9455,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		return getInstruction_subAccess().getRule();
 	}
 
-	//// <result> = fsub <ty> <op1>, <op2>   ; yields {ty}:result
+	//// <result> = fsub [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 	//
 	//Instruction_fsub:
 	//
-	//	opcode="fsub" type=Type op1=ValueRef "," op2=ValueRef;
+	//	opcode="fsub" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 	public Instruction_fsubElements getInstruction_fsubAccess() {
 		return (pInstruction_fsub != null) ? pInstruction_fsub : (pInstruction_fsub = new Instruction_fsubElements());
 	}
@@ -9410,11 +9487,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		return getInstruction_mulAccess().getRule();
 	}
 
-	//// <result> = fmul <ty> <op1>, <op2>   ; yields {ty}:result
+	//// <result> = fmul [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 	//
 	//Instruction_fmul:
 	//
-	//	opcode="fmul" type=Type op1=ValueRef "," op2=ValueRef;
+	//	opcode="fmul" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 	public Instruction_fmulElements getInstruction_fmulAccess() {
 		return (pInstruction_fmul != null) ? pInstruction_fmul : (pInstruction_fmul = new Instruction_fmulElements());
 	}
@@ -9453,11 +9530,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		return getInstruction_sdivAccess().getRule();
 	}
 
-	//// <result> = fdiv <ty> <op1>, <op2>   ; yields {ty}:result
+	//// <result> = fdiv [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 	//
 	//Instruction_fdiv:
 	//
-	//	opcode="fdiv" type=Type op1=ValueRef "," op2=ValueRef;
+	//	opcode="fdiv" fastMathFlags+=FastMathFlag* type=Type op1=ValueRef "," op2=ValueRef;
 	public Instruction_fdivElements getInstruction_fdivAccess() {
 		return (pInstruction_fdiv != null) ? pInstruction_fdiv : (pInstruction_fdiv = new Instruction_fdivElements());
 	}

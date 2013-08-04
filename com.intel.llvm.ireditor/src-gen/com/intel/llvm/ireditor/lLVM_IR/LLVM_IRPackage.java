@@ -3143,13 +3143,22 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_FADD__OP2 = BINARY_INSTRUCTION__OP2;
 
   /**
+   * The feature id for the '<em><b>Fast Math Flags</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTION_FADD__FAST_MATH_FLAGS = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Instruction fadd</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_FADD_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+  int INSTRUCTION_FADD_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_subImpl <em>Instruction sub</em>}' class.
@@ -3253,13 +3262,22 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_FSUB__OP2 = BINARY_INSTRUCTION__OP2;
 
   /**
+   * The feature id for the '<em><b>Fast Math Flags</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTION_FSUB__FAST_MATH_FLAGS = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Instruction fsub</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_FSUB_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+  int INSTRUCTION_FSUB_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_mulImpl <em>Instruction mul</em>}' class.
@@ -3363,13 +3381,22 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_FMUL__OP2 = BINARY_INSTRUCTION__OP2;
 
   /**
+   * The feature id for the '<em><b>Fast Math Flags</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTION_FMUL__FAST_MATH_FLAGS = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Instruction fmul</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_FMUL_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+  int INSTRUCTION_FMUL_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_udivImpl <em>Instruction udiv</em>}' class.
@@ -3528,13 +3555,22 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_FDIV__OP2 = BINARY_INSTRUCTION__OP2;
 
   /**
+   * The feature id for the '<em><b>Fast Math Flags</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INSTRUCTION_FDIV__FAST_MATH_FLAGS = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Instruction fdiv</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCTION_FDIV_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 0;
+  int INSTRUCTION_FDIV_FEATURE_COUNT = BINARY_INSTRUCTION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_uremImpl <em>Instruction urem</em>}' class.
@@ -8578,6 +8614,17 @@ public interface LLVM_IRPackage extends EPackage
   EClass getInstruction_fadd();
 
   /**
+   * Returns the meta object for the attribute list '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_fadd#getFastMathFlags <em>Fast Math Flags</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Fast Math Flags</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_fadd#getFastMathFlags()
+   * @see #getInstruction_fadd()
+   * @generated
+   */
+  EAttribute getInstruction_fadd_FastMathFlags();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_sub <em>Instruction sub</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8598,6 +8645,17 @@ public interface LLVM_IRPackage extends EPackage
   EClass getInstruction_fsub();
 
   /**
+   * Returns the meta object for the attribute list '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_fsub#getFastMathFlags <em>Fast Math Flags</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Fast Math Flags</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_fsub#getFastMathFlags()
+   * @see #getInstruction_fsub()
+   * @generated
+   */
+  EAttribute getInstruction_fsub_FastMathFlags();
+
+  /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_mul <em>Instruction mul</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8616,6 +8674,17 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    */
   EClass getInstruction_fmul();
+
+  /**
+   * Returns the meta object for the attribute list '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_fmul#getFastMathFlags <em>Fast Math Flags</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Fast Math Flags</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_fmul#getFastMathFlags()
+   * @see #getInstruction_fmul()
+   * @generated
+   */
+  EAttribute getInstruction_fmul_FastMathFlags();
 
   /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_udiv <em>Instruction udiv</em>}'.
@@ -8646,6 +8715,17 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    */
   EClass getInstruction_fdiv();
+
+  /**
+   * Returns the meta object for the attribute list '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_fdiv#getFastMathFlags <em>Fast Math Flags</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Fast Math Flags</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_fdiv#getFastMathFlags()
+   * @see #getInstruction_fdiv()
+   * @generated
+   */
+  EAttribute getInstruction_fdiv_FastMathFlags();
 
   /**
    * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_urem <em>Instruction urem</em>}'.
@@ -12467,6 +12547,14 @@ public interface LLVM_IRPackage extends EPackage
     EClass INSTRUCTION_FADD = eINSTANCE.getInstruction_fadd();
 
     /**
+     * The meta object literal for the '<em><b>Fast Math Flags</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INSTRUCTION_FADD__FAST_MATH_FLAGS = eINSTANCE.getInstruction_fadd_FastMathFlags();
+
+    /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_subImpl <em>Instruction sub</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -12487,6 +12575,14 @@ public interface LLVM_IRPackage extends EPackage
     EClass INSTRUCTION_FSUB = eINSTANCE.getInstruction_fsub();
 
     /**
+     * The meta object literal for the '<em><b>Fast Math Flags</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INSTRUCTION_FSUB__FAST_MATH_FLAGS = eINSTANCE.getInstruction_fsub_FastMathFlags();
+
+    /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_mulImpl <em>Instruction mul</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -12505,6 +12601,14 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EClass INSTRUCTION_FMUL = eINSTANCE.getInstruction_fmul();
+
+    /**
+     * The meta object literal for the '<em><b>Fast Math Flags</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INSTRUCTION_FMUL__FAST_MATH_FLAGS = eINSTANCE.getInstruction_fmul_FastMathFlags();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_udivImpl <em>Instruction udiv</em>}' class.
@@ -12535,6 +12639,14 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EClass INSTRUCTION_FDIV = eINSTANCE.getInstruction_fdiv();
+
+    /**
+     * The meta object literal for the '<em><b>Fast Math Flags</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INSTRUCTION_FDIV__FAST_MATH_FLAGS = eINSTANCE.getInstruction_fdiv_FastMathFlags();
 
     /**
      * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.Instruction_uremImpl <em>Instruction urem</em>}' class.

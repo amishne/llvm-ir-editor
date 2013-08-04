@@ -561,9 +561,13 @@ Instruction_add:
 	opcode='add' ('nuw'? & 'nsw'?) type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
-// <result> = fadd <ty> <op1>, <op2>   ; yields {ty}:result
+// <result> = fadd [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 Instruction_fadd:
-	opcode='fadd' type=Type op1=ValueRef ',' op2=ValueRef
+	opcode='fadd' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef ',' op2=ValueRef
+;
+
+FastMathFlag:
+	"nnan" | "ninf" | "nsz" | "arcp" | "fast"
 ;
 
 // <result> = sub <ty> <op1>, <op2>          ; yields {ty}:result
@@ -574,9 +578,9 @@ Instruction_sub:
 	opcode='sub' ('nuw'? & 'nsw'?) type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
-// <result> = fsub <ty> <op1>, <op2>   ; yields {ty}:result
+// <result> = fsub [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 Instruction_fsub:
-	opcode='fsub' type=Type op1=ValueRef ',' op2=ValueRef
+	opcode='fsub' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
 // <result> = mul <ty> <op1>, <op2>          ; yields {ty}:result
@@ -587,9 +591,9 @@ Instruction_mul:
 	opcode='mul' ('nuw'? & 'nsw'?) type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
-// <result> = fmul <ty> <op1>, <op2>   ; yields {ty}:result
+// <result> = fmul [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 Instruction_fmul:
-	opcode='fmul' type=Type op1=ValueRef ',' op2=ValueRef
+	opcode='fmul' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
 // <result> = udiv <ty> <op1>, <op2>         ; yields {ty}:result
@@ -604,9 +608,9 @@ Instruction_sdiv:
 	opcode='sdiv' 'exact'? type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
-// <result> = fdiv <ty> <op1>, <op2>   ; yields {ty}:result
+// <result> = fdiv [fast-math flags]* <ty> <op1>, <op2>   ; yields {ty}:result
 Instruction_fdiv:
-	opcode='fdiv' type=Type op1=ValueRef ',' op2=ValueRef
+	opcode='fdiv' fastMathFlags+=FastMathFlag* type=Type op1=ValueRef ',' op2=ValueRef
 ;
 
 // <result> = urem <ty> <op1>, <op2>   ; yields {ty}:result
