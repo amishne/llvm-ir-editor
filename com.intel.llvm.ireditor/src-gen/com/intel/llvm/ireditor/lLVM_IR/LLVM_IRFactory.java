@@ -653,6 +653,15 @@ public interface LLVM_IRFactory extends EFactory
   Instruction_fadd createInstruction_fadd();
 
   /**
+   * Returns a new object of class '<em>Fast Math Flag</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Fast Math Flag</em>'.
+   * @generated
+   */
+  FastMathFlag createFastMathFlag();
+
+  /**
    * Returns a new object of class '<em>Instruction sub</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -3955,35 +3955,47 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class FastMathFlagElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FastMathFlag");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cNnanKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cNinfKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cNszKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cArcpKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cFastKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cFastMathFlagAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cKindAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Alternatives cKindAlternatives_1_0 = (Alternatives)cKindAssignment_1.eContents().get(0);
+		private final Keyword cKindNnanKeyword_1_0_0 = (Keyword)cKindAlternatives_1_0.eContents().get(0);
+		private final Keyword cKindNinfKeyword_1_0_1 = (Keyword)cKindAlternatives_1_0.eContents().get(1);
+		private final Keyword cKindNszKeyword_1_0_2 = (Keyword)cKindAlternatives_1_0.eContents().get(2);
+		private final Keyword cKindArcpKeyword_1_0_3 = (Keyword)cKindAlternatives_1_0.eContents().get(3);
+		private final Keyword cKindFastKeyword_1_0_4 = (Keyword)cKindAlternatives_1_0.eContents().get(4);
 		
 		//FastMathFlag:
 		//
-		//	"nnan" | "ninf" | "nsz" | "arcp" | "fast";
+		//	{FastMathFlag} kind=("nnan" | "ninf" | "nsz" | "arcp" | "fast");
 		public ParserRule getRule() { return rule; }
 
+		//{FastMathFlag} kind=("nnan" | "ninf" | "nsz" | "arcp" | "fast")
+		public Group getGroup() { return cGroup; }
+
+		//{FastMathFlag}
+		public Action getFastMathFlagAction_0() { return cFastMathFlagAction_0; }
+
+		//kind=("nnan" | "ninf" | "nsz" | "arcp" | "fast")
+		public Assignment getKindAssignment_1() { return cKindAssignment_1; }
+
 		//"nnan" | "ninf" | "nsz" | "arcp" | "fast"
-		public Alternatives getAlternatives() { return cAlternatives; }
+		public Alternatives getKindAlternatives_1_0() { return cKindAlternatives_1_0; }
 
 		//"nnan"
-		public Keyword getNnanKeyword_0() { return cNnanKeyword_0; }
+		public Keyword getKindNnanKeyword_1_0_0() { return cKindNnanKeyword_1_0_0; }
 
 		//"ninf"
-		public Keyword getNinfKeyword_1() { return cNinfKeyword_1; }
+		public Keyword getKindNinfKeyword_1_0_1() { return cKindNinfKeyword_1_0_1; }
 
 		//"nsz"
-		public Keyword getNszKeyword_2() { return cNszKeyword_2; }
+		public Keyword getKindNszKeyword_1_0_2() { return cKindNszKeyword_1_0_2; }
 
 		//"arcp"
-		public Keyword getArcpKeyword_3() { return cArcpKeyword_3; }
+		public Keyword getKindArcpKeyword_1_0_3() { return cKindArcpKeyword_1_0_3; }
 
 		//"fast"
-		public Keyword getFastKeyword_4() { return cFastKeyword_4; }
+		public Keyword getKindFastKeyword_1_0_4() { return cKindFastKeyword_1_0_4; }
 	}
 
 	public class Instruction_subElements extends AbstractParserRuleElementFinder {
@@ -9461,7 +9473,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FastMathFlag:
 	//
-	//	"nnan" | "ninf" | "nsz" | "arcp" | "fast";
+	//	{FastMathFlag} kind=("nnan" | "ninf" | "nsz" | "arcp" | "fast");
 	public FastMathFlagElements getFastMathFlagAccess() {
 		return (pFastMathFlag != null) ? pFastMathFlag : (pFastMathFlag = new FastMathFlagElements());
 	}

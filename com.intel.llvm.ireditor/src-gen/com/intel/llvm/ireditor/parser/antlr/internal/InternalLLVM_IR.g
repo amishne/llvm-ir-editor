@@ -7010,55 +7010,93 @@ ruleInstruction_fadd returns [EObject current=null]
 
 
 // Entry rule entryRuleFastMathFlag
-entryRuleFastMathFlag returns [String current=null] 
+entryRuleFastMathFlag returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getFastMathFlagRule()); } 
+	{ newCompositeNode(grammarAccess.getFastMathFlagRule()); }
 	 iv_ruleFastMathFlag=ruleFastMathFlag 
-	 { $current=$iv_ruleFastMathFlag.current.getText(); }  
+	 { $current=$iv_ruleFastMathFlag.current; } 
 	 EOF 
 ;
 
 // Rule FastMathFlag
-ruleFastMathFlag returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleFastMathFlag returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+((
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getFastMathFlagAccess().getFastMathFlagAction_0(),
+            $current);
+    }
+)(
 (
-	kw='nnan' 
+(
+		lv_kind_1_1=	'nnan' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFastMathFlagAccess().getNnanKeyword_0()); 
+        newLeafNode(lv_kind_1_1, grammarAccess.getFastMathFlagAccess().getKindNnanKeyword_1_0_0());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFastMathFlagRule());
+	        }
+       		setWithLastConsumed($current, "kind", lv_kind_1_1, null);
+	    }
 
-    |
-	kw='ninf' 
+    |		lv_kind_1_2=	'ninf' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFastMathFlagAccess().getNinfKeyword_1()); 
+        newLeafNode(lv_kind_1_2, grammarAccess.getFastMathFlagAccess().getKindNinfKeyword_1_0_1());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFastMathFlagRule());
+	        }
+       		setWithLastConsumed($current, "kind", lv_kind_1_2, null);
+	    }
 
-    |
-	kw='nsz' 
+    |		lv_kind_1_3=	'nsz' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFastMathFlagAccess().getNszKeyword_2()); 
+        newLeafNode(lv_kind_1_3, grammarAccess.getFastMathFlagAccess().getKindNszKeyword_1_0_2());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFastMathFlagRule());
+	        }
+       		setWithLastConsumed($current, "kind", lv_kind_1_3, null);
+	    }
 
-    |
-	kw='arcp' 
+    |		lv_kind_1_4=	'arcp' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFastMathFlagAccess().getArcpKeyword_3()); 
+        newLeafNode(lv_kind_1_4, grammarAccess.getFastMathFlagAccess().getKindArcpKeyword_1_0_3());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFastMathFlagRule());
+	        }
+       		setWithLastConsumed($current, "kind", lv_kind_1_4, null);
+	    }
 
-    |
-	kw='fast' 
+    |		lv_kind_1_5=	'fast' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getFastMathFlagAccess().getFastKeyword_4()); 
+        newLeafNode(lv_kind_1_5, grammarAccess.getFastMathFlagAccess().getKindFastKeyword_1_0_4());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFastMathFlagRule());
+	        }
+       		setWithLastConsumed($current, "kind", lv_kind_1_5, null);
+	    }
+
 )
-    ;
+
+)
+))
+;
 
 
 

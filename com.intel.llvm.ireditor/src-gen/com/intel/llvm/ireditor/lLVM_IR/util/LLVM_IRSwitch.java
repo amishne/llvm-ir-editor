@@ -629,6 +629,13 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LLVM_IRPackage.FAST_MATH_FLAG:
+      {
+        FastMathFlag fastMathFlag = (FastMathFlag)theEObject;
+        T result = caseFastMathFlag(fastMathFlag);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LLVM_IRPackage.INSTRUCTION_SUB:
       {
         Instruction_sub instruction_sub = (Instruction_sub)theEObject;
@@ -2254,6 +2261,22 @@ public class LLVM_IRSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseInstruction_fadd(Instruction_fadd object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Fast Math Flag</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Fast Math Flag</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFastMathFlag(FastMathFlag object)
   {
     return null;
   }

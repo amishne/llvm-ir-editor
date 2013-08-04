@@ -23,19 +23,19 @@ import org.eclipse.emf.common.util.EList;
 public interface Instruction_fdiv extends BinaryInstruction
 {
   /**
-   * Returns the value of the '<em><b>Fast Math Flags</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Fast Math Flags</b></em>' containment reference list.
+   * The list contents are of type {@link com.intel.llvm.ireditor.lLVM_IR.FastMathFlag}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Fast Math Flags</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Fast Math Flags</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Fast Math Flags</em>' attribute list.
+   * @return the value of the '<em>Fast Math Flags</em>' containment reference list.
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_fdiv_FastMathFlags()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getFastMathFlags();
+  EList<FastMathFlag> getFastMathFlags();
 
 } // Instruction_fdiv

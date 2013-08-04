@@ -425,6 +425,11 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createInstruction_faddAdapter();
       }
       @Override
+      public Adapter caseFastMathFlag(FastMathFlag object)
+      {
+        return createFastMathFlagAdapter();
+      }
+      @Override
       public Adapter caseInstruction_sub(Instruction_sub object)
       {
         return createInstruction_subAdapter();
@@ -1827,6 +1832,21 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createInstruction_faddAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.FastMathFlag <em>Fast Math Flag</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FastMathFlag
+   * @generated
+   */
+  public Adapter createFastMathFlagAdapter()
   {
     return null;
   }

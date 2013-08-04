@@ -27,6 +27,7 @@ import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_select;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_shufflevector;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantList;
 import com.intel.llvm.ireditor.lLVM_IR.ConversionInstruction;
+import com.intel.llvm.ireditor.lLVM_IR.FastMathFlag;
 import com.intel.llvm.ireditor.lLVM_IR.FloatingType;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
@@ -318,6 +319,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 			case LLVM_IRPackage.CONVERSION_INSTRUCTION:
 				if(context == grammarAccess.getConversionInstructionRule()) {
 					sequence_ConversionInstruction(context, (ConversionInstruction) semanticObject); 
+					return; 
+				}
+				else break;
+			case LLVM_IRPackage.FAST_MATH_FLAG:
+				if(context == grammarAccess.getFastMathFlagRule()) {
+					sequence_FastMathFlag(context, (FastMathFlag) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1274,6 +1281,15 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 		feeder.accept(grammarAccess.getConversionInstructionAccess().getValueValueRefParserRuleCall_2_0(), semanticObject.getValue());
 		feeder.accept(grammarAccess.getConversionInstructionAccess().getTargetTypeTypeParserRuleCall_4_0(), semanticObject.getTargetType());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (kind='nnan' | kind='ninf' | kind='nsz' | kind='arcp' | kind='fast')
+	 */
+	protected void sequence_FastMathFlag(EObject context, FastMathFlag semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

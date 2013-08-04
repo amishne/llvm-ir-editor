@@ -72,7 +72,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstruction_retAccess().getAlternatives_1(), "rule__Instruction_ret__Alternatives_1");
 					put(grammarAccess.getInstruction_brAccess().getAlternatives_1(), "rule__Instruction_br__Alternatives_1");
 					put(grammarAccess.getBinaryInstructionAccess().getAlternatives(), "rule__BinaryInstruction__Alternatives");
-					put(grammarAccess.getFastMathFlagAccess().getAlternatives(), "rule__FastMathFlag__Alternatives");
+					put(grammarAccess.getFastMathFlagAccess().getKindAlternatives_1_0(), "rule__FastMathFlag__KindAlternatives_1_0");
 					put(grammarAccess.getBitwiseBinaryInstructionAccess().getAlternatives(), "rule__BitwiseBinaryInstruction__Alternatives");
 					put(grammarAccess.getVectorInstructionsAccess().getAlternatives(), "rule__VectorInstructions__Alternatives");
 					put(grammarAccess.getAggregateInstructionAccess().getAlternatives(), "rule__AggregateInstruction__Alternatives");
@@ -179,6 +179,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstruction_resumeAccess().getGroup(), "rule__Instruction_resume__Group__0");
 					put(grammarAccess.getInstruction_addAccess().getGroup(), "rule__Instruction_add__Group__0");
 					put(grammarAccess.getInstruction_faddAccess().getGroup(), "rule__Instruction_fadd__Group__0");
+					put(grammarAccess.getFastMathFlagAccess().getGroup(), "rule__FastMathFlag__Group__0");
 					put(grammarAccess.getInstruction_subAccess().getGroup(), "rule__Instruction_sub__Group__0");
 					put(grammarAccess.getInstruction_fsubAccess().getGroup(), "rule__Instruction_fsub__Group__0");
 					put(grammarAccess.getInstruction_mulAccess().getGroup(), "rule__Instruction_mul__Group__0");
@@ -449,6 +450,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getInstruction_faddAccess().getTypeAssignment_2(), "rule__Instruction_fadd__TypeAssignment_2");
 					put(grammarAccess.getInstruction_faddAccess().getOp1Assignment_3(), "rule__Instruction_fadd__Op1Assignment_3");
 					put(grammarAccess.getInstruction_faddAccess().getOp2Assignment_5(), "rule__Instruction_fadd__Op2Assignment_5");
+					put(grammarAccess.getFastMathFlagAccess().getKindAssignment_1(), "rule__FastMathFlag__KindAssignment_1");
 					put(grammarAccess.getInstruction_subAccess().getOpcodeAssignment_0(), "rule__Instruction_sub__OpcodeAssignment_0");
 					put(grammarAccess.getInstruction_subAccess().getTypeAssignment_2(), "rule__Instruction_sub__TypeAssignment_2");
 					put(grammarAccess.getInstruction_subAccess().getOp1Assignment_3(), "rule__Instruction_sub__Op1Assignment_3");

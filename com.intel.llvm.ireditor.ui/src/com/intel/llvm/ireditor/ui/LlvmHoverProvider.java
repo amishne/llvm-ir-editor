@@ -38,6 +38,7 @@ import com.intel.llvm.ireditor.LLVM_IRUtils;
 import com.intel.llvm.ireditor.lLVM_IR.AlignStack;
 import com.intel.llvm.ireditor.lLVM_IR.AttributeGroup;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
+import com.intel.llvm.ireditor.lLVM_IR.FastMathFlag;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
@@ -122,6 +123,12 @@ public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
 			String s = "alignstack";
 			return "<b>" + s + "</b> (" + extraInfoProvider.getExtraInfoType(s) + ")";
 		}
+		
+		@Override
+		public String caseFastMathFlag(FastMathFlag object) {
+			String s = object.getKind();
+			return "<b>" + s + "</b> (" + extraInfoProvider.getExtraInfoType(s) + ")";
+		}
 	}
 	
 	private class HoverDocumentationProvider extends LLVM_IRSwitch<String> {
@@ -148,6 +155,11 @@ public class LlvmHoverProvider extends DefaultEObjectHoverProvider {
 		@Override
 		public String caseBasicBlock(BasicBlock object) {
 			return "<pre>" + limit(textOf(object).trim(), 50000) + "</pre>";
+		}
+		
+		@Override
+		public String caseFastMathFlag(FastMathFlag object) {
+			return LLVM_IRUtils.encodeTextForHtml(extraInfoProvider.getExtraInfo(object.getKind()));
 		}
 		
 	}

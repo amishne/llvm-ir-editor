@@ -134,6 +134,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.BINARY_INSTRUCTION: return createBinaryInstruction();
       case LLVM_IRPackage.INSTRUCTION_ADD: return createInstruction_add();
       case LLVM_IRPackage.INSTRUCTION_FADD: return createInstruction_fadd();
+      case LLVM_IRPackage.FAST_MATH_FLAG: return createFastMathFlag();
       case LLVM_IRPackage.INSTRUCTION_SUB: return createInstruction_sub();
       case LLVM_IRPackage.INSTRUCTION_FSUB: return createInstruction_fsub();
       case LLVM_IRPackage.INSTRUCTION_MUL: return createInstruction_mul();
@@ -974,6 +975,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     Instruction_faddImpl instruction_fadd = new Instruction_faddImpl();
     return instruction_fadd;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FastMathFlag createFastMathFlag()
+  {
+    FastMathFlagImpl fastMathFlag = new FastMathFlagImpl();
+    return fastMathFlag;
   }
 
   /**

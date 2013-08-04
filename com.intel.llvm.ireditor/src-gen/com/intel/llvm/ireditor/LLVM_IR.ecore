@@ -372,24 +372,27 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_add" eSuperTypes="#//BinaryInstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_fadd" eSuperTypes="#//BinaryInstruction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fastMathFlags" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fastMathFlags" upperBound="-1"
+        eType="#//FastMathFlag" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FastMathFlag">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="kind" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_sub" eSuperTypes="#//BinaryInstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_fsub" eSuperTypes="#//BinaryInstruction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fastMathFlags" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fastMathFlags" upperBound="-1"
+        eType="#//FastMathFlag" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_mul" eSuperTypes="#//BinaryInstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_fmul" eSuperTypes="#//BinaryInstruction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fastMathFlags" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fastMathFlags" upperBound="-1"
+        eType="#//FastMathFlag" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_udiv" eSuperTypes="#//BinaryInstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_sdiv" eSuperTypes="#//BinaryInstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_fdiv" eSuperTypes="#//BinaryInstruction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fastMathFlags" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fastMathFlags" upperBound="-1"
+        eType="#//FastMathFlag" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_urem" eSuperTypes="#//BinaryInstruction"/>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_srem" eSuperTypes="#//BinaryInstruction"/>
