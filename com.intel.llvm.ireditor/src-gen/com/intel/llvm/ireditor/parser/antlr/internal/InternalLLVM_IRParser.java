@@ -13618,7 +13618,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMiddleInstruction"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4924:1: ruleMiddleInstruction returns [EObject current=null] : ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4924:1: ruleMiddleInstruction returns [EObject current=null] : ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* ) ;
     public final EObject ruleMiddleInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -13630,30 +13630,26 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
         EObject lv_instruction_0_4 = null;
 
-        EObject lv_instruction_0_5 = null;
-
-        EObject lv_instruction_0_6 = null;
-
         EObject lv_metadata_1_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4927:28: ( ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:1: ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4927:28: ( ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:1: ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:1: ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:2: ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )*
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:1: ( ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )* )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:2: ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) ) ) ( (lv_metadata_1_0= ruleMetadataSuffix ) )*
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:2: ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4929:1: ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4928:2: ( ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4929:1: ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4929:1: ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4930:1: (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4929:1: ( (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4930:1: (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4930:1: (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void )
-            int alt67=6;
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4930:1: (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void )
+            int alt67=4;
             alt67 = dfa67.predict(input);
             switch (alt67) {
                 case 1 :
@@ -13744,15 +13740,15 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4976:8: lv_instruction_0_4= ruleInstruction_cmpxchg
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4976:8: lv_instruction_0_4= ruleInstruction_call_void
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_cmpxchgParserRuleCall_0_0_3()); 
+                      	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_call_voidParserRuleCall_0_0_3()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_cmpxchg_in_ruleMiddleInstruction10990);
-                    lv_instruction_0_4=ruleInstruction_cmpxchg();
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_call_void_in_ruleMiddleInstruction10990);
+                    lv_instruction_0_4=ruleInstruction_call_void();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -13765,64 +13761,6 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"instruction",
                               		lv_instruction_0_4, 
-                              		"Instruction_cmpxchg");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-                    break;
-                case 5 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4991:8: lv_instruction_0_5= ruleInstruction_atomicrmw
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_atomicrmwParserRuleCall_0_0_4()); 
-                      	    
-                    }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_atomicrmw_in_ruleMiddleInstruction11009);
-                    lv_instruction_0_5=ruleInstruction_atomicrmw();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getMiddleInstructionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"instruction",
-                              		lv_instruction_0_5, 
-                              		"Instruction_atomicrmw");
-                      	        afterParserOrEnumRuleCall();
-                      	    
-                    }
-
-                    }
-                    break;
-                case 6 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5006:8: lv_instruction_0_6= ruleInstruction_call_void
-                    {
-                    if ( state.backtracking==0 ) {
-                       
-                      	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_call_voidParserRuleCall_0_0_5()); 
-                      	    
-                    }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_call_void_in_ruleMiddleInstruction11028);
-                    lv_instruction_0_6=ruleInstruction_call_void();
-
-                    state._fsp--;
-                    if (state.failed) return current;
-                    if ( state.backtracking==0 ) {
-
-                      	        if (current==null) {
-                      	            current = createModelElementForParent(grammarAccess.getMiddleInstructionRule());
-                      	        }
-                             		set(
-                             			current, 
-                             			"instruction",
-                              		lv_instruction_0_6, 
                               		"Instruction_call_void");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -13839,7 +13777,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5024:2: ( (lv_metadata_1_0= ruleMetadataSuffix ) )*
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4994:2: ( (lv_metadata_1_0= ruleMetadataSuffix ) )*
             loop68:
             do {
                 int alt68=2;
@@ -13852,17 +13790,17 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
                 switch (alt68) {
             	case 1 :
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5025:1: (lv_metadata_1_0= ruleMetadataSuffix )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4995:1: (lv_metadata_1_0= ruleMetadataSuffix )
             	    {
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5025:1: (lv_metadata_1_0= ruleMetadataSuffix )
-            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5026:3: lv_metadata_1_0= ruleMetadataSuffix
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4995:1: (lv_metadata_1_0= ruleMetadataSuffix )
+            	    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:4996:3: lv_metadata_1_0= ruleMetadataSuffix
             	    {
             	    if ( state.backtracking==0 ) {
             	       
             	      	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getMetadataMetadataSuffixParserRuleCall_1_0()); 
             	      	    
             	    }
-            	    pushFollow(FollowSets000.FOLLOW_ruleMetadataSuffix_in_ruleMiddleInstruction11052);
+            	    pushFollow(FollowSets000.FOLLOW_ruleMetadataSuffix_in_ruleMiddleInstruction11014);
             	    lv_metadata_1_0=ruleMetadataSuffix();
 
             	    state._fsp--;
@@ -13915,7 +13853,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleNamedMiddleInstruction"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5050:1: entryRuleNamedMiddleInstruction returns [EObject current=null] : iv_ruleNamedMiddleInstruction= ruleNamedMiddleInstruction EOF ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5020:1: entryRuleNamedMiddleInstruction returns [EObject current=null] : iv_ruleNamedMiddleInstruction= ruleNamedMiddleInstruction EOF ;
     public final EObject entryRuleNamedMiddleInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -13923,13 +13861,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5051:2: (iv_ruleNamedMiddleInstruction= ruleNamedMiddleInstruction EOF )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5052:2: iv_ruleNamedMiddleInstruction= ruleNamedMiddleInstruction EOF
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5021:2: (iv_ruleNamedMiddleInstruction= ruleNamedMiddleInstruction EOF )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5022:2: iv_ruleNamedMiddleInstruction= ruleNamedMiddleInstruction EOF
             {
             if ( state.backtracking==0 ) {
                newCompositeNode(grammarAccess.getNamedMiddleInstructionRule()); 
             }
-            pushFollow(FollowSets000.FOLLOW_ruleNamedMiddleInstruction_in_entryRuleNamedMiddleInstruction11089);
+            pushFollow(FollowSets000.FOLLOW_ruleNamedMiddleInstruction_in_entryRuleNamedMiddleInstruction11051);
             iv_ruleNamedMiddleInstruction=ruleNamedMiddleInstruction();
 
             state._fsp--;
@@ -13937,7 +13875,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             if ( state.backtracking==0 ) {
                current =iv_ruleNamedMiddleInstruction; 
             }
-            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleNamedMiddleInstruction11099); if (state.failed) return current;
+            match(input,EOF,FollowSets000.FOLLOW_EOF_in_entryRuleNamedMiddleInstruction11061); if (state.failed) return current;
 
             }
 
@@ -13955,7 +13893,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleNamedMiddleInstruction"
-    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5059:1: ruleNamedMiddleInstruction returns [EObject current=null] : ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) ) ) ) ;
+    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5029:1: ruleNamedMiddleInstruction returns [EObject current=null] : ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) ) ) ) ;
     public final EObject ruleNamedMiddleInstruction() throws RecognitionException {
         EObject current = null;
 
@@ -13981,28 +13919,32 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
         EObject lv_instruction_1_10 = null;
 
+        EObject lv_instruction_1_11 = null;
+
+        EObject lv_instruction_1_12 = null;
+
 
          enterRule(); 
             
         try {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5062:28: ( ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5063:1: ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5032:28: ( ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5033:1: ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5063:1: ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5063:2: ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5033:1: ( ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5033:2: ( (lv_name_0_0= ruleLocalName ) ) ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5063:2: ( (lv_name_0_0= ruleLocalName ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5064:1: (lv_name_0_0= ruleLocalName )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5033:2: ( (lv_name_0_0= ruleLocalName ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5034:1: (lv_name_0_0= ruleLocalName )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5064:1: (lv_name_0_0= ruleLocalName )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5065:3: lv_name_0_0= ruleLocalName
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5034:1: (lv_name_0_0= ruleLocalName )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5035:3: lv_name_0_0= ruleLocalName
             {
             if ( state.backtracking==0 ) {
                
               	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getNameLocalNameParserRuleCall_0_0()); 
               	    
             }
-            pushFollow(FollowSets000.FOLLOW_ruleLocalName_in_ruleNamedMiddleInstruction11145);
+            pushFollow(FollowSets000.FOLLOW_ruleLocalName_in_ruleNamedMiddleInstruction11107);
             lv_name_0_0=ruleLocalName();
 
             state._fsp--;
@@ -14026,14 +13968,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             }
 
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5081:2: ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5082:1: ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5051:2: ( ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5052:1: ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5082:1: ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid ) )
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5083:1: (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5052:1: ( (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid ) )
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5053:1: (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid )
             {
-            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5083:1: (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleConversionInstruction | lv_instruction_1_9= ruleOtherInstruction | lv_instruction_1_10= ruleInstruction_call_nonVoid )
-            int alt69=10;
+            // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5053:1: (lv_instruction_1_1= ruleBinaryInstruction | lv_instruction_1_2= ruleBitwiseBinaryInstruction | lv_instruction_1_3= ruleVectorInstructions | lv_instruction_1_4= ruleAggregateInstruction | lv_instruction_1_5= ruleInstruction_alloca | lv_instruction_1_6= ruleInstruction_load | lv_instruction_1_7= ruleInstruction_getelementptr | lv_instruction_1_8= ruleInstruction_cmpxchg | lv_instruction_1_9= ruleInstruction_atomicrmw | lv_instruction_1_10= ruleConversionInstruction | lv_instruction_1_11= ruleOtherInstruction | lv_instruction_1_12= ruleInstruction_call_nonVoid )
+            int alt69=12;
             switch ( input.LA(1) ) {
             case 52:
             case 53:
@@ -14089,6 +14031,16 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                 alt69=7;
                 }
                 break;
+            case 137:
+                {
+                alt69=8;
+                }
+                break;
+            case 138:
+                {
+                alt69=9;
+                }
+                break;
             case 145:
             case 146:
             case 147:
@@ -14102,7 +14054,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             case 155:
             case 156:
                 {
-                alt69=8;
+                alt69=10;
                 }
                 break;
             case 44:
@@ -14111,13 +14063,13 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             case 182:
             case 183:
                 {
-                alt69=9;
+                alt69=11;
                 }
                 break;
             case 178:
             case 179:
                 {
-                alt69=10;
+                alt69=12;
                 }
                 break;
             default:
@@ -14130,14 +14082,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
 
             switch (alt69) {
                 case 1 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5084:3: lv_instruction_1_1= ruleBinaryInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5054:3: lv_instruction_1_1= ruleBinaryInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionBinaryInstructionParserRuleCall_1_0_0()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleBinaryInstruction_in_ruleNamedMiddleInstruction11168);
+                    pushFollow(FollowSets000.FOLLOW_ruleBinaryInstruction_in_ruleNamedMiddleInstruction11130);
                     lv_instruction_1_1=ruleBinaryInstruction();
 
                     state._fsp--;
@@ -14159,14 +14111,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5099:8: lv_instruction_1_2= ruleBitwiseBinaryInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5069:8: lv_instruction_1_2= ruleBitwiseBinaryInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionBitwiseBinaryInstructionParserRuleCall_1_0_1()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleBitwiseBinaryInstruction_in_ruleNamedMiddleInstruction11187);
+                    pushFollow(FollowSets000.FOLLOW_ruleBitwiseBinaryInstruction_in_ruleNamedMiddleInstruction11149);
                     lv_instruction_1_2=ruleBitwiseBinaryInstruction();
 
                     state._fsp--;
@@ -14188,14 +14140,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5114:8: lv_instruction_1_3= ruleVectorInstructions
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5084:8: lv_instruction_1_3= ruleVectorInstructions
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionVectorInstructionsParserRuleCall_1_0_2()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleVectorInstructions_in_ruleNamedMiddleInstruction11206);
+                    pushFollow(FollowSets000.FOLLOW_ruleVectorInstructions_in_ruleNamedMiddleInstruction11168);
                     lv_instruction_1_3=ruleVectorInstructions();
 
                     state._fsp--;
@@ -14217,14 +14169,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5129:8: lv_instruction_1_4= ruleAggregateInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5099:8: lv_instruction_1_4= ruleAggregateInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionAggregateInstructionParserRuleCall_1_0_3()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleAggregateInstruction_in_ruleNamedMiddleInstruction11225);
+                    pushFollow(FollowSets000.FOLLOW_ruleAggregateInstruction_in_ruleNamedMiddleInstruction11187);
                     lv_instruction_1_4=ruleAggregateInstruction();
 
                     state._fsp--;
@@ -14246,14 +14198,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5144:8: lv_instruction_1_5= ruleInstruction_alloca
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5114:8: lv_instruction_1_5= ruleInstruction_alloca
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_allocaParserRuleCall_1_0_4()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_alloca_in_ruleNamedMiddleInstruction11244);
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_alloca_in_ruleNamedMiddleInstruction11206);
                     lv_instruction_1_5=ruleInstruction_alloca();
 
                     state._fsp--;
@@ -14275,14 +14227,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5159:8: lv_instruction_1_6= ruleInstruction_load
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5129:8: lv_instruction_1_6= ruleInstruction_load
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_loadParserRuleCall_1_0_5()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_load_in_ruleNamedMiddleInstruction11263);
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_load_in_ruleNamedMiddleInstruction11225);
                     lv_instruction_1_6=ruleInstruction_load();
 
                     state._fsp--;
@@ -14304,14 +14256,14 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5174:8: lv_instruction_1_7= ruleInstruction_getelementptr
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5144:8: lv_instruction_1_7= ruleInstruction_getelementptr
                     {
                     if ( state.backtracking==0 ) {
                        
                       	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_getelementptrParserRuleCall_1_0_6()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_getelementptr_in_ruleNamedMiddleInstruction11282);
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_getelementptr_in_ruleNamedMiddleInstruction11244);
                     lv_instruction_1_7=ruleInstruction_getelementptr();
 
                     state._fsp--;
@@ -14333,15 +14285,15 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5189:8: lv_instruction_1_8= ruleConversionInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5159:8: lv_instruction_1_8= ruleInstruction_cmpxchg
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionConversionInstructionParserRuleCall_1_0_7()); 
+                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_cmpxchgParserRuleCall_1_0_7()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleConversionInstruction_in_ruleNamedMiddleInstruction11301);
-                    lv_instruction_1_8=ruleConversionInstruction();
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_cmpxchg_in_ruleNamedMiddleInstruction11263);
+                    lv_instruction_1_8=ruleInstruction_cmpxchg();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -14354,7 +14306,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"instruction",
                               		lv_instruction_1_8, 
-                              		"ConversionInstruction");
+                              		"Instruction_cmpxchg");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -14362,15 +14314,15 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5204:8: lv_instruction_1_9= ruleOtherInstruction
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5174:8: lv_instruction_1_9= ruleInstruction_atomicrmw
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionOtherInstructionParserRuleCall_1_0_8()); 
+                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_atomicrmwParserRuleCall_1_0_8()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleOtherInstruction_in_ruleNamedMiddleInstruction11320);
-                    lv_instruction_1_9=ruleOtherInstruction();
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_atomicrmw_in_ruleNamedMiddleInstruction11282);
+                    lv_instruction_1_9=ruleInstruction_atomicrmw();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -14383,7 +14335,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"instruction",
                               		lv_instruction_1_9, 
-                              		"OtherInstruction");
+                              		"Instruction_atomicrmw");
                       	        afterParserOrEnumRuleCall();
                       	    
                     }
@@ -14391,15 +14343,15 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 10 :
-                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5219:8: lv_instruction_1_10= ruleInstruction_call_nonVoid
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5189:8: lv_instruction_1_10= ruleConversionInstruction
                     {
                     if ( state.backtracking==0 ) {
                        
-                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_call_nonVoidParserRuleCall_1_0_9()); 
+                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionConversionInstructionParserRuleCall_1_0_9()); 
                       	    
                     }
-                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_call_nonVoid_in_ruleNamedMiddleInstruction11339);
-                    lv_instruction_1_10=ruleInstruction_call_nonVoid();
+                    pushFollow(FollowSets000.FOLLOW_ruleConversionInstruction_in_ruleNamedMiddleInstruction11301);
+                    lv_instruction_1_10=ruleConversionInstruction();
 
                     state._fsp--;
                     if (state.failed) return current;
@@ -14412,6 +14364,64 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
                              			current, 
                              			"instruction",
                               		lv_instruction_1_10, 
+                              		"ConversionInstruction");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+                    break;
+                case 11 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5204:8: lv_instruction_1_11= ruleOtherInstruction
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionOtherInstructionParserRuleCall_1_0_10()); 
+                      	    
+                    }
+                    pushFollow(FollowSets000.FOLLOW_ruleOtherInstruction_in_ruleNamedMiddleInstruction11320);
+                    lv_instruction_1_11=ruleOtherInstruction();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"instruction",
+                              		lv_instruction_1_11, 
+                              		"OtherInstruction");
+                      	        afterParserOrEnumRuleCall();
+                      	    
+                    }
+
+                    }
+                    break;
+                case 12 :
+                    // ../com.intel.llvm.ireditor/src-gen/com/intel/llvm/ireditor/parser/antlr/internal/InternalLLVM_IR.g:5219:8: lv_instruction_1_12= ruleInstruction_call_nonVoid
+                    {
+                    if ( state.backtracking==0 ) {
+                       
+                      	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_call_nonVoidParserRuleCall_1_0_11()); 
+                      	    
+                    }
+                    pushFollow(FollowSets000.FOLLOW_ruleInstruction_call_nonVoid_in_ruleNamedMiddleInstruction11339);
+                    lv_instruction_1_12=ruleInstruction_call_nonVoid();
+
+                    state._fsp--;
+                    if (state.failed) return current;
+                    if ( state.backtracking==0 ) {
+
+                      	        if (current==null) {
+                      	            current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
+                      	        }
+                             		set(
+                             			current, 
+                             			"instruction",
+                              		lv_instruction_1_12, 
                               		"Instruction_call_nonVoid");
                       	        afterParserOrEnumRuleCall();
                       	    
@@ -38649,15 +38659,16 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         "\7\uffff}>";
     static final String[] DFA9_transitionS = {
             "\1\1\40\uffff\1\3\1\uffff\14\3\2\uffff\4\3\1\uffff\12\3\53"+
-            "\uffff\1\4\13\uffff\2\3\17\uffff\14\3\24\uffff\1\2\2\3\2\uffff"+
-            "\2\3",
+            "\uffff\1\4\13\uffff\2\3\7\uffff\2\3\6\uffff\14\3\24\uffff\1"+
+            "\2\2\3\2\uffff\2\3",
             "\1\5\5\uffff\1\6",
             "",
             "",
             "",
             "\1\5\5\uffff\1\6",
             "\1\3\1\uffff\14\3\2\uffff\4\3\1\uffff\12\3\53\uffff\1\4\13"+
-            "\uffff\2\3\17\uffff\14\3\24\uffff\1\2\2\3\2\uffff\2\3"
+            "\uffff\2\3\7\uffff\2\3\6\uffff\14\3\24\uffff\1\2\2\3\2\uffff"+
+            "\2\3"
     };
 
     static final short[] DFA9_eot = DFA.unpackEncodedString(DFA9_eotS);
@@ -38880,7 +38891,8 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             "",
             "\1\4\5\uffff\1\5",
             "\1\2\1\uffff\14\2\2\uffff\4\2\1\uffff\12\2\53\uffff\1\2\13"+
-            "\uffff\2\2\17\uffff\14\2\24\uffff\1\3\2\2\2\uffff\2\2"
+            "\uffff\2\2\7\uffff\2\2\6\uffff\14\2\24\uffff\1\3\2\2\2\uffff"+
+            "\2\2"
     };
 
     static final short[] DFA63_eot = DFA.unpackEncodedString(DFA63_eotS);
@@ -38937,7 +38949,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             "",
             "\1\4\5\uffff\1\5",
             "\1\3\1\uffff\14\3\2\uffff\4\3\1\uffff\12\3\53\uffff\1\2\13"+
-            "\uffff\2\3\17\uffff\14\3\25\uffff\2\3\2\uffff\2\3"
+            "\uffff\2\3\7\uffff\2\3\6\uffff\14\3\25\uffff\2\3\2\uffff\2\3"
     };
 
     static final short[] DFA64_eot = DFA.unpackEncodedString(DFA64_eotS);
@@ -38974,121 +38986,119 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         }
     }
     static final String DFA67_eotS =
-        "\47\uffff";
+        "\45\uffff";
     static final String DFA67_eofS =
-        "\47\uffff";
+        "\45\uffff";
     static final String DFA67_minS =
-        "\1\11\1\uffff\1\u00b3\1\11\4\uffff\21\11\1\5\10\11\1\5\1\11\1\5"+
+        "\1\11\1\uffff\1\u00b3\1\11\2\uffff\21\11\1\5\10\11\1\5\1\11\1\5"+
         "\1\uffff\1\11";
     static final String DFA67_maxS =
-        "\1\u00b7\1\uffff\1\u00b3\1\u00f3\4\uffff\21\u00d1\1\5\10\u00d1"+
+        "\1\u00b7\1\uffff\1\u00b3\1\u00f3\2\uffff\21\u00d1\1\5\10\u00d1"+
         "\1\u009c\1\u00d1\1\5\1\uffff\1\u00d1";
     static final String DFA67_acceptS =
-        "\1\uffff\1\1\2\uffff\1\2\1\3\1\4\1\5\35\uffff\1\6\1\uffff";
+        "\1\uffff\1\1\2\uffff\1\2\1\3\35\uffff\1\4\1\uffff";
     static final String DFA67_specialS =
-        "\47\uffff}>";
+        "\45\uffff}>";
     static final String[] DFA67_transitionS = {
             "\1\1\40\uffff\1\1\1\uffff\14\1\2\uffff\4\1\1\uffff\12\1\67"+
-            "\uffff\2\1\5\uffff\1\4\1\5\1\6\1\7\6\uffff\14\1\25\uffff\1\2"+
-            "\1\3\2\uffff\2\1",
+            "\uffff\2\1\5\uffff\1\4\1\5\2\1\6\uffff\14\1\25\uffff\1\2\1\3"+
+            "\2\uffff\2\1",
             "",
             "\1\3",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1\20\uffff\1\10\1\11\1"+
-            "\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1"+
-            "\26\1\27\1\30\1\31",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1\20\uffff\1\6\1\7\1\10"+
+            "\1\11\1\12\1\13\1\14\1\15\1\16\1\17\1\20\1\21\1\22\1\23\1\24"+
+            "\1\25\1\26\1\27",
             "",
             "",
-            "",
-            "",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
-            "\1\43",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
+            "\1\41",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\10\uffff\1\44\27\uffff\1\42\5\uffff\1\32\1\33\1\34\112"+
-            "\uffff\1\35\1\36\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\10\uffff\1\42\27\uffff\1\40\5\uffff\1\30\1\31\1\32\112"+
+            "\uffff\1\33\1\34\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
-            "\1\45\1\uffff\12\45\11\uffff\1\45\7\uffff\1\45\4\uffff\1\1"+
-            "\2\uffff\1\45\1\uffff\14\45\2\uffff\4\45\1\uffff\16\45\1\uffff"+
-            "\1\45\1\uffff\1\45\100\uffff\14\45",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
+            "\1\43\1\uffff\12\43\11\uffff\1\43\7\uffff\1\43\4\uffff\1\1"+
+            "\2\uffff\1\43\1\uffff\14\43\2\uffff\4\43\1\uffff\16\43\1\uffff"+
+            "\1\43\1\uffff\1\43\100\uffff\14\43",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1",
-            "\1\46",
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1",
+            "\1\44",
             "",
             "\1\1\11\uffff\1\1\6\uffff\1\1\1\uffff\1\1\57\uffff\1\1\1\uffff"+
-            "\1\1\40\uffff\1\42\5\uffff\1\32\1\33\1\34\112\uffff\1\35\1\36"+
-            "\1\37\1\40\1\41\2\uffff\1\1\1\uffff\7\1"
+            "\1\1\40\uffff\1\40\5\uffff\1\30\1\31\1\32\112\uffff\1\33\1\34"+
+            "\1\35\1\36\1\37\2\uffff\1\1\1\uffff\7\1"
     };
 
     static final short[] DFA67_eot = DFA.unpackEncodedString(DFA67_eotS);
@@ -39121,7 +39131,7 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
             this.transition = DFA67_transition;
         }
         public String getDescription() {
-            return "4930:1: (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_cmpxchg | lv_instruction_0_5= ruleInstruction_atomicrmw | lv_instruction_0_6= ruleInstruction_call_void )";
+            return "4930:1: (lv_instruction_0_1= ruleNamedMiddleInstruction | lv_instruction_0_2= ruleInstruction_store | lv_instruction_0_3= ruleInstruction_fence | lv_instruction_0_4= ruleInstruction_call_void )";
         }
     }
     static final String DFA75_eotS =
@@ -40099,20 +40109,20 @@ public class InternalLLVM_IRParser extends AbstractInternalAntlrParser {
         public static final BitSet FOLLOW_ruleNamedMiddleInstruction_in_ruleMiddleInstruction10933 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleInstruction_store_in_ruleMiddleInstruction10952 = new BitSet(new long[]{0x0000004000000002L});
         public static final BitSet FOLLOW_ruleInstruction_fence_in_ruleMiddleInstruction10971 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_ruleInstruction_cmpxchg_in_ruleMiddleInstruction10990 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_ruleInstruction_atomicrmw_in_ruleMiddleInstruction11009 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_ruleInstruction_call_void_in_ruleMiddleInstruction11028 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_ruleMetadataSuffix_in_ruleMiddleInstruction11052 = new BitSet(new long[]{0x0000004000000002L});
-        public static final BitSet FOLLOW_ruleNamedMiddleInstruction_in_entryRuleNamedMiddleInstruction11089 = new BitSet(new long[]{0x0000000000000000L});
-        public static final BitSet FOLLOW_EOF_in_entryRuleNamedMiddleInstruction11099 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleLocalName_in_ruleNamedMiddleInstruction11145 = new BitSet(new long[]{0xBCFFF40000000600L,0x00000000000001FFL,0x00CC00001FFE0003L});
-        public static final BitSet FOLLOW_ruleBinaryInstruction_in_ruleNamedMiddleInstruction11168 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleBitwiseBinaryInstruction_in_ruleNamedMiddleInstruction11187 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleVectorInstructions_in_ruleNamedMiddleInstruction11206 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleAggregateInstruction_in_ruleNamedMiddleInstruction11225 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInstruction_alloca_in_ruleNamedMiddleInstruction11244 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInstruction_load_in_ruleNamedMiddleInstruction11263 = new BitSet(new long[]{0x0000000000000002L});
-        public static final BitSet FOLLOW_ruleInstruction_getelementptr_in_ruleNamedMiddleInstruction11282 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInstruction_call_void_in_ruleMiddleInstruction10990 = new BitSet(new long[]{0x0000004000000002L});
+        public static final BitSet FOLLOW_ruleMetadataSuffix_in_ruleMiddleInstruction11014 = new BitSet(new long[]{0x0000004000000002L});
+        public static final BitSet FOLLOW_ruleNamedMiddleInstruction_in_entryRuleNamedMiddleInstruction11051 = new BitSet(new long[]{0x0000000000000000L});
+        public static final BitSet FOLLOW_EOF_in_entryRuleNamedMiddleInstruction11061 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleLocalName_in_ruleNamedMiddleInstruction11107 = new BitSet(new long[]{0xBCFFF40000000600L,0x00000000000001FFL,0x00CC00001FFE0603L});
+        public static final BitSet FOLLOW_ruleBinaryInstruction_in_ruleNamedMiddleInstruction11130 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleBitwiseBinaryInstruction_in_ruleNamedMiddleInstruction11149 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleVectorInstructions_in_ruleNamedMiddleInstruction11168 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleAggregateInstruction_in_ruleNamedMiddleInstruction11187 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInstruction_alloca_in_ruleNamedMiddleInstruction11206 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInstruction_load_in_ruleNamedMiddleInstruction11225 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInstruction_getelementptr_in_ruleNamedMiddleInstruction11244 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInstruction_cmpxchg_in_ruleNamedMiddleInstruction11263 = new BitSet(new long[]{0x0000000000000002L});
+        public static final BitSet FOLLOW_ruleInstruction_atomicrmw_in_ruleNamedMiddleInstruction11282 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleConversionInstruction_in_ruleNamedMiddleInstruction11301 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleOtherInstruction_in_ruleNamedMiddleInstruction11320 = new BitSet(new long[]{0x0000000000000002L});
         public static final BitSet FOLLOW_ruleInstruction_call_nonVoid_in_ruleNamedMiddleInstruction11339 = new BitSet(new long[]{0x0000000000000002L});

@@ -4974,9 +4974,9 @@ ruleMiddleInstruction returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_cmpxchgParserRuleCall_0_0_3()); 
+	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_call_voidParserRuleCall_0_0_3()); 
 	    }
-		lv_instruction_0_4=ruleInstruction_cmpxchg		{
+		lv_instruction_0_4=ruleInstruction_call_void		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getMiddleInstructionRule());
 	        }
@@ -4984,36 +4984,6 @@ ruleMiddleInstruction returns [EObject current=null]
        			$current, 
        			"instruction",
         		lv_instruction_0_4, 
-        		"Instruction_cmpxchg");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_atomicrmwParserRuleCall_0_0_4()); 
-	    }
-		lv_instruction_0_5=ruleInstruction_atomicrmw		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMiddleInstructionRule());
-	        }
-       		set(
-       			$current, 
-       			"instruction",
-        		lv_instruction_0_5, 
-        		"Instruction_atomicrmw");
-	        afterParserOrEnumRuleCall();
-	    }
-
-    |		{ 
-	        newCompositeNode(grammarAccess.getMiddleInstructionAccess().getInstructionInstruction_call_voidParserRuleCall_0_0_5()); 
-	    }
-		lv_instruction_0_6=ruleInstruction_call_void		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getMiddleInstructionRule());
-	        }
-       		set(
-       			$current, 
-       			"instruction",
-        		lv_instruction_0_6, 
         		"Instruction_call_void");
 	        afterParserOrEnumRuleCall();
 	    }
@@ -5187,9 +5157,9 @@ ruleNamedMiddleInstruction returns [EObject current=null]
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionConversionInstructionParserRuleCall_1_0_7()); 
+	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_cmpxchgParserRuleCall_1_0_7()); 
 	    }
-		lv_instruction_1_8=ruleConversionInstruction		{
+		lv_instruction_1_8=ruleInstruction_cmpxchg		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
 	        }
@@ -5197,14 +5167,14 @@ ruleNamedMiddleInstruction returns [EObject current=null]
        			$current, 
        			"instruction",
         		lv_instruction_1_8, 
-        		"ConversionInstruction");
+        		"Instruction_cmpxchg");
 	        afterParserOrEnumRuleCall();
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionOtherInstructionParserRuleCall_1_0_8()); 
+	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_atomicrmwParserRuleCall_1_0_8()); 
 	    }
-		lv_instruction_1_9=ruleOtherInstruction		{
+		lv_instruction_1_9=ruleInstruction_atomicrmw		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
 	        }
@@ -5212,14 +5182,14 @@ ruleNamedMiddleInstruction returns [EObject current=null]
        			$current, 
        			"instruction",
         		lv_instruction_1_9, 
-        		"OtherInstruction");
+        		"Instruction_atomicrmw");
 	        afterParserOrEnumRuleCall();
 	    }
 
     |		{ 
-	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_call_nonVoidParserRuleCall_1_0_9()); 
+	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionConversionInstructionParserRuleCall_1_0_9()); 
 	    }
-		lv_instruction_1_10=ruleInstruction_call_nonVoid		{
+		lv_instruction_1_10=ruleConversionInstruction		{
 	        if ($current==null) {
 	            $current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
 	        }
@@ -5227,6 +5197,36 @@ ruleNamedMiddleInstruction returns [EObject current=null]
        			$current, 
        			"instruction",
         		lv_instruction_1_10, 
+        		"ConversionInstruction");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionOtherInstructionParserRuleCall_1_0_10()); 
+	    }
+		lv_instruction_1_11=ruleOtherInstruction		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
+	        }
+       		set(
+       			$current, 
+       			"instruction",
+        		lv_instruction_1_11, 
+        		"OtherInstruction");
+	        afterParserOrEnumRuleCall();
+	    }
+
+    |		{ 
+	        newCompositeNode(grammarAccess.getNamedMiddleInstructionAccess().getInstructionInstruction_call_nonVoidParserRuleCall_1_0_11()); 
+	    }
+		lv_instruction_1_12=ruleInstruction_call_nonVoid		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getNamedMiddleInstructionRule());
+	        }
+       		set(
+       			$current, 
+       			"instruction",
+        		lv_instruction_1_12, 
         		"Instruction_call_nonVoid");
 	        afterParserOrEnumRuleCall();
 	    }

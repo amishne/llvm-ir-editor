@@ -397,8 +397,6 @@ MiddleInstruction:
 		NamedMiddleInstruction |
 		Instruction_store |
 		Instruction_fence |
-		Instruction_cmpxchg |
-		Instruction_atomicrmw |
 		Instruction_call_void
 	)
 	metadata+=MetadataSuffix*
@@ -414,6 +412,8 @@ NamedMiddleInstruction:
 		Instruction_alloca |
 		Instruction_load |
 		Instruction_getelementptr |
+		Instruction_cmpxchg |
+		Instruction_atomicrmw |
 		ConversionInstruction |
 		OtherInstruction |
 		Instruction_call_nonVoid

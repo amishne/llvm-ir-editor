@@ -2828,32 +2828,26 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInstructionNamedMiddleInstructionParserRuleCall_0_0_0 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(0);
 		private final RuleCall cInstructionInstruction_storeParserRuleCall_0_0_1 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(1);
 		private final RuleCall cInstructionInstruction_fenceParserRuleCall_0_0_2 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(2);
-		private final RuleCall cInstructionInstruction_cmpxchgParserRuleCall_0_0_3 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(3);
-		private final RuleCall cInstructionInstruction_atomicrmwParserRuleCall_0_0_4 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(4);
-		private final RuleCall cInstructionInstruction_call_voidParserRuleCall_0_0_5 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(5);
+		private final RuleCall cInstructionInstruction_call_voidParserRuleCall_0_0_3 = (RuleCall)cInstructionAlternatives_0_0.eContents().get(3);
 		private final Assignment cMetadataAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cMetadataMetadataSuffixParserRuleCall_1_0 = (RuleCall)cMetadataAssignment_1.eContents().get(0);
 		
 		//MiddleInstruction:
 		//
-		//	instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_cmpxchg |
+		//	instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_call_void)
 		//
-		//	Instruction_atomicrmw | Instruction_call_void) metadata+=MetadataSuffix*;
+		//	metadata+=MetadataSuffix*;
 		public ParserRule getRule() { return rule; }
 
-		//instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_cmpxchg |
+		//instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_call_void)
 		//
-		//Instruction_atomicrmw | Instruction_call_void) metadata+=MetadataSuffix*
+		//metadata+=MetadataSuffix*
 		public Group getGroup() { return cGroup; }
 
-		//instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_cmpxchg |
-		//
-		//Instruction_atomicrmw | Instruction_call_void)
+		//instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_call_void)
 		public Assignment getInstructionAssignment_0() { return cInstructionAssignment_0; }
 
-		//NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_cmpxchg | Instruction_atomicrmw |
-		//
-		//Instruction_call_void
+		//NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_call_void
 		public Alternatives getInstructionAlternatives_0_0() { return cInstructionAlternatives_0_0; }
 
 		//NamedMiddleInstruction
@@ -2865,14 +2859,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//Instruction_fence
 		public RuleCall getInstructionInstruction_fenceParserRuleCall_0_0_2() { return cInstructionInstruction_fenceParserRuleCall_0_0_2; }
 
-		//Instruction_cmpxchg
-		public RuleCall getInstructionInstruction_cmpxchgParserRuleCall_0_0_3() { return cInstructionInstruction_cmpxchgParserRuleCall_0_0_3; }
-
-		//Instruction_atomicrmw
-		public RuleCall getInstructionInstruction_atomicrmwParserRuleCall_0_0_4() { return cInstructionInstruction_atomicrmwParserRuleCall_0_0_4; }
-
 		//Instruction_call_void
-		public RuleCall getInstructionInstruction_call_voidParserRuleCall_0_0_5() { return cInstructionInstruction_call_voidParserRuleCall_0_0_5; }
+		public RuleCall getInstructionInstruction_call_voidParserRuleCall_0_0_3() { return cInstructionInstruction_call_voidParserRuleCall_0_0_3; }
 
 		//metadata+=MetadataSuffix*
 		public Assignment getMetadataAssignment_1() { return cMetadataAssignment_1; }
@@ -2895,24 +2883,26 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInstructionInstruction_allocaParserRuleCall_1_0_4 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(4);
 		private final RuleCall cInstructionInstruction_loadParserRuleCall_1_0_5 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(5);
 		private final RuleCall cInstructionInstruction_getelementptrParserRuleCall_1_0_6 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(6);
-		private final RuleCall cInstructionConversionInstructionParserRuleCall_1_0_7 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(7);
-		private final RuleCall cInstructionOtherInstructionParserRuleCall_1_0_8 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(8);
-		private final RuleCall cInstructionInstruction_call_nonVoidParserRuleCall_1_0_9 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(9);
+		private final RuleCall cInstructionInstruction_cmpxchgParserRuleCall_1_0_7 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(7);
+		private final RuleCall cInstructionInstruction_atomicrmwParserRuleCall_1_0_8 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(8);
+		private final RuleCall cInstructionConversionInstructionParserRuleCall_1_0_9 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(9);
+		private final RuleCall cInstructionOtherInstructionParserRuleCall_1_0_10 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(10);
+		private final RuleCall cInstructionInstruction_call_nonVoidParserRuleCall_1_0_11 = (RuleCall)cInstructionAlternatives_1_0.eContents().get(11);
 		
 		//NamedMiddleInstruction:
 		//
 		//	name=LocalName instruction=(BinaryInstruction | BitwiseBinaryInstruction | VectorInstructions | AggregateInstruction
 		//
-		//	| Instruction_alloca | Instruction_load | Instruction_getelementptr | ConversionInstruction | OtherInstruction |
+		//	| Instruction_alloca | Instruction_load | Instruction_getelementptr | Instruction_cmpxchg | Instruction_atomicrmw |
 		//
-		//	Instruction_call_nonVoid);
+		//	ConversionInstruction | OtherInstruction | Instruction_call_nonVoid);
 		public ParserRule getRule() { return rule; }
 
 		//name=LocalName instruction=(BinaryInstruction | BitwiseBinaryInstruction | VectorInstructions | AggregateInstruction |
 		//
-		//Instruction_alloca | Instruction_load | Instruction_getelementptr | ConversionInstruction | OtherInstruction |
+		//Instruction_alloca | Instruction_load | Instruction_getelementptr | Instruction_cmpxchg | Instruction_atomicrmw |
 		//
-		//Instruction_call_nonVoid)
+		//ConversionInstruction | OtherInstruction | Instruction_call_nonVoid)
 		public Group getGroup() { return cGroup; }
 
 		//name=LocalName
@@ -2923,14 +2913,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//instruction=(BinaryInstruction | BitwiseBinaryInstruction | VectorInstructions | AggregateInstruction |
 		//
-		//Instruction_alloca | Instruction_load | Instruction_getelementptr | ConversionInstruction | OtherInstruction |
+		//Instruction_alloca | Instruction_load | Instruction_getelementptr | Instruction_cmpxchg | Instruction_atomicrmw |
 		//
-		//Instruction_call_nonVoid)
+		//ConversionInstruction | OtherInstruction | Instruction_call_nonVoid)
 		public Assignment getInstructionAssignment_1() { return cInstructionAssignment_1; }
 
 		//BinaryInstruction | BitwiseBinaryInstruction | VectorInstructions | AggregateInstruction | Instruction_alloca |
 		//
-		//Instruction_load | Instruction_getelementptr | ConversionInstruction | OtherInstruction | Instruction_call_nonVoid
+		//Instruction_load | Instruction_getelementptr | Instruction_cmpxchg | Instruction_atomicrmw | ConversionInstruction |
+		//
+		//OtherInstruction | Instruction_call_nonVoid
 		public Alternatives getInstructionAlternatives_1_0() { return cInstructionAlternatives_1_0; }
 
 		//BinaryInstruction
@@ -2954,14 +2946,20 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//Instruction_getelementptr
 		public RuleCall getInstructionInstruction_getelementptrParserRuleCall_1_0_6() { return cInstructionInstruction_getelementptrParserRuleCall_1_0_6; }
 
+		//Instruction_cmpxchg
+		public RuleCall getInstructionInstruction_cmpxchgParserRuleCall_1_0_7() { return cInstructionInstruction_cmpxchgParserRuleCall_1_0_7; }
+
+		//Instruction_atomicrmw
+		public RuleCall getInstructionInstruction_atomicrmwParserRuleCall_1_0_8() { return cInstructionInstruction_atomicrmwParserRuleCall_1_0_8; }
+
 		//ConversionInstruction
-		public RuleCall getInstructionConversionInstructionParserRuleCall_1_0_7() { return cInstructionConversionInstructionParserRuleCall_1_0_7; }
+		public RuleCall getInstructionConversionInstructionParserRuleCall_1_0_9() { return cInstructionConversionInstructionParserRuleCall_1_0_9; }
 
 		//OtherInstruction
-		public RuleCall getInstructionOtherInstructionParserRuleCall_1_0_8() { return cInstructionOtherInstructionParserRuleCall_1_0_8; }
+		public RuleCall getInstructionOtherInstructionParserRuleCall_1_0_10() { return cInstructionOtherInstructionParserRuleCall_1_0_10; }
 
 		//Instruction_call_nonVoid
-		public RuleCall getInstructionInstruction_call_nonVoidParserRuleCall_1_0_9() { return cInstructionInstruction_call_nonVoidParserRuleCall_1_0_9; }
+		public RuleCall getInstructionInstruction_call_nonVoidParserRuleCall_1_0_11() { return cInstructionInstruction_call_nonVoidParserRuleCall_1_0_11; }
 	}
 
 	public class ParamNameElements extends AbstractParserRuleElementFinder {
@@ -9190,9 +9188,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//MiddleInstruction:
 	//
-	//	instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_cmpxchg |
+	//	instruction=(NamedMiddleInstruction | Instruction_store | Instruction_fence | Instruction_call_void)
 	//
-	//	Instruction_atomicrmw | Instruction_call_void) metadata+=MetadataSuffix*;
+	//	metadata+=MetadataSuffix*;
 	public MiddleInstructionElements getMiddleInstructionAccess() {
 		return (pMiddleInstruction != null) ? pMiddleInstruction : (pMiddleInstruction = new MiddleInstructionElements());
 	}
@@ -9205,9 +9203,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	name=LocalName instruction=(BinaryInstruction | BitwiseBinaryInstruction | VectorInstructions | AggregateInstruction
 	//
-	//	| Instruction_alloca | Instruction_load | Instruction_getelementptr | ConversionInstruction | OtherInstruction |
+	//	| Instruction_alloca | Instruction_load | Instruction_getelementptr | Instruction_cmpxchg | Instruction_atomicrmw |
 	//
-	//	Instruction_call_nonVoid);
+	//	ConversionInstruction | OtherInstruction | Instruction_call_nonVoid);
 	public NamedMiddleInstructionElements getNamedMiddleInstructionAccess() {
 		return (pNamedMiddleInstruction != null) ? pNamedMiddleInstruction : (pNamedMiddleInstruction = new NamedMiddleInstructionElements());
 	}

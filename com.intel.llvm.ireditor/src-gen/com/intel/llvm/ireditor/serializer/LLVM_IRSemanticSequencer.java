@@ -2421,14 +2421,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * Constraint:
 	 *     (
-	 *         (
-	 *             instruction=NamedMiddleInstruction | 
-	 *             instruction=Instruction_store | 
-	 *             instruction=Instruction_fence | 
-	 *             instruction=Instruction_cmpxchg | 
-	 *             instruction=Instruction_atomicrmw | 
-	 *             instruction=Instruction_call_void
-	 *         ) 
+	 *         (instruction=NamedMiddleInstruction | instruction=Instruction_store | instruction=Instruction_fence | instruction=Instruction_call_void) 
 	 *         metadata+=MetadataSuffix*
 	 *     )
 	 */
@@ -2467,6 +2460,8 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *             instruction=Instruction_alloca | 
 	 *             instruction=Instruction_load | 
 	 *             instruction=Instruction_getelementptr | 
+	 *             instruction=Instruction_cmpxchg | 
+	 *             instruction=Instruction_atomicrmw | 
 	 *             instruction=ConversionInstruction | 
 	 *             instruction=OtherInstruction | 
 	 *             instruction=Instruction_call_nonVoid

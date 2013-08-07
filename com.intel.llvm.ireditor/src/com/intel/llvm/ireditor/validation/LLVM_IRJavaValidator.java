@@ -87,6 +87,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertelement;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_insertvalue;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void;
+import com.intel.llvm.ireditor.lLVM_IR.Instruction_landingpad;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_mul;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_phi;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_ret;
@@ -102,6 +103,7 @@ import com.intel.llvm.ireditor.lLVM_IR.Instruction_urem;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValue;
 import com.intel.llvm.ireditor.lLVM_IR.LocalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.Model;
+import com.intel.llvm.ireditor.lLVM_IR.NamedMiddleInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.NamedTerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage.Literals;
@@ -861,6 +863,25 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		}
 	}
 	
+	@Check void checkDeadCode(NamedMiddleInstruction val) {
+		// We don't bother checking terminator instructions, since the only non-void
+		// one there is a non-void invoke, and that may have side effects.
+		if (mayHaveSideEffects(val.getInstruction())) return;
+		if (LLVM_IRUtils.xrefs(val).isEmpty()) {
+			INode node = NodeModelUtils.findActualNodeFor(val);
+			String message = String.format("Dead code - %s is never used in this function",
+					namer.resolveName(val));
+			acceptWarning(message, val, node.getOffset(), node.getLength(), null);
+		}
+	}
+	
+	private boolean mayHaveSideEffects(EObject instruction) {
+		return  instruction instanceof Instruction_call_nonVoid ||
+				instruction instanceof Instruction_atomicrmw ||
+				instruction instanceof Instruction_cmpxchg ||
+				instruction instanceof Instruction_landingpad;
+	}
+
 	@Check
 	public void checkNumberSequence(NamedInstruction val) {
 		checkNumberSequence(val, null);
