@@ -12,6 +12,11 @@
       <url>http://download.eclipse.org/releases/juno/</url>
       <layout>p2</layout>
     </repository>
+    <repository>
+      <id>xtext-releases</id>
+      <url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</url>
+      <layout>p2</layout>
+    </repository>
   </repositories>
   <modules>
     <module>com.intel.llvm.ireditor</module>
