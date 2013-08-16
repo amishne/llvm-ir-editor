@@ -28,14 +28,14 @@
     <module>update</module>
   </modules>
   <properties>
-    <tycho-version>0.16.0</tycho-version>
+    <tycho-version>0.18.1</tycho-version>
   </properties>
   <build>
     <plugins>
       <plugin>
         <groupId>org.eclipse.tycho</groupId>
         <artifactId>tycho-maven-plugin</artifactId>
-        <version>0.16.0</version>
+        <version>${tycho-version}</version>
         <extensions>true</extensions>
       </plugin>
       <plugin>
