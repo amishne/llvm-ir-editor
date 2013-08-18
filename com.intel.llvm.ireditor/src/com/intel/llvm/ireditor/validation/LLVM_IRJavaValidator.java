@@ -867,9 +867,26 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 		// We don't bother checking terminator instructions, since the only non-void
 		// one there is a non-void invoke, and that may have side effects.
 		if (mayHaveSideEffects(val.getInstruction())) return;
+		
+		warnIfUnused(val);
+	}
+	
+	@Check void checkUnusedParameter(Parameter param) {
+		EObject container = param;
+		while (true) {
+			container = container.eContainer();
+			if (container == null) return; // There are bigger problems in the code
+			if (container instanceof FunctionDecl) return; // Don't report unused in declarations!
+			if (container instanceof FunctionDef) break;
+		}
+		
+		warnIfUnused(param);
+	}
+
+	private void warnIfUnused(EObject val) {
 		if (LLVM_IRUtils.xrefs(val).isEmpty()) {
 			INode node = NodeModelUtils.findActualNodeFor(val);
-			String message = String.format("Dead code - %s is never used in this function",
+			String message = String.format("%s is never used in this function",
 					namer.resolveName(val));
 			acceptWarning(message, val, node.getOffset(), node.getLength(), null);
 		}
