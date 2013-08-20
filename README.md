@@ -10,7 +10,7 @@ Developer FAQ
 
 Under what license is this released?
 ------------------------------------
-BSD.
+[BSD (3-clause license)](http://opensource.org/licenses/BSD-3-Clause).
 
 Who is maintaining this project?
 --------------------------------
