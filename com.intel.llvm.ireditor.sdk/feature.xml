@@ -9,7 +9,7 @@
       An LLVM IR editor plugin.
    </description>
 
-   <license url="">
+   <license url="http://opensource.org/licenses/BSD-3-Clause">
       Copyright (c) 2013, Intel Corporation
 
 Redistribution and use in source and binary forms, with or without
