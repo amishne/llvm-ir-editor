@@ -117,7 +117,7 @@
     <profile>
       <id>indigo</id>
       <activation>
-        <activeByDefault>true</activeByDefault>
+        <activeByDefault>false</activeByDefault>
       </activation>
       <repositories>
         <repository>
@@ -130,7 +130,7 @@
     <profile>
       <id>juno</id>
       <activation>
-        <activeByDefault>false</activeByDefault>
+        <activeByDefault>true</activeByDefault>
       </activation>
       <repositories>
         <repository>
