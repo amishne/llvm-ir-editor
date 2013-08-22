@@ -44,7 +44,7 @@ import static com.intel.llvm.ireditor.validation.LLVM_IRJavaValidator.*;
 
 @RunWith(XtextRunner.class)
 @InjectWith(LLVM_IRInjectorProvider.class)
-public class TypeValidation extends AbstractXtextTests {
+public class TypeValidationTest extends AbstractXtextTests {
 
 	@SuppressWarnings("unchecked")
 	@Override
