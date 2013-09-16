@@ -27,18 +27,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.ui.outline;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.intel.llvm.ireditor.lLVM_IR.Alias;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
+import com.intel.llvm.ireditor.lLVM_IR.MetadataNode;
 import com.intel.llvm.ireditor.lLVM_IR.Model;
 import com.intel.llvm.ireditor.lLVM_IR.NamedMetadata;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
+import org.eclipse.xtext.ui.editor.outline.impl.AbstractOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
+import org.eclipse.xtext.util.ITextRegion;
 
 /**
  * customization of the default outline structure
@@ -53,9 +59,36 @@ public class LLVM_IROutlineTreeProvider extends DefaultOutlineTreeProvider {
 		return false;
 	}
 	
+	private Map<String, IOutlineNode> stringNodes = new HashMap<String, IOutlineNode>();
+	
+	private IOutlineNode getStringNode(final IOutlineNode parent, String s) {
+		IOutlineNode result = stringNodes.get(s);
+		if (result == null) {
+			result = new AbstractOutlineNode(parent, parent.getImage(), "Metadata", false) {
+				@Override
+				public ITextRegion getSignificantTextRegion() {
+					return parent.getSignificantTextRegion();
+				}
+				
+				@Override
+				public ITextRegion getFullTextRegion() {
+					return parent.getFullTextRegion();
+				}
+				
+			};
+			stringNodes.put(s, result);
+		}
+		return result;
+	}
+	
 	@Override
 	protected void createNode(IOutlineNode parent, EObject modelElement) {
 		if (isOneOf(modelElement, new Class<?>[] {
+				MetadataNode.class,
+				NamedMetadata.class
+				})) {
+			super.createNode(getStringNode(parent, "Metadata"), modelElement);
+		} else if (isOneOf(modelElement, new Class<?>[] {
 				Model.class,
 				FunctionDef.class,
 				})) {
@@ -66,7 +99,6 @@ public class LLVM_IROutlineTreeProvider extends DefaultOutlineTreeProvider {
 				TypeDef.class,
 				BasicBlock.class,
 				FunctionDecl.class,
-				NamedMetadata.class
 				})) {
 			createEObjectNode(parent, modelElement, imageDispatcher.invoke(modelElement),
 					textDispatcher.invoke(modelElement), true);
@@ -79,7 +111,7 @@ public class LLVM_IROutlineTreeProvider extends DefaultOutlineTreeProvider {
 	@Override
 	public void createChildren(IOutlineNode parent, EObject modelElement) {
 		if (isOneOf(modelElement, new Class<?>[]
-				{Model.class, FunctionDef.class, FunctionDef.class})) {
+				{Model.class, FunctionDef.class})) {
 			super.createChildren(parent, modelElement);
 		}
 	}
