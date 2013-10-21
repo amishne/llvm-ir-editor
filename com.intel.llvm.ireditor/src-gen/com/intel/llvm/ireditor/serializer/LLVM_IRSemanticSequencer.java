@@ -1317,12 +1317,14 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (
 	 *         attribute='address_safety' | 
 	 *         attribute='alwaysinline' | 
-	 *         attribute='nonlazybind' | 
+	 *         attribute='builtin' | 
 	 *         attribute='inlinehint' | 
 	 *         attribute='naked' | 
+	 *         attribute='nobuiltin' | 
 	 *         attribute='noduplicate' | 
 	 *         attribute='noimplicitfloat' | 
 	 *         attribute='noinline' | 
+	 *         attribute='nonlazybind' | 
 	 *         attribute='noredzone' | 
 	 *         attribute='noreturn' | 
 	 *         attribute='nounwind' | 

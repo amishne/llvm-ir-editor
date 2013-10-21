@@ -355,12 +355,14 @@ FunctionAttribute:
 	attribute=(
 		'address_safety' |
 		'alwaysinline' |
-		'nonlazybind' |
+		'builtin' |
 		'inlinehint' |
 		'naked' |
+		'nobuiltin' |
 		'noduplicate' |
 		'noimplicitfloat' |
 		'noinline' |
+		'nonlazybind' |
 		'noredzone' |
 		'noreturn' |
 		'nounwind' |

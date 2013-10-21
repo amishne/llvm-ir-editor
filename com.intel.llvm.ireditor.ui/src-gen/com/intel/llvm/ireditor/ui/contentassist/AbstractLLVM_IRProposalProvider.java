@@ -369,6 +369,8 @@ public class AbstractLLVM_IRProposalProvider extends org.eclipse.xtext.ui.editor
 		// subclasses may override
 		// subclasses may override
 		// subclasses may override
+		// subclasses may override
+		// subclasses may override
 	}
 	public void completeBasicBlock_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
