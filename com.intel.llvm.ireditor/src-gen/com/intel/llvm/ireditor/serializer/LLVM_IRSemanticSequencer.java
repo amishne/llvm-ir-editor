@@ -1322,6 +1322,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         attribute='returns_twice' | 
 	 *         attribute='ssp' | 
 	 *         attribute='sspreq' | 
+	 *         attribute='sspstrong' | 
 	 *         attribute='uwtable'
 	 *     )
 	 */

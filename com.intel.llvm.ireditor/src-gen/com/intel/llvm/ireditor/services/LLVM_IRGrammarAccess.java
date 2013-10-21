@@ -2606,7 +2606,8 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAttributeReturns_twiceKeyword_0_14 = (Keyword)cAttributeAlternatives_0.eContents().get(14);
 		private final Keyword cAttributeSspKeyword_0_15 = (Keyword)cAttributeAlternatives_0.eContents().get(15);
 		private final Keyword cAttributeSspreqKeyword_0_16 = (Keyword)cAttributeAlternatives_0.eContents().get(16);
-		private final Keyword cAttributeUwtableKeyword_0_17 = (Keyword)cAttributeAlternatives_0.eContents().get(17);
+		private final Keyword cAttributeSspstrongKeyword_0_17 = (Keyword)cAttributeAlternatives_0.eContents().get(17);
+		private final Keyword cAttributeUwtableKeyword_0_18 = (Keyword)cAttributeAlternatives_0.eContents().get(18);
 		
 		//FunctionAttribute:
 		//
@@ -2614,21 +2615,21 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//
 		//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
-		//	"returns_twice" | "ssp" | "sspreq" | "uwtable");
+		//	"returns_twice" | "ssp" | "sspreq" | "sspstrong" | "uwtable");
 		public ParserRule getRule() { return rule; }
 
 		//attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noduplicate" |
 		//
 		//"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
-		//"returns_twice" | "ssp" | "sspreq" | "uwtable")
+		//"returns_twice" | "ssp" | "sspreq" | "sspstrong" | "uwtable")
 		public Assignment getAttributeAssignment() { return cAttributeAssignment; }
 
 		//"address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noduplicate" | "noimplicitfloat" |
 		//
 		//"noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" | "returns_twice" | "ssp" |
 		//
-		//"sspreq" | "uwtable"
+		//"sspreq" | "sspstrong" | "uwtable"
 		public Alternatives getAttributeAlternatives_0() { return cAttributeAlternatives_0; }
 
 		//"address_safety"
@@ -2682,8 +2683,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"sspreq"
 		public Keyword getAttributeSspreqKeyword_0_16() { return cAttributeSspreqKeyword_0_16; }
 
+		//"sspstrong"
+		public Keyword getAttributeSspstrongKeyword_0_17() { return cAttributeSspstrongKeyword_0_17; }
+
 		//"uwtable"
-		public Keyword getAttributeUwtableKeyword_0_17() { return cAttributeUwtableKeyword_0_17; }
+		public Keyword getAttributeUwtableKeyword_0_18() { return cAttributeUwtableKeyword_0_18; }
 	}
 
 	public class BasicBlockElements extends AbstractParserRuleElementFinder {
@@ -9133,7 +9137,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 	//
-	//	"returns_twice" | "ssp" | "sspreq" | "uwtable");
+	//	"returns_twice" | "ssp" | "sspreq" | "sspstrong" | "uwtable");
 	public FunctionAttributeElements getFunctionAttributeAccess() {
 		return (pFunctionAttribute != null) ? pFunctionAttribute : (pFunctionAttribute = new FunctionAttributeElements());
 	}

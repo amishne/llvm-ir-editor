@@ -366,6 +366,7 @@ FunctionAttribute:
 		'returns_twice' |
 		'ssp' |
 		'sspreq' |
+		'sspstrong' |
 		'uwtable'
 	)
 ;

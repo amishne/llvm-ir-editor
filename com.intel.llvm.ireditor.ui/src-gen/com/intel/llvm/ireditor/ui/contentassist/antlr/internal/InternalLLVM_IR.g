@@ -5375,11 +5375,19 @@ rule__FunctionAttribute__AttributeAlternatives_0
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_17()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeSspstrongKeyword_0_17()); }
+
+	'sspstrong' 
+
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeSspstrongKeyword_0_17()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_18()); }
 
 	'uwtable' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_17()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_18()); }
 )
 
 ;

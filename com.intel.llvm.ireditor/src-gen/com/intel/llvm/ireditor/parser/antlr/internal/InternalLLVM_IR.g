@@ -4644,9 +4644,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_17, null);
 	    }
 
-    |		lv_attribute_0_18=	'uwtable' 
+    |		lv_attribute_0_18=	'sspstrong' 
     {
-        newLeafNode(lv_attribute_0_18, grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_17());
+        newLeafNode(lv_attribute_0_18, grammarAccess.getFunctionAttributeAccess().getAttributeSspstrongKeyword_0_17());
     }
  
 	    {
@@ -4654,6 +4654,18 @@ ruleFunctionAttribute returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
 	        }
        		setWithLastConsumed($current, "attribute", lv_attribute_0_18, null);
+	    }
+
+    |		lv_attribute_0_19=	'uwtable' 
+    {
+        newLeafNode(lv_attribute_0_19, grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_18());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
+	        }
+       		setWithLastConsumed($current, "attribute", lv_attribute_0_19, null);
 	    }
 
 )

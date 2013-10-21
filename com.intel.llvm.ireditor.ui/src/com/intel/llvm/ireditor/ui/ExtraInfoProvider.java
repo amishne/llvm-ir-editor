@@ -109,10 +109,20 @@ public class ExtraInfoProvider {
 		infos.put("readnone", new ExtraInfo(elementType, "This attribute indicates that the function computes its result (or decides to unwind an exception) based strictly on its arguments, without dereferencing any pointer arguments or otherwise accessing any mutable state (e.g. memory, control registers, etc) visible to caller functions. It does not write through any pointer arguments (including byval arguments) and never changes any state visible to callers. This means that it cannot unwind exceptions by calling the C++ exception throwing methods."));
 		infos.put("readonly", new ExtraInfo(elementType, "This attribute indicates that the function does not write through any pointer arguments (including byval arguments) or otherwise modify any state (e.g. memory, control registers, etc) visible to caller functions. It may dereference pointer arguments and read state that may be set in the caller. A readonly function always returns the same value (or unwinds an exception identically) when called with the same set of arguments and global state. It cannot unwind an exception by calling the C++ exception throwing methods."));
 		infos.put("returns_twice", new ExtraInfo(elementType, "This attribute indicates that this function can return twice. The C setjmp is an example of such a function. The compiler disables some optimizations (like tail calls) in the caller of these functions."));
-		infos.put("ssp", new ExtraInfo(elementType, "This attribute indicates that the function should emit a stack smashing protector. It is in the form of a \"canary\"—a random value placed on the stack before the local variables that's checked upon return from the function to see if it has been overwritten. A heuristic is used to determine if a function needs stack protectors or not.\n"+
-				"If a function that has an ssp attribute is inlined into a function that doesn't have an ssp attribute, then the resulting function will have an ssp attribute."));
+		infos.put("ssp", new ExtraInfo(elementType, "This attribute indicates that the function should emit a stack smashing protector. It is in the form of a “canary” — a random value placed on the stack before the local variables that’s checked upon return from the function to see if it has been overwritten. A heuristic is used to determine if a function needs stack protectors or not. The heuristic used will enable protectors for functions with:\n\n"+
+				"* Character arrays larger than ssp-buffer-size (default 8).\n"+
+				"* Aggregates containing character arrays larger than ssp-buffer-size.\n"+
+				"* Calls to alloca() with variable sizes or constant sizes greater than ssp-buffer-size.\n\n"+
+				"If a function that has an ssp attribute is inlined into a function that doesn’t have an ssp attribute, then the resulting function will have an ssp attribute."));
 		infos.put("sspreq", new ExtraInfo(elementType, "This attribute indicates that the function should always emit a stack smashing protector. This overrides the ssp function attribute.\n"+
-				"If a function that has an sspreq attribute is inlined into a function that doesn't have an sspreq attribute or which has an ssp attribute, then the resulting function will have an sspreq attribute."));
+				"If a function that has an sspreq attribute is inlined into a function that doesn’t have an sspreq attribute or which has an ssp or sspstrong attribute, then the resulting function will have an sspreq attribute."));
+		infos.put("sspstrong", new ExtraInfo(elementType, "This attribute indicates that the function should emit a stack smashing protector. This attribute causes a strong heuristic to be used when determining if a function needs stack protectors. The strong heuristic will enable protectors for functions with:\n\n"+
+				"* Arrays of any size and type\n"+
+				"* Aggregates containing an array of any size and type.\n"+
+				"* Calls to alloca().\n"+
+				"* Local variables that have had their address taken.\n\n"+
+				"This overrides the ssp function attribute.\n"+
+				"If a function that has an sspstrong attribute is inlined into a function that doesn’t have an sspstrong attribute, then the resulting function will have an sspstrong attribute."));
 		infos.put("uwtable", new ExtraInfo(elementType, "This attribute indicates that the ABI being targeted requires that an unwind table entry be produce for this function even if we can show that no exceptions passes by it. This is normally the case for the ELF x86-64 abi, but it can be disabled for some compilation units."));
 	}
 	
