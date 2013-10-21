@@ -22,6 +22,7 @@ package com.intel.llvm.ireditor.lLVM_IR;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getSection <em>Section</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getAlign <em>Align</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getGc <em>Gc</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getFunctionPrefix <em>Function Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -316,5 +317,31 @@ public interface FunctionHeader extends GlobalValueDef
    * @generated
    */
   void setGc(String value);
+
+  /**
+   * Returns the value of the '<em><b>Function Prefix</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Function Prefix</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Function Prefix</em>' containment reference.
+   * @see #setFunctionPrefix(FunctionPrefix)
+   * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getFunctionHeader_FunctionPrefix()
+   * @model containment="true"
+   * @generated
+   */
+  FunctionPrefix getFunctionPrefix();
+
+  /**
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getFunctionPrefix <em>Function Prefix</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Function Prefix</em>' containment reference.
+   * @see #getFunctionPrefix()
+   * @generated
+   */
+  void setFunctionPrefix(FunctionPrefix value);
 
 } // FunctionHeader

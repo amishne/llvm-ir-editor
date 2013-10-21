@@ -152,6 +152,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionDefAccess().getGroup(), "rule__FunctionDef__Group__0");
 					put(grammarAccess.getFunctionDeclAccess().getGroup(), "rule__FunctionDecl__Group__0");
 					put(grammarAccess.getFunctionHeaderAccess().getGroup(), "rule__FunctionHeader__Group__0");
+					put(grammarAccess.getFunctionPrefixAccess().getGroup(), "rule__FunctionPrefix__Group__0");
 					put(grammarAccess.getParametersAccess().getGroup(), "rule__Parameters__Group__0");
 					put(grammarAccess.getParametersAccess().getGroup_1_0(), "rule__Parameters__Group_1_0__0");
 					put(grammarAccess.getParametersAccess().getGroup_1_0_1(), "rule__Parameters__Group_1_0_1__0");
@@ -383,6 +384,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFunctionHeaderAccess().getSectionAssignment_11(), "rule__FunctionHeader__SectionAssignment_11");
 					put(grammarAccess.getFunctionHeaderAccess().getAlignAssignment_12(), "rule__FunctionHeader__AlignAssignment_12");
 					put(grammarAccess.getFunctionHeaderAccess().getGcAssignment_13(), "rule__FunctionHeader__GcAssignment_13");
+					put(grammarAccess.getFunctionHeaderAccess().getFunctionPrefixAssignment_14(), "rule__FunctionHeader__FunctionPrefixAssignment_14");
+					put(grammarAccess.getFunctionPrefixAccess().getValueAssignment_1(), "rule__FunctionPrefix__ValueAssignment_1");
 					put(grammarAccess.getParametersAccess().getParametersAssignment_1_0_0(), "rule__Parameters__ParametersAssignment_1_0_0");
 					put(grammarAccess.getParametersAccess().getParametersAssignment_1_0_1_1(), "rule__Parameters__ParametersAssignment_1_0_1_1");
 					put(grammarAccess.getParametersAccess().getVarargAssignment_1_0_2_1(), "rule__Parameters__VarargAssignment_1_0_2_1");

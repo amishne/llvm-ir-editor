@@ -4,6 +4,7 @@ package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionPrefix;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
 import com.intel.llvm.ireditor.lLVM_IR.ParameterAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.Parameters;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getSection <em>Section</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getAlign <em>Align</em>}</li>
  *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getGc <em>Gc</em>}</li>
+ *   <li>{@link com.intel.llvm.ireditor.lLVM_IR.impl.FunctionHeaderImpl#getFunctionPrefix <em>Function Prefix</em>}</li>
  * </ul>
  * </p>
  *
@@ -221,6 +223,16 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * @ordered
    */
   protected String gc = GC_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getFunctionPrefix() <em>Function Prefix</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getFunctionPrefix()
+   * @generated
+   * @ordered
+   */
+  protected FunctionPrefix functionPrefix;
 
   /**
    * <!-- begin-user-doc -->
@@ -601,6 +613,54 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
+  public FunctionPrefix getFunctionPrefix()
+  {
+    return functionPrefix;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFunctionPrefix(FunctionPrefix newFunctionPrefix, NotificationChain msgs)
+  {
+    FunctionPrefix oldFunctionPrefix = functionPrefix;
+    functionPrefix = newFunctionPrefix;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX, oldFunctionPrefix, newFunctionPrefix);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFunctionPrefix(FunctionPrefix newFunctionPrefix)
+  {
+    if (newFunctionPrefix != functionPrefix)
+    {
+      NotificationChain msgs = null;
+      if (functionPrefix != null)
+        msgs = ((InternalEObject)functionPrefix).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX, null, msgs);
+      if (newFunctionPrefix != null)
+        msgs = ((InternalEObject)newFunctionPrefix).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX, null, msgs);
+      msgs = basicSetFunctionPrefix(newFunctionPrefix, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX, newFunctionPrefix, newFunctionPrefix));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -614,6 +674,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return basicSetParameters(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__ATTRS:
         return basicSetAttrs(null, msgs);
+      case LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX:
+        return basicSetFunctionPrefix(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -650,6 +712,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return getAlign();
       case LLVM_IRPackage.FUNCTION_HEADER__GC:
         return getGc();
+      case LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX:
+        return getFunctionPrefix();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -696,6 +760,9 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__GC:
         setGc((String)newValue);
+        return;
+      case LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX:
+        setFunctionPrefix((FunctionPrefix)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -744,6 +811,9 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__GC:
         setGc(GC_EDEFAULT);
         return;
+      case LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX:
+        setFunctionPrefix((FunctionPrefix)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -780,6 +850,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         return ALIGN_EDEFAULT == null ? align != null : !ALIGN_EDEFAULT.equals(align);
       case LLVM_IRPackage.FUNCTION_HEADER__GC:
         return GC_EDEFAULT == null ? gc != null : !GC_EDEFAULT.equals(gc);
+      case LLVM_IRPackage.FUNCTION_HEADER__FUNCTION_PREFIX:
+        return functionPrefix != null;
     }
     return super.eIsSet(featureID);
   }

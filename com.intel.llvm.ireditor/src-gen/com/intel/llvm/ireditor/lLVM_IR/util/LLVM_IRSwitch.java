@@ -464,6 +464,13 @@ public class LLVM_IRSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case LLVM_IRPackage.FUNCTION_PREFIX:
+      {
+        FunctionPrefix functionPrefix = (FunctionPrefix)theEObject;
+        T result = caseFunctionPrefix(functionPrefix);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case LLVM_IRPackage.PARAMETERS:
       {
         Parameters parameters = (Parameters)theEObject;
@@ -1916,6 +1923,22 @@ public class LLVM_IRSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseFunctionHeader(FunctionHeader object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Prefix</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Prefix</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionPrefix(FunctionPrefix object)
   {
     return null;
   }

@@ -2374,17 +2374,23 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cAlignAlignParserRuleCall_12_0 = (RuleCall)cAlignAssignment_12.eContents().get(0);
 		private final Assignment cGcAssignment_13 = (Assignment)cGroup.eContents().get(13);
 		private final RuleCall cGcGcParserRuleCall_13_0 = (RuleCall)cGcAssignment_13.eContents().get(0);
+		private final Assignment cFunctionPrefixAssignment_14 = (Assignment)cGroup.eContents().get(14);
+		private final RuleCall cFunctionPrefixFunctionPrefixParserRuleCall_14_0 = (RuleCall)cFunctionPrefixAssignment_14.eContents().get(0);
 		
 		//FunctionHeader:
 		//
 		//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettypeAttrs=ParameterAttributes? rettype=Type
 		//
-		//	name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
+		//	name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?
+		//
+		//	functionPrefix=FunctionPrefix?;
 		public ParserRule getRule() { return rule; }
 
 		//linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettypeAttrs=ParameterAttributes? rettype=Type
 		//
 		//name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?
+		//
+		//functionPrefix=FunctionPrefix?
 		public Group getGroup() { return cGroup; }
 
 		//linkage=Linkage?
@@ -2461,6 +2467,37 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//Gc
 		public RuleCall getGcGcParserRuleCall_13_0() { return cGcGcParserRuleCall_13_0; }
+
+		//functionPrefix=FunctionPrefix?
+		public Assignment getFunctionPrefixAssignment_14() { return cFunctionPrefixAssignment_14; }
+
+		//FunctionPrefix
+		public RuleCall getFunctionPrefixFunctionPrefixParserRuleCall_14_0() { return cFunctionPrefixFunctionPrefixParserRuleCall_14_0; }
+	}
+
+	public class FunctionPrefixElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunctionPrefix");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cPrefixKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cValueTypedConstantParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		
+		//FunctionPrefix:
+		//
+		//	"prefix" value=TypedConstant;
+		public ParserRule getRule() { return rule; }
+
+		//"prefix" value=TypedConstant
+		public Group getGroup() { return cGroup; }
+
+		//"prefix"
+		public Keyword getPrefixKeyword_0() { return cPrefixKeyword_0; }
+
+		//value=TypedConstant
+		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+
+		//TypedConstant
+		public RuleCall getValueTypedConstantParserRuleCall_1_0() { return cValueTypedConstantParserRuleCall_1_0; }
 	}
 
 	public class ParametersElements extends AbstractParserRuleElementFinder {
@@ -8425,6 +8462,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private FunctionDefElements pFunctionDef;
 	private FunctionDeclElements pFunctionDecl;
 	private FunctionHeaderElements pFunctionHeader;
+	private FunctionPrefixElements pFunctionPrefix;
 	private ParametersElements pParameters;
 	private FunctionAttributesElements pFunctionAttributes;
 	private AlignStackElements pAlignStack;
@@ -9192,13 +9230,26 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	linkage=Linkage? visibility=Visibility? cconv=CConv? "unnamed_addr"? rettypeAttrs=ParameterAttributes? rettype=Type
 	//
-	//	name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?;
+	//	name=GLOBAL_ID "(" parameters=Parameters ")" attrs=FunctionAttributes? section=Section? align=Align? gc=Gc?
+	//
+	//	functionPrefix=FunctionPrefix?;
 	public FunctionHeaderElements getFunctionHeaderAccess() {
 		return (pFunctionHeader != null) ? pFunctionHeader : (pFunctionHeader = new FunctionHeaderElements());
 	}
 	
 	public ParserRule getFunctionHeaderRule() {
 		return getFunctionHeaderAccess().getRule();
+	}
+
+	//FunctionPrefix:
+	//
+	//	"prefix" value=TypedConstant;
+	public FunctionPrefixElements getFunctionPrefixAccess() {
+		return (pFunctionPrefix != null) ? pFunctionPrefix : (pFunctionPrefix = new FunctionPrefixElements());
+	}
+	
+	public ParserRule getFunctionPrefixRule() {
+		return getFunctionPrefixAccess().getRule();
 	}
 
 	//Parameters:

@@ -315,6 +315,11 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createFunctionHeaderAdapter();
       }
       @Override
+      public Adapter caseFunctionPrefix(FunctionPrefix object)
+      {
+        return createFunctionPrefixAdapter();
+      }
+      @Override
       public Adapter caseParameters(Parameters object)
       {
         return createParametersAdapter();
@@ -1507,6 +1512,21 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFunctionHeaderAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionPrefix <em>Function Prefix</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.FunctionPrefix
+   * @generated
+   */
+  public Adapter createFunctionPrefixAdapter()
   {
     return null;
   }

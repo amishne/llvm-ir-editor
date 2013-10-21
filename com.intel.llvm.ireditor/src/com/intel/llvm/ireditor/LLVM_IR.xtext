@@ -328,6 +328,11 @@ FunctionHeader:
 	section=Section?
 	align=Align?
 	gc=Gc?
+	functionPrefix=FunctionPrefix?
+;
+
+FunctionPrefix:
+	'prefix' value=TypedConstant
 ;
 
 Parameters:

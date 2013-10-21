@@ -34,6 +34,7 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionPrefix;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalVariable;
 import com.intel.llvm.ireditor.lLVM_IR.InlineAsm;
@@ -369,6 +370,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 				if(context == grammarAccess.getFunctionHeaderRule() ||
 				   context == grammarAccess.getGlobalValueDefRule()) {
 					sequence_FunctionHeader(context, (FunctionHeader) semanticObject); 
+					return; 
+				}
+				else break;
+			case LLVM_IRPackage.FUNCTION_PREFIX:
+				if(context == grammarAccess.getFunctionPrefixRule()) {
+					sequence_FunctionPrefix(context, (FunctionPrefix) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1401,11 +1408,28 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         attrs=FunctionAttributes? 
 	 *         section=Section? 
 	 *         align=Align? 
-	 *         gc=Gc?
+	 *         gc=Gc? 
+	 *         functionPrefix=FunctionPrefix?
 	 *     )
 	 */
 	protected void sequence_FunctionHeader(EObject context, FunctionHeader semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=TypedConstant
+	 */
+	protected void sequence_FunctionPrefix(EObject context, FunctionPrefix semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, LLVM_IRPackage.Literals.FUNCTION_PREFIX__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, LLVM_IRPackage.Literals.FUNCTION_PREFIX__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFunctionPrefixAccess().getValueTypedConstantParserRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
 	}
 	
 	

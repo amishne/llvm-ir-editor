@@ -112,6 +112,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.FUNCTION_DEF: return createFunctionDef();
       case LLVM_IRPackage.FUNCTION_DECL: return createFunctionDecl();
       case LLVM_IRPackage.FUNCTION_HEADER: return createFunctionHeader();
+      case LLVM_IRPackage.FUNCTION_PREFIX: return createFunctionPrefix();
       case LLVM_IRPackage.PARAMETERS: return createParameters();
       case LLVM_IRPackage.FUNCTION_ATTRIBUTES: return createFunctionAttributes();
       case LLVM_IRPackage.ALIGN_STACK: return createAlignStack();
@@ -734,6 +735,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     FunctionHeaderImpl functionHeader = new FunctionHeaderImpl();
     return functionHeader;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public FunctionPrefix createFunctionPrefix()
+  {
+    FunctionPrefixImpl functionPrefix = new FunctionPrefixImpl();
+    return functionPrefix;
   }
 
   /**

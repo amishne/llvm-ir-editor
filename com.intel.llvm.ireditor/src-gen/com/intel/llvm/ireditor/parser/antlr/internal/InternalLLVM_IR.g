@@ -4246,7 +4246,68 @@ ruleFunctionHeader returns [EObject current=null]
 	    }
 
 )
+)?(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionHeaderAccess().getFunctionPrefixFunctionPrefixParserRuleCall_14_0()); 
+	    }
+		lv_functionPrefix_14_0=ruleFunctionPrefix		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionHeaderRule());
+	        }
+       		set(
+       			$current, 
+       			"functionPrefix",
+        		lv_functionPrefix_14_0, 
+        		"FunctionPrefix");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
 )?)
+;
+
+
+
+
+
+// Entry rule entryRuleFunctionPrefix
+entryRuleFunctionPrefix returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getFunctionPrefixRule()); }
+	 iv_ruleFunctionPrefix=ruleFunctionPrefix 
+	 { $current=$iv_ruleFunctionPrefix.current; } 
+	 EOF 
+;
+
+// Rule FunctionPrefix
+ruleFunctionPrefix returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='prefix' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getFunctionPrefixAccess().getPrefixKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getFunctionPrefixAccess().getValueTypedConstantParserRuleCall_1_0()); 
+	    }
+		lv_value_1_0=ruleTypedConstant		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getFunctionPrefixRule());
+	        }
+       		set(
+       			$current, 
+       			"value",
+        		lv_value_1_0, 
+        		"TypedConstant");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))
 ;
 
 

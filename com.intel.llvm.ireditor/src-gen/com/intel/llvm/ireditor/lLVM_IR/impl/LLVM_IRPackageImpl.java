@@ -40,6 +40,7 @@ import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDecl;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionDef;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
+import com.intel.llvm.ireditor.lLVM_IR.FunctionPrefix;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValue;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueDef;
 import com.intel.llvm.ireditor.lLVM_IR.GlobalValueRef;
@@ -494,6 +495,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass functionHeaderEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass functionPrefixEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -2613,6 +2621,36 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
   public EAttribute getFunctionHeader_Gc()
   {
     return (EAttribute)functionHeaderEClass.getEStructuralFeatures().get(10);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionHeader_FunctionPrefix()
+  {
+    return (EReference)functionHeaderEClass.getEStructuralFeatures().get(11);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getFunctionPrefix()
+  {
+    return functionPrefixEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFunctionPrefix_Value()
+  {
+    return (EReference)functionPrefixEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -5544,6 +5582,10 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__SECTION);
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__ALIGN);
     createEAttribute(functionHeaderEClass, FUNCTION_HEADER__GC);
+    createEReference(functionHeaderEClass, FUNCTION_HEADER__FUNCTION_PREFIX);
+
+    functionPrefixEClass = createEClass(FUNCTION_PREFIX);
+    createEReference(functionPrefixEClass, FUNCTION_PREFIX__VALUE);
 
     parametersEClass = createEClass(PARAMETERS);
     createEReference(parametersEClass, PARAMETERS__PARAMETERS);
@@ -6209,6 +6251,10 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEAttribute(getFunctionHeader_Section(), ecorePackage.getEString(), "section", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionHeader_Align(), ecorePackage.getEString(), "align", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFunctionHeader_Gc(), ecorePackage.getEString(), "gc", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunctionHeader_FunctionPrefix(), this.getFunctionPrefix(), null, "functionPrefix", null, 0, 1, FunctionHeader.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(functionPrefixEClass, FunctionPrefix.class, "FunctionPrefix", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFunctionPrefix_Value(), this.getTypedConstant(), null, "value", null, 0, 1, FunctionPrefix.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(parametersEClass, Parameters.class, "Parameters", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getParameters_Parameters(), this.getParameter(), null, "parameters", null, 0, -1, Parameters.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
