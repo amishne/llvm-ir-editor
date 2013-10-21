@@ -354,6 +354,7 @@ FunctionAttribute:
 		'nonlazybind' |
 		'inlinehint' |
 		'naked' |
+		'noduplicate' |
 		'noimplicitfloat' |
 		'noinline' |
 		'noredzone' |

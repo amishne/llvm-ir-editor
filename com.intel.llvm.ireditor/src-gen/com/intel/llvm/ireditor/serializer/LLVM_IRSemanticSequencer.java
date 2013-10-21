@@ -1310,6 +1310,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         attribute='nonlazybind' | 
 	 *         attribute='inlinehint' | 
 	 *         attribute='naked' | 
+	 *         attribute='noduplicate' | 
 	 *         attribute='noimplicitfloat' | 
 	 *         attribute='noinline' | 
 	 *         attribute='noredzone' | 

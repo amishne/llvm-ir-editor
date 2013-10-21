@@ -2594,40 +2594,41 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAttributeNonlazybindKeyword_0_2 = (Keyword)cAttributeAlternatives_0.eContents().get(2);
 		private final Keyword cAttributeInlinehintKeyword_0_3 = (Keyword)cAttributeAlternatives_0.eContents().get(3);
 		private final Keyword cAttributeNakedKeyword_0_4 = (Keyword)cAttributeAlternatives_0.eContents().get(4);
-		private final Keyword cAttributeNoimplicitfloatKeyword_0_5 = (Keyword)cAttributeAlternatives_0.eContents().get(5);
-		private final Keyword cAttributeNoinlineKeyword_0_6 = (Keyword)cAttributeAlternatives_0.eContents().get(6);
-		private final Keyword cAttributeNoredzoneKeyword_0_7 = (Keyword)cAttributeAlternatives_0.eContents().get(7);
-		private final Keyword cAttributeNoreturnKeyword_0_8 = (Keyword)cAttributeAlternatives_0.eContents().get(8);
-		private final Keyword cAttributeNounwindKeyword_0_9 = (Keyword)cAttributeAlternatives_0.eContents().get(9);
-		private final Keyword cAttributeOptsizeKeyword_0_10 = (Keyword)cAttributeAlternatives_0.eContents().get(10);
-		private final Keyword cAttributeReadnoneKeyword_0_11 = (Keyword)cAttributeAlternatives_0.eContents().get(11);
-		private final Keyword cAttributeReadonlyKeyword_0_12 = (Keyword)cAttributeAlternatives_0.eContents().get(12);
-		private final Keyword cAttributeReturns_twiceKeyword_0_13 = (Keyword)cAttributeAlternatives_0.eContents().get(13);
-		private final Keyword cAttributeSspKeyword_0_14 = (Keyword)cAttributeAlternatives_0.eContents().get(14);
-		private final Keyword cAttributeSspreqKeyword_0_15 = (Keyword)cAttributeAlternatives_0.eContents().get(15);
-		private final Keyword cAttributeUwtableKeyword_0_16 = (Keyword)cAttributeAlternatives_0.eContents().get(16);
+		private final Keyword cAttributeNoduplicateKeyword_0_5 = (Keyword)cAttributeAlternatives_0.eContents().get(5);
+		private final Keyword cAttributeNoimplicitfloatKeyword_0_6 = (Keyword)cAttributeAlternatives_0.eContents().get(6);
+		private final Keyword cAttributeNoinlineKeyword_0_7 = (Keyword)cAttributeAlternatives_0.eContents().get(7);
+		private final Keyword cAttributeNoredzoneKeyword_0_8 = (Keyword)cAttributeAlternatives_0.eContents().get(8);
+		private final Keyword cAttributeNoreturnKeyword_0_9 = (Keyword)cAttributeAlternatives_0.eContents().get(9);
+		private final Keyword cAttributeNounwindKeyword_0_10 = (Keyword)cAttributeAlternatives_0.eContents().get(10);
+		private final Keyword cAttributeOptsizeKeyword_0_11 = (Keyword)cAttributeAlternatives_0.eContents().get(11);
+		private final Keyword cAttributeReadnoneKeyword_0_12 = (Keyword)cAttributeAlternatives_0.eContents().get(12);
+		private final Keyword cAttributeReadonlyKeyword_0_13 = (Keyword)cAttributeAlternatives_0.eContents().get(13);
+		private final Keyword cAttributeReturns_twiceKeyword_0_14 = (Keyword)cAttributeAlternatives_0.eContents().get(14);
+		private final Keyword cAttributeSspKeyword_0_15 = (Keyword)cAttributeAlternatives_0.eContents().get(15);
+		private final Keyword cAttributeSspreqKeyword_0_16 = (Keyword)cAttributeAlternatives_0.eContents().get(16);
+		private final Keyword cAttributeUwtableKeyword_0_17 = (Keyword)cAttributeAlternatives_0.eContents().get(17);
 		
 		//FunctionAttribute:
 		//
-		//	attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noimplicitfloat" |
+		//	attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noduplicate" |
 		//
-		//	"noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" | "returns_twice" | "ssp" |
+		//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
-		//	"sspreq" | "uwtable");
+		//	"returns_twice" | "ssp" | "sspreq" | "uwtable");
 		public ParserRule getRule() { return rule; }
 
-		//attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noimplicitfloat" | "noinline" |
+		//attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noduplicate" |
 		//
-		//"noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" | "returns_twice" | "ssp" | "sspreq" |
+		//"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 		//
-		//"uwtable")
+		//"returns_twice" | "ssp" | "sspreq" | "uwtable")
 		public Assignment getAttributeAssignment() { return cAttributeAssignment; }
 
-		//"address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noimplicitfloat" | "noinline" |
+		//"address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noduplicate" | "noimplicitfloat" |
 		//
-		//"noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" | "returns_twice" | "ssp" | "sspreq" |
+		//"noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" | "returns_twice" | "ssp" |
 		//
-		//"uwtable"
+		//"sspreq" | "uwtable"
 		public Alternatives getAttributeAlternatives_0() { return cAttributeAlternatives_0; }
 
 		//"address_safety"
@@ -2645,41 +2646,44 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"naked"
 		public Keyword getAttributeNakedKeyword_0_4() { return cAttributeNakedKeyword_0_4; }
 
+		//"noduplicate"
+		public Keyword getAttributeNoduplicateKeyword_0_5() { return cAttributeNoduplicateKeyword_0_5; }
+
 		//"noimplicitfloat"
-		public Keyword getAttributeNoimplicitfloatKeyword_0_5() { return cAttributeNoimplicitfloatKeyword_0_5; }
+		public Keyword getAttributeNoimplicitfloatKeyword_0_6() { return cAttributeNoimplicitfloatKeyword_0_6; }
 
 		//"noinline"
-		public Keyword getAttributeNoinlineKeyword_0_6() { return cAttributeNoinlineKeyword_0_6; }
+		public Keyword getAttributeNoinlineKeyword_0_7() { return cAttributeNoinlineKeyword_0_7; }
 
 		//"noredzone"
-		public Keyword getAttributeNoredzoneKeyword_0_7() { return cAttributeNoredzoneKeyword_0_7; }
+		public Keyword getAttributeNoredzoneKeyword_0_8() { return cAttributeNoredzoneKeyword_0_8; }
 
 		//"noreturn"
-		public Keyword getAttributeNoreturnKeyword_0_8() { return cAttributeNoreturnKeyword_0_8; }
+		public Keyword getAttributeNoreturnKeyword_0_9() { return cAttributeNoreturnKeyword_0_9; }
 
 		//"nounwind"
-		public Keyword getAttributeNounwindKeyword_0_9() { return cAttributeNounwindKeyword_0_9; }
+		public Keyword getAttributeNounwindKeyword_0_10() { return cAttributeNounwindKeyword_0_10; }
 
 		//"optsize"
-		public Keyword getAttributeOptsizeKeyword_0_10() { return cAttributeOptsizeKeyword_0_10; }
+		public Keyword getAttributeOptsizeKeyword_0_11() { return cAttributeOptsizeKeyword_0_11; }
 
 		//"readnone"
-		public Keyword getAttributeReadnoneKeyword_0_11() { return cAttributeReadnoneKeyword_0_11; }
+		public Keyword getAttributeReadnoneKeyword_0_12() { return cAttributeReadnoneKeyword_0_12; }
 
 		//"readonly"
-		public Keyword getAttributeReadonlyKeyword_0_12() { return cAttributeReadonlyKeyword_0_12; }
+		public Keyword getAttributeReadonlyKeyword_0_13() { return cAttributeReadonlyKeyword_0_13; }
 
 		//"returns_twice"
-		public Keyword getAttributeReturns_twiceKeyword_0_13() { return cAttributeReturns_twiceKeyword_0_13; }
+		public Keyword getAttributeReturns_twiceKeyword_0_14() { return cAttributeReturns_twiceKeyword_0_14; }
 
 		//"ssp"
-		public Keyword getAttributeSspKeyword_0_14() { return cAttributeSspKeyword_0_14; }
+		public Keyword getAttributeSspKeyword_0_15() { return cAttributeSspKeyword_0_15; }
 
 		//"sspreq"
-		public Keyword getAttributeSspreqKeyword_0_15() { return cAttributeSspreqKeyword_0_15; }
+		public Keyword getAttributeSspreqKeyword_0_16() { return cAttributeSspreqKeyword_0_16; }
 
 		//"uwtable"
-		public Keyword getAttributeUwtableKeyword_0_16() { return cAttributeUwtableKeyword_0_16; }
+		public Keyword getAttributeUwtableKeyword_0_17() { return cAttributeUwtableKeyword_0_17; }
 	}
 
 	public class BasicBlockElements extends AbstractParserRuleElementFinder {
@@ -9125,11 +9129,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//FunctionAttribute:
 	//
-	//	attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noimplicitfloat" |
+	//	attribute=("address_safety" | "alwaysinline" | "nonlazybind" | "inlinehint" | "naked" | "noduplicate" |
 	//
-	//	"noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" | "returns_twice" | "ssp" |
+	//	"noimplicitfloat" | "noinline" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
 	//
-	//	"sspreq" | "uwtable");
+	//	"returns_twice" | "ssp" | "sspreq" | "uwtable");
 	public FunctionAttributeElements getFunctionAttributeAccess() {
 		return (pFunctionAttribute != null) ? pFunctionAttribute : (pFunctionAttribute = new FunctionAttributeElements());
 	}

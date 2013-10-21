@@ -5279,99 +5279,107 @@ rule__FunctionAttribute__AttributeAlternatives_0
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoimplicitfloatKeyword_0_5()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoduplicateKeyword_0_5()); }
+
+	'noduplicate' 
+
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoduplicateKeyword_0_5()); }
+)
+
+    |(
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoimplicitfloatKeyword_0_6()); }
 
 	'noimplicitfloat' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoimplicitfloatKeyword_0_5()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoimplicitfloatKeyword_0_6()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoinlineKeyword_0_6()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoinlineKeyword_0_7()); }
 
 	'noinline' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoinlineKeyword_0_6()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoinlineKeyword_0_7()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoredzoneKeyword_0_7()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoredzoneKeyword_0_8()); }
 
 	'noredzone' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoredzoneKeyword_0_7()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoredzoneKeyword_0_8()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoreturnKeyword_0_8()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNoreturnKeyword_0_9()); }
 
 	'noreturn' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoreturnKeyword_0_8()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNoreturnKeyword_0_9()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNounwindKeyword_0_9()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeNounwindKeyword_0_10()); }
 
 	'nounwind' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNounwindKeyword_0_9()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeNounwindKeyword_0_10()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeOptsizeKeyword_0_10()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeOptsizeKeyword_0_11()); }
 
 	'optsize' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeOptsizeKeyword_0_10()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeOptsizeKeyword_0_11()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeReadnoneKeyword_0_11()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeReadnoneKeyword_0_12()); }
 
 	'readnone' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeReadnoneKeyword_0_11()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeReadnoneKeyword_0_12()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeReadonlyKeyword_0_12()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeReadonlyKeyword_0_13()); }
 
 	'readonly' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeReadonlyKeyword_0_12()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeReadonlyKeyword_0_13()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeReturns_twiceKeyword_0_13()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeReturns_twiceKeyword_0_14()); }
 
 	'returns_twice' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeReturns_twiceKeyword_0_13()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeReturns_twiceKeyword_0_14()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeSspKeyword_0_14()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeSspKeyword_0_15()); }
 
 	'ssp' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeSspKeyword_0_14()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeSspKeyword_0_15()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeSspreqKeyword_0_15()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeSspreqKeyword_0_16()); }
 
 	'sspreq' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeSspreqKeyword_0_15()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeSspreqKeyword_0_16()); }
 )
 
     |(
-{ before(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_16()); }
+{ before(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_17()); }
 
 	'uwtable' 
 
-{ after(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_16()); }
+{ after(grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_17()); }
 )
 
 ;
