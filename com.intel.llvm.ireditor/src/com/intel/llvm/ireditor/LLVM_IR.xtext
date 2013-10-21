@@ -366,6 +366,7 @@ FunctionAttribute:
 		'noredzone' |
 		'noreturn' |
 		'nounwind' |
+		'optnone' |
 		'optsize' |
 		'readnone' |
 		'readonly' |

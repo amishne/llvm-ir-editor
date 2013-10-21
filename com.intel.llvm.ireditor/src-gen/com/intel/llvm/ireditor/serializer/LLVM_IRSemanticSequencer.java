@@ -1328,6 +1328,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         attribute='noredzone' | 
 	 *         attribute='noreturn' | 
 	 *         attribute='nounwind' | 
+	 *         attribute='optnone' | 
 	 *         attribute='optsize' | 
 	 *         attribute='readnone' | 
 	 *         attribute='readonly' | 

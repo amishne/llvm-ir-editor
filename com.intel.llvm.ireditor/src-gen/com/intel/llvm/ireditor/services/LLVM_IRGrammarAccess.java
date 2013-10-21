@@ -2639,48 +2639,49 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cAttributeNoredzoneKeyword_0_10 = (Keyword)cAttributeAlternatives_0.eContents().get(10);
 		private final Keyword cAttributeNoreturnKeyword_0_11 = (Keyword)cAttributeAlternatives_0.eContents().get(11);
 		private final Keyword cAttributeNounwindKeyword_0_12 = (Keyword)cAttributeAlternatives_0.eContents().get(12);
-		private final Keyword cAttributeOptsizeKeyword_0_13 = (Keyword)cAttributeAlternatives_0.eContents().get(13);
-		private final Keyword cAttributeReadnoneKeyword_0_14 = (Keyword)cAttributeAlternatives_0.eContents().get(14);
-		private final Keyword cAttributeReadonlyKeyword_0_15 = (Keyword)cAttributeAlternatives_0.eContents().get(15);
-		private final Keyword cAttributeReturns_twiceKeyword_0_16 = (Keyword)cAttributeAlternatives_0.eContents().get(16);
-		private final Keyword cAttributeSanitize_addressKeyword_0_17 = (Keyword)cAttributeAlternatives_0.eContents().get(17);
-		private final Keyword cAttributeSanitize_memoryKeyword_0_18 = (Keyword)cAttributeAlternatives_0.eContents().get(18);
-		private final Keyword cAttributeSanitize_threadKeyword_0_19 = (Keyword)cAttributeAlternatives_0.eContents().get(19);
-		private final Keyword cAttributeSspKeyword_0_20 = (Keyword)cAttributeAlternatives_0.eContents().get(20);
-		private final Keyword cAttributeSspreqKeyword_0_21 = (Keyword)cAttributeAlternatives_0.eContents().get(21);
-		private final Keyword cAttributeSspstrongKeyword_0_22 = (Keyword)cAttributeAlternatives_0.eContents().get(22);
-		private final Keyword cAttributeUwtableKeyword_0_23 = (Keyword)cAttributeAlternatives_0.eContents().get(23);
-		private final Keyword cAttributeAddress_safetyKeyword_0_24 = (Keyword)cAttributeAlternatives_0.eContents().get(24);
-		private final Keyword cAttributeThread_safetyKeyword_0_25 = (Keyword)cAttributeAlternatives_0.eContents().get(25);
-		private final Keyword cAttributeUninitialized_checksKeyword_0_26 = (Keyword)cAttributeAlternatives_0.eContents().get(26);
+		private final Keyword cAttributeOptnoneKeyword_0_13 = (Keyword)cAttributeAlternatives_0.eContents().get(13);
+		private final Keyword cAttributeOptsizeKeyword_0_14 = (Keyword)cAttributeAlternatives_0.eContents().get(14);
+		private final Keyword cAttributeReadnoneKeyword_0_15 = (Keyword)cAttributeAlternatives_0.eContents().get(15);
+		private final Keyword cAttributeReadonlyKeyword_0_16 = (Keyword)cAttributeAlternatives_0.eContents().get(16);
+		private final Keyword cAttributeReturns_twiceKeyword_0_17 = (Keyword)cAttributeAlternatives_0.eContents().get(17);
+		private final Keyword cAttributeSanitize_addressKeyword_0_18 = (Keyword)cAttributeAlternatives_0.eContents().get(18);
+		private final Keyword cAttributeSanitize_memoryKeyword_0_19 = (Keyword)cAttributeAlternatives_0.eContents().get(19);
+		private final Keyword cAttributeSanitize_threadKeyword_0_20 = (Keyword)cAttributeAlternatives_0.eContents().get(20);
+		private final Keyword cAttributeSspKeyword_0_21 = (Keyword)cAttributeAlternatives_0.eContents().get(21);
+		private final Keyword cAttributeSspreqKeyword_0_22 = (Keyword)cAttributeAlternatives_0.eContents().get(22);
+		private final Keyword cAttributeSspstrongKeyword_0_23 = (Keyword)cAttributeAlternatives_0.eContents().get(23);
+		private final Keyword cAttributeUwtableKeyword_0_24 = (Keyword)cAttributeAlternatives_0.eContents().get(24);
+		private final Keyword cAttributeAddress_safetyKeyword_0_25 = (Keyword)cAttributeAlternatives_0.eContents().get(25);
+		private final Keyword cAttributeThread_safetyKeyword_0_26 = (Keyword)cAttributeAlternatives_0.eContents().get(26);
+		private final Keyword cAttributeUninitialized_checksKeyword_0_27 = (Keyword)cAttributeAlternatives_0.eContents().get(27);
 		
 		//FunctionAttribute:
 		//
 		//	attribute=("alwaysinline" | "builtin" | "cold" | "inlinehint" | "naked" | "nobuiltin" | "noduplicate" |
 		//
-		//	"noimplicitfloat" | "noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" |
+		//	"noimplicitfloat" | "noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optnone" | "optsize" |
 		//
-		//	"readonly" | "returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" | "sspreq" |
+		//	"readnone" | "readonly" | "returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" |
 		//
-		//	"sspstrong" | "uwtable" | // Removed:
+		//	"sspreq" | "sspstrong" | "uwtable" | // Removed:
 		//
 		//	"address_safety" | "thread_safety" | "uninitialized_checks");
 		public ParserRule getRule() { return rule; }
 
 		//attribute=("alwaysinline" | "builtin" | "cold" | "inlinehint" | "naked" | "nobuiltin" | "noduplicate" |
 		//
-		//"noimplicitfloat" | "noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" |
+		//"noimplicitfloat" | "noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optnone" | "optsize" |
 		//
-		//"readonly" | "returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" | "sspreq" |
+		//"readnone" | "readonly" | "returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" |
 		//
-		//"sspstrong" | "uwtable" | // Removed:
+		//"sspreq" | "sspstrong" | "uwtable" | // Removed:
 		//
 		//"address_safety" | "thread_safety" | "uninitialized_checks")
 		public Assignment getAttributeAssignment() { return cAttributeAssignment; }
 
 		//"alwaysinline" | "builtin" | "cold" | "inlinehint" | "naked" | "nobuiltin" | "noduplicate" | "noimplicitfloat" |
 		//
-		//"noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" | "readonly" |
+		//"noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optnone" | "optsize" | "readnone" | "readonly" |
 		//
 		//"returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" | "sspreq" | "sspstrong" |
 		//
@@ -2728,49 +2729,52 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//"nounwind"
 		public Keyword getAttributeNounwindKeyword_0_12() { return cAttributeNounwindKeyword_0_12; }
 
+		//"optnone"
+		public Keyword getAttributeOptnoneKeyword_0_13() { return cAttributeOptnoneKeyword_0_13; }
+
 		//"optsize"
-		public Keyword getAttributeOptsizeKeyword_0_13() { return cAttributeOptsizeKeyword_0_13; }
+		public Keyword getAttributeOptsizeKeyword_0_14() { return cAttributeOptsizeKeyword_0_14; }
 
 		//"readnone"
-		public Keyword getAttributeReadnoneKeyword_0_14() { return cAttributeReadnoneKeyword_0_14; }
+		public Keyword getAttributeReadnoneKeyword_0_15() { return cAttributeReadnoneKeyword_0_15; }
 
 		//"readonly"
-		public Keyword getAttributeReadonlyKeyword_0_15() { return cAttributeReadonlyKeyword_0_15; }
+		public Keyword getAttributeReadonlyKeyword_0_16() { return cAttributeReadonlyKeyword_0_16; }
 
 		//"returns_twice"
-		public Keyword getAttributeReturns_twiceKeyword_0_16() { return cAttributeReturns_twiceKeyword_0_16; }
+		public Keyword getAttributeReturns_twiceKeyword_0_17() { return cAttributeReturns_twiceKeyword_0_17; }
 
 		//"sanitize_address"
-		public Keyword getAttributeSanitize_addressKeyword_0_17() { return cAttributeSanitize_addressKeyword_0_17; }
+		public Keyword getAttributeSanitize_addressKeyword_0_18() { return cAttributeSanitize_addressKeyword_0_18; }
 
 		//"sanitize_memory"
-		public Keyword getAttributeSanitize_memoryKeyword_0_18() { return cAttributeSanitize_memoryKeyword_0_18; }
+		public Keyword getAttributeSanitize_memoryKeyword_0_19() { return cAttributeSanitize_memoryKeyword_0_19; }
 
 		//"sanitize_thread"
-		public Keyword getAttributeSanitize_threadKeyword_0_19() { return cAttributeSanitize_threadKeyword_0_19; }
+		public Keyword getAttributeSanitize_threadKeyword_0_20() { return cAttributeSanitize_threadKeyword_0_20; }
 
 		//"ssp"
-		public Keyword getAttributeSspKeyword_0_20() { return cAttributeSspKeyword_0_20; }
+		public Keyword getAttributeSspKeyword_0_21() { return cAttributeSspKeyword_0_21; }
 
 		//"sspreq"
-		public Keyword getAttributeSspreqKeyword_0_21() { return cAttributeSspreqKeyword_0_21; }
+		public Keyword getAttributeSspreqKeyword_0_22() { return cAttributeSspreqKeyword_0_22; }
 
 		//"sspstrong"
-		public Keyword getAttributeSspstrongKeyword_0_22() { return cAttributeSspstrongKeyword_0_22; }
+		public Keyword getAttributeSspstrongKeyword_0_23() { return cAttributeSspstrongKeyword_0_23; }
 
 		//"uwtable"
-		public Keyword getAttributeUwtableKeyword_0_23() { return cAttributeUwtableKeyword_0_23; }
+		public Keyword getAttributeUwtableKeyword_0_24() { return cAttributeUwtableKeyword_0_24; }
 
 		//// Removed:
 		//
 		//"address_safety"
-		public Keyword getAttributeAddress_safetyKeyword_0_24() { return cAttributeAddress_safetyKeyword_0_24; }
+		public Keyword getAttributeAddress_safetyKeyword_0_25() { return cAttributeAddress_safetyKeyword_0_25; }
 
 		//"thread_safety"
-		public Keyword getAttributeThread_safetyKeyword_0_25() { return cAttributeThread_safetyKeyword_0_25; }
+		public Keyword getAttributeThread_safetyKeyword_0_26() { return cAttributeThread_safetyKeyword_0_26; }
 
 		//"uninitialized_checks"
-		public Keyword getAttributeUninitialized_checksKeyword_0_26() { return cAttributeUninitialized_checksKeyword_0_26; }
+		public Keyword getAttributeUninitialized_checksKeyword_0_27() { return cAttributeUninitialized_checksKeyword_0_27; }
 	}
 
 	public class BasicBlockElements extends AbstractParserRuleElementFinder {
@@ -9236,11 +9240,11 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	attribute=("alwaysinline" | "builtin" | "cold" | "inlinehint" | "naked" | "nobuiltin" | "noduplicate" |
 	//
-	//	"noimplicitfloat" | "noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optsize" | "readnone" |
+	//	"noimplicitfloat" | "noinline" | "nonlazybind" | "noredzone" | "noreturn" | "nounwind" | "optnone" | "optsize" |
 	//
-	//	"readonly" | "returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" | "sspreq" |
+	//	"readnone" | "readonly" | "returns_twice" | "sanitize_address" | "sanitize_memory" | "sanitize_thread" | "ssp" |
 	//
-	//	"sspstrong" | "uwtable" | // Removed:
+	//	"sspreq" | "sspstrong" | "uwtable" | // Removed:
 	//
 	//	"address_safety" | "thread_safety" | "uninitialized_checks");
 	public FunctionAttributeElements getFunctionAttributeAccess() {
