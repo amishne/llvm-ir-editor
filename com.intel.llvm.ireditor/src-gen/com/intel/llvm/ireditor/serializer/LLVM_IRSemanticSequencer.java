@@ -1317,6 +1317,7 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (
 	 *         attribute='alwaysinline' | 
 	 *         attribute='builtin' | 
+	 *         attribute='cold' | 
 	 *         attribute='inlinehint' | 
 	 *         attribute='naked' | 
 	 *         attribute='nobuiltin' | 

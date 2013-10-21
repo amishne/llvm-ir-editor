@@ -355,6 +355,7 @@ FunctionAttribute:
 	attribute=(
 		'alwaysinline' |
 		'builtin' |
+		'cold' |
 		'inlinehint' |
 		'naked' |
 		'nobuiltin' |
