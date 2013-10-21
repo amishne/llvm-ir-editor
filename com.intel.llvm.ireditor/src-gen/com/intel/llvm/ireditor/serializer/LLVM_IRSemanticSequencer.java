@@ -113,6 +113,7 @@ import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.StructType;
 import com.intel.llvm.ireditor.lLVM_IR.StructureConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TargetInfo;
+import com.intel.llvm.ireditor.lLVM_IR.TargetSpecificAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
 import com.intel.llvm.ireditor.lLVM_IR.TypeDef;
@@ -898,6 +899,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 					return; 
 				}
 				else break;
+			case LLVM_IRPackage.TARGET_SPECIFIC_ATTRIBUTE:
+				if(context == grammarAccess.getTargetSpecificAttributeRule()) {
+					sequence_TargetSpecificAttribute(context, (TargetSpecificAttribute) semanticObject); 
+					return; 
+				}
+				else break;
 			case LLVM_IRPackage.TERMINATOR_INSTRUCTION:
 				if(context == grammarAccess.getInstructionRule() ||
 				   context == grammarAccess.getTerminatorInstructionRule()) {
@@ -1080,7 +1087,10 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	
 	/**
 	 * Constraint:
-	 *     (name=ATTRIBUTE_ID (attributes+=FunctionAttribute | (alignstack+=AlignStack alignstackValue+=INTEGER) | targetSpecificAttributes+=STRING)+)
+	 *     (
+	 *         name=ATTRIBUTE_ID 
+	 *         (attributes+=FunctionAttribute | (alignstack+=AlignStack alignstackValue+=INTEGER) | targetSpecificAttributes+=TargetSpecificAttribute)+
+	 *     )
 	 */
 	protected void sequence_AttributeGroup(EObject context, AttributeGroup semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2654,6 +2664,15 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     ((infoType='datalayout' | infoType='triple') layout=STRING)
 	 */
 	protected void sequence_TargetInfo(EObject context, TargetInfo semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=STRING value=STRING?)
+	 */
+	protected void sequence_TargetSpecificAttribute(EObject context, TargetSpecificAttribute semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

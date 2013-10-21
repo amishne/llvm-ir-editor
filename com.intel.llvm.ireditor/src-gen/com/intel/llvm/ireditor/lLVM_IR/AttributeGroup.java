@@ -101,19 +101,19 @@ public interface AttributeGroup extends TopLevelElement
   EList<String> getAlignstackValue();
 
   /**
-   * Returns the value of the '<em><b>Target Specific Attributes</b></em>' attribute list.
-   * The list contents are of type {@link java.lang.String}.
+   * Returns the value of the '<em><b>Target Specific Attributes</b></em>' containment reference list.
+   * The list contents are of type {@link com.intel.llvm.ireditor.lLVM_IR.TargetSpecificAttribute}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Target Specific Attributes</em>' attribute list isn't clear,
+   * If the meaning of the '<em>Target Specific Attributes</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Target Specific Attributes</em>' attribute list.
+   * @return the value of the '<em>Target Specific Attributes</em>' containment reference list.
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getAttributeGroup_TargetSpecificAttributes()
-   * @model unique="false"
+   * @model containment="true"
    * @generated
    */
-  EList<String> getTargetSpecificAttributes();
+  EList<TargetSpecificAttribute> getTargetSpecificAttributes();
 
 } // AttributeGroup

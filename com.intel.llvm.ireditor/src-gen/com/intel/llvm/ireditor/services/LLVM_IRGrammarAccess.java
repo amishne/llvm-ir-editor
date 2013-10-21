@@ -74,10 +74,10 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	public class AttributeGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AttributeGroup");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameATTRIBUTE_IDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Keyword cAttributesKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cAttributesKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameATTRIBUTE_IDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
 		private final Assignment cAttributesAssignment_4_0 = (Assignment)cAlternatives_4.eContents().get(0);
@@ -89,39 +89,39 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cAlignstackValueAssignment_4_1_2 = (Assignment)cGroup_4_1.eContents().get(2);
 		private final RuleCall cAlignstackValueINTEGERTerminalRuleCall_4_1_2_0 = (RuleCall)cAlignstackValueAssignment_4_1_2.eContents().get(0);
 		private final Assignment cTargetSpecificAttributesAssignment_4_2 = (Assignment)cAlternatives_4.eContents().get(2);
-		private final RuleCall cTargetSpecificAttributesSTRINGTerminalRuleCall_4_2_0 = (RuleCall)cTargetSpecificAttributesAssignment_4_2.eContents().get(0);
+		private final RuleCall cTargetSpecificAttributesTargetSpecificAttributeParserRuleCall_4_2_0 = (RuleCall)cTargetSpecificAttributesAssignment_4_2.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//AttributeGroup:
 		//
-		//	name=ATTRIBUTE_ID "=" "attributes" "{" (attributes+=FunctionAttribute | alignstack+=AlignStack "="
+		//	"attributes" name=ATTRIBUTE_ID "=" "{" (attributes+=FunctionAttribute | alignstack+=AlignStack "="
 		//
-		//	alignstackValue+=INTEGER | targetSpecificAttributes+=STRING)+ "}";
+		//	alignstackValue+=INTEGER | targetSpecificAttributes+=TargetSpecificAttribute)+ "}";
 		public ParserRule getRule() { return rule; }
 
-		//name=ATTRIBUTE_ID "=" "attributes" "{" (attributes+=FunctionAttribute | alignstack+=AlignStack "="
+		//"attributes" name=ATTRIBUTE_ID "=" "{" (attributes+=FunctionAttribute | alignstack+=AlignStack "="
 		//
-		//alignstackValue+=INTEGER | targetSpecificAttributes+=STRING)+ "}"
+		//alignstackValue+=INTEGER | targetSpecificAttributes+=TargetSpecificAttribute)+ "}"
 		public Group getGroup() { return cGroup; }
 
+		//"attributes"
+		public Keyword getAttributesKeyword_0() { return cAttributesKeyword_0; }
+
 		//name=ATTRIBUTE_ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 
 		//ATTRIBUTE_ID
-		public RuleCall getNameATTRIBUTE_IDTerminalRuleCall_0_0() { return cNameATTRIBUTE_IDTerminalRuleCall_0_0; }
+		public RuleCall getNameATTRIBUTE_IDTerminalRuleCall_1_0() { return cNameATTRIBUTE_IDTerminalRuleCall_1_0; }
 
 		//"="
-		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
-
-		//"attributes"
-		public Keyword getAttributesKeyword_2() { return cAttributesKeyword_2; }
+		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//(attributes+=FunctionAttribute | alignstack+=AlignStack "=" alignstackValue+=INTEGER |
 		//
-		//targetSpecificAttributes+=STRING)+
+		//targetSpecificAttributes+=TargetSpecificAttribute)+
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
 
 		//attributes+=FunctionAttribute
@@ -148,14 +148,51 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		//INTEGER
 		public RuleCall getAlignstackValueINTEGERTerminalRuleCall_4_1_2_0() { return cAlignstackValueINTEGERTerminalRuleCall_4_1_2_0; }
 
-		//targetSpecificAttributes+=STRING
+		//targetSpecificAttributes+=TargetSpecificAttribute
 		public Assignment getTargetSpecificAttributesAssignment_4_2() { return cTargetSpecificAttributesAssignment_4_2; }
 
-		//STRING
-		public RuleCall getTargetSpecificAttributesSTRINGTerminalRuleCall_4_2_0() { return cTargetSpecificAttributesSTRINGTerminalRuleCall_4_2_0; }
+		//TargetSpecificAttribute
+		public RuleCall getTargetSpecificAttributesTargetSpecificAttributeParserRuleCall_4_2_0() { return cTargetSpecificAttributesTargetSpecificAttributeParserRuleCall_4_2_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+
+	public class TargetSpecificAttributeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TargetSpecificAttribute");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameSTRINGTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cEqualsSignKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		
+		//TargetSpecificAttribute:
+		//
+		//	name=STRING ("=" value=STRING)?;
+		public ParserRule getRule() { return rule; }
+
+		//name=STRING ("=" value=STRING)?
+		public Group getGroup() { return cGroup; }
+
+		//name=STRING
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+
+		//STRING
+		public RuleCall getNameSTRINGTerminalRuleCall_0_0() { return cNameSTRINGTerminalRuleCall_0_0; }
+
+		//("=" value=STRING)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"="
+		public Keyword getEqualsSignKeyword_1_0() { return cEqualsSignKeyword_1_0; }
+
+		//value=STRING
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_1_1_0() { return cValueSTRINGTerminalRuleCall_1_1_0; }
 	}
 
 	public class NamedMetadataElements extends AbstractParserRuleElementFinder {
@@ -8281,6 +8318,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	private ModelElements pModel;
 	private TopLevelElementElements pTopLevelElement;
 	private AttributeGroupElements pAttributeGroup;
+	private TargetSpecificAttributeElements pTargetSpecificAttribute;
 	private NamedMetadataElements pNamedMetadata;
 	private MetadataRefElements pMetadataRef;
 	private MetadataIdentifierElements pMetadataIdentifier;
@@ -8511,15 +8549,26 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//AttributeGroup:
 	//
-	//	name=ATTRIBUTE_ID "=" "attributes" "{" (attributes+=FunctionAttribute | alignstack+=AlignStack "="
+	//	"attributes" name=ATTRIBUTE_ID "=" "{" (attributes+=FunctionAttribute | alignstack+=AlignStack "="
 	//
-	//	alignstackValue+=INTEGER | targetSpecificAttributes+=STRING)+ "}";
+	//	alignstackValue+=INTEGER | targetSpecificAttributes+=TargetSpecificAttribute)+ "}";
 	public AttributeGroupElements getAttributeGroupAccess() {
 		return (pAttributeGroup != null) ? pAttributeGroup : (pAttributeGroup = new AttributeGroupElements());
 	}
 	
 	public ParserRule getAttributeGroupRule() {
 		return getAttributeGroupAccess().getRule();
+	}
+
+	//TargetSpecificAttribute:
+	//
+	//	name=STRING ("=" value=STRING)?;
+	public TargetSpecificAttributeElements getTargetSpecificAttributeAccess() {
+		return (pTargetSpecificAttribute != null) ? pTargetSpecificAttribute : (pTargetSpecificAttribute = new TargetSpecificAttributeElements());
+	}
+	
+	public ParserRule getTargetSpecificAttributeRule() {
+		return getTargetSpecificAttributeAccess().getRule();
 	}
 
 	//NamedMetadata:

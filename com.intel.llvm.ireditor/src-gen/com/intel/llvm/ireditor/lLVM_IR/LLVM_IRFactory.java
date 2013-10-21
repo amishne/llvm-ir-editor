@@ -50,6 +50,15 @@ public interface LLVM_IRFactory extends EFactory
   AttributeGroup createAttributeGroup();
 
   /**
+   * Returns a new object of class '<em>Target Specific Attribute</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Target Specific Attribute</em>'.
+   * @generated
+   */
+  TargetSpecificAttribute createTargetSpecificAttribute();
+
+  /**
    * Returns a new object of class '<em>Named Metadata</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

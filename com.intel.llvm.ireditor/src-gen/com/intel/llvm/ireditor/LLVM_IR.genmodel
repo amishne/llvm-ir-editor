@@ -16,7 +16,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AttributeGroup/attributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AttributeGroup/alignstack"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AttributeGroup/alignstackValue"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//AttributeGroup/targetSpecificAttributes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//AttributeGroup/targetSpecificAttributes"/>
+    </genClasses>
+    <genClasses ecoreClass="LLVM_IR.ecore#//TargetSpecificAttribute">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//TargetSpecificAttribute/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//TargetSpecificAttribute/value"/>
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//NamedMetadata">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//NamedMetadata/name"/>

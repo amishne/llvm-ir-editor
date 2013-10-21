@@ -67,6 +67,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.MODEL: return createModel();
       case LLVM_IRPackage.TOP_LEVEL_ELEMENT: return createTopLevelElement();
       case LLVM_IRPackage.ATTRIBUTE_GROUP: return createAttributeGroup();
+      case LLVM_IRPackage.TARGET_SPECIFIC_ATTRIBUTE: return createTargetSpecificAttribute();
       case LLVM_IRPackage.NAMED_METADATA: return createNamedMetadata();
       case LLVM_IRPackage.METADATA_REF: return createMetadataRef();
       case LLVM_IRPackage.VALUE_REF: return createValueRef();
@@ -238,6 +239,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     AttributeGroupImpl attributeGroup = new AttributeGroupImpl();
     return attributeGroup;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TargetSpecificAttribute createTargetSpecificAttribute()
+  {
+    TargetSpecificAttributeImpl targetSpecificAttribute = new TargetSpecificAttributeImpl();
+    return targetSpecificAttribute;
   }
 
   /**

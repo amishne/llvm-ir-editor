@@ -42,13 +42,17 @@ TopLevelElement:
 ;
 
 AttributeGroup:
-	name=ATTRIBUTE_ID '=' 'attributes' '{'
+	'attributes' name=ATTRIBUTE_ID '=' '{'
 	(
-			attributes+=FunctionAttribute |
-			alignstack+=AlignStack '=' alignstackValue+=INTEGER |
-			targetSpecificAttributes+=STRING
+		attributes+=FunctionAttribute |
+		alignstack+=AlignStack '=' alignstackValue+=INTEGER |
+		targetSpecificAttributes+=TargetSpecificAttribute
 	)+
 	'}'
+;
+
+TargetSpecificAttribute:
+	name=STRING ('=' value=STRING)?
 ;
 
 NamedMetadata:

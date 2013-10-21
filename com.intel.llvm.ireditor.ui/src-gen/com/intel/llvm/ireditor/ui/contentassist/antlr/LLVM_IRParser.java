@@ -103,6 +103,8 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getAttributeGroupAccess().getGroup(), "rule__AttributeGroup__Group__0");
 					put(grammarAccess.getAttributeGroupAccess().getGroup_4_1(), "rule__AttributeGroup__Group_4_1__0");
+					put(grammarAccess.getTargetSpecificAttributeAccess().getGroup(), "rule__TargetSpecificAttribute__Group__0");
+					put(grammarAccess.getTargetSpecificAttributeAccess().getGroup_1(), "rule__TargetSpecificAttribute__Group_1__0");
 					put(grammarAccess.getNamedMetadataAccess().getGroup_0(), "rule__NamedMetadata__Group_0__0");
 					put(grammarAccess.getNamedMetadataAccess().getGroup_1(), "rule__NamedMetadata__Group_1__0");
 					put(grammarAccess.getAliasAccess().getGroup(), "rule__Alias__Group__0");
@@ -271,11 +273,13 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFloatingTypeAccess().getGroup(), "rule__FloatingType__Group__0");
 					put(grammarAccess.getCConvAccess().getGroup_17(), "rule__CConv__Group_17__0");
 					put(grammarAccess.getModelAccess().getElementsAssignment(), "rule__Model__ElementsAssignment");
-					put(grammarAccess.getAttributeGroupAccess().getNameAssignment_0(), "rule__AttributeGroup__NameAssignment_0");
+					put(grammarAccess.getAttributeGroupAccess().getNameAssignment_1(), "rule__AttributeGroup__NameAssignment_1");
 					put(grammarAccess.getAttributeGroupAccess().getAttributesAssignment_4_0(), "rule__AttributeGroup__AttributesAssignment_4_0");
 					put(grammarAccess.getAttributeGroupAccess().getAlignstackAssignment_4_1_0(), "rule__AttributeGroup__AlignstackAssignment_4_1_0");
 					put(grammarAccess.getAttributeGroupAccess().getAlignstackValueAssignment_4_1_2(), "rule__AttributeGroup__AlignstackValueAssignment_4_1_2");
 					put(grammarAccess.getAttributeGroupAccess().getTargetSpecificAttributesAssignment_4_2(), "rule__AttributeGroup__TargetSpecificAttributesAssignment_4_2");
+					put(grammarAccess.getTargetSpecificAttributeAccess().getNameAssignment_0(), "rule__TargetSpecificAttribute__NameAssignment_0");
+					put(grammarAccess.getTargetSpecificAttributeAccess().getValueAssignment_1_1(), "rule__TargetSpecificAttribute__ValueAssignment_1_1");
 					put(grammarAccess.getNamedMetadataAccess().getNameAssignment_0_0(), "rule__NamedMetadata__NameAssignment_0_0");
 					put(grammarAccess.getNamedMetadataAccess().getNodeAssignment_0_3(), "rule__NamedMetadata__NodeAssignment_0_3");
 					put(grammarAccess.getNamedMetadataAccess().getNameAssignment_1_0(), "rule__NamedMetadata__NameAssignment_1_0");

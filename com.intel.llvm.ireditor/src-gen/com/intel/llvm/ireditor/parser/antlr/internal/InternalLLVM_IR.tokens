@@ -360,7 +360,7 @@ T__169=169
 'fcmp'=46
 'personality'=186
 'alwaysinline'=94
-'attributes'=25
+'attributes'=24
 'optsize'=104
 'catch'=188
 'nest'=200
@@ -388,7 +388,7 @@ T__169=169
 'nocapture'=199
 'dllimport'=226
 'address_safety'=93
-'='=24
+'='=25
 'extractvalue'=50
 'olt'=172
 'uno'=178

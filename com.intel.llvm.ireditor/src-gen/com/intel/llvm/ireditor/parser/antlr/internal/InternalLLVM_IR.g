@@ -196,11 +196,15 @@ ruleAttributeGroup returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-((
+(	otherlv_0='attributes' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getAttributeGroupAccess().getAttributesKeyword_0());
+    }
 (
-		lv_name_0_0=RULE_ATTRIBUTE_ID
+(
+		lv_name_1_0=RULE_ATTRIBUTE_ID
 		{
-			newLeafNode(lv_name_0_0, grammarAccess.getAttributeGroupAccess().getNameATTRIBUTE_IDTerminalRuleCall_0_0()); 
+			newLeafNode(lv_name_1_0, grammarAccess.getAttributeGroupAccess().getNameATTRIBUTE_IDTerminalRuleCall_1_0()); 
 		}
 		{
 	        if ($current==null) {
@@ -209,18 +213,14 @@ ruleAttributeGroup returns [EObject current=null]
        		setWithLastConsumed(
        			$current, 
        			"name",
-        		lv_name_0_0, 
+        		lv_name_1_0, 
         		"ATTRIBUTE_ID");
 	    }
 
 )
-)	otherlv_1='=' 
+)	otherlv_2='=' 
     {
-    	newLeafNode(otherlv_1, grammarAccess.getAttributeGroupAccess().getEqualsSignKeyword_1());
-    }
-	otherlv_2='attributes' 
-    {
-    	newLeafNode(otherlv_2, grammarAccess.getAttributeGroupAccess().getAttributesKeyword_2());
+    	newLeafNode(otherlv_2, grammarAccess.getAttributeGroupAccess().getEqualsSignKeyword_2());
     }
 	otherlv_3='{' 
     {
@@ -288,19 +288,19 @@ ruleAttributeGroup returns [EObject current=null]
 ))
     |(
 (
-		lv_targetSpecificAttributes_8_0=RULE_STRING
-		{
-			newLeafNode(lv_targetSpecificAttributes_8_0, grammarAccess.getAttributeGroupAccess().getTargetSpecificAttributesSTRINGTerminalRuleCall_4_2_0()); 
-		}
-		{
+		{ 
+	        newCompositeNode(grammarAccess.getAttributeGroupAccess().getTargetSpecificAttributesTargetSpecificAttributeParserRuleCall_4_2_0()); 
+	    }
+		lv_targetSpecificAttributes_8_0=ruleTargetSpecificAttribute		{
 	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getAttributeGroupRule());
+	            $current = createModelElementForParent(grammarAccess.getAttributeGroupRule());
 	        }
-       		addWithLastConsumed(
+       		add(
        			$current, 
        			"targetSpecificAttributes",
         		lv_targetSpecificAttributes_8_0, 
-        		"STRING");
+        		"TargetSpecificAttribute");
+	        afterParserOrEnumRuleCall();
 	    }
 
 )
@@ -309,6 +309,67 @@ ruleAttributeGroup returns [EObject current=null]
     	newLeafNode(otherlv_9, grammarAccess.getAttributeGroupAccess().getRightCurlyBracketKeyword_5());
     }
 )
+;
+
+
+
+
+
+// Entry rule entryRuleTargetSpecificAttribute
+entryRuleTargetSpecificAttribute returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getTargetSpecificAttributeRule()); }
+	 iv_ruleTargetSpecificAttribute=ruleTargetSpecificAttribute 
+	 { $current=$iv_ruleTargetSpecificAttribute.current; } 
+	 EOF 
+;
+
+// Rule TargetSpecificAttribute
+ruleTargetSpecificAttribute returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+((
+(
+		lv_name_0_0=RULE_STRING
+		{
+			newLeafNode(lv_name_0_0, grammarAccess.getTargetSpecificAttributeAccess().getNameSTRINGTerminalRuleCall_0_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTargetSpecificAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"name",
+        		lv_name_0_0, 
+        		"STRING");
+	    }
+
+)
+)(	otherlv_1='=' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getTargetSpecificAttributeAccess().getEqualsSignKeyword_1_0());
+    }
+(
+(
+		lv_value_2_0=RULE_STRING
+		{
+			newLeafNode(lv_value_2_0, grammarAccess.getTargetSpecificAttributeAccess().getValueSTRINGTerminalRuleCall_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getTargetSpecificAttributeRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"value",
+        		lv_value_2_0, 
+        		"STRING");
+	    }
+
+)
+))?)
 ;
 
 

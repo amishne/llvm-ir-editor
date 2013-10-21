@@ -90,6 +90,11 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
         return createAttributeGroupAdapter();
       }
       @Override
+      public Adapter caseTargetSpecificAttribute(TargetSpecificAttribute object)
+      {
+        return createTargetSpecificAttributeAdapter();
+      }
+      @Override
       public Adapter caseNamedMetadata(NamedMetadata object)
       {
         return createNamedMetadataAdapter();
@@ -827,6 +832,21 @@ public class LLVM_IRAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAttributeGroupAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.intel.llvm.ireditor.lLVM_IR.TargetSpecificAttribute <em>Target Specific Attribute</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.intel.llvm.ireditor.lLVM_IR.TargetSpecificAttribute
+   * @generated
+   */
+  public Adapter createTargetSpecificAttributeAdapter()
   {
     return null;
   }

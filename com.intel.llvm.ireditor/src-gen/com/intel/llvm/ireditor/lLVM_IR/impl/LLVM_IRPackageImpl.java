@@ -127,6 +127,7 @@ import com.intel.llvm.ireditor.lLVM_IR.StartingInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.StructType;
 import com.intel.llvm.ireditor.lLVM_IR.StructureConstant;
 import com.intel.llvm.ireditor.lLVM_IR.TargetInfo;
+import com.intel.llvm.ireditor.lLVM_IR.TargetSpecificAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.TerminatorInstruction;
 import com.intel.llvm.ireditor.lLVM_IR.TopLevelElement;
 import com.intel.llvm.ireditor.lLVM_IR.Type;
@@ -178,6 +179,13 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * @generated
    */
   private EClass attributeGroupEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass targetSpecificAttributeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1272,9 +1280,39 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAttributeGroup_TargetSpecificAttributes()
+  public EReference getAttributeGroup_TargetSpecificAttributes()
   {
-    return (EAttribute)attributeGroupEClass.getEStructuralFeatures().get(4);
+    return (EReference)attributeGroupEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getTargetSpecificAttribute()
+  {
+    return targetSpecificAttributeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTargetSpecificAttribute_Name()
+  {
+    return (EAttribute)targetSpecificAttributeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTargetSpecificAttribute_Value()
+  {
+    return (EAttribute)targetSpecificAttributeEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -5327,7 +5365,11 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     createEReference(attributeGroupEClass, ATTRIBUTE_GROUP__ATTRIBUTES);
     createEReference(attributeGroupEClass, ATTRIBUTE_GROUP__ALIGNSTACK);
     createEAttribute(attributeGroupEClass, ATTRIBUTE_GROUP__ALIGNSTACK_VALUE);
-    createEAttribute(attributeGroupEClass, ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES);
+    createEReference(attributeGroupEClass, ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES);
+
+    targetSpecificAttributeEClass = createEClass(TARGET_SPECIFIC_ATTRIBUTE);
+    createEAttribute(targetSpecificAttributeEClass, TARGET_SPECIFIC_ATTRIBUTE__NAME);
+    createEAttribute(targetSpecificAttributeEClass, TARGET_SPECIFIC_ATTRIBUTE__VALUE);
 
     namedMetadataEClass = createEClass(NAMED_METADATA);
     createEAttribute(namedMetadataEClass, NAMED_METADATA__NAME);
@@ -5988,7 +6030,11 @@ public class LLVM_IRPackageImpl extends EPackageImpl implements LLVM_IRPackage
     initEReference(getAttributeGroup_Attributes(), this.getFunctionAttribute(), null, "attributes", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getAttributeGroup_Alignstack(), this.getAlignStack(), null, "alignstack", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAttributeGroup_AlignstackValue(), ecorePackage.getEString(), "alignstackValue", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAttributeGroup_TargetSpecificAttributes(), ecorePackage.getEString(), "targetSpecificAttributes", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAttributeGroup_TargetSpecificAttributes(), this.getTargetSpecificAttribute(), null, "targetSpecificAttributes", null, 0, -1, AttributeGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(targetSpecificAttributeEClass, TargetSpecificAttribute.class, "TargetSpecificAttribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getTargetSpecificAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, TargetSpecificAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getTargetSpecificAttribute_Value(), ecorePackage.getEString(), "value", null, 0, 1, TargetSpecificAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(namedMetadataEClass, NamedMetadata.class, "NamedMetadata", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNamedMetadata_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedMetadata.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

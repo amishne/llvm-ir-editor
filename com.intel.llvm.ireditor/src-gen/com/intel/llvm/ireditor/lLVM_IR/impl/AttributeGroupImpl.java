@@ -6,6 +6,7 @@ import com.intel.llvm.ireditor.lLVM_IR.AlignStack;
 import com.intel.llvm.ireditor.lLVM_IR.AttributeGroup;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttribute;
 import com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage;
+import com.intel.llvm.ireditor.lLVM_IR.TargetSpecificAttribute;
 
 import java.util.Collection;
 
@@ -93,14 +94,14 @@ public class AttributeGroupImpl extends TopLevelElementImpl implements Attribute
   protected EList<String> alignstackValue;
 
   /**
-   * The cached value of the '{@link #getTargetSpecificAttributes() <em>Target Specific Attributes</em>}' attribute list.
+   * The cached value of the '{@link #getTargetSpecificAttributes() <em>Target Specific Attributes</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getTargetSpecificAttributes()
    * @generated
    * @ordered
    */
-  protected EList<String> targetSpecificAttributes;
+  protected EList<TargetSpecificAttribute> targetSpecificAttributes;
 
   /**
    * <!-- begin-user-doc -->
@@ -193,11 +194,11 @@ public class AttributeGroupImpl extends TopLevelElementImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getTargetSpecificAttributes()
+  public EList<TargetSpecificAttribute> getTargetSpecificAttributes()
   {
     if (targetSpecificAttributes == null)
     {
-      targetSpecificAttributes = new EDataTypeEList<String>(String.class, this, LLVM_IRPackage.ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES);
+      targetSpecificAttributes = new EObjectContainmentEList<TargetSpecificAttribute>(TargetSpecificAttribute.class, this, LLVM_IRPackage.ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES);
     }
     return targetSpecificAttributes;
   }
@@ -216,6 +217,8 @@ public class AttributeGroupImpl extends TopLevelElementImpl implements Attribute
         return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
       case LLVM_IRPackage.ATTRIBUTE_GROUP__ALIGNSTACK:
         return ((InternalEList<?>)getAlignstack()).basicRemove(otherEnd, msgs);
+      case LLVM_IRPackage.ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES:
+        return ((InternalEList<?>)getTargetSpecificAttributes()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -272,7 +275,7 @@ public class AttributeGroupImpl extends TopLevelElementImpl implements Attribute
         return;
       case LLVM_IRPackage.ATTRIBUTE_GROUP__TARGET_SPECIFIC_ATTRIBUTES:
         getTargetSpecificAttributes().clear();
-        getTargetSpecificAttributes().addAll((Collection<? extends String>)newValue);
+        getTargetSpecificAttributes().addAll((Collection<? extends TargetSpecificAttribute>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -346,8 +349,6 @@ public class AttributeGroupImpl extends TopLevelElementImpl implements Attribute
     result.append(name);
     result.append(", alignstackValue: ");
     result.append(alignstackValue);
-    result.append(", targetSpecificAttributes: ");
-    result.append(targetSpecificAttributes);
     result.append(')');
     return result.toString();
   }
