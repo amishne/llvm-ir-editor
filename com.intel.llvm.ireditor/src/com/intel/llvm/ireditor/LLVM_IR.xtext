@@ -353,7 +353,6 @@ AlignStack:
 
 FunctionAttribute:
 	attribute=(
-		'address_safety' |
 		'alwaysinline' |
 		'builtin' |
 		'inlinehint' |
@@ -370,10 +369,17 @@ FunctionAttribute:
 		'readnone' |
 		'readonly' |
 		'returns_twice' |
+		'sanitize_address' |
+		'sanitize_memory' |
+		'sanitize_thread' |
 		'ssp' |
 		'sspreq' |
 		'sspstrong' |
-		'uwtable'
+		'uwtable' |
+		// Removed:
+		'address_safety' |
+		'thread_safety' |
+		'uninitialized_checks'
 	)
 ;
 

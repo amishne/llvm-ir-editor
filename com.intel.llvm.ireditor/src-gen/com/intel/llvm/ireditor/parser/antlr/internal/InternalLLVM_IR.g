@@ -4501,9 +4501,9 @@ ruleFunctionAttribute returns [EObject current=null]
 (
 (
 (
-		lv_attribute_0_1=	'address_safety' 
+		lv_attribute_0_1=	'alwaysinline' 
     {
-        newLeafNode(lv_attribute_0_1, grammarAccess.getFunctionAttributeAccess().getAttributeAddress_safetyKeyword_0_0());
+        newLeafNode(lv_attribute_0_1, grammarAccess.getFunctionAttributeAccess().getAttributeAlwaysinlineKeyword_0_0());
     }
  
 	    {
@@ -4513,9 +4513,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_1, null);
 	    }
 
-    |		lv_attribute_0_2=	'alwaysinline' 
+    |		lv_attribute_0_2=	'builtin' 
     {
-        newLeafNode(lv_attribute_0_2, grammarAccess.getFunctionAttributeAccess().getAttributeAlwaysinlineKeyword_0_1());
+        newLeafNode(lv_attribute_0_2, grammarAccess.getFunctionAttributeAccess().getAttributeBuiltinKeyword_0_1());
     }
  
 	    {
@@ -4525,9 +4525,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_2, null);
 	    }
 
-    |		lv_attribute_0_3=	'builtin' 
+    |		lv_attribute_0_3=	'inlinehint' 
     {
-        newLeafNode(lv_attribute_0_3, grammarAccess.getFunctionAttributeAccess().getAttributeBuiltinKeyword_0_2());
+        newLeafNode(lv_attribute_0_3, grammarAccess.getFunctionAttributeAccess().getAttributeInlinehintKeyword_0_2());
     }
  
 	    {
@@ -4537,9 +4537,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_3, null);
 	    }
 
-    |		lv_attribute_0_4=	'inlinehint' 
+    |		lv_attribute_0_4=	'naked' 
     {
-        newLeafNode(lv_attribute_0_4, grammarAccess.getFunctionAttributeAccess().getAttributeInlinehintKeyword_0_3());
+        newLeafNode(lv_attribute_0_4, grammarAccess.getFunctionAttributeAccess().getAttributeNakedKeyword_0_3());
     }
  
 	    {
@@ -4549,9 +4549,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_4, null);
 	    }
 
-    |		lv_attribute_0_5=	'naked' 
+    |		lv_attribute_0_5=	'nobuiltin' 
     {
-        newLeafNode(lv_attribute_0_5, grammarAccess.getFunctionAttributeAccess().getAttributeNakedKeyword_0_4());
+        newLeafNode(lv_attribute_0_5, grammarAccess.getFunctionAttributeAccess().getAttributeNobuiltinKeyword_0_4());
     }
  
 	    {
@@ -4561,9 +4561,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_5, null);
 	    }
 
-    |		lv_attribute_0_6=	'nobuiltin' 
+    |		lv_attribute_0_6=	'noduplicate' 
     {
-        newLeafNode(lv_attribute_0_6, grammarAccess.getFunctionAttributeAccess().getAttributeNobuiltinKeyword_0_5());
+        newLeafNode(lv_attribute_0_6, grammarAccess.getFunctionAttributeAccess().getAttributeNoduplicateKeyword_0_5());
     }
  
 	    {
@@ -4573,9 +4573,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_6, null);
 	    }
 
-    |		lv_attribute_0_7=	'noduplicate' 
+    |		lv_attribute_0_7=	'noimplicitfloat' 
     {
-        newLeafNode(lv_attribute_0_7, grammarAccess.getFunctionAttributeAccess().getAttributeNoduplicateKeyword_0_6());
+        newLeafNode(lv_attribute_0_7, grammarAccess.getFunctionAttributeAccess().getAttributeNoimplicitfloatKeyword_0_6());
     }
  
 	    {
@@ -4585,9 +4585,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_7, null);
 	    }
 
-    |		lv_attribute_0_8=	'noimplicitfloat' 
+    |		lv_attribute_0_8=	'noinline' 
     {
-        newLeafNode(lv_attribute_0_8, grammarAccess.getFunctionAttributeAccess().getAttributeNoimplicitfloatKeyword_0_7());
+        newLeafNode(lv_attribute_0_8, grammarAccess.getFunctionAttributeAccess().getAttributeNoinlineKeyword_0_7());
     }
  
 	    {
@@ -4597,9 +4597,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_8, null);
 	    }
 
-    |		lv_attribute_0_9=	'noinline' 
+    |		lv_attribute_0_9=	'nonlazybind' 
     {
-        newLeafNode(lv_attribute_0_9, grammarAccess.getFunctionAttributeAccess().getAttributeNoinlineKeyword_0_8());
+        newLeafNode(lv_attribute_0_9, grammarAccess.getFunctionAttributeAccess().getAttributeNonlazybindKeyword_0_8());
     }
  
 	    {
@@ -4609,9 +4609,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_9, null);
 	    }
 
-    |		lv_attribute_0_10=	'nonlazybind' 
+    |		lv_attribute_0_10=	'noredzone' 
     {
-        newLeafNode(lv_attribute_0_10, grammarAccess.getFunctionAttributeAccess().getAttributeNonlazybindKeyword_0_9());
+        newLeafNode(lv_attribute_0_10, grammarAccess.getFunctionAttributeAccess().getAttributeNoredzoneKeyword_0_9());
     }
  
 	    {
@@ -4621,9 +4621,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_10, null);
 	    }
 
-    |		lv_attribute_0_11=	'noredzone' 
+    |		lv_attribute_0_11=	'noreturn' 
     {
-        newLeafNode(lv_attribute_0_11, grammarAccess.getFunctionAttributeAccess().getAttributeNoredzoneKeyword_0_10());
+        newLeafNode(lv_attribute_0_11, grammarAccess.getFunctionAttributeAccess().getAttributeNoreturnKeyword_0_10());
     }
  
 	    {
@@ -4633,9 +4633,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_11, null);
 	    }
 
-    |		lv_attribute_0_12=	'noreturn' 
+    |		lv_attribute_0_12=	'nounwind' 
     {
-        newLeafNode(lv_attribute_0_12, grammarAccess.getFunctionAttributeAccess().getAttributeNoreturnKeyword_0_11());
+        newLeafNode(lv_attribute_0_12, grammarAccess.getFunctionAttributeAccess().getAttributeNounwindKeyword_0_11());
     }
  
 	    {
@@ -4645,9 +4645,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_12, null);
 	    }
 
-    |		lv_attribute_0_13=	'nounwind' 
+    |		lv_attribute_0_13=	'optsize' 
     {
-        newLeafNode(lv_attribute_0_13, grammarAccess.getFunctionAttributeAccess().getAttributeNounwindKeyword_0_12());
+        newLeafNode(lv_attribute_0_13, grammarAccess.getFunctionAttributeAccess().getAttributeOptsizeKeyword_0_12());
     }
  
 	    {
@@ -4657,9 +4657,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_13, null);
 	    }
 
-    |		lv_attribute_0_14=	'optsize' 
+    |		lv_attribute_0_14=	'readnone' 
     {
-        newLeafNode(lv_attribute_0_14, grammarAccess.getFunctionAttributeAccess().getAttributeOptsizeKeyword_0_13());
+        newLeafNode(lv_attribute_0_14, grammarAccess.getFunctionAttributeAccess().getAttributeReadnoneKeyword_0_13());
     }
  
 	    {
@@ -4669,9 +4669,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_14, null);
 	    }
 
-    |		lv_attribute_0_15=	'readnone' 
+    |		lv_attribute_0_15=	'readonly' 
     {
-        newLeafNode(lv_attribute_0_15, grammarAccess.getFunctionAttributeAccess().getAttributeReadnoneKeyword_0_14());
+        newLeafNode(lv_attribute_0_15, grammarAccess.getFunctionAttributeAccess().getAttributeReadonlyKeyword_0_14());
     }
  
 	    {
@@ -4681,9 +4681,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_15, null);
 	    }
 
-    |		lv_attribute_0_16=	'readonly' 
+    |		lv_attribute_0_16=	'returns_twice' 
     {
-        newLeafNode(lv_attribute_0_16, grammarAccess.getFunctionAttributeAccess().getAttributeReadonlyKeyword_0_15());
+        newLeafNode(lv_attribute_0_16, grammarAccess.getFunctionAttributeAccess().getAttributeReturns_twiceKeyword_0_15());
     }
  
 	    {
@@ -4693,9 +4693,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_16, null);
 	    }
 
-    |		lv_attribute_0_17=	'returns_twice' 
+    |		lv_attribute_0_17=	'sanitize_address' 
     {
-        newLeafNode(lv_attribute_0_17, grammarAccess.getFunctionAttributeAccess().getAttributeReturns_twiceKeyword_0_16());
+        newLeafNode(lv_attribute_0_17, grammarAccess.getFunctionAttributeAccess().getAttributeSanitize_addressKeyword_0_16());
     }
  
 	    {
@@ -4705,9 +4705,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_17, null);
 	    }
 
-    |		lv_attribute_0_18=	'ssp' 
+    |		lv_attribute_0_18=	'sanitize_memory' 
     {
-        newLeafNode(lv_attribute_0_18, grammarAccess.getFunctionAttributeAccess().getAttributeSspKeyword_0_17());
+        newLeafNode(lv_attribute_0_18, grammarAccess.getFunctionAttributeAccess().getAttributeSanitize_memoryKeyword_0_17());
     }
  
 	    {
@@ -4717,9 +4717,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_18, null);
 	    }
 
-    |		lv_attribute_0_19=	'sspreq' 
+    |		lv_attribute_0_19=	'sanitize_thread' 
     {
-        newLeafNode(lv_attribute_0_19, grammarAccess.getFunctionAttributeAccess().getAttributeSspreqKeyword_0_18());
+        newLeafNode(lv_attribute_0_19, grammarAccess.getFunctionAttributeAccess().getAttributeSanitize_threadKeyword_0_18());
     }
  
 	    {
@@ -4729,9 +4729,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_19, null);
 	    }
 
-    |		lv_attribute_0_20=	'sspstrong' 
+    |		lv_attribute_0_20=	'ssp' 
     {
-        newLeafNode(lv_attribute_0_20, grammarAccess.getFunctionAttributeAccess().getAttributeSspstrongKeyword_0_19());
+        newLeafNode(lv_attribute_0_20, grammarAccess.getFunctionAttributeAccess().getAttributeSspKeyword_0_19());
     }
  
 	    {
@@ -4741,9 +4741,9 @@ ruleFunctionAttribute returns [EObject current=null]
        		setWithLastConsumed($current, "attribute", lv_attribute_0_20, null);
 	    }
 
-    |		lv_attribute_0_21=	'uwtable' 
+    |		lv_attribute_0_21=	'sspreq' 
     {
-        newLeafNode(lv_attribute_0_21, grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_20());
+        newLeafNode(lv_attribute_0_21, grammarAccess.getFunctionAttributeAccess().getAttributeSspreqKeyword_0_20());
     }
  
 	    {
@@ -4751,6 +4751,66 @@ ruleFunctionAttribute returns [EObject current=null]
 	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
 	        }
        		setWithLastConsumed($current, "attribute", lv_attribute_0_21, null);
+	    }
+
+    |		lv_attribute_0_22=	'sspstrong' 
+    {
+        newLeafNode(lv_attribute_0_22, grammarAccess.getFunctionAttributeAccess().getAttributeSspstrongKeyword_0_21());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
+	        }
+       		setWithLastConsumed($current, "attribute", lv_attribute_0_22, null);
+	    }
+
+    |		lv_attribute_0_23=	'uwtable' 
+    {
+        newLeafNode(lv_attribute_0_23, grammarAccess.getFunctionAttributeAccess().getAttributeUwtableKeyword_0_22());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
+	        }
+       		setWithLastConsumed($current, "attribute", lv_attribute_0_23, null);
+	    }
+
+    |		lv_attribute_0_24=	'address_safety' 
+    {
+        newLeafNode(lv_attribute_0_24, grammarAccess.getFunctionAttributeAccess().getAttributeAddress_safetyKeyword_0_23());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
+	        }
+       		setWithLastConsumed($current, "attribute", lv_attribute_0_24, null);
+	    }
+
+    |		lv_attribute_0_25=	'thread_safety' 
+    {
+        newLeafNode(lv_attribute_0_25, grammarAccess.getFunctionAttributeAccess().getAttributeThread_safetyKeyword_0_24());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
+	        }
+       		setWithLastConsumed($current, "attribute", lv_attribute_0_25, null);
+	    }
+
+    |		lv_attribute_0_26=	'uninitialized_checks' 
+    {
+        newLeafNode(lv_attribute_0_26, grammarAccess.getFunctionAttributeAccess().getAttributeUninitialized_checksKeyword_0_25());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getFunctionAttributeRule());
+	        }
+       		setWithLastConsumed($current, "attribute", lv_attribute_0_26, null);
 	    }
 
 )

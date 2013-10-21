@@ -1315,7 +1315,6 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	/**
 	 * Constraint:
 	 *     (
-	 *         attribute='address_safety' | 
 	 *         attribute='alwaysinline' | 
 	 *         attribute='builtin' | 
 	 *         attribute='inlinehint' | 
@@ -1332,10 +1331,16 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *         attribute='readnone' | 
 	 *         attribute='readonly' | 
 	 *         attribute='returns_twice' | 
+	 *         attribute='sanitize_address' | 
+	 *         attribute='sanitize_memory' | 
+	 *         attribute='sanitize_thread' | 
 	 *         attribute='ssp' | 
 	 *         attribute='sspreq' | 
 	 *         attribute='sspstrong' | 
-	 *         attribute='uwtable'
+	 *         attribute='uwtable' | 
+	 *         attribute='address_safety' | 
+	 *         attribute='thread_safety' | 
+	 *         attribute='uninitialized_checks'
 	 *     )
 	 */
 	protected void sequence_FunctionAttribute(EObject context, FunctionAttribute semanticObject) {
