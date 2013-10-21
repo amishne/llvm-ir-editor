@@ -12677,6 +12677,13 @@ ruleParameterAttribute returns [AntlrDatatypeRuleToken current=new AntlrDatatype
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getNestKeyword_7()); 
     }
+
+    |
+	kw='returned' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getReturnedKeyword_8()); 
+    }
 )
     ;
 

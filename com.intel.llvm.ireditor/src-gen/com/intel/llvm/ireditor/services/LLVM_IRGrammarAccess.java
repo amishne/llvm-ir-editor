@@ -7216,13 +7216,16 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNoaliasKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
 		private final Keyword cNocaptureKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
 		private final Keyword cNestKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cReturnedKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
 		
 		//ParameterAttribute:
 		//
-		//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest";
+		//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" |
+		//
+		//	"returned";
 		public ParserRule getRule() { return rule; }
 
-		//"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest"
+		//"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" | "returned"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"zeroext"
@@ -7260,6 +7263,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"nest"
 		public Keyword getNestKeyword_7() { return cNestKeyword_7; }
+
+		//"returned"
+		public Keyword getReturnedKeyword_8() { return cReturnedKeyword_8; }
 	}
 
 	public class ArgumentElements extends AbstractParserRuleElementFinder {
@@ -10327,7 +10333,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ParameterAttribute:
 	//
-	//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest";
+	//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" |
+	//
+	//	"returned";
 	public ParameterAttributeElements getParameterAttributeAccess() {
 		return (pParameterAttribute != null) ? pParameterAttribute : (pParameterAttribute = new ParameterAttributeElements());
 	}

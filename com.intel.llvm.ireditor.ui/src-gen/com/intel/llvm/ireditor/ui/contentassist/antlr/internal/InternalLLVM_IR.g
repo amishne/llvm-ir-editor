@@ -6635,6 +6635,14 @@ rule__ParameterAttribute__Alternatives
 { after(grammarAccess.getParameterAttributeAccess().getNestKeyword_7()); }
 )
 
+    |(
+{ before(grammarAccess.getParameterAttributeAccess().getReturnedKeyword_8()); }
+
+	'returned' 
+
+{ after(grammarAccess.getParameterAttributeAccess().getReturnedKeyword_8()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
