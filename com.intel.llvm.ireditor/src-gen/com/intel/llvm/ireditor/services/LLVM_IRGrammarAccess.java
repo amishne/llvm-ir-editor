@@ -7258,15 +7258,18 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNocaptureKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
 		private final Keyword cNestKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
 		private final Keyword cReturnedKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cInallocaKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
 		
 		//ParameterAttribute:
 		//
-		//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" |
+		//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" | "returned"
 		//
-		//	"returned";
+		//	| "inalloca";
 		public ParserRule getRule() { return rule; }
 
-		//"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" | "returned"
+		//"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" | "returned" |
+		//
+		//"inalloca"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"zeroext"
@@ -7307,6 +7310,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"returned"
 		public Keyword getReturnedKeyword_8() { return cReturnedKeyword_8; }
+
+		//"inalloca"
+		public Keyword getInallocaKeyword_9() { return cInallocaKeyword_9; }
 	}
 
 	public class ArgumentElements extends AbstractParserRuleElementFinder {
@@ -10388,9 +10394,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//ParameterAttribute:
 	//
-	//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" |
+	//	"zeroext" | "signext" | "inreg" | "byval" ("align" INTEGER)? | "sret" | "noalias" | "nocapture" | "nest" | "returned"
 	//
-	//	"returned";
+	//	| "inalloca";
 	public ParameterAttributeElements getParameterAttributeAccess() {
 		return (pParameterAttribute != null) ? pParameterAttribute : (pParameterAttribute = new ParameterAttributeElements());
 	}

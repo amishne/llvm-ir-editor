@@ -6679,6 +6679,14 @@ rule__ParameterAttribute__Alternatives
 { after(grammarAccess.getParameterAttributeAccess().getReturnedKeyword_8()); }
 )
 
+    |(
+{ before(grammarAccess.getParameterAttributeAccess().getInallocaKeyword_9()); }
+
+	'inalloca' 
+
+{ after(grammarAccess.getParameterAttributeAccess().getInallocaKeyword_9()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);

@@ -12757,6 +12757,13 @@ ruleParameterAttribute returns [AntlrDatatypeRuleToken current=new AntlrDatatype
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getReturnedKeyword_8()); 
     }
+
+    |
+	kw='inalloca' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getParameterAttributeAccess().getInallocaKeyword_9()); 
+    }
 )
     ;
 

@@ -968,7 +968,8 @@ ParameterAttribute:
 	'noalias' |
 	'nocapture' |
 	'nest' |
-	'returned'
+	'returned' |
+	'inalloca'
 ;
 
 Argument:
