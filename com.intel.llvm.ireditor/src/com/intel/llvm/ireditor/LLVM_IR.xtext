@@ -838,7 +838,7 @@ ConvertionOpcode:
 	'trunc' | 'zext' | 'sext' |
 	'fptrunc' | 'fpext' | 'fptoui' | 'fptosi' | 'uitofp' | 'sitofp' |
 	'ptrtoint' | 'inttoptr' |
-	'bitcast'
+	'bitcast' | 'addrspacecast'
 ;
 
 OtherInstruction:

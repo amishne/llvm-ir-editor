@@ -6215,6 +6215,14 @@ rule__ConvertionOpcode__Alternatives
 { after(grammarAccess.getConvertionOpcodeAccess().getBitcastKeyword_11()); }
 )
 
+    |(
+{ before(grammarAccess.getConvertionOpcodeAccess().getAddrspacecastKeyword_12()); }
+
+	'addrspacecast' 
+
+{ after(grammarAccess.getConvertionOpcodeAccess().getAddrspacecastKeyword_12()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);

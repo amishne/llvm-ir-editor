@@ -391,8 +391,39 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 				error(opc + " can only convert from integer or integer vector", fromFeature);
 			}
 		} else if (opc.equals("bitcast")) {
-			if (fromType.getBits().equals(toType.getBits()) == false) {
-				warning("Bitcast types don't seem to have matching size", toFeature);
+			if (TYPE_ANY_POINTER.accepts(fromType)) {
+				// toType must be a pointer with the same addrspace
+				checkRequired(toType, toFeature, 0,
+						new ResolvedPointerType(TYPE_ANY, fromType.asPointer().getAddrSpace()));
+			} else if (TYPE_POINTER_VECTOR.accepts(fromType)) {
+				ResolvedType pointerType = new ResolvedPointerType(TYPE_ANY,
+						fromType.getContainedType(0).asPointer().getAddrSpace());
+				checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), pointerType));
+			} else {
+				// If we're not converting between points, just verify same bit count.
+				// Since the editor cannot do this entirely reliably, issue a warning and not an error.
+				if (fromType.getBits().equals(toType.getBits()) == false) {
+					warning("Bitcast types don't seem to have matching size", toFeature);
+				}
+			}
+		} else if (opc.equals("addrspacecast")) {
+			boolean sameAddrSpace = false;
+			if (TYPE_ANY_POINTER.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0, TYPE_ANY_POINTER);
+				sameAddrSpace = valid && fromType.asPointer().getAddrSpace()
+						.equals(toType.asPointer().getAddrSpace());
+			} else if (TYPE_POINTER_VECTOR.accepts(fromType)) {
+				boolean valid = checkRequired(toType, toFeature, 0,
+						new ResolvedVectorType(fromType.asVector().getSize(), TYPE_ANY_POINTER));
+				sameAddrSpace = valid && fromType.getContainedType(0).asPointer().getAddrSpace()
+						.equals(toType.getContainedType(0).asPointer().getAddrSpace());
+			} else {
+				error("addrspacecast can only convert from pointer or pointer vector", fromFeature);
+			}
+			if (sameAddrSpace) {
+				error("Source type and target type for addrspacecast must have different address spaces",
+						toFeature);
 			}
 		} else if (opc.equals("fptrunc")) {
 			if (TYPE_FLOATING.accepts(fromType)) {

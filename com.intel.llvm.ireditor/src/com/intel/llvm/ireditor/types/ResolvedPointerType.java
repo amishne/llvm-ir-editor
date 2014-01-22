@@ -39,8 +39,15 @@ public class ResolvedPointerType extends ResolvedType {
 
 	@Override
 	public String toString() {
-		return pointedType.toString() + (addrSpace.equals(BigInteger.ZERO) ?
-				"" : " addrspace(" + addrSpace.toString() + ")") + "*";
+		String addrSpaceStr = "";
+		
+		if (addrSpace.equals(BigInteger.valueOf(-1))) {
+			addrSpaceStr = " addrspace(m)";
+		} else if (addrSpace.equals(BigInteger.ZERO) == false) {
+			addrSpaceStr = " addrspace(" + addrSpace.toString() + ")";
+		}
+		
+		return pointedType.toString() + addrSpaceStr + "*";
 	}
 	
 	@Override

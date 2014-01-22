@@ -6171,17 +6171,18 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cPtrtointKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
 		private final Keyword cInttoptrKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
 		private final Keyword cBitcastKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cAddrspacecastKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
 		
 		//ConvertionOpcode:
 		//
 		//	"trunc" | "zext" | "sext" | "fptrunc" | "fpext" | "fptoui" | "fptosi" | "uitofp" | "sitofp" | "ptrtoint" | "inttoptr"
 		//
-		//	| "bitcast";
+		//	| "bitcast" | "addrspacecast";
 		public ParserRule getRule() { return rule; }
 
 		//"trunc" | "zext" | "sext" | "fptrunc" | "fpext" | "fptoui" | "fptosi" | "uitofp" | "sitofp" | "ptrtoint" | "inttoptr" |
 		//
-		//"bitcast"
+		//"bitcast" | "addrspacecast"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"trunc"
@@ -6219,6 +6220,9 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"bitcast"
 		public Keyword getBitcastKeyword_11() { return cBitcastKeyword_11; }
+
+		//"addrspacecast"
+		public Keyword getAddrspacecastKeyword_12() { return cAddrspacecastKeyword_12; }
 	}
 
 	public class OtherInstructionElements extends AbstractParserRuleElementFinder {
@@ -10140,7 +10144,7 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	//
 	//	"trunc" | "zext" | "sext" | "fptrunc" | "fpext" | "fptoui" | "fptosi" | "uitofp" | "sitofp" | "ptrtoint" | "inttoptr"
 	//
-	//	| "bitcast";
+	//	| "bitcast" | "addrspacecast";
 	public ConvertionOpcodeElements getConvertionOpcodeAccess() {
 		return (pConvertionOpcode != null) ? pConvertionOpcode : (pConvertionOpcode = new ConvertionOpcodeElements());
 	}

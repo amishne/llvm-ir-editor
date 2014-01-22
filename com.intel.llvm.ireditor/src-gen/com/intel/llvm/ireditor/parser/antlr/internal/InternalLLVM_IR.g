@@ -10875,6 +10875,13 @@ ruleConvertionOpcode returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRu
         $current.merge(kw);
         newLeafNode(kw, grammarAccess.getConvertionOpcodeAccess().getBitcastKeyword_11()); 
     }
+
+    |
+	kw='addrspacecast' 
+    {
+        $current.merge(kw);
+        newLeafNode(kw, grammarAccess.getConvertionOpcodeAccess().getAddrspacecastKeyword_12()); 
+    }
 )
     ;
 
