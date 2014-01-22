@@ -82,30 +82,30 @@ public interface Instruction_call_nonVoid extends EObject
   void setOpcode(String value);
 
   /**
-   * Returns the value of the '<em><b>Cconv</b></em>' attribute.
+   * Returns the value of the '<em><b>Cconv</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Cconv</em>' attribute isn't clear,
+   * If the meaning of the '<em>Cconv</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cconv</em>' attribute.
-   * @see #setCconv(String)
+   * @return the value of the '<em>Cconv</em>' containment reference.
+   * @see #setCconv(CConv)
    * @see com.intel.llvm.ireditor.lLVM_IR.LLVM_IRPackage#getInstruction_call_nonVoid_Cconv()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getCconv();
+  CConv getCconv();
 
   /**
-   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCconv <em>Cconv</em>}' attribute.
+   * Sets the value of the '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCconv <em>Cconv</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cconv</em>' attribute.
+   * @param value the new value of the '<em>Cconv</em>' containment reference.
    * @see #getCconv()
    * @generated
    */
-  void setCconv(String value);
+  void setCconv(CConv value);
 
   /**
    * Returns the value of the '<em><b>Return Attributes</b></em>' containment reference.

@@ -204,6 +204,7 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
       case LLVM_IRPackage.VOID_TYPE: return createVoidType();
       case LLVM_IRPackage.METADATA_TYPE: return createMetadataType();
       case LLVM_IRPackage.FLOATING_TYPE: return createFloatingType();
+      case LLVM_IRPackage.CCONV: return createCConv();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -1747,6 +1748,17 @@ public class LLVM_IRFactoryImpl extends EFactoryImpl implements LLVM_IRFactory
   {
     FloatingTypeImpl floatingType = new FloatingTypeImpl();
     return floatingType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public CConv createCConv()
+  {
+    CConvImpl cConv = new CConvImpl();
+    return cConv;
   }
 
   /**

@@ -8280,116 +8280,160 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 	public class CConvElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "CConv");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cCccKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cFastccKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cColdccKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cIntel_ocl_biccKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cX86_stdcallccKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cX86_fastcallccKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cX86_thiscallccKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cArm_apcsccKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cArm_aapcsccKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cArm_aapcs_vfpccKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final Keyword cMsp430_intrccKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
-		private final Keyword cPtx_kernelKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
-		private final Keyword cPtx_deviceKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
-		private final Keyword cSpir_kernelKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
-		private final Keyword cSpir_funcKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
-		private final Keyword cX86_64_sysvccKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
-		private final Keyword cX86_64_win64ccKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
-		private final Group cGroup_17 = (Group)cAlternatives.eContents().get(17);
-		private final Keyword cCcKeyword_17_0 = (Keyword)cGroup_17.eContents().get(0);
-		private final RuleCall cINTEGERTerminalRuleCall_17_1 = (RuleCall)cGroup_17.eContents().get(1);
+		private final Assignment cValAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Alternatives cValAlternatives_0_0 = (Alternatives)cValAssignment_0.eContents().get(0);
+		private final Keyword cValCccKeyword_0_0_0 = (Keyword)cValAlternatives_0_0.eContents().get(0);
+		private final Keyword cValFastccKeyword_0_0_1 = (Keyword)cValAlternatives_0_0.eContents().get(1);
+		private final Keyword cValColdccKeyword_0_0_2 = (Keyword)cValAlternatives_0_0.eContents().get(2);
+		private final Keyword cValWebkit_jsccKeyword_0_0_3 = (Keyword)cValAlternatives_0_0.eContents().get(3);
+		private final Keyword cValAnyregccKeyword_0_0_4 = (Keyword)cValAlternatives_0_0.eContents().get(4);
+		private final Keyword cValPreserve_mostccKeyword_0_0_5 = (Keyword)cValAlternatives_0_0.eContents().get(5);
+		private final Keyword cValPreserve_allccKeyword_0_0_6 = (Keyword)cValAlternatives_0_0.eContents().get(6);
+		private final Keyword cValIntel_ocl_biccKeyword_0_0_7 = (Keyword)cValAlternatives_0_0.eContents().get(7);
+		private final Keyword cValX86_stdcallccKeyword_0_0_8 = (Keyword)cValAlternatives_0_0.eContents().get(8);
+		private final Keyword cValX86_fastcallccKeyword_0_0_9 = (Keyword)cValAlternatives_0_0.eContents().get(9);
+		private final Keyword cValX86_thiscallccKeyword_0_0_10 = (Keyword)cValAlternatives_0_0.eContents().get(10);
+		private final Keyword cValArm_apcsccKeyword_0_0_11 = (Keyword)cValAlternatives_0_0.eContents().get(11);
+		private final Keyword cValArm_aapcsccKeyword_0_0_12 = (Keyword)cValAlternatives_0_0.eContents().get(12);
+		private final Keyword cValArm_aapcs_vfpccKeyword_0_0_13 = (Keyword)cValAlternatives_0_0.eContents().get(13);
+		private final Keyword cValMsp430_intrccKeyword_0_0_14 = (Keyword)cValAlternatives_0_0.eContents().get(14);
+		private final Keyword cValPtx_kernelKeyword_0_0_15 = (Keyword)cValAlternatives_0_0.eContents().get(15);
+		private final Keyword cValPtx_deviceKeyword_0_0_16 = (Keyword)cValAlternatives_0_0.eContents().get(16);
+		private final Keyword cValSpir_kernelKeyword_0_0_17 = (Keyword)cValAlternatives_0_0.eContents().get(17);
+		private final Keyword cValSpir_funcKeyword_0_0_18 = (Keyword)cValAlternatives_0_0.eContents().get(18);
+		private final Keyword cValX86_64_sysvccKeyword_0_0_19 = (Keyword)cValAlternatives_0_0.eContents().get(19);
+		private final Keyword cValX86_64_win64ccKeyword_0_0_20 = (Keyword)cValAlternatives_0_0.eContents().get(20);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Assignment cValAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final Keyword cValCcKeyword_1_0_0 = (Keyword)cValAssignment_1_0.eContents().get(0);
+		private final Assignment cCustomNumberAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cCustomNumberINTEGERTerminalRuleCall_1_1_0 = (RuleCall)cCustomNumberAssignment_1_1.eContents().get(0);
 		
 		//CConv:
 		//
-		//	"ccc" | "fastcc" | "coldcc" | // The following are not documented in the langref:
+		//	val=("ccc" | "fastcc" | "coldcc" | "webkit_jscc" | "anyregcc" | "preserve_mostcc" | "preserve_allcc" | // The following are not documented in the langref:
 		//
 		//	"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
 		//
 		//	"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
 		//
-		//	"x86_64_win64cc" | // Custom
+		//	"x86_64_win64cc") | // Custom
 		//
-		//	"cc" INTEGER;
+		//	val="cc" customNumber=INTEGER;
 		public ParserRule getRule() { return rule; }
 
-		//"ccc" | "fastcc" | "coldcc" | // The following are not documented in the langref:
+		//val=("ccc" | "fastcc" | "coldcc" | "webkit_jscc" | "anyregcc" | "preserve_mostcc" | "preserve_allcc" | // The following are not documented in the langref:
 		//
 		//"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
 		//
 		//"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
 		//
-		//"x86_64_win64cc" | // Custom
+		//"x86_64_win64cc") | // Custom
 		//
-		//"cc" INTEGER
+		//val="cc" customNumber=INTEGER
 		public Alternatives getAlternatives() { return cAlternatives; }
 
+		//val=("ccc" | "fastcc" | "coldcc" | "webkit_jscc" | "anyregcc" | "preserve_mostcc" | "preserve_allcc" | // The following are not documented in the langref:
+		//
+		//"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
+		//
+		//"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
+		//
+		//"x86_64_win64cc")
+		public Assignment getValAssignment_0() { return cValAssignment_0; }
+
+		//"ccc" | "fastcc" | "coldcc" | "webkit_jscc" | "anyregcc" | "preserve_mostcc" | "preserve_allcc" | // The following are not documented in the langref:
+		//
+		//"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
+		//
+		//"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
+		//
+		//"x86_64_win64cc"
+		public Alternatives getValAlternatives_0_0() { return cValAlternatives_0_0; }
+
 		//"ccc"
-		public Keyword getCccKeyword_0() { return cCccKeyword_0; }
+		public Keyword getValCccKeyword_0_0_0() { return cValCccKeyword_0_0_0; }
 
 		//"fastcc"
-		public Keyword getFastccKeyword_1() { return cFastccKeyword_1; }
+		public Keyword getValFastccKeyword_0_0_1() { return cValFastccKeyword_0_0_1; }
 
 		//"coldcc"
-		public Keyword getColdccKeyword_2() { return cColdccKeyword_2; }
+		public Keyword getValColdccKeyword_0_0_2() { return cValColdccKeyword_0_0_2; }
+
+		//"webkit_jscc"
+		public Keyword getValWebkit_jsccKeyword_0_0_3() { return cValWebkit_jsccKeyword_0_0_3; }
+
+		//"anyregcc"
+		public Keyword getValAnyregccKeyword_0_0_4() { return cValAnyregccKeyword_0_0_4; }
+
+		//"preserve_mostcc"
+		public Keyword getValPreserve_mostccKeyword_0_0_5() { return cValPreserve_mostccKeyword_0_0_5; }
+
+		//"preserve_allcc"
+		public Keyword getValPreserve_allccKeyword_0_0_6() { return cValPreserve_allccKeyword_0_0_6; }
 
 		//// The following are not documented in the langref:
 		//
 		//"intel_ocl_bicc"
-		public Keyword getIntel_ocl_biccKeyword_3() { return cIntel_ocl_biccKeyword_3; }
+		public Keyword getValIntel_ocl_biccKeyword_0_0_7() { return cValIntel_ocl_biccKeyword_0_0_7; }
 
 		//"x86_stdcallcc"
-		public Keyword getX86_stdcallccKeyword_4() { return cX86_stdcallccKeyword_4; }
+		public Keyword getValX86_stdcallccKeyword_0_0_8() { return cValX86_stdcallccKeyword_0_0_8; }
 
 		//"x86_fastcallcc"
-		public Keyword getX86_fastcallccKeyword_5() { return cX86_fastcallccKeyword_5; }
+		public Keyword getValX86_fastcallccKeyword_0_0_9() { return cValX86_fastcallccKeyword_0_0_9; }
 
 		//"x86_thiscallcc"
-		public Keyword getX86_thiscallccKeyword_6() { return cX86_thiscallccKeyword_6; }
+		public Keyword getValX86_thiscallccKeyword_0_0_10() { return cValX86_thiscallccKeyword_0_0_10; }
 
 		//"arm_apcscc"
-		public Keyword getArm_apcsccKeyword_7() { return cArm_apcsccKeyword_7; }
+		public Keyword getValArm_apcsccKeyword_0_0_11() { return cValArm_apcsccKeyword_0_0_11; }
 
 		//"arm_aapcscc"
-		public Keyword getArm_aapcsccKeyword_8() { return cArm_aapcsccKeyword_8; }
+		public Keyword getValArm_aapcsccKeyword_0_0_12() { return cValArm_aapcsccKeyword_0_0_12; }
 
 		//"arm_aapcs_vfpcc"
-		public Keyword getArm_aapcs_vfpccKeyword_9() { return cArm_aapcs_vfpccKeyword_9; }
+		public Keyword getValArm_aapcs_vfpccKeyword_0_0_13() { return cValArm_aapcs_vfpccKeyword_0_0_13; }
 
 		//"msp430_intrcc"
-		public Keyword getMsp430_intrccKeyword_10() { return cMsp430_intrccKeyword_10; }
+		public Keyword getValMsp430_intrccKeyword_0_0_14() { return cValMsp430_intrccKeyword_0_0_14; }
 
 		//"ptx_kernel"
-		public Keyword getPtx_kernelKeyword_11() { return cPtx_kernelKeyword_11; }
+		public Keyword getValPtx_kernelKeyword_0_0_15() { return cValPtx_kernelKeyword_0_0_15; }
 
 		//"ptx_device"
-		public Keyword getPtx_deviceKeyword_12() { return cPtx_deviceKeyword_12; }
+		public Keyword getValPtx_deviceKeyword_0_0_16() { return cValPtx_deviceKeyword_0_0_16; }
 
 		//"spir_kernel"
-		public Keyword getSpir_kernelKeyword_13() { return cSpir_kernelKeyword_13; }
+		public Keyword getValSpir_kernelKeyword_0_0_17() { return cValSpir_kernelKeyword_0_0_17; }
 
 		//"spir_func"
-		public Keyword getSpir_funcKeyword_14() { return cSpir_funcKeyword_14; }
+		public Keyword getValSpir_funcKeyword_0_0_18() { return cValSpir_funcKeyword_0_0_18; }
 
 		//"x86_64_sysvcc"
-		public Keyword getX86_64_sysvccKeyword_15() { return cX86_64_sysvccKeyword_15; }
+		public Keyword getValX86_64_sysvccKeyword_0_0_19() { return cValX86_64_sysvccKeyword_0_0_19; }
 
 		//"x86_64_win64cc"
-		public Keyword getX86_64_win64ccKeyword_16() { return cX86_64_win64ccKeyword_16; }
+		public Keyword getValX86_64_win64ccKeyword_0_0_20() { return cValX86_64_win64ccKeyword_0_0_20; }
 
 		//// Custom
 		//
-		//"cc" INTEGER
-		public Group getGroup_17() { return cGroup_17; }
+		//val="cc" customNumber=INTEGER
+		public Group getGroup_1() { return cGroup_1; }
 
 		//// Custom
 		//
+		//val="cc"
+		public Assignment getValAssignment_1_0() { return cValAssignment_1_0; }
+
 		//"cc"
-		public Keyword getCcKeyword_17_0() { return cCcKeyword_17_0; }
+		public Keyword getValCcKeyword_1_0_0() { return cValCcKeyword_1_0_0; }
+
+		//customNumber=INTEGER
+		public Assignment getCustomNumberAssignment_1_1() { return cCustomNumberAssignment_1_1; }
 
 		//INTEGER
-		public RuleCall getINTEGERTerminalRuleCall_17_1() { return cINTEGERTerminalRuleCall_17_1; }
+		public RuleCall getCustomNumberINTEGERTerminalRuleCall_1_1_0() { return cCustomNumberINTEGERTerminalRuleCall_1_1_0; }
 	}
 
 	public class VisibilityElements extends AbstractParserRuleElementFinder {
@@ -10657,15 +10701,15 @@ public class LLVM_IRGrammarAccess extends AbstractGrammarElementFinder {
 
 	//CConv:
 	//
-	//	"ccc" | "fastcc" | "coldcc" | // The following are not documented in the langref:
+	//	val=("ccc" | "fastcc" | "coldcc" | "webkit_jscc" | "anyregcc" | "preserve_mostcc" | "preserve_allcc" | // The following are not documented in the langref:
 	//
 	//	"intel_ocl_bicc" | "x86_stdcallcc" | "x86_fastcallcc" | "x86_thiscallcc" | "arm_apcscc" | "arm_aapcscc" |
 	//
 	//	"arm_aapcs_vfpcc" | "msp430_intrcc" | "ptx_kernel" | "ptx_device" | "spir_kernel" | "spir_func" | "x86_64_sysvcc" |
 	//
-	//	"x86_64_win64cc" | // Custom
+	//	"x86_64_win64cc") | // Custom
 	//
-	//	"cc" INTEGER;
+	//	val="cc" customNumber=INTEGER;
 	public CConvElements getCConvAccess() {
 		return (pCConv != null) ? pCConv : (pCConv = new CConvElements());
 	}

@@ -1202,6 +1202,37 @@ public class AbstractLLVM_IRProposalProvider extends org.eclipse.xtext.ui.editor
 	public void completeArrayType_ElemType(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
+	public void completeCConv_Val(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		if (assignment.getTerminal() instanceof Alternatives) {
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+			// subclasses may override
+		}
+		if (assignment.getTerminal() instanceof Keyword) {
+			// subclasses may override
+		}
+	}
+	public void completeCConv_CustomNumber(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
+	}
     
 	public void complete_Model(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override

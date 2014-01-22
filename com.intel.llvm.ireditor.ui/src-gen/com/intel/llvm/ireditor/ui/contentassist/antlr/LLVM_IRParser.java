@@ -100,6 +100,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getFloatingTypeAccess().getAlternatives_0(), "rule__FloatingType__Alternatives_0");
 					put(grammarAccess.getLinkageAccess().getAlternatives(), "rule__Linkage__Alternatives");
 					put(grammarAccess.getCConvAccess().getAlternatives(), "rule__CConv__Alternatives");
+					put(grammarAccess.getCConvAccess().getValAlternatives_0_0(), "rule__CConv__ValAlternatives_0_0");
 					put(grammarAccess.getVisibilityAccess().getAlternatives(), "rule__Visibility__Alternatives");
 					put(grammarAccess.getAttributeGroupAccess().getGroup(), "rule__AttributeGroup__Group__0");
 					put(grammarAccess.getAttributeGroupAccess().getGroup_4_1(), "rule__AttributeGroup__Group_4_1__0");
@@ -272,7 +273,7 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVoidTypeAccess().getGroup(), "rule__VoidType__Group__0");
 					put(grammarAccess.getMetadataTypeAccess().getGroup(), "rule__MetadataType__Group__0");
 					put(grammarAccess.getFloatingTypeAccess().getGroup(), "rule__FloatingType__Group__0");
-					put(grammarAccess.getCConvAccess().getGroup_17(), "rule__CConv__Group_17__0");
+					put(grammarAccess.getCConvAccess().getGroup_1(), "rule__CConv__Group_1__0");
 					put(grammarAccess.getModelAccess().getElementsAssignment(), "rule__Model__ElementsAssignment");
 					put(grammarAccess.getAttributeGroupAccess().getNameAssignment_1(), "rule__AttributeGroup__NameAssignment_1");
 					put(grammarAccess.getAttributeGroupAccess().getAttributesAssignment_4_0(), "rule__AttributeGroup__AttributesAssignment_4_0");
@@ -674,6 +675,9 @@ public class LLVM_IRParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVectorTypeAccess().getElemTypeAssignment_3(), "rule__VectorType__ElemTypeAssignment_3");
 					put(grammarAccess.getArrayTypeAccess().getSizeAssignment_1(), "rule__ArrayType__SizeAssignment_1");
 					put(grammarAccess.getArrayTypeAccess().getElemTypeAssignment_3(), "rule__ArrayType__ElemTypeAssignment_3");
+					put(grammarAccess.getCConvAccess().getValAssignment_0(), "rule__CConv__ValAssignment_0");
+					put(grammarAccess.getCConvAccess().getValAssignment_1_0(), "rule__CConv__ValAssignment_1_0");
+					put(grammarAccess.getCConvAccess().getCustomNumberAssignment_1_1(), "rule__CConv__CustomNumberAssignment_1_1");
 					put(grammarAccess.getConstantExpression_binaryAccess().getUnorderedGroup_0_0_1(), "rule__ConstantExpression_binary__UnorderedGroup_0_0_1");
 					put(grammarAccess.getInstruction_invoke_voidAccess().getUnorderedGroup_2(), "rule__Instruction_invoke_void__UnorderedGroup_2");
 					put(grammarAccess.getInstruction_invoke_nonVoidAccess().getUnorderedGroup_2(), "rule__Instruction_invoke_nonVoid__UnorderedGroup_2");

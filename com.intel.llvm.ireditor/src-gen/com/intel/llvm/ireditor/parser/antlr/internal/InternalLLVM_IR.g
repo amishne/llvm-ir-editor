@@ -14281,153 +14281,313 @@ ruleLinkage returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
 
 
 // Entry rule entryRuleCConv
-entryRuleCConv returns [String current=null] 
+entryRuleCConv returns [EObject current=null] 
 	:
-	{ newCompositeNode(grammarAccess.getCConvRule()); } 
+	{ newCompositeNode(grammarAccess.getCConvRule()); }
 	 iv_ruleCConv=ruleCConv 
-	 { $current=$iv_ruleCConv.current.getText(); }  
+	 { $current=$iv_ruleCConv.current; } 
 	 EOF 
 ;
 
 // Rule CConv
-ruleCConv returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+ruleCConv returns [EObject current=null] 
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
+((
 (
-	kw='ccc' 
+(
+		lv_val_0_1=	'ccc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getCccKeyword_0()); 
+        newLeafNode(lv_val_0_1, grammarAccess.getCConvAccess().getValCccKeyword_0_0_0());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_1, null);
+	    }
 
-    |
-	kw='fastcc' 
+    |		lv_val_0_2=	'fastcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getFastccKeyword_1()); 
+        newLeafNode(lv_val_0_2, grammarAccess.getCConvAccess().getValFastccKeyword_0_0_1());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_2, null);
+	    }
 
-    |
-	kw='coldcc' 
+    |		lv_val_0_3=	'coldcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getColdccKeyword_2()); 
+        newLeafNode(lv_val_0_3, grammarAccess.getCConvAccess().getValColdccKeyword_0_0_2());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_3, null);
+	    }
 
-    |
-	kw='intel_ocl_bicc' 
+    |		lv_val_0_4=	'webkit_jscc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getIntel_ocl_biccKeyword_3()); 
+        newLeafNode(lv_val_0_4, grammarAccess.getCConvAccess().getValWebkit_jsccKeyword_0_0_3());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_4, null);
+	    }
 
-    |
-	kw='x86_stdcallcc' 
+    |		lv_val_0_5=	'anyregcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_stdcallccKeyword_4()); 
+        newLeafNode(lv_val_0_5, grammarAccess.getCConvAccess().getValAnyregccKeyword_0_0_4());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_5, null);
+	    }
 
-    |
-	kw='x86_fastcallcc' 
+    |		lv_val_0_6=	'preserve_mostcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_fastcallccKeyword_5()); 
+        newLeafNode(lv_val_0_6, grammarAccess.getCConvAccess().getValPreserve_mostccKeyword_0_0_5());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_6, null);
+	    }
 
-    |
-	kw='x86_thiscallcc' 
+    |		lv_val_0_7=	'preserve_allcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_thiscallccKeyword_6()); 
+        newLeafNode(lv_val_0_7, grammarAccess.getCConvAccess().getValPreserve_allccKeyword_0_0_6());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_7, null);
+	    }
 
-    |
-	kw='arm_apcscc' 
+    |		lv_val_0_8=	'intel_ocl_bicc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getArm_apcsccKeyword_7()); 
+        newLeafNode(lv_val_0_8, grammarAccess.getCConvAccess().getValIntel_ocl_biccKeyword_0_0_7());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_8, null);
+	    }
 
-    |
-	kw='arm_aapcscc' 
+    |		lv_val_0_9=	'x86_stdcallcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getArm_aapcsccKeyword_8()); 
+        newLeafNode(lv_val_0_9, grammarAccess.getCConvAccess().getValX86_stdcallccKeyword_0_0_8());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_9, null);
+	    }
 
-    |
-	kw='arm_aapcs_vfpcc' 
+    |		lv_val_0_10=	'x86_fastcallcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getArm_aapcs_vfpccKeyword_9()); 
+        newLeafNode(lv_val_0_10, grammarAccess.getCConvAccess().getValX86_fastcallccKeyword_0_0_9());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_10, null);
+	    }
 
-    |
-	kw='msp430_intrcc' 
+    |		lv_val_0_11=	'x86_thiscallcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getMsp430_intrccKeyword_10()); 
+        newLeafNode(lv_val_0_11, grammarAccess.getCConvAccess().getValX86_thiscallccKeyword_0_0_10());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_11, null);
+	    }
 
-    |
-	kw='ptx_kernel' 
+    |		lv_val_0_12=	'arm_apcscc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getPtx_kernelKeyword_11()); 
+        newLeafNode(lv_val_0_12, grammarAccess.getCConvAccess().getValArm_apcsccKeyword_0_0_11());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_12, null);
+	    }
 
-    |
-	kw='ptx_device' 
+    |		lv_val_0_13=	'arm_aapcscc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getPtx_deviceKeyword_12()); 
+        newLeafNode(lv_val_0_13, grammarAccess.getCConvAccess().getValArm_aapcsccKeyword_0_0_12());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_13, null);
+	    }
 
-    |
-	kw='spir_kernel' 
+    |		lv_val_0_14=	'arm_aapcs_vfpcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getSpir_kernelKeyword_13()); 
+        newLeafNode(lv_val_0_14, grammarAccess.getCConvAccess().getValArm_aapcs_vfpccKeyword_0_0_13());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_14, null);
+	    }
 
-    |
-	kw='spir_func' 
+    |		lv_val_0_15=	'msp430_intrcc' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getSpir_funcKeyword_14()); 
+        newLeafNode(lv_val_0_15, grammarAccess.getCConvAccess().getValMsp430_intrccKeyword_0_0_14());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_15, null);
+	    }
 
-    |
-	kw='x86_64_sysvcc' 
+    |		lv_val_0_16=	'ptx_kernel' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_64_sysvccKeyword_15()); 
+        newLeafNode(lv_val_0_16, grammarAccess.getCConvAccess().getValPtx_kernelKeyword_0_0_15());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_16, null);
+	    }
 
-    |
-	kw='x86_64_win64cc' 
+    |		lv_val_0_17=	'ptx_device' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getX86_64_win64ccKeyword_16()); 
+        newLeafNode(lv_val_0_17, grammarAccess.getCConvAccess().getValPtx_deviceKeyword_0_0_16());
     }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_17, null);
+	    }
 
-    |(
-	kw='cc' 
+    |		lv_val_0_18=	'spir_kernel' 
     {
-        $current.merge(kw);
-        newLeafNode(kw, grammarAccess.getCConvAccess().getCcKeyword_17_0()); 
+        newLeafNode(lv_val_0_18, grammarAccess.getCConvAccess().getValSpir_kernelKeyword_0_0_17());
     }
-    this_INTEGER_18=RULE_INTEGER    {
-		$current.merge(this_INTEGER_18);
-    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_18, null);
+	    }
 
-    { 
-    newLeafNode(this_INTEGER_18, grammarAccess.getCConvAccess().getINTEGERTerminalRuleCall_17_1()); 
+    |		lv_val_0_19=	'spir_func' 
+    {
+        newLeafNode(lv_val_0_19, grammarAccess.getCConvAccess().getValSpir_funcKeyword_0_0_18());
     }
-))
-    ;
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_19, null);
+	    }
+
+    |		lv_val_0_20=	'x86_64_sysvcc' 
+    {
+        newLeafNode(lv_val_0_20, grammarAccess.getCConvAccess().getValX86_64_sysvccKeyword_0_0_19());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_20, null);
+	    }
+
+    |		lv_val_0_21=	'x86_64_win64cc' 
+    {
+        newLeafNode(lv_val_0_21, grammarAccess.getCConvAccess().getValX86_64_win64ccKeyword_0_0_20());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_0_21, null);
+	    }
+
+)
+
+)
+)
+    |((
+(
+		lv_val_1_0=	'cc' 
+    {
+        newLeafNode(lv_val_1_0, grammarAccess.getCConvAccess().getValCcKeyword_1_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed($current, "val", lv_val_1_0, "cc");
+	    }
+
+)
+)(
+(
+		lv_customNumber_2_0=RULE_INTEGER
+		{
+			newLeafNode(lv_customNumber_2_0, grammarAccess.getCConvAccess().getCustomNumberINTEGERTerminalRuleCall_1_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getCConvRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"customNumber",
+        		lv_customNumber_2_0, 
+        		"INTEGER");
+	    }
+
+)
+)))
+;
 
 
 

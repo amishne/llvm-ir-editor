@@ -1283,6 +1283,15 @@ public interface LLVM_IRFactory extends EFactory
   FloatingType createFloatingType();
 
   /**
+   * Returns a new object of class '<em>CConv</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>CConv</em>'.
+   * @generated
+   */
+  CConv createCConv();
+
+  /**
    * Returns the package supported by this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

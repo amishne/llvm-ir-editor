@@ -179,7 +179,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//FunctionHeader">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionHeader/linkage"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionHeader/visibility"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionHeader/cconv"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionHeader/cconv"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionHeader/rettypeAttrs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//FunctionHeader/rettype"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//FunctionHeader/name"/>
@@ -255,7 +255,7 @@
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_invoke_void">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_invoke_void/opcode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_invoke_void/cconv"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_void/cconv"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_void/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_void/callee"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_void/args"/>
@@ -265,7 +265,7 @@
     </genClasses>
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_invoke_nonVoid">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_invoke_nonVoid/opcode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_invoke_nonVoid/cconv"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_nonVoid/cconv"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_nonVoid/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_nonVoid/callee"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_invoke_nonVoid/args"/>
@@ -426,7 +426,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_call_nonVoid">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_call_nonVoid/isTail"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_call_nonVoid/opcode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_call_nonVoid/cconv"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_nonVoid/cconv"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_nonVoid/returnAttributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_nonVoid/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_nonVoid/callee"/>
@@ -436,7 +436,7 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//Instruction_call_void">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_call_void/isTail"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_call_void/opcode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//Instruction_call_void/cconv"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_void/cconv"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_void/returnAttributes"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_void/type"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference LLVM_IR.ecore#//Instruction_call_void/callee"/>
@@ -532,5 +532,9 @@
     <genClasses ecoreClass="LLVM_IR.ecore#//VoidType"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//MetadataType"/>
     <genClasses ecoreClass="LLVM_IR.ecore#//FloatingType"/>
+    <genClasses ecoreClass="LLVM_IR.ecore#//CConv">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//CConv/val"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute LLVM_IR.ecore#//CConv/customNumber"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -3,6 +3,7 @@
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
 import com.intel.llvm.ireditor.lLVM_IR.ArgList;
+import com.intel.llvm.ireditor.lLVM_IR.CConv;
 import com.intel.llvm.ireditor.lLVM_IR.Callee;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void;
@@ -82,24 +83,14 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
   protected String opcode = OPCODE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getCconv() <em>Cconv</em>}' attribute.
+   * The cached value of the '{@link #getCconv() <em>Cconv</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCconv()
    * @generated
    * @ordered
    */
-  protected static final String CCONV_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getCconv() <em>Cconv</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCconv()
-   * @generated
-   * @ordered
-   */
-  protected String cconv = CCONV_EDEFAULT;
+  protected CConv cconv;
 
   /**
    * The cached value of the '{@link #getReturnAttributes() <em>Return Attributes</em>}' containment reference.
@@ -223,7 +214,7 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCconv()
+  public CConv getCconv()
   {
     return cconv;
   }
@@ -233,12 +224,37 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCconv(String newCconv)
+  public NotificationChain basicSetCconv(CConv newCconv, NotificationChain msgs)
   {
-    String oldCconv = cconv;
+    CConv oldCconv = cconv;
     cconv = newCconv;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV, oldCconv, cconv));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV, oldCconv, newCconv);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCconv(CConv newCconv)
+  {
+    if (newCconv != cconv)
+    {
+      NotificationChain msgs = null;
+      if (cconv != null)
+        msgs = ((InternalEObject)cconv).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV, null, msgs);
+      if (newCconv != null)
+        msgs = ((InternalEObject)newCconv).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV, null, msgs);
+      msgs = basicSetCconv(newCconv, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV, newCconv, newCconv));
   }
 
   /**
@@ -491,6 +507,8 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
   {
     switch (featureID)
     {
+      case LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV:
+        return basicSetCconv(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES:
         return basicSetReturnAttributes(null, msgs);
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__TYPE:
@@ -552,7 +570,7 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
         setOpcode((String)newValue);
         return;
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV:
-        setCconv((String)newValue);
+        setCconv((CConv)newValue);
         return;
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES:
         setReturnAttributes((ParameterAttributes)newValue);
@@ -590,7 +608,7 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
         setOpcode(OPCODE_EDEFAULT);
         return;
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV:
-        setCconv(CCONV_EDEFAULT);
+        setCconv((CConv)null);
         return;
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES:
         setReturnAttributes((ParameterAttributes)null);
@@ -626,7 +644,7 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__OPCODE:
         return OPCODE_EDEFAULT == null ? opcode != null : !OPCODE_EDEFAULT.equals(opcode);
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__CCONV:
-        return CCONV_EDEFAULT == null ? cconv != null : !CCONV_EDEFAULT.equals(cconv);
+        return cconv != null;
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__RETURN_ATTRIBUTES:
         return returnAttributes != null;
       case LLVM_IRPackage.INSTRUCTION_CALL_VOID__TYPE:
@@ -656,8 +674,6 @@ public class Instruction_call_voidImpl extends MinimalEObjectImpl.Container impl
     result.append(isTail);
     result.append(", opcode: ");
     result.append(opcode);
-    result.append(", cconv: ");
-    result.append(cconv);
     result.append(')');
     return result.toString();
   }

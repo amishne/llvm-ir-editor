@@ -226,7 +226,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="FunctionHeader" eSuperTypes="#//GlobalValueDef">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="linkage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="visibility" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cconv" eType="#//CConv"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rettypeAttrs" eType="#//ParameterAttributes"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rettype" eType="#//Type"
@@ -331,7 +332,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_invoke_void">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cconv" eType="#//CConv"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//VoidType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="callee" eType="#//Callee"
@@ -347,7 +349,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_invoke_nonVoid">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cconv" eType="#//CConv"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//NonVoidType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="callee" eType="#//Callee"
@@ -560,7 +563,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_call_nonVoid">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cconv" eType="#//CConv"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnAttributes" eType="#//ParameterAttributes"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//NonVoidType"
@@ -575,7 +579,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Instruction_call_void">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isTail" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="opcode" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cconv" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cconv" eType="#//CConv"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="returnAttributes" eType="#//ParameterAttributes"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//VoidType"
@@ -705,4 +710,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="VoidType"/>
   <eClassifiers xsi:type="ecore:EClass" name="MetadataType"/>
   <eClassifiers xsi:type="ecore:EClass" name="FloatingType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CConv">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -2,6 +2,7 @@
  */
 package com.intel.llvm.ireditor.lLVM_IR.impl;
 
+import com.intel.llvm.ireditor.lLVM_IR.CConv;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionAttributes;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionHeader;
 import com.intel.llvm.ireditor.lLVM_IR.FunctionPrefix;
@@ -85,24 +86,14 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
   protected String visibility = VISIBILITY_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getCconv() <em>Cconv</em>}' attribute.
+   * The cached value of the '{@link #getCconv() <em>Cconv</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getCconv()
    * @generated
    * @ordered
    */
-  protected static final String CCONV_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getCconv() <em>Cconv</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCconv()
-   * @generated
-   * @ordered
-   */
-  protected String cconv = CCONV_EDEFAULT;
+  protected CConv cconv;
 
   /**
    * The cached value of the '{@link #getRettypeAttrs() <em>Rettype Attrs</em>}' containment reference.
@@ -306,7 +297,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCconv()
+  public CConv getCconv()
   {
     return cconv;
   }
@@ -316,12 +307,37 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCconv(String newCconv)
+  public NotificationChain basicSetCconv(CConv newCconv, NotificationChain msgs)
   {
-    String oldCconv = cconv;
+    CConv oldCconv = cconv;
     cconv = newCconv;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__CCONV, oldCconv, cconv));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__CCONV, oldCconv, newCconv);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCconv(CConv newCconv)
+  {
+    if (newCconv != cconv)
+    {
+      NotificationChain msgs = null;
+      if (cconv != null)
+        msgs = ((InternalEObject)cconv).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__CCONV, null, msgs);
+      if (newCconv != null)
+        msgs = ((InternalEObject)newCconv).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - LLVM_IRPackage.FUNCTION_HEADER__CCONV, null, msgs);
+      msgs = basicSetCconv(newCconv, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, LLVM_IRPackage.FUNCTION_HEADER__CCONV, newCconv, newCconv));
   }
 
   /**
@@ -666,6 +682,8 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
   {
     switch (featureID)
     {
+      case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
+        return basicSetCconv(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
         return basicSetRettypeAttrs(null, msgs);
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
@@ -735,7 +753,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         setVisibility((String)newValue);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
-        setCconv((String)newValue);
+        setCconv((CConv)newValue);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
         setRettypeAttrs((ParameterAttributes)newValue);
@@ -785,7 +803,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
         setVisibility(VISIBILITY_EDEFAULT);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
-        setCconv(CCONV_EDEFAULT);
+        setCconv((CConv)null);
         return;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
         setRettypeAttrs((ParameterAttributes)null);
@@ -833,7 +851,7 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
       case LLVM_IRPackage.FUNCTION_HEADER__VISIBILITY:
         return VISIBILITY_EDEFAULT == null ? visibility != null : !VISIBILITY_EDEFAULT.equals(visibility);
       case LLVM_IRPackage.FUNCTION_HEADER__CCONV:
-        return CCONV_EDEFAULT == null ? cconv != null : !CCONV_EDEFAULT.equals(cconv);
+        return cconv != null;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE_ATTRS:
         return rettypeAttrs != null;
       case LLVM_IRPackage.FUNCTION_HEADER__RETTYPE:
@@ -871,8 +889,6 @@ public class FunctionHeaderImpl extends GlobalValueDefImpl implements FunctionHe
     result.append(linkage);
     result.append(", visibility: ");
     result.append(visibility);
-    result.append(", cconv: ");
-    result.append(cconv);
     result.append(", name: ");
     result.append(name);
     result.append(", section: ");

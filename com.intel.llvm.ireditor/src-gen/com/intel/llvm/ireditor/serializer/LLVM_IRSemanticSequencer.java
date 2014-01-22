@@ -14,6 +14,7 @@ import com.intel.llvm.ireditor.lLVM_IR.AttributeGroup;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlock;
 import com.intel.llvm.ireditor.lLVM_IR.BasicBlockRef;
 import com.intel.llvm.ireditor.lLVM_IR.BlockAddress;
+import com.intel.llvm.ireditor.lLVM_IR.CConv;
 import com.intel.llvm.ireditor.lLVM_IR.Constant;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_binary;
 import com.intel.llvm.ireditor.lLVM_IR.ConstantExpression_compare;
@@ -223,6 +224,12 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 				if(context == grammarAccess.getBlockAddressRule() ||
 				   context == grammarAccess.getConstantRule()) {
 					sequence_BlockAddress(context, (BlockAddress) semanticObject); 
+					return; 
+				}
+				else break;
+			case LLVM_IRPackage.CCONV:
+				if(context == grammarAccess.getCConvRule()) {
+					sequence_CConv(context, (CConv) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1134,6 +1141,38 @@ public class LLVM_IRSemanticSequencer extends AbstractDelegatingSemanticSequence
 	 *     (function=GlobalValueRef basicBlock=BasicBlockRef)
 	 */
 	protected void sequence_BlockAddress(EObject context, BlockAddress semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (
+	 *         val='ccc' | 
+	 *         val='fastcc' | 
+	 *         val='coldcc' | 
+	 *         val='webkit_jscc' | 
+	 *         val='anyregcc' | 
+	 *         val='preserve_mostcc' | 
+	 *         val='preserve_allcc' | 
+	 *         val='intel_ocl_bicc' | 
+	 *         val='x86_stdcallcc' | 
+	 *         val='x86_fastcallcc' | 
+	 *         val='x86_thiscallcc' | 
+	 *         val='arm_apcscc' | 
+	 *         val='arm_aapcscc' | 
+	 *         val='arm_aapcs_vfpcc' | 
+	 *         val='msp430_intrcc' | 
+	 *         val='ptx_kernel' | 
+	 *         val='ptx_device' | 
+	 *         val='spir_kernel' | 
+	 *         val='spir_func' | 
+	 *         val='x86_64_sysvcc' | 
+	 *         val='x86_64_win64cc' | 
+	 *         (val='cc' customNumber=INTEGER)
+	 *     )
+	 */
+	protected void sequence_CConv(EObject context, CConv semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

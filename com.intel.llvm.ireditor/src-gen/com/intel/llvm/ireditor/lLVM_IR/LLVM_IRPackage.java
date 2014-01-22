@@ -2041,7 +2041,7 @@ public interface LLVM_IRPackage extends EPackage
   int FUNCTION_HEADER__VISIBILITY = GLOBAL_VALUE_DEF_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Cconv</b></em>' attribute.
+   * The feature id for the '<em><b>Cconv</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2805,7 +2805,7 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_INVOKE_VOID__OPCODE = 0;
 
   /**
-   * The feature id for the '<em><b>Cconv</b></em>' attribute.
+   * The feature id for the '<em><b>Cconv</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2896,7 +2896,7 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_INVOKE_NON_VOID__OPCODE = 0;
 
   /**
-   * The feature id for the '<em><b>Cconv</b></em>' attribute.
+   * The feature id for the '<em><b>Cconv</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -5345,7 +5345,7 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_CALL_NON_VOID__OPCODE = 1;
 
   /**
-   * The feature id for the '<em><b>Cconv</b></em>' attribute.
+   * The feature id for the '<em><b>Cconv</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -5436,7 +5436,7 @@ public interface LLVM_IRPackage extends EPackage
   int INSTRUCTION_CALL_VOID__OPCODE = 1;
 
   /**
-   * The feature id for the '<em><b>Cconv</b></em>' attribute.
+   * The feature id for the '<em><b>Cconv</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -6396,6 +6396,43 @@ public interface LLVM_IRPackage extends EPackage
    * @ordered
    */
   int FLOATING_TYPE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.CConvImpl <em>CConv</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.intel.llvm.ireditor.lLVM_IR.impl.CConvImpl
+   * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getCConv()
+   * @generated
+   */
+  int CCONV = 140;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CCONV__VAL = 0;
+
+  /**
+   * The feature id for the '<em><b>Custom Number</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CCONV__CUSTOM_NUMBER = 1;
+
+  /**
+   * The number of structural features of the '<em>CConv</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CCONV_FEATURE_COUNT = 2;
 
 
   /**
@@ -7814,15 +7851,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getFunctionHeader_Visibility();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getCconv <em>Cconv</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getCconv <em>Cconv</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cconv</em>'.
+   * @return the meta object for the containment reference '<em>Cconv</em>'.
    * @see com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getCconv()
    * @see #getFunctionHeader()
    * @generated
    */
-  EAttribute getFunctionHeader_Cconv();
+  EReference getFunctionHeader_Cconv();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.FunctionHeader#getRettypeAttrs <em>Rettype Attrs</em>}'.
@@ -8457,15 +8494,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getInstruction_invoke_void_Opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getCconv <em>Cconv</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getCconv <em>Cconv</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cconv</em>'.
+   * @return the meta object for the containment reference '<em>Cconv</em>'.
    * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getCconv()
    * @see #getInstruction_invoke_void()
    * @generated
    */
-  EAttribute getInstruction_invoke_void_Cconv();
+  EReference getInstruction_invoke_void_Cconv();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_void#getType <em>Type</em>}'.
@@ -8555,15 +8592,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getInstruction_invoke_nonVoid_Opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getCconv <em>Cconv</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getCconv <em>Cconv</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cconv</em>'.
+   * @return the meta object for the containment reference '<em>Cconv</em>'.
    * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getCconv()
    * @see #getInstruction_invoke_nonVoid()
    * @generated
    */
-  EAttribute getInstruction_invoke_nonVoid_Cconv();
+  EReference getInstruction_invoke_nonVoid_Cconv();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_invoke_nonVoid#getType <em>Type</em>}'.
@@ -9939,15 +9976,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getInstruction_call_nonVoid_Opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCconv <em>Cconv</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCconv <em>Cconv</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cconv</em>'.
+   * @return the meta object for the containment reference '<em>Cconv</em>'.
    * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getCconv()
    * @see #getInstruction_call_nonVoid()
    * @generated
    */
-  EAttribute getInstruction_call_nonVoid_Cconv();
+  EReference getInstruction_call_nonVoid_Cconv();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_nonVoid#getReturnAttributes <em>Return Attributes</em>}'.
@@ -10037,15 +10074,15 @@ public interface LLVM_IRPackage extends EPackage
   EAttribute getInstruction_call_void_Opcode();
 
   /**
-   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getCconv <em>Cconv</em>}'.
+   * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getCconv <em>Cconv</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cconv</em>'.
+   * @return the meta object for the containment reference '<em>Cconv</em>'.
    * @see com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getCconv()
    * @see #getInstruction_call_void()
    * @generated
    */
-  EAttribute getInstruction_call_void_Cconv();
+  EReference getInstruction_call_void_Cconv();
 
   /**
    * Returns the meta object for the containment reference '{@link com.intel.llvm.ireditor.lLVM_IR.Instruction_call_void#getReturnAttributes <em>Return Attributes</em>}'.
@@ -10833,6 +10870,38 @@ public interface LLVM_IRPackage extends EPackage
    * @generated
    */
   EClass getFloatingType();
+
+  /**
+   * Returns the meta object for class '{@link com.intel.llvm.ireditor.lLVM_IR.CConv <em>CConv</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>CConv</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.CConv
+   * @generated
+   */
+  EClass getCConv();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.CConv#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.CConv#getVal()
+   * @see #getCConv()
+   * @generated
+   */
+  EAttribute getCConv_Val();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.intel.llvm.ireditor.lLVM_IR.CConv#getCustomNumber <em>Custom Number</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Custom Number</em>'.
+   * @see com.intel.llvm.ireditor.lLVM_IR.CConv#getCustomNumber()
+   * @see #getCConv()
+   * @generated
+   */
+  EAttribute getCConv_CustomNumber();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -12018,12 +12087,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute FUNCTION_HEADER__VISIBILITY = eINSTANCE.getFunctionHeader_Visibility();
 
     /**
-     * The meta object literal for the '<em><b>Cconv</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cconv</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUNCTION_HEADER__CCONV = eINSTANCE.getFunctionHeader_Cconv();
+    EReference FUNCTION_HEADER__CCONV = eINSTANCE.getFunctionHeader_Cconv();
 
     /**
      * The meta object literal for the '<em><b>Rettype Attrs</b></em>' containment reference feature.
@@ -12532,12 +12601,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute INSTRUCTION_INVOKE_VOID__OPCODE = eINSTANCE.getInstruction_invoke_void_Opcode();
 
     /**
-     * The meta object literal for the '<em><b>Cconv</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cconv</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSTRUCTION_INVOKE_VOID__CCONV = eINSTANCE.getInstruction_invoke_void_Cconv();
+    EReference INSTRUCTION_INVOKE_VOID__CCONV = eINSTANCE.getInstruction_invoke_void_Cconv();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -12606,12 +12675,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute INSTRUCTION_INVOKE_NON_VOID__OPCODE = eINSTANCE.getInstruction_invoke_nonVoid_Opcode();
 
     /**
-     * The meta object literal for the '<em><b>Cconv</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cconv</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSTRUCTION_INVOKE_NON_VOID__CCONV = eINSTANCE.getInstruction_invoke_nonVoid_Cconv();
+    EReference INSTRUCTION_INVOKE_NON_VOID__CCONV = eINSTANCE.getInstruction_invoke_nonVoid_Cconv();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
@@ -13738,12 +13807,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute INSTRUCTION_CALL_NON_VOID__OPCODE = eINSTANCE.getInstruction_call_nonVoid_Opcode();
 
     /**
-     * The meta object literal for the '<em><b>Cconv</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cconv</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSTRUCTION_CALL_NON_VOID__CCONV = eINSTANCE.getInstruction_call_nonVoid_Cconv();
+    EReference INSTRUCTION_CALL_NON_VOID__CCONV = eINSTANCE.getInstruction_call_nonVoid_Cconv();
 
     /**
      * The meta object literal for the '<em><b>Return Attributes</b></em>' containment reference feature.
@@ -13812,12 +13881,12 @@ public interface LLVM_IRPackage extends EPackage
     EAttribute INSTRUCTION_CALL_VOID__OPCODE = eINSTANCE.getInstruction_call_void_Opcode();
 
     /**
-     * The meta object literal for the '<em><b>Cconv</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Cconv</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute INSTRUCTION_CALL_VOID__CCONV = eINSTANCE.getInstruction_call_void_Cconv();
+    EReference INSTRUCTION_CALL_VOID__CCONV = eINSTANCE.getInstruction_call_void_Cconv();
 
     /**
      * The meta object literal for the '<em><b>Return Attributes</b></em>' containment reference feature.
@@ -14464,6 +14533,32 @@ public interface LLVM_IRPackage extends EPackage
      * @generated
      */
     EClass FLOATING_TYPE = eINSTANCE.getFloatingType();
+
+    /**
+     * The meta object literal for the '{@link com.intel.llvm.ireditor.lLVM_IR.impl.CConvImpl <em>CConv</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.intel.llvm.ireditor.lLVM_IR.impl.CConvImpl
+     * @see com.intel.llvm.ireditor.lLVM_IR.impl.LLVM_IRPackageImpl#getCConv()
+     * @generated
+     */
+    EClass CCONV = eINSTANCE.getCConv();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CCONV__VAL = eINSTANCE.getCConv_Val();
+
+    /**
+     * The meta object literal for the '<em><b>Custom Number</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CCONV__CUSTOM_NUMBER = eINSTANCE.getCConv_CustomNumber();
 
   }
 
