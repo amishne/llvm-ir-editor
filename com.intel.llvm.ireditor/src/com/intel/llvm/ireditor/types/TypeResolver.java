@@ -137,6 +137,7 @@ public class TypeResolver extends LLVM_IRSwitch<ResolvedType> {
 	public static final ResolvedAnyVectorType TYPE_POINTER_VECTOR = new ResolvedAnyVectorType(TYPE_ANY_POINTER);
 	public static final ResolvedAnyVectorType TYPE_FLOATING_VECTOR = new ResolvedAnyVectorType(TYPE_FLOATING);
 	public static final ResolvedAnyVectorType TYPE_BOOLEAN_VECTOR = new ResolvedAnyVectorType(TYPE_BOOLEAN);
+	public static final ResolvedVoidType TYPE_VOID = new ResolvedVoidType();
 	
 	private static final BigInteger MAX_INTEGER_TYPE_SIZE = BigInteger.valueOf((2 << 23)-1);
 	private static final Object RESOLVED_NAMED_TYPES_CACHE_KEY = new Object();

@@ -199,7 +199,17 @@ public class LLVM_IRJavaValidator extends AbstractLLVM_IRJavaValidator {
 	@Check
 	public void checkRet(Instruction_ret val) {
 		EObject f = val.eContainer().eContainer().eContainer();
-		checkExpected(((Function)f).getHeader().getRettype(), val.getVal());
+		Type rettype = ((Function)f).getHeader().getRettype();
+		if (val.getVal() == null) {
+			ResolvedType resolvedRettype = resolveType(rettype);
+			if (resolvedRettype.isVoid() == false) {
+				INode node = NodeModelUtils.findActualNodeFor(val);
+				acceptError("Expected " + resolvedRettype + ", found void",
+						val, node.getOffset(), val.getOpcode().length(), null);
+			}
+		} else {
+			checkExpected(rettype, val.getVal());
+		}
 	}
 	
 	@Check
