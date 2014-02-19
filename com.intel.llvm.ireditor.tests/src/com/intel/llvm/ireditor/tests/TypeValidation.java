@@ -27,10 +27,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.intel.llvm.ireditor.tests;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.xtext.junit4.AbstractXtextTests;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
 import org.eclipse.xtext.junit4.util.ParseHelper;
+import org.eclipse.xtext.junit4.validation.AssertableDiagnostics;
+import org.eclipse.xtext.junit4.validation.AssertableDiagnostics.DiagnosticPredicate;
 import org.eclipse.xtext.junit4.validation.ValidatorTester;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,17 +62,17 @@ public class TypeValidation extends AbstractXtextTests {
 			System.out.println(e);
 		}
 	}
-	
+
 	private ValidatorTester<LLVM_IRJavaValidator> tester;
 	private ParseHelper<Model> parser;
-	
+
 	@Test
 	public void testTrunc() throws Exception {
-		tester.validate(parser.parse(buildCode("trunc #0 $0 to #1", "i16", "i32", "i16"))).assertOK();
-		tester.validate(parser.parse(buildCode("trunc #0 $0 to #1", "i15", "i32", "i16"))).assertError(ERROR_EXPECTED_TYPE);
-		tester.validate(parser.parse(buildCode("trunc #0 $0 to #1", "i16", "i32", "i15"))).assertError(ERROR_EXPECTED_TYPE);
+		tester.validate(parser.parse(buildCode("trunc #0 $0 to i16", "i16", "i32"))).assertOK();
+		tester.validate(parser.parse(buildCode("trunc #0 $0 to i16", "i15", "i32"))).assertError(ERROR_EXPECTED_TYPE);
+		tester.validate(parser.parse(buildCode("trunc #0 $0 to i15", "i16", "i32"))).assertError(ERROR_EXPECTED_TYPE);
 	}
-	
+
 	@Test
 	public void testGep1() throws Exception {
 		tester.validate(parser.parse(buildCode("getelementptr #0 $0, i32 0, i32 1", "i16*", "{i8, i16}*"))).assertOK();
@@ -87,10 +90,10 @@ public class TypeValidation extends AbstractXtextTests {
 			sb.append(" " + paramName);
 			base = base.replaceAll("#" + i, type);
 			base = base.replaceAll("\\$" + i, paramName);
-			
+
 			i++;
 		}
-		
+
 		sb.append(") {\n  ");
 		if (expectedType != null) {
 			sb.append("%result = ");
